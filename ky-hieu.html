@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi" data-lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ký hiệu đặc biệt – Phạm Văn Hưng</title>
+	<meta name="description" content="Bảng ký hiệu xây dựng và toán học thông dụng: Ø, °, ±, ², ³, ≤, ≥, √, ∑, chữ Hy Lạp… Bấm để sao chép, kèm mã AutoCAD, Excel, Word, Alt.">
+	<meta name="theme-color" content="#06060a">
+	<link rel="icon" href="hung_pham.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tools.css">
+	<link rel="stylesheet" href="css/symbols.css">
+	<script>
+		(function () {
+			try {
+				var l = localStorage.getItem('lang'); if (l === 'vi' || l === 'en') { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+				var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+			} catch (e) {}
+		})();
+	</script>
+</head>
+<body>
+
+<header class="navbar">
+	<div class="nav-inner">
+		<a href="index.html" class="nav-logo">Phạm Văn Hưng</a>
+		<nav class="nav-links nav-static" id="nav" aria-label="Menu">
+			<a href="index.html"><span class="vi">← Trang chủ</span><span class="en">← Home</span></a>
+			<a href="ky-hieu.html" class="active"><span class="vi">Ký hiệu đặc biệt</span><span class="en">Special symbols</span></a>
+		</nav>
+		<div class="nav-tools">
+			<button class="tool" id="langBtn" type="button" aria-label="Đổi ngôn ngữ / Switch language"><span class="vi">EN</span><span class="en">VI</span></button>
+			<button class="tool" id="themeBtn" type="button" aria-label="Sáng / tối – Light / dark">
+				<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main>
+	<section class="hero tool-hero">
+		<div class="hero-glow hero-glow-1"></div>
+		<div class="hero-glow hero-glow-2"></div>
+		<div class="container">
+			<span class="pill pill-teal"><span class="vi">Tra cứu nhanh</span><span class="en">Quick reference</span></span>
+			<h1 class="hero-title"><span class="vi">Ký hiệu</span><span class="en">Special</span> <span class="accent"><span class="vi">đặc biệt</span><span class="en">symbols</span></span></h1>
+			<p class="hero-desc">
+				<span class="vi">Các ký hiệu xây dựng và toán học thông dụng: bấm để sao chép vào bản vẽ, thuyết minh hay bảng tính. Mỗi ký hiệu kèm ý nghĩa và cách gõ trong AutoCAD, Excel, Word.</span>
+				<span class="en">Common construction and math symbols: click to copy into drawings, reports or spreadsheets. Each symbol comes with its meaning and how to type it in AutoCAD, Excel and Word.</span>
+			</p>
+		</div>
+	</section>
+
+	<section class="section tool-section">
+		<div class="container">
+			<div class="sym-bar">
+				<label class="sym-search"><span class="vi">Tìm ký hiệu</span><span class="en">Search</span>
+					<input type="text" id="q" placeholder="VD: đường kính, ứng suất, ≤, alpha…" autocomplete="off" spellcheck="false">
+				</label>
+				<div class="sym-mode">
+					<div class="opt-title"><span class="vi">Khi bấm, sao chép dạng</span><span class="en">On click, copy as</span></div>
+					<div class="seg" id="mode">
+						<button type="button" data-m="char"><span class="vi">Ký tự</span><span class="en">Char</span></button>
+						<button type="button" data-m="cad">AutoCAD</button>
+						<button type="button" data-m="xls">Excel</button>
+						<button type="button" data-m="html">HTML</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="tray">
+				<div class="opt-title"><span class="vi">Khay ghép (các ký hiệu đã bấm được nối vào đây)</span><span class="en">Compose tray (clicked symbols are appended here)</span></div>
+				<div class="tray-row">
+					<input type="text" id="tray" spellcheck="false" placeholder="Ø16 a200, σ ≤ 2.5 kG/cm²">
+					<button type="button" class="btn btn-primary btn-sm" id="trayCopy"><span class="vi">Sao chép</span><span class="en">Copy</span></button>
+					<button type="button" class="btn btn-ghost btn-sm" id="trayClear"><span class="vi">Xoá</span><span class="en">Clear</span></button>
+				</div>
+			</div>
+
+			<nav class="cats" id="jump" aria-label="Nhóm ký hiệu"></nav>
+			<div id="groups"></div>
+			<p class="sym-empty hint" id="empty" hidden><span class="vi">Không tìm thấy ký hiệu phù hợp.</span><span class="en">No matching symbols.</span></p>
+
+			<div class="formula how">
+				<div class="card-label"><span class="vi">Cách gõ ký hiệu bằng mã</span><span class="en">Typing symbols by code</span></div>
+				<ul class="arrow-list">
+					<li><b>AutoCAD</b> (Text/MText): <code>%%c</code> = Ø, <code>%%d</code> = °, <code>%%p</code> = ±; <span class="vi">ký hiệu khác gõ</span><span class="en">any other symbol:</span> <code>\U+00B2</code> (= ²). <span class="vi">Font phải có ký tự đó (Arial, Times New Roman…; font .shx như romans có thể thiếu).</span><span class="en">The font must contain the glyph (Arial, Times New Roman…; .shx fonts such as romans may lack it).</span></li>
+					<li><b>Excel</b>: <code>=UNICHAR(178)</code> = ², <span class="vi">hoặc</span><span class="en">or</span> Insert → Symbol. <span class="vi">Ghép chuỗi:</span><span class="en">Join text:</span> <code>="Ø"&amp;A1</code></li>
+					<li><b>Word</b>: <span class="vi">gõ mã hex rồi bấm</span><span class="en">type the hex code then press</span> <kbd>Alt</kbd>+<kbd>X</kbd> (<span class="vi">VD</span><span class="en">e.g.</span> <code>2264</code> → ≤). <span class="vi">Chỉ số trên/dưới:</span><span class="en">Super/subscript:</span> <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>=</kbd> / <kbd>Ctrl</kbd>+<kbd>=</kbd>.</li>
+					<li><b>Windows Alt</b>: <span class="vi">giữ</span><span class="en">hold</span> <kbd>Alt</kbd> <span class="vi">và gõ mã trên bàn phím số</span><span class="en">and type the code on the numeric keypad</span> (<span class="vi">VD</span><span class="en">e.g.</span> Alt+0176 = °). <span class="vi">Chỉ có với một số ký hiệu (hiện trên thẻ).</span><span class="en">Only some symbols have one (shown on the card).</span></li>
+					<li><span class="vi">Lưu ý: Ø (U+00D8, chữ O gạch) thường dùng thay ⌀ (U+2300, ký hiệu đường kính chuẩn) vì có trong hầu hết font.</span><span class="en">Note: Ø (U+00D8, slashed O) is commonly used instead of ⌀ (U+2300, the true diameter sign) because nearly every font has it.</span></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer class="footer">
+	<div class="container footer-bottom">© <span id="year">2026</span> Phạm Văn Hưng · <a href="index.html"><span class="vi">Trang chủ</span><span class="en">Home</span></a></div>
+</footer>
+
+<script src="js/symbols.js"></script>
+</body>
+</html>

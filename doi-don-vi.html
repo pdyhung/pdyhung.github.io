@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi" data-lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Đổi đơn vị xây dựng – Phạm Văn Hưng</title>
+	<meta name="description" content="Đổi đơn vị trong xây dựng: chiều dài, diện tích, thể tích, lực, tải phân bố, áp suất – ứng suất, mô men, trọng lượng riêng, độ dốc, lưu lượng… và tính trọng lượng thép tròn.">
+	<meta name="theme-color" content="#06060a">
+	<link rel="icon" href="hung_pham.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tools.css">
+	<link rel="stylesheet" href="css/convert.css">
+	<script>
+		(function () {
+			try {
+				var l = localStorage.getItem('lang'); if (l === 'vi' || l === 'en') { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+				var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+			} catch (e) {}
+		})();
+	</script>
+</head>
+<body>
+
+<header class="navbar">
+	<div class="nav-inner">
+		<a href="index.html" class="nav-logo">Phạm Văn Hưng</a>
+		<nav class="nav-links nav-static" id="nav" aria-label="Menu">
+			<a href="index.html"><span class="vi">← Trang chủ</span><span class="en">← Home</span></a>
+			<a href="doi-don-vi.html" class="active"><span class="vi">Đổi đơn vị</span><span class="en">Unit converter</span></a>
+		</nav>
+		<div class="nav-tools">
+			<button class="tool" id="langBtn" type="button" aria-label="Đổi ngôn ngữ / Switch language"><span class="vi">EN</span><span class="en">VI</span></button>
+			<button class="tool" id="themeBtn" type="button" aria-label="Sáng / tối – Light / dark">
+				<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main>
+	<section class="hero tool-hero">
+		<div class="hero-glow hero-glow-1"></div>
+		<div class="hero-glow hero-glow-2"></div>
+		<div class="container">
+			<span class="pill pill-teal"><span class="vi">Công cụ kỹ thuật</span><span class="en">Engineering tool</span></span>
+			<h1 class="hero-title"><span class="vi">Đổi đơn vị</span><span class="en">Construction</span> <span class="accent"><span class="vi">xây dựng</span><span class="en">unit converter</span></span></h1>
+			<p class="hero-desc">
+				<span class="vi">Quy đổi nhanh các đơn vị hay gặp khi tính kết cấu, khối lượng và thoát nước: kN ↔ T, MPa ↔ kG/cm², kN·m ↔ T·m, % ↔ độ ↔ 1:m… kèm bảng quy đổi đầy đủ và tính trọng lượng thép tròn.</span>
+				<span class="en">Quickly convert the units used in structural design, quantity take-off and drainage: kN ↔ tf, MPa ↔ kgf/cm², kN·m ↔ tf·m, % ↔ degrees ↔ 1:m… with a full conversion table and a rebar weight calculator.</span>
+			</p>
+		</div>
+	</section>
+
+	<section class="section tool-section">
+		<div class="container">
+			<div class="cats" id="cats" role="tablist" aria-label="Loại đại lượng"></div>
+		</div>
+
+		<div class="container tool-grid">
+			<!-- ===== Chuyển đổi ===== -->
+			<div class="conv-main">
+				<div class="panel tool-panel">
+					<div class="panel-header"><h3 id="catTitle">—</h3></div>
+					<div class="panel-body tool-body">
+						<label class="conv-value"><span class="vi">Giá trị (có thể nhập phép tính, VD: 2*1.5)</span><span class="en">Value (expressions allowed, e.g. 2*1.5)</span>
+							<input type="text" inputmode="decimal" id="val" value="1" autocomplete="off" spellcheck="false">
+						</label>
+						<div class="conv-units">
+							<label><span class="vi">Từ</span><span class="en">From</span><select id="from"></select></label>
+							<button type="button" class="swap" id="swap" title="Đổi chiều / Swap" aria-label="Đổi chiều / Swap">⇄</button>
+							<label><span class="vi">Sang</span><span class="en">To</span><select id="to"></select></label>
+						</div>
+					</div>
+				</div>
+
+				<div class="result-card">
+					<div class="card-label"><span class="vi">Kết quả</span><span class="en">Result</span></div>
+					<div class="result-value"><span id="result">—</span> <small id="resultUnit"></small></div>
+					<div class="conv-eq" id="eq"></div>
+					<div class="result-warn" id="warn" hidden></div>
+					<button type="button" class="btn btn-primary btn-sm" id="btnCopy" disabled><span class="vi">Sao chép</span><span class="en">Copy</span></button>
+				</div>
+
+				<div class="panel tool-panel">
+					<div class="panel-header"><h3><span class="vi">Bảng quy đổi đầy đủ</span><span class="en">Full conversion table</span></h3></div>
+					<div class="panel-body tool-body">
+						<p class="hint"><span class="vi">Bấm vào một dòng để sao chép giá trị.</span><span class="en">Click a row to copy its value.</span></p>
+						<div class="table-wrap"><table class="all-table" id="allTable"></table></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ===== Bên phải ===== -->
+			<div class="tool-side">
+				<div class="panel tool-panel">
+					<div class="panel-header"><h3><span class="vi">Tuỳ chọn</span><span class="en">Options</span></h3></div>
+					<div class="panel-body tool-body">
+						<div class="decimals">
+							<span class="vi">Số chữ số có nghĩa</span><span class="en">Significant digits</span>
+							<input type="number" id="sig" min="2" max="15" value="6">
+						</div>
+						<div class="opt-g">
+							<div class="opt-title"><span class="vi">Gia tốc trọng trường g (dùng cho kgf, T)</span><span class="en">Gravity g (for kgf, tf)</span></div>
+							<div class="seg" id="gSeg">
+								<button type="button" data-g="9.80665">9.80665</button>
+								<button type="button" data-g="9.81">9.81</button>
+								<button type="button" data-g="10">10</button>
+							</div>
+							<p class="hint"><span class="vi">9.80665 m/s² là giá trị chuẩn. Chọn 10 nếu muốn quy ước nhanh 1 T = 10 kN, 1 kG/cm² = 0.1 MPa.</span><span class="en">9.80665 m/s² is the standard value. Pick 10 for the quick rule 1 tf = 10 kN, 1 kgf/cm² = 0.1 MPa.</span></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel tool-panel">
+					<div class="panel-header"><h3><span class="vi">Trọng lượng thép tròn</span><span class="en">Round rebar weight</span></h3></div>
+					<div class="panel-body tool-body">
+						<div class="steel-in">
+							<label><span class="vi">Đường kính d (mm)</span><span class="en">Diameter d (mm)</span>
+								<input type="text" inputmode="decimal" id="sd" value="16" list="dList">
+								<datalist id="dList">
+									<option value="6"><option value="8"><option value="10"><option value="12"><option value="14"><option value="16"><option value="18"><option value="20"><option value="22"><option value="25"><option value="28"><option value="32"><option value="36"><option value="40">
+								</datalist>
+							</label>
+							<label><span class="vi">Dài 1 thanh (m)</span><span class="en">Bar length (m)</span><input type="text" inputmode="decimal" id="sl" value="11.7"></label>
+							<label><span class="vi">Số thanh</span><span class="en">No. of bars</span><input type="text" inputmode="decimal" id="sn" value="1"></label>
+						</div>
+						<div class="steel-out" id="steelOut"></div>
+						<p class="hint"><span class="vi">Khối lượng riêng thép 7850 kg/m³ → 1 m thép = 0.00617·d² (kg), d tính bằng mm.</span><span class="en">Steel density 7850 kg/m³ → 1 m of bar = 0.00617·d² (kg), d in mm.</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer class="footer">
+	<div class="container footer-bottom">© <span id="year">2026</span> Phạm Văn Hưng · <a href="index.html"><span class="vi">Trang chủ</span><span class="en">Home</span></a></div>
+</footer>
+
+<script src="js/convert.js"></script>
+</body>
+</html>

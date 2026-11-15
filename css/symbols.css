@@ -1,0 +1,62 @@
+/* =========================================================
+   Trang Ký hiệu đặc biệt (dùng chung tools.css)
+   ========================================================= */
+.sym-bar { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: end; margin-bottom: 14px; }
+@media (max-width: 760px) { .sym-bar { grid-template-columns: minmax(0, 1fr); } }
+.sym-search input { font-size: 16px !important; }
+.opt-title { font-size: 12px; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+.seg { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border-md); border-radius: 10px; overflow: hidden; }
+.seg button { padding: 10px 4px; cursor: pointer; font: 600 13px/1 inherit; font-family: inherit; background: var(--bg-3); color: var(--text-2); border: 0; border-right: 1px solid var(--border-md); }
+.seg button:last-child { border-right: 0; }
+.seg button.is-active { background: var(--orange); color: #fff; }
+
+.tray { padding: 14px; border-radius: var(--radius); background: rgba(20, 184, 166, .06); border: 1px dashed rgba(20, 184, 166, .35); margin-bottom: 20px; }
+.tray-row { display: flex; gap: 8px; }
+.tray-row input { flex: 1; min-width: 0; font-size: 17px !important; }
+@media (max-width: 520px) { .tray-row { flex-wrap: wrap; } .tray-row input { flex-basis: 100%; } }
+
+.cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.cats a {
+	padding: 7px 13px; border-radius: 100px; font: 600 13px/1.2 inherit; font-family: inherit; text-decoration: none;
+	background: var(--bg-2); color: var(--text-2); border: 1px solid var(--border-md); transition: .15s;
+}
+.cats a:hover { color: var(--text-1); border-color: var(--orange); }
+
+.sym-group { padding-top: 26px; scroll-margin-top: 80px; }
+.sym-group h2 { font-size: 20px; font-weight: 800; letter-spacing: -.3px; margin-bottom: 4px; }
+.sym-group > p { font-size: 13px; color: var(--text-3); margin-bottom: 14px; }
+.sym-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.sym-grid.wide { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+
+.sym {
+	position: relative; display: flex; flex-direction: column; gap: 4px; text-align: left; cursor: pointer;
+	padding: 12px 12px 10px; border-radius: var(--radius); font-family: inherit; color: inherit;
+	background: var(--bg-2); border: 1px solid var(--border); transition: border-color .15s, transform .15s, background .15s;
+}
+.sym:hover { border-color: var(--orange); transform: translateY(-2px); }
+.sym:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.sym.done { border-color: var(--teal); background: rgba(20, 184, 166, .08); }
+.sym-ch {
+	font-size: 30px; line-height: 1.15; font-weight: 500; color: var(--text-1); min-height: 36px;
+	font-family: 'Cambria Math', 'Segoe UI Symbol', 'Times New Roman', 'Inter', serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sym-ch.str { font-size: 22px; font-family: 'Inter', 'Segoe UI', sans-serif; font-weight: 600; }
+.sym-name { font-size: 12.5px; font-weight: 600; color: var(--text-2); line-height: 1.35; }
+.sym-use { font-size: 11.5px; color: var(--text-3); line-height: 1.4; }
+.sym-codes { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.sym-codes code { font-family: ui-monospace, Consolas, monospace; font-size: 10.5px; padding: 2px 5px; border-radius: 5px; background: var(--bg-3); color: var(--text-3); border: 1px solid var(--border); }
+.sym-codes code.hot { color: var(--orange-2); border-color: rgba(249, 115, 22, .3); }
+
+.sym-empty { text-align: center; padding: 30px 0; }
+.sym-empty[hidden] { display: none; }
+
+.how { margin-top: 36px; }
+.how .arrow-list li { font-size: 13.5px; color: var(--text-2); line-height: 1.7; }
+.how code, .how kbd { font-family: ui-monospace, Consolas, monospace; font-size: 12px; padding: 1px 6px; border-radius: 5px; background: var(--bg-3); border: 1px solid var(--border-md); color: var(--text-1); }
+
+.toast {
+	position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; z-index: 100;
+	padding: 10px 18px; border-radius: 100px; background: var(--text-1); color: var(--bg-1); font-size: 14px; font-weight: 600;
+	transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }

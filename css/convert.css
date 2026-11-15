@@ -1,0 +1,62 @@
+/* =========================================================
+   Trang công cụ: Đổi đơn vị xây dựng (dùng chung tools.css)
+   ========================================================= */
+.cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.cats button {
+	padding: 8px 14px; border-radius: 100px; cursor: pointer; font: 600 13px/1.2 inherit; font-family: inherit;
+	background: var(--bg-2); color: var(--text-2); border: 1px solid var(--border-md); transition: .15s;
+}
+.cats button:hover { color: var(--text-1); border-color: var(--border-lg); }
+.cats button.is-active { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+.conv-main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+
+.conv-value input.bad { border-color: #f87171; color: #f87171; }
+.conv-value input {font-size: 22px !important; font-weight: 700; font-variant-numeric: tabular-nums; }
+.conv-units { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: end; margin-top: 14px; }
+.tool-section select {
+	width: 100%; font: inherit; font-size: 14px; color: var(--text-1);
+	background: var(--bg-3); border: 1px solid var(--border-md); border-radius: 10px; padding: 9px 10px; cursor: pointer;
+}
+.tool-section select:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(249, 115, 22, .18); }
+.swap {
+	width: 42px; height: 40px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: 700;
+	background: var(--bg-3); color: var(--orange-2); border: 1px solid var(--border-md); transition: .15s;
+}
+.swap:hover { border-color: var(--orange); transform: rotate(180deg); }
+
+.result-value small { font-size: .42em; letter-spacing: 0; -webkit-text-fill-color: var(--text-2); color: var(--text-2); font-weight: 700; }
+.conv-eq { font-family: ui-monospace, Consolas, monospace; font-size: 13px; color: var(--text-2); margin: -4px 0 14px; overflow-wrap: anywhere; line-height: 1.6; }
+
+/* Bảng tất cả đơn vị */
+.all-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.all-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+.all-table tr:last-child td { border-bottom: 0; }
+.all-table tr { cursor: pointer; transition: background .12s; }
+.all-table tr:hover { background: rgba(var(--ink), .04); }
+.all-table td.u-sym { font-weight: 700; color: var(--teal-2); white-space: nowrap; width: 1%; }
+.all-table td.u-name { color: var(--text-3); font-size: 13px; }
+.all-table td.u-val { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text-1); white-space: nowrap; }
+.all-table tr.is-from { background: rgba(20, 184, 166, .08); }
+.all-table tr.is-to { background: rgba(249, 115, 22, .12); }
+.all-table tr.is-to td.u-val { color: var(--orange-2); }
+.all-table tr.copied td.u-val::after { content: ' ✓'; color: var(--teal-2); }
+@media (max-width: 520px) { .all-table td.u-name { display: none; } }
+
+/* Tuỳ chọn g */
+.opt-g { margin-top: 16px; }
+.opt-title { font-size: 13px; color: var(--text-2); margin-bottom: 8px; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border-md); border-radius: 10px; overflow: hidden; margin-bottom: 8px; }
+.seg button { padding: 8px 4px; cursor: pointer; font: 600 13px/1 inherit; font-family: inherit; background: var(--bg-3); color: var(--text-2); border: 0; border-right: 1px solid var(--border-md); }
+.seg button:last-child { border-right: 0; }
+.seg button.is-active { background: var(--orange); color: #fff; }
+
+/* Thép tròn */
+.steel-in { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.steel-in input { text-align: center; font-weight: 700; }
+.steel-out { margin: 14px 0 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.steel-out div { padding: 10px 12px; border-radius: 10px; background: var(--bg-3); border: 1px solid var(--border); }
+.steel-out span { display: block; font-size: 11px; color: var(--text-3); margin-bottom: 2px; }
+.steel-out b { font-size: 16px; font-variant-numeric: tabular-nums; color: var(--text-1); }
+.steel-out .big { grid-column: 1 / -1; background: rgba(249, 115, 22, .08); border-color: rgba(249, 115, 22, .25); }
+.steel-out .big b { font-size: 20px; color: var(--orange-2); }
