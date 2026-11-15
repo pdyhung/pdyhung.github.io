@@ -1,186 +1,480 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi" data-lang="vi">
 <head>
-	<meta charset="utf-8"/>
-	<meta name="description" content="My resume website"/>
-	<meta name="developer" content="Hung Pham"/>
-	<meta name="Country" content="Viet Nam"/>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/hung.css">
-	<title>PHẠM VĂN HƯNG RESUME</title>
+	<title>Phạm Văn Hưng – Kỹ sư Cầu đường &amp; Kết cấu thép</title>
+	<meta name="description" content="Phạm Văn Hưng – Kỹ sư cầu đường &amp; kết cấu thép, 8 năm kinh nghiệm. Dự án, kỹ năng, tủ sách và ca đoàn.">
+	<meta name="author" content="Phạm Văn Hưng">
+	<meta property="og:title" content="Phạm Văn Hưng – Kỹ sư Cầu đường &amp; Kết cấu thép">
+	<meta property="og:description" content="Steel structure engineer · Kỹ sư kết cấu thép">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://pdyhung.github.io/">
+	<meta property="og:image" content="https://pdyhung.github.io/assets/choir/bon-mang-01.jpg">
+	<meta name="theme-color" content="#06060a">
+	<link rel="icon" href="hung_pham.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		(function () {
+			try {
+				var l = localStorage.getItem('lang'); if (l === 'vi' || l === 'en') { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+				var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+			} catch (e) {}
+		})();
+	</script>
 </head>
 <body>
-	<h1 id="menu_text"><strong>My Resume</strong></h1>
 
-	<nav>
-		<a href="#contact" class="menu_left">About</a>
-		<a href="#education" class="menu_left">Education</a>
-		<a href="#skill" class="menu_left">Skill</a>
-		<a href="#book" class="menu_left">Book</a>
-		<a href="#cadoantudao" class="menu_right">Ca Đoàn</a>
-		<a href="#social" class="menu_right">Social Media</a>
-
-	</nav>
-
-	<div id="flex_container">
-		<div id="left_side">
-			<h2 id="contact"><strong>About me</strong></h2>
-			<img src="assets/pic_hungpham.jpg" alt="My photo" width="200" height="200"/>
-			<p><em>I'm working in the TDC-BR_VT</em></p>
-			<ul>
-				<li><strong>Fullname: </strong>Phạm Văn Hưng</li>
-				<li><strong>Date of birth: </strong>Jan 15, 1995</li>
-				<li><strong>Gender: </strong>Male</li>
-				<li><strong>Address: </strong>Nam Định, Việt Nam</li>
-			</ul>
-			<h2 id="education"><strong>Education</strong></h2>
-			<ol>
-				<li>Nghĩa Hưng C Highschool</li>
-				<li>Đại học xây dựng Hà Nội - National university of civil engineer</li>
-			</ol>
-
-			<H2 id="skill">Skill</H2>
-			<table>
-				<tr>
-					<th rowspan="2"></th>
-					<th colspan="2">Major</th>
-					<th rowspan="2">Office</th>
-					<th rowspan="2">software</th>
-				</tr>
-				<tr>
-					<th>Road</th>
-					<th>Bridge</th>
-				</tr>
-				<tr>
-					<th>2020</th>
-					<td>7</td>
-					<td>6</td>
-					<td>6</td>
-					<td>7</td>
-				</tr>
-				<tr>
-					<th>2021</th>
-					<td>8</td>
-					<td>7</td>
-					<td>7</td>
-					<td>8</td>
-				</tr>
-				<tr>
-					<th>2022</th>
-					<td>9</td>
-					<td>7</td>
-					<td>8</td>
-					<td>9</td>
-				</tr>
-			</table>
-
-			<h2 id="book">Book</h2>
-			<table>
-				<tr>
-					<th colspan="2"></th>
-					<th>Book name</th>
-				</tr>
-				<tr>
-					<th rowspan="3">2020</th>
-					<th>1</th>
-					<td>Cơ Sở Thiết Kế Và Ví Dụ Tính Toán Kết Cấu Nhịp Cầu Dầm Đơn Giản Bê Tông Cốt Thép Ứng Suất Trước Bán Lắp Ghép Theo Tiêu Chuẩn TCVN 11823:2017</td>
-				</tr>
-				<tr>
-					<th>2</th>
-					<td>Hướng dẫn thiết kế hình học đường ô tô</td>
-				</tr>
-				<tr>
-					<th>3</th>
-					<td>Thiết kế nút giao thông và điều khiển giao thông bằng đèn tín hiệu</td>
-				</tr>
-
-				<tr>
-					<th rowspan="3">2021</th>
-					<th>1</th>
-					<td>Thiết kế đường ô tô</td>
-				</tr>
-				<tr>
-					<th>2</th>
-					<td>Cầu bê tông cốt thép trên đường ô tô – Tập 1</td>
-				</tr>
-				<tr>
-					<th>3</th>
-					<td>Cầu Thép</td>
-				</tr>
-
-				<tr>
-					<th rowspan="3">2022</th>
-					<th>1</th>
-					<td>Sổ tay thiết kế đường ô tô</td>
-				</tr>
-				<tr>
-					<th>2</th>
-					<td>Thiết kế đường cao tốc</td>
-				</tr>
-				<tr>
-					<th>3</th>
-					<td>Hệ thống giao thông thông minh trong đô thị</td>
-				</tr>
-
-			</table>
-
-			<h2 id="social">Social Media</h2>
-			<p>Youtube: <a href="https://www.youtube.com/channel/UCRDYsw6qs2HuVbSmRYwXYig">Hung Pham</a></p>
-			<p>Facebook: <a href="https://www.facebook.com/satthuso01/">Hung Pham</a></p>
-		</div>
-
-		<div id="right_side">
-			<h2 id="cadoantudao">Ca đoàn các thánh tử đạo Việt Nam - Giáo xứ Vũng Tàu</h2>
-			<div id="cadoantudao_container">
-
-				<div class="cadoantudao_item">
-					<img class="cadoantudao_img" src="assets/cdtd_6.jpg"/>
-					<div class="cadoantudao_title"><strong>Thôi Lôi ca đoàn năm 2022</strong></div>
-					<div class="cadoantudao_desc">Được chụp cùng cha Tuấn :)</div>
-				</div>
-
-				<div class="cadoantudao_item">
-					<img class="cadoantudao_img" src="assets/cdtd_3.jpg"/>
-					<div class="cadoantudao_title"><strong>Kỷ niệm 5 năm chịu chức Linh Mục cha Trần Tuấn</strong></div>
-					<div class="cadoantudao_desc">Hình ảnh sau thánh lễ :3</div>
-				</div>
-
-
-				<div class="cadoantudao_item">
-					<img class="cadoantudao_img" src="assets/cdtd_1.jpg"/>
-					<div class="cadoantudao_title"><strong>Kỷ niệm 5 năm chịu chức Linh Mục cha Trần Tuấn</strong></div>
-					<div class="cadoantudao_desc">Cha đâu mất rồi!!! :v</div>
-				</div>
-				<div class="cadoantudao_item">
-					<img class="cadoantudao_img" src="assets/cdtd_2.jpg"/>
-					<div class="cadoantudao_title"><strong>Kỷ niệm 5 năm chịu chức Linh Mục cha Trần Tuấn</strong></div>
-					<div class="cadoantudao_desc">Bắn tim cho cha!!!</div>
-				</div>
-
-				<div class="cadoantudao_item">
-					<img class="cadoantudao_img" src="assets/cdtd_4.jpg"/>
-					<div class="cadoantudao_title"><strong>Chị em lên đồ mới!!!</strong></div>
-					<div class="cadoantudao_desc">Chị em đẹp quá!!!</div>
-				</div>
-				<div class="cadoantudao_item">
-					<img class="cadoantudao_img" src="assets/cdtd_5.jpg"/>
-					<div class="cadoantudao_title"><strong>Sinh Nhật chị Ny</strong></div>
-					<div class="cadoantudao_desc">Quà của chị đâu ? :v</div>
-				</div>
-
-				<div class="cadoantudao_item">
-					<img class="cadoantudao_img" src="assets/cdtd_7.jpg"/>
-					<div class="cadoantudao_title"><strong>Liên hoan chia tay em Hương!</strong></div>
-					<div class="cadoantudao_desc">Em đi sao không khóc :v</div>
-				</div>
-
-			</div>
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+	<div class="nav-inner">
+		<a href="#top" class="nav-logo">Phạm Văn Hưng</a>
+		<nav class="nav-links" id="nav" aria-label="Menu">
+			<a href="#projects"><span class="vi">Dự án</span><span class="en">Projects</span></a>
+			<a href="#skills"><span class="vi">Kỹ năng</span><span class="en">Skills</span></a>
+			<a href="#journey"><span class="vi">Hành trình</span><span class="en">Journey</span></a>
+			<a href="#books"><span class="vi">Tủ sách</span><span class="en">Books</span></a>
+			<a href="#choir"><span class="vi">Ca đoàn</span><span class="en">Choir</span></a>
+			<a href="#tools"><span class="vi">Công cụ</span><span class="en">Tools</span></a>
+			<a href="tai-lieu.html"><span class="vi">Tài liệu</span><span class="en">Documents</span></a>
+			<a href="#contact" class="nav-cta"><span class="vi">Liên hệ</span><span class="en">Contact</span></a>
+		</nav>
+		<div class="nav-tools">
+			<button class="tool" id="langBtn" type="button" aria-label="Đổi ngôn ngữ / Switch language"><span class="vi">EN</span><span class="en">VI</span></button>
+			<button class="tool" id="themeBtn" type="button" aria-label="Sáng / tối – Light / dark">
+				<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+			</button>
+			<button class="hamburger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
 		</div>
 	</div>
+</header>
 
-	<footer>
-		Created by Hung Pham - <a href="mailto:pdyhung@gmail.com"> Email me: </a>
-	</footer>
+<main id="top">
 
+	<!-- ================= HERO ================= -->
+	<section class="hero">
+		<div class="hero-glow hero-glow-1"></div>
+		<div class="hero-glow hero-glow-2"></div>
+		<div class="hero-glow hero-glow-3"></div>
+		<div class="container hero-inner">
+			<div>
+				<span class="pill pill-live"><span class="live-dot"></span><span class="vi">Đang làm việc tại Đại Dũng</span><span class="en">Currently at Dai Dung</span></span>
+				<h1 class="hero-title">Phạm Văn Hưng<br><span class="accent"><span class="vi">Kỹ sư Cầu đường &amp; Kết cấu thép</span><span class="en">Bridge, Road &amp; Steel Engineer</span></span></h1>
+				<p class="hero-desc">
+					<span class="vi">8 năm kinh nghiệm thiết kế cầu, đường, kết cấu thép và công trình thuỷ công. Từ năm 2022, mình dùng Python và Claude AI để tự động hoá công việc trong nhiều dự án.</span>
+					<span class="en">8 years designing bridges, roads, steel structures and hydraulic works. Since 2022 I have used Python and Claude AI to automate work across many projects.</span>
+				</p>
+				<ul class="hero-outcomes">
+					<li><span class="check-icon">✓</span><span class="vi">Thiết kế cầu, đường, thoát nước và kết cấu thép</span><span class="en">Design of bridges, roads, drainage and steel structures</span></li>
+					<li><span class="check-icon">✓</span><span class="vi">Biện pháp thi công &amp; tính toán kết cấu tạm</span><span class="en">Construction methods &amp; temporary works analysis</span></li>
+					<li><span class="check-icon">✓</span><span class="vi">Mô hình BIM với Revit, Tekla, Civil 3D, Dynamo</span><span class="en">BIM modelling with Revit, Tekla, Civil 3D, Dynamo</span></li>
+					<li><span class="check-icon">✓</span><span class="vi">Tiêu chuẩn TCVN, AASHTO, AISC 360-10, HEC-22</span><span class="en">Standards: TCVN, AASHTO, AISC 360-10, HEC-22</span></li>
+				</ul>
+				<div class="hero-actions">
+					<a class="btn btn-primary" href="#contact"><span class="vi">✉️ Liên hệ với mình</span><span class="en">✉️ Get in touch</span></a>
+					<a class="btn btn-ghost" href="#projects"><span class="vi">Xem dự án</span><span class="en">View projects</span> →</a>
+				</div>
+				<div class="stats">
+					<div class="stat"><strong>8+</strong><span><span class="vi">năm kinh nghiệm</span><span class="en">years of experience</span></span></div>
+					<div class="stat"><strong>11+</strong><span><span class="vi">dự án tiêu biểu</span><span class="en">featured projects</span></span></div>
+					<div class="stat"><strong>4</strong><span><span class="vi">nhiệm kỳ được khen thưởng</span><span class="en">terms of merit awards</span></span></div>
+				</div>
+			</div>
+
+			<aside class="profile-card">
+				<div class="profile-media">
+					<img src="assets/logo-cttdvn.svg" alt="Logo ca đoàn Các Thánh Tử Đạo Việt Nam" width="150" height="150">
+				</div>
+				<div class="profile-body">
+					<div class="card-label"><span class="vi">Thông tin</span><span class="en">Profile</span></div>
+					<div class="info-row"><span class="info-ico">🏢</span><div><div class="info-key"><span class="vi">Công ty</span><span class="en">Company</span></div><div class="info-val"><span class="vi">CTCP Cơ khí Xây dựng Thương mại Đại Dũng</span><span class="en">Dai Dung Metallic Manufacture Construction &amp; Trade Corp.</span></div></div></div>
+					<div class="info-row"><span class="info-ico">🎓</span><div><div class="info-key"><span class="vi">Học vấn</span><span class="en">Education</span></div><div class="info-val"><span class="vi">Kỹ sư Kỹ thuật Giao thông – ĐH Xây dựng Hà Nội (2018)</span><span class="en">B.Eng. Transportation Engineering – HUCE (2018)</span></div></div></div>
+					<div class="info-row"><span class="info-ico">📜</span><div><div class="info-key"><span class="vi">Chứng chỉ</span><span class="en">License</span></div><div class="info-val"><span class="vi">Chứng chỉ hành nghề xây dựng hạng III</span><span class="en">Class III Construction Practice Certificate</span></div></div></div>
+					<div class="info-row"><span class="info-ico">📍</span><div><div class="info-key"><span class="vi">Quê quán</span><span class="en">Hometown</span></div><div class="info-val"><span class="vi">Nam Định, Việt Nam</span><span class="en">Nam Dinh, Vietnam</span></div></div></div>
+					<div class="info-row"><span class="info-ico">🎂</span><div><div class="info-key"><span class="vi">Năm sinh</span><span class="en">Born</span></div><div class="info-val">1995</div></div></div>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<!-- ================= PROJECTS ================= -->
+	<section id="projects" class="strip">
+		<div class="container">
+			<div class="section-header center">
+				<span class="pill pill-orange"><span class="vi">Dự án</span><span class="en">Projects</span></span>
+				<h2 class="section-title"><span class="vi">Dự án tiêu biểu</span><span class="en">Featured projects</span></h2>
+				<p class="section-sub"><span class="vi">Kết cấu thép, thuỷ điện và hạ tầng giao thông.</span><span class="en">Steel structures, hydropower and transport infrastructure.</span></p>
+			</div>
+
+			<h3 class="group-title"><span class="group-ico">🏗️</span><span class="vi">Kết cấu thép</span><span class="en">Steel structures</span></h3>
+			<div class="cards-3">
+				<article class="card card-hl">
+					<div class="card-num num-teal"><span class="vi">Chuyên gia biện pháp thi công</span><span class="en">Construction Methods Specialist</span></div>
+					<h3 class="card-title"><span class="vi">Cầu đi bộ vượt sông Sài Gòn</span><span class="en">Saigon River Pedestrian Bridge</span></h3>
+					<ul class="arrow-list">
+						<li><span class="vi">TP. Hồ Chí Minh</span><span class="en">Ho Chi Minh City</span></li>
+						<li><span class="vi">Tính toán kết cấu trụ tạm cho từng giai đoạn thi công cầu</span><span class="en">Structural calculations of temporary piers for each construction stage</span></li>
+					</ul>
+				</article>
+				<article class="card">
+					<div class="card-num num-orange"><span class="vi">Thiết kế</span><span class="en">Designer</span></div>
+					<h3 class="card-title">Winter Wonderland – <span class="vi">Núi tuyết Cần Giờ</span><span class="en">Can Gio</span></h3>
+					<ul class="arrow-list">
+						<li><span class="vi">Vinhomes Green Paradise, Cần Giờ, TP. Hồ Chí Minh</span><span class="en">Vinhomes Green Paradise, Can Gio, Ho Chi Minh City</span></li>
+						<li><span class="vi">Lập bản vẽ biện pháp thi công</span><span class="en">Prepared construction method drawings</span></li>
+					</ul>
+				</article>
+				<article class="card">
+					<div class="card-num num-teal"><span class="vi">Chuyên gia biện pháp thi công</span><span class="en">Construction Methods Specialist</span></div>
+					<h3 class="card-title"><span class="vi">Cầu An Biên</span><span class="en">An Bien Bridge</span></h3>
+					<ul class="arrow-list">
+						<li><span class="vi">Kiên Giang</span><span class="en">Kien Giang</span></li>
+						<li><span class="vi">Lập biện pháp thi công</span><span class="en">Developed the construction methods</span></li>
+					</ul>
+				</article>
+			</div>
+
+			<h3 class="group-title"><span class="group-ico">💧</span><span class="vi">Thuỷ điện</span><span class="en">Hydropower</span></h3>
+			<div class="cards-3">
+				<article class="card">
+					<div class="card-num num-orange"><span class="vi">Kỹ sư biện pháp thi công</span><span class="en">Construction Methods Engineer</span></div>
+					<h3 class="card-title"><span class="vi">Nhà máy thuỷ điện Tả Páo Hồ</span><span class="en">Ta Pao Ho Hydropower Plant</span></h3>
+					<ul class="arrow-list">
+						<li><span class="vi">Lập bản vẽ biện pháp thi công đập thuỷ điện</span><span class="en">Prepared construction method drawings for the dam</span></li>
+					</ul>
+				</article>
+			</div>
+
+			<h3 class="group-title"><span class="group-ico">🛣️</span><span class="vi">Giao thông &amp; hạ tầng</span><span class="en">Transport &amp; infrastructure</span></h3>
+			<div class="cards-3">
+				<article class="card">
+					<div class="card-num num-teal"><span class="vi">Chủ trì thiết kế</span><span class="en">Lead Designer</span></div>
+					<h3 class="card-title"><span class="vi">Nâng cấp, mở rộng ĐT992</span><span class="en">Upgrade &amp; Expansion of Provincial Road 992</span></h3>
+					<ul class="arrow-list"><li><span class="vi">TX. Phú Mỹ, Bà Rịa – Vũng Tàu</span><span class="en">Phu My Town, Ba Ria – Vung Tau</span></li><li><span class="vi">Thiết kế phần đường</span><span class="en">Designed the roadway works</span></li></ul>
+				</article>
+				<article class="card">
+					<div class="card-num num-teal"><span class="vi">Chủ trì thiết kế</span><span class="en">Lead Designer</span></div>
+					<h3 class="card-title"><span class="vi">KCN Xuân Quế – Sông Nhạn (1.000 ha)</span><span class="en">Xuan Que – Song Nhan Industrial Park (1,000 ha)</span></h3>
+					<ul class="arrow-list"><li><span class="vi">Thiết kế san nền và giao thông</span><span class="en">Designed site grading and road works</span></li></ul>
+				</article>
+				<article class="card">
+					<div class="card-num num-teal"><span class="vi">Chủ trì thiết kế</span><span class="en">Lead Designer</span></div>
+					<h3 class="card-title"><span class="vi">Nâng cấp thoát nước mưa đường Nguyễn An Ninh</span><span class="en">Stormwater Drainage Upgrade, Nguyen An Ninh St.</span></h3>
+					<ul class="arrow-list"><li><span class="vi">TP. Vũng Tàu</span><span class="en">Vung Tau City</span></li><li><span class="vi">Thiết kế hệ thống thoát nước mưa</span><span class="en">Designed the stormwater drainage system</span></li></ul>
+				</article>
+				<article class="card">
+					<div class="card-num num-orange"><span class="vi">Thiết kế</span><span class="en">Designer</span></div>
+					<h3 class="card-title"><span class="vi">Thoát nước chính dọc Quốc lộ 51</span><span class="en">Main Drainage along National Highway 51</span></h3>
+					<ul class="arrow-list"><li><span class="vi">TX. Phú Mỹ, Bà Rịa – Vũng Tàu</span><span class="en">Phu My Town, Ba Ria – Vung Tau</span></li><li><span class="vi">Thiết kế hệ thống thoát nước</span><span class="en">Designed the drainage system</span></li></ul>
+				</article>
+				<article class="card">
+					<div class="card-num num-orange"><span class="vi">Thiết kế</span><span class="en">Designer</span></div>
+					<h3 class="card-title"><span class="vi">Cầu Ông Hem · Cầu Bà Đáp · Cầu Sông Ray</span><span class="en">Ong Hem, Ba Dap &amp; Song Ray Bridges</span></h3>
+					<ul class="arrow-list"><li><span class="vi">Đường ven biển ĐT994, H. Xuyên Mộc, Bà Rịa – Vũng Tàu</span><span class="en">Coastal Road, Provincial Road 994, Xuyen Moc District</span></li><li><span class="vi">Thiết kế 3 cầu trên tuyến</span><span class="en">Designed the three bridges</span></li></ul>
+				</article>
+			</div>
+			<p class="projects-note"><span class="vi">…và chủ trì thiết kế nhiều dự án khác.</span><span class="en">…and lead designer on many other projects.</span></p>
+		</div>
+	</section>
+
+	<!-- ================= SKILLS ================= -->
+	<section id="skills" class="section">
+		<div class="glow-soft glow-right"></div>
+		<div class="container">
+			<div class="section-header">
+				<span class="pill pill-teal"><span class="vi">Kỹ năng</span><span class="en">Skills</span></span>
+				<h2 class="section-title"><span class="vi">Kỹ năng &amp; phần mềm</span><span class="en">Skills &amp; software</span></h2>
+			</div>
+			<div class="usp-strip usp-4">
+				<div class="usp-item">
+					<span class="usp-icon">🧩</span>
+					<div class="usp-title"><span class="vi">Thiết kế &amp; BIM</span><span class="en">Design &amp; BIM</span></div>
+					<p class="usp-desc"><span class="vi">Mô hình BIM cầu, đường, hạ tầng và kết cấu thép.</span><span class="en">BIM for bridges, roads, infrastructure and steel.</span></p>
+					<ul class="chips"><li>AutoCAD</li><li>Civil 3D</li><li>Revit</li><li>Tekla</li><li>Dynamo</li><li>SketchUp</li><li>AndDesign</li></ul>
+				</div>
+				<div class="usp-item">
+					<span class="usp-icon">📐</span>
+					<div class="usp-title"><span class="vi">Phân tích &amp; tính toán</span><span class="en">Analysis</span></div>
+					<p class="usp-desc"><span class="vi">Kết cấu, thuỷ lực và thoát nước.</span><span class="en">Structural, hydraulic and drainage analysis.</span></p>
+					<ul class="chips"><li>Midas</li><li>SAP2000</li><li>SewerGEMS</li><li>SSA</li></ul>
+				</div>
+				<div class="usp-item">
+					<span class="usp-icon">📘</span>
+					<div class="usp-title"><span class="vi">Tiêu chuẩn</span><span class="en">Standards</span></div>
+					<p class="usp-desc"><span class="vi">Áp dụng trong thiết kế và kiểm toán.</span><span class="en">Applied in design and checking.</span></p>
+					<ul class="chips"><li>TCVN</li><li>AASHTO</li><li>AISC 360-10</li><li>HEC-22</li></ul>
+				</div>
+				<div class="usp-item">
+					<span class="usp-icon">🤖</span>
+					<div class="usp-title"><span class="vi">Tự động hoá</span><span class="en">Automation</span></div>
+					<p class="usp-desc"><span class="vi">Tự động hoá công việc thiết kế từ năm 2022.</span><span class="en">Automating design work since 2022.</span></p>
+					<ul class="chips"><li>Python</li><li>Claude AI</li><li>MS Office</li></ul>
+				</div>
+			</div>
+			<ul class="soft-skills">
+				<li><span class="vi">Quản lý nhiều dự án song song, đảm bảo tiến độ và chất lượng</span><span class="en">Managing multiple projects on time and to high quality</span></li>
+				<li><span class="vi">Phân công công việc và giám sát tiến độ nhóm</span><span class="en">Assigning tasks and supervising team progress</span></li>
+				<li><span class="vi">Làm việc với chủ đầu tư và Sở Xây dựng</span><span class="en">Working with project owners and the Department of Construction</span></li>
+				<li><span class="vi">Chịu được áp lực công việc cao</span><span class="en">Works well under pressure</span></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- ================= TOOLS ================= -->
+	<section id="tools" class="strip">
+		<div class="container">
+			<div class="section-header center">
+				<span class="pill pill-teal"><span class="vi">Công cụ</span><span class="en">Tools</span></span>
+				<h2 class="section-title"><span class="vi">Công cụ kỹ thuật</span><span class="en">Engineering tools</span></h2>
+				<p class="section-sub"><span class="vi">Công cụ nhỏ cho công việc và một chút giải trí, chạy ngay trên trình duyệt.</span><span class="en">Small tools for work and a bit of fun, right in the browser.</span></p>
+			</div>
+			<div class="cards-3">
+				<a class="card tool-card" href="noi-suy.html">
+					<div class="card-num num-teal"><span class="vi">Tra bảng tiêu chuẩn</span><span class="en">Standard tables</span></div>
+					<h3 class="card-title">📐 <span class="vi">Nội suy 2 chiều</span><span class="en">2D interpolation</span></h3>
+					<ul class="arrow-list">
+						<li><span class="vi">Dán bảng trực tiếp từ Excel</span><span class="en">Paste tables straight from Excel</span></li>
+						<li><span class="vi">Hiện đầy đủ các bước tính, cảnh báo ngoại suy</span><span class="en">Shows every step, warns on extrapolation</span></li>
+					</ul>
+					<span class="tool-go"><span class="vi">Mở công cụ</span><span class="en">Open tool</span> →</span>
+				</a>
+				<a class="card tool-card" href="may-tinh.html">
+					<div class="card-num num-teal"><span class="vi">Tính toán</span><span class="en">Compute</span></div>
+					<h3 class="card-title">🧮 <span class="vi">Máy tính khoa học</span><span class="en">Scientific calculator</span></h3>
+					<ul class="arrow-list">
+						<li><span class="vi">Lượng giác, log, tổ hợp, phân số, biến nhớ</span><span class="en">Trig, logs, combinatorics, fractions, memory</span></li>
+						<li><span class="vi">Giải PT bậc 2–3, hệ 2–3 ẩn, thống kê, hệ cơ số</span><span class="en">Quadratic/cubic, 2–3 unknown systems, stats, base-N</span></li>
+					</ul>
+					<span class="tool-go"><span class="vi">Mở máy tính</span><span class="en">Open calculator</span> →</span>
+				</a>
+				<a class="card tool-card" href="ran-san-moi.html">
+					<div class="card-num num-orange"><span class="vi">Giải trí</span><span class="en">Just for fun</span></div>
+					<h3 class="card-title">🐍 <span class="vi">Rắn săn mồi</span><span class="en">Snake</span></h3>
+					<ul class="arrow-list">
+						<li><span class="vi">Bàn phím, vuốt hoặc nút bấm trên điện thoại</span><span class="en">Keyboard, swipe or on-screen pad</span></li>
+						<li><span class="vi">3 mức độ, mồi vàng thưởng, lưu điểm cao</span><span class="en">3 levels, golden bonus food, high scores</span></li>
+					</ul>
+					<span class="tool-go"><span class="vi">Chơi ngay</span><span class="en">Play now</span> →</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- ================= JOURNEY + CONTACT ================= -->
+	<section id="journey" class="strip">
+		<div class="container split">
+			<div>
+				<span class="pill pill-orange"><span class="vi">Hành trình</span><span class="en">Journey</span></span>
+				<h2 class="section-title"><span class="vi">Học tập &amp; làm việc</span><span class="en">Education &amp; work</span></h2>
+				<div class="steps">
+					<div class="step">
+						<div class="step-num">01</div>
+						<div class="step-body">
+							<span class="step-when"><span class="vi">Hiện tại</span><span class="en">Present</span></span>
+							<strong><span class="vi">CTCP Cơ khí Xây dựng Thương mại Đại Dũng</span><span class="en">Dai Dung Metallic Manufacture Construction &amp; Trade Corp.</span></strong>
+							<p><span class="vi">Kỹ sư kết cấu thép – biện pháp thi công, tính toán kết cấu tạm.</span><span class="en">Steel structure engineer – construction methods and temporary works.</span></p>
+						</div>
+					</div>
+					<div class="step">
+						<div class="step-num">02</div>
+						<div class="step-body">
+							<span class="step-when"><span class="vi">Trước đó</span><span class="en">Previously</span></span>
+							<strong><span class="vi">CTCP Tư vấn Đầu tư Xây dựng Giao thông tỉnh Bà Rịa – Vũng Tàu</span><span class="en">Ba Ria – Vung Tau Transportation Construction Investment Consulting JSC</span></strong>
+							<p><span class="vi">Thiết kế và chủ trì thiết kế cầu, đường, thoát nước, hạ tầng KCN.</span><span class="en">Designer and lead designer for bridges, roads, drainage and industrial parks.</span></p>
+						</div>
+					</div>
+					<div class="step">
+						<div class="step-num">03</div>
+						<div class="step-body">
+							<span class="step-when"><span class="vi">Trước đó</span><span class="en">Previously</span></span>
+							<strong><span class="vi">Công ty Cổ phần Sông Đà 4</span><span class="en">Song Da 4 JSC</span></strong>
+							<p><span class="vi">Lập bản vẽ biện pháp thi công công trình thuỷ điện.</span><span class="en">Construction method drawings for hydropower works.</span></p>
+						</div>
+					</div>
+					<div class="step">
+						<div class="step-num">04</div>
+						<div class="step-body">
+							<span class="step-when">2018</span>
+							<strong><span class="vi">Đại học Xây dựng Hà Nội</span><span class="en">Hanoi University of Civil Engineering</span></strong>
+							<p><span class="vi">Kỹ sư Kỹ thuật Giao thông – Khoa Cầu đường.</span><span class="en">B.Eng. Transportation Engineering – Bridge &amp; Road Dept.</span></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="awards">
+					<div class="award">
+						<span class="award-ico">🏆</span>
+						<div>
+							<strong><span class="vi">Giấy khen</span><span class="en">Certificates of Merit</span></strong>
+							<p><span class="vi">Của công ty và tỉnh Bà Rịa – Vũng Tàu vì thành tích xuất sắc, kỷ luật và tính chuyên nghiệp.</span><span class="en">From the company and Ba Ria – Vung Tau Province for excellent performance, discipline and professionalism.</span></p>
+							<ul class="chips"><li>2020–2021</li><li>2022–2023</li><li>2024–2025</li><li>2025–2026</li></ul>
+						</div>
+					</div>
+					<div class="award">
+						<span class="award-ico">📜</span>
+						<div>
+							<strong><span class="vi">Chứng chỉ hành nghề hạng III</span><span class="en">Class III Practice Certificates</span></strong>
+							<ul class="arrow-list">
+								<li><span class="vi">Thiết kế xây dựng công trình đường bộ</span><span class="en">Roadway construction design</span></li>
+								<li><span class="vi">Thiết kế xây dựng công trình cầu – hầm</span><span class="en">Bridge and tunnel construction design</span></li>
+								<li><span class="vi">Giám sát thi công xây dựng</span><span class="en">Construction supervision</span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<aside class="panel" id="contact">
+				<div class="panel-header"><h3><span class="vi">📬 Liên hệ</span><span class="en">📬 Contact</span></h3></div>
+				<div class="panel-body">
+					<a class="pay-item" href="mailto:pdyhung@gmail.com"><span class="pay-ico">✉️</span><span class="pay-body"><strong>Email</strong><span>pdyhung@gmail.com</span></span></a>
+					<a class="pay-item" href="https://www.youtube.com/channel/UCRDYsw6qs2HuVbSmRYwXYig" target="_blank" rel="noopener"><span class="pay-ico">▶️</span><span class="pay-body"><strong>YouTube</strong><span>Hung Pham</span></span></a>
+					<a class="pay-item" href="https://www.facebook.com/satthuso01/" target="_blank" rel="noopener"><span class="pay-ico">👥</span><span class="pay-body"><strong>Facebook</strong><span>Hung Pham</span></span></a>
+				</div>
+				<div class="bundle-card">
+					<div class="bundle-label"><span class="vi">Hợp tác</span><span class="en">Let's work together</span></div>
+					<p class="bundle-sub"><span class="vi">Cần tư vấn kết cấu thép, cầu đường hoặc công cụ tự động hoá AutoCAD? Cứ nhắn mình nhé.</span><span class="en">Need help with steel structures or AutoCAD automation? Feel free to reach out.</span></p>
+					<a class="btn btn-primary btn-sm" href="mailto:pdyhung@gmail.com"><span class="vi">Gửi email</span><span class="en">Send an email</span></a>
+				</div>
+			</aside>
+		</div>
+	</section>
+
+	<!-- ================= BOOKS ================= -->
+	<section id="books" class="section">
+		<div class="glow-soft glow-left"></div>
+		<div class="container">
+			<div class="books-header">
+				<div>
+					<span class="pill pill-teal"><span class="vi">Tủ sách</span><span class="en">Bookshelf</span></span>
+					<h2 class="section-title"><span class="vi">Sách mình đã đọc</span><span class="en">Books I've read</span></h2>
+					<p class="section-sub"><span class="vi">Tiêu chuẩn, kết cấu, cầu đường và lập trình. Tôn trọng bản quyền: chỉ dẫn link tới nguồn chính thức.</span><span class="en">Standards, structures, bridges, roads and programming. Copyright respected: links to official sources only.</span></p>
+				</div>
+				<a class="btn btn-ghost btn-sm doc-link" href="tai-lieu.html"><span class="vi">📚 Kho tài liệu tham khảo</span><span class="en">📚 Study materials</span> →</a>
+				<div class="count-badge"><span class="count-num" id="bookCount">22</span><span class="count-label"><span class="vi">cuốn sách<br>2020 – nay</span><span class="en">books<br>2020 – now</span></span></div>
+			</div>
+
+			<div class="filters" role="group" aria-label="Lọc theo năm / Filter by year">
+				<button type="button" class="filter is-active" data-filter="all"><span class="vi">Tất cả</span><span class="en">All</span></button>
+				<button type="button" class="filter" data-filter="2025">2025 – <span class="vi">nay</span><span class="en">now</span></button>
+				<button type="button" class="filter" data-filter="2023">2023 – 2025</button>
+				<button type="button" class="filter" data-filter="2022">2022</button>
+				<button type="button" class="filter" data-filter="2021">2021</button>
+				<button type="button" class="filter" data-filter="2020">2020</button>
+			</div>
+
+			<ul class="book-grid">
+				<!-- 2025 – nay -->
+				<li class="book" data-year="2025"><div class="book-meta"><span class="book-tag t-struct"><span class="vi">Kết cấu</span><span class="en">Structures</span></span><span class="book-year">2025 – <span class="vi">nay</span><span class="en">now</span></span></div><h3>Structural Analysis</h3><p>R. C. Hibbeler</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Structural+Analysis+R.+C.+Hibbeler" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2025"><div class="book-meta"><span class="book-tag t-struct"><span class="vi">Kết cấu</span><span class="en">Structures</span></span><span class="book-year">2025 – <span class="vi">nay</span><span class="en">now</span></span></div><h3>Matrix Structural Analysis</h3><p>W. McGuire, R. H. Gallagher, R. D. Ziemian</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Matrix+Structural+Analysis+W.+McGuire%2C+R.+H.+Gallagher%2C+R.+D.+Ziemian" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2025"><div class="book-meta"><span class="book-tag t-mech"><span class="vi">Cơ học</span><span class="en">Mechanics</span></span><span class="book-year">2025 – <span class="vi">nay</span><span class="en">now</span></span></div><h3>Mechanics of Materials</h3><p>R. C. Hibbeler</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Mechanics+of+Materials+R.+C.+Hibbeler" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2025"><div class="book-meta"><span class="book-tag t-mech"><span class="vi">Cơ học</span><span class="en">Mechanics</span></span><span class="book-year">2025 – <span class="vi">nay</span><span class="en">now</span></span></div><h3>Mechanics of Materials</h3><p>J. M. Gere, B. J. Goodno</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Mechanics+of+Materials+J.+M.+Gere%2C+B.+J.+Goodno" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2025"><div class="book-meta"><span class="book-tag t-steel"><span class="vi">Kết cấu thép</span><span class="en">Steel</span></span><span class="book-year">2025 – <span class="vi">nay</span><span class="en">now</span></span></div><h3>Steel Design</h3><p>W. T. Segui</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Steel+Design+W.+T.+Segui" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2025"><div class="book-meta"><span class="book-tag t-steel"><span class="vi">Kết cấu thép</span><span class="en">Steel</span></span><span class="book-year">2025 – <span class="vi">nay</span><span class="en">now</span></span></div><h3>Structural Steel Design</h3><p>J. C. McCormac, S. F. Csernak</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Structural+Steel+Design+J.+C.+McCormac%2C+S.+F.+Csernak" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2025"><div class="book-meta"><span class="book-tag t-std"><span class="vi">Tiêu chuẩn</span><span class="en">Standard</span></span><span class="book-year">2025 – <span class="vi">nay</span><span class="en">now</span></span></div><h3>ANSI/AISC 360 – Specification for Structural Steel Buildings</h3><p>AISC</p><a class="book-link is-official" href="https://www.aisc.org/" target="_blank" rel="noopener"><span class="vi">Trang chính thức</span><span class="en">Official page</span> ↗</a></li>
+
+				<!-- 2023 – 2025 -->
+				<li class="book" data-year="2023"><div class="book-meta"><span class="book-tag t-std"><span class="vi">Tiêu chuẩn</span><span class="en">Standard</span></span><span class="book-year">2023 – 2025</span></div><h3>HEC-22 – Urban Drainage Design Manual</h3><p>FHWA · <span class="vi">Tính toán thoát nước mưa</span><span class="en">Storm drainage design</span></p><a class="book-link is-free" href="https://www.fhwa.dot.gov/engineering/hydraulics/pubs/10009/10009.pdf" target="_blank" rel="noopener"><span class="vi">Đọc miễn phí</span><span class="en">Read free</span> ↗</a></li>
+				<li class="book" data-year="2023"><div class="book-meta"><span class="book-tag t-std"><span class="vi">Tiêu chuẩn</span><span class="en">Standard</span></span><span class="book-year">2023 – 2025</span></div><h3>AASHTO LRFD Bridge Design Specifications</h3><p>AASHTO</p><a class="book-link is-official" href="https://store.transportation.org/" target="_blank" rel="noopener"><span class="vi">Trang chính thức</span><span class="en">Official page</span> ↗</a></li>
+				<li class="book" data-year="2023"><div class="book-meta"><span class="book-tag t-std"><span class="vi">Tiêu chuẩn</span><span class="en">Standard</span></span><span class="book-year">2023 – 2025</span></div><h3>A Policy on Geometric Design of Highways and Streets</h3><p>AASHTO · “Green Book”</p><a class="book-link is-official" href="https://store.transportation.org/" target="_blank" rel="noopener"><span class="vi">Trang chính thức</span><span class="en">Official page</span> ↗</a></li>
+				<li class="book" data-year="2023"><div class="book-meta"><span class="book-tag t-code"><span class="vi">Lập trình</span><span class="en">Programming</span></span><span class="book-year">2023 – 2025</span></div><h3>Python Crash Course</h3><p>Eric Matthes</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Python+Crash+Course+Eric+Matthes" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2023"><div class="book-meta"><span class="book-tag t-code"><span class="vi">Lập trình</span><span class="en">Programming</span></span><span class="book-year">2023 – 2025</span></div><h3>Automate the Boring Stuff with Python</h3><p>Al Sweigart</p><a class="book-link is-free" href="https://automatetheboringstuff.com/" target="_blank" rel="noopener"><span class="vi">Đọc miễn phí</span><span class="en">Read free</span> ↗</a></li>
+				<li class="book" data-year="2023"><div class="book-meta"><span class="book-tag t-code"><span class="vi">Lập trình</span><span class="en">Programming</span></span><span class="book-year">2023 – 2025</span></div><h3>Fluent Python</h3><p>Luciano Ramalho</p><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Fluent+Python+Luciano+Ramalho" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+
+				<!-- 2022 -->
+				<li class="book" data-year="2022"><div class="book-meta"><span class="book-tag t-road"><span class="vi">Đường</span><span class="en">Road</span></span><span class="book-year">2022</span></div><h3>Sổ tay thiết kế đường ô tô</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=S%E1%BB%95+tay+thi%E1%BA%BFt+k%E1%BA%BF+%C4%91%C6%B0%E1%BB%9Dng+%C3%B4+t%C3%B4" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2022"><div class="book-meta"><span class="book-tag t-road"><span class="vi">Đường</span><span class="en">Road</span></span><span class="book-year">2022</span></div><h3>Thiết kế đường cao tốc</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Thi%E1%BA%BFt+k%E1%BA%BF+%C4%91%C6%B0%E1%BB%9Dng+cao+t%E1%BB%91c" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2022"><div class="book-meta"><span class="book-tag t-road"><span class="vi">Giao thông</span><span class="en">Traffic</span></span><span class="book-year">2022</span></div><h3>Hệ thống giao thông thông minh trong đô thị</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=H%E1%BB%87+th%E1%BB%91ng+giao+th%C3%B4ng+th%C3%B4ng+minh+trong+%C4%91%C3%B4+th%E1%BB%8B" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+
+				<!-- 2021 -->
+				<li class="book" data-year="2021"><div class="book-meta"><span class="book-tag t-road"><span class="vi">Đường</span><span class="en">Road</span></span><span class="book-year">2021</span></div><h3>Thiết kế đường ô tô</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Thi%E1%BA%BFt+k%E1%BA%BF+%C4%91%C6%B0%E1%BB%9Dng+%C3%B4+t%C3%B4" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2021"><div class="book-meta"><span class="book-tag t-struct"><span class="vi">Cầu</span><span class="en">Bridge</span></span><span class="book-year">2021</span></div><h3>Cầu bê tông cốt thép trên đường ô tô – Tập 1</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=C%E1%BA%A7u+b%C3%AA+t%C3%B4ng+c%E1%BB%91t+th%C3%A9p+tr%C3%AAn+%C4%91%C6%B0%E1%BB%9Dng+%C3%B4+t%C3%B4+%E2%80%93+T%E1%BA%ADp+1" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2021"><div class="book-meta"><span class="book-tag t-steel"><span class="vi">Cầu</span><span class="en">Bridge</span></span><span class="book-year">2021</span></div><h3>Cầu thép</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=C%E1%BA%A7u+th%C3%A9p" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+
+				<!-- 2020 -->
+				<li class="book" data-year="2020"><div class="book-meta"><span class="book-tag t-struct"><span class="vi">Cầu</span><span class="en">Bridge</span></span><span class="book-year">2020</span></div><h3>Cơ sở thiết kế và ví dụ tính toán kết cấu nhịp cầu dầm đơn giản BTCT ƯST bán lắp ghép theo TCVN 11823:2017</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=C%C6%A1+s%E1%BB%9F+thi%E1%BA%BFt+k%E1%BA%BF+v%C3%A0+v%C3%AD+d%E1%BB%A5+t%C3%ADnh+to%C3%A1n+k%E1%BA%BFt+c%E1%BA%A5u+nh%E1%BB%8Bp+c%E1%BA%A7u+d%E1%BA%A7m+%C4%91%C6%A1n+gi%E1%BA%A3n+BTCT+%C6%AFST+b%C3%A1n+l%E1%BA%AFp+gh%C3%A9p+theo+TCVN+11823%3A2017" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2020"><div class="book-meta"><span class="book-tag t-road"><span class="vi">Đường</span><span class="en">Road</span></span><span class="book-year">2020</span></div><h3>Hướng dẫn thiết kế hình học đường ô tô</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=H%C6%B0%E1%BB%9Bng+d%E1%BA%ABn+thi%E1%BA%BFt+k%E1%BA%BF+h%C3%ACnh+h%E1%BB%8Dc+%C4%91%C6%B0%E1%BB%9Dng+%C3%B4+t%C3%B4" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+				<li class="book" data-year="2020"><div class="book-meta"><span class="book-tag t-road"><span class="vi">Giao thông</span><span class="en">Traffic</span></span><span class="book-year">2020</span></div><h3>Thiết kế nút giao thông và điều khiển giao thông bằng đèn tín hiệu</h3><a class="book-link" href="https://www.google.com/search?tbm=bks&amp;q=Thi%E1%BA%BFt+k%E1%BA%BF+n%C3%BAt+giao+th%C3%B4ng+v%C3%A0+%C4%91i%E1%BB%81u+khi%E1%BB%83n+giao+th%C3%B4ng+b%E1%BA%B1ng+%C4%91%C3%A8n+t%C3%ADn+hi%E1%BB%87u" target="_blank" rel="noopener"><span class="vi">Tìm sách</span><span class="en">Find book</span> ↗</a></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- ================= CHOIR ================= -->
+	<section id="choir" class="strip">
+		<div class="container">
+			<div class="section-header center">
+				<span class="pill pill-orange"><span class="vi">Giáo xứ Vũng Tàu</span><span class="en">Vung Tau Parish</span></span>
+				<h2 class="section-title"><span class="vi">Ca đoàn Các Thánh Tử Đạo Việt Nam</span><span class="en">Vietnamese Martyrs Choir</span></h2>
+				<p class="section-sub"><span class="vi">Lễ bổn mạng, chầu lượt, liên hoan và những kỷ niệm cùng ca đoàn.</span><span class="en">Patronal feast, adoration, gatherings and memories with the choir.</span></p>
+			</div>
+			<div class="mass">
+				<div class="mass-info">
+					<span class="pill pill-live"><span class="live-dot"></span><span class="vi">Nghe lại</span><span class="en">Listen again</span></span>
+					<h3><span class="vi">Thánh lễ bổn mạng 2026</span><span class="en">Patronal feast Mass 2026</span></h3>
+					<p><span class="vi">Bản ghi âm thánh lễ mừng kính các Thánh Tử Đạo Việt Nam ngày 15/11/2026, do ca đoàn phục vụ. Mỗi bài hát được tách riêng để nghe nhanh.</span><span class="en">Recording of the Mass of the Vietnamese Martyrs on Nov 15, 2026, sung by our choir. Each song is split out so you can play it on its own.</span></p>
+					<div class="mass-now" id="massNow"></div>
+					<audio id="massAudio" controls preload="none"></audio>
+					<button type="button" class="btn btn-ghost btn-sm mass-full" id="massFull"><span class="vi">▶ Nghe cả thánh lễ (1:01:44)</span><span class="en">▶ Play the full Mass (1:01:44)</span></button>
+					<button type="button" class="sheet" id="massSheets">
+						<img src="assets/choir/bai-hat-bon-mang-2026.jpg" alt="" loading="lazy">
+						<span><span class="vi">🎼 Xem bản nhạc (10 trang)</span><span class="en">🎼 View sheet music (10 pages)</span></span>
+					</button>
+				</div>
+				<ol class="tracks" id="massTracks"></ol>
+			</div>
+
+			<div class="album-tabs" id="albumTabs" role="group" aria-label="Chọn album / Choose album"></div>
+			<div class="album-head" id="albumHead"></div>
+			<div class="album-grid" id="albumGrid"></div>
+			<div class="album-more"><button type="button" class="btn btn-ghost" id="albumMore" hidden><span class="vi">Xem thêm ảnh</span><span class="en">Show more</span> ↓</button></div>
+		</div>
+	</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+	<div class="container footer-main">
+		<div>
+			<div class="footer-brand">Phạm Văn Hưng</div>
+			<p class="footer-desc"><span class="vi">Kỹ sư cầu đường &amp; kết cấu thép tại Công ty CP Cơ khí Xây dựng Thương mại Đại Dũng. Thành viên ca đoàn Các Thánh Tử Đạo Việt Nam – Giáo xứ Vũng Tàu.</span><span class="en">Bridge, road &amp; steel structure engineer at Dai Dung Corp. Member of the Vietnamese Martyrs Choir – Vung Tau Parish.</span></p>
+			<div class="footer-socials">
+				<a class="footer-social" href="https://www.youtube.com/channel/UCRDYsw6qs2HuVbSmRYwXYig" target="_blank" rel="noopener">YouTube</a>
+				<a class="footer-social" href="https://www.facebook.com/satthuso01/" target="_blank" rel="noopener">Facebook</a>
+			</div>
+		</div>
+		<div>
+			<div class="footer-head"><span class="vi">Liên hệ</span><span class="en">Contact</span></div>
+			<div class="footer-row">✉️ <a href="mailto:pdyhung@gmail.com">pdyhung@gmail.com</a></div>
+			<div class="footer-row">📍 <span class="vi">Việt Nam</span><span class="en">Vietnam</span></div>
+		</div>
+		<div>
+			<div class="footer-head"><span class="vi">Điều hướng</span><span class="en">Navigate</span></div>
+			<div class="footer-row"><a href="#projects"><span class="vi">Dự án</span><span class="en">Projects</span></a></div>
+			<div class="footer-row"><a href="#skills"><span class="vi">Kỹ năng</span><span class="en">Skills</span></a></div>
+			<div class="footer-row"><a href="#books"><span class="vi">Tủ sách</span><span class="en">Books</span></a></div>
+			<div class="footer-row"><a href="#choir"><span class="vi">Ca đoàn</span><span class="en">Choir</span></a></div>
+		</div>
+	</div>
+	<div class="container footer-bottom">© <span id="year">2026</span> Phạm Văn Hưng</div>
+</footer>
+
+<!-- Lightbox -->
+<dialog class="lightbox" id="lightbox" aria-label="Xem ảnh / Photo viewer">
+	<button type="button" class="lb-close" id="lbClose" aria-label="Đóng / Close">✕</button>
+	<button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Ảnh trước / Previous">‹</button>
+	<figure class="lb-figure">
+		<div class="lb-stage" id="lbStage"></div>
+		<figcaption id="lbCap"></figcaption>
+	</figure>
+	<button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Ảnh sau / Next">›</button>
+</dialog>
+
+<script src="js/main.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/mass.js"></script>
 </body>
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi" data-lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tài liệu tham khảo – Phạm Văn Hưng</title>
+	<meta name="description" content="Kho link tài liệu học tập xây dựng: đề thi, đề cương, đồ án, bài tập lớn, hướng dẫn phần mềm – dẫn tới bài viết gốc.">
+	<meta name="theme-color" content="#06060a">
+	<link rel="icon" href="hung_pham.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tools.css">
+	<link rel="stylesheet" href="css/docs.css">
+	<script>
+		(function () {
+			try {
+				var l = localStorage.getItem('lang'); if (l === 'vi' || l === 'en') { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+				var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+			} catch (e) {}
+		})();
+	</script>
+</head>
+<body>
+
+<header class="navbar">
+	<div class="nav-inner">
+		<a href="index.html" class="nav-logo">Phạm Văn Hưng</a>
+		<nav class="nav-links nav-static" aria-label="Menu">
+			<a href="index.html"><span class="vi">← Trang chủ</span><span class="en">← Home</span></a>
+			<a href="tai-lieu.html" class="active"><span class="vi">Tài liệu</span><span class="en">Documents</span></a>
+		</nav>
+		<div class="nav-tools">
+			<button class="tool" id="langBtn" type="button" aria-label="Đổi ngôn ngữ / Switch language"><span class="vi">EN</span><span class="en">VI</span></button>
+			<button class="tool" id="themeBtn" type="button" aria-label="Sáng / tối – Light / dark">
+				<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main>
+	<section class="hero tool-hero">
+		<div class="hero-glow hero-glow-1"></div>
+		<div class="hero-glow hero-glow-2"></div>
+		<div class="container">
+			<span class="pill pill-teal"><span class="vi">Kho tài liệu</span><span class="en">Document library</span></span>
+			<h1 class="hero-title"><span class="vi">Tài liệu</span><span class="en">Study</span> <span class="accent"><span class="vi">tham khảo</span><span class="en">materials</span></span></h1>
+			<p class="hero-desc">
+				<span class="vi">Đề thi, đề cương, đồ án, bài tập lớn và hướng dẫn phần mềm cho sinh viên xây dựng. Mỗi mục là link tới bài viết gốc — web này không lưu file.</span>
+				<span class="en">Exams, review notes, design projects, assignments and software guides for civil engineering students. Each item links to the original post — no files are hosted here.</span>
+			</p>
+		</div>
+	</section>
+
+	<section class="section tool-section">
+		<div class="container">
+			<div class="doc-bar">
+				<div class="doc-search">
+					<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+					<input type="search" id="q" autocomplete="off" placeholder="Tìm: đề thi cầu thép, đồ án BTCT, midas…" aria-label="Tìm tài liệu / Search">
+				</div>
+				<div class="doc-count" id="count"></div>
+			</div>
+
+			<div class="doc-filters">
+				<div class="opt-label"><span class="vi">Loại tài liệu</span><span class="en">Type</span></div>
+				<div class="filters" id="fType"></div>
+				<div class="opt-label"><span class="vi">Chuyên ngành</span><span class="en">Field</span></div>
+				<div class="filters" id="fField"></div>
+			</div>
+
+			<ul class="doc-grid" id="list"></ul>
+			<p class="doc-empty" id="empty" hidden><span class="vi">Không tìm thấy tài liệu phù hợp.</span><span class="en">No matching documents.</span></p>
+
+			<div class="doc-note">
+				<div class="card-label"><span class="vi">Nguồn &amp; lưu ý</span><span class="en">Source &amp; notes</span></div>
+				<p>
+					<span class="vi">Nguồn: blog <a href="https://svxaydung.blogspot.com/" target="_blank" rel="noopener">SV Xây Dựng</a> (svxaydung.blogspot.com) – tài liệu do sinh viên chia sẻ giai đoạn 2015–2017. Link tải bên trong một số bài (MediaFire, Google Drive…) có thể đã hết hạn.</span>
+					<span class="en">Source: the <a href="https://svxaydung.blogspot.com/" target="_blank" rel="noopener">SV Xây Dựng</a> blog (svxaydung.blogspot.com) – materials shared by students in 2015–2017. Download links inside some posts (MediaFire, Google Drive…) may have expired.</span>
+				</p>
+				<p>
+					<span class="vi">Để tôn trọng bản quyền, danh sách <b>không</b> gồm phần mềm bẻ khoá, giáo trình và tiêu chuẩn có bản quyền. Hãy dùng tài liệu cho mục đích học tập.</span>
+					<span class="en">To respect copyright, this list does <b>not</b> include cracked software, copyrighted textbooks or paid standards. Please use these materials for study only.</span>
+				</p>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer class="footer">
+	<div class="container footer-bottom">© <span id="year">2026</span> Phạm Văn Hưng · <a href="index.html"><span class="vi">Trang chủ</span><span class="en">Home</span></a></div>
+</footer>
+
+<script src="js/tai-lieu-data.js"></script>
+<script src="js/tai-lieu.js"></script>
+</body>
+</html>

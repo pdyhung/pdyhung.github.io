@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi" data-lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Rắn săn mồi – Phạm Văn Hưng</title>
+	<meta name="description" content="Trò chơi rắn săn mồi chạy ngay trên trình duyệt: bàn phím, vuốt hoặc nút bấm trên điện thoại, 3 mức độ, lưu điểm cao.">
+	<meta name="theme-color" content="#06060a">
+	<link rel="icon" href="hung_pham.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tools.css">
+	<link rel="stylesheet" href="css/game.css">
+	<script>
+		(function () {
+			try {
+				var l = localStorage.getItem('lang'); if (l === 'vi' || l === 'en') { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+				var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+			} catch (e) {}
+		})();
+	</script>
+</head>
+<body>
+
+<header class="navbar">
+	<div class="nav-inner">
+		<a href="index.html" class="nav-logo">Phạm Văn Hưng</a>
+		<nav class="nav-links nav-static" aria-label="Menu">
+			<a href="index.html#tools"><span class="vi">← Trang chủ</span><span class="en">← Home</span></a>
+			<a href="ran-san-moi.html" class="active"><span class="vi">Rắn săn mồi</span><span class="en">Snake</span></a>
+		</nav>
+		<div class="nav-tools">
+			<button class="tool" id="langBtn" type="button" aria-label="Đổi ngôn ngữ / Switch language"><span class="vi">EN</span><span class="en">VI</span></button>
+			<button class="tool" id="themeBtn" type="button" aria-label="Sáng / tối – Light / dark">
+				<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main class="game-main">
+	<div class="container game-layout">
+
+		<div class="game-left">
+			<span class="pill pill-orange"><span class="vi">Giải trí</span><span class="en">Just for fun</span></span>
+			<h1 class="game-title"><span class="vi">Rắn</span><span class="en">Snake</span> <span class="accent"><span class="vi">săn mồi</span><span class="en">hunter</span></span></h1>
+
+			<div class="scores">
+				<div class="score-box"><span class="vi">Điểm</span><span class="en">Score</span><strong id="score">0</strong></div>
+				<div class="score-box"><span class="vi">Cao nhất</span><span class="en">Best</span><strong id="best">0</strong></div>
+				<div class="score-box"><span class="vi">Độ dài</span><span class="en">Length</span><strong id="len">3</strong></div>
+			</div>
+
+			<div class="opt">
+				<div class="opt-label"><span class="vi">Mức độ</span><span class="en">Level</span></div>
+				<div class="seg" id="level">
+					<button type="button" data-v="easy"><span class="vi">Dễ</span><span class="en">Easy</span></button>
+					<button type="button" data-v="normal"><span class="vi">Vừa</span><span class="en">Normal</span></button>
+					<button type="button" data-v="hard"><span class="vi">Khó</span><span class="en">Hard</span></button>
+				</div>
+			</div>
+			<div class="opt">
+				<div class="opt-label"><span class="vi">Tường</span><span class="en">Walls</span></div>
+				<div class="seg" id="walls">
+					<button type="button" data-v="wrap"><span class="vi">Xuyên tường</span><span class="en">Wrap around</span></button>
+					<button type="button" data-v="solid"><span class="vi">Đâm là thua</span><span class="en">Deadly</span></button>
+				</div>
+			</div>
+
+			<div class="how">
+				<div class="opt-label"><span class="vi">Cách chơi</span><span class="en">How to play</span></div>
+				<ul class="arrow-list">
+					<li><span class="vi">Phím ← ↑ → ↓ hoặc W A S D để đổi hướng</span><span class="en">Arrow keys or W A S D to steer</span></li>
+					<li><span class="vi">Điện thoại: vuốt trên màn chơi hoặc bấm nút</span><span class="en">Mobile: swipe on the board or use the pad</span></li>
+					<li><span class="vi">Space / P: tạm dừng · Enter: chơi lại</span><span class="en">Space / P: pause · Enter: restart</span></li>
+					<li><span class="vi">🟠 mồi thường +1 · 🟡 mồi vàng +5 (biến mất sau vài giây)</span><span class="en">🟠 food +1 · 🟡 golden food +5 (disappears after a few seconds)</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="game-right">
+			<div class="board-wrap" id="boardWrap">
+				<canvas id="board" width="600" height="600" aria-label="Màn chơi rắn săn mồi"></canvas>
+				<div class="overlay" id="overlay">
+					<div class="ov-card">
+						<div class="ov-title" id="ovTitle"></div>
+						<div class="ov-sub" id="ovSub"></div>
+						<button type="button" class="btn btn-primary" id="ovBtn"></button>
+					</div>
+				</div>
+			</div>
+			<div class="pad" id="pad" aria-label="Điều khiển / Controls">
+				<button type="button" data-d="up" aria-label="Lên">▲</button>
+				<button type="button" data-d="left" aria-label="Trái">◀</button>
+				<button type="button" data-d="pause" class="pad-mid" aria-label="Tạm dừng">❚❚</button>
+				<button type="button" data-d="right" aria-label="Phải">▶</button>
+				<button type="button" data-d="down" aria-label="Xuống">▼</button>
+			</div>
+		</div>
+	</div>
+</main>
+
+<footer class="footer">
+	<div class="container footer-bottom">© <span id="year">2026</span> Phạm Văn Hưng · <a href="index.html"><span class="vi">Trang chủ</span><span class="en">Home</span></a></div>
+</footer>
+
+<script src="js/snake.js"></script>
+</body>
+</html>

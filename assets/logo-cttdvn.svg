@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Ca đoàn Các Thánh Tử Đạo Việt Nam">
+  <defs>
+    <path id="top" d="M 32 120 A 88 88 0 0 1 208 120"/>
+    <path id="bottom" d="M 26 120 A 94 94 0 0 0 214 120"/>
+  </defs>
+  <circle cx="120" cy="120" r="116" fill="#7a1420"/>
+  <circle cx="120" cy="120" r="108" fill="none" stroke="#e9c46a" stroke-width="2"/>
+  <circle cx="120" cy="120" r="68" fill="#fdf6e3" stroke="#e9c46a" stroke-width="3"/>
+  <text font-family="'Be Vietnam Pro', Arial, sans-serif" font-size="15" font-weight="700" fill="#fdf6e3" letter-spacing="1.5">
+    <textPath href="#top" startOffset="50%" text-anchor="middle">CA ĐOÀN CÁC THÁNH</textPath>
+  </text>
+  <text font-family="'Be Vietnam Pro', Arial, sans-serif" font-size="15" font-weight="700" fill="#fdf6e3" letter-spacing="1.5">
+    <textPath href="#bottom" startOffset="50%" text-anchor="middle" dominant-baseline="hanging">TỬ ĐẠO VIỆT NAM</textPath>
+  </text>
+  <circle cx="30" cy="120" r="3" fill="#e9c46a"/>
+  <circle cx="210" cy="120" r="3" fill="#e9c46a"/>
+  <!-- cross -->
+  <rect x="113" y="66" width="14" height="96" rx="2" fill="#7a1420"/>
+  <rect x="90" y="92" width="60" height="14" rx="2" fill="#7a1420"/>
+  <!-- palm branches (martyrdom) -->
+  <g fill="none" stroke="#2f7d4f" stroke-width="3" stroke-linecap="round">
+    <path d="M 104 172 Q 80 150 82 112"/>
+    <path d="M 136 172 Q 160 150 158 112"/>
+  </g>
+  <g fill="#2f7d4f">
+    <ellipse cx="80" cy="124" rx="9" ry="3.2" transform="rotate(-35 80 124)"/>
+    <ellipse cx="84" cy="138" rx="9" ry="3.2" transform="rotate(-25 84 138)"/>
+    <ellipse cx="91" cy="152" rx="9" ry="3.2" transform="rotate(-15 91 152)"/>
+    <ellipse cx="160" cy="124" rx="9" ry="3.2" transform="rotate(35 160 124)"/>
+    <ellipse cx="156" cy="138" rx="9" ry="3.2" transform="rotate(25 156 138)"/>
+    <ellipse cx="149" cy="152" rx="9" ry="3.2" transform="rotate(15 149 152)"/>
+  </g>
+</svg>

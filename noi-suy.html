@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi" data-lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Nội suy 2 chiều – Phạm Văn Hưng</title>
+	<meta name="description" content="Công cụ nội suy tuyến tính 2 chiều (bilinear) cho bảng tra tiêu chuẩn: dán bảng từ Excel, nhập x, y, xem kết quả và các bước tính.">
+	<meta name="theme-color" content="#06060a">
+	<link rel="icon" href="hung_pham.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tools.css">
+	<script>
+		(function () {
+			try {
+				var l = localStorage.getItem('lang'); if (l === 'vi' || l === 'en') { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+				var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+			} catch (e) {}
+		})();
+	</script>
+</head>
+<body>
+
+<header class="navbar">
+	<div class="nav-inner">
+		<a href="index.html" class="nav-logo">Phạm Văn Hưng</a>
+		<nav class="nav-links nav-static" id="nav" aria-label="Menu">
+			<a href="index.html"><span class="vi">← Trang chủ</span><span class="en">← Home</span></a>
+			<a href="noi-suy.html" class="active"><span class="vi">Nội suy 2 chiều</span><span class="en">2D interpolation</span></a>
+		</nav>
+		<div class="nav-tools">
+			<button class="tool" id="langBtn" type="button" aria-label="Đổi ngôn ngữ / Switch language"><span class="vi">EN</span><span class="en">VI</span></button>
+			<button class="tool" id="themeBtn" type="button" aria-label="Sáng / tối – Light / dark">
+				<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main>
+	<section class="hero tool-hero">
+		<div class="hero-glow hero-glow-1"></div>
+		<div class="hero-glow hero-glow-2"></div>
+		<div class="container">
+			<span class="pill pill-teal"><span class="vi">Công cụ kỹ thuật</span><span class="en">Engineering tool</span></span>
+			<h1 class="hero-title"><span class="vi">Nội suy</span><span class="en">2D</span> <span class="accent"><span class="vi">2 chiều</span><span class="en">interpolation</span></span></h1>
+			<p class="hero-desc">
+				<span class="vi">Tra bảng tiêu chuẩn nhanh: dán bảng từ Excel, nhập giá trị x (theo cột) và y (theo hàng) — công cụ nội suy tuyến tính hai lần và hiển thị đầy đủ các bước tính.</span>
+				<span class="en">Fast table look-ups: paste a table from Excel, enter x (columns) and y (rows) — the tool performs bilinear interpolation and shows every step.</span>
+			</p>
+		</div>
+	</section>
+
+	<section class="section tool-section">
+		<div class="container tool-grid">
+
+			<!-- ===== Bảng tra ===== -->
+			<div class="panel tool-panel">
+				<div class="panel-header tool-head">
+					<h3><span class="vi">① Bảng tra</span><span class="en">① Lookup table</span></h3>
+					<div class="tool-actions">
+						<button type="button" class="btn btn-ghost btn-sm" id="btnPaste"><span class="vi">📋 Dán từ Excel</span><span class="en">📋 Paste from Excel</span></button>
+						<button type="button" class="btn btn-ghost btn-sm" id="btnExample"><span class="vi">Ví dụ</span><span class="en">Example</span></button>
+						<button type="button" class="btn btn-ghost btn-sm" id="btnClear"><span class="vi">Xoá</span><span class="en">Clear</span></button>
+					</div>
+				</div>
+				<div class="panel-body tool-body">
+					<div class="paste-box" id="pasteBox" hidden>
+						<p class="hint"><span class="vi">Chọn vùng bảng trong Excel (gồm hàng tiêu đề x ở trên và cột tiêu đề y bên trái), Ctrl+C rồi dán vào đây. Ô góc trên-trái bỏ trống hoặc ghi chú tuỳ ý.</span><span class="en">Select the table in Excel (x header row on top, y header column on the left), Ctrl+C and paste here. The top-left cell can be empty or a label.</span></p>
+						<textarea id="pasteArea" rows="7" spellcheck="false" placeholder="y\x	10	20	30
+1	0.50	0.62	0.70
+2	0.55	0.68	0.79"></textarea>
+						<div class="paste-actions">
+							<button type="button" class="btn btn-primary btn-sm" id="btnApply"><span class="vi">Dùng bảng này</span><span class="en">Use this table</span></button>
+							<button type="button" class="btn btn-ghost btn-sm" id="btnCancel"><span class="vi">Huỷ</span><span class="en">Cancel</span></button>
+						</div>
+					</div>
+
+					<div class="labels">
+						<label><span class="vi">Tên bảng</span><span class="en">Table name</span><input type="text" id="tName" placeholder="VD: Hệ số k theo bảng 5.3"></label>
+						<label><span class="vi">Tên biến x (cột)</span><span class="en">x name (columns)</span><input type="text" id="xName" value="x"></label>
+						<label><span class="vi">Tên biến y (hàng)</span><span class="en">y name (rows)</span><input type="text" id="yName" value="y"></label>
+					</div>
+
+					<div class="table-wrap">
+						<table class="grid" id="grid"></table>
+					</div>
+					<div class="grid-tools">
+						<button type="button" class="chip-btn" id="addCol">+ <span class="vi">Cột</span><span class="en">Column</span></button>
+						<button type="button" class="chip-btn" id="addRow">+ <span class="vi">Hàng</span><span class="en">Row</span></button>
+						<button type="button" class="chip-btn" id="delCol">− <span class="vi">Cột</span><span class="en">Column</span></button>
+						<button type="button" class="chip-btn" id="delRow">− <span class="vi">Hàng</span><span class="en">Row</span></button>
+						<span class="grid-msg" id="gridMsg"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- ===== Tính ===== -->
+			<div class="tool-side">
+				<div class="panel tool-panel">
+					<div class="panel-header"><h3><span class="vi">② Giá trị cần tra</span><span class="en">② Query point</span></h3></div>
+					<div class="panel-body tool-body">
+						<div class="inputs">
+							<label><span id="xLabel">x</span><input type="text" inputmode="decimal" id="qx" placeholder="15"></label>
+							<label><span id="yLabel">y</span><input type="text" inputmode="decimal" id="qy" placeholder="1.5"></label>
+						</div>
+						<div class="decimals">
+							<span class="vi">Số chữ số thập phân</span><span class="en">Decimal places</span>
+							<input type="number" id="dec" min="0" max="10" value="4">
+						</div>
+					</div>
+				</div>
+
+				<div class="result-card" id="resultCard">
+					<div class="card-label"><span class="vi">Kết quả</span><span class="en">Result</span></div>
+					<div class="result-value" id="result">—</div>
+					<div class="result-warn" id="warn" hidden></div>
+					<button type="button" class="btn btn-primary btn-sm" id="btnCopy" disabled><span class="vi">Sao chép</span><span class="en">Copy</span></button>
+				</div>
+
+				<div class="panel tool-panel">
+					<div class="panel-header"><h3><span class="vi">③ Các bước tính</span><span class="en">③ Steps</span></h3></div>
+					<div class="panel-body tool-body steps-out" id="steps">
+						<p class="hint"><span class="vi">Nhập x và y để xem các bước.</span><span class="en">Enter x and y to see the steps.</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="formula">
+				<div class="card-label"><span class="vi">Công thức nội suy tuyến tính 2 chiều</span><span class="en">Bilinear interpolation formula</span></div>
+				<p class="mono">R₁ = Q₁₁ + (Q₂₁ − Q₁₁)·(x − x₁)/(x₂ − x₁)&nbsp;&nbsp;&nbsp;(<span class="vi">tại</span><span class="en">at</span> y₁)</p>
+				<p class="mono">R₂ = Q₁₂ + (Q₂₂ − Q₁₂)·(x − x₁)/(x₂ − x₁)&nbsp;&nbsp;&nbsp;(<span class="vi">tại</span><span class="en">at</span> y₂)</p>
+				<p class="mono">P&nbsp; = R₁ + (R₂ − R₁)·(y − y₁)/(y₂ − y₁)</p>
+				<p class="hint"><span class="vi">Q₁₁ = f(x₁, y₁), Q₂₁ = f(x₂, y₁), Q₁₂ = f(x₁, y₂), Q₂₂ = f(x₂, y₂). Nếu bảng chỉ có 1 hàng hoặc 1 cột, công cụ tự chuyển sang nội suy 1 chiều. Giá trị ngoài phạm vi bảng sẽ được ngoại suy và có cảnh báo.</span><span class="en">Q₁₁ = f(x₁, y₁), Q₂₁ = f(x₂, y₁), Q₁₂ = f(x₁, y₂), Q₂₂ = f(x₂, y₂). With a single row or column the tool falls back to 1D interpolation. Values outside the table are extrapolated with a warning.</span></p>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer class="footer">
+	<div class="container footer-bottom">© <span id="year">2026</span> Phạm Văn Hưng · <a href="index.html"><span class="vi">Trang chủ</span><span class="en">Home</span></a></div>
+</footer>
+
+<script src="js/noi-suy.js"></script>
+</body>
+</html>

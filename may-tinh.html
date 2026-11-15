@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi" data-lang="vi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Máy tính khoa học – Phạm Văn Hưng</title>
+	<meta name="description" content="Máy tính khoa học trên web: lượng giác, log, giai thừa, tổ hợp, biến nhớ, phân số, giải phương trình bậc 2, bậc 3, hệ phương trình, thống kê, hệ cơ số, bảng giá trị.">
+	<meta name="theme-color" content="#06060a">
+	<link rel="icon" href="hung_pham.ico">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tools.css">
+	<link rel="stylesheet" href="css/calc.css">
+	<script>
+		(function () {
+			try {
+				var l = localStorage.getItem('lang'); if (l === 'vi' || l === 'en') { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+				var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+			} catch (e) {}
+		})();
+	</script>
+</head>
+<body>
+
+<header class="navbar">
+	<div class="nav-inner">
+		<a href="index.html" class="nav-logo">Phạm Văn Hưng</a>
+		<nav class="nav-links nav-static" aria-label="Menu">
+			<a href="index.html#tools"><span class="vi">← Trang chủ</span><span class="en">← Home</span></a>
+			<a href="may-tinh.html" class="active"><span class="vi">Máy tính</span><span class="en">Calculator</span></a>
+		</nav>
+		<div class="nav-tools">
+			<button class="tool" id="langBtn" type="button" aria-label="Đổi ngôn ngữ / Switch language"><span class="vi">EN</span><span class="en">VI</span></button>
+			<button class="tool" id="themeBtn" type="button" aria-label="Sáng / tối – Light / dark">
+				<svg class="ic-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+				<svg class="ic-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+			</button>
+		</div>
+	</div>
+</header>
+
+<main class="calc-main">
+	<div class="container">
+		<div class="calc-head">
+			<span class="pill pill-teal"><span class="vi">Công cụ kỹ thuật</span><span class="en">Engineering tool</span></span>
+			<h1 class="game-title"><span class="vi">Máy tính</span><span class="en">Scientific</span> <span class="accent"><span class="vi">khoa học</span><span class="en">calculator</span></span></h1>
+		</div>
+
+		<div class="modes" id="modes" role="tablist">
+			<button type="button" data-m="comp" class="is-active"><span class="vi">Tính toán</span><span class="en">Compute</span></button>
+			<button type="button" data-m="eqn"><span class="vi">Phương trình</span><span class="en">Equations</span></button>
+			<button type="button" data-m="stat"><span class="vi">Thống kê</span><span class="en">Statistics</span></button>
+			<button type="button" data-m="base"><span class="vi">Hệ cơ số</span><span class="en">Base-N</span></button>
+			<button type="button" data-m="table"><span class="vi">Bảng giá trị</span><span class="en">Table</span></button>
+		</div>
+
+		<div class="calc-layout">
+			<!-- ===== Thân máy ===== -->
+			<div class="calc" id="calc">
+				<div class="lcd" id="lcd">
+					<div class="ind">
+						<span id="iShift">S</span><span id="iHyp">hyp</span><span id="iSto">STO</span><span id="iM">M</span>
+						<span class="ind-r"><span id="iAng">DEG</span><span id="iFmt"></span></span>
+					</div>
+					<div class="lcd-expr" id="expr"></div>
+					<div class="lcd-res" id="res">0</div>
+				</div>
+				<div class="keys-fn" id="keysFn"></div>
+				<div class="keys-num" id="keysNum"></div>
+			</div>
+
+			<!-- ===== Bảng bên ===== -->
+			<div class="side">
+				<!-- COMP: lịch sử + biến -->
+				<div class="pane" data-pane="comp">
+					<div class="panel">
+						<div class="panel-header tool-head"><h3><span class="vi">Lịch sử</span><span class="en">History</span></h3>
+							<button type="button" class="chip-btn" id="histClear"><span class="vi">Xoá</span><span class="en">Clear</span></button></div>
+						<ul class="hist" id="hist"></ul>
+					</div>
+					<div class="panel">
+						<div class="panel-header"><h3><span class="vi">Biến nhớ</span><span class="en">Variables</span></h3></div>
+						<div class="vars" id="vars"></div>
+						<p class="hint pad-hint"><span class="vi">SHIFT + phím biến = lưu Ans vào biến (STO). M+ cộng kết quả vào M, SHIFT M+ = M−.</span><span class="en">SHIFT + a variable key stores Ans into it (STO). M+ adds the result to M, SHIFT M+ = M−.</span></p>
+					</div>
+					<div class="panel">
+						<div class="panel-header"><h3><span class="vi">Phím tắt bàn phím</span><span class="en">Keyboard shortcuts</span></h3></div>
+						<ul class="arrow-list pad-hint">
+							<li><span class="vi">Số, + − * / ^ ( ) ! % và dấu chấm</span><span class="en">Digits, + − * / ^ ( ) ! % and the dot</span></li>
+							<li><span class="vi">Enter / = : tính · Backspace: xoá · Esc: AC</span><span class="en">Enter / = : evaluate · Backspace: delete · Esc: AC</span></li>
+							<li><span class="vi">← →: di chuyển con trỏ · ↑: lấy lại phép tính trước</span><span class="en">← →: move cursor · ↑: recall last expression</span></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- EQN -->
+				<div class="pane" data-pane="eqn" hidden>
+					<div class="panel">
+						<div class="panel-header"><h3><span class="vi">Giải phương trình</span><span class="en">Solve equations</span></h3></div>
+						<div class="pane-body">
+							<div class="seg" id="eqType">
+								<button type="button" data-v="q2" class="is-active"><span class="vi">Bậc 2</span><span class="en">Quadratic</span></button>
+								<button type="button" data-v="q3"><span class="vi">Bậc 3</span><span class="en">Cubic</span></button>
+								<button type="button" data-v="s2"><span class="vi">Hệ 2 ẩn</span><span class="en">2×2 system</span></button>
+								<button type="button" data-v="s3"><span class="vi">Hệ 3 ẩn</span><span class="en">3×3 system</span></button>
+							</div>
+							<div class="eq-form" id="eqForm"></div>
+							<p class="hint"><span class="vi">Ô nhập chấp nhận biểu thức: 1/3, √(2), 2π, sin(30)…</span><span class="en">Inputs accept expressions: 1/3, √(2), 2π, sin(30)…</span></p>
+							<button type="button" class="btn btn-primary btn-sm" id="eqSolve"><span class="vi">Giải</span><span class="en">Solve</span></button>
+							<div class="out" id="eqOut"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- STAT -->
+				<div class="pane" data-pane="stat" hidden>
+					<div class="panel">
+						<div class="panel-header"><h3><span class="vi">Thống kê</span><span class="en">Statistics</span></h3></div>
+						<div class="pane-body">
+							<div class="seg" id="stType">
+								<button type="button" data-v="1" class="is-active"><span class="vi">1 biến (x)</span><span class="en">1-variable (x)</span></button>
+								<button type="button" data-v="2"><span class="vi">2 biến (x, y)</span><span class="en">2-variable (x, y)</span></button>
+							</div>
+							<label class="lbl"><span class="vi">Dữ liệu – mỗi dòng một giá trị (hoặc “x, y”); dán được từ Excel</span><span class="en">Data – one value per line (or “x, y”); paste from Excel</span>
+								<textarea id="stData" rows="8" spellcheck="false"></textarea></label>
+							<button type="button" class="btn btn-primary btn-sm" id="stRun"><span class="vi">Tính</span><span class="en">Compute</span></button>
+							<div class="out" id="stOut"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- BASE-N -->
+				<div class="pane" data-pane="base" hidden>
+					<div class="panel">
+						<div class="panel-header"><h3><span class="vi">Đổi hệ cơ số</span><span class="en">Base conversion</span></h3></div>
+						<div class="pane-body">
+							<div class="seg" id="bnFrom">
+								<button type="button" data-v="10" class="is-active">DEC</button>
+								<button type="button" data-v="16">HEX</button>
+								<button type="button" data-v="2">BIN</button>
+								<button type="button" data-v="8">OCT</button>
+							</div>
+							<label class="lbl"><span class="vi">Số nguyên (32 bit, có dấu)</span><span class="en">Integer (32-bit signed)</span><input type="text" id="bnIn" value="255" spellcheck="false"></label>
+							<div class="out" id="bnOut"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- TABLE -->
+				<div class="pane" data-pane="table" hidden>
+					<div class="panel">
+						<div class="panel-header"><h3><span class="vi">Bảng giá trị f(X)</span><span class="en">Table of f(X)</span></h3></div>
+						<div class="pane-body">
+							<label class="lbl">f(X) =<input type="text" id="tbF" value="X²−2X+1" spellcheck="false"></label>
+							<div class="tb-row">
+								<label class="lbl"><span class="vi">Bắt đầu</span><span class="en">Start</span><input type="text" id="tbA" value="-2"></label>
+								<label class="lbl"><span class="vi">Kết thúc</span><span class="en">End</span><input type="text" id="tbB" value="4"></label>
+								<label class="lbl"><span class="vi">Bước</span><span class="en">Step</span><input type="text" id="tbS" value="0.5"></label>
+							</div>
+							<button type="button" class="btn btn-primary btn-sm" id="tbRun"><span class="vi">Lập bảng</span><span class="en">Build table</span></button>
+							<div class="out" id="tbOut"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<footer class="footer">
+	<div class="container footer-bottom">© <span id="year">2026</span> Phạm Văn Hưng · <a href="index.html"><span class="vi">Trang chủ</span><span class="en">Home</span></a></div>
+</footer>
+
+<script src="js/calc-engine.js"></script>
+<script src="js/calc.js"></script>
+</body>
+</html>
