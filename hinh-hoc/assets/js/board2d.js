@@ -85,6 +85,6 @@
     d = d == null ? 2 : d;
     var s = (+x.toFixed(d)).toString();
     if (s === '-0') s = '0';
-    return s.replace('.', ',');
+    return s.replace('.', ',').replace(/^-/, '−');   // dấu trừ chuẩn (U+2212)
   };
 })();
