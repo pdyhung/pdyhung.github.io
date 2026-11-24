@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chu vi, diện tích trên mặt phẳng tọa độ · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch06_chung.js"></script>
+<script defer src="../assets/widgets/ch06_da_giac.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 6 · Hình học giải tích · Bài 3</div>
+<h1>Bài 3. Chu vi, diện tích trên mặt phẳng tọa độ <span class="en">(Perimeter and area on the coordinate plane)</span></h1>
+<p class="lead">Biết tọa độ các đỉnh, ta tính được chu vi bằng công thức khoảng cách và diện tích bằng ba cách: đáy nhân chiều cao, "bao hình chữ nhật rồi trừ", và công thức dây giày.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Tính chu vi đa giác khi biết tọa độ các đỉnh.</li><li>Tính diện tích tam giác, tứ giác bằng cách bao bởi hình chữ nhật rồi trừ các tam giác vuông.</li><li>Dùng công thức dây giày (Shoelace) để tính diện tích đa giác bất kỳ không tự cắt.</li><li>Dùng diện tích để tính chiều cao của tam giác.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Một mảnh đất được đo đạc và ghi lại bằng tọa độ các mốc ranh giới (đơn vị mét): $A(-4; -2)$, $B(3; -3)$, $C(4; 2)$, $D(-2; 4)$. Không có cạnh nào nằm ngang hay thẳng đứng, nên chưa dùng ngay được công thức "đáy nhân chiều cao". Làm sao tính diện tích mảnh đất?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>Chu vi</h3>
+<p>Chu vi đa giác là tổng độ dài các cạnh. Mỗi cạnh tính bằng công thức khoảng cách. Ví dụ, chu vi tam giác $ABC$ là $AB + BC + CA$.</p>
+<h3>Diện tích: ba cách</h3>
+<table>
+<tr><th>Cách</th><th>Dùng khi</th><th>Ý tưởng</th></tr>
+<tr><td>Đáy × chiều cao</td><td>Có cạnh nằm ngang hoặc thẳng đứng</td><td>Đọc độ dài đáy, chiều cao trực tiếp từ tọa độ</td></tr>
+<tr><td>Bao hình chữ nhật rồi trừ</td><td>Tam giác, đa giác có ít đỉnh</td><td>$S = S_{HCN} -$ (các tam giác vuông ở góc)</td></tr>
+<tr><td>Công thức dây giày</td><td>Mọi đa giác không tự cắt</td><td>Tổng các tích chéo của tọa độ</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Công thức dây giày (Shoelace)</div>
+<p>Đa giác $A_1A_2\ldots A_n$ không tự cắt, các đỉnh $A_i(x_i; y_i)$ được liệt kê theo thứ tự đi vòng quanh hình. Diện tích của nó là</p>
+<p>$$S = \frac{1}{2}\left|\,(x_1y_2 - x_2y_1) + (x_2y_3 - x_3y_2) + \cdots + (x_ny_1 - x_1y_n)\,\right|.$$</p>
+<p>Với tam giác $ABC$, công thức thu gọn thành</p>
+<p>$$S = \frac{1}{2}\left|\,x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B)\,\right|.$$</p>
+</div>
+<p>Tên gọi 
+<b>công thức dây giày</b> <span class="en">(shoelace formula)</span>
+ đến từ cách tính: viết các tọa độ thành hai cột rồi nhân chéo, các đường nối trông như dây giày đan chéo. Tổng trong dấu giá trị tuyệt đối dương khi các đỉnh xếp ngược chiều kim đồng hồ, âm khi xếp cùng chiều kim đồng hồ; lấy giá trị tuyệt đối thì được diện tích trong cả hai trường hợp.</p>
+<p>Cách "bao hình chữ nhật" với tam giác: vẽ 
+<b>hình chữ nhật bao</b> <span class="en">(bounding rectangle)</span>
+ có các cạnh song song với hai trục và đi qua các đỉnh. Phần nằm ngoài tam giác thường gồm ba tam giác vuông; mỗi tam giác có cạnh huyền là một cạnh của tam giác, hai cạnh góc vuông là $|\Delta x|$, $|\Delta y|$ của cạnh đó, nên có diện tích $\frac{1}{2}|\Delta x|\cdot|\Delta y|$.</p>
+
+<h2>3. Khám phá: đa giác kéo được</h2>
+<div data-widget="ch06_da_giac" data-n="4" data-title="Chu vi và diện tích đa giác" data-try="chọn số đỉnh (3 đến 6), kéo các đỉnh hoặc <b>gõ tọa độ</b> vào ô rồi nhấn Enter. Bảng số đo cho độ dài từng cạnh, chu vi, tổng Σ của công thức dây giày và diện tích. Chọn 3 đỉnh để thấy ba tam giác vuông S₁, S₂, S₃ bị trừ khỏi hình chữ nhật bao. Thử kéo một đỉnh vượt qua cạnh đối diện để thấy cảnh báo “đa giác tự cắt”."></div>
+<p>Hình mặc định chính là mảnh đất ở phần Khởi động: diện tích $38\ \text{m}^2$. Thử đổi thứ tự đi vòng (nhập tọa độ sao cho các đỉnh xếp cùng chiều kim đồng hồ): tổng Σ đổi dấu nhưng diện tích không đổi.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Chu vi và diện tích tam giác</div>
+<p>Cho tam giác $A(-3; -2)$, $B(4; -1)$, $C(1; 4)$. Tính chu vi và diện tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p><b>Chu vi.</b> $AB = \sqrt{7^2 + 1^2} = \sqrt{50} \approx 7{,}07$; $BC = \sqrt{(-3)^2 + 5^2} = \sqrt{34} \approx 5{,}83$; $CA = \sqrt{(-4)^2 + (-6)^2} = \sqrt{52} \approx 7{,}21$. Chu vi $\approx 20{,}11$.</p>
+<p><b>Diện tích (bao hình chữ nhật).</b> Hình chữ nhật bao có $x$ từ $-3$ đến $4$, $y$ từ $-2$ đến $4$: diện tích $7 \cdot 6 = 42$. Ba tam giác vuông ở ngoài có diện tích $\frac{1}{2}\cdot 7\cdot 1 = 3{,}5$; $\frac{1}{2}\cdot 3\cdot 5 = 7{,}5$; $\frac{1}{2}\cdot 4\cdot 6 = 12$. Vậy $S = 42 - (3{,}5 + 7{,}5 + 12) = 19$.</p>
+<p><b>Kiểm tra bằng dây giày.</b> $\frac{1}{2}\left|(-3)(-1 - 4) + 4(4 - (-2)) + 1(-2 - (-1))\right| = \frac{1}{2}|15 + 24 - 1| = 19$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Có cạnh song song với trục</div>
+<p>Tính diện tích hình thang $A(-2; -1)$, $B(5; -1)$, $C(3; 3)$, $D(0; 3)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB$ và $DC$ cùng nằm ngang ($y = -1$ và $y = 3$) nên song song: đó là hai đáy. $AB = 5 - (-2) = 7$, $DC = 3 - 0 = 3$, chiều cao là khoảng cách giữa hai đường $y = -1$ và $y = 3$, bằng $4$.</p>
+<p>$$S = \frac{(7 + 3)\cdot 4}{2} = 20.$$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Diện tích mảnh đất (công thức dây giày)</div>
+<p>Tính diện tích tứ giác $A(-4; -2)$, $B(3; -3)$, $C(4; 2)$, $D(-2; 4)$ ở phần Khởi động.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Tính bốn tích chéo theo thứ tự $A \to B \to C \to D \to A$:</p>
+<ul>
+<li>$x_Ay_B - x_By_A = (-4)(-3) - 3\cdot(-2) = 12 + 6 = 18$</li>
+<li>$x_By_C - x_Cy_B = 3\cdot 2 - 4\cdot(-3) = 6 + 12 = 18$</li>
+<li>$x_Cy_D - x_Dy_C = 4\cdot 4 - (-2)\cdot 2 = 16 + 4 = 20$</li>
+<li>$x_Dy_A - x_Ay_D = (-2)(-2) - (-4)\cdot 4 = 4 + 16 = 20$</li>
+</ul>
+<p>Tổng $\Sigma = 76$, nên $S = \frac{1}{2}\cdot 76 = 38\ \text{m}^2$. (Cách bao hình chữ nhật: $8 \cdot 7 = 56$, trừ bốn tam giác vuông ở góc $3{,}5 + 2{,}5 + 6 + 6 = 18$, cũng được $38$.)</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Tam giác vuông</div>
+<p>Cho $A(1; 1)$, $B(5; 4)$, $C(-2; 5)$. Chứng tỏ tam giác $ABC$ vuông cân tại $A$, rồi tính diện tích và chu vi.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB = \sqrt{4^2 + 3^2} = 5$, $AC = \sqrt{(-3)^2 + 4^2} = 5$, $BC = \sqrt{(-7)^2 + 1^2} = \sqrt{50}$.</p>
+<p>Vì $AB^2 + AC^2 = 25 + 25 = 50 = BC^2$ nên tam giác vuông tại $A$ (định lý Pythagore đảo); lại có $AB = AC$ nên vuông cân.</p>
+<p>$S = \frac{1}{2}\cdot AB\cdot AC = 12{,}5$; chu vi $= 10 + \sqrt{50} \approx 17{,}07$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Dùng diện tích để tính chiều cao</div>
+<p>Với tam giác ở Ví dụ 1, tính độ dài đường cao kẻ từ $C$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$S = \frac{1}{2}\cdot AB\cdot h_C$, nên $h_C = \frac{2S}{AB} = \frac{2\cdot 19}{\sqrt{50}} = \frac{38}{\sqrt{50}} \approx 5{,}37$.</p>
+<p>Cách này tránh được việc tìm chân đường cao. (Bài 5 sẽ tìm chân đường cao bằng phương trình đường thẳng.)</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Thứ tự các đỉnh</b> trong công thức dây giày phải là thứ tự đi vòng quanh đa giác. Liệt kê lộn xộn (ví dụ $A, C, B, D$ cho tứ giác lồi $ABCD$) tạo thành đa giác tự cắt và cho kết quả sai.</li>
+<li><b>Đừng quên tích cuối</b> $x_ny_1 - x_1y_n$ (quay về đỉnh đầu) và <b>đừng quên chia 2</b>.</li>
+<li>Tổng Σ âm không phải là lỗi: chỉ có nghĩa các đỉnh xếp cùng chiều kim đồng hồ. Lấy giá trị tuyệt đối.</li>
+<li>Cách "bao hình chữ nhật trừ ba tam giác vuông" chỉ đủ khi tam giác có một đỉnh trùng góc hình chữ nhật và hai đỉnh còn lại nằm trên hai cạnh đối diện với góc đó. Nếu một đỉnh nằm hẳn bên trong hình chữ nhật thì phải trừ thêm một hình chữ nhật nhỏ (minh họa sẽ báo khi gặp trường hợp này).</li>
+<li>Chu vi thường là số vô tỉ (có căn); diện tích của đa giác có các đỉnh tọa độ nguyên luôn là bội của $0{,}5$.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Diện tích hình chữ nhật $A(1; 1)$, $B(6; 1)$, $C(6; 4)$, $D(1; 4)$ bằng:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $15$</label>
+<label><input type="radio" name="q1" value="b"> $16$</label>
+<label><input type="radio" name="q1" value="c"> $20$</label>
+<label><input type="radio" name="q1" value="d"> $30$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Chiều dài $6 - 1 = 5$, chiều rộng $4 - 1 = 3$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="16" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Tính chu vi hình chữ nhật $A(1; 1)$, $B(6; 1)$, $C(6; 4)$, $D(1; 4)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Chu vi $= 2(5 + 3) = 16$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="24" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tính diện tích tam giác $A(0; 0)$, $B(8; 0)$, $C(3; 6)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Đáy $AB = 8$ nằm trên trục hoành, chiều cao là tung độ của $C$: $6$. $S = \frac{1}{2}\cdot 8\cdot 6 = 24$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="16" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tính chu vi tam giác $A(1; 2)$, $B(4; 6)$, $C(7; 2)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = \sqrt{9 + 16} = 5$, $BC = \sqrt{9 + 16} = 5$, $CA = 6$. Chu vi $= 16$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="14" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Vận dụng</span></div>
+<p>Dùng công thức dây giày, tính diện tích tam giác $A(-2; 1)$, $B(3; -2)$, $C(4; 3)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(-2)(-2) - 3\cdot 1 = 1$; $3\cdot 3 - 4\cdot(-2) = 17$; $4\cdot 1 - (-2)\cdot 3 = 10$. $\Sigma = 28$, $S = 14$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Khi tính bằng công thức dây giày, tổng $\Sigma$ (trước khi lấy giá trị tuyệt đối) là một số âm. Điều đó có nghĩa là:</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> Đã tính sai</label>
+<label><input type="radio" name="q6" value="b"> Đa giác tự cắt</label>
+<label><input type="radio" name="q6" value="c"> Các đỉnh được liệt kê cùng chiều kim đồng hồ</label>
+<label><input type="radio" name="q6" value="d"> Đa giác không lồi</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Dấu của Σ cho biết chiều đi vòng. Thử trong minh họa: dòng Ghi chú cuối bảng số đo nói rõ chiều.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="28" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tính diện tích tứ giác $A(-3; 0)$, $B(0; -4)$, $C(5; 0)$, $D(0; 3)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai đường chéo $AC$ (trên trục hoành, dài 8) và $BD$ (trên trục tung, dài 7) vuông góc, nên $S = \frac{1}{2}\cdot 8\cdot 7 = 28$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Cho tam giác $A(0; 0)$, $B(6; 8)$, $C(10; 0)$. Tính độ dài đường cao kẻ từ $C$ xuống $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Đáy $AC = 10$, chiều cao từ $B$ là $8$, nên $S = 40$. $AB = \sqrt{36 + 64} = 10$. $h_C = \frac{2S}{AB} = \frac{80}{10} = 8$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Chu vi bằng tổng các cạnh, mỗi cạnh tính bằng công thức khoảng cách.</li><li>Có cạnh song song với trục: dùng đáy × chiều cao.</li><li>Bao hình chữ nhật: $S = S_{HCN}$ trừ các tam giác vuông (và hình chữ nhật nhỏ nếu có) ở ngoài.</li><li>Công thức dây giày: $S = \frac{1}{2}\left|\sum (x_iy_{i+1} - x_{i+1}y_i)\right|$, các đỉnh theo thứ tự đi vòng.</li><li>Chiều cao tam giác: $h = \frac{2S}{\text{đáy}}$.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

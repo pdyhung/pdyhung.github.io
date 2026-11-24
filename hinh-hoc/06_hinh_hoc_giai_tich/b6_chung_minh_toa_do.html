@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chứng minh bằng tọa độ · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch06_chung.js"></script>
+<script defer src="../assets/widgets/ch06_chung_minh.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 6 · Hình học giải tích · Bài 6</div>
+<h1>Bài 6. Chứng minh bằng tọa độ <span class="en">(Coordinate proofs)</span></h1>
+<p class="lead">Đặt hình vào một hệ trục thật khéo, gán cho các đỉnh những tọa độ bằng chữ, rồi chỉ cần tính toán: nhiều định lý hình học trở thành vài dòng đại số.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Biết chọn hệ trục tọa độ thuận tiện và gán tọa độ tổng quát (bằng chữ) cho các đỉnh.</li><li>Chọn đúng công cụ (khoảng cách, trung điểm, hệ số góc) cho từng loại kết luận.</li><li>Chứng minh được các tính chất: đường trung bình, trung tuyến của tam giác vuông, đường chéo hình bình hành, tứ giác nối trung điểm.</li><li>Nhận dạng tứ giác cụ thể (hình bình hành, hình chữ nhật, hình thoi, hình vuông) từ tọa độ các đỉnh.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Vẽ một tứ giác bất kỳ, rồi nối trung điểm của bốn cạnh liên tiếp. Dù tứ giác méo mó đến đâu, hình mới luôn là một hình bình hành! Đo vài hình thì chỉ thấy "có vẻ đúng". Muốn chắc chắn đúng với <b>mọi</b> tứ giác, ta cần một chứng minh, và tọa độ cho ta một cách chứng minh rất gọn.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Phương pháp chứng minh bằng tọa độ</div>
+<ol>
+<li><b>Chọn hệ trục thuận tiện:</b> đặt một đỉnh tại gốc $O$, một cạnh nằm trên trục $Ox$; nếu có góc vuông, đặt hai cạnh góc vuông trên hai trục.</li>
+<li><b>Gán tọa độ tổng quát</b> bằng chữ ($a, b, c, \ldots$) sao cho hình vẫn là hình tổng quát. Khi có trung điểm, nên dùng $2a, 2b, 2c$ để tránh phân số.</li>
+<li><b>Tính</b> bằng các công thức khoảng cách, trung điểm, hệ số góc.</li>
+<li><b>Kết luận</b> tính chất cần chứng minh, nói rõ vì sao kết quả đúng với mọi giá trị của các chữ.</li>
+</ol>
+</div>
+<table>
+<tr><th>Muốn chứng minh</th><th>Công cụ tọa độ</th></tr>
+<tr><td>Hai đoạn thẳng bằng nhau</td><td>Công thức khoảng cách</td></tr>
+<tr><td>Hai đường thẳng song song</td><td>Hệ số góc bằng nhau (hoặc cùng thẳng đứng)</td></tr>
+<tr><td>Hai đường thẳng vuông góc</td><td>Tích hệ số góc bằng $-1$, hoặc định lý Pythagore đảo</td></tr>
+<tr><td>Một điểm là trung điểm; hai đoạn cắt nhau tại trung điểm mỗi đoạn</td><td>Công thức trung điểm</td></tr>
+<tr><td>Ba điểm thẳng hàng</td><td>Hệ số góc $AB$ bằng hệ số góc $AC$</td></tr>
+<tr><td>Tứ giác là hình bình hành</td><td>Hai đường chéo có cùng trung điểm</td></tr>
+</table>
+<p>Để nhận dạng tứ giác, đi từng bước: là 
+<b>hình bình hành</b> <span class="en">(parallelogram)</span>
+ (hai đường chéo có cùng trung điểm); thêm hai đường chéo bằng nhau thì là hình chữ nhật; thêm hai cạnh kề bằng nhau thì là hình thoi; có cả hai thì là hình vuông.</p>
+<p>Lưu ý: kiểm tra trên vài hình cụ thể chỉ là <b>minh họa</b>, không phải chứng minh. Một 
+<b>chứng minh bằng tọa độ</b> <span class="en">(coordinate proof)</span>
+ phải dùng tọa độ bằng chữ để bao quát mọi trường hợp.</p>
+
+<h2>3. Khám phá: kiểm tra trên hình động</h2>
+<div data-widget="ch06_chung_minh" data-mode="hbh" data-title="Phòng thí nghiệm chứng minh bằng tọa độ" data-try="chọn bài toán trong ô “Bài toán”, rồi kéo các đỉnh hoặc <b>gõ tọa độ</b>. Bảng tính cập nhật trung điểm, hệ số góc, độ dài và dòng Kết luận. Với “Hình bình hành”, kéo D lệch đi để thấy hai trung điểm tách nhau, rồi bấm nút đặt lại D. Với “Đường trung bình” và “Varignon”, kéo thế nào kết luận cũng luôn đúng: đó chính là điều các chứng minh ở mục 4 khẳng định."></div>
+<p>Hình động giúp ta <b>đoán</b> và <b>kiểm tra</b>; các ví dụ dưới đây <b>chứng minh</b> những điều quan sát được.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Đường trung bình của tam giác</div>
+<p>Chứng minh: đoạn thẳng nối trung điểm hai cạnh của một tam giác thì song song với cạnh thứ ba và bằng nửa cạnh đó.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đặt $B(0; 0)$, $C(2c; 0)$ trên trục hoành và $A(2a; 2b)$ với $b \ne 0$, $c > 0$. Gọi $M$, $N$ là trung điểm của $AB$, $AC$:</p>
+<p>$$M(a; b), \qquad N(a + c; b).$$</p>
+<p>$M$ và $N$ có cùng tung độ $b$, nên $MN$ nằm ngang, song song với $BC$ (nằm trên trục hoành). Độ dài: $MN = (a + c) - a = c$, còn $BC = 2c$. Vậy $MN \parallel BC$ và $MN = \frac{1}{2}BC$. $\blacksquare$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Trung tuyến ứng với cạnh huyền</div>
+<p>Chứng minh: trong tam giác vuông, trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đặt góc vuông tại gốc: $A(0; 0)$, $B(2b; 0)$, $C(0; 2c)$. Trung điểm cạnh huyền $BC$ là $M(b; c)$.</p>
+<p>$$AM = \sqrt{b^2 + c^2}, \qquad BC = \sqrt{(2b)^2 + (2c)^2} = 2\sqrt{b^2 + c^2}.$$</p>
+<p>Vậy $AM = \frac{1}{2}BC$. Hệ quả: $M$ cách đều $A$, $B$, $C$, tức tâm đường tròn ngoại tiếp tam giác vuông là trung điểm cạnh huyền. $\blacksquare$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Đường chéo hình bình hành</div>
+<p>Chứng minh: hai đường chéo của hình bình hành cắt nhau tại trung điểm của mỗi đường.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đặt $A(0; 0)$, $B(a; 0)$, $D(b; c)$ với $a > 0$, $c \ne 0$. Vì $DC \parallel AB$ và $DC = AB$ (cùng hướng), đi từ $D$ sang phải $a$ đơn vị ta được $C(a + b; c)$.</p>
+<p>Trung điểm $AC$: $\left(\frac{a + b}{2}; \frac{c}{2}\right)$. Trung điểm $BD$: $\left(\frac{a + b}{2}; \frac{c}{2}\right)$. Hai trung điểm trùng nhau, nên hai đường chéo cắt nhau tại trung điểm của mỗi đường. $\blacksquare$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Tứ giác nối trung điểm (định lý Varignon)</div>
+<p>Chứng minh: với mọi tứ giác $ABCD$, các trung điểm $M, N, P, Q$ của $AB, BC, CD, DA$ tạo thành một hình bình hành.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đặt $A(2a_1; 2a_2)$, $B(2b_1; 2b_2)$, $C(2c_1; 2c_2)$, $D(2d_1; 2d_2)$. Khi đó $M(a_1 + b_1; a_2 + b_2)$, $N(b_1 + c_1; b_2 + c_2)$, $P(c_1 + d_1; c_2 + d_2)$, $Q(d_1 + a_1; d_2 + a_2)$.</p>
+<p>Trung điểm của $MP$ và của $NQ$ đều bằng $\left(\frac{a_1 + b_1 + c_1 + d_1}{2}; \frac{a_2 + b_2 + c_2 + d_2}{2}\right)$. Hai đường chéo của $MNPQ$ có chung trung điểm, nên $MNPQ$ là hình bình hành. $\blacksquare$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Nhận dạng một tứ giác cụ thể</div>
+<p>Chứng minh $A(-1; 0)$, $B(3; 2)$, $C(4; 0)$, $D(0; -2)$ là bốn đỉnh của một hình chữ nhật.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Trung điểm $AC$: $\left(\frac{3}{2}; 0\right)$; trung điểm $BD$: $\left(\frac{3}{2}; 0\right)$. Trùng nhau nên $ABCD$ là hình bình hành.</p>
+<p>$AC = \sqrt{5^2 + 0^2} = 5$, $BD = \sqrt{(-3)^2 + (-4)^2} = 5$. Hình bình hành có hai đường chéo bằng nhau là hình chữ nhật. (Kiểm tra thêm: hệ số góc $AB = \frac{1}{2}$, $BC = -2$, tích bằng $-1$.) $\blacksquare$</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Đừng gán tọa độ làm mất tính tổng quát.</b> Ví dụ, đặt một tam giác bất kỳ là $A(0; 0)$, $B(4; 0)$, $C(0; 3)$ là sai, vì như vậy tam giác đã bị coi là vuông. Hãy dùng chữ và chỉ dùng những ràng buộc mà giả thiết cho phép.</li>
+<li>Với hình bình hành, chỉ được chọn tự do <b>ba</b> đỉnh; đỉnh thứ tư phải tính ra ($C(a + b; c)$), không được đặt tùy ý.</li>
+<li>Muốn chứng minh song song bằng hệ số góc, cần chú ý trường hợp đường thẳng đứng (không có hệ số góc).</li>
+<li>Chứng minh tứ giác là hình chữ nhật: "có ba góc vuông" hoặc "hình bình hành có hai đường chéo bằng nhau". Chỉ có "hai đường chéo bằng nhau" thôi là chưa đủ (ví dụ hình thang cân).</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Muốn chứng minh hai đường thẳng (không thẳng đứng) vuông góc bằng tọa độ, ta kiểm tra:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Hai hệ số góc bằng nhau</label>
+<label><input type="radio" name="q1" value="b"> Tích hai hệ số góc bằng $-1$</label>
+<label><input type="radio" name="q1" value="c"> Tổng hai hệ số góc bằng 0</label>
+<label><input type="radio" name="q1" value="d"> Hai đường thẳng cắt trục tung tại cùng một điểm</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem bảng công cụ ở mục 2.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Cách đặt tọa độ thuận tiện nhất cho hình vuông cạnh $a$ là:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $(0; 0)$, $(a; 0)$, $(a; a)$, $(0; a)$</label>
+<label><input type="radio" name="q2" value="b"> $(1; 1)$, $(a; 1)$, $(a; a)$, $(1; a)$</label>
+<label><input type="radio" name="q2" value="c"> $(0; 0)$, $(a; 0)$, $(2a; a)$, $(a; a)$</label>
+<label><input type="radio" name="q2" value="d"> $(0; 0)$, $(a; a)$, $(2a; 0)$, $(a; -a)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đặt một đỉnh tại gốc và hai cạnh trên hai trục. Phương án cuối cũng là hình vuông nhưng cạnh bằng $a\sqrt2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $A(1; 2)$, $B(5; 4)$, $C(7; 8)$. Tìm hoành độ điểm $D$ để $ABCD$ là hình bình hành.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai đường chéo $AC$, $BD$ có chung trung điểm: $x_D = x_A + x_C - x_B = 1 + 7 - 5 = 3$ (và $y_D = 2 + 8 - 4 = 6$).</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Ba điểm $A(1; 1)$, $B(3; 5)$, $C(5; 9)$:</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> Thẳng hàng</label>
+<label><input type="radio" name="q4" value="b"> Tạo thành tam giác vuông tại $B$</label>
+<label><input type="radio" name="q4" value="c"> Tạo thành tam giác cân tại $A$</label>
+<label><input type="radio" name="q4" value="d"> Tạo thành tam giác đều</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hệ số góc $AB = \frac{4}{2} = 2$, hệ số góc $AC = \frac{8}{4} = 2$: bằng nhau nên ba điểm thẳng hàng.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $A(0; 0)$, $B(8; 0)$, $C(0; 6)$. Tính độ dài trung tuyến $AM$ ứng với cạnh huyền $BC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$M(4; 3)$, $AM = 5$; cũng bằng $\frac{1}{2}BC = \frac{1}{2}\cdot 10$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Tứ giác $A(0; 0)$, $B(4; 0)$, $C(5; 3)$, $D(1; 3)$ là:</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> Hình bình hành, không phải hình chữ nhật hay hình thoi</label>
+<label><input type="radio" name="q6" value="b"> Hình chữ nhật</label>
+<label><input type="radio" name="q6" value="c"> Hình thoi</label>
+<label><input type="radio" name="q6" value="d"> Không phải hình bình hành</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Trung điểm $AC$ và $BD$ đều là $(2{,}5; 1{,}5)$: hình bình hành. $AC = \sqrt{34} \ne BD = \sqrt{18}$: không phải hình chữ nhật. $AB = 4 \ne AD = \sqrt{10}$: không phải hình thoi.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Cho tam giác $A(-2; 4)$, $B(-4; -2)$, $C(6; -2)$. Gọi $M$, $N$ là trung điểm của $AB$, $AC$. Tính $MN$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$M(-3; 1)$, $N(2; 1)$, $MN = 5$, đúng bằng $\frac{1}{2}BC = \frac{10}{2}$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="22" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Tứ giác $A(0; 0)$, $B(6; 0)$, $C(8; 6)$, $D(2; 8)$. Gọi $M, N, P, Q$ là trung điểm của $AB, BC, CD, DA$. Tính diện tích tứ giác $MNPQ$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$M(3; 0)$, $N(7; 3)$, $P(5; 7)$, $Q(1; 4)$. Dây giày: $9 + 34 + 13 - 12 = 44$, $S = 22$. Nhận xét: $S_{ABCD} = 44$, gấp đôi $S_{MNPQ}$ (điều này luôn đúng).</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Chọn hệ trục khéo (đỉnh ở gốc, cạnh trên trục) và dùng tọa độ bằng chữ để chứng minh cho mọi trường hợp.</li><li>Bằng nhau: khoảng cách; song song: hệ số góc bằng nhau; vuông góc: tích hệ số góc bằng $-1$; trung điểm: công thức trung điểm.</li><li>Đã chứng minh: đường trung bình, trung tuyến ứng với cạnh huyền, đường chéo hình bình hành, tứ giác Varignon.</li><li>Nhận dạng tứ giác: hình bình hành → (đường chéo bằng nhau) hình chữ nhật → (thêm hai cạnh kề bằng nhau) hình vuông.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

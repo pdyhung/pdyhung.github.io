@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra chương 8 · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 8 · Hình học không gian · Kiểm tra chương</div>
+<h1>Kiểm tra chương 8: Hình học không gian <span class="en">(Unit test)</span></h1>
+<p class="lead">15 câu ôn tập toàn chương. Làm lần lượt, bấm “Kiểm tra” sau mỗi câu; điểm số hiện ở cuối trang. Nên làm sau khi đã học xong Bài 1 – Bài 7.</p>
+<h2>Bài kiểm tra</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>37,7</code>). Làm tròn đến hai chữ số thập phân nếu cần; với kết quả chứa $\pi$, dùng $\pi \approx 3{,}14159$.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Bài 1</span></div>
+<p>Hình lăng trụ tam giác có bao nhiêu mặt?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> 3</label>
+<label><input type="radio" name="q1" value="b"> 4</label>
+<label><input type="radio" name="q1" value="c"> 5</label>
+<label><input type="radio" name="q1" value="d"> 6</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai đáy và ba mặt bên.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.001">
+<div class="q-head">Câu 2 <span class="q-level">Bài 1</span></div>
+<p>Một khối đa diện lồi có 8 đỉnh và 6 mặt. Nó có bao nhiêu cạnh?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$C = \text{Đ} + M - 2 = 8 + 6 - 2 = 12$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="d">
+<div class="q-head">Câu 3 <span class="q-level">Bài 2</span></div>
+<p>Hình nào <b>không thể</b> là thiết diện của hình lập phương?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Tam giác đều</label>
+<label><input type="radio" name="q3" value="b"> Hình thoi</label>
+<label><input type="radio" name="q3" value="c"> Lục giác đều</label>
+<label><input type="radio" name="q3" value="d"> Hình bảy cạnh</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hình lập phương có 6 mặt, nên thiết diện có nhiều nhất 6 cạnh.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 4 <span class="q-level">Bài 2</span></div>
+<p>Cắt hình trụ bởi mặt phẳng chứa trục, thiết diện là:</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> Hình tròn</label>
+<label><input type="radio" name="q4" value="b"> Hình elip</label>
+<label><input type="radio" name="q4" value="c"> Hình chữ nhật</label>
+<label><input type="radio" name="q4" value="d"> Tam giác cân</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai cạnh là hai đường sinh, hai cạnh là đường kính đáy.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Bài 3</span></div>
+<p>Quay nửa hình tròn quanh đường kính, ta được:</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> Hình nón</label>
+<label><input type="radio" name="q5" value="b"> Hình cầu</label>
+<label><input type="radio" name="q5" value="c"> Hình trụ</label>
+<label><input type="radio" name="q5" value="d"> Hình xuyến</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Mỗi điểm của nửa hình tròn vạch một đường tròn quanh đường kính.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="351.86" data-tol="0.05">
+<div class="q-head">Câu 6 <span class="q-level">Bài 3</span></div>
+<p>Hình chữ nhật 4 cm × 7 cm quay quanh cạnh 7 cm. Tính thể tích khối tạo thành (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$r = 4$, $h = 7$: $V = 112\pi \approx 351{,}86$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 7 <span class="q-level">Bài 4</span></div>
+<p>Hai khối cùng chiều cao, ở mọi độ cao có thiết diện bằng nhau. Kết luận nào đúng?</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> Hai khối bằng nhau</label>
+<label><input type="radio" name="q7" value="b"> Hai khối có cùng thể tích</label>
+<label><input type="radio" name="q7" value="c"> Hai khối có cùng diện tích toàn phần</label>
+<label><input type="radio" name="q7" value="d"> Không kết luận được gì</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Nguyên lý Cavalieri nói về thể tích, không nói hình dạng.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="75" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Bài 5</span></div>
+<p>Hình chóp có đáy là hình vuông cạnh 5 cm, chiều cao 9 cm. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = \frac13 \cdot 25 \cdot 9 = 75$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="37.7" data-tol="0.02">
+<div class="q-head">Câu 9 <span class="q-level">Bài 5</span></div>
+<p>Hình nón có bán kính đáy 3 cm, đường sinh 5 cm. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = 4$; $V = 12\pi \approx 37{,}70$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="87.96" data-tol="0.02">
+<div class="q-head">Câu 10 <span class="q-level">Bài 6</span></div>
+<p>Hình trụ có bán kính 2 cm, cao 7 cm. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = 28\pi \approx 87{,}96$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="113.1" data-tol="0.02">
+<div class="q-head">Câu 11 <span class="q-level">Bài 6</span></div>
+<p>Hình cầu có đường kính 6 cm. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$R = 3$: $V = 36\pi \approx 113{,}10$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="13.61" data-tol="0.02">
+<div class="q-head">Câu 12 <span class="q-level">Bài 6</span></div>
+<p>Viên thuốc gồm hình trụ bán kính 1 mm, dài 3 mm và hai nửa hình cầu bán kính 1 mm ở hai đầu. Tính thể tích (mm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = 3\pi + \frac43\pi = \frac{13\pi}{3} \approx 13{,}61$ mm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="197.15" data-tol="0.02">
+<div class="q-head">Câu 13 <span class="q-level">Bài 6</span></div>
+<p>Khối lập phương cạnh 6 cm bị khoét một lỗ trụ bán kính 1 cm xuyên qua hai mặt đối diện. Tính thể tích còn lại (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$216 - 6\pi \approx 197{,}15$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1500" data-tol="0.01">
+<div class="q-head">Câu 14 <span class="q-level">Bài 7</span></div>
+<p>Một huyện có 12 000 người sống trên 8 km². Tính mật độ dân số (người/km²).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$12\,000 : 8 = 1\,500$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="393.5" data-tol="0.05">
+<div class="q-head">Câu 15 <span class="q-level">Bài 7</span></div>
+<p>Khối sắt có thể tích 50 cm³, khối lượng riêng 7,87 g/cm³. Tính khối lượng (g).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$m = 7{,}87 \cdot 50 = 393{,}5$ g.</p></details>
+</div>
+<div class="score" id="score"></div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

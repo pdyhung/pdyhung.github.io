@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chứng minh bằng phép biến hình · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch02_common.js"></script>
+<script defer src="../assets/widgets/ch02_chung_minh.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 2 · Tính chất phép biến hình và chứng minh · Bài 6</div>
+<h1>Bài 6. Chứng minh bằng phép biến hình <span class="en">(Proofs with transformations)</span></h1>
+<p class="lead">Muốn chứng minh hai đoạn thẳng bằng nhau hay hai góc bằng nhau, một cách rất gọn là tìm một phép dời hình biến cái này thành cái kia. Bài này luyện cách chọn phép biến hình và viết lập luận chặt chẽ.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Nắm cấu trúc của một chứng minh bằng phép biến hình: chọn phép, xác định ảnh, dùng tính bảo toàn.</li><li>Chứng minh được: tam giác cân có hai góc ở đáy bằng nhau; hai góc đối đỉnh bằng nhau; hình bình hành có các cạnh đối bằng nhau.</li><li>Dùng phép đối xứng trục giải bài toán đường đi ngắn nhất.</li><li>Tránh lập luận vòng quanh khi xác định ảnh của một điểm.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Gấp đôi một tấm bìa hình tam giác cân sao cho hai cạnh bên chồng lên nhau. Bạn sẽ thấy hai góc ở đáy chồng khít. Trò gấp giấy này thực chất là một phép đối xứng trục, và có thể viết thành một chứng minh hoàn chỉnh.</p>
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Phương pháp bốn bước</div>
+<ol>
+<li><b>Chọn phép biến hình $F$</b> phù hợp với hình: hình có "trục" (phân giác, trung trực) thì nghĩ tới đối xứng trục; có "tâm" (trung điểm chung, giao điểm) thì nghĩ tới đối xứng tâm hoặc phép quay; có hai đoạn song song bằng nhau thì nghĩ tới tịnh tiến.</li>
+<li><b>Xác định ảnh của các điểm then chốt</b>, chỉ dựa vào định nghĩa của $F$ và giả thiết.</li>
+<li><b>Suy ra $F$ biến hình thứ nhất thành hình thứ hai</b> (đoạn thành đoạn, góc thành góc).</li>
+<li><b>Dùng tính bảo toàn</b> (độ dài, góc) để kết luận.</li>
+</ol>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Các công cụ hay dùng</div>
+<ul>
+<li>$\text{Đ}_d$ giữ nguyên mọi điểm trên $d$. Nếu $d$ là phân giác của góc $\widehat{xOy}$ thì $\text{Đ}_d$ biến tia $Ox$ thành tia $Oy$.</li>
+<li>Phép đối xứng tâm (phép quay $180^\circ$) biến tia $Ox$ thành tia đối của nó, biến đường thẳng thành đường thẳng song song hoặc trùng với nó.</li>
+<li>Phép tịnh tiến biến đường thẳng thành đường thẳng song song hoặc trùng với nó.</li>
+<li>Phép dời hình bảo toàn độ dài và số đo góc; giao điểm của hai đường biến thành giao điểm của hai ảnh.</li>
+</ul>
+</div>
+<h2>3. Khám phá: xem chứng minh chuyển động</h2>
+<div data-widget="ch02_chung_minh" data-scene="can" data-title="Chứng minh bằng phép biến hình" data-try="chọn định lý cần chứng minh, bấm “Bước tiếp” để đọc từng bước lập luận; đến bước dùng phép biến hình, hình màu cam sẽ chuyển động. Kéo thanh “Tiến trình” hoặc gõ phần trăm để dừng giữa chừng. <b>Gõ số</b> (cạnh bên, đáy, góc, tọa độ đỉnh) hoặc kéo các điểm để đổi hình: bảng số đo cho thấy các cặp đại lượng luôn bằng nhau."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Với tam giác cân, nhập cạnh bên $AB = AC = 5$, đáy $BC = 6$. Khi đó $\cos\widehat{B} = \dfrac{3}{5}$ nên $\widehat{B} = \widehat{C} \approx 53{,}1^\circ$; bảng số đo hiện đúng giá trị này, và $MB = MC = 3$, $\widehat{AMB} = 90^\circ$. Với góc đối đỉnh, nhập góc $AOB = 60$: bảng cho góc $A'OB' = 60^\circ$ và góc kề bù $BOA' = 120^\circ$.</p>
+</div>
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tam giác cân có hai góc ở đáy bằng nhau</div>
+<p>Cho tam giác $ABC$ có $AB = AC$. Chứng minh $\widehat{B} = \widehat{C}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $d$ là đường phân giác của góc $\widehat{BAC}$, xét phép đối xứng trục $\text{Đ}_d$.</p>
+<ul>
+<li>$A \in d$ nên $\text{Đ}_d(A) = A$.</li>
+<li>Vì $d$ là phân giác, $\text{Đ}_d$ biến tia $AB$ thành tia $AC$. Điểm $B' = \text{Đ}_d(B)$ nằm trên tia $AC$ và $AB' = AB = AC$ (phép đối xứng bảo toàn độ dài). Trên tia $AC$ chỉ có một điểm cách $A$ một khoảng $AC$, nên $B' = C$. Tương tự $\text{Đ}_d(C) = B$.</li>
+<li>Vậy $\text{Đ}_d$ biến góc $\widehat{ABC}$ thành góc $\widehat{ACB}$. Phép dời hình bảo toàn góc nên $\widehat{B} = \widehat{C}$.</li>
+</ul>
+<p>Lập luận còn cho thêm: $d$ là trung trực của $BC$, nên phân giác góc ở đỉnh cũng là đường cao và trung tuyến.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Hai góc đối đỉnh bằng nhau</div>
+<p>Hai đường thẳng $AA'$ và $BB'$ cắt nhau tại $O$ ($O$ nằm giữa $A$ và $A'$, giữa $B$ và $B'$). Chứng minh $\widehat{AOB} = \widehat{A'OB'}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Xét phép quay $Q_{(O, 180^\circ)}$ (phép đối xứng tâm $O$). Nó biến tia $OA$ thành tia đối của nó là tia $OA'$, biến tia $OB$ thành tia $OB'$. Do đó nó biến góc $\widehat{AOB}$ thành góc $\widehat{A'OB'}$. Phép quay bảo toàn góc, nên $\widehat{AOB} = \widehat{A'OB'}$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Hình bình hành</div>
+<p>Cho hình bình hành $ABCD$ ($AB \parallel CD$, $AD \parallel BC$). Chứng minh $AB = CD$, $AD = BC$ và hai đường chéo cắt nhau tại trung điểm mỗi đường.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $O$ là trung điểm của $AC$, xét phép đối xứng tâm $\text{Đ}_O$. Nó biến $A \mapsto C$, $C \mapsto A$.</p>
+<ul>
+<li>$\text{Đ}_O$ biến đường thẳng $AB$ thành đường thẳng đi qua $C$ và song song (hoặc trùng) với $AB$; đó chính là đường thẳng $CD$.</li>
+<li>Đường thẳng $BC$ đi qua $C$ nên ảnh của nó đi qua $A$ và song song với $BC$; đó chính là đường thẳng $AD$.</li>
+<li>$B$ là giao điểm của hai đường thẳng $AB$ và $BC$, nên ảnh của $B$ là giao điểm của $CD$ và $AD$, tức là $D$.</li>
+<li>Vậy $\text{Đ}_O$ biến $A, B, C, D$ thành $C, D, A, B$: $AB = CD$, $BC = DA$, $\widehat{A} = \widehat{C}$, và $O$ là trung điểm của $BD$.</li>
+</ul>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Đường đi ngắn nhất (bài toán Heron)</div>
+<p>Cho $A(1; 3)$, $B(5; 1)$ ở cùng phía đối với trục $Ox$. Tìm điểm $M$ trên $Ox$ sao cho $MA + MB$ nhỏ nhất, và tính giá trị nhỏ nhất đó.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $A' = \text{Đ}_{Ox}(A) = (1; -3)$. Mọi điểm $M$ trên $Ox$ nằm trên trung trực của $AA'$ nên $MA = MA'$. Do đó
+$$MA + MB = MA' + MB \ge A'B,$$
+dấu bằng khi $M$ nằm trên đoạn $A'B$. Đường thẳng $A'B$ qua $(1; -3)$ và $(5; 1)$ có phương trình $y = x - 4$, cắt $Ox$ tại $M(4; 0)$.</p>
+<p>Giá trị nhỏ nhất: $A'B = \sqrt{4^2 + 4^2} = 4\sqrt2 \approx 5{,}66$. Kiểm tra: $MA = \sqrt{9 + 9} = 3\sqrt2$, $MB = \sqrt{1 + 1} = \sqrt2$, tổng $4\sqrt2$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Định lý đảo</div>
+<p>Tam giác $ABC$ có $\widehat{B} = \widehat{C}$. Chứng minh $AB = AC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $d$ là trung trực của $BC$, xét $\text{Đ}_d$: nó biến $B \leftrightarrow C$ và giữ nửa mặt phẳng bờ $BC$ chứa $A$. Tia $BA$ tạo với tia $BC$ góc $\widehat{B}$; ảnh của nó là tia xuất phát từ $C$, tạo với tia $CB$ góc $\widehat{B} = \widehat{C}$, cùng phía với $A$: đó chính là tia $CA$. Tương tự $\text{Đ}_d$ biến tia $CA$ thành tia $BA$. Vậy ảnh của $A$ (giao của hai tia $BA$, $CA$) là giao của hai tia $CA$, $BA$, tức là $A$. Suy ra $A \in d$, nên $AB = AC$.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Không lập luận vòng quanh.</b> Trong Ví dụ 1, không được nói "$\text{Đ}_d(B) = C$ vì $\widehat{B} = \widehat{C}$": đó chính là điều cần chứng minh. Phải dùng giả thiết $AB = AC$ và việc $\text{Đ}_d$ biến tia $AB$ thành tia $AC$.</li>
+<li>Để xác định ảnh của một điểm, thường cần <b>hai</b> thông tin: ảnh nằm trên đường nào (tia, đường thẳng), và cách một điểm đã biết bao xa (hoặc là giao của hai đường).</li>
+<li>Chọn phép biến hình <b>trước</b>, rồi mới tính ảnh; đừng "đoán" rằng một phép nào đó biến hình này thành hình kia mà không chứng minh.</li>
+<li>Trong bài toán Heron, $A$ và $B$ phải ở <b>cùng phía</b> với đường thẳng; nếu khác phía thì $M$ chỉ cần là giao của $AB$ với đường thẳng.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Để chứng minh hai góc đối đỉnh bằng nhau, phép biến hình thích hợp nhất là</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> một phép tịnh tiến</label>
+<label><input type="radio" name="q1" value="b"> phép đối xứng tâm tại đỉnh chung của hai góc</label>
+<label><input type="radio" name="q1" value="c"> một phép đối xứng trục bất kỳ</label>
+<label><input type="radio" name="q1" value="d"> phép vị tự tỉ số $2$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép quay 180° quanh đỉnh biến mỗi tia thành tia đối của nó.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Trong chứng minh "tam giác cân tại A có hai góc ở đáy bằng nhau", trục đối xứng được chọn là</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> đường cao kẻ từ B</label>
+<label><input type="radio" name="q2" value="b"> đường phân giác của góc A</label>
+<label><input type="radio" name="q2" value="c"> đường thẳng BC</label>
+<label><input type="radio" name="q2" value="d"> đường trung tuyến kẻ từ C</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép đối xứng qua phân giác góc A biến tia AB thành tia AC.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Trong chứng minh đó, vì sao phép đối xứng qua phân giác góc A biến B thành C?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Vì hai góc B và C bằng nhau</label>
+<label><input type="radio" name="q3" value="b"> Vì nó biến tia AB thành tia AC và AB = AC</label>
+<label><input type="radio" name="q3" value="c"> Vì BC vuông góc với phân giác</label>
+<label><input type="radio" name="q3" value="d"> Vì trung điểm M của BC nằm trên phân giác</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đáp án a là lập luận vòng quanh; c và d là hệ quả, chưa được chứng minh ở bước đó.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="133" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Hai đường thẳng $AA'$ và $BB'$ cắt nhau tại $O$, $\widehat{AOB} = 47^\circ$. Tính $\widehat{BOA'}$ (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\widehat{AOB}$ và $\widehat{BOA'}$ kề bù: $180^\circ - 47^\circ = 133^\circ$. (Còn $\widehat{A'OB'} = 47^\circ$ do đối đỉnh.)</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Hình bình hành $ABCD$ có $A(-3; -2)$, $B(3; -2)$, $D(-1; 2)$. Tìm hoành độ của $C$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{AB} = \overrightarrow{DC}$ nên $C = D + \overrightarrow{AB} = (-1 + 6;\ 2 + 0) = (5; 2)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2.83" data-tol="0.02">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Với hình bình hành ở câu trên, gọi $O$ là tâm đối xứng. Tính $OD$ (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$O$ là trung điểm $AC$: $O(1; 0)$. $OD = \sqrt{2^2 + 2^2} = 2\sqrt2 \approx 2{,}83$ (bằng $OB$).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8.49" data-tol="0.02">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Cho $A(0; 2)$, $B(6; 4)$. Tìm giá trị nhỏ nhất của $MA + MB$ với $M$ chạy trên trục $Ox$ (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$A' = (0; -2)$, giá trị nhỏ nhất là $A'B = \sqrt{36 + 36} = 6\sqrt2 \approx 8{,}49$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Với $A(0; 2)$, $B(6; 4)$ như câu trên, tìm hoành độ của điểm $M$ trên $Ox$ làm $MA + MB$ nhỏ nhất.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Đường thẳng $A'B$ qua $(0; -2)$ và $(6; 4)$: $y = x - 2$, cắt $Ox$ tại $M(2; 0)$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Chứng minh bằng phép biến hình: chọn phép, xác định ảnh các điểm then chốt, suy ra ảnh của hình, dùng tính bảo toàn.</li><li>Tam giác cân: đối xứng qua phân giác góc ở đỉnh. Góc đối đỉnh: đối xứng tâm tại đỉnh. Hình bình hành: đối xứng tâm tại trung điểm đường chéo.</li><li>Bài toán đường đi ngắn nhất: lấy đối xứng một điểm qua đường thẳng rồi nối thẳng.</li><li>Xác định ảnh chỉ bằng giả thiết và định nghĩa, không dùng điều cần chứng minh.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khoảng cách và trung điểm · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch06_chung.js"></script>
+<script defer src="../assets/widgets/ch06_khoang_cach.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 6 · Hình học giải tích · Bài 1</div>
+<h1>Bài 1. Khoảng cách và trung điểm <span class="en">(Distance and midpoint)</span></h1>
+<p class="lead">Khi mỗi điểm được gắn một cặp số, ta đo được đoạn thẳng mà không cần thước: chỉ cần trừ, bình phương rồi khai căn. Đây là bước đầu tiên của hình học giải tích.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Tính được khoảng cách giữa hai điểm khi biết tọa độ, và giải thích công thức bằng định lý Pythagore.</li><li>Tìm được tọa độ trung điểm của một đoạn thẳng.</li><li>Tìm được một đầu mút khi biết trung điểm và đầu mút còn lại.</li><li>Dùng khoảng cách để nhận dạng tam giác cân, tam giác vuông trên mặt phẳng tọa độ.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Bản đồ một khu phố được vẽ trên giấy kẻ ô vuông, mỗi ô có cạnh 100 m. Nhà An ở điểm $(1; 2)$, trường học ở điểm $(7; 10)$. Đi theo các con phố (chỉ đi ngang và đi dọc), An phải đi $6 + 8 = 14$ ô, tức 1 400 m. Còn một chiếc flycam bay thẳng từ nhà đến trường thì bay bao xa?</p>
+<p>Đường bay thẳng là cạnh huyền của một tam giác vuông có hai cạnh góc vuông dài 6 ô và 8 ô, nên dài $\sqrt{6^2+8^2} = 10$ ô, tức 1 000 m. Bài này biến nhận xét đó thành công thức dùng được cho mọi cặp điểm.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<p>Trên 
+<b>mặt phẳng tọa độ</b> <span class="en">(coordinate plane)</span>
+ $Oxy$, mỗi điểm $A$ có tọa độ $A(x_A; y_A)$, trong đó $x_A$ là 
+<b>hoành độ</b> <span class="en">(x-coordinate)</span>
+ và $y_A$ là 
+<b>tung độ</b> <span class="en">(y-coordinate)</span>
+.</p>
+<p>Cho hai điểm $A(x_A; y_A)$ và $B(x_B; y_B)$. Lấy điểm $C(x_B; y_A)$: đoạn $AC$ nằm ngang, đoạn $CB$ thẳng đứng, nên tam giác $ACB$ vuông tại $C$ với</p>
+<p>$$AC = |x_B - x_A|, \qquad CB = |y_B - y_A|.$$</p>
+<p>Theo định lý Pythagore, $AB^2 = AC^2 + CB^2$. Vì bình phương của một số bằng bình phương giá trị tuyệt đối của nó, ta bỏ được dấu giá trị tuyệt đối.</p>
+<div class="box dinh-ly">
+<div class="box-title">Công thức khoảng cách</div>
+<p>Khoảng cách giữa hai điểm $A(x_A; y_A)$ và $B(x_B; y_B)$ <b>công thức khoảng cách</b> <span class="en">(distance formula)</span> là</p>
+<p>$$AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}.$$</p>
+<p>Viết gọn: $AB = \sqrt{\Delta x^2 + \Delta y^2}$, với $\Delta x = x_B - x_A$ và $\Delta y = y_B - y_A$.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Trung điểm của đoạn thẳng</div>
+<p><b>Trung điểm</b> <span class="en">(midpoint)</span> $M$ của đoạn thẳng $AB$ là điểm nằm trên $AB$ và cách đều hai đầu mút: $MA = MB$. Tọa độ của $M$ là trung bình cộng tọa độ của hai đầu mút:</p>
+<p>$$M\left(\frac{x_A + x_B}{2};\ \frac{y_A + y_B}{2}\right).$$</p>
+</div>
+<p>Vì sao? Trên trục hoành, hình chiếu của $M$ là trung điểm của đoạn nối $x_A$ và $x_B$, tức là điểm $\frac{x_A + x_B}{2}$. Lập luận tương tự với trục tung.</p>
+<p>Từ công thức trung điểm suy ra cách tìm đầu mút còn lại khi biết $A$ và $M$:</p>
+<p>$$x_B = 2x_M - x_A, \qquad y_B = 2y_M - y_A.$$</p>
+<table>
+<tr><th>Trường hợp đặc biệt</th><th>Công thức khoảng cách thu gọn</th><th>Ví dụ</th></tr>
+<tr><td>$A$, $B$ cùng tung độ (đoạn nằm ngang)</td><td>$AB = |x_B - x_A|$</td><td>$A(-2; 3)$, $B(5; 3)$: $AB = 7$</td></tr>
+<tr><td>$A$, $B$ cùng hoành độ (đoạn thẳng đứng)</td><td>$AB = |y_B - y_A|$</td><td>$A(1; -4)$, $B(1; 2)$: $AB = 6$</td></tr>
+<tr><td>$A$ là gốc tọa độ $O$</td><td>$OB = \sqrt{x_B^2 + y_B^2}$</td><td>$B(3; 4)$: $OB = 5$</td></tr>
+</table>
+<h2>3. Khám phá với lưới tọa độ</h2>
+<div data-widget="ch06_khoang_cach"  data-title="Khoảng cách và trung điểm trên lưới tọa độ" data-try="kéo hai điểm A, B (điểm tự bắt vào nút lưới), hoặc <b>gõ tọa độ</b> vào các ô rồi nhấn Enter. Quan sát hai cạnh góc vuông |Δx|, |Δy| và độ dài AB trong bảng số đo. Thử đặt A(1; 3), B(4; 7) để kiểm tra Ví dụ 1. Kéo B sang trái A: Δx âm nhưng AB vẫn dương. Vì sao?"></div>
+<p>Khi kéo, hãy để ý:</p>
+<ul>
+<li>Nếu $A$ và $B$ có cùng tung độ, tam giác vuông "dẹt" thành một đoạn thẳng nằm ngang và $AB = |\Delta x|$.</li>
+<li>Đổi vai trò $A$ và $B$ thì $\Delta x$, $\Delta y$ đổi dấu, nhưng bình phương của chúng không đổi, nên $AB$ không đổi.</li>
+<li>Trung điểm $M$ luôn nằm giữa $A$ và $B$; tọa độ của $M$ có thể không nguyên (ví dụ $0{,}5$) dù $A$, $B$ có tọa độ nguyên.</li>
+</ul>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tính khoảng cách và trung điểm</div>
+<p>Cho $A(1; 3)$ và $B(4; 7)$. Tính $AB$ và tìm tọa độ trung điểm $M$ của $AB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\Delta x = 4 - 1 = 3$, $\Delta y = 7 - 3 = 4$, nên $AB = \sqrt{3^2 + 4^2} = \sqrt{25} = 5$.</p>
+<p>$M\left(\frac{1 + 4}{2}; \frac{3 + 7}{2}\right) = (2{,}5; 5)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tọa độ âm</div>
+<p>Cho $P(-2; 5)$ và $Q(4; -3)$. Tính $PQ$ và tìm trung điểm $I$ của $PQ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\Delta x = 4 - (-2) = 6$, $\Delta y = -3 - 5 = -8$. Do đó $PQ = \sqrt{6^2 + (-8)^2} = \sqrt{36 + 64} = \sqrt{100} = 10$.</p>
+<p>$I\left(\frac{-2 + 4}{2}; \frac{5 + (-3)}{2}\right) = (1; 1)$.</p>
+<p>Chú ý: $(-8)^2 = 64$, không phải $-64$. Khi thay số âm vào công thức, luôn đặt trong ngoặc.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Tìm đầu mút còn lại</div>
+<p>Điểm $M(3; -1)$ là trung điểm của đoạn $AB$, biết $A(-1; 2)$. Tìm tọa độ điểm $B$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Từ $x_M = \frac{x_A + x_B}{2}$ suy ra $x_B = 2x_M - x_A = 2\cdot 3 - (-1) = 7$.</p>
+<p>Tương tự $y_B = 2y_M - y_A = 2\cdot(-1) - 2 = -4$. Vậy $B(7; -4)$.</p>
+<p>Kiểm tra: $\left(\frac{-1 + 7}{2}; \frac{2 + (-4)}{2}\right) = (3; -1)$, đúng bằng $M$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Nhận dạng tam giác</div>
+<p>Cho tam giác có các đỉnh $A(0; 0)$, $B(6; 0)$, $C(3; 5)$. Chứng tỏ tam giác $ABC$ cân và tính chu vi của nó.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB = |6 - 0| = 6$ (đoạn nằm ngang).</p>
+<p>$CA = \sqrt{(0 - 3)^2 + (0 - 5)^2} = \sqrt{9 + 25} = \sqrt{34}$; $CB = \sqrt{(6 - 3)^2 + (0 - 5)^2} = \sqrt{9 + 25} = \sqrt{34}$.</p>
+<p>Vì $CA = CB$ nên tam giác $ABC$ cân tại $C$. Chu vi: $6 + 2\sqrt{34} \approx 6 + 11{,}66 = 17{,}66$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Tìm tọa độ khi biết khoảng cách</div>
+<p>Tìm $y$ để khoảng cách từ $A(1; 2)$ đến $B(4; y)$ bằng 5.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB^2 = (4 - 1)^2 + (y - 2)^2 = 9 + (y - 2)^2$. Điều kiện $AB = 5$ cho $9 + (y - 2)^2 = 25$, tức $(y - 2)^2 = 16$.</p>
+<p>Do đó $y - 2 = 4$ hoặc $y - 2 = -4$, nên $y = 6$ hoặc $y = -2$. Có <b>hai</b> điểm thỏa mãn: $B(4; 6)$ và $B(4; -2)$, đối xứng nhau qua đường thẳng $y = 2$.</p>
+<p>Kiểm tra bằng minh họa: đặt $A(1; 2)$, rồi lần lượt đặt $B(4; 6)$ và $B(4; -2)$; bảng số đo đều cho $AB = 5$.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Bình phương số âm:</b> $(-3)^2 = 9$. Lỗi thường gặp là viết $-3^2 = -9$ khi thay số; hãy luôn đặt số âm trong ngoặc.</li>
+<li><b>Không được "khai căn từng phần":</b> $\sqrt{\Delta x^2 + \Delta y^2} \ne |\Delta x| + |\Delta y|$. Ví dụ $\sqrt{3^2 + 4^2} = 5$, không phải $7$. Tổng $|\Delta x| + |\Delta y|$ là quãng đường đi theo ô lưới, luôn dài hơn hoặc bằng đường thẳng.</li>
+<li><b>Trung điểm là cộng rồi chia 2</b>, không phải trừ: $\frac{x_A + x_B}{2}$. Hiệu $x_B - x_A$ dùng cho khoảng cách.</li>
+<li>Thứ tự hai điểm không quan trọng: $AB = BA$, và trung điểm của $AB$ cũng là trung điểm của $BA$.</li>
+<li>Đáp số khoảng cách thường để ở dạng căn ($\sqrt{34}$) cho chính xác; chỉ làm tròn khi đề yêu cầu.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Khoảng cách từ gốc tọa độ $O(0; 0)$ đến điểm $B(3; 4)$ bằng:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $7$</label>
+<label><input type="radio" name="q1" value="b"> $5$</label>
+<label><input type="radio" name="q1" value="c"> $25$</label>
+<label><input type="radio" name="q1" value="d"> $\sqrt{7}$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Dùng $OB = \sqrt{x_B^2 + y_B^2} = \sqrt{9 + 16}$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Cho $A(2; -4)$ và $B(6; 8)$. Tìm <b>tung độ</b> trung điểm của $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$y_M = \frac{-4 + 8}{2} = 2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="10" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tính khoảng cách giữa $C(-1; 2)$ và $D(5; -6)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$CD = \sqrt{(5 + 1)^2 + (-6 - 2)^2} = \sqrt{36 + 64} = 10$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3.61" data-tol="0.02">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tính khoảng cách giữa $E(2; 1)$ và $F(5; 3)$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$EF = \sqrt{3^2 + 2^2} = \sqrt{13} \approx 3{,}61$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Điểm $M(1; 4)$ là trung điểm của $AB$ với $A(-3; 2)$. Tọa độ của $B$ là:</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> $(-1; 3)$</label>
+<label><input type="radio" name="q5" value="b"> $(5; 6)$</label>
+<label><input type="radio" name="q5" value="c"> $(-7; 0)$</label>
+<label><input type="radio" name="q5" value="d"> $(4; 2)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$x_B = 2\cdot 1 - (-3) = 5$, $y_B = 2\cdot 4 - 2 = 6$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Tính chu vi tam giác có các đỉnh $A(1; 1)$, $B(4; 5)$, $C(1; 5)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = \sqrt{9 + 16} = 5$, $BC = |1 - 4| = 3$, $CA = |5 - 1| = 4$. Chu vi $= 5 + 3 + 4 = 12$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tam giác có các đỉnh $A(-2; 0)$, $B(2; 0)$, $C(0; 3)$ là tam giác gì?</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> Tam giác đều</label>
+<label><input type="radio" name="q7" value="b"> Tam giác cân tại $C$ (không đều)</label>
+<label><input type="radio" name="q7" value="c"> Tam giác vuông tại $C$</label>
+<label><input type="radio" name="q7" value="d"> Tam giác vuông cân</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$CA = CB = \sqrt{4 + 9} = \sqrt{13}$, còn $AB = 4 \ne \sqrt{13}$. Kiểm tra góc $C$: $CA^2 + CB^2 = 26 \ne 16 = AB^2$ nên không vuông.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Điểm $P(x; 3)$ với $x > 0$ cách $Q(1; -1)$ một khoảng bằng 5. Tìm $x$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(x - 1)^2 + (3 + 1)^2 = 25 \Rightarrow (x - 1)^2 = 9 \Rightarrow x = 4$ hoặc $x = -2$. Vì $x > 0$ nên $x = 4$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Khoảng cách: $AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$, chính là định lý Pythagore với hai cạnh góc vuông $|\Delta x|$, $|\Delta y|$.</li><li>Trung điểm: $M\left(\frac{x_A + x_B}{2}; \frac{y_A + y_B}{2}\right)$.</li><li>Biết $A$ và trung điểm $M$: $B(2x_M - x_A;\ 2y_M - y_A)$.</li><li>So sánh các độ dài cạnh giúp nhận dạng tam giác cân, đều; dùng Pythagore đảo để kiểm tra tam giác vuông.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

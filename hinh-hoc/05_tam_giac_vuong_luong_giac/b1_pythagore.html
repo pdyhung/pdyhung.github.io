@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định lý Pythagore · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch05_pythagore.js"></script>
+<script defer src="../assets/widgets/ch05_dao.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 5 · Tam giác vuông và lượng giác · Bài 1</div>
+<h1>Bài 1. Định lý Pythagore <span class="en">(The Pythagorean theorem)</span></h1>
+<p class="lead">Một chiếc thang dài 5 m dựa vào tường, chân thang cách tường 1,4 m. Đầu thang chạm tường ở độ cao bao nhiêu? Định lý Pythagore trả lời ngay câu hỏi đó, chỉ bằng một phép khai căn.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu và chứng minh được định lý Pythagore (bằng ghép hình và bằng tam giác đồng dạng).</li><li>Tính được một cạnh của tam giác vuông khi biết hai cạnh còn lại.</li><li>Dùng định lý Pythagore đảo để kiểm tra một tam giác có vuông hay không.</li><li>Nhận biết các bộ ba Pythagore thường gặp: (3; 4; 5), (5; 12; 13), (8; 15; 17), (7; 24; 25).</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Người thợ xây muốn kiểm tra góc tường có thật vuông không. Họ đo từ góc tường dọc theo một bức tường 3 m, dọc theo bức tường kia 4 m, rồi đo khoảng cách giữa hai điểm vừa đánh dấu. Nếu khoảng cách đó đúng bằng 5 m thì góc tường vuông.</p>
+<p>Vì sao lại là 3, 4 và 5? Có phải chỉ một bộ số này dùng được không? Bài học hôm nay sẽ giải thích mẹo "3 – 4 – 5" đã được dùng từ hàng nghìn năm trước.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<p>Trong tam giác vuông, cạnh đối diện với góc vuông gọi là <b>cạnh huyền</b> <span class="en">(hypotenuse)</span>; đó là cạnh dài nhất. Hai cạnh còn lại gọi là <b>cạnh góc vuông</b> <span class="en">(legs)</span>.</p>
+<div class="box dinh-ly">
+<div class="box-title">Định lý Pythagore</div>
+<p>Trong một tam giác vuông, bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông. Với tam giác $ABC$ vuông tại $C$, đặt $a = BC$, $b = AC$, $c = AB$:</p>
+<p>$$c^2 = a^2 + b^2 .$$</p>
+<p>Đây là <b>định lý Pythagore</b> <span class="en">(Pythagorean theorem)</span>. Từ đó: $c = \sqrt{a^2 + b^2}$, $\; a = \sqrt{c^2 - b^2}$, $\; b = \sqrt{c^2 - a^2}$.</p>
+</div>
+<p><b>Chứng minh 1 (ghép hình).</b> Lấy bốn tam giác vuông bằng nhau, mỗi tam giác có hai cạnh góc vuông $a$, $b$ và cạnh huyền $c$, xếp vào một hình vuông cạnh $a + b$.</p>
+<ul>
+<li>Cách xếp thứ nhất: phần trống là một hình vuông cạnh $c$, có diện tích $c^2$.</li>
+<li>Cách xếp thứ hai: phần trống là hai hình vuông cạnh $a$ và $b$, có tổng diện tích $a^2 + b^2$.</li>
+</ul>
+<p>Hai cách xếp dùng cùng một hình vuông lớn và cùng bốn tam giác, nên phần trống có diện tích bằng nhau: $c^2 = a^2 + b^2$. Bạn có thể xem bốn tam giác trượt từ cách xếp này sang cách xếp kia trong minh họa ở mục 3.</p>
+<p><b>Chứng minh 2 (tam giác đồng dạng).</b> Kẻ đường cao $CH$ của tam giác $ABC$ vuông tại $C$ ($H$ nằm trên $AB$).</p>
+<ul>
+<li>Tam giác $ACH$ và tam giác $ABC$ cùng vuông và có chung góc $A$, nên đồng dạng (g.g). Suy ra $\dfrac{AC}{AB} = \dfrac{AH}{AC}$, tức là $AC^2 = AH \cdot AB$.</li>
+<li>Tương tự, tam giác $BCH$ đồng dạng với tam giác $BAC$, nên $BC^2 = BH \cdot AB$.</li>
+<li>Cộng hai đẳng thức: $AC^2 + BC^2 = AB\,(AH + HB) = AB \cdot AB = AB^2$.</li>
+</ul>
+<div class="box dinh-ly">
+<div class="box-title">Định lý Pythagore đảo</div>
+<p>Nếu một tam giác có bình phương một cạnh bằng tổng bình phương hai cạnh kia thì tam giác đó là tam giác vuông; góc vuông nằm đối diện cạnh đó.</p>
+<p>Tổng quát hơn, gọi $c$ là cạnh lớn nhất của tam giác và so sánh $c^2$ với $a^2 + b^2$:</p>
+</div>
+<table>
+<tr><th>So sánh</th><th>Góc đối diện cạnh $c$</th><th>Loại tam giác</th></tr>
+<tr><td>$c^2 = a^2 + b^2$</td><td>bằng $90^\circ$</td><td>tam giác vuông</td></tr>
+<tr><td>$c^2 < a^2 + b^2$</td><td>nhỏ hơn $90^\circ$</td><td>tam giác nhọn</td></tr>
+<tr><td>$c^2 > a^2 + b^2$</td><td>lớn hơn $90^\circ$</td><td>tam giác tù</td></tr>
+</table>
+<p>Mệnh đề trên gọi là <b>định lý Pythagore đảo</b> <span class="en">(converse of the Pythagorean theorem)</span>. Ba số nguyên dương $a, b, c$ thỏa mãn $a^2 + b^2 = c^2$ gọi là một <b>bộ ba Pythagore</b> <span class="en">(Pythagorean triple)</span>. Nhân cả ba số với cùng một số nguyên dương, ta được một bộ ba Pythagore mới: từ $(3; 4; 5)$ có $(6; 8; 10)$, $(9; 12; 15)$, …</p>
+
+<h2>3. Khám phá bằng minh họa động</h2>
+<div data-widget="ch05_pythagore"  data-title="Ba hình vuông trên ba cạnh và chứng minh ghép hình" data-try="kéo điểm A, B hoặc <b>gõ số</b> vào ô a, b rồi nhấn Enter: diện tích hình vuông tím luôn bằng tổng diện tích hai hình vuông kia. Bấm “▶ Ghép hình” để xem bốn tam giác trượt và phần trống c² biến thành a² + b². Bấm các bộ ba Pythagore để thấy cạnh huyền là số nguyên."></div>
+<p>Khi kéo điểm, để ý dòng $a^2 + b^2$ và dòng $c^2$ trong bảng số đo: hai số này luôn bằng nhau. Trong chế độ ghép hình, các tam giác chỉ <b>tịnh tiến</b> (không quay, không co giãn), nên diện tích của chúng không đổi.</p>
+<div data-widget="ch05_dao" data-sides="5,12,13" data-title="Định lý đảo: ba cạnh này có tạo thành tam giác vuông?" data-try="nhập ba độ dài a, b, c (Enter để áp dụng) hoặc kéo đỉnh C, đỉnh B. Bảng số đo so sánh bình phương cạnh lớn nhất với tổng bình phương hai cạnh kia. Thử các bộ (4; 5; 6) và (2; 3; 4) để thấy tam giác nhọn và tam giác tù."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tìm cạnh huyền</div>
+<p>Tam giác $ABC$ vuông tại $C$ có $AC = 6$ cm, $BC = 8$ cm. Tính $AB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Theo định lý Pythagore: $AB^2 = AC^2 + BC^2 = 36 + 64 = 100$, nên $AB = \sqrt{100} = 10$ cm.</p>
+<p>Đây là bộ ba $(6; 8; 10)$, gấp đôi bộ $(3; 4; 5)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tìm cạnh góc vuông</div>
+<p>Tam giác $MNP$ vuông tại $M$ có cạnh huyền $NP = 13$ và $MN = 5$. Tính $MP$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$MP^2 = NP^2 - MN^2 = 169 - 25 = 144$, nên $MP = 12$.</p>
+<p>Khi tìm cạnh góc vuông, ta lấy bình phương cạnh huyền <b>trừ</b> bình phương cạnh góc vuông đã biết.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Dùng định lý đảo</div>
+<p>Mỗi bộ ba độ dài sau có phải là ba cạnh của một tam giác vuông không? (a) $9; 40; 41$. (b) $7; 8; 11$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>(a) Cạnh lớn nhất là 41: $41^2 = 1681$ và $9^2 + 40^2 = 81 + 1600 = 1681$. Hai số bằng nhau nên đây là tam giác vuông, góc vuông đối diện cạnh 41.</p>
+<p>(b) Cạnh lớn nhất là 11: $11^2 = 121$ còn $7^2 + 8^2 = 49 + 64 = 113$. Vì $121 > 113$ nên tam giác không vuông; góc đối diện cạnh 11 là góc tù.</p>
+<p>Hãy kiểm tra bằng minh họa thứ hai: nhập 7, 8, 11.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Bài toán chiếc thang</div>
+<p>Một chiếc thang dài 5 m dựa vào bức tường thẳng đứng, chân thang cách chân tường 1,4 m. Hỏi đầu thang chạm tường ở độ cao bao nhiêu?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Thang, tường và mặt đất tạo thành tam giác vuông tại chân tường, cạnh huyền là chiếc thang. Gọi $h$ là độ cao cần tìm:</p>
+<p>$$h = \sqrt{5^2 - 1{,}4^2} = \sqrt{25 - 1{,}96} = \sqrt{23{,}04} = 4{,}8 \text{ (m)}.$$</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Xác định đúng cạnh huyền trước khi dùng công thức.</b> Cạnh huyền là cạnh đối diện góc vuông, không phải "cạnh còn thiếu" trong đề bài. Lỗi hay gặp: tính $\sqrt{13^2 + 5^2}$ thay vì $\sqrt{13^2 - 5^2}$ khi 13 là cạnh huyền.</li>
+<li>Định lý Pythagore <b>chỉ đúng cho tam giác vuông</b>. Với tam giác bất kỳ, $c^2$ có thể lớn hơn hoặc nhỏ hơn $a^2 + b^2$.</li>
+<li>$\sqrt{a^2 + b^2} \ne a + b$. Ví dụ $\sqrt{3^2 + 4^2} = 5$ chứ không phải 7.</li>
+<li>Khi dùng định lý đảo, phải so sánh bình phương của <b>cạnh lớn nhất</b> với tổng bình phương hai cạnh kia.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác $ABC$ vuông tại $A$. Đẳng thức nào đúng?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $BC^2 = AB^2 + AC^2$</label>
+<label><input type="radio" name="q1" value="b"> $AB^2 = BC^2 + AC^2$</label>
+<label><input type="radio" name="q1" value="c"> $AC^2 = AB^2 + BC^2$</label>
+<label><input type="radio" name="q1" value="d"> $BC = AB + AC$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cạnh huyền là cạnh đối diện góc vuông $A$, tức là $BC$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Một tam giác vuông có hai cạnh góc vuông dài 9 và 12. Tính cạnh huyền.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sqrt{9^2 + 12^2} = \sqrt{81 + 144} = \sqrt{225} = 15$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="24" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Một tam giác vuông có cạnh huyền 25 và một cạnh góc vuông 7. Tính cạnh góc vuông còn lại.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sqrt{25^2 - 7^2} = \sqrt{625 - 49} = \sqrt{576} = 24$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Bộ ba độ dài nào là ba cạnh của một tam giác vuông?</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> $4; 5; 6$</label>
+<label><input type="radio" name="q4" value="b"> $6; 8; 11$</label>
+<label><input type="radio" name="q4" value="c"> $10; 24; 26$</label>
+<label><input type="radio" name="q4" value="d"> $5; 7; 9$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$10^2 + 24^2 = 100 + 576 = 676 = 26^2$. Các bộ khác không thỏa mãn, ví dụ $4^2 + 5^2 = 41 \ne 6^2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.0711" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tính độ dài đường chéo của hình vuông cạnh 5 cm (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Đường chéo chia hình vuông thành hai tam giác vuông cân: $d = \sqrt{5^2 + 5^2} = 5\sqrt2 \approx 7{,}07$ cm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2.5" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Một chiếc thang dài 6,5 m dựa vào tường, đầu thang chạm tường ở độ cao 6 m. Chân thang cách chân tường bao nhiêu mét?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sqrt{6{,}5^2 - 6^2} = \sqrt{42{,}25 - 36} = \sqrt{6{,}25} = 2{,}5$ m.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tam giác có ba cạnh 6, 7, 9 là tam giác gì?</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> Tam giác vuông</label>
+<label><input type="radio" name="q7" value="b"> Tam giác nhọn</label>
+<label><input type="radio" name="q7" value="c"> Tam giác tù</label>
+<label><input type="radio" name="q7" value="d"> Không tồn tại tam giác như vậy</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cạnh lớn nhất là 9: $9^2 = 81$, còn $6^2 + 7^2 = 85$. Vì $81 < 85$ nên góc lớn nhất là góc nhọn: tam giác nhọn.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="20" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một khu vườn hình chữ nhật dài 40 m, rộng 30 m. Bạn An đi từ góc này sang góc đối diện theo đường chéo thay vì đi dọc hai cạnh. An đi ngắn hơn bao nhiêu mét?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Đường chéo: $\sqrt{40^2 + 30^2} = 50$ m. Đi dọc hai cạnh: $40 + 30 = 70$ m. Ngắn hơn $70 - 50 = 20$ m.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Tam giác vuông: bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông, $c^2 = a^2 + b^2$.</li><li>Tìm cạnh huyền: $c = \sqrt{a^2 + b^2}$; tìm cạnh góc vuông: $a = \sqrt{c^2 - b^2}$.</li><li>Định lý đảo ($c$ là cạnh lớn nhất): $c^2 = a^2 + b^2$ thì tam giác vuông; $c^2 < a^2 + b^2$ thì nhọn; $c^2 > a^2 + b^2$ thì tù.</li><li>Bộ ba Pythagore thường gặp: $(3; 4; 5)$, $(5; 12; 13)$, $(8; 15; 17)$, $(7; 24; 25)$ và các bội của chúng.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

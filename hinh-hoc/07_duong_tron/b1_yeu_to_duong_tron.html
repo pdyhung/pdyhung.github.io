@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Các yếu tố của đường tròn · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch07_yeu_to.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 7 · Đường tròn · Bài 1</div>
+<h1>Bài 1. Các yếu tố của đường tròn <span class="en">(Parts of a circle)</span></h1>
+<p class="lead">Bánh xe, mặt đồng hồ, miệng cốc, vòng sóng lan trên mặt hồ: đường tròn có mặt ở khắp nơi. Bài này gọi tên từng bộ phận của đường tròn và tìm ra những quan hệ đơn giản nhưng rất hay dùng giữa chúng.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu được định nghĩa đường tròn; nhận biết tâm, bán kính, đường kính, dây, cung nhỏ, cung lớn.</li><li>Xác định vị trí của một điểm đối với đường tròn bằng cách so sánh khoảng cách tới tâm với bán kính.</li><li>Vận dụng quan hệ giữa đường kính và dây: đường kính là dây lớn nhất; đường kính vuông góc với dây thì đi qua trung điểm của dây.</li><li>Tính chu vi đường tròn, độ dài dây và khoảng cách từ tâm tới dây.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Bạn có một chiếc đĩa giấy hình tròn nhưng không biết tâm nằm ở đâu. Chỉ với thước thẳng và êke, làm sao tìm được tâm? Gợi ý: hãy nghĩ xem tâm có liên quan gì đến <b>trung điểm của một dây</b>. Câu trả lời nằm ngay sau định lý ở mục 2.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p><b>Đường tròn</b> <span class="en">(circle)</span> tâm $O$ bán kính $r$ (với $r > 0$) là hình gồm tất cả các điểm cách điểm $O$ một khoảng bằng $r$. Kí hiệu: $(O; r)$.</p>
+<p>Điểm $O$ là <b>tâm</b> <span class="en">(center)</span> của đường tròn. Mỗi đoạn thẳng nối tâm với một điểm của đường tròn, và cả độ dài $r$ của nó, đều gọi là <b>bán kính</b> <span class="en">(radius)</span>.</p>
+</div>
+<p>So sánh khoảng cách $OM$ với bán kính $r$, ta biết điểm $M$ nằm ở đâu:</p>
+<table>
+<tr><th>Vị trí của điểm M</th><th>Điều kiện</th></tr>
+<tr><td>M nằm <b>trong</b> đường tròn</td><td>$OM < r$</td></tr>
+<tr><td>M nằm <b>trên</b> đường tròn</td><td>$OM = r$</td></tr>
+<tr><td>M nằm <b>ngoài</b> đường tròn</td><td>$OM > r$</td></tr>
+</table>
+<div class="box dinh-nghia">
+<div class="box-title">Dây, đường kính, cung</div>
+<ul>
+<li>Đoạn thẳng nối hai điểm bất kỳ của đường tròn là một <b>dây</b> <span class="en">(chord)</span>.</li>
+<li>Dây đi qua tâm là <b>đường kính</b> <span class="en">(diameter)</span>. Đường kính dài gấp đôi bán kính: $d = 2r$.</li>
+<li>Hai điểm $P, Q$ trên đường tròn chia đường tròn thành hai phần, mỗi phần là một <b>cung</b> <span class="en">(arc)</span>, kí hiệu $\overset{\frown}{PQ}$. Phần nhỏ hơn là <b>cung nhỏ</b> <span class="en">(minor arc)</span>, phần lớn hơn là <b>cung lớn</b> <span class="en">(major arc)</span>. Nếu $PQ$ là đường kính thì mỗi cung là một <b>nửa đường tròn</b> <span class="en">(semicircle)</span>.</li>
+</ul>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý (đường kính và dây)</div>
+<ol>
+<li>Trong các dây của một đường tròn, <b>đường kính là dây lớn nhất</b>.</li>
+<li>Đường kính vuông góc với một dây thì đi qua <b>trung điểm</b> của dây ấy. Ngược lại, đường kính đi qua trung điểm của một dây không đi qua tâm thì vuông góc với dây ấy.</li>
+</ol>
+<p>Hệ quả: gọi $H$ là trung điểm của dây $PQ$ (không đi qua tâm), tam giác $OHP$ vuông tại $H$ nên
+$$OH^2 + \left(\frac{PQ}{2}\right)^2 = r^2 .$$</p>
+</div>
+<p><i>Vì sao đường kính là dây lớn nhất?</i> Với dây $PQ$ bất kỳ, theo bất đẳng thức tam giác: $PQ \le OP + OQ = 2r$. Dấu bằng xảy ra khi $O$ nằm trên đoạn $PQ$, tức là khi $PQ$ là đường kính.</p>
+<p><i>Vì sao đường kính vuông góc với dây thì đi qua trung điểm của dây?</i> Tam giác $OPQ$ cân tại $O$ (vì $OP = OQ = r$), nên đường cao $OH$ cũng là đường trung tuyến: $HP = HQ$.</p>
+<p>Từ đây có cách tìm tâm chiếc đĩa ở phần Khởi động: vẽ hai dây không song song, dựng đường trung trực của mỗi dây. Cả hai đường trung trực đều đi qua tâm, nên giao điểm của chúng chính là tâm.</p>
+<div class="box dinh-ly">
+<div class="box-title">Chu vi đường tròn</div>
+<p><b>Chu vi</b> <span class="en">(circumference)</span> của đường tròn bán kính $r$ (đường kính $d$) là
+$$C = 2\pi r = \pi d, \qquad \pi \approx 3{,}14159.$$
+Số $\pi$ là tỉ số giữa chu vi và đường kính; tỉ số này như nhau với mọi đường tròn.</p>
+</div>
+
+<h2>3. Khám phá bằng hình động</h2>
+<div data-widget="ch07_yeu_to"  data-title="Tâm, bán kính, dây, đường kính và hai cung" data-try="kéo hai điểm P, Q trên đường tròn và quan sát độ dài dây PQ. Khi nào dây dài nhất? Bấm “Biến PQ thành đường kính” để kiểm tra. Bạn cũng có thể <b>gõ số</b> vào ô bán kính và vị trí (°) của P, Q rồi nhấn Enter: bảng số đo luôn thỏa mãn OH² + (PQ/2)² = r²."></div>
+<p>Khi thử, hãy để ý:</p>
+<ul>
+<li>Dây $PQ$ càng gần tâm (khoảng cách $OH$ càng nhỏ) thì càng dài. Khi $OH = 0$, dây trở thành đường kính, dài $2r$.</li>
+<li>Số đo cung nhỏ cộng số đo cung lớn luôn bằng $360^\circ$ (số đo cung được học kỹ ở Bài 2).</li>
+<li>Kéo tâm $O$ đi chỗ khác: hình dịch chuyển nhưng mọi số đo giữ nguyên.</li>
+</ul>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Khoảng cách từ tâm đến dây</div>
+<p>Cho đường tròn $(O; 5\ \text{cm})$ và dây $AB = 8$ cm. Tính khoảng cách từ $O$ đến $AB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Kẻ $OH \perp AB$ tại $H$. Theo định lý, $H$ là trung điểm của $AB$ nên $HA = 4$ cm. Trong tam giác $OHA$ vuông tại $H$:
+$$OH = \sqrt{OA^2 - HA^2} = \sqrt{5^2 - 4^2} = 3\ \text{cm}.$$</p>
+<p>Kiểm tra bằng minh họa: nhập bán kính $5$, vị trí $P = 0$ và $Q = 106{,}3$. Dây $PQ$ hiện $8$ và khoảng cách $OH$ hiện $3$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tính độ dài dây</div>
+<p>Đường tròn $(O; 13)$ có dây $CD$ cách tâm một khoảng bằng $5$. Tính $CD$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $H$ là trung điểm $CD$, khi đó $OH \perp CD$ và $OH = 5$. Ta có $HC = \sqrt{13^2 - 5^2} = \sqrt{144} = 12$, nên $CD = 2 \cdot 12 = 24$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Bánh xe đạp</div>
+<p>Bánh xe đạp có đường kính $70$ cm. Khi bánh xe lăn đúng $1000$ vòng (không trượt), xe đi được bao xa?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Mỗi vòng, xe đi được một quãng bằng chu vi bánh xe: $C = \pi d = 70\pi \approx 219{,}91$ cm.</p>
+<p>Sau $1000$ vòng: $1000 \cdot 70\pi = 70\,000\pi \approx 219\,911$ cm, tức khoảng $2{,}2$ km.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Dây ngắn nhất đi qua một điểm</div>
+<p>Cho đường tròn $(O; 5)$ và điểm $M$ với $OM = 4$. Trong các dây đi qua $M$, dây nào ngắn nhất? Tính độ dài dây đó.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Vì $OM = 4 < 5$ nên $M$ nằm trong đường tròn. Xét dây $PQ$ bất kỳ đi qua $M$, gọi $H$ là hình chiếu của $O$ trên $PQ$. Ta có $OH \le OM$ (đường vuông góc không dài hơn đường xiên), và $PQ = 2\sqrt{r^2 - OH^2}$ càng nhỏ khi $OH$ càng lớn.</p>
+<p>Vậy dây ngắn nhất khi $OH = OM$, tức là dây vuông góc với $OM$ tại $M$. Độ dài dây đó: $PQ = 2\sqrt{5^2 - 4^2} = 2\cdot 3 = 6$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Bán kính và đường kính:</b> đề cho đường kính $d$ thì bán kính là $d/2$. Nhầm hai đại lượng này làm kết quả sai gấp đôi (hoặc gấp bốn khi tính diện tích).</li>
+<li><b>Dây và cung</b> là hai đối tượng khác nhau: dây là đoạn thẳng, cung là một phần của đường tròn. Cung luôn dài hơn dây có cùng hai đầu mút.</li>
+<li>Đường kính là một dây, nhưng không phải dây nào cũng là đường kính.</li>
+<li>Mệnh đề “đường kính đi qua trung điểm của dây thì vuông góc với dây” cần điều kiện <b>dây không đi qua tâm</b>: hai đường kính bất kỳ luôn đi qua trung điểm của nhau nhưng chưa chắc vuông góc.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Đường tròn có đường kính $10$ cm thì bán kính bằng:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $20$ cm</label>
+<label><input type="radio" name="q1" value="b"> $10$ cm</label>
+<label><input type="radio" name="q1" value="c"> $5$ cm</label>
+<label><input type="radio" name="q1" value="d"> $2{,}5$ cm</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Bán kính bằng một nửa đường kính.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Trong các dây của một đường tròn, dây lớn nhất là:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> dây gần tâm nhất</label>
+<label><input type="radio" name="q2" value="b"> đường kính</label>
+<label><input type="radio" name="q2" value="c"> dây vuông góc với một bán kính</label>
+<label><input type="radio" name="q2" value="d"> không có dây lớn nhất</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Với mọi dây $PQ$: $PQ \le OP + OQ = 2r$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="9" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Đường tròn có bán kính $4{,}5$ cm. Tính đường kính (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$d = 2r = 2 \cdot 4{,}5 = 9$ cm.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Cho đường tròn $(O; 5)$ và điểm $M$ với $OM = 6$. Điểm $M$:</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> nằm trong đường tròn</label>
+<label><input type="radio" name="q4" value="b"> nằm trên đường tròn</label>
+<label><input type="radio" name="q4" value="c"> nằm ngoài đường tròn</label>
+<label><input type="radio" name="q4" value="d"> trùng với tâm</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>So sánh $OM = 6$ với $r = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Đường tròn $(O; 10)$ có dây $AB = 12$. Tính khoảng cách từ $O$ đến $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Gọi $H$ là trung điểm $AB$: $HA = 6$, $OH = \sqrt{10^2 - 6^2} = 8$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="43.98" data-tol="0.02">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Tính chu vi đường tròn bán kính $7$ cm.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$C = 2\pi r = 14\pi \approx 43{,}98$ cm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="16" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Dây $AB$ của đường tròn $(O; 10)$ cách tâm một khoảng bằng $6$. Tính độ dài $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Gọi $H$ là trung điểm $AB$: $HA = \sqrt{10^2 - 6^2} = 8$, nên $AB = 2 \cdot 8 = 16$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một đường tròn có chu vi $31{,}4$ cm. Lấy $pi approx 3{,}14$, tính bán kính (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$r = \dfrac{C}{2\pi} \approx \dfrac{31{,}4}{6{,}28} = 5$ cm.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Đường tròn $(O; r)$ gồm các điểm cách $O$ một khoảng $r$. So sánh $OM$ với $r$ để biết $M$ ở trong, trên hay ngoài đường tròn.</li><li>Dây nối hai điểm của đường tròn; đường kính là dây đi qua tâm, dài $2r$, và là dây lớn nhất.</li><li>Đường kính vuông góc với dây thì đi qua trung điểm của dây; khi đó $OH^2 + (PQ/2)^2 = r^2$.</li><li>Hai điểm trên đường tròn chia nó thành một cung nhỏ và một cung lớn.</li><li>Chu vi: $C = 2\pi r = \pi d$.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

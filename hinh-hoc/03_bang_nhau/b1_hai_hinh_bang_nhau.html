@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hai hình bằng nhau · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch03_common.js"></script>
+<script defer src="../assets/widgets/ch03_chong_hinh.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 3 · Sự bằng nhau · Bài 1</div>
+<h1>Bài 1. Hai hình bằng nhau <span class="en">(Congruent figures)</span></h1>
+<p class="lead">Hai con tem cùng loại, hai viên gạch lát nền, hai cánh của một chiếc quạt: ta nói chúng "giống hệt nhau". Hình học diễn đạt ý đó một cách chính xác bằng phép dời hình.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu định nghĩa hai hình bằng nhau thông qua phép dời hình.</li><li>Viết đúng ký hiệu hai tam giác bằng nhau, chỉ ra các cặp đỉnh, cạnh, góc tương ứng.</li><li>Biết rằng hai hình bằng nhau có các đoạn thẳng, góc, chu vi, diện tích tương ứng bằng nhau.</li><li>Nhận ra khi nào hai hình không thể bằng nhau.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Bạn cắt hai hình tam giác từ hai tờ giấy màu. Làm sao biết chúng "giống hệt nhau"? Cách tự nhiên nhất: đặt tờ này lên tờ kia, xê dịch, xoay, nếu cần thì lật mặt, cho đến khi hai hình <b>chồng khít</b> lên nhau.</p>
+<p>Ba thao tác xê dịch, xoay, lật chính là ba phép biến hình đã học: phép tịnh tiến, phép quay, phép đối xứng trục. Chúng đều là phép dời hình, nghĩa là không làm thay đổi khoảng cách giữa hai điểm bất kỳ.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p>Hai hình $\mathcal{H}$ và $\mathcal{H}'$ được gọi là <b>bằng nhau</b> <span class="en">(congruent)</span> nếu có một <b>phép dời hình</b> <span class="en">(rigid motion)</span> biến hình này thành hình kia.</p>
+<p>Phép dời hình là phép biến hình giữ nguyên khoảng cách: với mọi hai điểm $M, N$ và ảnh $M', N'$ của chúng, ta có $M'N' = MN$. Mọi phép dời hình trong mặt phẳng đều là một phép tịnh tiến, một phép quay, một phép đối xứng trục, hoặc hợp của một số phép như vậy.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Hai tam giác bằng nhau</div>
+<p>Nếu một phép dời hình biến $A \mapsto D$, $B \mapsto E$, $C \mapsto F$ thì ta viết $\triangle ABC = \triangle DEF$. Các đỉnh được viết <b>theo đúng thứ tự tương ứng</b>:</p>
+<ul><li><b>đỉnh tương ứng</b> <span class="en">(corresponding vertices)</span>: $A$ và $D$, $B$ và $E$, $C$ và $F$;</li>
+<li>cạnh tương ứng: $AB = DE$, $BC = EF$, $CA = FD$;</li>
+<li>góc tương ứng: $\widehat{A} = \widehat{D}$, $\widehat{B} = \widehat{E}$, $\widehat{C} = \widehat{F}$.</li></ul>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<p>Phép dời hình biến đoạn thẳng thành đoạn thẳng bằng nó, biến góc thành góc bằng nó. Do đó, nếu hai hình bằng nhau thì:</p>
+<ul><li>các đoạn thẳng tương ứng bằng nhau, các góc tương ứng bằng nhau;</li><li>chu vi bằng nhau, diện tích bằng nhau.</li></ul>
+<p>Điều ngược lại <b>không</b> đúng: hai hình có cùng diện tích (hoặc cùng chu vi) chưa chắc bằng nhau.</p>
+</div>
+<table>
+<tr><th>Thao tác với tờ giấy</th><th>Phép dời hình</th><th>Hướng của hình</th></tr>
+<tr><td>Xê dịch, không xoay</td><td>Phép tịnh tiến</td><td>Giữ nguyên</td></tr>
+<tr><td>Xoay quanh một điểm</td><td>Phép quay</td><td>Giữ nguyên</td></tr>
+<tr><td>Lật mặt giấy</td><td>Phép đối xứng trục</td><td>Đổi ngược</td></tr>
+</table>
+<p>Một tam giác có <b>hướng</b> <span class="en">(orientation)</span>: đi $A \to B \to C$ theo chiều kim đồng hồ hoặc ngược chiều. Tịnh tiến và quay giữ nguyên hướng, còn phép đối xứng trục đổi hướng. Vì vậy, nếu hai tam giác bằng nhau nhưng ngược hướng thì nhất định phải "lật" một lần.</p>
+
+<h2>3. Khám phá: chồng khít hai hình</h2>
+<div data-widget="ch03_chong_hinh"  data-title="Dời tam giác cam để chồng khít lên tam giác xanh" data-try="kéo điểm cam (tâm) để tịnh tiến, kéo điểm tím để quay. Quan sát dòng “Hướng của DEF”: nếu ngược hướng, hãy đánh dấu “Lật hình cam”. Khi gần khớp, hình tự hút vào vị trí. Bấm “Tự chồng khít” để xem cả quá trình."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Nhập <b>Tâm quay: hoành độ = -3</b>, <b>tung độ = 0,8</b>, <b>Góc quay = 15</b> rồi đánh dấu <b>Lật hình cam</b>. Bảng số đo cho độ lệch đỉnh bằng $0$: $\triangle DEF$ chồng khít lên $\triangle ABC$. Để ý rằng trong suốt quá trình dời hình, ba cạnh và ba góc của $DEF$ không hề thay đổi.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Đọc các yếu tố tương ứng</div>
+<p>Cho $\triangle ABC = \triangle MNP$ với $AB = 5$ cm, $BC = 7$ cm, $\widehat{A} = 50^\circ$. Tính $MN$, $NP$ và $\widehat{M}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Theo thứ tự viết: $A \leftrightarrow M$, $B \leftrightarrow N$, $C \leftrightarrow P$. Suy ra $MN = AB = 5$ cm, $NP = BC = 7$ cm, $\widehat{M} = \widehat{A} = 50^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Chu vi của hai tam giác bằng nhau</div>
+<p>Cho $\triangle ABC = \triangle DEF$, $AB = 4$, $BC = 6$, $DF = 5$. Tính chu vi $\triangle DEF$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$DE = AB = 4$, $EF = BC = 6$, và $DF = 5$ đã cho. Chu vi $\triangle DEF = 4 + 6 + 5 = 15$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Kiểm tra bằng tọa độ</div>
+<p>Cho $A(1; 1)$, $B(4; 1)$, $C(1; 5)$. Phép quay tâm $O$ góc $90^\circ$ biến chúng thành $A'(-1; 1)$, $B'(-1; 4)$, $C'(-5; 1)$. Kiểm tra $\triangle ABC = \triangle A'B'C'$ bằng độ dài các cạnh.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB = 3$, $AC = 4$, $BC = \sqrt{3^2 + 4^2} = 5$. Tương tự $A'B' = 4 - 1 = 3$, $A'C' = 5 - 1 = 4$, $B'C' = \sqrt{4^2 + 3^2} = 5$. Các cạnh tương ứng bằng nhau, đúng như tính chất của phép quay.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Hai hình không bằng nhau</div>
+<p>Hình vuông cạnh $2$ và hình chữ nhật $1 \times 4$ có bằng nhau không?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Cả hai có diện tích $4$. Nhưng hình vuông có các cạnh dài $2$, còn hình chữ nhật có cạnh dài $4$. Phép dời hình giữ nguyên độ dài nên không thể biến đoạn dài $2$ thành đoạn dài $4$. Vậy hai hình <b>không</b> bằng nhau, dù diện tích bằng nhau.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Thứ tự đỉnh quan trọng.</b> $\triangle ABC = \triangle DEF$ khác với $\triangle ABC = \triangle EDF$. Viết sai thứ tự là lỗi thường gặp nhất.</li>
+<li>Phép vị tự tỉ số $k \ne \pm 1$ <b>không</b> phải phép dời hình: nó làm hình to ra hoặc nhỏ đi, nên ảnh không bằng hình ban đầu.</li>
+<li>Hai tam giác ngược hướng vẫn có thể bằng nhau; khi đó phép dời hình cần có một phép đối xứng trục.</li>
+</ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hai hình được gọi là bằng nhau khi:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Chúng có cùng diện tích</label>
+<label><input type="radio" name="q1" value="b"> Có một phép dời hình biến hình này thành hình kia</label>
+<label><input type="radio" name="q1" value="c"> Chúng có cùng chu vi</label>
+<label><input type="radio" name="q1" value="d"> Có một phép vị tự biến hình này thành hình kia</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem lại định nghĩa ở mục 2.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Cho $\triangle ABC = \triangle DEF$. Góc nào bằng $\widehat{B}$?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $\widehat{D}$</label>
+<label><input type="radio" name="q2" value="b"> $\widehat{E}$</label>
+<label><input type="radio" name="q2" value="c"> $\widehat{F}$</label>
+<label><input type="radio" name="q2" value="d"> $\widehat{C}$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đỉnh thứ hai ứng với đỉnh thứ hai.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Cho $\triangle ABC = \triangle PQR$, $AB = 6$ cm, $BC = 8$ cm. Tính $QR$ (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$QR$ ứng với $BC$ nên $QR = 8$ cm.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="d">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Phép biến hình nào sau đây <b>không</b> luôn biến một hình thành hình bằng nó?</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> Phép tịnh tiến</label>
+<label><input type="radio" name="q4" value="b"> Phép quay</label>
+<label><input type="radio" name="q4" value="c"> Phép đối xứng trục</label>
+<label><input type="radio" name="q4" value="d"> Phép vị tự tỉ số 2</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép vị tự tỉ số 2 nhân mọi độ dài lên 2 lần.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="21" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $\triangle ABC = \triangle DEF$, $AB = 5$, $AC = 7$, $EF = 9$. Tính chu vi $\triangle ABC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$BC = EF = 9$, chu vi $= 5 + 7 + 9 = 21$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="24" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 6$, $AC = 8$. Biết $\triangle ABC = \triangle DEF$, tính diện tích $\triangle DEF$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai hình bằng nhau có diện tích bằng nhau: $S = \frac12 \cdot 6 \cdot 8 = 24$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Phép quay tâm $O$ biến $A(0; 0)$ thành $A'$ và $B(3; 4)$ thành $B'$. Tính độ dài $A'B'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Phép quay là phép dời hình nên $A'B' = AB = \sqrt{3^2 + 4^2} = 5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>$\triangle ABC$ có hướng $A \to B \to C$ ngược chiều kim đồng hồ, $\triangle DEF$ có hướng $D \to E \to F$ cùng chiều kim đồng hồ và $\triangle ABC = \triangle DEF$. Phép dời hình biến $ABC$ thành $DEF$ phải:</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Chỉ gồm phép tịnh tiến</label>
+<label><input type="radio" name="q8" value="b"> Chỉ gồm phép quay</label>
+<label><input type="radio" name="q8" value="c"> Có chứa phép đối xứng trục</label>
+<label><input type="radio" name="q8" value="d"> Không tồn tại</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tịnh tiến và quay giữ nguyên hướng; chỉ phép đối xứng trục đổi hướng.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Hai hình bằng nhau khi có một phép dời hình biến hình này thành hình kia.</li><li>Viết $\triangle ABC = \triangle DEF$ theo đúng thứ tự đỉnh tương ứng.</li><li>Hai hình bằng nhau thì cạnh, góc tương ứng bằng nhau; chu vi, diện tích bằng nhau.</li><li>Tịnh tiến và quay giữ hướng; phép đối xứng trục đổi hướng của hình.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

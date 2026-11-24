@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đường thẳng song song và vuông góc · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch06_chung.js"></script>
+<script defer src="../assets/widgets/ch06_song_song.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 6 · Hình học giải tích · Bài 4</div>
+<h1>Bài 4. Đường thẳng song song và vuông góc <span class="en">(Parallel and perpendicular lines)</span></h1>
+<p class="lead">Độ dốc của một đường thẳng được đo bằng một con số: hệ số góc. Hai đường thẳng song song có cùng hệ số góc; hai đường thẳng vuông góc có tích hai hệ số góc bằng −1.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Tính hệ số góc của đường thẳng đi qua hai điểm; liên hệ hệ số góc với góc nghiêng.</li><li>Nhận biết hai đường thẳng song song, trùng nhau qua hệ số góc.</li><li>Nhận biết hai đường thẳng vuông góc qua điều kiện tích hai hệ số góc bằng $-1$, và hiểu vì sao điều kiện đó đúng.</li><li>Áp dụng để nhận dạng hình thang, hình bình hành, tam giác vuông trên mặt phẳng tọa độ.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Biển báo giao thông "dốc 10%" nghĩa là cứ đi theo phương ngang 100 m thì độ cao thay đổi 10 m. Con số $\frac{10}{100} = 0{,}1$ đo độ dốc của con đường. Hai đoạn đường song song thì dốc như nhau. Vậy hai con đường vuông góc với nhau thì độ dốc của chúng liên hệ thế nào?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Hệ số góc</div>
+<p>Đường thẳng đi qua hai điểm $A(x_A; y_A)$, $B(x_B; y_B)$ với $x_A \ne x_B$ có <b>hệ số góc</b> <span class="en">(slope)</span></p>
+<p>$$a = \frac{y_B - y_A}{x_B - x_A} = \frac{\Delta y}{\Delta x}\quad\left(\frac{\text{độ thay đổi theo chiều dọc}}{\text{độ thay đổi theo chiều ngang}}\right).$$</p>
+<p>Đường thẳng có phương trình $y = ax + b$ có hệ số góc $a$: đi sang phải 1 đơn vị thì đi lên $a$ đơn vị (đi xuống nếu $a < 0$). Nếu $\alpha$ là góc tạo bởi đường thẳng và tia $Ox$ thì $a = \tan\alpha$.</p>
+</div>
+<table>
+<tr><th>Hệ số góc</th><th>Hình dạng đường thẳng (nhìn từ trái sang phải)</th></tr>
+<tr><td>$a > 0$</td><td>Đi lên; $0^\circ < \alpha < 90^\circ$</td></tr>
+<tr><td>$a < 0$</td><td>Đi xuống; $90^\circ < \alpha < 180^\circ$</td></tr>
+<tr><td>$a = 0$</td><td>Nằm ngang ($y = b$)</td></tr>
+<tr><td>Không có</td><td>Thẳng đứng ($x = c$), vì $\Delta x = 0$ không chia được</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Điều kiện song song, vuông góc</div>
+<p>Cho hai đường thẳng $d: y = ax + b$ và $d': y = a'x + b'$.</p>
+<ul>
+<li>$d$ <b>song song</b> <span class="en">(parallel)</span> với $d'$ khi và chỉ khi $a = a'$ và $b \ne b'$. (Nếu $a = a'$ và $b = b'$ thì hai đường thẳng trùng nhau.)</li>
+<li>$d$ <b>vuông góc</b> <span class="en">(perpendicular)</span> với $d'$ khi và chỉ khi $a\cdot a' = -1$, tức là $a' = -\frac{1}{a}$.</li>
+</ul>
+<p>Đường thẳng đứng $x = c$ vuông góc với mọi đường nằm ngang $y = b$; trường hợp này không dùng được tích hệ số góc.</p>
+</div>
+<h3>Vì sao tích hai hệ số góc bằng −1?</h3>
+<p>Trên $d$ (hệ số góc $a$) ta có "tam giác hệ số góc": đi ngang $1$, đi lên $a$. Quay tam giác này $90^\circ$ ngược chiều kim đồng hồ quanh điểm đầu: bước "sang phải $1$" trở thành "lên $1$", còn bước "lên $a$" trở thành "sang trái $a$". Vậy trên đường vuông góc, đi ngang $-a$ thì đi lên $1$, tức hệ số góc là</p>
+<p>$$a' = \frac{1}{-a} = -\frac{1}{a} \quad\Longrightarrow\quad a\cdot a' = -1.$$</p>
+<p>Nói gọn: muốn có hệ số góc của đường vuông góc, ta <b>lật ngược phân số rồi đổi dấu</b>. Ví dụ $\frac{2}{3} \to -\frac{3}{2}$.</p>
+
+<h2>3. Khám phá: xoay đường thẳng</h2>
+<div data-widget="ch06_song_song"  data-title="Xoay đường thẳng d quanh điểm P" data-try="kéo thanh “Góc α” hoặc bấm “Xoay d”. Đường d′ (xanh lá, qua Q) luôn song song với d; đường d⊥ (cam, qua P) luôn vuông góc với d. Quan sát hai tam giác hệ số góc (đi ngang 1, đi lên a) và dòng “Tích a · a⊥” trong bảng số đo. Bạn cũng có thể <b>gõ hệ số góc</b> (ví dụ 3 hoặc −0.5), hoặc gõ góc 90 để thấy d thẳng đứng."></div>
+<p>Khi $d$ gần thẳng đứng ($\alpha$ gần $90^\circ$), hệ số góc của $d$ rất lớn còn hệ số góc của $d_\perp$ rất gần 0; tích vẫn bằng $-1$. Đúng lúc $\alpha = 90^\circ$, $d$ không còn hệ số góc và $d_\perp$ nằm ngang.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tính hệ số góc</div>
+<p>Tính hệ số góc của đường thẳng đi qua $A(1; 2)$ và $B(4; 8)$, và của đường thẳng vuông góc với nó.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$a = \frac{8 - 2}{4 - 1} = \frac{6}{3} = 2$. Đường vuông góc có hệ số góc $-\frac{1}{2}$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Nhận biết song song, vuông góc</div>
+<p>Cho $d_1: y = 3x - 1$, $d_2: y = 3x + 4$, $d_3: y = -\frac{1}{3}x + 2$. Xét vị trí tương đối của $d_1$ với $d_2$ và với $d_3$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$d_1$ và $d_2$ có cùng hệ số góc $3$ và $-1 \ne 4$ nên $d_1 \parallel d_2$.</p>
+<p>$3\cdot\left(-\frac{1}{3}\right) = -1$ nên $d_1 \perp d_3$. Kiểm tra bằng minh họa: gõ hệ số góc 3, bảng số đo cho $a_\perp \approx -0{,}33$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Hai đoạn thẳng song song</div>
+<p>Cho $A(-1; 1)$, $B(3; 3)$, $C(0; -2)$, $D(4; 0)$. Chứng minh $AB \parallel CD$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hệ số góc $AB$: $\frac{3 - 1}{3 - (-1)} = \frac{1}{2}$. Hệ số góc $CD$: $\frac{0 - (-2)}{4 - 0} = \frac{1}{2}$.</p>
+<p>Hai hệ số góc bằng nhau, nhưng cần loại trường hợp hai đường trùng nhau: hệ số góc $AC$ là $\frac{-2 - 1}{0 - (-1)} = -3 \ne \frac{1}{2}$, nên $C$ không nằm trên đường $AB$. Vậy $AB \parallel CD$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Tam giác vuông</div>
+<p>Cho $A(-2; -1)$, $B(2; 1)$, $C(0; 5)$. Chứng minh tam giác $ABC$ vuông tại $B$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hệ số góc $AB$: $\frac{1 - (-1)}{2 - (-2)} = \frac{1}{2}$. Hệ số góc $BC$: $\frac{5 - 1}{0 - 2} = -2$.</p>
+<p>Tích $\frac{1}{2}\cdot(-2) = -1$ nên $AB \perp BC$: tam giác vuông tại $B$. (Kiểm tra lại bằng Pythagore: $AB^2 = 20$, $BC^2 = 20$, $AC^2 = 40 = 20 + 20$. Tam giác còn là tam giác vuông cân.)</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Tìm tham số</div>
+<p>Tìm $m$ để đường thẳng $y = (m - 1)x + 2$ vuông góc với đường thẳng $y = 2x - 3$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Điều kiện: $(m - 1)\cdot 2 = -1 \iff m - 1 = -\frac{1}{2} \iff m = \frac{1}{2}$.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Đúng thứ tự trừ:</b> tử và mẫu phải trừ cùng chiều: $\frac{y_B - y_A}{x_B - x_A}$. Viết $\frac{y_B - y_A}{x_A - x_B}$ sẽ sai dấu.</li>
+<li><b>Hệ số góc của đường vuông góc là "nghịch đảo rồi đổi dấu"</b>, không chỉ đổi dấu ($2 \to -2$ là sai) và không chỉ nghịch đảo ($2 \to \frac{1}{2}$ là sai). Đúng: $2 \to -\frac{1}{2}$.</li>
+<li>Cùng hệ số góc chưa chắc song song: có thể <b>trùng nhau</b>. Kiểm tra thêm hệ số $b$ hoặc một điểm.</li>
+<li>Đường thẳng đứng $x = c$ không có hệ số góc. Đừng viết "hệ số góc bằng vô cùng" hay "bằng 0".</li>
+<li>Hệ số góc $a$ trong $y = ax + b$ chỉ đọc được khi phương trình đã giải theo $y$. Với $2x + 3y = 6$, phải viết lại $y = -\frac{2}{3}x + 2$ thì mới thấy hệ số góc là $-\frac{2}{3}$, không phải $2$.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Tính hệ số góc của đường thẳng đi qua $A(2; -1)$ và $B(5; 8)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$a = \frac{8 - (-1)}{5 - 2} = \frac{9}{3} = 3$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Đường thẳng nào song song với $y = -2x + 5$?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $y = 2x + 5$</label>
+<label><input type="radio" name="q2" value="b"> $y = -2x - 1$</label>
+<label><input type="radio" name="q2" value="c"> $y = \frac{1}{2}x + 5$</label>
+<label><input type="radio" name="q2" value="d"> $y = -\frac{1}{2}x$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Song song khi cùng hệ số góc $-2$ và khác tung độ gốc.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Đường thẳng nào vuông góc với $y = 4x + 1$?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> $y = 4x - 1$</label>
+<label><input type="radio" name="q3" value="b"> $y = -4x + 1$</label>
+<label><input type="radio" name="q3" value="c"> $y = -\frac{1}{4}x + 3$</label>
+<label><input type="radio" name="q3" value="d"> $y = \frac{1}{4}x + 3$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cần $4\cdot a' = -1$, tức $a' = -\frac{1}{4}$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="0.5" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $A(-1; 3)$, $B(3; -5)$. Tính hệ số góc của đường thẳng vuông góc với $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hệ số góc $AB$: $\frac{-5 - 3}{3 + 1} = -2$. Hệ số góc vuông góc: $-\frac{1}{-2} = \frac{1}{2} = 0{,}5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Đường thẳng đi qua $(1; 1)$ và $(1; 5)$ có hệ số góc:</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> $0$</label>
+<label><input type="radio" name="q5" value="b"> $4$</label>
+<label><input type="radio" name="q5" value="c"> Không có (đường thẳng đứng)</label>
+<label><input type="radio" name="q5" value="d"> $1$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai điểm có cùng hoành độ, $\Delta x = 0$: đó là đường thẳng đứng $x = 1$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Tìm $m$ để đường thẳng $y = (2m + 1)x - 3$ song song với đường thẳng $y = 5x + 2$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$2m + 1 = 5 \Rightarrow m = 2$ (và $-3 \ne 2$ nên không trùng).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-4" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Đường thẳng qua $O(0; 0)$ và $B(2; k)$ vuông góc với đường thẳng qua $C(1; 1)$ và $D(5; 3)$. Tìm $k$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hệ số góc $CD = \frac{2}{4} = \frac{1}{2}$, nên hệ số góc $OB$ phải là $-2$: $\frac{k}{2} = -2 \Rightarrow k = -4$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Tứ giác $A(0; 0)$, $B(4; 1)$, $C(5; 5)$, $D(1; 4)$ là:</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Hình chữ nhật (không phải hình vuông)</label>
+<label><input type="radio" name="q8" value="b"> Hình thoi (không phải hình vuông)</label>
+<label><input type="radio" name="q8" value="c"> Hình vuông</label>
+<label><input type="radio" name="q8" value="d"> Hình thang không phải hình bình hành</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hệ số góc $AB = DC = \frac{1}{4}$, $AD = BC = 4$: hình bình hành. $\frac{1}{4}\cdot 4 = 1 \ne -1$ nên không có góc vuông. Bốn cạnh đều bằng $\sqrt{17}$: hình thoi.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Hệ số góc $a = \frac{\Delta y}{\Delta x} = \tan\alpha$; đường thẳng đứng không có hệ số góc.</li><li>Song song: cùng hệ số góc, khác tung độ gốc. Trùng nhau: cùng cả hai.</li><li>Vuông góc: $a\cdot a' = -1$, hay $a' = -\frac{1}{a}$ (nghịch đảo rồi đổi dấu); lý do là phép quay $90^\circ$ biến bước $(1; a)$ thành $(-a; 1)$.</li><li>Đường nằm ngang $y = b$ vuông góc với đường thẳng đứng $x = c$.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

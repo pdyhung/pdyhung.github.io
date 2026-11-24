@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định lý đường phân giác · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch04_phan_giac.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 4 · Sự đồng dạng · Bài 4</div>
+<h1>Bài 4. Định lý đường phân giác <span class="en">(Angle bisector theorem)</span></h1>
+<p class="lead">Đường phân giác chia một góc thành hai góc bằng nhau. Nhưng nó có chia cạnh đối diện thành hai phần bằng nhau không? Câu trả lời là “thường thì không”, và tỉ số chia lại rất đẹp.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu được định lý đường phân giác trong tam giác (và mở rộng cho phân giác ngoài).</li><li>Chứng minh định lý bằng tam giác đồng dạng.</li><li>Tính được độ dài các đoạn thẳng do chân đường phân giác chia ra.</li><li>Biết dùng định lý đảo để chứng minh một tia là phân giác.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Hai con đường $AB$ dài 6 km và $AC$ dài 9 km xuất phát từ làng $A$. Người ta làm một con đường mới đi theo tia phân giác của góc $BAC$, gặp đường $BC$ (dài 10 km) tại $D$. Điểm $D$ có nằm chính giữa $B$ và $C$ không? Nếu không, nó gần $B$ hay gần $C$ hơn?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Định lý đường phân giác</div>
+<p>Trong tam giác $ABC$, nếu $AD$ là <b>đường phân giác</b> <span class="en">(angle bisector)</span> của góc $A$ ($D \in BC$) thì
+$$\frac{DB}{DC} = \frac{AB}{AC}.$$
+Đường phân giác chia cạnh đối diện thành hai đoạn tỉ lệ với hai cạnh kề hai đoạn ấy.</p>
+</div>
+<p><b>Chứng minh.</b> Qua $B$ kẻ đường thẳng song song với $AC$, cắt đường thẳng $AD$ tại $E$.</p>
+<ul><li>$\widehat{BEA} = \widehat{EAC}$ (so le trong) và $\widehat{EAC} = \widehat{BAE}$ (phân giác), nên $\widehat{BEA} = \widehat{BAE}$: tam giác $ABE$ cân tại $B$, do đó $BE = AB$.</li><li>$\triangle DBE \backsim \triangle DCA$ (g.g: góc đối đỉnh tại $D$, góc so le trong tại $E$ và $A$), nên $\dfrac{DB}{DC} = \dfrac{BE}{CA} = \dfrac{AB}{AC}$. ∎</li></ul>
+<div class="box dinh-ly">
+<div class="box-title">Hệ quả và mở rộng</div>
+<ul><li> Với $BC = a$, $CA = b$, $AB = c$: $\quad DB = \dfrac{ac}{b+c}, \qquad DC = \dfrac{ab}{b+c}.$</li><li><b>Định lý đảo:</b> nếu $D \in BC$ và $\dfrac{DB}{DC} = \dfrac{AB}{AC}$ thì $AD$ là phân giác của góc $A$.</li><li><b>Phân giác ngoài:</b> nếu $AB \ne AC$, <b>phân giác ngoài</b> <span class="en">(exterior angle bisector)</span> tại $A$ cắt đường thẳng $BC$ tại $E$ thì $\dfrac{EB}{EC} = \dfrac{AB}{AC}$ (điểm $E$ nằm ngoài đoạn $BC$, về phía cạnh ngắn hơn).</li><li><b>Tỉ số diện tích:</b> $\dfrac{S_{ABD}}{S_{ACD}} = \dfrac{DB}{DC} = \dfrac{AB}{AC}$ (hai tam giác có chung đường cao kẻ từ $A$).</li></ul>
+</div>
+<p>Đặc biệt, $D$ là trung điểm của $BC$ khi và chỉ khi $AB = AC$, tức tam giác $ABC$ cân tại $A$. Trong bài toán Khởi động, $\dfrac{DB}{DC} = \dfrac69 = \dfrac23$: $D$ gần $B$ hơn (cạnh ngắn hơn).</p>
+
+<h2>3. Khám phá: kéo đỉnh, quan sát tỉ số</h2>
+<div data-widget="ch04_phan_giac"  data-title="Đường phân giác chia cạnh đối diện" data-try="kéo các đỉnh A, B, C hoặc <b>gõ số</b> cho AB, AC và góc A. Hai dòng đầu của bảng luôn bằng nhau: AB : AC = DB : DC. Bấm “AB = AC” để thấy D trở thành trung điểm. Bật “Phân giác ngoài” để xem điểm E chia ngoài đoạn BC theo cùng tỉ số."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Bảng không cho độ dài $BC$ trực tiếp; bạn có thể cộng $DB + DC$. Thử nhập $AB = 6$, $AC = 9$ và đổi góc $A$ cho tới khi $DB + DC = 10$ (nhập góc $A = 80{,}94^\circ$): bảng cho $DB = 4$, $DC = 6$, đúng như Ví dụ 1. Với mọi góc $A$, tỉ số $DB : DC$ vẫn là $0{,}667$.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Bài toán Khởi động</div>
+<p> Tam giác $ABC$ có $AB = 6$, $AC = 9$, $BC = 10$. Phân giác $AD$. Tính $DB$, $DC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\dfrac{DB}{DC} = \dfrac{6}{9} = \dfrac23$ và $DB + DC = 10$. Chia 10 thành $2 + 3 = 5$ phần: $DB = 4$, $DC = 6$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tìm cạnh còn lại</div>
+<p> Tam giác $ABC$ có $AB = 5$, $AC = 7$, phân giác $AD$ với $DB = 2{,}5$. Tính $DC$ và $BC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$DC = DB \cdot \dfrac{AC}{AB} = 2{,}5 \cdot \dfrac75 = 3{,}5$, nên $BC = 2{,}5 + 3{,}5 = 6$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Biết tỉ số chia</div>
+<p> Phân giác $AD$ của tam giác $ABC$ chia $BC = 12$ theo tỉ số $DB : DC = 3 : 5$. Biết $AB = 9$. Tính $DB$ và $AC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$DB = 12 \cdot \dfrac38 = 4{,}5$. Từ $\dfrac{AB}{AC} = \dfrac35$ ta có $AC = \dfrac{5\cdot 9}{3} = 15$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Tam giác vuông</div>
+<p> Tam giác $ABC$ vuông tại $A$, $AB = 6$, $AC = 8$. Phân giác $AD$. Tính $DB$, $DC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$BC = 10$. $DB = \dfrac{10\cdot 6}{6+8} = \dfrac{30}{7} \approx 4{,}29$ và $DC = \dfrac{10\cdot 8}{14} = \dfrac{40}{7} \approx 5{,}71$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Phân giác ngoài</div>
+<p> Tam giác $ABC$ có $AB = 4$, $AC = 6$, $BC = 5$. Phân giác ngoài tại $A$ cắt đường thẳng $BC$ tại $E$. Tính $EB$, $EC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\dfrac{EB}{EC} = \dfrac{4}{6} = \dfrac23$. Vì $AB < AC$, điểm $E$ nằm trên tia đối của tia $BC$, nên $EC - EB = BC = 5$.</p>
+<p>Đặt $EB = 2t$, $EC = 3t$: $t = 5$, vậy $EB = 10$, $EC = 15$. Bật “Phân giác ngoài” trong minh họa để thấy $E$ nằm ngoài đoạn $BC$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li> Ghép đúng cặp: đoạn $DB$ (kề đỉnh $B$) đi với cạnh $AB$ (cũng chứa $B$). Viết $\dfrac{DB}{DC} = \dfrac{AC}{AB}$ là lỗi phổ biến nhất.</li><li>Đường phân giác <b>không</b> chia đôi cạnh đối diện (trừ khi tam giác cân tại đỉnh đó). Đừng nhầm với đường trung tuyến.</li><li>Đường phân giác cũng không vuông góc với cạnh đối diện nói chung; đừng nhầm với đường cao.</li><li> Với phân giác ngoài, $E$ nằm ngoài đoạn $BC$, nên $BC = |EC - EB|$ chứ không phải $EB + EC$.</li></ul>
+</div>
+
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>$AD$ là phân giác của góc $A$ trong tam giác $ABC$ ($D \in BC$). Đẳng thức nào đúng?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $\dfrac{DB}{DC} = \dfrac{AB}{AC}$</label>
+<label><input type="radio" name="q1" value="b"> $\dfrac{DB}{DC} = \dfrac{AC}{AB}$</label>
+<label><input type="radio" name="q1" value="c"> $DB = DC$</label>
+<label><input type="radio" name="q1" value="d"> $\dfrac{DB}{AC} = \dfrac{DC}{BC}$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đoạn kề đỉnh B đi với cạnh chứa đỉnh B.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Thông hiểu</span></div>
+<p> Tam giác $ABC$ có $AB = 4$, $AC = 6$, $BC = 5$. Phân giác $AD$. Tính $DB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$DB = \dfrac{5 \cdot 4}{4 + 6} = 2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p> Phân giác $AD$ của tam giác $ABC$ có $DC = 4{,}5$; biết $AB = 8$, $AC = 12$. Tính $DB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$DB = DC\cdot\dfrac{AB}{AC} = 4{,}5 \cdot \dfrac{8}{12} = 3$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2.5" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Vận dụng</span></div>
+<p> Tam giác $ABC$ có $AB = 7$, $AC = 5$, $BC = 6$. Phân giác $AD$. Tính $DC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$DC = \dfrac{6\cdot 5}{7 + 5} = 2{,}5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p> Chân $D$ của đường phân giác góc $A$ là trung điểm của $BC$ khi nào?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a">  Khi $\hat A = 90^\circ$</label>
+<label><input type="radio" name="q5" value="b">  Khi $AB = AC$</label>
+<label><input type="radio" name="q5" value="c">  Khi $\hat B = 90^\circ$</label>
+<label><input type="radio" name="q5" value="d"> Luôn luôn</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$DB = DC \iff \dfrac{AB}{AC} = 1$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p> Tam giác $ABC$ có $AB = 3$, $BC = 4$, $AC = 5$. Phân giác ngoài tại $A$ cắt đường thẳng $BC$ tại $E$. Tính $EB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{EB}{EC} = \dfrac35$, $E$ nằm phía $B$ (cạnh ngắn hơn) nên $EC - EB = 4$. Đặt $EB = 3t$, $EC = 5t$: $2t = 4$, $t = 2$, $EB = 6$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p> Tam giác $ABC$ có $AB = 10$, $AC = 15$, $BC = 20$. Phân giác của góc $B$ cắt $AC$ tại $E$. Tính $AE$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p> Phân giác góc $B$: $\dfrac{EA}{EC} = \dfrac{BA}{BC} = \dfrac{10}{20} = \dfrac12$, nên $AE = \dfrac{15}{3} = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="18" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p> Tam giác $ABC$ có $AB = 9$, $AC = 12$ và diện tích $42$ cm². Phân giác $AD$. Tính diện tích tam giác $ABD$ (cm²).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{S_{ABD}}{S_{ACD}} = \dfrac{DB}{DC} = \dfrac{9}{12} = \dfrac34$, nên $S_{ABD} = 42 \cdot \dfrac37 = 18$ cm².</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li> Phân giác $AD$: $\dfrac{DB}{DC} = \dfrac{AB}{AC}$; $DB = \dfrac{ac}{b+c}$, $DC = \dfrac{ab}{b+c}$.</li><li>Chứng minh: kẻ đường song song với một cạnh để có tam giác cân và hai tam giác đồng dạng.</li><li>Định lý đảo dùng để chứng minh một tia là phân giác.</li><li> Phân giác ngoài cũng chia (ngoài) $BC$ theo tỉ số $\dfrac{AB}{AC}$.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

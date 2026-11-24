@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra chương 5: Tam giác vuông và lượng giác · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 5 · Tam giác vuông và lượng giác · Kiểm tra chương</div>
+<h1>Kiểm tra chương 5: Tam giác vuông và lượng giác <span class="en">(Unit test)</span></h1>
+<p class="lead">Bài kiểm tra gồm 14 câu, bao quát cả 7 bài của chương. Hãy tự làm, rồi bấm “Kiểm tra” ở từng câu; điểm tổng hiện ở cuối trang.</p>
+<h2>Bài kiểm tra</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="29" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Bài 1</span></div>
+<p>Tam giác vuông có hai cạnh góc vuông 20 và 21. Tính cạnh huyền.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sqrt{400 + 441} = \sqrt{841} = 29$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 2 <span class="q-level">Bài 1</span></div>
+<p>Bộ ba độ dài nào là ba cạnh của một tam giác vuông?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $12; 35; 37$</label>
+<label><input type="radio" name="q2" value="b"> $12; 16; 21$</label>
+<label><input type="radio" name="q2" value="c"> $5; 11; 12$</label>
+<label><input type="radio" name="q2" value="d"> $9; 10; 14$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$12^2 + 35^2 = 144 + 1225 = 1369 = 37^2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12.7279" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Bài 2</span></div>
+<p>Tam giác vuông cân có cạnh góc vuông 9. Tính cạnh huyền (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$9\sqrt2 \approx 12{,}73$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15.5885" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Bài 2</span></div>
+<p>Tam giác 30° – 60° – 90° có cạnh huyền 18. Tính cạnh đối diện góc $60^\circ$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Cạnh đối $30^\circ$ bằng 9, cạnh đối $60^\circ$ bằng $9\sqrt3 \approx 15{,}59$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 5 <span class="q-level">Bài 3</span></div>
+<p>Hai tam giác vuông $ABC$ (vuông tại $A$) và $DEF$ (vuông tại $D$) có $\widehat B = \widehat E$. Khẳng định nào đúng?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> $\dfrac{AC}{BC} = \dfrac{DF}{EF}$</label>
+<label><input type="radio" name="q5" value="b"> $\dfrac{AC}{BC} = \dfrac{DE}{EF}$</label>
+<label><input type="radio" name="q5" value="c"> $AC = DF$</label>
+<label><input type="radio" name="q5" value="d"> $BC = EF$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai tam giác đồng dạng, tỉ số đối : huyền của góc B và góc E bằng nhau.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="27" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Bài 3</span></div>
+<p>Một cọc cao 3 m có bóng dài 4 m. Cùng lúc đó, bóng của một tháp nước dài 36 m. Tháp nước cao bao nhiêu mét?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{h}{36} = \dfrac34$ nên $h = 27$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="0.4706" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Bài 4</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 15$, $AC = 8$. Tính $\sin B$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$BC = \sqrt{225 + 64} = 17$, $\sin B = \dfrac{AC}{BC} = \dfrac{8}{17} \approx 0{,}47$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 8 <span class="q-level">Bài 4</span></div>
+<p>Giá trị của $\sin 45^\circ$ là</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> $\dfrac12$</label>
+<label><input type="radio" name="q8" value="b"> $\dfrac{\sqrt3}{2}$</label>
+<label><input type="radio" name="q8" value="c"> $\dfrac{\sqrt2}{2}$</label>
+<label><input type="radio" name="q8" value="d"> $1$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tam giác vuông cân cạnh góc vuông 1 có cạnh huyền √2.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="18.4698" data-tol="0.01">
+<div class="q-head">Câu 9 <span class="q-level">Bài 5</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $BC = 30$, $\widehat B = 52^\circ$. Tính $AB$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB$ là cạnh kề góc $B$: $AB = 30\cos 52^\circ \approx 18{,}47$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="16.2602" data-tol="0.01">
+<div class="q-head">Câu 10 <span class="q-level">Bài 5</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 7$, $AC = 24$. Tính góc $C$ (độ, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\tan C = \dfrac{AB}{AC} = \dfrac{7}{24}$, nên $\widehat C \approx 16{,}26^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 11 <span class="q-level">Bài 6</span></div>
+<p>$\tan 25^\circ$ bằng</p>
+<div class="options">
+<label><input type="radio" name="q11" value="a"> $\tan 65^\circ$</label>
+<label><input type="radio" name="q11" value="b"> $\dfrac{1}{\tan 65^\circ}$</label>
+<label><input type="radio" name="q11" value="c"> $\cos 65^\circ$</label>
+<label><input type="radio" name="q11" value="d"> $\sin 65^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>25° và 65° phụ nhau nên tan 25° · tan 65° = 1.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1" data-tol="0.01">
+<div class="q-head">Câu 12 <span class="q-level">Bài 6</span></div>
+<p>Tính $\sin^2 10^\circ + \sin^2 80^\circ$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sin 80^\circ = \cos 10^\circ$, tổng bằng $\sin^2 10^\circ + \cos^2 10^\circ = 1$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="40.6643" data-tol="0.01">
+<div class="q-head">Câu 13 <span class="q-level">Bài 7</span></div>
+<p>Đứng cách chân cột ăng-ten 50 m, mắt cách mặt đất 1,6 m, nhìn đỉnh cột với góc nâng $38^\circ$. Tính chiều cao cột (m, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$H = 1{,}6 + 50\tan 38^\circ \approx 1{,}6 + 39{,}06 = 40{,}66$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="58.5641" data-tol="0.01">
+<div class="q-head">Câu 14 <span class="q-level">Bài 7</span></div>
+<p>Từ đỉnh vách đá cao 80 m so với mặt biển, nhìn hai chiếc thuyền nằm cùng một phía, thẳng hàng với chân vách, với góc hạ $30^\circ$ và $45^\circ$. Tính khoảng cách giữa hai thuyền (m, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Khoảng cách tới chân vách: $\dfrac{80}{\tan 30^\circ} = 80\sqrt3 \approx 138{,}56$ m và $\dfrac{80}{\tan 45^\circ} = 80$ m. Hai thuyền cách nhau $80\sqrt3 - 80 \approx 58{,}56$ m.</p></details>
+</div>
+<div class="score" id="score"></div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

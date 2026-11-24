@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phép tịnh tiến · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch01_tinh_tien.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 1 · Thực hiện phép biến hình · Bài 3</div>
+<h1>Bài 3. Phép tịnh tiến <span class="en">(Translations)</span></h1>
+<p class="lead">Thang cuốn đưa mọi người lên cùng một độ cao, cùng một khoảng ngang; ngăn kéo trượt ra theo một hướng cố định. Mọi điểm dịch chuyển giống hệt nhau: đó là phép tịnh tiến, phép dời hình đơn giản nhất.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu vectơ là đoạn thẳng có hướng và đọc được tọa độ của vectơ.</li><li>Phát biểu định nghĩa phép tịnh tiến theo vectơ và biểu thức tọa độ của nó.</li><li>Tìm ảnh, tạo ảnh của điểm, đoạn thẳng, tam giác, đường thẳng qua phép tịnh tiến.</li><li>Mô tả một phép tịnh tiến trên lưới ô vuông ("sang phải 3 ô, xuống 2 ô") bằng vectơ.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Trong trò chơi xếp hình, một khối gạch rơi xuống 5 ô rồi dịch sang trái 2 ô. Khối gạch không xoay, không lật, không to ra hay nhỏ lại; mọi ô vuông của nó đều đi cùng một quãng đường theo cùng một hướng. Làm sao mô tả gọn "cách di chuyển" đó bằng một đối tượng toán học duy nhất?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>2.1. Vectơ</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Vectơ</div>
+<p><b>Vectơ</b> <span class="en">(vector)</span> là một đoạn thẳng có hướng: đã chỉ rõ điểm đầu và điểm cuối. Vectơ có điểm đầu $A$, điểm cuối $B$ ký hiệu là $\overrightarrow{AB}$; cũng có thể đặt tên bằng một chữ thường như $\vec v$.</p>
+<p>Với $A(x_A; y_A)$, $B(x_B; y_B)$, tọa độ của vectơ là</p>
+<p>$$\overrightarrow{AB} = (x_B - x_A;\ y_B - y_A),$$</p>
+<p>và độ dài của vectơ $\vec v = (a; b)$ là $|\vec v| = \sqrt{a^2 + b^2}$.</p>
+</div>
+<p>Hai vectơ <b>bằng nhau</b> khi chúng cùng hướng và cùng độ dài, tức là có cùng tọa độ. Trên lưới ô vuông, vectơ $(a; b)$ nghĩa là "đi $a$ ô theo chiều ngang (sang phải nếu $a > 0$, sang trái nếu $a < 0$) và $b$ ô theo chiều dọc (lên nếu $b > 0$, xuống nếu $b < 0$)".</p>
+<h3>2.2. Phép tịnh tiến</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Phép tịnh tiến</div>
+<p>Trong mặt phẳng cho vectơ $\vec v$. <b>Phép tịnh tiến</b> <span class="en">(translation)</span> theo vectơ $\vec v$ là phép biến hình biến mỗi điểm $M$ thành điểm $M'$ sao cho</p>
+<p>$$\overrightarrow{MM'} = \vec v.$$</p>
+<p>Ký hiệu: $T_{\vec v}$, và viết $T_{\vec v}(M) = M'$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Biểu thức tọa độ</div>
+<p>Nếu $\vec v = (a; b)$ và $M(x; y)$ thì ảnh $M' = T_{\vec v}(M)$ có tọa độ</p>
+<p>$$\begin{cases} x' = x + a \\ y' = y + b \end{cases}$$</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<ul>
+<li>Phép tịnh tiến là <b>phép dời hình</b>: $M'N' = MN$; hơn nữa $\overrightarrow{M'N'} = \overrightarrow{MN}$.</li>
+<li>Nó biến đường thẳng thành đường thẳng <b>song song hoặc trùng</b> với nó; biến tam giác thành tam giác bằng nó và <b>giữ nguyên chiều</b>.</li>
+<li>Mọi điểm đều dịch chuyển cùng một đoạn bằng $|\vec v|$: $AA' = BB' = CC' = |\vec v|$.</li>
+<li>Tịnh tiến theo $\vec v$ rồi theo $\vec u$ là tịnh tiến theo vectơ tổng $\vec v + \vec u$ (cộng từng tọa độ).</li>
+<li>Phép tịnh tiến theo vectơ $\vec 0 = (0; 0)$ là phép đồng nhất.</li>
+</ul>
+</div>
+
+<h2>3. Khám phá: kéo vectơ tịnh tiến</h2>
+<div data-widget="ch01_tinh_tien"  data-title="Tịnh tiến tam giác theo vectơ v" data-try="kéo điểm tím (đầu vectơ v) hoặc gõ tọa độ của v vào hai ô rồi nhấn Enter. Kéo các đỉnh A, B, C. Bấm “Trượt hình” để xem tam giác trượt dọc theo v. Quan sát: các đoạn AA′, BB′, CC′ luôn song song, cùng hướng và dài bằng nhau."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra bài tập</div>
+<p>Ví dụ 1 ở dưới dùng đúng vị trí ban đầu của minh họa: $\vec v = (5; -3)$, $A(-4; 1)$, $B(-1; 1)$, $C(-3; 4)$. Bảng số đo cho $A'(1; -2)$, $B'(4; -2)$, $C'(2; 1)$ và $AA' = 5{,}83$. Với Câu 3, nhập $\vec v = (4; -3)$ và đọc độ dài $AA'$.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tịnh tiến một tam giác</div>
+<p>Cho $\vec v = (5; -3)$ và tam giác $A(-4; 1)$, $B(-1; 1)$, $C(-3; 4)$. Tìm ảnh của tam giác qua $T_{\vec v}$ và tính quãng đường mỗi đỉnh đã đi.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Cộng $5$ vào hoành độ, cộng $-3$ vào tung độ:</p>
+<p>$$A'(1; -2),\quad B'(4; -2),\quad C'(2; 1).$$</p>
+<p>Mỗi đỉnh dịch chuyển một đoạn $|\vec v| = \sqrt{5^2 + (-3)^2} = \sqrt{34} \approx 5{,}83$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tìm vectơ tịnh tiến</div>
+<p>Phép tịnh tiến $T$ biến $A(2; -1)$ thành $A'(-1; 3)$. Tìm vectơ tịnh tiến, độ dài của nó và ảnh của gốc tọa độ $O$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\vec v = \overrightarrow{AA'} = (-1 - 2;\ 3 - (-1)) = (-3; 4)$, độ dài $|\vec v| = \sqrt{9 + 16} = 5$.</p>
+<p>Ảnh của $O(0; 0)$ là $O'(-3; 4)$. Trên lưới: "sang trái 3 ô, lên trên 4 ô".</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Tìm tạo ảnh</div>
+<p>Cho $\vec v = (1; -2)$. Tìm điểm $M$ biết $T_{\vec v}(M) = M'(4; 7)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Từ $x' = x + 1$, $y' = y - 2$ suy ra $x = x' - 1 = 3$, $y = y' + 2 = 9$. Vậy $M(3; 9)$.</p>
+<p>Nói cách khác: tạo ảnh qua $T_{\vec v}$ chính là ảnh qua phép tịnh tiến theo vectơ ngược $-\vec v = (-1; 2)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Ảnh của một đường thẳng</div>
+<p>Tìm ảnh của đường thẳng $d: y = 2x + 1$ qua phép tịnh tiến theo $\vec v = (3; 1)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Điểm $M'(x'; y')$ thuộc ảnh $d'$ khi và chỉ khi tạo ảnh $M(x' - 3; y' - 1)$ thuộc $d$:</p>
+<p>$$y' - 1 = 2(x' - 3) + 1 \iff y' = 2x' - 4.$$</p>
+<p>Vậy $d': y = 2x - 4$, song song với $d$ (cùng hệ số của $x$). Kiểm tra: $(0; 1) \in d$ có ảnh $(3; 2)$, và $2 \cdot 3 - 4 = 2$ đúng.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Hai phép tịnh tiến liên tiếp</div>
+<p>Tịnh tiến một hình theo $\vec v_1 = (2; 1)$, rồi tịnh tiến tiếp theo $\vec v_2 = (-5; 3)$. Hình cuối cùng là ảnh của hình ban đầu qua phép biến hình nào?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Điểm $(x; y) \to (x + 2; y + 1) \to (x - 3; y + 4)$. Đây là phép tịnh tiến theo $\vec v_1 + \vec v_2 = (-3; 4)$, có độ dài $5$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Tọa độ vectơ là <b>cuối trừ đầu</b>: $\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$. Đảo thứ tự sẽ được vectơ ngược hướng.</li>
+<li>Khi tìm <b>tạo ảnh</b>, phải trừ đi tọa độ của $\vec v$, không cộng.</li>
+<li>Phép tịnh tiến không có điểm nào đứng yên (trừ khi $\vec v = \vec 0$), và không có "tâm" hay "trục".</li>
+<li>Ảnh của đường thẳng $y = mx + n$ qua phép tịnh tiến luôn có cùng hệ số $m$; chỉ hệ số tự do thay đổi.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Ảnh của $M(1; -2)$ qua phép tịnh tiến theo $\vec v = (3; 5)$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $(4; 3)$</label>
+<label><input type="radio" name="q1" value="b"> $(-2; -7)$</label>
+<label><input type="radio" name="q1" value="c"> $(4; -7)$</label>
+<label><input type="radio" name="q1" value="d"> $(3; -10)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cộng từng tọa độ: $(1 + 3; -2 + 5)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Trên lưới ô vuông, phép tịnh tiến "sang trái 4 ô, lên trên 2 ô" có vectơ là:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $(4; 2)$</label>
+<label><input type="radio" name="q2" value="b"> $(-4; -2)$</label>
+<label><input type="radio" name="q2" value="c"> $(-4; 2)$</label>
+<label><input type="radio" name="q2" value="d"> $(2; -4)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Sang trái: hoành độ âm; lên trên: tung độ dương.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Phép tịnh tiến biến $A(-1; 4)$ thành $A'(3; 1)$. Tính độ dài của vectơ tịnh tiến.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\vec v = \overrightarrow{AA'} = (4; -3)$, $|\vec v| = \sqrt{16 + 9} = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $\vec v = (2; -3)$. Điểm $B$ có ảnh qua $T_{\vec v}$ là $B'(5; 1)$. Tính tung độ của $B$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$B = (5 - 2;\ 1 - (-3)) = (3; 4)$. Tung độ bằng 4.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Qua một phép tịnh tiến (vectơ khác $\vec 0$), ảnh của đường thẳng $d$ là:</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> một đường thẳng vuông góc với $d$</label>
+<label><input type="radio" name="q5" value="b"> một đường thẳng song song hoặc trùng với $d$</label>
+<label><input type="radio" name="q5" value="c"> luôn là chính đường thẳng $d$</label>
+<label><input type="radio" name="q5" value="d"> một đường thẳng cắt $d$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép tịnh tiến giữ nguyên hướng; ảnh trùng $d$ khi $\vec v$ cùng phương với $d$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ có diện tích $12$ cm². Tính diện tích (cm²) của ảnh tam giác qua phép tịnh tiến theo $\vec v = (7; -2)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Phép tịnh tiến là phép dời hình, biến tam giác thành tam giác bằng nó, nên diện tích vẫn là $12$ cm².</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-1" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Ảnh của đường thẳng $d: y = 3x - 2$ qua phép tịnh tiến theo $\vec v = (1; 4)$ cắt trục $Oy$ tại điểm có tung độ bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$M'(x'; y') \in d'$ khi $M(x' - 1; y' - 4) \in d$: $y' - 4 = 3(x' - 1) - 2$, tức $y' = 3x' - 1$. Cho $x' = 0$: tung độ $-1$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Tịnh tiến theo $\vec v_1 = (3; -1)$ rồi tịnh tiến tiếp theo $\vec v_2 = (-7; 4)$. Mỗi điểm đã dịch chuyển (từ vị trí đầu đến vị trí cuối) một đoạn dài bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hợp của hai phép tịnh tiến là phép tịnh tiến theo $\vec v_1 + \vec v_2 = (-4; 3)$, có độ dài $\sqrt{16 + 9} = 5$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Vectơ $\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$ có độ dài $\sqrt{a^2 + b^2}$ với $(a; b)$ là tọa độ.</li><li>$T_{\vec v}(M) = M' \iff \overrightarrow{MM'} = \vec v$; với $\vec v = (a; b)$: $(x; y) \to (x + a; y + b)$.</li><li>Phép tịnh tiến là phép dời hình, giữ nguyên chiều, biến đường thẳng thành đường thẳng song song hoặc trùng với nó.</li><li>Tạo ảnh qua T theo vectơ v là ảnh qua phép tịnh tiến theo vectơ −v.</li><li>Hai phép tịnh tiến liên tiếp là một phép tịnh tiến theo vectơ tổng.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

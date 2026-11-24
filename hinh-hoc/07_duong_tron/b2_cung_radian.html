@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Số đo cung, độ dài cung, radian · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch07_radian.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 7 · Đường tròn · Bài 2</div>
+<h1>Bài 2. Số đo cung, độ dài cung, radian <span class="en">(Arc measure, arc length and radians)</span></h1>
+<p class="lead">Một cung tròn có thể được “đo” theo hai cách: bằng góc (cung chiếm bao nhiêu phần của cả vòng) và bằng độ dài (đi dọc cung hết bao nhiêu xentimét). Radian là đơn vị đo góc nối hai cách đo ấy với nhau.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu góc ở tâm và số đo cung; tính số đo cung lớn khi biết cung nhỏ.</li><li>Tính độ dài cung tròn $n^\circ$: $l = \dfrac{\pi r n}{180}$.</li><li>Hiểu định nghĩa 1 radian qua hình ảnh “cuộn bán kính” quanh đường tròn; đổi qua lại giữa độ và radian.</li><li>Dùng công thức $l = r\theta$ khi góc $\theta$ đo bằng radian.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Kim phút của một chiếc đồng hồ treo tường dài $10$ cm. Trong $20$ phút, đầu kim phút vạch nên một cung tròn. Cung đó dài bao nhiêu xentimét? Để trả lời, ta cần biết cung ấy chiếm bao nhiêu phần của cả vòng, và chu vi của cả vòng là bao nhiêu.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Góc ở tâm và số đo cung</div>
+<p><b>Góc ở tâm</b> <span class="en">(central angle)</span> là góc có đỉnh trùng với tâm đường tròn. Góc ở tâm $\widehat{AOB}$ (nhỏ hơn $180^\circ$) chắn cung nhỏ $\overset{\frown}{AB}$.</p>
+<ul>
+<li><b>Số đo cung</b> <span class="en">(arc measure)</span> nhỏ bằng số đo của góc ở tâm chắn cung đó: sđ $\overset{\frown}{AB} = \widehat{AOB}$.</li>
+<li>Số đo cung lớn bằng $360^\circ$ trừ số đo cung nhỏ có chung hai đầu mút.</li>
+<li>Nửa đường tròn có số đo $180^\circ$; cả đường tròn có số đo $360^\circ$.</li>
+</ul>
+<p>Nếu điểm $C$ nằm trên cung $\overset{\frown}{AB}$ thì sđ $\overset{\frown}{AC}$ + sđ $\overset{\frown}{CB}$ = sđ $\overset{\frown}{AB}$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Độ dài cung tròn</div>
+<p>Cả đường tròn ($360^\circ$) dài $2\pi r$, nên cung $1^\circ$ dài $\dfrac{2\pi r}{360}$. Cung có số đo $n^\circ$ có <b>độ dài cung</b> <span class="en">(arc length)</span>
+$$l = \frac{\pi r n}{180}.$$</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Radian</div>
+<p>Góc ở tâm chắn một cung có độ dài <b>đúng bằng bán kính</b> được gọi là góc có số đo $1$ <b>radian</b> <span class="en">(radian)</span> (viết tắt: rad).</p>
+<p>Cả đường tròn dài $2\pi r$, tức là $2\pi$ lần bán kính, nên một vòng có số đo $2\pi$ rad:
+$$360^\circ = 2\pi\ \text{rad}, \quad 180^\circ = \pi\ \text{rad},$$
+$$1\ \text{rad} = \left(\frac{180}{\pi}\right)^{\circ} \approx 57{,}3^\circ.$$</p>
+</div>
+<p>Quy tắc đổi đơn vị: $\theta_{\text{rad}} = n \cdot \dfrac{\pi}{180}$ và $n = \theta_{\text{rad}} \cdot \dfrac{180}{\pi}$. Một số góc hay gặp:</p>
+<table>
+<tr><th>Độ</th><th>Radian</th></tr>
+<tr><td>$30^\circ$</td><td>$\frac{\pi}{6}$</td></tr>
+<tr><td>$45^\circ$</td><td>$\frac{\pi}{4}$</td></tr>
+<tr><td>$60^\circ$</td><td>$\frac{\pi}{3}$</td></tr>
+<tr><td>$90^\circ$</td><td>$\frac{\pi}{2}$</td></tr>
+<tr><td>$120^\circ$</td><td>$\frac{2\pi}{3}$</td></tr>
+<tr><td>$180^\circ$</td><td>$\pi$</td></tr>
+<tr><td>$270^\circ$</td><td>$\frac{3\pi}{2}$</td></tr>
+<tr><td>$360^\circ$</td><td>$2\pi$</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Độ dài cung theo radian</div>
+<p>Nếu góc ở tâm có số đo $\theta$ <b>radian</b> thì cung bị chắn dài
+$$l = r\theta .$$
+Thật vậy, thay $n = \theta \cdot \frac{180}{\pi}$ vào $l = \frac{\pi r n}{180}$ ta được $l = r\theta$. Công thức gọn hơn hẳn: đây là lý do radian được dùng rộng rãi trong toán học và vật lý.</p>
+</div>
+
+<h2>3. Khám phá: cuộn bán kính quanh đường tròn</h2>
+<div data-widget="ch07_radian"  data-title="Một radian là gì?" data-try="bấm “Cuộn 1 bán kính”: một đoạn thẳng dài đúng bằng bán kính được uốn sát theo đường tròn, góc ở tâm tạo thành là 1 rad ≈ 57,3°. Bấm “Cuộn cả vòng” để đếm xem một vòng chứa bao nhiêu bán kính (khoảng 6,28 = 2π). Sau đó kéo điểm P, hoặc <b>gõ số</b> góc theo độ hay theo radian (hai ô luôn đồng bộ) và bán kính, rồi nhấn Enter: độ dài cung l = r·θ cập nhật ngay."></div>
+<p>Khi thử, hãy để ý:</p>
+<ul>
+<li>Đổi bán kính rồi cuộn lại: góc $1$ rad <b>không phụ thuộc</b> bán kính, vì cung và bán kính cùng phóng to theo một tỉ lệ.</li>
+<li>Một vòng chứa $6$ bán kính và còn dư một đoạn ngắn: $2\pi \approx 6{,}28$.</li>
+<li>Tỉ số $l : r$ trong bảng số đo luôn bằng số đo radian của góc.</li>
+</ul>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Đầu kim phút</div>
+<p>Kim phút dài $10$ cm. Tính quãng đường đầu kim đi được trong $20$ phút.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Mỗi phút, kim phút quay $\frac{360^\circ}{60} = 6^\circ$; trong $20$ phút kim quay $120^\circ$. Quãng đường đầu kim đi được là độ dài cung $120^\circ$ bán kính $10$ cm:
+$$l = \frac{\pi \cdot 10 \cdot 120}{180} = \frac{20\pi}{3} \approx 20{,}94\ \text{cm}.$$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Đổi đơn vị</div>
+<p>a) Đổi $150^\circ$ sang radian. b) Đổi $2$ rad sang độ.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>a) $150 \cdot \dfrac{\pi}{180} = \dfrac{5\pi}{6} \approx 2{,}618$ rad.</p>
+<p>b) $2 \cdot \dfrac{180}{\pi} = \dfrac{360}{\pi} \approx 114{,}59^\circ$. Thử trong minh họa: gõ $2$ vào ô radian, ô độ hiện $114{,}59$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Tìm góc khi biết độ dài cung</div>
+<p>Một cung của đường tròn bán kính $6$ cm dài $15$ cm. Tính số đo góc ở tâm chắn cung đó theo radian và theo độ.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Từ $l = r\theta$: $\theta = \dfrac{l}{r} = \dfrac{15}{6} = 2{,}5$ rad. Đổi sang độ: $2{,}5 \cdot \dfrac{180}{\pi} \approx 143{,}24^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Cung lớn</div>
+<p>Hai điểm $A, B$ nằm trên đường tròn $(O; 4)$ với $\widehat{AOB} = 80^\circ$. Tính số đo và độ dài của cung lớn $\overset{\frown}{AB}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Cung nhỏ có số đo $80^\circ$, nên cung lớn có số đo $360^\circ - 80^\circ = 280^\circ$. Độ dài cung lớn:
+$$l = \frac{\pi \cdot 4 \cdot 280}{180} = \frac{56\pi}{9} \approx 19{,}55.$$</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Số đo cung</b> (đơn vị độ hoặc radian) khác với <b>độ dài cung</b> (đơn vị độ dài như cm, m). Hai cung cùng số đo $60^\circ$ trên hai đường tròn khác nhau có độ dài khác nhau.</li>
+<li>Công thức $l = r\theta$ chỉ đúng khi $\theta$ đo bằng <b>radian</b>. Với góc tính bằng độ, dùng $l = \dfrac{\pi r n}{180}$.</li>
+<li>Khi bấm máy tính, kiểm tra chế độ góc: D (độ) hay R (radian).</li>
+<li>Đơn vị “rad” thường được viết tắt hoặc bỏ đi: “góc $\frac{\pi}{2}$” hiểu là $\frac{\pi}{2}$ rad, tức $90^\circ$, không phải $\frac{\pi}{2}$ độ.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Góc ở tâm $\widehat{AOB} = 70^\circ$. Số đo cung nhỏ $\overset{\frown}{AB}$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $35^\circ$</label>
+<label><input type="radio" name="q1" value="b"> $70^\circ$</label>
+<label><input type="radio" name="q1" value="c"> $140^\circ$</label>
+<label><input type="radio" name="q1" value="d"> $290^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Số đo cung nhỏ bằng số đo góc ở tâm chắn cung đó.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>$\pi$ rad bằng:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $90^\circ$</label>
+<label><input type="radio" name="q2" value="b"> $180^\circ$</label>
+<label><input type="radio" name="q2" value="c"> $360^\circ$</label>
+<label><input type="radio" name="q2" value="d"> $3{,}14^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$2\pi$ rad là một vòng, tức $360^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="250" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Cung nhỏ $\overset{\frown}{AB}$ có số đo $110^\circ$. Cung lớn $\overset{\frown}{AB}$ có số đo bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$360^\circ - 110^\circ = 250^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="135" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Đổi $\dfrac{3\pi}{4}$ rad sang độ.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{3\pi}{4} \cdot \dfrac{180}{\pi} = 135^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.26" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Đổi $72^\circ$ sang radian (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$72 \cdot \dfrac{\pi}{180} = \dfrac{2\pi}{5} \approx 1{,}2566 \approx 1{,}26$ rad.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6.28" data-tol="0.02">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Tính độ dài cung $40^\circ$ của đường tròn bán kính $9$ cm.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$l = \dfrac{\pi \cdot 9 \cdot 40}{180} = 2\pi \approx 6{,}28$ cm.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Góc $1$ radian là góc ở tâm chắn một cung có độ dài bằng:</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> $1$ cm</label>
+<label><input type="radio" name="q7" value="b"> đường kính</label>
+<label><input type="radio" name="q7" value="c"> bán kính</label>
+<label><input type="radio" name="q7" value="d"> một phần sáu chu vi</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem lại định nghĩa radian và hoạt ảnh “Cuộn 1 bán kính”.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3.33" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một bánh xe bán kính $30$ cm lăn không trượt được quãng đường $1$ m. Bánh xe đã quay được một góc bao nhiêu radian?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Điểm trên vành bánh xe đi được cung dài $l = 100$ cm, nên $\theta = \dfrac{l}{r} = \dfrac{100}{30} \approx 3{,}33$ rad.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Số đo cung nhỏ bằng góc ở tâm chắn cung; cung lớn $= 360^\circ -$ cung nhỏ.</li><li>Độ dài cung $n^\circ$: $l = \dfrac{\pi r n}{180}$.</li><li>$1$ rad là góc ở tâm chắn cung dài bằng bán kính; $\pi$ rad $= 180^\circ$, $1$ rad $\approx 57{,}3^\circ$.</li><li>Với $\theta$ tính bằng radian: $l = r\theta$.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

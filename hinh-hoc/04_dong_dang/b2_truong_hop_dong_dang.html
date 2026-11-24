@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Các trường hợp đồng dạng của tam giác · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch04_truong_hop.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 4 · Sự đồng dạng · Bài 2</div>
+<h1>Bài 2. Các trường hợp đồng dạng của tam giác <span class="en">(Triangle similarity criteria)</span></h1>
+<p class="lead">Theo định nghĩa, muốn biết hai tam giác có đồng dạng không, ta phải kiểm tra ba cặp góc và ba tỉ số cạnh. Bài này cho thấy chỉ cần kiểm tra ít hơn nhiều.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu được ba trường hợp đồng dạng của tam giác: c.c.c, c.g.c, g.g.</li><li>Ghép đúng các đỉnh tương ứng khi chứng minh hai tam giác đồng dạng.</li><li>Áp dụng các trường hợp đồng dạng để tính độ dài cạnh chưa biết.</li><li>Nhận ra các trường hợp đồng dạng đặc biệt của tam giác vuông.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Ở Chương 3, để biết hai tam giác bằng nhau ta không cần so cả sáu yếu tố: chỉ cần c.c.c, c.g.c hoặc g.c.g. Với tam giác đồng dạng cũng vậy. Hãy đoán: nếu hai tam giác có hai cặp góc bằng nhau, chúng có chắc đồng dạng không? Còn nếu chỉ có <i>một</i> cặp góc bằng nhau thì sao?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Trường hợp 1: cạnh – cạnh – cạnh (c.c.c)</div>
+<p>Nếu ba cạnh của tam giác này tỉ lệ với ba cạnh của tam giác kia thì hai tam giác đó đồng dạng:
+$$\frac{A'B'}{AB} = \frac{B'C'}{BC} = \frac{C'A'}{CA} \;\Longrightarrow\; \triangle A'B'C' \backsim \triangle ABC.$$</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Trường hợp 2: cạnh – góc – cạnh (c.g.c)</div>
+<p>Nếu hai cạnh của tam giác này tỉ lệ với hai cạnh của tam giác kia và hai <b>góc xen giữa</b> các cặp cạnh đó bằng nhau thì hai tam giác đồng dạng:
+$$\frac{A'B'}{AB} = \frac{A'C'}{AC},\quad \hat A' = \hat A \;\Longrightarrow\; \triangle A'B'C' \backsim \triangle ABC.$$</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Trường hợp 3: góc – góc (g.g)</div>
+<p>Nếu hai góc của tam giác này lần lượt bằng hai góc của tam giác kia thì hai tam giác đồng dạng:
+$$\hat A' = \hat A,\quad \hat B' = \hat B \;\Longrightarrow\; \triangle A'B'C' \backsim \triangle ABC.$$</p>
+</div>
+<p><b>Ý tưởng chứng minh.</b> Giả sử $A'B' < AB$. Lấy $M$ trên $AB$ sao cho $AM = A'B'$, kẻ $MN \parallel BC$ ($N \in AC$). Theo định lý Thales (Bài 3), $\triangle AMN \backsim \triangle ABC$. Trong mỗi trường hợp, ta chứng minh được $\triangle AMN = \triangle A'B'C'$ (bằng nhau) bằng trường hợp bằng nhau tương ứng (c.c.c, c.g.c, g.c.g). Vậy $\triangle A'B'C'$ cũng đồng dạng với $\triangle ABC$.</p>
+<table>
+<tr><th>Bằng nhau (Chương 3)</th><th>Đồng dạng</th><th>Điều cần kiểm tra</th></tr>
+<tr><td>c.c.c</td><td>c.c.c</td><td>Ba tỉ số cạnh bằng nhau</td></tr>
+<tr><td>c.g.c</td><td>c.g.c</td><td>Hai tỉ số cạnh bằng nhau và góc xen giữa bằng nhau</td></tr>
+<tr><td>g.c.g</td><td>g.g</td><td>Hai cặp góc bằng nhau (không cần cạnh)</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Hệ quả cho tam giác vuông</div>
+<p>Hai tam giác vuông đồng dạng nếu:</p>
+<ul><li>có một góc nhọn bằng nhau (g.g); hoặc</li><li>hai cạnh góc vuông tỉ lệ (c.g.c); hoặc</li><li> cạnh huyền và một cạnh góc vuông tỉ lệ: $\dfrac{B'C'}{BC} = \dfrac{A'B'}{AB}$ (suy ra từ định lý Pythagore, Chương 5).</li></ul>
+</div>
+
+<h2>3. Khám phá: thử từng trường hợp</h2>
+<div data-widget="ch04_truong_hop"  data-title="So sánh hai tam giác theo c.c.c, c.g.c, g.g" data-try="chọn một trường hợp, rồi <b>gõ số</b> cho hai tam giác (ví dụ c.c.c: 4, 6, 8 và 6, 9, 12). Bảng bên cho ba tỉ số cạnh, ba cặp góc và kết luận. Kéo đỉnh B, C để thay đổi hình; bấm “Tạo A′B′C′ = k·ABC” để có ngay một tam giác đồng dạng."></div>
+<p>Hãy thử: trong chế độ c.g.c, giữ nguyên hai tỉ số cạnh nhưng đổi góc $A'$. Hai tam giác không còn đồng dạng, các góc $\hat B, \hat B'$ lệch nhau. Trong chế độ g.g, hãy để ý rằng chỉ cần nhập hai góc bằng nhau là đủ: góc thứ ba tự bằng nhau (tổng ba góc bằng 180°) và ba tỉ số cạnh tự bằng nhau.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Trường hợp c.c.c</div>
+<p> Tam giác $ABC$ có $AB = 4$, $BC = 6$, $CA = 8$; tam giác $DEF$ có $DE = 6$, $EF = 9$, $FD = 12$. Hai tam giác có đồng dạng không? Viết đúng thứ tự đỉnh.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Ghép cạnh nhỏ với cạnh nhỏ, cạnh lớn với cạnh lớn: $\dfrac{DE}{AB} = \dfrac64 = 1{,}5$, $\dfrac{EF}{BC} = \dfrac96 = 1{,}5$, $\dfrac{FD}{CA} = \dfrac{12}{8} = 1{,}5$.</p>
+<p>Ba tỉ số bằng nhau nên $\triangle DEF \backsim \triangle ABC$ (c.c.c) với tỉ số $1{,}5$; đỉnh tương ứng $D \leftrightarrow A$, $E \leftrightarrow B$, $F \leftrightarrow C$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Trường hợp c.g.c</div>
+<p> Tam giác $ABC$ có $AB = 6$, $AC = 9$, $\hat A = 50^\circ$, $BC = 12$. Tam giác $DEF$ có $DE = 4$, $DF = 6$, $\hat D = 50^\circ$. Chứng minh hai tam giác đồng dạng và tính $EF$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\dfrac{DE}{AB} = \dfrac46 = \dfrac23$, $\dfrac{DF}{AC} = \dfrac69 = \dfrac23$ và $\hat D = \hat A$ (góc xen giữa). Vậy $\triangle DEF \backsim \triangle ABC$ (c.g.c) với $k = \dfrac23$.</p>
+<p>Do đó $EF = \dfrac23 \cdot BC = \dfrac23\cdot 12 = 8$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Trường hợp g.g</div>
+<p> Tam giác $ABC$ có $\hat A = 70^\circ$, $\hat B = 50^\circ$. Tam giác $DEF$ có $\hat D = 70^\circ$, $\hat F = 60^\circ$. Hai tam giác có đồng dạng không?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Trong $\triangle DEF$: $\hat E = 180^\circ - 70^\circ - 60^\circ = 50^\circ$. Vậy $\hat D = \hat A$ và $\hat E = \hat B$, nên $\triangle DEF \backsim \triangle ABC$ (g.g).</p>
+<p>Chú ý: ta phải tính góc còn lại trước rồi mới ghép đỉnh. Viết $\triangle DFE \backsim \triangle ABC$ là <b>sai</b>, vì $\hat F = 60^\circ \neq \hat B$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Hai tam giác không đồng dạng</div>
+<p> Tam giác có ba cạnh $3, 4, 5$ có đồng dạng với tam giác có ba cạnh $6, 8, 11$ không?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Xếp theo thứ tự tăng dần rồi lập tỉ số: $\dfrac63 = 2$, $\dfrac84 = 2$, nhưng $\dfrac{11}{5} = 2{,}2$. Các tỉ số không bằng nhau nên hai tam giác <b>không</b> đồng dạng. (Nếu cạnh cuối là 10 thì chúng đồng dạng.)</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Đường chéo của hình thang</div>
+<p> Hình thang $ABCD$ có $AB \parallel CD$, $AB = 4$, $CD = 10$. Hai đường chéo cắt nhau tại $O$, biết $OA = 3$. Tính $OC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Vì $AB \parallel CD$ nên $\widehat{OAB} = \widehat{OCD}$ (so le trong) và $\widehat{AOB} = \widehat{COD}$ (đối đỉnh). Vậy $\triangle OAB \backsim \triangle OCD$ (g.g).</p>
+<p>Suy ra $\dfrac{OA}{OC} = \dfrac{AB}{CD} = \dfrac{4}{10}$, nên $OC = \dfrac{10 \cdot 3}{4} = 7{,}5$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li> Trong trường hợp c.g.c, góc bằng nhau phải là góc <b>xen giữa</b> hai cặp cạnh tỉ lệ. “Hai cạnh tỉ lệ và một góc không xen giữa bằng nhau” <b>không</b> đủ để kết luận đồng dạng.</li><li>Với c.c.c, hãy sắp xếp các cạnh của mỗi tam giác theo thứ tự tăng dần rồi mới lập tỉ số; cạnh nhỏ nhất ứng với cạnh nhỏ nhất.</li><li>Trường hợp g.g không cần biết cạnh nào. Hai góc bằng nhau thì góc thứ ba cũng bằng nhau.</li><li> Khi lập tỉ số, giữ cùng một chiều: tam giác mới trên tam giác cũ ở cả ba tỉ số. Viết lẫn $\dfrac{A'B'}{AB}$ với $\dfrac{BC}{B'C'}$ là lỗi rất hay gặp.</li></ul>
+</div>
+
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="d">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Điều kiện nào sau đây <b>không</b> đủ để kết luận hai tam giác đồng dạng?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Ba cạnh tương ứng tỉ lệ</label>
+<label><input type="radio" name="q1" value="b"> Hai cạnh tỉ lệ và góc xen giữa bằng nhau</label>
+<label><input type="radio" name="q1" value="c"> Hai cặp góc bằng nhau</label>
+<label><input type="radio" name="q1" value="d"> Hai cạnh tỉ lệ và một góc không xen giữa bằng nhau</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Góc bằng nhau trong trường hợp c.g.c phải là góc xen giữa hai cạnh.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác có ba cạnh $2, 3, 4$ đồng dạng với tam giác nào sau đây?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $4,\ 6,\ 7$</label>
+<label><input type="radio" name="q2" value="b"> $3,\ 4,\ 5$</label>
+<label><input type="radio" name="q2" value="c"> $5;\ 7{,}5;\ 10$</label>
+<label><input type="radio" name="q2" value="d"> $4,\ 5,\ 6$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\dfrac52 = \dfrac{7{,}5}{3} = \dfrac{10}{4} = 2{,}5$: ba tỉ số bằng nhau.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p> Cho $\triangle ABC \backsim \triangle DEF$ với $AB = 6$, $BC = 9$, $DE = 4$. Tính $EF$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$k = \dfrac{DE}{AB} = \dfrac46 = \dfrac23$, nên $EF = \dfrac23 \cdot 9 = 6$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 4 <span class="q-level">Nhận biết</span></div>
+<p>Hai tam giác vuông chắc chắn đồng dạng nếu chúng có:</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> một góc nhọn bằng nhau</label>
+<label><input type="radio" name="q4" value="b"> cạnh huyền bằng nhau</label>
+<label><input type="radio" name="q4" value="c"> một cạnh góc vuông bằng nhau</label>
+<label><input type="radio" name="q4" value="d"> chu vi bằng nhau</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai tam giác vuông đã có một cặp góc bằng nhau (góc vuông); thêm một góc nhọn bằng nhau là đủ g.g.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p> Tam giác $ABC$ có $\hat A = 40^\circ$, $\hat B = 75^\circ$; tam giác $MNP$ có $\hat M = 40^\circ$, $\hat P = 65^\circ$. Biết $AB = 5$, $MN = 7{,}5$, $AC = 4$. Tính $MP$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\hat C = 65^\circ = \hat P$, $\hat A = \hat M$ nên $\triangle MNP \backsim \triangle ABC$ (g.g), $k = \dfrac{MN}{AB} = 1{,}5$. Vậy $MP = 1{,}5 \cdot AC = 6$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p> Hình thang $ABCD$ ($AB \parallel CD$) có $AB = 6$, $CD = 15$. Hai đường chéo cắt nhau tại $O$, biết $AC = 14$. Tính $OA$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\triangle OAB \backsim \triangle OCD$ (g.g) nên $\dfrac{OA}{OC} = \dfrac{6}{15} = \dfrac25$. Do $OA + OC = 14$, ta có $OA = 14 \cdot \dfrac{2}{7} = 4$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.94" data-tol="0.02">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p> Tam giác $ABC$ có $AB = 4$, $AC = 6$, $\hat A = 60^\circ$, $BC \approx 5{,}29$. Tam giác $DEF$ có $DE = 6$, $DF = 9$, $\hat D = 60^\circ$. Tính $EF$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{DE}{AB} = \dfrac{DF}{AC} = 1{,}5$ và $\hat D = \hat A$ nên $\triangle DEF \backsim \triangle ABC$ (c.g.c). $EF = 1{,}5 \cdot BC \approx 7{,}94$ (chính xác: $BC = 2\sqrt7$, $EF = 3\sqrt7$).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p> Cho tam giác $ABC$, $D$ thuộc cạnh $AB$ với $AD = 4$, $DB = 5$; $AC = 12$. Lấy $E$ trên cạnh $AC$ sao cho $\triangle ADE \backsim \triangle ACB$. Tính $AE$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\triangle ADE \backsim \triangle ACB$ cho $\dfrac{AD}{AC} = \dfrac{AE}{AB}$, với $AB = 4 + 5 = 9$. Vậy $AE = \dfrac{4 \cdot 9}{12} = 3$. Chú ý: $D$ ứng với $C$ và $E$ ứng với $B$, nên $AD$ đi với $AC$ chứ không đi với $AB$.</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li> c.c.c: ba tỉ số cạnh bằng nhau ⇒ đồng dạng.</li><li> c.g.c: hai tỉ số cạnh bằng nhau và góc <b>xen giữa</b> bằng nhau ⇒ đồng dạng.</li><li> g.g: hai cặp góc bằng nhau ⇒ đồng dạng (thường dùng nhất).</li><li>Tam giác vuông: chỉ cần thêm một góc nhọn bằng nhau, hoặc hai cạnh góc vuông tỉ lệ, hoặc cạnh huyền và một cạnh góc vuông tỉ lệ.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

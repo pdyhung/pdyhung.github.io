@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định nghĩa hai hình đồng dạng · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch04_vi_tu.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 4 · Sự đồng dạng · Bài 1</div>
+<h1>Bài 1. Định nghĩa hai hình đồng dạng <span class="en">(Definition of similarity)</span></h1>
+<p class="lead">Phóng to một bức ảnh, vẽ bản đồ theo tỉ lệ, làm mô hình ngôi nhà: hình mới có cùng “dáng” với hình cũ nhưng khác kích thước. Toán học gọi đó là hai hình đồng dạng.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu phép vị tự và phép đồng dạng; biết mọi phép đồng dạng là phép vị tự kết hợp với một phép dời hình.</li><li>Phát biểu được định nghĩa hai hình đồng dạng, hai tam giác đồng dạng và tỉ số đồng dạng.</li><li>Biết tỉ số chu vi bằng $k$, tỉ số diện tích bằng $k^2$.</li><li>Viết đúng thứ tự đỉnh tương ứng khi ghi hai tam giác đồng dạng.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Bạn có một tấm ảnh cỡ $10 \times 15$ cm và muốn in lớn hơn. Cửa hàng có hai khổ: $20 \times 30$ cm và $20 \times 25$ cm. Khổ nào giữ nguyên dáng người trong ảnh, khổ nào làm ảnh bị “kéo dãn”?</p>
+<p>Khổ $20\times30$ nhân <i>cả hai</i> cạnh với 2, nên mọi chi tiết đều to gấp 2 mà không méo. Khổ $20\times25$ nhân chiều rộng với 2 nhưng chiều dài chỉ với $\tfrac{25}{15}\approx 1{,}67$, nên hình bị bóp lại. Bài này giải thích chính xác điều đó.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>Phép vị tự</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa (phép vị tự)</div>
+<p>Cho điểm $O$ và số $k \ne 0$. <b>Phép vị tự</b> <span class="en">(homothety, dilation)</span> tâm $O$ tỉ số $k$ biến mỗi điểm $M$ thành điểm $M'$ sao cho
+$$\overrightarrow{OM'} = k\,\overrightarrow{OM}.$$
+Nếu $k>0$, $M'$ nằm trên tia $OM$; nếu $k<0$, $M'$ nằm trên tia đối của tia $OM$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất của phép vị tự</div>
+<p>Nếu phép vị tự tỉ số $k$ biến $A, B$ thành $A', B'$ thì
+$$\overrightarrow{A'B'} = k\,\overrightarrow{AB}, \qquad A'B' = |k|\cdot AB.$$
+Phép vị tự biến đường thẳng thành đường thẳng song song (hoặc trùng) với nó, giữ nguyên số đo góc, biến tam giác thành tam giác có các cạnh tỉ lệ.</p>
+</div>
+
+<h3>Phép đồng dạng và hai hình đồng dạng</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa (phép đồng dạng)</div>
+<p>Một phép biến hình $F$ là <b>phép đồng dạng</b> <span class="en">(similarity transformation)</span> tỉ số $k$ ($k>0$) nếu với hai điểm bất kỳ $A, B$ và ảnh $A', B'$ của chúng ta luôn có $A'B' = k\cdot AB$.</p>
+<p>Hình $\mathcal{H}'$ được gọi là <b>đồng dạng</b> <span class="en">(similar)</span> với hình $\mathcal{H}$ nếu có một phép đồng dạng biến $\mathcal{H}$ thành $\mathcal{H}'$. Số $k$ là <b>tỉ số đồng dạng</b> <span class="en">(scale factor)</span>.</p>
+</div>
+<p>Ví dụ quen thuộc:</p>
+<ul><li><b>Phép dời hình</b> <span class="en">(rigid motion, isometry)</span> (tịnh tiến, quay, đối xứng) là phép đồng dạng tỉ số $k=1$. Hai hình bằng nhau là hai hình đồng dạng tỉ số 1.</li><li> Phép vị tự tỉ số $k$ là phép đồng dạng tỉ số $|k|$.</li><li><b>Mọi phép đồng dạng tỉ số $k$ đều là kết quả của một phép vị tự tỉ số $k$ rồi một phép dời hình.</b> Nói cách khác: phóng to hoặc thu nhỏ, rồi dời đi (tịnh tiến, quay, lật).</li></ul>
+
+<h3>Hai tam giác đồng dạng</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p>Tam giác $A'B'C'$ <b>đồng dạng với</b> <span class="en">(is similar to)</span> tam giác $ABC$ nếu
+$$\hat A' = \hat A,\quad \hat B' = \hat B,\quad \hat C' = \hat C \quad\text{và}\quad \frac{A'B'}{AB} = \frac{B'C'}{BC} = \frac{C'A'}{CA} = k.$$
+Kí hiệu: $\triangle A'B'C' \backsim \triangle ABC$ (đọc là “tam giác A′B′C′ đồng dạng với tam giác ABC”), $k$ là tỉ số đồng dạng.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<p>Nếu $\triangle A'B'C' \backsim \triangle ABC$ theo tỉ số $k$ thì:</p>
+<ul><li>$\triangle ABC \backsim \triangle A'B'C'$ theo tỉ số $\dfrac1k$; hai tam giác cùng đồng dạng với tam giác thứ ba thì đồng dạng với nhau.</li><li> Tỉ số hai chu vi, hai đường cao, hai trung tuyến, hai đường phân giác tương ứng đều bằng $k$.</li><li> Tỉ số hai diện tích bằng $k^2$: $\dfrac{S_{A'B'C'}}{S_{ABC}} = k^2$.</li></ul>
+</div>
+<p>Vì sao diện tích lại nhân với $k^2$? Diện tích tam giác bằng nửa tích đáy và chiều cao; cả đáy và chiều cao đều nhân với $k$, nên diện tích nhân với $k \cdot k = k^2$.</p>
+<table>
+<tr><th>Cặp hình</th><th>Luôn đồng dạng?</th><th>Lý do</th></tr>
+<tr><td>Hai hình vuông</td><td>Có</td><td>Các góc đều bằng 90°, các cạnh tỉ lệ</td></tr>
+<tr><td>Hai đường tròn</td><td>Có</td><td>Có phép vị tự biến đường tròn này thành đường tròn kia</td></tr>
+<tr><td>Hai tam giác đều</td><td>Có</td><td>Các góc đều bằng 60°</td></tr>
+<tr><td>Hai hình chữ nhật</td><td>Không</td><td>$2\times3$ và $2\times5$ có góc bằng nhau nhưng cạnh không tỉ lệ</td></tr>
+<tr><td>Hai hình thoi</td><td>Không</td><td>Cạnh tỉ lệ nhưng góc có thể khác nhau</td></tr>
+<tr><td>Hai tam giác cân</td><td>Không</td><td>Góc ở đỉnh có thể khác nhau</td></tr>
+</table>
+
+<h2>3. Khám phá: vị tự rồi quay</h2>
+<div data-widget="ch04_vi_tu"  data-title="Phép đồng dạng = phép vị tự + phép dời hình" data-try="kéo thanh <b>k</b> để phóng to, thu nhỏ tam giác ABC từ tâm O; kéo thanh <b>φ</b> để quay ảnh quanh O. Kéo các điểm A, B, C, O hoặc <b>gõ số</b> vào ô rồi nhấn Enter. Quan sát bảng: mọi cạnh đều nhân với k, chu vi nhân với k, còn diện tích nhân với k²."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Nhập $k = 1{,}5$: bảng cho tỉ số diện tích $2{,}25$. Tích chọn “Vị tự tỉ số âm”: ảnh nằm ở phía bên kia của $O$ nhưng các tỉ số không đổi, vì tỉ số đồng dạng là $|k|$. Đổi góc $\varphi$: tam giác $A'B'C'$ xoay nhưng mọi số đo trong bảng giữ nguyên, vì phép quay là phép dời hình.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Ảnh qua phép vị tự</div>
+<p> Phép vị tự tâm $O(0; 0)$ tỉ số $3$ biến $A(1; 2)$, $B(4; -1)$ thành $A'$, $B'$. Tìm tọa độ $A', B'$ và so sánh $A'B'$ với $AB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Với tâm là gốc tọa độ, $\overrightarrow{OA'} = 3\overrightarrow{OA}$ nên $A'(3; 6)$; tương tự $B'(12; -3)$.</p>
+<p>$AB = \sqrt{3^2 + 3^2} = 3\sqrt2 \approx 4{,}24$ và $A'B' = \sqrt{9^2 + 9^2} = 9\sqrt2 \approx 12{,}73$. Vậy $A'B' = 3\,AB$, đúng với tính chất $A'B' = |k|\cdot AB$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tính cạnh và chu vi</div>
+<p> Cho $\triangle A'B'C' \backsim \triangle ABC$ với $AB = 4$, $BC = 6$, $CA = 5$ và $A'B' = 6$ (cm). Tính $B'C'$, $C'A'$ và chu vi tam giác $A'B'C'$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Tỉ số đồng dạng $k = \dfrac{A'B'}{AB} = \dfrac64 = 1{,}5$. Do đó $B'C' = 1{,}5\cdot 6 = 9$ cm và $C'A' = 1{,}5\cdot 5 = 7{,}5$ cm.</p>
+<p>Chu vi $\triangle ABC$ là $15$ cm, nên chu vi $\triangle A'B'C'$ là $1{,}5 \cdot 15 = 22{,}5$ cm (kiểm tra: $6 + 9 + 7{,}5 = 22{,}5$).</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Tỉ số diện tích</div>
+<p> Cho $\triangle DEF \backsim \triangle ABC$ với $AB = 8$ cm, $DE = 12$ cm và diện tích $\triangle ABC$ bằng $24$ cm². Tính diện tích $\triangle DEF$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$k = \dfrac{DE}{AB} = \dfrac{12}{8} = 1{,}5$, nên $S_{DEF} = k^2 \cdot S_{ABC} = 2{,}25 \cdot 24 = 54$ cm².</p>
+<p>Lỗi hay gặp là nhân với $k$ (được 36 cm²): diện tích phải nhân với $k^2$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Bản đồ tỉ lệ</div>
+<p> Trên bản đồ tỉ lệ $1 : 50\,000$, hai địa điểm cách nhau $3{,}2$ cm và một khu đất hình chữ nhật có kích thước $2 \times 1{,}5$ cm. Tính khoảng cách thực và diện tích thực của khu đất.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hình trên bản đồ đồng dạng với thực tế; từ bản đồ ra thực tế, tỉ số đồng dạng là $k = 50\,000$. Mỗi 1 cm trên bản đồ ứng với $50\,000$ cm, tức $500$ m.</p>
+<p>Khoảng cách thực: $3{,}2 \cdot 500 = 1600$ m, tức $1{,}6$ km.</p>
+<p>Khu đất thực có kích thước $1000 \times 750$ m, diện tích $750\,000$ m², tức $75$ ha. Kiểm tra bằng $k^2$: diện tích trên bản đồ là $3$ cm², nhân với $50\,000^2$ được $7{,}5\cdot 10^{9}$ cm², đúng bằng $750\,000$ m².</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Hai hình chữ nhật có đồng dạng không?</div>
+<p> Hình chữ nhật $4 \times 6$ có đồng dạng với hình chữ nhật $6 \times 9$ không? Với hình chữ nhật $5 \times 7$ thì sao?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Các góc đều vuông, nên chỉ cần xét tỉ số cạnh (cạnh ngắn với cạnh ngắn, cạnh dài với cạnh dài).</p>
+<p>$\dfrac64 = 1{,}5$ và $\dfrac96 = 1{,}5$: hai tỉ số bằng nhau, nên $4\times6$ và $6\times9$ đồng dạng, tỉ số $1{,}5$.</p>
+<p>$\dfrac54 = 1{,}25$ còn $\dfrac76 \approx 1{,}17$: khác nhau, nên $4\times6$ và $5\times7$ <b>không</b> đồng dạng. Đây cũng là lý do khổ $20 \times 25$ ở phần Khởi động làm méo ảnh $10\times15$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li><b>Thứ tự đỉnh có ý nghĩa.</b> Viết $\triangle A'B'C' \backsim \triangle ABC$ nghĩa là $A' \leftrightarrow A$, $B' \leftrightarrow B$, $C' \leftrightarrow C$. Từ đó mới suy ra $\dfrac{A'B'}{AB} = \dfrac{B'C'}{BC}$; không được ghép $A'B'$ với $BC$.</li><li> Tỉ số đồng dạng phụ thuộc chiều: nếu $\triangle A'B'C' \backsim \triangle ABC$ tỉ số $k$ thì $\triangle ABC \backsim \triangle A'B'C'$ tỉ số $\tfrac1k$.</li><li> Tỉ số diện tích là $k^2$, không phải $k$. (Tỉ số thể tích của hai khối đồng dạng là $k^3$.)</li><li> Phép vị tự tỉ số $k = -2$ là phép đồng dạng tỉ số $2$, không phải $-2$: tỉ số đồng dạng luôn dương.</li><li>Với đa giác nói chung, chỉ có các góc bằng nhau (như hai hình chữ nhật) hoặc chỉ có các cạnh tỉ lệ (như hai hình thoi) thì chưa đủ để kết luận đồng dạng. Riêng với tam giác, chỉ cần một trong hai điều này (xem Bài 2).</li></ul>
+</div>
+
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Phép vị tự tỉ số $k = -2$ là phép đồng dạng tỉ số bao nhiêu?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $-2$</label>
+<label><input type="radio" name="q1" value="b"> $2$</label>
+<label><input type="radio" name="q1" value="c"> $\tfrac12$</label>
+<label><input type="radio" name="q1" value="d"> $4$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p> Phép vị tự tỉ số $k$ biến $AB$ thành $A'B'$ với $A'B' = |k|\cdot AB$. Tỉ số đồng dạng là $|-2| = 2$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Cặp hình nào sau đây <b>luôn</b> đồng dạng?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> Hai hình chữ nhật</label>
+<label><input type="radio" name="q2" value="b"> Hai hình thoi</label>
+<label><input type="radio" name="q2" value="c"> Hai hình vuông</label>
+<label><input type="radio" name="q2" value="d"> Hai tam giác cân</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai hình vuông có các góc bằng nhau (90°) và bốn cạnh tỉ lệ. Các cặp còn lại có thể khác “dáng”.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p> Cho $\triangle A'B'C' \backsim \triangle ABC$, $AB = 5$, $A'B' = 8$, $BC = 7{,}5$. Tính $B'C'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$k = \dfrac85 = 1{,}6$, nên $B'C' = 1{,}6 \cdot 7{,}5 = 12$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="42" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>$\triangle MNP \backsim \triangle ABC$ theo tỉ số $3$. Chu vi $\triangle ABC$ là $14$ cm. Tính chu vi $\triangle MNP$ (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p> Tỉ số chu vi bằng tỉ số đồng dạng: $3 \cdot 14 = 42$ cm.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p> Cho $\triangle ABC \backsim \triangle DEF$. Khẳng định nào <b>đúng</b>?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> $\dfrac{AB}{DE} = \dfrac{BC}{EF}$</label>
+<label><input type="radio" name="q5" value="b"> $\dfrac{AB}{DF} = \dfrac{AC}{DE}$</label>
+<label><input type="radio" name="q5" value="c"> $\hat B = \hat F$</label>
+<label><input type="radio" name="q5" value="d"> $\dfrac{AC}{DF} = \dfrac{BC}{DE}$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p> Các đỉnh tương ứng theo thứ tự: $A \leftrightarrow D$, $B \leftrightarrow E$, $C \leftrightarrow F$. Cạnh $AB \leftrightarrow DE$, $BC \leftrightarrow EF$, $CA \leftrightarrow FD$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p> Phép vị tự tâm $O(0; 0)$ tỉ số $k = -1{,}5$ biến $A(2; -4)$ thành $A'$. Tung độ của $A'$ bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{OA'} = -1{,}5\,\overrightarrow{OA} = (-3; 6)$. Tung độ của $A'$ là $6$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.6667" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Hai tam giác đồng dạng có diện tích $18$ cm² và $50$ cm². Cạnh của tam giác lớn gấp bao nhiêu lần cạnh tương ứng của tam giác nhỏ? (làm tròn đến hai chữ số thập phân)</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$k^2 = \dfrac{50}{18} = \dfrac{25}{9}$, nên $k = \dfrac53 \approx 1{,}67$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="937.5" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p> Một tấm ảnh $10 \times 15$ cm được phóng to (giữ đồng dạng) sao cho cạnh ngắn dài $25$ cm. Tính diện tích tấm ảnh mới (cm²).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$k = \dfrac{25}{10} = 2{,}5$. Cạnh dài mới là $2{,}5\cdot15 = 37{,}5$ cm, diện tích $25 \cdot 37{,}5 = 937{,}5$ cm². Cách khác: $150 \cdot 2{,}5^2 = 937{,}5$.</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li> Phép vị tự tâm $O$ tỉ số $k$: $\overrightarrow{OM'} = k\overrightarrow{OM}$, biến đoạn $AB$ thành đoạn dài $|k|\cdot AB$.</li><li> Phép đồng dạng tỉ số $k$ = phép vị tự tỉ số $k$ rồi một phép dời hình. Hai hình đồng dạng nếu có phép đồng dạng biến hình này thành hình kia.</li><li>$\triangle A'B'C' \backsim \triangle ABC$: các góc tương ứng bằng nhau, các cạnh tương ứng tỉ lệ; viết đúng thứ tự đỉnh.</li><li> Tỉ số chu vi (và đường cao, trung tuyến…) bằng $k$; tỉ số diện tích bằng $k^2$.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

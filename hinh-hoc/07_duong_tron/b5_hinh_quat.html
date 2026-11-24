@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diện tích hình quạt · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch07_cat_hinh_tron.js"></script>
+<script defer src="../assets/widgets/ch07_hinh_quat.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 7 · Đường tròn · Bài 5</div>
+<h1>Bài 5. Diện tích hình quạt <span class="en">(Area of a sector)</span></h1>
+<p class="lead">Một chiếc bánh pizza tròn được cắt thành nhiều miếng bằng nhau: mỗi miếng là một hình quạt. Muốn biết mỗi miếng lớn bao nhiêu, trước hết ta cần hiểu vì sao diện tích hình tròn là πr².</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Giải thích được công thức diện tích hình tròn $S = \pi r^2$ bằng cách cắt và ghép hình.</li><li>Tính diện tích hình quạt tròn: $S = \dfrac{\pi r^2 n}{360} = \dfrac{l r}{2}$.</li><li>Tính diện tích hình viên phân và hình vành khăn.</li><li>Giải bài toán thực tế liên quan đến hình quạt.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Một chiếc pizza đường kính $30$ cm được cắt thành $8$ miếng bằng nhau. Mỗi miếng có diện tích bao nhiêu xentimét vuông? Nếu cắt thành $6$ miếng thì mỗi miếng lớn hơn bao nhiêu? Ví dụ 1 sẽ trả lời câu hỏi đầu.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Diện tích hình tròn</div>
+<p>Hình tròn bán kính $r$ có diện tích
+$$S = \pi r^2 .$$</p>
+</div>
+<p><b>Vì sao?</b> Cắt hình tròn thành $n$ hình quạt bằng nhau rồi xếp xen kẽ, một miếng úp, một miếng ngửa. Khi $n$ càng lớn, hình xếp được càng gần một <b>hình chữ nhật</b>:</p>
+<ul>
+<li>chiều dài gồm một nửa số cung, tức là gần bằng <b>nửa chu vi</b>: $\dfrac{2\pi r}{2} = \pi r$;</li>
+<li>chiều rộng gần bằng <b>bán kính</b> $r$.</li>
+</ul>
+<p>Vậy diện tích $\approx \pi r \cdot r = \pi r^2$, và sai số dần tới $0$ khi $n$ tăng. Hãy xem hoạt ảnh ngay dưới đây.</p>
+<div data-widget="ch07_cat_hinh_tron"  data-title="Cắt hình tròn rồi xếp thành hình gần chữ nhật" data-try="bấm “Xếp lại” để các hình quạt rời khỏi hình tròn và xếp xen kẽ thành một dải. Tăng số hình quạt n (gõ số, ví dụ 40, rồi nhấn Enter) và xếp lại: dải càng giống hình chữ nhật, chiều dài tiến tới πr, chiều rộng tiến tới r, và tích của chúng tiến tới πr². Kéo thanh “Tiến độ xếp hình” để dừng ở từng giai đoạn."></div>
+<div class="box dinh-nghia">
+<div class="box-title">Hình quạt tròn</div>
+<p><b>Hình quạt tròn</b> <span class="en">(sector)</span> là phần hình tròn giới hạn bởi một cung tròn và hai bán kính đi qua hai đầu mút của cung đó.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Diện tích hình quạt</div>
+<p>Hình quạt bán kính $r$, cung $n^\circ$ chiếm $\dfrac{n}{360}$ hình tròn, nên có diện tích
+$$S_q = \frac{\pi r^2 n}{360} = \frac{l\, r}{2},$$
+trong đó $l = \dfrac{\pi r n}{180}$ là độ dài cung. Nếu góc ở tâm là $\theta$ radian thì $S_q = \dfrac{r^2 \theta}{2}$.</p>
+</div>
+<p>Công thức $S_q = \dfrac{lr}{2}$ giống công thức diện tích tam giác “đáy $l$, chiều cao $r$”: một hình quạt rất hẹp gần như một tam giác cân.</p>
+<table>
+<tr><th>Cung $n$</th><th>$360^\circ$</th><th>$180^\circ$</th><th>$90^\circ$</th><th>$60^\circ$</th><th>$45^\circ$</th></tr>
+<tr><td>Phần hình tròn</td><td>$1$</td><td>$\frac12$</td><td>$\frac14$</td><td>$\frac16$</td><td>$\frac18$</td></tr>
+<tr><td>Diện tích quạt</td><td>$\pi r^2$</td><td>$\frac{\pi r^2}{2}$</td><td>$\frac{\pi r^2}{4}$</td><td>$\frac{\pi r^2}{6}$</td><td>$\frac{\pi r^2}{8}$</td></tr>
+</table>
+<div class="box dinh-nghia">
+<div class="box-title">Hình viên phân và hình vành khăn</div>
+<ul>
+<li><b>Hình viên phân</b> <span class="en">(circular segment)</span> là phần hình tròn giới hạn bởi một cung và dây căng cung đó. Với cung nhỏ: $S_{vp} = S_{\text{quạt}} - S_{OAB}$, trong đó $S_{OAB} = \frac12 r^2 \sin n^\circ$.</li>
+<li><b>Hình vành khăn</b> <span class="en">(annulus)</span> là phần nằm giữa hai đường tròn cùng tâm bán kính $R > r$: $S = \pi(R^2 - r^2)$.</li>
+</ul>
+</div>
+
+<h2>3. Khám phá diện tích hình quạt</h2>
+<div data-widget="ch07_hinh_quat"  data-title="Diện tích hình quạt và độ dài cung" data-try="kéo điểm B để mở rộng hoặc thu hẹp hình quạt, kéo A để xoay, kéo R để đổi bán kính. Bấm các nút chọn nhanh 90°, 180°… để thấy hình quạt chiếm 1/4, 1/2… hình tròn. Hãy <b>gõ số</b> bán kính và số đo cung rồi nhấn Enter: diện tích luôn bằng l·r/2."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Miếng pizza</div>
+<p>Pizza đường kính $30$ cm cắt thành $8$ miếng bằng nhau. Tính diện tích mỗi miếng.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Bán kính $r = 15$ cm, mỗi miếng là hình quạt $\dfrac{360^\circ}{8} = 45^\circ$:
+$$S = \frac{\pi \cdot 15^2 \cdot 45}{360} = \frac{225\pi}{8} \approx 88{,}36\ \text{cm}^2.$$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Diện tích, độ dài cung và chu vi hình quạt</div>
+<p>Hình quạt bán kính $6$ cm, cung $120^\circ$. Tính diện tích, độ dài cung và chu vi của hình quạt.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$S = \dfrac{\pi \cdot 36 \cdot 120}{360} = 12\pi \approx 37{,}70$ cm²; $l = \dfrac{\pi \cdot 6 \cdot 120}{180} = 4\pi \approx 12{,}57$ cm.</p>
+<p>Chu vi hình quạt gồm hai bán kính và cung: $P = 2 \cdot 6 + 4\pi \approx 24{,}57$ cm. Kiểm tra: $\dfrac{l r}{2} = \dfrac{4\pi \cdot 6}{2} = 12\pi$. Nhập $r = 6$, $n = 120$ vào minh họa để so sánh.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Hình viên phân</div>
+<p>Đường tròn $(O; 4)$, dây $AB$ với $\widehat{AOB} = 90^\circ$. Tính diện tích hình viên phân giới hạn bởi dây $AB$ và cung nhỏ $\overset{\frown}{AB}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$S_{\text{quạt}} = \dfrac{\pi \cdot 16 \cdot 90}{360} = 4\pi$; tam giác $OAB$ vuông cân tại $O$: $S_{OAB} = \dfrac12 \cdot 4 \cdot 4 = 8$.</p>
+<p>$S_{vp} = 4\pi - 8 \approx 4{,}57$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Tìm số đo cung</div>
+<p>Hình quạt bán kính $6$ có diện tích $15\pi$. Tính số đo cung của hình quạt.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Từ $\dfrac{\pi \cdot 36 \cdot n}{360} = 15\pi$ suy ra $\dfrac{n}{10} = 15$, tức $n = 150^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Hình vành khăn</div>
+<p>Một chiếc đĩa CD có đường kính ngoài $12$ cm và lỗ giữa đường kính $1{,}5$ cm. Tính diện tích mặt đĩa.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$R = 6$, $r = 0{,}75$: $S = \pi(36 - 0{,}5625) = 35{,}4375\pi \approx 111{,}33$ cm².</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Trong $S = \dfrac{\pi r^2 n}{360}$, $n$ là số đo cung tính bằng <b>độ</b>. Nếu góc cho bằng radian, dùng $S = \dfrac{r^2\theta}{2}$.</li>
+<li><b>Chu vi hình quạt</b> $= 2r + l$, không phải chỉ độ dài cung $l$.</li>
+<li>Đề cho đường kính thì phải chia đôi trước khi bình phương: $\pi\left(\frac{d}{2}\right)^2 = \frac{\pi d^2}{4}$.</li>
+<li>Diện tích có đơn vị bình phương (cm², m²); độ dài cung có đơn vị độ dài.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Diện tích hình tròn bán kính $3$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $6\pi$</label>
+<label><input type="radio" name="q1" value="b"> $9\pi$</label>
+<label><input type="radio" name="q1" value="c"> $3\pi$</label>
+<label><input type="radio" name="q1" value="d"> $18\pi$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$S = \pi r^2$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Hình quạt có cung $90^\circ$ chiếm bao nhiêu phần hình tròn?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $\frac12$</label>
+<label><input type="radio" name="q2" value="b"> $\frac13$</label>
+<label><input type="radio" name="q2" value="c"> $\frac14$</label>
+<label><input type="radio" name="q2" value="d"> $\frac16$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\frac{90}{360} = \frac14$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="62.83" data-tol="0.02">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tính diện tích hình quạt bán kính $10$, cung $72^\circ$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$S = \dfrac{\pi\cdot 100\cdot 72}{360} = 20\pi \approx 62{,}83$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Hình quạt bán kính $4$ có góc ở tâm $1{,}5$ rad. Tính diện tích.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$S = \dfrac{r^2\theta}{2} = \dfrac{16 \cdot 1{,}5}{2} = 12$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Hình quạt bán kính $5$ có độ dài cung $l = 6$. Tính diện tích.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$S = \dfrac{l r}{2} = \dfrac{6\cdot 5}{2} = 15$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3.26" data-tol="0.02">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Tính diện tích hình viên phân giới hạn bởi cung $60^\circ$ và dây căng cung đó, trong đường tròn bán kính $6$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$S_{\text{quạt}} = 6\pi$; tam giác $OAB$ đều cạnh $6$: $S = 9\sqrt3$. Vậy $S_{vp} = 6\pi - 9\sqrt3 \approx 3{,}26$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="60" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Hình quạt bán kính $12$ có diện tích $24\pi$. Tính số đo cung (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{144\pi n}{360} = 24\pi \Rightarrow n = 60$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.07" data-tol="0.02">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Mặt cắt một ống nước là hình vành khăn với bán kính ngoài $2{,}5$ cm, bán kính trong $2$ cm. Tính diện tích mặt cắt (cm², làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$S = \pi(2{,}5^2 - 2^2) = 2{,}25\pi \approx 7{,}07$ cm².</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Diện tích hình tròn $S = \pi r^2$: cắt thành nhiều hình quạt rồi xếp thành hình gần chữ nhật $\pi r \times r$.</li><li>Hình quạt cung $n^\circ$: $S = \dfrac{\pi r^2 n}{360} = \dfrac{lr}{2}$; theo radian: $S = \dfrac{r^2\theta}{2}$.</li><li>Hình viên phân = hình quạt − tam giác; hình vành khăn: $S = \pi(R^2 - r^2)$.</li><li>Chu vi hình quạt $= 2r + l$.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

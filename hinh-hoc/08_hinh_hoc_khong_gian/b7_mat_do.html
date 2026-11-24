@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 7. Mật độ · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/vendor/three/three.min.js"></script>
+<script defer src="../assets/vendor/three/OrbitControls.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/scene3d.js"></script>
+<script defer src="../assets/widgets/ch08_mat_do.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 8 · Hình học không gian · Bài 7</div>
+<h1>Mật độ <span class="en">(Density)</span></h1>
+<p class="lead">Thành phố nào đông đúc hơn? Vì sao khúc gỗ nổi còn chiếc đinh sắt chìm? Cả hai câu hỏi đều được trả lời bằng khái niệm mật độ: lượng vật chất trên một đơn vị diện tích hoặc thể tích.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu mật độ theo diện tích (ví dụ người/km²) và theo thể tích (khối lượng riêng, g/cm³).</li><li>Dùng các công thức $D = \dfrac{m}{V}$, $m = D \cdot V$, $V = \dfrac{m}{D}$, kết hợp với công thức thể tích.</li><li>Đổi đơn vị mật độ; dự đoán vật nổi hay chìm trong nước.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Thành phố A có 3 triệu dân, thị trấn B chỉ có 45 nghìn dân. Có chắc A “đông đúc” hơn B không? Còn thiếu thông tin gì?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Mật độ theo diện tích</div>
+<p>$$\text{Mật độ} = \frac{\text{số lượng}}{\text{diện tích}}.$$ Ví dụ mật độ dân số (người/km²), mật độ cây trồng (cây/ha).</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Mật độ theo thể tích (khối lượng riêng)</div>
+<p>$$D = \frac{m}{V}, \qquad m = D \cdot V, \qquad V = \frac{m}{D}.$$ Đơn vị thường dùng: g/cm³ hoặc kg/m³, với $1 \text{ g/cm}^3 = 1000 \text{ kg/m}^3$.</p>
+</div>
+<table>
+<tr><th>Chất</th><th>Khối lượng riêng (g/cm³, gần đúng)</th></tr>
+<tr><td>Gỗ thông · gỗ sồi</td><td>0,5 · 0,75</td></tr>
+<tr><td>Nước đá</td><td>0,92</td></tr>
+<tr><td>Nước</td><td>1</td></tr>
+<tr><td>Nhôm · sắt · vàng</td><td>2,7 · 7,87 · 19,3</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Nổi hay chìm?</div>
+<p>Thả một vật đặc vào nước (1 g/cm³). Nếu $D < 1$ thì vật <b>nổi</b>, và phần chìm chiếm đúng $\dfrac{D}{1}$ thể tích của vật (nguyên lý Archimedes). Nếu $D > 1$ thì vật <b>chìm</b>. Nếu $D = 1$ thì vật lơ lửng.</p>
+</div>
+
+<h2>3. Khám phá</h2>
+<div data-widget="ch08_mat_do_dien_tich"  data-title="So sánh mật độ dân số hai vùng" data-try="<b>gõ diện tích và dân số</b> của hai vùng. Mỗi chấm là một nhóm người; hình vuông to hơn nghĩa là diện tích lớn hơn. Vùng có chấm dày hơn là vùng đông đúc hơn."></div>
+<div data-widget="ch08_mat_do_noi"  data-title="Thả vật vào bể nước" data-try="chọn chất liệu, hình dạng và <b>gõ kích thước</b> (cm), rồi bấm “Thả vào nước”. Bảng bên phải tính thể tích, khối lượng và phần chìm. Hãy thử gỗ thông, nước đá, sắt, hoặc tự nhập khối lượng riêng."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Mật độ dân số</div>
+<p>Thành phố A có 3 000 000 người trên 1 500 km². Thị trấn B có 45 000 người trên 15 km². Nơi nào đông đúc hơn?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>A: $\dfrac{3\,000\,000}{1\,500} = 2\,000$ người/km². B: $\dfrac{45\,000}{15} = 3\,000$ người/km². Thị trấn B đông đúc hơn, dù có ít người hơn.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Khối gỗ</div>
+<p>Một khối gỗ lập phương cạnh 10 cm có khối lượng riêng 0,6 g/cm³. Tính khối lượng. Khi thả vào nước, khối gỗ chìm sâu bao nhiêu?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$V = 10^3 = 1000$ cm³, $m = 0{,}6 \cdot 1000 = 600$ g. Vì $0{,}6 < 1$ nên gỗ nổi, phần chìm chiếm 60% thể tích. Với hình lập phương, đó là 60% chiều cao: chìm sâu $6$ cm.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Quả cầu sắt</div>
+<p>Một quả cầu sắt đặc bán kính 2 cm ($D = 7{,}87$ g/cm³). Tính khối lượng.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$V = \frac43 \pi \cdot 2^3 = \frac{32\pi}{3} \approx 33{,}51$ cm³. $m = 7{,}87 \cdot 33{,}51 \approx 263{,}7$ g.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Đổi đơn vị</div>
+<p>Tấm nhôm dài 2 m, rộng 1 m, dày 5 mm. Tính khối lượng (nhôm: 2,7 g/cm³).</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$D = 2{,}7 \text{ g/cm}^3 = 2\,700 \text{ kg/m}^3$. $V = 2 \cdot 1 \cdot 0{,}005 = 0{,}01$ m³. $m = 2\,700 \cdot 0{,}01 = 27$ kg.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Nhận biết kim loại</div>
+<p>Một thỏi kim loại nặng 386 g, thể tích 20 cm³. Đó có thể là kim loại gì?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$D = \dfrac{386}{20} = 19{,}3$ g/cm³: đúng bằng khối lượng riêng của vàng.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li>Kiểm tra đơn vị: g với cm³, kg với m³. Đổi $1 \text{ m}^3 = 1\,000\,000 \text{ cm}^3$.</li><li>Đơn vị diện tích: $1 \text{ km}^2 = 100$ ha $= 1\,000\,000 \text{ m}^2$.</li><li>Nhiều người hơn chưa chắc đông đúc hơn: phải chia cho diện tích.</li></ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>37,7</code>). Làm tròn đến hai chữ số thập phân nếu cần; với kết quả chứa $\pi$, dùng $\pi \approx 3{,}14159$.</p>
+<div class="quiz" data-type="num" data-answer="250" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Một khu dân cư có 500 người sống trên 2 km². Mật độ dân số là bao nhiêu người/km²?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$500 : 2 = 250$ người/km².</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="72.9" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Thông hiểu</span></div>
+<p>Khối nhôm lập phương cạnh 3 cm, khối lượng riêng 2,7 g/cm³. Tính khối lượng (g).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = 27$ cm³, $m = 2{,}7 \cdot 27 = 72{,}9$ g.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Vật đặc nào sau đây nổi trên nước?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Khối nhôm</label>
+<label><input type="radio" name="q3" value="b"> Khối sắt</label>
+<label><input type="radio" name="q3" value="c"> Khối gỗ sồi</label>
+<label><input type="radio" name="q3" value="d"> Khối nhựa PVC</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Vật nổi khi khối lượng riêng nhỏ hơn 1 g/cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="80" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Vận dụng</span></div>
+<p>Khúc gỗ có khối lượng riêng 0,8 g/cm³ nổi trên nước. Phần chìm chiếm bao nhiêu phần trăm thể tích?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Phần chìm $= 0{,}8 : 1 = 80\%$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="20" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Vận dụng</span></div>
+<p>Một vật bằng sắt nặng 158 g, khối lượng riêng 7,9 g/cm³. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = 158 : 7{,}9 = 20$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2700" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Nhận biết</span></div>
+<p>2,7 g/cm³ bằng bao nhiêu kg/m³?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$1$ g/cm³ $= 1000$ kg/m³ nên $2{,}7$ g/cm³ $= 2\,700$ kg/m³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="400" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Một khu rừng rộng 30 000 m² có 1 200 cây. Mật độ là bao nhiêu cây trên 1 ha? (1 ha = 10 000 m²)</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$30\,000$ m² $= 3$ ha; $1\,200 : 3 = 400$ cây/ha.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1600" data-tol="0.1">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Bồn chứa 2 m³ dầu có khối lượng riêng 0,8 g/cm³. Tính khối lượng dầu (kg).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$0{,}8$ g/cm³ $= 800$ kg/m³; $m = 800 \cdot 2 = 1\,600$ kg.</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<div class="box-title"></div>
+<ul><li>Mật độ = số lượng : diện tích (hoặc : thể tích).</li><li>Khối lượng riêng $D = m/V$; $1 \text{ g/cm}^3 = 1000 \text{ kg/m}^3$.</li><li>Kết hợp với công thức thể tích để tính khối lượng: $m = D \cdot V$.</li><li>Trong nước: $D < 1$ thì nổi (phần chìm bằng $D$), $D > 1$ thì chìm.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

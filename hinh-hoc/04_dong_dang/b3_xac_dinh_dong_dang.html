@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xác định tam giác đồng dạng · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch04_thales.js"></script>
+<script defer src="../assets/widgets/ch04_he_thuc.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 4 · Sự đồng dạng · Bài 3</div>
+<h1>Bài 3. Xác định tam giác đồng dạng <span class="en">(Solving similar triangles)</span></h1>
+<p class="lead">Trong một hình vẽ phức tạp, các tam giác đồng dạng thường “ẩn” sau một đường thẳng song song hoặc một đường cao. Bài này dạy cách tìm ra chúng và dùng chúng để tính các cạnh chưa biết.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu và vận dụng định lý Thales (thuận, đảo) và hệ quả của nó.</li><li>Tìm được các cặp góc bằng nhau (góc chung, đối đỉnh, so le trong, đồng vị) để chỉ ra tam giác đồng dạng.</li><li>Nhận ra ba tam giác đồng dạng tạo bởi đường cao trong tam giác vuông và các hệ thức lượng.</li><li>Lập tỉ lệ thức đúng để tìm cạnh chưa biết.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Một chiếc thang dựa vào tường, có một thanh ngang song song với mặt đất. Chân thang cách tường 1,6 m; thanh ngang nằm ở 3/4 chiều dài thang tính từ đỉnh. Thanh ngang dài bao nhiêu? Bạn sẽ trả lời được ngay sau khi đọc định lý Thales.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>Đường thẳng song song với một cạnh của tam giác</h3>
+<div class="box dinh-ly">
+<div class="box-title">Định lý Thales và hệ quả</div>
+<p>Cho tam giác $ABC$, đường thẳng song song với $BC$ cắt $AB$, $AC$ lần lượt tại $M$, $N$. Khi đó
+$$\frac{AM}{AB} = \frac{AN}{AC} = \frac{MN}{BC}, \qquad \frac{AM}{MB} = \frac{AN}{NC},$$
+và $\triangle AMN \backsim \triangle ABC$ (g.g: góc $A$ chung, $\widehat{AMN} = \hat B$ vì đồng vị).</p>
+<p>Đây là <b>định lý Thales</b> <span class="en">(triangle proportionality theorem)</span> trong tam giác. Định lý vẫn đúng khi $M, N$ nằm trên các đường thẳng $AB$, $AC$ (ngoài đoạn thẳng).</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý Thales đảo</div>
+<p>Nếu $M \in AB$, $N \in AC$ và $\dfrac{AM}{MB} = \dfrac{AN}{NC}$ thì $MN \parallel BC$.</p>
+</div>
+<p>Trường hợp riêng: $M, N$ là trung điểm thì $MN$ là <b>đường trung bình</b> <span class="en">(midsegment)</span>: $MN \parallel BC$ và $MN = \dfrac12 BC$ (tỉ số đồng dạng $\tfrac12$).</p>
+
+<h3>Tam giác vuông và đường cao</h3>
+<div class="box dinh-ly">
+<div class="box-title">Ba tam giác đồng dạng</div>
+<p>Cho tam giác $ABC$ vuông tại $A$, <b>đường cao</b> <span class="en">(altitude)</span> $AH$. Đặt $BC = a$, $AC = b$, $AB = c$, $AH = h$, và <b>hình chiếu</b> <span class="en">(projection)</span> $BH = c'$, $HC = b'$. Ta có
+$$\triangle HBA \backsim \triangle ABC \backsim \triangle HAC \quad (\text{g.g}).$$
+Từ đó suy ra các hệ thức lượng:
+$$c^2 = a\,c',\qquad b^2 = a\,b',\qquad h^2 = b'\,c',\qquad b\,c = a\,h.$$</p>
+</div>
+<p>Chẳng hạn, $\triangle HBA \backsim \triangle ABC$ vì chung góc $B$ và cùng có một góc vuông; từ $\dfrac{HB}{AB} = \dfrac{AB}{CB}$ ta được $AB^2 = BC \cdot BH$. Tương tự, $\triangle HBA \backsim \triangle HAC$ (vì $\widehat{BAH} = \hat C$, cùng phụ với $\hat B$) cho $\dfrac{HB}{HA} = \dfrac{HA}{HC}$, tức $AH^2 = BH \cdot HC$.</p>
+
+<table>
+<tr><th>Dấu hiệu trong hình</th><th>Cặp góc bằng nhau</th><th>Tam giác đồng dạng thường gặp</th></tr>
+<tr><td>Đường thẳng song song một cạnh</td><td>Góc đồng vị, góc chung</td><td>$\triangle AMN \backsim \triangle ABC$</td></tr>
+<tr><td>Hai đường chéo của hình thang</td><td>So le trong, đối đỉnh</td><td>$\triangle OAB \backsim \triangle OCD$</td></tr>
+<tr><td>Đường cao trong tam giác vuông</td><td>Góc vuông, góc chung</td><td>$\triangle HBA \backsim \triangle ABC \backsim \triangle HAC$</td></tr>
+<tr><td>Hai tam giác có chung một góc</td><td>Góc chung + một góc bằng nhau cho trước</td><td>$\triangle ABD \backsim \triangle ACB$</td></tr>
+</table>
+
+<h2>3. Khám phá</h2>
+<h3>Đường thẳng song song với một cạnh</h3>
+<div data-widget="ch04_thales"  data-title="Định lý Thales: MN song song với BC" data-try="kéo điểm <b>M</b> trên cạnh AB (hoặc gõ tỉ số AM : AB). Ba tỉ số AM : AB, AN : AC, MN : BC luôn bằng nhau. Kéo các đỉnh A, B, C hoặc gõ độ dài ba cạnh rồi nhấn Enter: kết quả vẫn đúng."></div>
+<h3>Đường cao trong tam giác vuông</h3>
+<div data-widget="ch04_he_thuc"  data-title="Ba tam giác đồng dạng trong tam giác vuông" data-try="kéo đỉnh <b>A</b> trên nửa đường tròn đường kính BC: góc A luôn vuông. Chọn “Dữ kiện” rồi <b>gõ hai số đã biết</b> (ví dụ BH = 4, HC = 9): bảng tính ra mọi cạnh còn lại và kiểm tra bốn hệ thức."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Chọn “Biết AB và AC”, nhập $AB = 6$, $AC = 8$: bảng cho $BC = 10$, $AH = 4{,}8$, $BH = 3{,}6$, $HC = 6{,}4$ (Ví dụ 3). Chọn “Biết AH và BH”, nhập $AH = 6$, $BH = 3$ để kiểm tra Câu 8 của bài Kiểm tra chương.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Áp dụng định lý Thales</div>
+<p> Tam giác $ABC$ có $MN \parallel BC$ ($M \in AB$, $N \in AC$), $AM = 3$, $MB = 2$, $AC = 10$, $BC = 8$. Tính $AN$ và $MN$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB = 5$, nên $\dfrac{AM}{AB} = \dfrac35$. Theo định lý Thales: $AN = \dfrac35 \cdot 10 = 6$ và $MN = \dfrac35\cdot 8 = 4{,}8$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Bài toán chiếc thang (Khởi động)</div>
+<p> Thang dựa tường, chân thang cách tường $1{,}6$ m. Thanh ngang song song với mặt đất, cách đỉnh thang $\tfrac34$ chiều dài thang. Tính chiều dài thanh ngang.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Thang, tường và mặt đất tạo thành tam giác vuông; thanh ngang song song với mặt đất nên cắt ra tam giác nhỏ đồng dạng với tam giác lớn, tỉ số $\tfrac34$ (tính từ đỉnh thang). Thanh ngang dài $\tfrac34 \cdot 1{,}6 = 1{,}2$ m.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Tam giác vuông biết hai cạnh góc vuông</div>
+<p> Tam giác $ABC$ vuông tại $A$ có $AB = 6$, $AC = 8$, đường cao $AH$. Tính $BC$, $AH$, $BH$, $HC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$BC = \sqrt{6^2 + 8^2} = 10$ (định lý Pythagore). Từ $b\,c = a\,h$: $AH = \dfrac{6\cdot 8}{10} = 4{,}8$.</p>
+<p>Từ $c^2 = a\,c'$: $BH = \dfrac{36}{10} = 3{,}6$; từ $b^2 = a\,b'$: $HC = \dfrac{64}{10} = 6{,}4$. Kiểm tra: $3{,}6 + 6{,}4 = 10$ và $4{,}8^2 = 23{,}04 = 3{,}6 \cdot 6{,}4$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Biết hai hình chiếu</div>
+<p> Tam giác $ABC$ vuông tại $A$, đường cao $AH$ với $BH = 4$, $HC = 9$. Tính $AH$, $AB$, $AC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AH^2 = BH\cdot HC = 36$ nên $AH = 6$. $BC = 13$, $AB^2 = 13 \cdot 4 = 52$ nên $AB = 2\sqrt{13} \approx 7{,}21$; $AC^2 = 13\cdot 9 = 117$ nên $AC = 3\sqrt{13} \approx 10{,}82$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Hai tam giác có chung một góc</div>
+<p> Tam giác $ABC$ có $AB = 6$, $AC = 9$. Điểm $D$ trên cạnh $AC$ sao cho $\widehat{ABD} = \hat C$. Tính $AD$ và $DC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\triangle ABD$ và $\triangle ACB$ có góc $A$ chung và $\widehat{ABD} = \widehat{ACB}$, nên $\triangle ABD \backsim \triangle ACB$ (g.g).</p>
+<p>Suy ra $\dfrac{AB}{AC} = \dfrac{AD}{AB}$, tức $AB^2 = AD\cdot AC$. Vậy $AD = \dfrac{36}{9} = 4$ và $DC = 9 - 4 = 5$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 6. Định lý Thales đảo</div>
+<p> Trên các cạnh $AB$, $AC$ của tam giác $ABC$ lấy $M$, $N$ với $AM = 2$, $MB = 3$, $AN = 2{,}4$, $NC = 3{,}6$. Chứng minh $MN \parallel BC$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\dfrac{AM}{MB} = \dfrac23$ và $\dfrac{AN}{NC} = \dfrac{2{,}4}{3{,}6} = \dfrac23$. Hai tỉ số bằng nhau nên theo định lý Thales đảo, $MN \parallel BC$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li> Định lý Thales cho $\dfrac{AM}{AB} = \dfrac{MN}{BC}$ nhưng <b>không</b> cho $\dfrac{AM}{MB} = \dfrac{MN}{BC}$. Đoạn $MN$ phải đi với cả cạnh $AB$, không phải với đoạn $MB$.</li><li>Muốn dùng định lý Thales thì phải có hai đường thẳng song song. Nếu không có, hãy tìm hai cặp góc bằng nhau (g.g).</li><li> Với tam giác vuông, nhớ hệ thức bằng câu: “bình phương cạnh góc vuông bằng cạnh huyền nhân hình chiếu của nó”; “bình phương đường cao bằng tích hai hình chiếu”.</li><li> Khi hai tam giác có chung góc nhưng “lật ngược” (như $\triangle ABD \backsim \triangle ACB$), cạnh $AD$ ứng với $AB$ chứ không ứng với $AC$. Hãy viết ba cặp đỉnh tương ứng ra trước khi lập tỉ số.</li></ul>
+</div>
+
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p> Tam giác $ABC$ có $MN \parallel BC$ ($M \in AB$, $N \in AC$), $AM = 2$, $AB = 6$, $AC = 9$. Tính $AN$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{AN}{AC} = \dfrac{AM}{AB} = \dfrac13$, nên $AN = 3$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Thông hiểu</span></div>
+<p> Tam giác $ABC$ có $MN \parallel BC$, $AM = 4$, $MB = 6$, $BC = 15$. Tính $MN$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{MN}{BC} = \dfrac{AM}{AB} = \dfrac{4}{10}$, nên $MN = 6$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p> Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Hệ thức nào <b>đúng</b>?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> $AH^2 = BH\cdot HC$</label>
+<label><input type="radio" name="q3" value="b"> $AB^2 = BH\cdot HC$</label>
+<label><input type="radio" name="q3" value="c"> $AH^2 = AB\cdot AC$</label>
+<label><input type="radio" name="q3" value="d"> $AC^2 = BH \cdot BC$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\triangle HBA \backsim \triangle HAC$ cho $\dfrac{HB}{HA} = \dfrac{HA}{HC}$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p> Tam giác $ABC$ vuông tại $A$, đường cao $AH$, $BH = 2$, $HC = 8$. Tính $AH$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AH^2 = 2\cdot 8 = 16$, $AH = 4$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.9231" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p> Tam giác $ABC$ vuông tại $A$ có $AB = 5$, $BC = 13$, đường cao $AH$. Tính $BH$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB^2 = BC \cdot BH$ nên $BH = \dfrac{25}{13} \approx 1{,}92$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.2" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p> Tam giác $ABC$ vuông tại $A$ có $AB = 9$, $AC = 12$. Tính đường cao $AH$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$BC = \sqrt{81 + 144} = 15$; $AH = \dfrac{9 \cdot 12}{15} = 7{,}2$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 7 <span class="q-level">Thông hiểu</span></div>
+<p> Trên cạnh $AB$, $AC$ của tam giác $ABC$ lấy $M$, $N$ với $AM = 3$, $MB = 4$, $AN = 4{,}5$, $NC = 6$. Khẳng định nào đúng?</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> $MN \parallel BC$</label>
+<label><input type="radio" name="q7" value="b"> $MN$ cắt đường thẳng $BC$</label>
+<label><input type="radio" name="q7" value="c"> Chưa đủ dữ kiện để kết luận</label>
+<label><input type="radio" name="q7" value="d"> $MN \perp BC$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\dfrac{AM}{MB} = \dfrac34$ và $\dfrac{AN}{NC} = \dfrac{4{,}5}{6} = \dfrac34$. Theo định lý Thales đảo, $MN \parallel BC$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p> Tam giác $ABC$ có $D$ trên cạnh $AC$ sao cho $\widehat{ABD} = \hat C$. Biết $AD = 4$, $DC = 5$. Tính $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\triangle ABD \backsim \triangle ACB$ (g.g) nên $AB^2 = AD\cdot AC = 4 \cdot 9 = 36$, $AB = 6$.</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>$MN \parallel BC$ ⇒ $\triangle AMN \backsim \triangle ABC$ và $\dfrac{AM}{AB} = \dfrac{AN}{AC} = \dfrac{MN}{BC}$; ngược lại $\dfrac{AM}{MB} = \dfrac{AN}{NC}$ ⇒ $MN \parallel BC$.</li><li>Tìm tam giác đồng dạng bằng cách tìm góc chung, góc đối đỉnh, góc so le trong, góc đồng vị.</li><li> Tam giác vuông có đường cao: $\triangle HBA \backsim \triangle ABC \backsim \triangle HAC$; $c^2 = ac'$, $b^2 = ab'$, $h^2 = b'c'$, $bc = ah$.</li><li>Luôn viết ba cặp đỉnh tương ứng trước khi lập tỉ lệ thức.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

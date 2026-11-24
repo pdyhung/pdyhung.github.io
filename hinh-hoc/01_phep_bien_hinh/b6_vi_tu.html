@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phép vị tự · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch01_chung.js"></script>
+<script defer src="../assets/widgets/ch01_vi_tu.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 1 · Thực hiện phép biến hình · Bài 6</div>
+<h1>Bài 6. Phép vị tự <span class="en">(Dilations)</span></h1>
+<p class="lead">Máy chiếu phóng một hình nhỏ trên phim thành hình lớn trên màn; máy photocopy thu nhỏ một trang còn 70%. Hình dạng giữ nguyên, chỉ kích thước thay đổi theo một tỉ số. Đó là phép vị tự.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu định nghĩa phép vị tự tâm $I$ tỉ số $k$; hiểu ý nghĩa của dấu và độ lớn của $k$.</li><li>Tìm ảnh của điểm, hình qua phép vị tự bằng tọa độ.</li><li>Biết phép vị tự nhân độ dài với $|k|$, nhân diện tích với $k^2$, giữ nguyên góc.</li><li>Xác định tâm và tỉ số vị tự khi biết hình và ảnh.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Bạn đặt một ngọn đèn nhỏ $I$ trong phòng tối, phía trước là tấm bìa cắt hình tam giác, phía sau là bức tường song song với tấm bìa. Bóng tam giác trên tường lớn hơn hay nhỏ hơn tấm bìa? Nếu tường cách đèn xa gấp 3 lần tấm bìa thì cạnh của bóng dài gấp mấy lần? Diện tích bóng gấp mấy lần?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Phép vị tự</div>
+<p>Cho điểm $I$ và số $k \ne 0$. <b>Phép vị tự</b> <span class="en">(dilation)</span> tâm $I$ tỉ số $k$ là phép biến hình biến mỗi điểm $M$ thành điểm $M'$ sao cho</p>
+<p>$$\overrightarrow{IM'} = k\,\overrightarrow{IM}.$$</p>
+<p>Ký hiệu $V_{(I, k)}$. $I$ là <b>tâm vị tự</b> <span class="en">(center of dilation)</span>, $k$ là <b>tỉ số vị tự</b> <span class="en">(scale factor)</span>.</p>
+</div>
+<p>Ý nghĩa của $k$:</p>
+<ul>
+<li>$I$, $M$, $M'$ luôn <b>thẳng hàng</b> và $IM' = |k| \cdot IM$.</li>
+<li>$k > 0$: $M'$ nằm <b>cùng phía</b> với $M$ so với $I$ (trên tia $IM$). $k < 0$: $M'$ nằm <b>khác phía</b> ($I$ nằm giữa $M$ và $M'$).</li>
+<li>$|k| > 1$: phóng to; $|k| < 1$: thu nhỏ; $k = 1$: phép đồng nhất; $k = -1$: phép đối xứng tâm $I$ (phép quay $180^\circ$).</li>
+</ul>
+<div class="box dinh-ly">
+<div class="box-title">Biểu thức tọa độ</div>
+<p>Với $I(a; b)$ và $M(x; y)$, ảnh $M' = V_{(I, k)}(M)$ có tọa độ</p>
+<p>$$\begin{cases} x' = a + k(x - a) \\ y' = b + k(y - b) \end{cases}$$</p>
+<p>Khi tâm là gốc tọa độ: $V_{(O, k)}: (x; y) \to (kx; ky)$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<ul>
+<li>Nếu $M' = V_{(I,k)}(M)$, $N' = V_{(I,k)}(N)$ thì $\overrightarrow{M'N'} = k\,\overrightarrow{MN}$, do đó $M'N' = |k| \cdot MN$.</li>
+<li>Phép vị tự biến đường thẳng thành đường thẳng <b>song song hoặc trùng</b> với nó, biến góc thành góc <b>bằng nó</b>.</li>
+<li>Nó biến tam giác thành tam giác có các cạnh tỉ lệ với hệ số $|k|$ (tam giác <b>đồng dạng</b>, Chương 4); diện tích nhân với $k^2$:
+$$S' = k^2 \cdot S.$$</li>
+<li>Khi $|k| \ne 1$, phép vị tự <b>không</b> là phép dời hình.</li>
+</ul>
+</div>
+<h3>Xác định tâm vị tự từ hình và ảnh</h3>
+<p>Nếu tam giác $A'B'C'$ là ảnh của tam giác $ABC$ qua một phép vị tự thì các đường thẳng $AA'$, $BB'$, $CC'$ <b>đồng quy</b> tại tâm $I$ (khi $k \ne 1$). Tỉ số $k$ tìm từ $\overrightarrow{A'B'} = k\,\overrightarrow{AB}$. Bằng tọa độ: từ $A' = I + k(A - I)$ suy ra</p>
+<p>$$I = \frac{A' - kA}{1 - k} \quad (\text{tính riêng cho từng tọa độ}).$$</p>
+
+<h2>3. Khám phá: kéo tâm, đổi tỉ số</h2>
+<div data-widget="ch01_vi_tu"  data-title="Phép vị tự tâm I tỉ số k" data-try="gõ tỉ số k vào ô (thử 2; 0,5; −1; −2) rồi nhấn Enter, hoặc bấm nút chọn nhanh. Kéo tâm I (điểm đỏ) và các đỉnh. Đọc bảng: IA′ : IA và A′B′ : AB luôn bằng |k|, còn S′ : S bằng k². Bấm “Phóng dần” để thấy hình lớn dần từ k = 1 đến k đã chọn. Bật “Tìm tâm: ẩn tâm I” rồi “Vẽ các đường AA′, BB′, CC′” để tìm lại tâm."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra bài tập</div>
+<p>Ví dụ 1 dùng vị trí ban đầu: $I(-4; -2)$, $k = 2$, $A(-2; -1)$, $B(0; -1)$, $C(-1; 1)$. Với Ví dụ 3: nhập $k = -0{,}5$, $I(2; -2)$, $A(0; 0)$, $B(2; 0)$ và kiểm tra ảnh $A'(3; -3)$, $B'(2; -3)$.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Phóng to một tam giác</div>
+<p>Tìm ảnh của tam giác $A(-2; -1)$, $B(0; -1)$, $C(-1; 1)$ qua phép vị tự tâm $I(-4; -2)$ tỉ số $k = 2$. So sánh cạnh $AB$ và diện tích hai tam giác.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\overrightarrow{IA} = (2; 1)$ nên $\overrightarrow{IA'} = (4; 2)$ và $A' = (-4 + 4; -2 + 2) = (0; 0)$. Tương tự $B'(4; 0)$, $C'(2; 4)$.</p>
+<p>$AB = 2$, $A'B' = 4 = 2 \cdot AB$.</p>
+<p>$S_{ABC} = \dfrac{1}{2} \cdot 2 \cdot 2 = 2$ (đáy $AB = 2$, chiều cao từ $C$ là 2), $S_{A'B'C'} = \dfrac{1}{2} \cdot 4 \cdot 4 = 8 = 2^2 \cdot 2$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tỉ số âm</div>
+<p>Tìm ảnh của $M(4; -6)$ qua phép vị tự tâm $O$ tỉ số $k = -\dfrac{1}{2}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$M' = \left(-\dfrac12 \cdot 4;\ -\dfrac12 \cdot (-6)\right) = (-2; 3)$. Điểm $M'$ nằm ở phía bên kia của $O$ so với $M$, và $OM' = \dfrac12 OM$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Tìm tâm và tỉ số</div>
+<p>(a) Phép vị tự biến $A(1; 1)$ thành $A'(3; 5)$ và $B(2; 1)$ thành $B'(5; 5)$. Tìm tâm và tỉ số. (b) Câu hỏi tương tự với $A(0; 0) \to A'(3; -3)$, $B(2; 0) \to B'(2; -3)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>(a) $\overrightarrow{AB} = (1; 0)$, $\overrightarrow{A'B'} = (2; 0) = 2\,\overrightarrow{AB}$, nên $k = 2$. Tâm: $I = \dfrac{A' - 2A}{1 - 2} = 2A - A' = (2 - 3; 2 - 5) = (-1; -3)$. Kiểm tra với $B$: $I + 2(B - I) = 2B - I = (4 + 1; 2 + 3) = (5; 5)$ đúng bằng $B'$.</p>
+<p>(b) $\overrightarrow{AB} = (2; 0)$, $\overrightarrow{A'B'} = (-1; 0) = -\dfrac12\,\overrightarrow{AB}$, nên $k = -\dfrac12$. Tâm: $I = \dfrac{A' - kA}{1 - k} = \dfrac{(3; -3)}{1{,}5} = (2; -2)$. Kiểm tra: $I + k(B - I) = (2; -2) - \dfrac12(0; 2) = (2; -3)$ đúng bằng $B'$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Diện tích qua phép vị tự</div>
+<p>Một tam giác có diện tích $6$ cm². Tính diện tích ảnh của nó qua phép vị tự tỉ số $k = -3$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$S' = k^2 S = 9 \cdot 6 = 54$ cm². Dấu âm của $k$ không làm diện tích âm: chỉ có $k^2$ tham gia.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Máy photocopy</div>
+<p>Phóng to một hình vuông cạnh 8 cm bằng chế độ 150%. Tính cạnh và diện tích của bản phóng to.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Chế độ 150% là vị tự tỉ số $k = 1{,}5$. Cạnh mới: $1{,}5 \cdot 8 = 12$ cm. Diện tích mới: $12^2 = 144$ cm², bằng $1{,}5^2 = 2{,}25$ lần diện tích cũ $64$ cm².</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Diện tích nhân với $k^2$, <b>không phải</b> $k$. Phóng to gấp đôi cạnh thì diện tích gấp bốn.</li>
+<li>Với $k < 0$, độ dài nhân với $|k|$ (luôn dương), còn ảnh nằm ở phía bên kia tâm.</li>
+<li>Công thức $(x; y) \to (kx; ky)$ chỉ dùng khi tâm là <b>gốc tọa độ</b>. Với tâm $I(a; b)$, phải tính theo vectơ $\overrightarrow{IM}$.</li>
+<li>Phép vị tự giữ nguyên góc và hình dạng, nhưng không phải phép dời hình (trừ khi $k = \pm 1$).</li>
+<li>Khi $k = 1$ (hình và ảnh trùng nhau) hoặc khi hình và ảnh chỉ là ảnh tịnh tiến của nhau, các đường $AA'$, $BB'$ không cắt nhau: khi đó không có tâm vị tự.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Ảnh của $M(3; -1)$ qua phép vị tự tâm $O$ tỉ số $2$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $(5; 1)$</label>
+<label><input type="radio" name="q1" value="b"> $(6; -2)$</label>
+<label><input type="radio" name="q1" value="c"> $(1{,}5; -0{,}5)$</label>
+<label><input type="radio" name="q1" value="d"> $(-6; 2)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$V_{(O, k)}: (x; y) \to (kx; ky)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Phép vị tự tâm $O$ tỉ số $-1$ chính là:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> phép đồng nhất</label>
+<label><input type="radio" name="q2" value="b"> phép đối xứng trục $Ox$</label>
+<label><input type="radio" name="q2" value="c"> phép quay tâm $O$ góc $180^\circ$</label>
+<label><input type="radio" name="q2" value="d"> phép tịnh tiến</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$(x; y) \to (-x; -y)$: so sánh với các công thức của Bài 4.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Phép vị tự tỉ số $k = -3$ biến đoạn thẳng $AB = 4$ cm thành đoạn $A'B'$. Tính $A'B'$ (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$A'B' = |k| \cdot AB = 3 \cdot 4 = 12$ cm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.25" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ có diện tích $5$. Tính diện tích ảnh của nó qua phép vị tự tỉ số $k = 0{,}5$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$S' = k^2 S = 0{,}25 \cdot 5 = 1{,}25$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Phép vị tự tỉ số $k = 3$ bảo toàn đại lượng nào?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> Độ dài đoạn thẳng</label>
+<label><input type="radio" name="q5" value="b"> Số đo góc</label>
+<label><input type="radio" name="q5" value="c"> Diện tích</label>
+<label><input type="radio" name="q5" value="d"> Chu vi</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Độ dài và chu vi nhân 3, diện tích nhân 9; góc không đổi.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-4" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Tìm tung độ của ảnh của $M(2; 0)$ qua phép vị tự tâm $I(1; 2)$ tỉ số $k = 3$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{IM} = (1; -2)$, $\overrightarrow{IM'} = (3; -6)$, $M' = (1 + 3; 2 - 6) = (4; -4)$. Tung độ bằng $-4$. Kiểm tra bằng minh họa: $I(1; 2)$, $k = 3$, $A(2; 0)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="0.5" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Phép vị tự tỉ số $k = 3$ biến $A(2; 1)$ thành $A'(5; 7)$. Tìm hoành độ của tâm vị tự.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$I = \dfrac{A' - 3A}{1 - 3} = \dfrac{(5 - 6;\ 7 - 3)}{-2} = (0{,}5; -2)$. Kiểm tra: $\overrightarrow{IA} = (1{,}5; 3)$, $\overrightarrow{IA'} = (4{,}5; 9) = 3\,\overrightarrow{IA}$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một tam giác có diện tích $4$ cm², ảnh của nó qua một phép vị tự có diện tích $36$ cm². Tính $|k|$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$k^2 = \dfrac{36}{4} = 9$, nên $|k| = 3$ (tỉ số có thể là $3$ hoặc $-3$).</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>$V_{(I,k)}(M) = M' \iff \overrightarrow{IM'} = k\,\overrightarrow{IM}$ ($k \ne 0$); $I$, $M$, $M'$ thẳng hàng.</li><li>Tọa độ: $x' = a + k(x - a)$, $y' = b + k(y - b)$; tâm $O$: $(kx; ky)$.</li><li>Độ dài nhân $|k|$, diện tích nhân $k^2$, góc giữ nguyên; $k < 0$: ảnh ở phía bên kia tâm.</li><li>Tìm tâm: giao điểm của $AA'$, $BB'$; tìm $k$ từ $\overrightarrow{A'B'} = k\,\overrightarrow{AB}$.</li><li>Phép vị tự (|k| ≠ 1) không phải phép dời hình, nhưng giữ nguyên hình dạng: cơ sở của sự đồng dạng.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

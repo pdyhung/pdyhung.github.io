@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phép dời hình và tính bảo toàn · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch02_common.js"></script>
+<script defer src="../assets/widgets/ch02_bao_toan.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 2 · Tính chất phép biến hình và chứng minh · Bài 1</div>
+<h1>Bài 1. Phép dời hình và tính bảo toàn <span class="en">(Rigid transformations and preserved properties)</span></h1>
+<p class="lead">Trượt, xoay hay lật một tấm bìa trên mặt bàn, tấm bìa không co lại, cũng không giãn ra. Bài này gọi tên chính xác điều đó: phép dời hình là phép biến hình giữ nguyên khoảng cách, và kéo theo nó là cả loạt tính chất được bảo toàn.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu được định nghĩa phép dời hình: phép biến hình bảo toàn khoảng cách giữa hai điểm bất kỳ.</li><li>Biết các tính chất được bảo toàn: thẳng hàng và thứ tự, độ dài, số đo góc, song song, diện tích; ảnh của đoạn thẳng, tam giác, đường tròn.</li><li>Phân biệt phép dời hình với phép vị tự và phép co giãn: tính chất nào giữ, tính chất nào mất.</li><li>Dùng tọa độ để kiểm tra một phép biến hình có phải là phép dời hình hay không.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Bạn đặt một tờ giấy hình tam giác lên máy photocopy hai lần: lần đầu chọn tỉ lệ 100%, lần sau chọn 150%. Hai bản sao giống và khác bản gốc ở điểm nào? Góc ở mỗi đỉnh có đổi không? Cạnh có dài ra không?</p>
+<p>Bản sao 100% chỉ là bản gốc được <b>dời chỗ</b>: mọi cạnh, mọi góc giữ nguyên. Bản sao 150% giữ nguyên <b>hình dạng</b> (các góc), nhưng mọi cạnh dài gấp 1,5 lần. Đó chính là sự khác nhau giữa phép dời hình và phép vị tự.</p>
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p>Phép biến hình $F$ được gọi là <b>phép dời hình</b> <span class="en">(rigid transformation, isometry)</span> nếu với hai điểm bất kỳ $M, N$ và ảnh của chúng $M' = F(M)$, $N' = F(N)$, ta luôn có
+$$M'N' = MN.$$
+Nói gọn: phép dời hình <b>bảo toàn khoảng cách</b> giữa hai điểm bất kỳ.</p>
+<p>Phép tịnh tiến, phép quay, phép đối xứng trục, phép đối xứng tâm đều là phép dời hình. Thực hiện liên tiếp hai phép dời hình cũng được một phép dời hình (xem Bài 3).</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý (các tính chất được bảo toàn)</div>
+<p>Phép dời hình:</p>
+<ol>
+<li>biến ba điểm thẳng hàng thành ba điểm thẳng hàng và <b>giữ nguyên thứ tự</b> của chúng;</li>
+<li>biến đường thẳng thành đường thẳng, tia thành tia, đoạn thẳng thành đoạn thẳng <b>bằng nó</b>; biến hai đường thẳng song song thành hai đường thẳng song song;</li>
+<li>biến tam giác thành tam giác <b>bằng nó</b>, biến góc thành góc <b>bằng nó</b>;</li>
+<li>biến đường tròn thành đường tròn có cùng bán kính (tâm biến thành tâm);</li>
+<li>biến một hình thành một hình có <b>cùng diện tích</b>.</li>
+</ol>
+</div>
+<p><b>Vì sao?</b> Tính chất 1: điểm $B$ nằm giữa $A$ và $C$ khi và chỉ khi $AB + BC = AC$. Vì $A'B' = AB$, $B'C' = BC$, $A'C' = AC$ nên $A'B' + B'C' = A'C'$, tức $B'$ nằm giữa $A'$ và $C'$. Tính chất 3: tam giác $A'B'C'$ có ba cạnh bằng ba cạnh của tam giác $ABC$, nên hai tam giác bằng nhau (c.c.c) và các góc tương ứng bằng nhau.</p>
+<p>Để thấy rõ phép dời hình "đặc biệt" thế nào, ta so sánh với hai phép biến hình khác:</p>
+<ul>
+<li><b>Phép vị tự</b> <span class="en">(dilation)</span> tâm $O$ tỉ số $k \ne 0$ biến $M$ thành $M'$ sao cho $\overrightarrow{OM'} = k\,\overrightarrow{OM}$. Nó nhân mọi độ dài với $|k|$, giữ nguyên mọi góc, nhân diện tích với $k^2$.</li>
+<li><b>Phép co giãn</b> <span class="en">(stretch)</span> theo phương $Ox$ với hệ số $k > 0$: $(x; y) \mapsto (kx; y)$. Nó kéo dãn (hoặc nén) hình theo chiều ngang nên làm méo hình: góc thay đổi, diện tích nhân $k$.</li>
+</ul>
+<table>
+<tr><th>Phép biến hình</th><th>Độ dài</th><th>Góc</th><th>Song song</th><th>Diện tích</th><th>Hướng</th></tr>
+<tr><td>Tịnh tiến</td><td>giữ</td><td>giữ</td><td>giữ</td><td>giữ</td><td>giữ</td></tr>
+<tr><td>Quay</td><td>giữ</td><td>giữ</td><td>giữ</td><td>giữ</td><td>giữ</td></tr>
+<tr><td>Đối xứng tâm</td><td>giữ</td><td>giữ</td><td>giữ</td><td>giữ</td><td>giữ</td></tr>
+<tr><td>Đối xứng trục</td><td>giữ</td><td>giữ</td><td>giữ</td><td>giữ</td><td><b>đổi</b></td></tr>
+<tr><td>Vị tự tỉ số $k$</td><td>nhân $|k|$</td><td>giữ</td><td>giữ</td><td>nhân $k^2$</td><td>giữ</td></tr>
+<tr><td>Co giãn $(x; y)\mapsto(kx; y)$, $k \ne 1$</td><td>thường thay đổi</td><td>thường thay đổi</td><td>giữ</td><td>nhân $k$</td><td>giữ</td></tr>
+</table>
+<p>Cột cuối nói về <b>hướng</b> <span class="en">(orientation)</span>: nếu đi quanh tam giác theo thứ tự $A \to B \to C$ là ngược chiều kim đồng hồ thì đi quanh ảnh theo $A' \to B' \to C'$ có thể vẫn ngược chiều (giữ hướng) hoặc thành cùng chiều kim đồng hồ (đổi hướng). Phép đối xứng trục "lật" hình nên đổi hướng, nhưng vẫn là phép dời hình.</p>
+<h2>3. Khám phá: đo trước và sau phép biến hình</h2>
+<div data-widget="ch02_bao_toan" data-type="quay" data-title="Phép biến hình nào giữ nguyên độ dài và góc?" data-try="chọn lần lượt từng phép biến hình trong ô “Phép biến hình”, kéo các đỉnh A, B, C hoặc điểm tím (tâm, đầu mút vectơ). Bảng bên phải so sánh độ dài, góc, diện tích và chiều đi quanh đỉnh trước và sau. Với phép vị tự hay phép co giãn, hãy đổi số k. Bạn có thể <b>gõ số</b> vào mọi ô rồi nhấn Enter."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Chọn <b>Phép co giãn theo Ox</b>, nhập hệ số $k = 2$ và các đỉnh $A(0; 0)$, $B(2; 0)$, $C(0; 2)$. Tam giác vuông cân có $\widehat{B} = 45^\circ$; sau co giãn, $B'(4; 0)$, $C' = C$ nên $\tan \widehat{B'} = \dfrac{2}{4}$ và $\widehat{B'} \approx 26{,}57^\circ$. Bảng số đo hiện đúng "45° → 26,57°". Đổi sang <b>Phép vị tự</b> tâm $(0; 0)$ tỉ số $2$: góc $B$ giữ nguyên $45^\circ$, còn cạnh $AB$ từ $2$ thành $4$.</p>
+</div>
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Kiểm tra bằng tọa độ</div>
+<p>Phép biến hình $F$ biến điểm $M(x; y)$ thành $M'(y + 1;\ x - 2)$. Chứng minh $F$ là phép dời hình. Tính $A'B'$ với $A(1; 2)$, $B(4; 6)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Lấy hai điểm bất kỳ $M(x_1; y_1)$, $N(x_2; y_2)$. Ảnh của chúng là $M'(y_1 + 1; x_1 - 2)$, $N'(y_2 + 1; x_2 - 2)$. Khi đó
+$$M'N'^2 = (y_2 - y_1)^2 + (x_2 - x_1)^2 = MN^2,$$
+nên $M'N' = MN$: $F$ là phép dời hình.</p>
+<p>Với $A(1; 2)$, $B(4; 6)$: $A'(3; -1)$, $B'(7; 2)$, $A'B' = \sqrt{4^2 + 3^2} = 5$, đúng bằng $AB = \sqrt{3^2 + 4^2} = 5$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Phép co giãn không là phép dời hình</div>
+<p>Phép $G$ biến $M(x; y)$ thành $M'(2x; y)$. Xét tam giác $O(0; 0)$, $P(2; 0)$, $Q(0; 1)$. So sánh $OP$ với $O'P'$ và góc $\widehat{OPQ}$ với $\widehat{O'P'Q'}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$O' = O$, $P'(4; 0)$, $Q' = Q$. Ta có $OP = 2$ nhưng $O'P' = 4$: độ dài không được bảo toàn, nên $G$ <b>không</b> là phép dời hình.</p>
+<p>Về góc: $\tan\widehat{OPQ} = \dfrac{OQ}{OP} = \dfrac12$, nên $\widehat{OPQ} \approx 26{,}57^\circ$; còn $\tan\widehat{O'P'Q'} = \dfrac14$, nên $\widehat{O'P'Q'} \approx 14{,}04^\circ$. Góc cũng thay đổi: phép co giãn làm méo hình.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Phép vị tự giữ góc, nhân độ dài</div>
+<p>Tam giác $ABC$ có $AB = 2$, $BC = 3$, $CA = 4$. Phép vị tự tỉ số $k = 3$ biến nó thành tam giác $A'B'C'$. Tính các cạnh và diện tích của tam giác ảnh.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Các cạnh nhân 3: $A'B' = 6$, $B'C' = 9$, $C'A' = 12$. Các góc giữ nguyên.</p>
+<p>Diện tích tam giác $ABC$ theo công thức Heron, với nửa chu vi $p = 4{,}5$:
+$$S = \sqrt{4{,}5 \cdot 2{,}5 \cdot 1{,}5 \cdot 0{,}5} \approx 2{,}90.$$
+Diện tích nhân $k^2 = 9$: $S' = 9S \approx 26{,}14$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Thứ tự của ba điểm thẳng hàng</div>
+<p>Ba điểm $A, B, C$ thẳng hàng, $B$ nằm giữa $A$ và $C$, $AB = 3$, $BC = 5$. Một phép dời hình biến chúng thành $A', B', C'$. Tính $A'C'$. Điểm nào nằm giữa hai điểm còn lại?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$A'C' = AC = AB + BC = 8$. Vì $A'B' + B'C' = 3 + 5 = 8 = A'C'$ nên $B'$ nằm giữa $A'$ và $C'$: thứ tự được giữ nguyên.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Ảnh của đường tròn</div>
+<p>Tìm ảnh của đường tròn $(C)\colon (x - 1)^2 + (y - 2)^2 = 9$ qua phép tịnh tiến theo vectơ $\vec v = (2; -1)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$(C)$ có tâm $I(1; 2)$, bán kính $R = 3$. Phép tịnh tiến là phép dời hình nên ảnh là đường tròn cùng bán kính $3$, có tâm $I'(1 + 2;\ 2 - 1) = (3; 1)$:
+$$(x - 3)^2 + (y - 1)^2 = 9.$$</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Giữ góc chưa đủ</b> để là phép dời hình: phép vị tự với $|k| \ne 1$ giữ mọi góc nhưng thay đổi độ dài.</li>
+<li><b>Giữ diện tích cũng chưa đủ</b>: phép $(x; y) \mapsto \left(2x; \tfrac{y}{2}\right)$ giữ diện tích nhưng biến đoạn $OA$ với $A(1; 0)$, dài 1, thành đoạn dài 2.</li>
+<li>Phép vị tự tỉ số $k = 1$ là phép đồng nhất, tỉ số $k = -1$ là phép đối xứng tâm: hai trường hợp này là phép dời hình.</li>
+<li>Đừng nhầm "đổi hướng" với "không bảo toàn": phép đối xứng trục đổi hướng nhưng vẫn giữ mọi độ dài và góc.</li>
+<li>Để chứng minh <i>không</i> là phép dời hình, chỉ cần <b>một</b> cặp điểm có $M'N' \ne MN$. Để chứng minh <i>là</i> phép dời hình, phải xét hai điểm <b>bất kỳ</b>.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Phép biến hình nào sau đây <b>không</b> phải là phép dời hình?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Phép tịnh tiến theo vectơ $\vec v = (1; 2)$</label>
+<label><input type="radio" name="q1" value="b"> Phép quay tâm $O$ góc $60^\circ$</label>
+<label><input type="radio" name="q1" value="c"> Phép vị tự tâm $O$ tỉ số $2$</label>
+<label><input type="radio" name="q1" value="d"> Phép đối xứng trục $Ox$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép vị tự tỉ số 2 nhân mọi độ dài với 2.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.5" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Một phép dời hình biến đoạn thẳng $AB$ dài $7{,}5$ cm thành đoạn $A'B'$. Tính $A'B'$ (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Phép dời hình bảo toàn khoảng cách: $A'B' = AB = 7{,}5$ cm.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Phép vị tự tâm $O$ tỉ số $k = -2$ biến góc $\widehat{xAy} = 40^\circ$ thành một góc có số đo</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> $40^\circ$</label>
+<label><input type="radio" name="q3" value="b"> $80^\circ$</label>
+<label><input type="radio" name="q3" value="c"> $20^\circ$</label>
+<label><input type="radio" name="q3" value="d"> $160^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép vị tự bảo toàn số đo góc, với mọi $k \ne 0$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="45" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Phép vị tự tỉ số $k = -3$ biến một tam giác có diện tích $5$ thành tam giác có diện tích bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Diện tích nhân $k^2 = 9$: $5 \cdot 9 = 45$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Phép $F$ biến $M(x; y)$ thành $M'(-y + 2;\ x - 1)$. Cho $A(1; 1)$, $B(4; 5)$. Tính $A'B'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$A'(1; 0)$, $B'(-3; 3)$, $A'B' = \sqrt{16 + 9} = 5$. Thật ra $F$ là phép dời hình nên $A'B' = AB = 5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Phép co giãn $(x; y) \mapsto (2x; y)$ bảo toàn điều gì?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> Độ dài mọi đoạn thẳng song song với $Oy$</label>
+<label><input type="radio" name="q6" value="b"> Số đo mọi góc</label>
+<label><input type="radio" name="q6" value="c"> Diện tích mọi hình</label>
+<label><input type="radio" name="q6" value="d"> Độ dài mọi đoạn thẳng</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai đầu của một đoạn song song với $Oy$ có cùng hoành độ $x$; sau co giãn chúng có cùng hoành độ $2x$, tung độ không đổi, nên độ dài giữ nguyên.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Phép co giãn $(x; y) \mapsto (3x; y)$ biến tam giác $O(0; 0)$, $A(2; 0)$, $B(0; 2)$ thành tam giác $O'A'B'$. Tính diện tích tam giác $O'A'B'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$O' = O$, $A'(6; 0)$, $B' = B$: diện tích $\tfrac12 \cdot 6 \cdot 2 = 6$, gấp 3 lần diện tích ban đầu là 2.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="26.57" data-tol="0.02">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Phép $G\colon (x; y) \mapsto (2x; y)$. Tam giác $O(0; 0)$, $P(1; 0)$, $Q(0; 1)$ có $\widehat{OPQ} = 45^\circ$. Tính số đo góc $\widehat{O'P'Q'}$ (độ, làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$P'(2; 0)$, $Q' = Q$: $\tan\widehat{O'P'Q'} = \tfrac{1}{2}$, nên góc $\approx 26{,}57^\circ$. Có thể kiểm tra bằng minh họa ở mục 3.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Phép dời hình là phép biến hình bảo toàn khoảng cách giữa hai điểm bất kỳ.</li><li>Phép dời hình giữ thẳng hàng và thứ tự; biến đoạn thẳng, góc, tam giác, đường tròn thành hình bằng nó; diện tích không đổi.</li><li>Tịnh tiến, quay, đối xứng tâm giữ hướng; đối xứng trục đổi hướng.</li><li>Phép vị tự tỉ số $k$ giữ góc, nhân độ dài với $|k|$, nhân diện tích với $k^2$; phép co giãn làm méo hình.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

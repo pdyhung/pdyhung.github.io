@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phụ lục A. Bảng công thức · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Phụ lục</div>
+<h1>Phụ lục A. Bảng công thức</h1>
+<p class="lead">Tổng hợp các công thức và kết quả chính của cả sách, xếp theo chương. In trang này (Ctrl + P) để có một bảng tra cứu.</p>
+<h2>Chương 1–2. Phép biến hình (trên mặt phẳng tọa độ)</h2>
+<table>
+<tr><th>Phép biến hình</th><th>Ảnh của điểm $M(x; y)$</th><th>Bảo toàn</th></tr>
+<tr><td>Tịnh tiến theo $\vec v = (a; b)$</td><td>$M'(x + a;\ y + b)$</td><td>độ dài, góc, hướng</td></tr>
+<tr><td>Quay $90°$ quanh $O$ (ngược chiều kim đồng hồ)</td><td>$M'(-y;\ x)$</td><td>độ dài, góc</td></tr>
+<tr><td>Quay $180°$ quanh $O$</td><td>$M'(-x;\ -y)$</td><td>độ dài, góc</td></tr>
+<tr><td>Quay $270°$ quanh $O$ (tức quay $-90°$)</td><td>$M'(y;\ -x)$</td><td>độ dài, góc</td></tr>
+<tr><td>Quay góc $\alpha$ quanh $O$</td><td>$M'(x\cos\alpha - y\sin\alpha;\ x\sin\alpha + y\cos\alpha)$</td><td>độ dài, góc</td></tr>
+<tr><td>Đối xứng qua $Ox$ · qua $Oy$</td><td>$M'(x; -y)$ · $M'(-x; y)$</td><td>độ dài, góc (đổi hướng)</td></tr>
+<tr><td>Đối xứng qua đường thẳng $y = x$</td><td>$M'(y; x)$</td><td>độ dài, góc (đổi hướng)</td></tr>
+<tr><td>Vị tự tâm $O$, tỉ số $k$</td><td>$M'(kx;\ ky)$</td><td>góc; độ dài nhân $|k|$, diện tích nhân $k^2$</td></tr>
+</table>
+<h2>Chương 3. Sự bằng nhau</h2>
+<ul>
+<li>Hai tam giác bằng nhau khi có: <b>c.c.c</b>; <b>c.g.c</b> (góc xen giữa); <b>g.c.g</b> (cạnh kề hai góc); <b>g.g.c</b>. Trường hợp hai cạnh và một góc không xen giữa <b>không</b> đủ.</li>
+<li>Tổng ba góc trong tam giác bằng $180°$. Góc ngoài bằng tổng hai góc trong không kề với nó.</li>
+<li>Tổng các góc trong của đa giác $n$ cạnh: $(n - 2) \cdot 180°$.</li>
+<li>Trọng tâm $G$ chia mỗi đường trung tuyến $AM$ theo tỉ số $AG : GM = 2 : 1$.</li>
+<li>Hai đường thẳng song song bị cắt bởi một cát tuyến: các góc so le trong bằng nhau, các góc đồng vị bằng nhau, các góc trong cùng phía bù nhau.</li>
+</ul>
+<h2>Chương 4. Sự đồng dạng</h2>
+<ul>
+<li>Hai tam giác đồng dạng khi có: <b>g.g</b>; <b>c.g.c</b> (hai cạnh tỉ lệ, góc xen giữa bằng nhau); <b>c.c.c</b> (ba cạnh tỉ lệ).</li>
+<li>Tỉ số đồng dạng $k$: tỉ số chu vi $= k$, tỉ số diện tích $= k^2$, tỉ số thể tích $= k^3$.</li>
+<li>Định lý Thales: một đường thẳng song song với một cạnh của tam giác định ra trên hai cạnh kia những đoạn thẳng tương ứng tỉ lệ.</li>
+<li>Đường phân giác trong $AD$ của tam giác $ABC$: $\dfrac{DB}{DC} = \dfrac{AB}{AC}$.</li>
+<li>Tỉ lệ vàng: $\varphi = \dfrac{1 + \sqrt5}{2} \approx 1{,}618$.</li>
+</ul>
+<h2>Chương 5. Tam giác vuông và lượng giác</h2>
+<ul>
+<li>Định lý Pythagore: $a^2 + b^2 = c^2$ ($c$ là cạnh huyền).</li>
+<li>Tam giác $45°$–$45°$–$90°$: các cạnh tỉ lệ $1 : 1 : \sqrt2$. Tam giác $30°$–$60°$–$90°$: $1 : \sqrt3 : 2$.</li>
+<li>Tam giác vuông tại $A$, đường cao $AH = h$, hình chiếu $b' = HC$, $c' = HB$: $h^2 = b'c'$, $b^2 = a b'$, $c^2 = a c'$, $ah = bc$.</li>
+<li>$\sin\alpha = \dfrac{\text{cạnh đối}}{\text{cạnh huyền}}$, $\cos\alpha = \dfrac{\text{cạnh kề}}{\text{cạnh huyền}}$, $\tan\alpha = \dfrac{\text{cạnh đối}}{\text{cạnh kề}}$; $\sin^2\alpha + \cos^2\alpha = 1$; $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$.</li>
+<li>Hai góc phụ nhau: $\sin\alpha = \cos(90° - \alpha)$, $\cos\alpha = \sin(90° - \alpha)$.</li>
+</ul>
+<table>
+<tr><th>Góc</th><th>$30°$</th><th>$45°$</th><th>$60°$</th></tr>
+<tr><td>$\sin$</td><td>$\frac12$</td><td>$\frac{\sqrt2}{2}$</td><td>$\frac{\sqrt3}{2}$</td></tr>
+<tr><td>$\cos$</td><td>$\frac{\sqrt3}{2}$</td><td>$\frac{\sqrt2}{2}$</td><td>$\frac12$</td></tr>
+<tr><td>$\tan$</td><td>$\frac{\sqrt3}{3}$</td><td>$1$</td><td>$\sqrt3$</td></tr>
+</table>
+<h2>Chương 6. Hình học giải tích</h2>
+<ul>
+<li>Khoảng cách: $AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$.</li>
+<li>Trung điểm: $M\left(\dfrac{x_A + x_B}{2};\ \dfrac{y_A + y_B}{2}\right)$.</li>
+<li>Điểm $P$ chia đoạn $AB$ theo tỉ số $AP : PB = m : n$: $P\left(\dfrac{n x_A + m x_B}{m + n};\ \dfrac{n y_A + m y_B}{m + n}\right)$.</li>
+<li>Hệ số góc của đường thẳng $AB$: $a = \dfrac{y_B - y_A}{x_B - x_A}$. Đường thẳng qua $M(x_0; y_0)$ có hệ số góc $a$: $y = a(x - x_0) + y_0$.</li>
+<li>Hai đường thẳng $y = a_1x + b_1$ và $y = a_2 x + b_2$: song song ⇔ $a_1 = a_2$ và $b_1 \ne b_2$; vuông góc ⇔ $a_1 \cdot a_2 = -1$.</li>
+<li>Diện tích đa giác $A_1A_2\ldots A_n$ (công thức Shoelace): $S = \dfrac12 \left| \sum_{i=1}^{n} (x_i y_{i+1} - x_{i+1} y_i) \right|$, với $A_{n+1} = A_1$.</li>
+</ul>
+<h2>Chương 7. Đường tròn</h2>
+<ul>
+<li>Chu vi $C = 2\pi r$, diện tích hình tròn $S = \pi r^2$.</li>
+<li>$180° = \pi$ rad. Độ dài cung: $l = r\theta$ ($\theta$ tính bằng rad) $= \dfrac{\pi r n}{180}$ ($n$ tính bằng độ).</li>
+<li>Diện tích hình quạt: $S = \dfrac12 r^2 \theta = \dfrac{\pi r^2 n}{360} = \dfrac{l r}{2}$.</li>
+<li>Góc nội tiếp bằng nửa góc ở tâm cùng chắn một cung; góc nội tiếp chắn nửa đường tròn là góc vuông.</li>
+<li>Tiếp tuyến vuông góc với bán kính tại tiếp điểm; hai tiếp tuyến kẻ từ điểm $M$ tiếp xúc tại $A$, $B$ thì $MA = MB$.</li>
+<li>Đường tròn tâm $I(a; b)$, bán kính $r$: $(x - a)^2 + (y - b)^2 = r^2$. Dạng $x^2 + y^2 - 2ax - 2by + c = 0$ có tâm $I(a; b)$ và $r = \sqrt{a^2 + b^2 - c}$ (khi $a^2 + b^2 - c > 0$).</li>
+<li>Đa giác đều $n$ cạnh nội tiếp đường tròn bán kính $R$: cạnh $a = 2R\sin\dfrac{180°}{n}$.</li>
+</ul>
+<h2>Chương 8. Hình học không gian</h2>
+<table>
+<tr><th>Khối</th><th>Thể tích</th><th>Ghi chú</th></tr>
+<tr><td>Hình hộp chữ nhật · hình lập phương</td><td>$V = abc$ · $V = a^3$</td><td></td></tr>
+<tr><td>Hình lăng trụ (đứng hoặc xiên)</td><td>$V = B h$</td><td>$B$: diện tích đáy</td></tr>
+<tr><td>Hình chóp</td><td>$V = \frac13 B h$</td><td></td></tr>
+<tr><td>Hình trụ</td><td>$V = \pi r^2 h$</td><td></td></tr>
+<tr><td>Hình nón</td><td>$V = \frac13 \pi r^2 h$</td><td>đường sinh $l = \sqrt{r^2 + h^2}$</td></tr>
+<tr><td>Hình nón cụt</td><td>$V = \frac13 \pi h (R^2 + Rr + r^2)$</td><td></td></tr>
+<tr><td>Hình cầu · nửa hình cầu</td><td>$V = \frac43 \pi R^3$ · $V = \frac23 \pi R^3$</td><td></td></tr>
+<tr><td>Hình xuyến</td><td>$V = 2\pi^2 d a^2$</td><td>định lý Pappus $V = 2\pi d \cdot A$</td></tr>
+</table>
+<ul>
+<li>Hệ thức Euler cho khối đa diện lồi: $\text{Đ} - C + M = 2$.</li>
+<li>Lăng trụ $n$-giác: $2n$ đỉnh, $3n$ cạnh, $n + 2$ mặt. Chóp $n$-giác: $n + 1$ đỉnh, $2n$ cạnh, $n + 1$ mặt.</li>
+<li>Nguyên lý Cavalieri: thiết diện bằng nhau ở mọi độ cao ⇒ thể tích bằng nhau.</li>
+<li>Khối lượng riêng $D = \dfrac{m}{V}$; $1 \text{ g/cm}^3 = 1000 \text{ kg/m}^3$; $1 \text{ dm}^3 = 1$ lít.</li>
+</ul>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

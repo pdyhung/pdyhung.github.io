@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tam giác vuông đặc biệt · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch05_dac_biet.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 5 · Tam giác vuông và lượng giác · Bài 2</div>
+<h1>Bài 2. Tam giác vuông đặc biệt <span class="en">(Special right triangles)</span></h1>
+<p class="lead">Cắt đôi một hình vuông theo đường chéo, hay cắt đôi một tam giác đều theo đường cao, ta được hai loại tam giác vuông xuất hiện khắp nơi: trong ê-ke, trong mái nhà, trong các bài toán lượng giác. Các cạnh của chúng luôn theo một tỉ lệ cố định.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Nhận biết tam giác vuông cân (45° – 45° – 90°) và nửa tam giác đều (30° – 60° – 90°).</li><li>Nhớ và giải thích được tỉ lệ ba cạnh $1 : 1 : \sqrt2$ và $1 : \sqrt3 : 2$.</li><li>Biết một cạnh, tính nhanh hai cạnh còn lại ở dạng căn thức và dạng thập phân.</li><li>Vận dụng vào đường chéo hình vuông, đường cao và diện tích tam giác đều.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Bộ ê-ke học sinh thường có hai chiếc: một chiếc có hai góc nhọn bằng nhau, chiếc kia có một góc nhọn bằng nửa góc nhọn còn lại. Hãy đo các cạnh của chúng. Bạn sẽ thấy cạnh huyền của chiếc thứ hai dài <b>gấp đôi</b> cạnh góc vuông ngắn. Đó có phải là trùng hợp không?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Tam giác vuông cân (45° – 45° – 90°)</div>
+<p><b>Tam giác vuông cân</b> <span class="en">(isosceles right triangle)</span> là tam giác vuông có hai cạnh góc vuông bằng nhau; hai góc nhọn đều bằng $45^\circ$. Nó chính là một nửa hình vuông, cắt theo đường chéo.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tỉ lệ cạnh của tam giác 45° – 45° – 90°</div>
+<p>Nếu cạnh góc vuông bằng $x$ thì cạnh huyền bằng $x\sqrt2$:</p>
+<p>$$\text{cạnh góc vuông} : \text{cạnh góc vuông} : \text{cạnh huyền} = 1 : 1 : \sqrt2 .$$</p>
+<p><i>Giải thích.</i> Theo định lý Pythagore, cạnh huyền $= \sqrt{x^2 + x^2} = \sqrt{2x^2} = x\sqrt2$.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Nửa tam giác đều (30° – 60° – 90°)</div>
+<p>Kẻ đường cao của một tam giác đều, ta được hai <b>tam giác 30° – 60° – 90°</b> <span class="en">(30-60-90 triangle)</span> bằng nhau. Cạnh huyền là cạnh của tam giác đều; cạnh đối diện góc $30^\circ$ là một nửa cạnh đáy.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tỉ lệ cạnh của tam giác 30° – 60° – 90°</div>
+<p>Nếu cạnh đối diện góc $30^\circ$ bằng $x$ thì cạnh huyền bằng $2x$ và cạnh đối diện góc $60^\circ$ bằng $x\sqrt3$:</p>
+<p>$$\text{đối } 30^\circ : \text{đối } 60^\circ : \text{huyền} = 1 : \sqrt3 : 2 .$$</p>
+<p><i>Giải thích.</i> Tam giác đều cạnh $2x$; đường cao chia đáy thành hai đoạn $x$. Theo định lý Pythagore, đường cao $= \sqrt{(2x)^2 - x^2} = \sqrt{3x^2} = x\sqrt3$.</p>
+</div>
+<p>Đặc biệt: <b>trong tam giác vuông, cạnh đối diện góc $30^\circ$ bằng nửa cạnh huyền.</b></p>
+<table>
+<tr><th>Biết</th><th>Tam giác 45° – 45° – 90°</th><th>Tam giác 30° – 60° – 90°</th></tr>
+<tr><td>Cạnh ngắn nhất $x$</td><td>huyền $= x\sqrt2$</td><td>đối $60^\circ$ $= x\sqrt3$, huyền $= 2x$</td></tr>
+<tr><td>Cạnh huyền $h$</td><td>cạnh góc vuông $= \dfrac{h}{\sqrt2} = \dfrac{h\sqrt2}{2}$</td><td>đối $30^\circ$ $= \dfrac{h}{2}$, đối $60^\circ$ $= \dfrac{h\sqrt3}{2}$</td></tr>
+<tr><td>Cạnh đối $60^\circ$ là $y$</td><td>—</td><td>đối $30^\circ$ $= \dfrac{y}{\sqrt3} = \dfrac{y\sqrt3}{3}$, huyền $= \dfrac{2y\sqrt3}{3}$</td></tr>
+</table>
+
+<h2>3. Khám phá bằng minh họa động</h2>
+<div data-widget="ch05_dac_biet"  data-title="Biết một cạnh, tìm hai cạnh còn lại" data-try="chọn loại tam giác và cạnh đã biết, rồi <b>gõ độ dài</b> vào ô và nhấn Enter, hoặc kéo đỉnh B. Bảng số đo hiện các cạnh ở dạng căn thức và dạng thập phân. Hình nét đứt cho thấy tam giác là nửa hình vuông hoặc nửa tam giác đều."></div>
+<p>Hãy thử: chọn “Nửa tam giác đều”, cạnh đã biết là “Cạnh huyền”, nhập 10. Cạnh đối diện góc $30^\circ$ luôn bằng 5, đúng một nửa cạnh huyền. Kéo B để phóng to, thu nhỏ: tỉ lệ $1 : \sqrt3 : 2$ không đổi.</p>
+<div data-widget="ch05_dac_biet" data-type="t45" data-known="hyp" data-val="10" data-title="Tam giác vuông cân: nửa hình vuông" data-try="nhập cạnh huyền (chọn “Cạnh huyền” trong ô Cạnh đã biết) để tìm cạnh hình vuông. Dòng kiểm tra cho thấy BC² + AC² luôn bằng AB²."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Đường chéo hình vuông</div>
+<p>Một viên gạch hình vuông cạnh 7 cm. Tính đường chéo của viên gạch.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đường chéo chia hình vuông thành hai tam giác vuông cân có cạnh góc vuông 7 cm. Đường chéo là cạnh huyền: $7\sqrt2 \approx 9{,}90$ cm.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Biết cạnh huyền của tam giác vuông cân</div>
+<p>Tam giác $ABC$ vuông cân tại $A$ có $BC = 10$. Tính $AB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB = \dfrac{10}{\sqrt2} = \dfrac{10\sqrt2}{2} = 5\sqrt2 \approx 7{,}07$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Biết cạnh huyền của tam giác 30° – 60° – 90°</div>
+<p>Tam giác $MNP$ vuông tại $M$, $\widehat{N} = 30^\circ$, $NP = 12$. Tính $MP$ và $MN$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$MP$ đối diện góc $30^\circ$ nên $MP = \dfrac{12}{2} = 6$. $MN$ đối diện góc $60^\circ$ nên $MN = 6\sqrt3 \approx 10{,}39$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Biết cạnh đối diện góc 60°</div>
+<p>Tam giác vuông có một góc $60^\circ$; cạnh góc vuông đối diện góc $60^\circ$ dài 9. Tính hai cạnh còn lại.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Cạnh đối diện góc $30^\circ$: $x = \dfrac{9}{\sqrt3} = \dfrac{9\sqrt3}{3} = 3\sqrt3 \approx 5{,}20$. Cạnh huyền: $2x = 6\sqrt3 \approx 10{,}39$.</p>
+<p>Kiểm tra: $(3\sqrt3)^2 + 9^2 = 27 + 81 = 108 = (6\sqrt3)^2$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Đường cao và diện tích tam giác đều</div>
+<p>Tính đường cao và diện tích tam giác đều cạnh 8 cm.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đường cao chia tam giác đều thành hai tam giác 30° – 60° – 90° có cạnh huyền 8, cạnh đối diện góc $30^\circ$ bằng 4. Đường cao là cạnh đối diện góc $60^\circ$: $h = 4\sqrt3 \approx 6{,}93$ cm.</p>
+<p>Diện tích: $S = \dfrac12 \cdot 8 \cdot 4\sqrt3 = 16\sqrt3 \approx 27{,}71\ \text{cm}^2$. Tổng quát, tam giác đều cạnh $a$ có $h = \dfrac{a\sqrt3}{2}$ và $S = \dfrac{a^2\sqrt3}{4}$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Trong tam giác 30° – 60° – 90°, cạnh <b>ngắn nhất</b> đối diện góc $30^\circ$, cạnh huyền dài nhất. Lỗi hay gặp: nhân nhầm $\sqrt3$ vào cạnh huyền. Nhớ thứ tự: $1 < \sqrt3 \approx 1{,}73 < 2$.</li>
+<li>Khi chia cho $\sqrt2$ hoặc $\sqrt3$, nên trục căn ở mẫu: $\dfrac{10}{\sqrt2} = 5\sqrt2$, $\dfrac{9}{\sqrt3} = 3\sqrt3$.</li>
+<li>Câu "cạnh đối diện góc $30^\circ$ bằng nửa cạnh huyền" chỉ đúng trong <b>tam giác vuông</b>.</li>
+<li>Chỉ làm tròn ở bước cuối; giữ dạng căn trong các bước trung gian để kết quả chính xác.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Tỉ lệ ba cạnh (đối $30^\circ$ : đối $60^\circ$ : huyền) của tam giác 30° – 60° – 90° là</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $1 : 1 : \sqrt2$</label>
+<label><input type="radio" name="q1" value="b"> $1 : \sqrt3 : 2$</label>
+<label><input type="radio" name="q1" value="c"> $1 : 2 : \sqrt3$</label>
+<label><input type="radio" name="q1" value="d"> $\sqrt3 : 1 : 2$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cạnh đối góc 30° là nhỏ nhất, cạnh huyền gấp đôi nó.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.0711" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác vuông cân có cạnh góc vuông 5. Tính cạnh huyền (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$5\sqrt2 \approx 7{,}07$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5.6569" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác vuông cân có cạnh huyền 8. Tính cạnh góc vuông (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{8}{\sqrt2} = 4\sqrt2 \approx 5{,}66$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác vuông có một góc $30^\circ$ và cạnh huyền 14. Tính cạnh góc vuông đối diện góc $30^\circ$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Cạnh đối diện góc 30° bằng nửa cạnh huyền: $14 : 2 = 7$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6.9282" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác 30° – 60° – 90° có cạnh đối diện góc $30^\circ$ bằng 4. Tính cạnh đối diện góc $60^\circ$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$4\sqrt3 \approx 6{,}93$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác 30° – 60° – 90° có cạnh đối diện góc $60^\circ$ bằng 6. Cạnh huyền bằng</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> $12$</label>
+<label><input type="radio" name="q6" value="b"> $4\sqrt3$</label>
+<label><input type="radio" name="q6" value="c"> $6\sqrt3$</label>
+<label><input type="radio" name="q6" value="d"> $3\sqrt3$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cạnh ngắn $x = \dfrac{6}{\sqrt3} = 2\sqrt3$, cạnh huyền $2x = 4\sqrt3$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8.6603" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tính đường cao của tam giác đều cạnh 10 (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = \dfrac{10\sqrt3}{2} = 5\sqrt3 \approx 8{,}66$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="72" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một hình vuông có đường chéo dài 12 cm. Tính diện tích hình vuông (cm²).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Cạnh hình vuông $= \dfrac{12}{\sqrt2} = 6\sqrt2$, diện tích $= (6\sqrt2)^2 = 72$ cm². Cách khác: $S = \dfrac{d^2}{2} = \dfrac{144}{2} = 72$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Tam giác vuông cân (45° – 45° – 90°): cạnh góc vuông $x$, cạnh huyền $x\sqrt2$; tỉ lệ $1 : 1 : \sqrt2$.</li><li>Tam giác 30° – 60° – 90°: đối $30^\circ$ là $x$, đối $60^\circ$ là $x\sqrt3$, huyền $2x$; tỉ lệ $1 : \sqrt3 : 2$.</li><li>Cạnh đối diện góc $30^\circ$ bằng nửa cạnh huyền.</li><li>Tam giác đều cạnh $a$: đường cao $\dfrac{a\sqrt3}{2}$, diện tích $\dfrac{a^2\sqrt3}{4}$. Hình vuông cạnh $a$: đường chéo $a\sqrt2$.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

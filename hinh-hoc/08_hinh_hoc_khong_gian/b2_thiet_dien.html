@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 2. Thiết diện của hình khối · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/vendor/three/three.min.js"></script>
+<script defer src="../assets/vendor/three/OrbitControls.js"></script>
+<script defer src="../assets/js/section-math.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/widgets/ch08_thiet_dien.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 8 · Hình học không gian · Bài 2</div>
+<h1>Thiết diện của hình khối <span class="en">(Cross sections of 3D objects)</span></h1>
+<p class="lead">Cắt một quả dưa hấu, một ổ bánh mì hay một khối đậu phụ, mặt cắt lộ ra có hình dạng gì? Bài này trả lời câu hỏi đó cho các khối hình học quen thuộc.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul>
+<li>Hiểu thiết diện là gì và vì sao thiết diện của khối đa diện là một đa giác.</li>
+<li>Nhận ra thiết diện khi cắt <b>song song</b>, <b>vuông góc</b> hoặc <b>xiên</b> với đáy.</li>
+<li>Biết các thiết diện có thể và không thể có của hình lập phương, hình chóp, hình lăng trụ, hình trụ, hình nón.</li>
+<li>Tính được diện tích một số thiết diện đặc biệt.</li>
+</ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Bạn có một khối đậu phụ hình lập phương và một con dao. Chỉ với <b>một nhát cắt thẳng</b>, bạn có thể tạo ra mặt cắt hình tam giác không? Hình lục giác không? Hình bảy cạnh không?</p>
+<p>Hãy đoán trước, rồi kiểm tra bằng minh họa ở mục 3.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p>Khi một mặt phẳng cắt một khối, phần chung của mặt phẳng và khối là một hình phẳng, gọi là <b>thiết diện</b> (hay <b>mặt cắt</b>) <span class="en">(cross section)</span> của khối tạo bởi mặt phẳng đó.</p>
+</div>
+<p>Thiết diện của một khối đa diện (hình lập phương, hình hộp, hình chóp, hình lăng trụ…) là một <b>đa giác</b>. Lý do: mặt phẳng cắt mỗi mặt của khối theo nhiều nhất một đoạn thẳng, và các đoạn thẳng đó nối với nhau thành biên của thiết diện.</p>
+
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<p>Mỗi cạnh của thiết diện nằm trên một mặt của khối, và hai cạnh khác nhau của thiết diện nằm trên hai mặt khác nhau. Do đó, với khối đa diện lồi:</p>
+<p>$$\text{số cạnh của thiết diện} \;\le\; \text{số mặt của khối}.$$</p>
+<p>Hình lập phương có 6 mặt nên thiết diện của nó có <b>nhiều nhất 6 cạnh</b>.</p>
+</div>
+
+<p>Theo vị trí của mặt phẳng so với đáy, ta thường gặp ba cách cắt:</p>
+<table>
+<tr><th>Cách cắt</th><th>Hình lập phương</th><th>Hình trụ</th><th>Hình nón</th></tr>
+<tr><td><b>Song song</b> với đáy</td><td>Hình vuông</td><td>Hình tròn</td><td>Hình tròn (nhỏ dần về phía đỉnh)</td></tr>
+<tr><td><b>Vuông góc</b> với đáy</td><td>Hình chữ nhật (hoặc hình vuông)</td><td>Hình chữ nhật</td><td>Tam giác cân (nếu qua đỉnh), hyperbol (nếu không)</td></tr>
+<tr><td><b>Xiên</b> với đáy</td><td>Tam giác, tứ giác, ngũ giác, lục giác</td><td>Hình elip hoặc một phần elip</td><td>Elip, parabol, hyperbol</td></tr>
+</table>
+
+<h2>3. Khám phá bằng mô hình 3D</h2>
+<div data-widget="ch08_thiet_dien" data-solid="cube"
+  data-title="Cắt hình lập phương bằng một mặt phẳng"
+  data-try="bấm lần lượt các thiết diện mẫu, rồi kéo thanh “Vị trí mặt phẳng”. Bấm “Quét mặt phẳng” để xem thiết diện biến đổi khi mặt phẳng trượt qua khối. Bật “Tách hai phần” để nhấc phần trên ra và nhìn rõ mặt cắt. Bạn cũng có thể <b>gõ số trực tiếp</b>: cạnh của khối, vị trí (%) và góc nghiêng (°), rồi nhấn Enter."></div>
+
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra bài tập</div>
+<p>Ví dụ với Câu 6: nhập <b>Cạnh a = 4</b>, <b>Nghiêng quanh Ox = 0</b>, <b>Nghiêng quanh Oz = 45</b>, <b>Vị trí = 50</b>. Mô hình cho thiết diện là mặt chéo hình chữ nhật, diện tích $\approx 22{,}63$. Bảng số đo hiện cả chu vi và diện tích theo đúng kích thước bạn nhập.</p>
+</div>
+<p>Khi thử, hãy để ý các điều sau:</p>
+<ul>
+<li>Mặt phẳng nghiêng đều với ba cạnh tại một đỉnh: lúc gần đỉnh, thiết diện là <b>tam giác đều</b>. Khi đi qua tâm khối, thiết diện trở thành <b>lục giác đều</b>.</li>
+<li>Dù xoay mặt phẳng thế nào, bạn không bao giờ thu được hình 7 cạnh, vì hình lập phương chỉ có 6 mặt.</li>
+<li>Bạn cũng không thu được <b>tam giác vuông</b> (xem phần Lưu ý).</li>
+</ul>
+
+<h2>4. Ví dụ minh họa</h2>
+<p>Trong các ví dụ dưới đây, $ABCD.A'B'C'D'$ là hình lập phương cạnh $a$.</p>
+
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Thiết diện tam giác đều</div>
+<p>Cắt hình lập phương bởi mặt phẳng đi qua ba đỉnh $A', B, D$. Thiết diện là hình gì? Tính diện tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Ba cạnh $A'B$, $BD$, $DA'$ đều là đường chéo của một mặt hình vuông cạnh $a$, nên mỗi cạnh dài $a\sqrt2$. Vậy thiết diện là <b>tam giác đều</b> cạnh $a\sqrt2$:</p>
+<p>$$S = \frac{\sqrt3}{4}\left(a\sqrt2\right)^2 = \frac{\sqrt3}{2}a^2 .$$</p>
+<p>Với $a = 2$ ta được $S = 2\sqrt3 \approx 3{,}46$. Hãy kiểm tra: chọn mẫu “Tam giác đều” trong mô hình, rồi kéo thanh “Vị trí mặt phẳng” về khoảng 67%: tam giác chạm đúng ba đỉnh của khối, và diện tích hiện $3{,}46$.</p>
+</details>
+</div>
+
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Thiết diện lục giác đều</div>
+<p>Mặt phẳng đi qua tâm hình lập phương và vuông góc với đường chéo $AC'$ cắt khối theo thiết diện nào? Tính diện tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Mặt phẳng này đi qua trung điểm của 6 cạnh không chứa $A$ hay $C'$. Hai trung điểm kề nhau nằm trên cùng một mặt vuông, cách nhau nửa đường chéo mặt: $\dfrac{a\sqrt2}{2}$. Thiết diện là <b>lục giác đều</b> cạnh $\dfrac{a\sqrt2}{2}$:</p>
+<p>$$S = \frac{3\sqrt3}{2}\left(\frac{a\sqrt2}{2}\right)^2 = \frac{3\sqrt3}{4}a^2 .$$</p>
+<p>Với $a=2$ ta được $S = 3\sqrt3 \approx 5{,}20$, khớp với số hiện trong mô hình (mẫu “Lục giác đều”).</p>
+</details>
+</div>
+
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Mặt chéo của hình lập phương</div>
+<p>Tính diện tích thiết diện tạo bởi mặt phẳng $(ACC'A')$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Thiết diện là hình chữ nhật $ACC'A'$ với $AA' = a$ và $AC = a\sqrt2$ (đường chéo đáy). Vậy $S = a \cdot a\sqrt2 = a^2\sqrt2$.</p>
+</details>
+</div>
+
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Cắt hình trụ</div>
+<p>Một hình trụ có bán kính đáy $r = 3$ cm, chiều cao $h = 10$ cm. Tính diện tích thiết diện khi cắt (a) bởi mặt phẳng song song với đáy; (b) bởi mặt phẳng chứa trục.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>(a) Thiết diện là hình tròn bán kính 3 cm: $S = \pi \cdot 3^2 = 9\pi \approx 28{,}27\ \text{cm}^2$.</p>
+<p>(b) Thiết diện là hình chữ nhật có hai cạnh là đường kính đáy ($2r = 6$ cm) và chiều cao (10 cm): $S = 6\cdot 10 = 60\ \text{cm}^2$.</p>
+</details>
+</div>
+
+<h3>Khám phá thêm: hình trụ và hình nón</h3>
+<div data-widget="ch08_thiet_dien" data-solid="cone" data-preset="Hình elip"
+  data-title="Cắt hình nón: elip, parabol, hyperbol"
+  data-try="tăng dần góc “Nghiêng quanh Ox” từ 0° đến 90°. Thiết diện đổi từ hình tròn sang elip, rồi hyperbol. Parabol chỉ xuất hiện ở <b>đúng một góc</b>: khi mặt phẳng song song với một đường sinh. Bấm mẫu “Parabol” để có góc chính xác, hoặc gõ số. Đổi bán kính, chiều cao rồi bấm lại mẫu để thấy góc đó thay đổi. Chọn “Hình trụ” trong ô Khối để so sánh."></div>
+<p>Các đường cong này gọi là <b>đường conic</b>, vì chúng là thiết diện của hình nón <span class="en">(conic sections)</span>. Phương trình đường tròn sẽ được học ở Chương 7.</p>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Thiết diện của hình lập phương không thể là tam giác vuông.</b> Một thiết diện tam giác cắt ba cạnh xuất phát từ cùng một đỉnh, tại các khoảng cách $p, q, r$ tính từ đỉnh đó. Ba cạnh tam giác là $\sqrt{p^2+q^2}$, $\sqrt{q^2+r^2}$, $\sqrt{r^2+p^2}$. Tổng bình phương hai cạnh bất kỳ trừ bình phương cạnh còn lại luôn bằng một số dương (ví dụ $2r^2$), nên mọi góc đều nhọn.</li>
+<li><b>Hình chóp tứ giác có 5 mặt</b>, nên thiết diện của nó có nhiều nhất 5 cạnh.</li>
+<li>Đừng nhầm hình dạng <i>nhìn nghiêng</i> trên màn hình với hình dạng <i>thật</i>. Một hình vuông nhìn chéo trông như hình bình hành. Hãy xem khung “Hình dạng thật” trong mô hình.</li>
+<li>Mặt phẳng chỉ chạm khối tại một đỉnh hoặc một cạnh thì không tạo ra thiết diện là một hình phẳng (chỉ được một điểm hoặc một đoạn thẳng).</li>
+</ul>
+</div>
+
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm, ví dụ <code>3,46</code>. Làm tròn đến hai chữ số thập phân.</p>
+
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Thiết diện của hình lập phương có nhiều nhất bao nhiêu cạnh?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> 4</label>
+<label><input type="radio" name="q1" value="b"> 5</label>
+<label><input type="radio" name="q1" value="c"> 6</label>
+<label><input type="radio" name="q1" value="d"> 8</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Mỗi cạnh của thiết diện nằm trên một mặt khác nhau của khối. Hình lập phương có mấy mặt?</p></details>
+</div>
+
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Thông hiểu</span></div>
+<p>Hình nào <b>không thể</b> là thiết diện của hình lập phương?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> Tam giác đều</label>
+<label><input type="radio" name="q2" value="b"> Ngũ giác</label>
+<label><input type="radio" name="q2" value="c"> Tam giác vuông</label>
+<label><input type="radio" name="q2" value="d"> Hình thang</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem lại phần Lưu ý ở mục 5.</p></details>
+</div>
+
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Cắt hình nón bởi một mặt phẳng đi qua đỉnh và cắt đáy, thiết diện là:</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Hình tròn</label>
+<label><input type="radio" name="q3" value="b"> Tam giác cân</label>
+<label><input type="radio" name="q3" value="c"> Hình elip</label>
+<label><input type="radio" name="q3" value="d"> Hình chữ nhật</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai cạnh bên của thiết diện là hai đường sinh của hình nón. Các đường sinh dài bằng nhau.</p></details>
+</div>
+
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Thiết diện của hình chóp tứ giác có nhiều nhất bao nhiêu cạnh?</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> 4</label>
+<label><input type="radio" name="q4" value="b"> 5</label>
+<label><input type="radio" name="q4" value="c"> 6</label>
+<label><input type="radio" name="q4" value="d"> 8</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đếm số mặt: 1 đáy và 4 mặt bên. Thử mẫu “Ngũ giác” của hình chóp trong mô hình.</p></details>
+</div>
+
+<div class="quiz" data-type="num" data-answer="16" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Nhận biết</span></div>
+<p>Hình lập phương cạnh 4 cm bị cắt bởi một mặt phẳng song song với một mặt của nó. Diện tích thiết diện bằng bao nhiêu cm²?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Thiết diện là hình vuông bằng mặt của khối: $S = 4^2 = 16$ cm².</p></details>
+</div>
+
+<div class="quiz" data-type="num" data-answer="22.63" data-tol="0.02">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Hình lập phương cạnh 4 cm. Tính diện tích mặt chéo $(ACC'A')$, đơn vị cm².</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Theo Ví dụ 3: $S = a^2\sqrt2 = 16\sqrt2 \approx 22{,}63$ cm².</p></details>
+</div>
+
+<div class="quiz" data-type="num" data-answer="3.46" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Hình lập phương cạnh 2. Mặt phẳng qua ba đỉnh $A', B, D$ tạo thiết diện có diện tích bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Tam giác đều cạnh $2\sqrt2$: $S = \frac{\sqrt3}{4}\cdot 8 = 2\sqrt3 \approx 3{,}46$.</p></details>
+</div>
+
+<div class="quiz" data-type="num" data-answer="80" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một hình trụ có bán kính đáy 5 cm, chiều cao 8 cm. Tính diện tích thiết diện qua trục, đơn vị cm².</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hình chữ nhật $10 \times 8$: $S = 80$ cm².</p></details>
+</div>
+
+<div class="score" id="score"></div>
+
+<h2>7. Tóm tắt</h2>
+<div class="box tom-tat">
+<ul>
+<li><b>Thiết diện</b> là phần chung của khối và mặt phẳng cắt.</li>
+<li>Thiết diện của khối đa diện lồi là đa giác có số cạnh không vượt quá số mặt của khối.</li>
+<li>Hình lập phương có thể cho thiết diện là tam giác (luôn nhọn), tứ giác (vuông, chữ nhật, thoi, thang…), ngũ giác, lục giác. Không có tam giác vuông, không có hình 7 cạnh.</li>
+<li>Hình trụ cho hình tròn, hình chữ nhật, elip. Hình nón cho hình tròn, tam giác cân, elip, parabol, hyperbol.</li>
+</ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

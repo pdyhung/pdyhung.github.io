@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định lý về đường thẳng và góc · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch03_common.js"></script>
+<script defer src="../assets/widgets/ch03_song_song.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 3 · Sự bằng nhau · Bài 4</div>
+<h1>Bài 4. Định lý về đường thẳng và góc <span class="en">(Theorems about lines and angles)</span></h1>
+<p class="lead">Hai đường ray tàu hỏa song song, một thanh tà vẹt chéo cắt qua: tám góc xuất hiện ở hai giao điểm có quan hệ chặt chẽ với nhau. Bài này chứng minh các quan hệ đó và dùng chúng để tính góc.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Chứng minh và vận dụng tính chất hai góc đối đỉnh, hai góc kề bù.</li><li>Nhận biết các cặp góc so le trong, so le ngoài, đồng vị, trong cùng phía.</li><li>Phát biểu và chứng minh tính chất hai đường thẳng song song bị cắt bởi một cát tuyến, cùng dấu hiệu nhận biết.</li><li>Tính số đo góc trong các hình có đường thẳng song song.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Hai đường kẻ trên trang vở là hai đường thẳng song song. Kẻ thêm một đường chéo cắt cả hai. Đo một góc ở giao điểm phía trên, bạn có đoán được bảy góc còn lại mà không cần đo không?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>2.1. Góc đối đỉnh và góc kề bù</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p>Hai góc có chung đỉnh, cạnh của góc này là tia đối của một cạnh góc kia và chung cạnh còn lại gọi là hai <b>góc kề bù</b> <span class="en">(linear pair)</span>; tổng của chúng bằng $180^\circ$.</p>
+<p>Hai góc mà mỗi cạnh của góc này là tia đối của một cạnh góc kia gọi là hai <b>góc đối đỉnh</b> <span class="en">(vertical angles)</span>.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý</div>
+<p>Hai góc đối đỉnh thì bằng nhau.</p>
+<p><i>Chứng minh.</i> Gọi $\widehat{1}$, $\widehat{3}$ là hai góc đối đỉnh và $\widehat{2}$ là góc kề bù với cả hai. Ta có $\widehat{1} + \widehat{2} = 180^\circ$ và $\widehat{3} + \widehat{2} = 180^\circ$, suy ra $\widehat{1} = \widehat{3}$. (Cũng có thể thấy: phép quay $180^\circ$ quanh đỉnh biến góc này thành góc kia.)</p>
+</div>
+<h3>2.2. Hai đường thẳng bị cắt bởi một cát tuyến</h3>
+<p>Đường thẳng $c$ cắt hai đường thẳng $a$, $b$ tại $M$, $N$ gọi là một <b>cát tuyến</b> <span class="en">(transversal)</span>. Đánh số các góc như trong minh họa: $\widehat{1}, \widehat{2}, \widehat{3}, \widehat{4}$ tại $M$ (bắt đầu từ góc trên bên phải, ngược chiều kim đồng hồ) và $\widehat{5}, \widehat{6}, \widehat{7}, \widehat{8}$ tại $N$.</p>
+<table>
+<tr><th>Tên cặp góc</th><th>Ví dụ</th><th>Vị trí</th></tr>
+<tr><td><b>Đồng vị</b> <span class="en">(corresponding angles)</span></td><td>$\widehat{1}$ và $\widehat{5}$; $\widehat{3}$ và $\widehat{7}$</td><td>Cùng vị trí ở hai giao điểm</td></tr>
+<tr><td><b>So le trong</b> <span class="en">(alternate interior angles)</span></td><td>$\widehat{3}$ và $\widehat{5}$; $\widehat{4}$ và $\widehat{6}$</td><td>Nằm giữa $a$, $b$, ở hai phía của $c$</td></tr>
+<tr><td>So le ngoài</td><td>$\widehat{1}$ và $\widehat{7}$; $\widehat{2}$ và $\widehat{8}$</td><td>Nằm ngoài $a$, $b$, ở hai phía của $c$</td></tr>
+<tr><td><b>Trong cùng phía</b> <span class="en">(same-side interior angles)</span></td><td>$\widehat{3}$ và $\widehat{6}$; $\widehat{4}$ và $\widehat{5}$</td><td>Nằm giữa $a$, $b$, cùng một phía của $c$</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Tiên đề Euclid về đường thẳng song song</div>
+<p>Qua một điểm nằm ngoài một đường thẳng, có <b>duy nhất</b> một đường thẳng song song với đường thẳng đó.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý (tính chất hai đường thẳng song song)</div>
+<p>Nếu $a \parallel b$ và cát tuyến $c$ cắt $a$, $b$ tại $M$, $N$ thì: hai góc so le trong bằng nhau, hai góc đồng vị bằng nhau, hai góc so le ngoài bằng nhau, hai góc trong cùng phía bù nhau.</p>
+<p><i>Chứng minh (so le trong).</i> Gọi $O$ là trung điểm $MN$. Phép đối xứng tâm $O$ (phép quay $180^\circ$ quanh $O$) biến $M$ thành $N$ và biến đường thẳng $a$ thành một đường thẳng đi qua $N$, song song với $a$. Theo tiên đề Euclid, đường đó chính là $b$. Phép quay biến cát tuyến $c$ thành chính nó, nên biến $\widehat{3}$ (tại $M$) thành $\widehat{5}$ (tại $N$). Phép dời hình giữ nguyên góc, vậy $\widehat{3} = \widehat{5}$. Các khẳng định còn lại suy ra nhờ góc đối đỉnh và góc kề bù.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Dấu hiệu nhận biết (định lý đảo)</div>
+<p>Nếu cát tuyến $c$ cắt $a$, $b$ và tạo ra một cặp góc so le trong bằng nhau (hoặc một cặp góc đồng vị bằng nhau, hoặc một cặp góc trong cùng phía bù nhau) thì $a \parallel b$.</p>
+</div>
+
+<h2>3. Khám phá: tám góc tạo bởi cát tuyến</h2>
+<div data-widget="ch03_song_song" data-pair="7" data-title="Hai đường thẳng a, b và cát tuyến c" data-try="chọn một cặp góc trong ô “Cặp góc cần xét”, rồi kéo điểm tím để xoay cát tuyến: quan hệ giữa hai góc vẫn giữ nguyên khi a ∥ b. Sau đó kéo điểm cam (hoặc nhập “Độ lệch”) để b không còn song song với a: các đẳng thức bị phá vỡ."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Nhập <b>Góc giữa cát tuyến và a = 62</b>, <b>Độ lệch = 0</b>: tám góc là $62^\circ$ và $118^\circ$ xen kẽ (Ví dụ 1). Nhập <b>Độ lệch = 10</b>: các góc tại $b$ thành $52^\circ$ và $128^\circ$, nên $\widehat{3} \ne \widehat{5}$.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tính tám góc</div>
+<p>Cho $a \parallel b$, cát tuyến $c$ tạo với $a$ góc $\widehat{1} = 62^\circ$. Tính các góc còn lại.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat{3} = \widehat{1} = 62^\circ$ (đối đỉnh); $\widehat{2} = \widehat{4} = 180^\circ - 62^\circ = 118^\circ$ (kề bù). Do $a \parallel b$: $\widehat{5} = \widehat{1} = 62^\circ$ (đồng vị), $\widehat{7} = 62^\circ$, $\widehat{6} = \widehat{8} = 118^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Phương trình từ góc đối đỉnh</div>
+<p>Hai góc đối đỉnh có số đo $(3x + 20)^\circ$ và $(5x - 40)^\circ$. Tìm $x$ và số đo mỗi góc.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai góc đối đỉnh bằng nhau: $3x + 20 = 5x - 40 \Rightarrow 2x = 60 \Rightarrow x = 30$. Mỗi góc bằng $3 \cdot 30 + 20 = 110^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Góc trong cùng phía</div>
+<p>Cho $a \parallel b$. Hai góc trong cùng phía có số đo $(2x + 10)^\circ$ và $(3x - 5)^\circ$. Tìm $x$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai góc trong cùng phía bù nhau: $(2x + 10) + (3x - 5) = 180 \Rightarrow 5x = 175 \Rightarrow x = 35$. Hai góc là $80^\circ$ và $100^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Góc "chữ Z gãy"</div>
+<p>Cho $a \parallel b$, điểm $O$ nằm giữa hai đường thẳng. Lấy $A \in a$, $B \in b$ sao cho $\widehat{OAa'} = 40^\circ$ và $\widehat{OBb'} = 35^\circ$, trong đó $a'$, $b'$ là hai tia cùng hướng của $a$, $b$ (cùng phía với $O$ so với $AB$). Tính $\widehat{AOB}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Qua $O$ kẻ đường thẳng $d \parallel a$ (khi đó $d \parallel b$). Đường $d$ chia $\widehat{AOB}$ thành hai góc, lần lượt so le trong với $\widehat{OAa'}$ và $\widehat{OBb'}$. Vậy $\widehat{AOB} = 40^\circ + 35^\circ = 75^\circ$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Các góc so le trong, đồng vị chỉ <b>bằng nhau khi hai đường thẳng song song</b>. Nếu chưa biết $a \parallel b$ thì không được dùng.</li>
+<li>Đừng nhầm "trong cùng phía" (bù nhau) với "so le trong" (bằng nhau).</li>
+<li>Khi đặt tên góc, ghi rõ đỉnh: $\widehat{AOB}$ có đỉnh $O$ ở giữa.</li>
+</ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hai góc đối đỉnh thì:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Bù nhau</label>
+<label><input type="radio" name="q1" value="b"> Bằng nhau</label>
+<label><input type="radio" name="q1" value="c"> Phụ nhau</label>
+<label><input type="radio" name="q1" value="d"> Không có quan hệ</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem định lý ở mục 2.1.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="115" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Hai góc kề bù, một góc bằng $65^\circ$. Góc còn lại bằng bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$180^\circ - 65^\circ = 115^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Qua một điểm nằm ngoài đường thẳng d có bao nhiêu đường thẳng song song với d?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Không có</label>
+<label><input type="radio" name="q3" value="b"> Đúng một</label>
+<label><input type="radio" name="q3" value="c"> Đúng hai</label>
+<label><input type="radio" name="q3" value="d"> Vô số</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tiên đề Euclid.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Với cách đánh số trong bài, $\widehat{4}$ và $\widehat{6}$ là cặp góc:</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> Đồng vị</label>
+<label><input type="radio" name="q4" value="b"> So le trong</label>
+<label><input type="radio" name="q4" value="c"> So le ngoài</label>
+<label><input type="radio" name="q4" value="d"> Trong cùng phía</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cả hai nằm giữa a, b và ở hai phía của c. Kiểm tra trong minh họa.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="108" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $a \parallel b$. Một góc trong cùng phía bằng $72^\circ$. Góc trong cùng phía còn lại bằng bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai góc trong cùng phía bù nhau: $180^\circ - 72^\circ = 108^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="25" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $a \parallel b$, hai góc so le trong có số đo $3x^\circ$ và $(2x + 25)^\circ$. Tìm $x$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$3x = 2x + 25 \Rightarrow x = 25$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="70" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Cho $a \parallel b$, hai góc đồng vị có số đo $(4x - 10)^\circ$ và $(2x + 30)^\circ$. Tính số đo mỗi góc.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$4x - 10 = 2x + 30 \Rightarrow x = 20$; mỗi góc bằng $70^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="80" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Như Ví dụ 4, nhưng $\widehat{OAa'} = 32^\circ$ và $\widehat{OBb'} = 48^\circ$. Tính $\widehat{AOB}$ (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Kẻ qua $O$ đường song song với $a$: $\widehat{AOB} = 32^\circ + 48^\circ = 80^\circ$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Hai góc đối đỉnh bằng nhau; hai góc kề bù có tổng 180°.</li><li>Tiên đề Euclid: qua một điểm ngoài đường thẳng có duy nhất một đường song song.</li><li>Nếu a ∥ b: so le trong bằng nhau, đồng vị bằng nhau, trong cùng phía bù nhau (chứng minh bằng phép đối xứng tâm).</li><li>Ngược lại, một trong các quan hệ trên đủ để kết luận a ∥ b.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

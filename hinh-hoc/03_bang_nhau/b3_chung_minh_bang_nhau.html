@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chứng minh các trường hợp bằng nhau · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch03_common.js"></script>
+<script defer src="../assets/widgets/ch03_chung_minh.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 3 · Sự bằng nhau · Bài 3</div>
+<h1>Bài 3. Chứng minh các trường hợp bằng nhau <span class="en">(Proving congruence with rigid motions)</span></h1>
+<p class="lead">Ở bài trước ta thừa nhận các trường hợp c.c.c, c.g.c, g.c.g. Bài này chứng minh chúng: chỉ ra một dãy phép dời hình cụ thể đưa tam giác này chồng khít lên tam giác kia.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Biết cách đưa một tam giác về trùng tam giác bằng nó bằng nhiều nhất ba bước: tịnh tiến, quay, đối xứng trục.</li><li>Chứng minh các trường hợp c.g.c, c.c.c, g.c.g bằng phép dời hình.</li><li>Tính được vectơ tịnh tiến, góc quay, ảnh qua phép đối xứng trong bài toán tọa độ.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Theo định nghĩa ở Bài 1, muốn khẳng định $\triangle ABC = \triangle DEF$ ta phải tìm được một phép dời hình biến tam giác này thành tam giác kia. Nhưng trường hợp c.g.c chỉ cho biết <i>ba số đo</i>. Làm sao từ ba số đo mà "chế tạo" ra phép dời hình? Đó là nội dung của bài này.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Quy trình ba bước</div>
+<p>Cho $\triangle ABC$ và $\triangle DEF$ với $AB = DE$.</p>
+<ol>
+<li><b>Tịnh tiến</b> theo vectơ $\overrightarrow{AD}$: $A$ đến trùng $D$. Gọi ảnh của $B$ là $B_1$.</li>
+<li><b>Quay</b> quanh $D$ một góc bằng góc từ tia $DB_1$ đến tia $DE$. Vì $DB_1 = AB = DE$ nên ảnh $B^*$ của $B$ trùng $E$. Gọi ảnh của $C$ lúc này là $C^*$.</li>
+<li>Nếu $C^*$ chưa trùng $F$, lấy <b>đối xứng qua đường thẳng</b> $DE$: $D$ và $E$ đứng yên, còn $C^*$ đến trùng $F$ (cần chứng minh trong từng trường hợp).</li>
+</ol>
+<p>Hợp của các phép trên là một phép dời hình biến $A \mapsto D$, $B \mapsto E$, $C \mapsto F$, nên $\triangle ABC = \triangle DEF$.</p>
+</div>
+<p>Điểm mấu chốt là bước 3: vì sao $C^*$ trùng $F$ hoặc đối xứng với $F$ qua $DE$? Ta dùng hai tính chất của <b>phép đối xứng trục</b> <span class="en">(reflection)</span>:</p>
+<ul><li>Phép đối xứng qua đường thẳng $DE$ biến tia $DX$ thành tia $DX'$ với $\widehat{EDX} = \widehat{EDX'}$.</li>
+<li>Hai đường tròn tâm $D$ và tâm $E$ cắt nhau tại nhiều nhất hai điểm, và hai điểm đó đối xứng nhau qua $DE$.</li></ul>
+<div class="box dinh-ly">
+<div class="box-title">Chứng minh từng trường hợp (sau bước 2 đã có ảnh của A là D, ảnh của B là E)</div>
+<ul>
+<li><b>c.g.c</b> ($AB = DE$, $\widehat{A} = \widehat{D}$, $AC = DF$): $\widehat{EDC^*} = \widehat{A} = \widehat{EDF}$ nên tia $DC^*$ trùng tia $DF$ hoặc đối xứng với nó qua $DE$. Lại có $DC^* = AC = DF$, nên $C^* = F$ hoặc $C^*$ đối xứng với $F$ qua $DE$.</li>
+<li><b>c.c.c</b>: $DC^* = AC = DF$ và $EC^* = BC = EF$. Vậy $C^*$ và $F$ cùng nằm trên đường tròn $(D; DF)$ và đường tròn $(E; EF)$. Hai đường tròn này cắt nhau tại tối đa hai điểm, đối xứng nhau qua $DE$.</li>
+<li><b>g.c.g</b> ($\widehat{A} = \widehat{D}$, $AB = DE$, $\widehat{B} = \widehat{E}$): tia $DC^*$ và tia $EC^*$ trùng (hoặc cùng đối xứng qua $DE$ với) tia $DF$ và tia $EF$. Hai tia cắt nhau tại một điểm duy nhất, nên $C^* = F$ hoặc $C^*$ đối xứng với $F$ qua $DE$.</li>
+</ul>
+</div>
+
+<h2>3. Khám phá: dãy phép dời hình</h2>
+<div data-widget="ch03_chung_minh"  data-title="Ba bước đưa tam giác ABC về trùng tam giác DEF" data-try="bấm “Tiếp ▶” để chạy từng bước: tịnh tiến (mũi tên xanh), quay (cung tím), đối xứng qua DE (đường tím đứt). “◀ Lùi” để quay lại. Kéo A, B, C để đổi tam giác; kéo D, E hoặc nhập số để đặt lại ΔDEF. Bỏ dấu “ngược hướng” để thấy chỉ cần hai bước. Đổi ô “Lập luận theo trường hợp” để đọc lý do tương ứng."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Đọc dòng <b>A*D; B*E; C*F</b>: sau bước 1 số đầu tiên bằng $0$, sau bước 2 hai số đầu bằng $0$, sau bước 3 cả ba bằng $0$. Bỏ dấu “ngược hướng”: dòng “Lật qua DE” báo “không cần”, vì hai tam giác cùng hướng.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tìm dãy phép dời hình trên lưới tọa độ</div>
+<p>Cho $A(0; 0)$, $B(4; 0)$, $C(1; 3)$ và $D(5; 1)$, $E(5; 5)$, $F(2; 2)$. Chỉ ra dãy phép dời hình biến $\triangle ABC$ thành $\triangle DEF$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p><b>Bước 1.</b> Tịnh tiến theo $\overrightarrow{AD} = (5; 1)$: $A \mapsto (5; 1) = D$, $B \mapsto (9; 1)$, $C \mapsto (6; 4)$.</p>
+<p><b>Bước 2.</b> Tia từ $D$ đến $(9; 1)$ hướng sang phải, tia $DE$ hướng thẳng lên: quay quanh $D$ góc $90^\circ$ ngược chiều kim đồng hồ. Phép quay này biến vectơ $(x; y)$ thành $(-y; x)$:</p>
+<p>$(9; 1) - D = (4; 0) \mapsto (0; 4)$, cộng lại $D$ được $(5; 5) = E$; $(6; 4) - D = (1; 3) \mapsto (-3; 1)$, cộng $D$ được $(2; 2) = F$.</p>
+<p>Đã trùng sau hai bước, không cần phép đối xứng. Kiểm tra: $AB = DE = 4$, $AC = DF = \sqrt{10}$, $BC = EF = \sqrt{18}$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Khi nào cần bước 3?</div>
+<p>Giữ $A, B, C, D, E$ như Ví dụ 1, nhưng thay $F$ bởi $F'(8; 2)$. Có cần bước đối xứng không?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Sau hai bước, ảnh của $C$ là $(2; 2)$, khác $F'(8; 2)$. Đường thẳng $DE$ là $x = 5$; điểm đối xứng của $(2; 2)$ qua đường $x = 5$ là $(8; 2) = F'$. Vậy cần bước 3: lấy đối xứng qua $DE$. Tam giác $DEF'$ ngược hướng với $ABC$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Chứng minh trường hợp c.g.c</div>
+<p>Trình bày gọn chứng minh: nếu $AB = DE$, $\widehat{A} = \widehat{D}$, $AC = DF$ thì $\triangle ABC = \triangle DEF$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Tịnh tiến theo $\overrightarrow{AD}$ rồi quay quanh $D$ để tia $AB$ trùng tia $DE$; vì $AB = DE$ nên $B$ đến $E$. Khi đó ảnh của tia $AC$ tạo với tia $DE$ góc $\widehat{A} = \widehat{D}$, nên trùng tia $DF$ hoặc đối xứng với tia $DF$ qua $DE$. Nếu đối xứng, ta lấy thêm phép đối xứng trục $DE$ (giữ nguyên $D$, $E$). Lúc này ảnh của $C$ nằm trên tia $DF$ và cách $D$ một khoảng $AC = DF$, nên trùng $F$. Hợp các phép trên là phép dời hình biến $ABC$ thành $DEF$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Phép dời hình tìm được <b>không duy nhất</b>; ba bước trên chỉ là một cách luôn làm được.</li>
+<li>Bước 3 chỉ cần khi hai tam giác ngược hướng.</li>
+<li>Không thể chứng minh c.c.g theo cách này: ở bước 3, biết $\widehat{A}$ và $BC$ chỉ cho ảnh của $C$ nằm trên tia $DF$ <i>và</i> trên đường tròn tâm $E$, mà tia có thể cắt đường tròn tại hai điểm không đối xứng nhau qua $DE$.</li>
+</ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Để đưa một tam giác về trùng tam giác bằng nó, quy trình trong bài dùng nhiều nhất bao nhiêu phép biến hình cơ bản?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> 1</label>
+<label><input type="radio" name="q1" value="b"> 2</label>
+<label><input type="radio" name="q1" value="c"> 3</label>
+<label><input type="radio" name="q1" value="d"> 4</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tịnh tiến, quay, đối xứng trục.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>$A(1; 2)$, $D(4; -1)$. Phép tịnh tiến ở bước 1 theo vectơ $\overrightarrow{AD} = (a; b)$. Tính $a$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$a = 4 - 1 = 3$ (và $b = -1 - 2 = -3$).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="90" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Sau bước 1, tia $DB_1$ có hướng của vectơ $(1; 0)$, tia $DE$ có hướng của vectơ $(0; 1)$. Góc quay ngược chiều kim đồng hồ ở bước 2 là bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Từ hướng sang phải đến hướng lên trên: quay 90° ngược chiều kim đồng hồ.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Trong chứng minh trường hợp c.c.c, ảnh C* của C (sau bước 2) và điểm F cùng nằm trên:</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> Một đường thẳng song song với DE</label>
+<label><input type="radio" name="q4" value="b"> Hai đường tròn tâm D và tâm E</label>
+<label><input type="radio" name="q4" value="c"> Đường trung trực của DE</label>
+<label><input type="radio" name="q4" value="d"> Tia phân giác của góc D</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$DC^* = DF$ và $EC^* = EF$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Khi nào cần bước 3 (phép đối xứng trục)?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> Khi hai tam giác cùng hướng</label>
+<label><input type="radio" name="q5" value="b"> Khi hai tam giác ngược hướng</label>
+<label><input type="radio" name="q5" value="c"> Khi tam giác là tam giác cân</label>
+<label><input type="radio" name="q5" value="d"> Luôn luôn cần</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tịnh tiến và quay giữ nguyên hướng.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Sau hai bước có $D(5; 1)$, $E(5; 5)$ và $C^*(2; 2)$. Ảnh của $C^*$ qua phép đối xứng trục $DE$ có hoành độ bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$DE$ là đường thẳng $x = 5$; điểm đối xứng của $(2; 2)$ là $(8; 2)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Phép quay $90^\circ$ ngược chiều kim đồng hồ quanh $D(5; 1)$ biến điểm $(6; 4)$ thành điểm có tung độ bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(6; 4) - D = (1; 3) \mapsto (-3; 1)$; cộng $D$ được $(2; 2)$. Tung độ bằng 2.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Vì sao không chứng minh được "c.c.g" bằng quy trình ba bước?</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Vì không tịnh tiến được</label>
+<label><input type="radio" name="q8" value="b"> Vì tia DF có thể cắt đường tròn tâm E bán kính EF tại hai điểm không đối xứng qua DE</label>
+<label><input type="radio" name="q8" value="c"> Vì phép quay không giữ độ dài</label>
+<label><input type="radio" name="q8" value="d"> Vì cần nhiều hơn ba phép quay</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem mục Lưu ý.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Hai tam giác bằng nhau theo c.c.c, c.g.c, g.c.g luôn đưa được về trùng nhau bằng: tịnh tiến, quay, và nếu cần, đối xứng trục.</li><li>Bước 1 đưa A về D, bước 2 đưa B về E (vì AB = DE), bước 3 xử lý đỉnh C.</li><li>Mỗi trường hợp bằng nhau cho đủ thông tin để ảnh của C trùng F hoặc đối xứng với F qua DE.</li><li>Trên lưới tọa độ: phép quay 90° ngược chiều kim đồng hồ quanh gốc biến (x; y) thành (−y; x).</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

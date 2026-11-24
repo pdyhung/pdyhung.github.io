@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tính đối xứng của hình phẳng · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch02_common.js"></script>
+<script defer src="../assets/widgets/ch02_doi_xung.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 2 · Tính chất phép biến hình và chứng minh · Bài 5</div>
+<h1>Bài 5. Tính đối xứng của hình phẳng <span class="en">(Symmetry of plane figures)</span></h1>
+<p class="lead">Bông tuyết, bánh xe, logo, chữ cái: rất nhiều hình quanh ta "trùng với chính nó" khi lật qua một đường thẳng hoặc xoay quanh một điểm. Bài này dùng phép biến hình để nói chính xác thế nào là hình đối xứng, và đếm các phép đối xứng của một hình.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu trục đối xứng, tâm đối xứng và đối xứng quay của một hình qua phép biến hình biến hình đó thành chính nó.</li><li>Tìm số trục đối xứng, góc quay nhỏ nhất và bậc đối xứng quay của đa giác đều và các tứ giác quen thuộc.</li><li>Biết đa giác đều $n$ cạnh có $n$ trục đối xứng, đối xứng quay bậc $n$ với góc nhỏ nhất $\dfrac{360^\circ}{n}$.</li><li>Nhận biết tính đối xứng của chữ cái và hình trong đời sống.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Gập đôi một tờ giấy hình chữ nhật theo đường chéo: hai nửa có chồng khít lên nhau không? Nhiều người đoán "có", nhưng thử thật thì không! Còn khi gập theo đường nối trung điểm hai cạnh đối thì hai nửa chồng khít. Bài này giải thích vì sao.</p>
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<ul>
+<li>Đường thẳng $d$ là <b>trục đối xứng</b> <span class="en">(line of symmetry)</span> của hình $\mathcal H$ nếu phép đối xứng trục $\text{Đ}_d$ biến $\mathcal H$ thành chính nó.</li>
+<li>Điểm $O$ là <b>tâm đối xứng</b> <span class="en">(center of symmetry)</span> của $\mathcal H$ nếu phép đối xứng tâm $\text{Đ}_O$ biến $\mathcal H$ thành chính nó.</li>
+<li>Hình $\mathcal H$ có <b>đối xứng quay</b> <span class="en">(rotational symmetry)</span> nếu có một phép quay tâm $O$ góc $\alpha$, với $0^\circ < \alpha < 360^\circ$, biến $\mathcal H$ thành chính nó.</li>
+<li>Số góc quay trong khoảng $[0^\circ; 360^\circ)$ (kể cả $0^\circ$) làm $\mathcal H$ trùng với chính nó gọi là <b>bậc đối xứng quay</b> <span class="en">(order of rotational symmetry)</span>. Nếu bậc là $m$ thì góc quay nhỏ nhất là $\dfrac{360^\circ}{m}$ và các góc trùng là $0^\circ, \dfrac{360^\circ}{m}, 2\cdot\dfrac{360^\circ}{m}, \dots$</li>
+</ul>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý (đa giác đều)</div>
+<p>Đa giác đều $n$ cạnh ($n \ge 3$):</p>
+<ul>
+<li>có đúng $n$ trục đối xứng, đều đi qua tâm. Nếu $n$ lẻ, mỗi trục đi qua một đỉnh và trung điểm cạnh đối diện. Nếu $n$ chẵn, có $\dfrac n2$ trục qua hai đỉnh đối diện và $\dfrac n2$ trục qua trung điểm hai cạnh đối diện;</li>
+<li>có đối xứng quay bậc $n$, góc quay nhỏ nhất $\dfrac{360^\circ}{n}$;</li>
+<li>có tâm đối xứng khi và chỉ khi $n$ chẵn (vì $180^\circ$ là bội của $\dfrac{360^\circ}{n}$ khi và chỉ khi $n$ chẵn).</li>
+</ul>
+</div>
+<p>Tổng quát: một hình có tâm đối xứng khi và chỉ khi nó có đối xứng quay với bậc chẵn (quay $180^\circ$ làm nó trùng chính nó).</p>
+<table>
+<tr><th>Hình</th><th>Số trục đối xứng</th><th>Bậc đối xứng quay</th><th>Tâm đối xứng</th></tr>
+<tr><td>Tam giác cân (không đều)</td><td>1</td><td>1 (không có đối xứng quay)</td><td>Không</td></tr>
+<tr><td>Tam giác đều</td><td>3</td><td>3</td><td>Không</td></tr>
+<tr><td>Hình chữ nhật (không vuông)</td><td>2</td><td>2</td><td>Có</td></tr>
+<tr><td>Hình thoi (không vuông)</td><td>2</td><td>2</td><td>Có</td></tr>
+<tr><td>Hình vuông</td><td>4</td><td>4</td><td>Có</td></tr>
+<tr><td>Hình bình hành (không chữ nhật, không thoi)</td><td>0</td><td>2</td><td>Có</td></tr>
+<tr><td>Hình thang cân</td><td>1</td><td>1</td><td>Không</td></tr>
+<tr><td>Ngôi sao 5 cánh đều</td><td>5</td><td>5</td><td>Không</td></tr>
+<tr><td>Đường tròn</td><td>Vô số</td><td>Mọi góc</td><td>Có</td></tr>
+</table>
+<h2>3. Khám phá: quay và đếm vị trí trùng</h2>
+<div data-widget="ch02_doi_xung" data-shape="deu" data-n="5" data-title="Đa giác đều và các hình có đối xứng" data-try="chọn “Đa giác đều n cạnh”, <b>gõ số</b> n (từ 3 đến 12). Bấm “↻ Quay thêm” nhiều lần (mỗi lần quay đúng góc nhỏ nhất) và đếm số lần hình cam trùng với hình nét đứt ban đầu; hoặc bấm “⟳ Quay 1 vòng”. Kéo điểm tím để tự quay, hay gõ góc vào ô “Góc quay hiện tại”. Bật “Hiện các trục đối xứng” để thấy các trục. Thử thêm hình chữ nhật, hình thoi, hình bình hành, chữ H, Z, chong chóng."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Nhập $n = 6$: bảng ghi 6 trục đối xứng, 6 vị trí trùng, góc nhỏ nhất $60^\circ$. Nhập $n = 7$: góc nhỏ nhất $\dfrac{360^\circ}{7} \approx 51{,}43^\circ$. Chọn "Hình bình hành": 0 trục nhưng 2 vị trí trùng (quay $180^\circ$). Chọn "Chong chóng 4 cánh": 0 trục, 4 vị trí trùng; nhập góc quay $90$ để thấy hình trùng khớp.</p>
+</div>
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Lục giác đều</div>
+<p>Tìm số trục đối xứng, bậc đối xứng quay, góc quay nhỏ nhất của lục giác đều. Nó có tâm đối xứng không?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$n = 6$: có 6 trục đối xứng (3 trục qua các cặp đỉnh đối diện, 3 trục qua trung điểm các cặp cạnh đối diện). Bậc đối xứng quay 6, góc nhỏ nhất $\dfrac{360^\circ}{6} = 60^\circ$. Vì $180^\circ = 3\cdot 60^\circ$ nên lục giác đều có tâm đối xứng.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Ngũ giác đều</div>
+<p>Ngũ giác đều có tâm đối xứng không?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Các góc làm ngũ giác đều trùng chính nó là bội của $\dfrac{360^\circ}{5} = 72^\circ$: $0^\circ, 72^\circ, 144^\circ, 216^\circ, 288^\circ$. Không có $180^\circ$, nên ngũ giác đều <b>không</b> có tâm đối xứng. Nó có 5 trục đối xứng, mỗi trục qua một đỉnh và trung điểm cạnh đối diện.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Hình bình hành</div>
+<p>Chứng tỏ hình bình hành $ABCD$ có tâm đối xứng. Vì sao nói chung nó không có trục đối xứng?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $O$ là giao điểm hai đường chéo. $O$ là trung điểm $AC$ và $BD$ (Bài 6), nên $\text{Đ}_O$ biến $A \leftrightarrow C$, $B \leftrightarrow D$ và biến hình bình hành thành chính nó: $O$ là tâm đối xứng.</p>
+<p>Nếu có trục đối xứng $d$ thì $\text{Đ}_d$ phải biến mỗi đỉnh thành một đỉnh và giữ độ dài, góc. Trục qua hai đỉnh đối diện (đường chéo) đòi hỏi bốn cạnh bằng nhau (hình thoi); trục qua trung điểm hai cạnh đối đòi hỏi góc vuông (hình chữ nhật). Hình bình hành không là hình thoi cũng không là hình chữ nhật thì không có trục nào.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Chữ cái in hoa</div>
+<p>Xét các chữ in hoa kiểu đơn giản A, H, N, T, X, Z. Chữ nào có trục đối xứng? Chữ nào có tâm đối xứng?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>A: 1 trục (thẳng đứng), không có tâm. H: 2 trục (đứng và ngang), có tâm. N: không có trục, có tâm. T: 1 trục đứng, không có tâm. X: 2 trục, có tâm. Z: không có trục, có tâm. Minh họa ở mục 3 có sẵn chữ H, E, T, Z để kiểm tra.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Từ góc nhỏ nhất suy ra bậc</div>
+<p>Một hình có đối xứng quay, góc quay nhỏ nhất là $40^\circ$. Tìm bậc đối xứng quay. Hình có tâm đối xứng không?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Bậc $= \dfrac{360^\circ}{40^\circ} = 9$. Vì $\dfrac{180^\circ}{40^\circ} = 4{,}5$ không nguyên nên $180^\circ$ không là góc trùng: hình không có tâm đối xứng.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Đường chéo của hình chữ nhật (không vuông) không phải trục đối xứng.</b> Đây là lỗi rất hay gặp; thử gập giấy hoặc chọn "Hình chữ nhật" trong minh họa.</li>
+<li>Hình bình hành nói chung có tâm đối xứng nhưng không có trục đối xứng.</li>
+<li>Góc $0^\circ$ (hay $360^\circ$) luôn làm hình trùng chính nó; hình chỉ có góc này thì có bậc 1, tức là <b>không</b> có đối xứng quay.</li>
+<li>Số trục đối xứng và bậc đối xứng quay có thể khác nhau: chong chóng có bậc 4 nhưng không có trục nào.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hình vuông có bao nhiêu trục đối xứng?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai đường chéo và hai đường nối trung điểm các cặp cạnh đối diện.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Khẳng định nào đúng về hình chữ nhật không phải hình vuông?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> Có 4 trục đối xứng, gồm cả hai đường chéo</label>
+<label><input type="radio" name="q2" value="b"> Có đúng 2 trục đối xứng: hai đường nối trung điểm các cặp cạnh đối diện</label>
+<label><input type="radio" name="q2" value="c"> Có đúng 1 trục đối xứng</label>
+<label><input type="radio" name="q2" value="d"> Không có trục đối xứng</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Lật qua đường chéo, đỉnh kề không rơi vào đỉnh vì hai cạnh kề không bằng nhau.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="45" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Góc quay nhỏ nhất (khác $0^\circ$) làm bát giác đều trùng với chính nó là bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{360^\circ}{8} = 45^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Một đa giác đều có góc quay nhỏ nhất là $24^\circ$. Đa giác đó có bao nhiêu cạnh?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$n = \dfrac{360^\circ}{24^\circ} = 15$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Chữ cái in hoa nào có tâm đối xứng nhưng không có trục đối xứng?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> N</label>
+<label><input type="radio" name="q5" value="b"> H</label>
+<label><input type="radio" name="q5" value="c"> T</label>
+<label><input type="radio" name="q5" value="d"> A</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>N trùng chính nó khi quay 180°, nhưng lật qua đường nào cũng không trùng.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Đa giác đều nào sau đây <b>không</b> có tâm đối xứng?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> Lục giác đều</label>
+<label><input type="radio" name="q6" value="b"> Ngũ giác đều</label>
+<label><input type="radio" name="q6" value="c"> Bát giác đều</label>
+<label><input type="radio" name="q6" value="d"> Hình vuông</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đa giác đều có tâm đối xứng khi và chỉ khi số cạnh chẵn.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="24" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tính tổng số trục đối xứng và bậc đối xứng quay của thập nhị giác đều (12 cạnh).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>12 trục và bậc 12: tổng 24.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="40" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Quay một lục giác đều quanh tâm một góc $200^\circ$. Cần quay tiếp (cùng chiều) ít nhất bao nhiêu độ nữa để hình trùng với vị trí ban đầu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Các góc trùng là bội của $60^\circ$; bội nhỏ nhất lớn hơn $200^\circ$ là $240^\circ$. Cần quay thêm $240^\circ - 200^\circ = 40^\circ$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Trục đối xứng, tâm đối xứng, đối xứng quay: đều là phép biến hình biến hình thành chính nó.</li><li>Bậc đối xứng quay $m$ ứng với góc nhỏ nhất $\dfrac{360^\circ}{m}$; hình có tâm đối xứng khi và chỉ khi $m$ chẵn.</li><li>Đa giác đều $n$ cạnh: $n$ trục, bậc $n$, có tâm đối xứng khi $n$ chẵn.</li><li>Hình chữ nhật và hình thoi có 2 trục, hình vuông có 4 trục, hình bình hành nói chung không có trục nhưng có tâm.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

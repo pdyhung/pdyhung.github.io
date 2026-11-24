@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiếp tuyến · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch07_tiep_tuyen.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 7 · Đường tròn · Bài 4</div>
+<h1>Bài 4. Tiếp tuyến <span class="en">(Tangents)</span></h1>
+<p class="lead">Bánh xe lăn trên mặt đường chỉ chạm đường tại một điểm; viên đá văng khỏi chiếc ná quay tròn bay theo một đường thẳng “sượt qua” vòng quay. Đó là hình ảnh của tiếp tuyến.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Nhận biết ba vị trí tương đối của đường thẳng và đường tròn qua khoảng cách từ tâm đến đường thẳng.</li><li>Hiểu và vận dụng tính chất: tiếp tuyến vuông góc với bán kính tại tiếp điểm.</li><li>Vận dụng tính chất hai tiếp tuyến cắt nhau: hai đoạn tiếp tuyến bằng nhau.</li><li>Tính độ dài đoạn tiếp tuyến $MT = \sqrt{OM^2 - r^2}$.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Đứng trên một tòa nhà cao $100$ m bên bờ biển, bạn nhìn ra xa được bao nhiêu ki-lô-mét trước khi mặt biển khuất sau đường chân trời? Tia nhìn tới chân trời chạm mặt Trái Đất đúng tại một điểm: nó là một tiếp tuyến. Ví dụ 4 sẽ tính khoảng cách đó.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<p>Cho đường tròn $(O; r)$ và đường thẳng $a$. Gọi $d$ là khoảng cách từ tâm $O$ đến đường thẳng $a$.</p>
+<table>
+<tr><th>Vị trí tương đối</th><th>Số điểm chung</th><th>Hệ thức</th></tr>
+<tr><td>Đường thẳng và đường tròn <b>cắt nhau</b> (đường thẳng là <b>cát tuyến</b> <span class="en">(secant)</span>)</td><td>2</td><td>$d < r$</td></tr>
+<tr><td>Đường thẳng và đường tròn <b>tiếp xúc nhau</b></td><td>1</td><td>$d = r$</td></tr>
+<tr><td>Đường thẳng và đường tròn <b>không giao nhau</b></td><td>0</td><td>$d > r$</td></tr>
+</table>
+<div class="box dinh-nghia">
+<div class="box-title">Tiếp tuyến</div>
+<p>Đường thẳng chỉ có <b>một</b> điểm chung với đường tròn gọi là <b>tiếp tuyến</b> <span class="en">(tangent)</span> của đường tròn. Điểm chung đó là <b>tiếp điểm</b> <span class="en">(point of tangency)</span>.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý (tiếp tuyến và bán kính)</div>
+<ol>
+<li>Nếu đường thẳng $a$ là tiếp tuyến của $(O)$ tại $T$ thì $a \perp OT$.</li>
+<li>Ngược lại (dấu hiệu nhận biết): nếu đường thẳng $a$ đi qua điểm $T$ của đường tròn và vuông góc với bán kính $OT$ thì $a$ là tiếp tuyến.</li>
+</ol>
+<p>Lý do: khoảng cách từ $O$ đến $a$ không vượt quá $OT = r$, và bằng $r$ khi và chỉ khi $OT \perp a$; theo bảng trên, đó là trường hợp tiếp xúc.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý (hai tiếp tuyến cắt nhau)</div>
+<p>Nếu hai tiếp tuyến của $(O; r)$ tại $T$ và $T'$ cắt nhau tại $M$ thì:</p>
+<ul>
+<li>$MT = MT'$ (hai đoạn tiếp tuyến bằng nhau);</li>
+<li>$MO$ là tia phân giác của góc $\widehat{TMT'}$, và $OM$ là tia phân giác của góc $\widehat{TOT'}$;</li>
+<li>$MT = \sqrt{OM^2 - r^2}$.</li>
+</ul>
+<p>Chứng minh: hai tam giác vuông $OTM$ và $OT'M$ có chung cạnh huyền $OM$ và $OT = OT' = r$, nên chúng bằng nhau (cạnh huyền – cạnh góc vuông). Công thức độ dài suy ra từ định lý Pythagore trong tam giác $OTM$ vuông tại $T$.</p>
+</div>
+<p>Vì tứ giác $OTMT'$ có hai góc vuông tại $T$ và $T'$, ta còn có $\widehat{TMT'} + \widehat{TOT'} = 180^\circ$.</p>
+
+<h2>3. Khám phá bằng hình động</h2>
+<div data-widget="ch07_tiep_tuyen"  data-title="Hai tiếp tuyến kẻ từ điểm M" data-try="kéo điểm M ra xa hoặc lại gần đường tròn. Hai đoạn MT và MT′ luôn bằng nhau và luôn vuông góc với bán kính tại tiếp điểm (dấu góc vuông màu đỏ). Đưa M tới sát đường tròn: hai tiếp tuyến nhập làm một; đưa M vào trong: không còn tiếp tuyến nào. Hãy <b>gõ số</b> bán kính r và khoảng cách OM rồi nhấn Enter để kiểm tra công thức MT = √(OM² − r²)."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Độ dài tiếp tuyến</div>
+<p>Cho đường tròn $(O; 5)$ và điểm $M$ với $OM = 13$. Kẻ tiếp tuyến $MT$ ($T$ là tiếp điểm). Tính $MT$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Tam giác $OTM$ vuông tại $T$, nên $MT = \sqrt{OM^2 - OT^2} = \sqrt{13^2 - 5^2} = \sqrt{144} = 12$.</p>
+<p>Thử trong minh họa: nhập $r = 5$ và $OM = 10$, bảng số đo hiện $MT = MT' \approx 8{,}66 = \sqrt{75}$. (Khung hình chỉ cho $OM \le 10$; bạn hãy tự kiểm tra trường hợp $OM = 13$ bằng công thức.)</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Hai tiếp tuyến cắt nhau</div>
+<p>Từ điểm $M$ kẻ hai tiếp tuyến $MA, MB$ đến đường tròn $(O; 6)$, biết $OM = 12$. Tính $MA$, góc $\widehat{AMB}$ và độ dài $AB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$MA = \sqrt{12^2 - 6^2} = \sqrt{108} = 6\sqrt3 \approx 10{,}39$.</p>
+<p>Trong tam giác $OAM$ vuông tại $A$: $\sin\widehat{OMA} = \dfrac{OA}{OM} = \dfrac{6}{12} = \dfrac12$, nên $\widehat{OMA} = 30^\circ$. Vì $MO$ là tia phân giác nên $\widehat{AMB} = 60^\circ$.</p>
+<p>Tam giác $MAB$ cân tại $M$ ($MA = MB$) có góc ở đỉnh $60^\circ$ nên là tam giác đều: $AB = MA = 6\sqrt3 \approx 10{,}39$. Ngoài ra $\widehat{AOB} = 180^\circ - 60^\circ = 120^\circ$.</p>
+<p>Thu nhỏ theo tỉ lệ $\frac12$ để kiểm tra trong minh họa: $r = 3$, $OM = 6$ cho góc $TMT' = 60^\circ$ và $\widehat{TOT'} = 120^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Xét vị trí đường thẳng</div>
+<p>Đường thẳng $a$ cách tâm $O$ một khoảng $4$ cm. Xét vị trí tương đối của $a$ với đường tròn $(O; 4\ \text{cm})$ và với đường tròn $(O; 5\ \text{cm})$. Trong trường hợp cắt nhau, tính độ dài dây chung.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Với $r = 4$: $d = r$ nên $a$ là tiếp tuyến của $(O; 4)$.</p>
+<p>Với $r = 5$: $d = 4 < 5$ nên $a$ cắt $(O; 5)$ tại hai điểm $P, Q$. Theo Bài 1, $PQ = 2\sqrt{5^2 - 4^2} = 6$ cm.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Nhìn tới đường chân trời</div>
+<p>Coi Trái Đất là hình cầu bán kính $R = 6371$ km. Một người đứng trên nóc tòa nhà cao $h = 100$ m $= 0{,}1$ km. Tính khoảng cách từ mắt người đó tới đường chân trời (bỏ qua chiều cao của người).</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $O$ là tâm Trái Đất, $M$ là vị trí mắt, $T$ là điểm chân trời. Tia nhìn $MT$ là tiếp tuyến nên $\widehat{OTM} = 90^\circ$, với $OT = R$ và $OM = R + h$:
+$$MT = \sqrt{(R+h)^2 - R^2} = \sqrt{2Rh + h^2} = \sqrt{2\cdot 6371 \cdot 0{,}1 + 0{,}1^2} \approx 35{,}70\ \text{km}.$$</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Tiếp tuyến vuông góc với <b>bán kính đi qua tiếp điểm</b> ($OT$), không phải với $OM$.</li>
+<li>Trong tam giác $OTM$, cạnh huyền là $OM$. Vì vậy $MT = \sqrt{OM^2 - r^2}$ (hiệu), không phải $\sqrt{OM^2 + r^2}$.</li>
+<li>Chỉ kẻ được tiếp tuyến từ điểm nằm <b>ngoài</b> (hai tiếp tuyến) hoặc <b>trên</b> đường tròn (một tiếp tuyến). Từ điểm nằm trong đường tròn không kẻ được tiếp tuyến nào.</li>
+<li>Khoảng cách $d$ trong bảng vị trí tương đối là khoảng cách từ tâm đến <b>đường thẳng</b> (độ dài đoạn vuông góc), không phải khoảng cách tới một điểm tùy ý của đường thẳng.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Đường thẳng $a$ cách tâm $O$ một khoảng $3$, đường tròn $(O; 5)$. Vị trí tương đối của $a$ và $(O)$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> cắt nhau</label>
+<label><input type="radio" name="q1" value="b"> tiếp xúc nhau</label>
+<label><input type="radio" name="q1" value="c"> không giao nhau</label>
+<label><input type="radio" name="q1" value="d"> không xác định được</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>So sánh $d = 3$ với $r = 5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Tiếp tuyến của đường tròn $(O)$ tại điểm $A$ thì vuông góc với:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> mọi dây đi qua $A$</label>
+<label><input type="radio" name="q2" value="b"> bán kính $OA$</label>
+<label><input type="radio" name="q2" value="c"> mọi tiếp tuyến khác</label>
+<label><input type="radio" name="q2" value="d"> mọi đường kính</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem định lý tiếp tuyến và bán kính.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Cho đường tròn $(O; 8)$ và điểm $M$ với $OM = 17$. Tính độ dài đoạn tiếp tuyến $MT$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$MT = \sqrt{17^2 - 8^2} = \sqrt{225} = 15$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="25" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Đoạn tiếp tuyến $MT = 24$, bán kính $r = 7$. Tính $OM$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$OM = \sqrt{MT^2 + r^2} = \sqrt{576 + 49} = 25$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Đường thẳng cách tâm một khoảng đúng bằng bán kính thì có bao nhiêu điểm chung với đường tròn?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> 0</label>
+<label><input type="radio" name="q5" value="b"> 1</label>
+<label><input type="radio" name="q5" value="c"> 2</label>
+<label><input type="radio" name="q5" value="d"> vô số</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$d = r$: đường thẳng tiếp xúc với đường tròn.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5.2" data-tol="0.02">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Từ $M$ kẻ hai tiếp tuyến $MA, MB$ đến đường tròn $(O; 3)$ sao cho $\widehat{AMB} = 60^\circ$. Tính $MA$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\widehat{OMA} = 30^\circ$ nên $OM = \dfrac{OA}{\sin 30^\circ} = 6$, do đó $MA = \sqrt{36 - 9} = 3\sqrt3 \approx 5{,}20$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="25.24" data-tol="0.02">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Coi Trái Đất là hình cầu bán kính $6371$ km. Từ độ cao $50$ m, khoảng cách tới đường chân trời là bao nhiêu ki-lô-mét?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = 0{,}05$ km: $\sqrt{2\cdot 6371\cdot 0{,}05 + 0{,}05^2} = \sqrt{637{,}1025} \approx 25{,}24$ km.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Đường thẳng $a$ cắt đường tròn $(O; 10)$ theo một dây dài $12$. Tính khoảng cách từ $O$ đến $a$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$d = \sqrt{10^2 - 6^2} = 8$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Đường thẳng và đường tròn: cắt nhau ($d < r$), tiếp xúc ($d = r$), không giao nhau ($d > r$).</li><li>Tiếp tuyến vuông góc với bán kính tại tiếp điểm; đường thẳng vuông góc với bán kính tại điểm nằm trên đường tròn là tiếp tuyến.</li><li>Hai tiếp tuyến từ một điểm $M$ ở ngoài: $MT = MT' = \sqrt{OM^2 - r^2}$, $MO$ là tia phân giác của góc $\widehat{TMT'}$.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

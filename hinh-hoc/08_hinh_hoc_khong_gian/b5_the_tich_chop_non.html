@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 5. Thể tích hình chóp và hình nón · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/vendor/three/three.min.js"></script>
+<script defer src="../assets/vendor/three/OrbitControls.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/scene3d.js"></script>
+<script defer src="../assets/widgets/ch08_chop_non.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 8 · Hình học không gian · Bài 5</div>
+<h1>Thể tích hình chóp và hình nón <span class="en">(Volume of pyramids and cones)</span></h1>
+<p class="lead">Một chiếc phễu và một chiếc cốc có cùng miệng, cùng chiều cao. Phải đổ bao nhiêu phễu nước thì đầy cốc? Câu trả lời dẫn tới công thức thể tích hình chóp và hình nón.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu vì sao thể tích hình chóp bằng một phần ba thể tích lăng trụ cùng đáy, cùng chiều cao.</li><li>Áp dụng công thức $V = \frac13 B h$ cho hình chóp và $V = \frac13 \pi r^2 h$ cho hình nón.</li><li>Tính chiều cao từ đường sinh hoặc cạnh bên khi cần.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Đoán xem: hình nón chiếm bao nhiêu phần thể tích của hình trụ cùng đáy, cùng chiều cao? Một nửa? Một phần ba? Hãy làm thí nghiệm “đổ nước” ở mục 3 để kiểm tra.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Công thức</div>
+<p>Hình chóp có diện tích đáy $B$, chiều cao $h$: $$V_{\text{chóp}} = \frac13 B h.$$ Hình nón có bán kính đáy $r$, chiều cao $h$: $$V_{\text{nón}} = \frac13 \pi r^2 h.$$</p>
+</div>
+<p><b>Vì sao lại là $\frac13$?</b></p>
+<ol>
+<li>Một hình lập phương cạnh $a$ chia được thành <b>3 hình chóp bằng nhau</b>, chung một đỉnh (một đỉnh của hình lập phương), đáy là ba mặt không chứa đỉnh đó. Mỗi hình chóp có $B = a^2$, $h = a$ và thể tích $\frac13 a^3 = \frac13 B h$.</li>
+<li>Theo nguyên lý Cavalieri (Bài 4), mọi hình chóp có cùng $B$ và $h$ thì có cùng thể tích, nên công thức đúng cho mọi hình chóp.</li>
+<li>Hình nón giống một hình chóp có đáy là đa giác đều với rất nhiều cạnh, nên $V = \frac13 \pi r^2 h$.</li>
+</ol>
+
+<h2>3. Khám phá bằng mô hình 3D</h2>
+<div data-widget="ch08_chop_non" data-mode="ghep" data-title="Ba hình chóp ghép thành hình lập phương" data-try="kéo thanh “Tách các hình chóp” hoặc bấm “Ghép / Tách” để thấy ba hình chóp màu xanh dương, xanh lá, cam lấp đầy hình lập phương. <b>Gõ cạnh a</b> để xem bảng số."></div>
+<div data-widget="ch08_chop_non" data-mode="do_nuoc" data-title="Đổ nước từ hình nón sang hình trụ" data-try="bấm “Đổ một nón nước” nhiều lần. Hình trụ cùng đáy, cùng chiều cao đầy sau đúng 3 lần đổ. <b>Gõ bán kính và chiều cao</b> khác để thử lại."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Hình chóp tứ giác đều</div>
+<p>Hình chóp tứ giác đều có cạnh đáy 6 cm, chiều cao 4 cm. Tính thể tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$B = 6^2 = 36$ cm². $V = \frac13 \cdot 36 \cdot 4 = 48$ cm³.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Hình nón</div>
+<p>Hình nón có bán kính đáy 3 cm, chiều cao 4 cm. Tính thể tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$V = \frac13 \pi \cdot 3^2 \cdot 4 = 12\pi \approx 37{,}70$ cm³.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Biết đường sinh</div>
+<p>Hình nón có bán kính đáy 5 cm và đường sinh 13 cm. Tính thể tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Chiều cao: $h = \sqrt{l^2 - r^2} = \sqrt{169 - 25} = 12$ cm. $V = \frac13 \pi \cdot 25 \cdot 12 = 100\pi \approx 314{,}16$ cm³.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Hình chóp đáy tam giác</div>
+<p>Hình chóp có đáy là tam giác vuông với hai cạnh góc vuông 3 cm và 4 cm, chiều cao 5 cm. Tính thể tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$B = \frac12 \cdot 3 \cdot 4 = 6$ cm². $V = \frac13 \cdot 6 \cdot 5 = 10$ cm³.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Kim tự tháp</div>
+<p>Một kim tự tháp có đáy hình vuông cạnh 230 m, cao 146 m. Ước tính thể tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$V = \frac13 \cdot 230^2 \cdot 146 = \frac13 \cdot 52\,900 \cdot 146 \approx 2\,574\,467$ m³, tức khoảng 2,6 triệu mét khối.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li>$h$ là <b>chiều cao</b>: đoạn vuông góc từ đỉnh xuống mặt đáy. Không dùng cạnh bên, đường sinh hay chiều cao của mặt bên thay cho $h$.</li><li>Đừng quên hệ số $\frac13$. Đây là lỗi hay gặp nhất.</li><li>Khi tăng bán kính đáy hình nón lên $k$ lần, thể tích tăng $k^2$ lần; khi tăng chiều cao $k$ lần, thể tích tăng $k$ lần.</li></ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>37,7</code>). Làm tròn đến hai chữ số thập phân nếu cần; với kết quả chứa $\pi$, dùng $\pi \approx 3{,}14159$.</p>
+<div class="quiz" data-type="num" data-answer="270" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hình chóp có đáy là hình vuông cạnh 9 cm, chiều cao 10 cm. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = \frac13 \cdot 81 \cdot 10 = 270$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="263.89" data-tol="0.02">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Hình nón có bán kính đáy 6 cm, chiều cao 7 cm. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = \frac13 \pi \cdot 36 \cdot 7 = 84\pi \approx 263{,}89$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Hình nón và hình trụ có cùng bán kính đáy, cùng chiều cao. Thể tích hình nón bằng:</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Thể tích hình trụ</label>
+<label><input type="radio" name="q3" value="b"> $\frac12$ thể tích hình trụ</label>
+<label><input type="radio" name="q3" value="c"> $\frac13$ thể tích hình trụ</label>
+<label><input type="radio" name="q3" value="d"> $\frac23$ thể tích hình trụ</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Nhớ lại thí nghiệm đổ nước: 3 lần thì đầy.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="10" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Vận dụng</span></div>
+<p>Một hình chóp có thể tích 40 cm³ và diện tích đáy 12 cm². Tính chiều cao (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = \dfrac{3V}{B} = \dfrac{120}{12} = 10$ cm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="301.59" data-tol="0.02">
+<div class="q-head">Câu 5 <span class="q-level">Vận dụng</span></div>
+<p>Hình nón có đường sinh 10 cm và bán kính đáy 6 cm. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = \sqrt{100 - 36} = 8$. $V = \frac13 \pi \cdot 36 \cdot 8 = 96\pi \approx 301{,}59$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Giữ nguyên đáy, tăng chiều cao hình chóp lên gấp đôi thì thể tích:</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> Không đổi</label>
+<label><input type="radio" name="q6" value="b"> Gấp đôi</label>
+<label><input type="radio" name="q6" value="c"> Gấp 4</label>
+<label><input type="radio" name="q6" value="d"> Gấp 8</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$V$ tỉ lệ thuận với $h$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 7 <span class="q-level">Thông hiểu</span></div>
+<p>Giữ nguyên chiều cao, tăng bán kính đáy hình nón lên gấp đôi thì thể tích:</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> Gấp đôi</label>
+<label><input type="radio" name="q7" value="b"> Gấp 3</label>
+<label><input type="radio" name="q7" value="c"> Gấp 4</label>
+<label><input type="radio" name="q7" value="d"> Gấp 8</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$V$ tỉ lệ với $r^2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="314.16" data-tol="0.05">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một cái phễu hình nón có bán kính miệng 5 cm, sâu 12 cm. Phễu chứa được bao nhiêu ml nước? (1 ml = 1 cm³)</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = \frac13 \pi \cdot 25 \cdot 12 = 100\pi \approx 314{,}16$ ml.</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<div class="box-title"></div>
+<ul><li>$V_{\text{chóp}} = \frac13 B h$, $V_{\text{nón}} = \frac13 \pi r^2 h$.</li><li>Ba hình chóp bằng nhau ghép thành một hình lập phương; ba hình nón nước đổ đầy một hình trụ cùng đáy, cùng chiều cao.</li><li>Chiều cao luôn là đoạn vuông góc từ đỉnh xuống đáy. Với hình nón: $h = \sqrt{l^2 - r^2}$.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

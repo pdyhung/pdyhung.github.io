@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra chương 4: Sự đồng dạng · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 4 · Sự đồng dạng · Kiểm tra chương</div>
+<h1>Kiểm tra chương 4: Sự đồng dạng <span class="en">(Unit test)</span></h1>
+<p class="lead">Bài kiểm tra gồm 15 câu, bao quát cả 5 bài của chương. Làm hết rồi xem điểm ở cuối trang; mỗi câu có lời giải hoặc gợi ý để tự chữa.</p>
+<h2>Bài kiểm tra</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Bài 1</span></div>
+<p> Hai tam giác đồng dạng theo tỉ số $k = 3$. Tỉ số diện tích của chúng là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $3$</label>
+<label><input type="radio" name="q1" value="b"> $6$</label>
+<label><input type="radio" name="q1" value="c"> $9$</label>
+<label><input type="radio" name="q1" value="d"> $27$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p> Tỉ số diện tích bằng $k^2 = 9$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="30" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Bài 1</span></div>
+<p>$\triangle ABC \backsim \triangle DEF$ với $AB = 3$, $DE = 7{,}5$. Chu vi $\triangle ABC$ là $12$. Tính chu vi $\triangle DEF$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$k = \dfrac{7{,}5}{3} = 2{,}5$, chu vi $\triangle DEF = 2{,}5 \cdot 12 = 30$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Bài 1</span></div>
+<p> Phép vị tự tâm $I(1; 1)$ tỉ số $2$ biến $A(3; 2)$ thành $A'$. Tính hoành độ của $A'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{IA'} = 2\overrightarrow{IA} = 2(2; 1) = (4; 2)$, nên $A'(5; 3)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 4 <span class="q-level">Bài 2</span></div>
+<p>Tam giác có ba cạnh $3, 5, 7$ đồng dạng với tam giác nào?</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> $6,\ 10,\ 12$</label>
+<label><input type="radio" name="q4" value="b"> $4{,}5;\ 7{,}5;\ 10{,}5$</label>
+<label><input type="radio" name="q4" value="c"> $4,\ 6,\ 8$</label>
+<label><input type="radio" name="q4" value="d"> $5,\ 7,\ 9$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\dfrac{4{,}5}{3} = \dfrac{7{,}5}{5} = \dfrac{10{,}5}{7} = 1{,}5$ (c.c.c).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.5" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Bài 2</span></div>
+<p> Tam giác $ABC$ và $A'B'C'$ có $\hat A = \hat A'$, $\hat B = \hat B'$. Biết $AB = 8$, $BC = 10$, $A'B' = 6$. Tính $B'C'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\triangle A'B'C' \backsim \triangle ABC$ (g.g), $k = \dfrac68 = 0{,}75$, $B'C' = 0{,}75\cdot 10 = 7{,}5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 6 <span class="q-level">Bài 2</span></div>
+<p> Tam giác $ABC$ có $AB = 4$, $AC = 6$; tam giác $DEF$ có $DE = 6$, $DF = 9$. Cần thêm điều kiện nào để $\triangle DEF \backsim \triangle ABC$ theo trường hợp c.g.c?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> $\hat D = \hat A$</label>
+<label><input type="radio" name="q6" value="b"> $\hat E = \hat B$</label>
+<label><input type="radio" name="q6" value="c"> $\hat F = \hat A$</label>
+<label><input type="radio" name="q6" value="d"> $\hat D = \hat C$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\dfrac{DE}{AB} = \dfrac{DF}{AC} = 1{,}5$; góc xen giữa hai cạnh này là $\hat D$ và $\hat A$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.5" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Bài 3</span></div>
+<p> Tam giác $ABC$ có $MN \parallel BC$ ($M \in AB$, $N \in AC$), $AN = 5$, $NC = 3$, $AB = 12$. Tính $AM$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{AM}{AB} = \dfrac{AN}{AC} = \dfrac58$, nên $AM = 12\cdot \dfrac58 = 7{,}5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Bài 3</span></div>
+<p> Tam giác $ABC$ vuông tại $A$, đường cao $AH$, $AH = 6$, $BH = 3$. Tính $HC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AH^2 = BH\cdot HC$ nên $HC = \dfrac{36}{3} = 12$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6.72" data-tol="0.01">
+<div class="q-head">Câu 9 <span class="q-level">Bài 3</span></div>
+<p> Tam giác $ABC$ vuông tại $A$ có $AB = 7$, $BC = 25$. Tính đường cao $AH$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AC = \sqrt{625 - 49} = 24$; $AH = \dfrac{7\cdot 24}{25} = 6{,}72$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="42" data-tol="0.01">
+<div class="q-head">Câu 10 <span class="q-level">Bài 3</span></div>
+<p> Tam giác $ABC$ có diện tích $50$ cm². Đường thẳng $MN \parallel BC$ với $\dfrac{AM}{AB} = \dfrac25$. Tính diện tích tứ giác $BMNC$ (cm²).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\triangle AMN \backsim \triangle ABC$ tỉ số $\tfrac25$, nên $S_{AMN} = 50 \cdot \tfrac{4}{25} = 8$. Diện tích tứ giác $BMNC = 50 - 8 = 42$ cm².</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4.5" data-tol="0.01">
+<div class="q-head">Câu 11 <span class="q-level">Bài 4</span></div>
+<p> Tam giác $ABC$ có $AB = 6$, $AC = 10$, $BC = 12$. Phân giác $AD$. Tính $DB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$DB = \dfrac{12 \cdot 6}{6 + 10} = 4{,}5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4.8" data-tol="0.01">
+<div class="q-head">Câu 12 <span class="q-level">Bài 4</span></div>
+<p> Phân giác $AD$ của tam giác $ABC$ có $DB = 3$, $DC = 5$, $AC = 8$. Tính $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = AC \cdot \dfrac{DB}{DC} = 8 \cdot \dfrac35 = 4{,}8$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="9" data-tol="0.01">
+<div class="q-head">Câu 13 <span class="q-level">Bài 5</span></div>
+<p>Cọc cao $1{,}5$ m có bóng $2{,}5$ m. Cùng lúc, bóng của cột cờ dài $15$ m. Tính chiều cao cột cờ (m).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$H = \dfrac{15 \cdot 1{,}5}{2{,}5} = 9$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6.5" data-tol="0.01">
+<div class="q-head">Câu 14 <span class="q-level">Bài 5</span></div>
+<p> Băng dưới bàn bi-a là trục $Ox$. Bi $P(2; 3)$ chạm băng dưới rồi trúng bi $Q(8; 1)$. Tìm hoành độ điểm chạm $I$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{P_0I}{IQ_0} = \dfrac31$, $P_0I + IQ_0 = 6$, nên $P_0I = 4{,}5$ và $I(6{,}5; 0)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 15 <span class="q-level">Bài 5</span></div>
+<p> Hình chữ nhật có chiều dài $a$, chiều rộng $b$. Cắt đi hình vuông cạnh $b$, phần còn lại đồng dạng với hình ban đầu khi và chỉ khi:</p>
+<div class="options">
+<label><input type="radio" name="q15" value="a"> $\dfrac ab = \sqrt2$</label>
+<label><input type="radio" name="q15" value="b"> $\dfrac ab = 2$</label>
+<label><input type="radio" name="q15" value="c"> $\dfrac ab = \dfrac{1+\sqrt5}{2}$</label>
+<label><input type="radio" name="q15" value="d"> $\dfrac ab = \dfrac32$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\dfrac ab = \dfrac{b}{a-b}$ dẫn đến $r^2 - r - 1 = 0$, $r = \varphi$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

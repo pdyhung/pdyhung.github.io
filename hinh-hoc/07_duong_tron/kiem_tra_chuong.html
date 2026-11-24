@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra chương 7: Đường tròn · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 7 · Đường tròn · Kiểm tra chương</div>
+<h1>Kiểm tra chương 7: Đường tròn <span class="en">(Unit test)</span></h1>
+<p class="lead">Bài kiểm tra gồm 15 câu, bao quát cả bảy bài của chương: các yếu tố của đường tròn, cung và radian, góc nội tiếp, tiếp tuyến, hình quạt, đa giác đều nội tiếp và phương trình đường tròn. Làm xong từng câu, bấm “Kiểm tra” để xem kết quả.</p>
+<h2>Bài kiểm tra</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Bài 1</span></div>
+<p>Đường tròn $(O; 13)$ có dây $AB = 24$. Tính khoảng cách từ $O$ đến $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Gọi $H$ là trung điểm $AB$: $HA = 12$, $OH = \sqrt{13^2 - 12^2} = 5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Bài 1</span></div>
+<p>Cho đường tròn $(O; 5)$ và điểm $M$ với $OM = 5$. Điểm $M$:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> nằm trong đường tròn</label>
+<label><input type="radio" name="q2" value="b"> nằm trên đường tròn</label>
+<label><input type="radio" name="q2" value="c"> nằm ngoài đường tròn</label>
+<label><input type="radio" name="q2" value="d"> là tâm</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$OM = r$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3.93" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Bài 2</span></div>
+<p>Đổi $225^\circ$ sang radian (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$225\cdot\dfrac{\pi}{180} = \dfrac{5\pi}{4} \approx 3{,}93$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15.71" data-tol="0.02">
+<div class="q-head">Câu 4 <span class="q-level">Bài 2</span></div>
+<p>Tính độ dài cung $75^\circ$ của đường tròn bán kính $12$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$l = \dfrac{\pi\cdot 12\cdot 75}{180} = 5\pi \approx 15{,}71$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Bài 2</span></div>
+<p>Góc $2$ rad gần bằng:</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> $57{,}3^\circ$</label>
+<label><input type="radio" name="q5" value="b"> $114{,}6^\circ$</label>
+<label><input type="radio" name="q5" value="c"> $90^\circ$</label>
+<label><input type="radio" name="q5" value="d"> $360^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$2\cdot\dfrac{180^\circ}{\pi} \approx 114{,}6^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="75" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Bài 3</span></div>
+<p>Góc nội tiếp chắn cung có số đo $150^\circ$. Tính số đo góc (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Bằng nửa số đo cung bị chắn: $75^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 7 <span class="q-level">Bài 3</span></div>
+<p>Tứ giác $ABCD$ nội tiếp có $\widehat{B} = 95^\circ$. Khi đó $\widehat{D}$ bằng:</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> $95^\circ$</label>
+<label><input type="radio" name="q7" value="b"> $85^\circ$</label>
+<label><input type="radio" name="q7" value="c"> $185^\circ$</label>
+<label><input type="radio" name="q7" value="d"> $47{,}5^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai góc đối của tứ giác nội tiếp bù nhau.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Bài 3</span></div>
+<p>$AB = 10$ là đường kính, $C$ nằm trên đường tròn với $\widehat{CAB} = 30^\circ$. Tính $BC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\widehat{ACB} = 90^\circ$ nên $BC = AB\sin 30^\circ = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 9 <span class="q-level">Bài 4</span></div>
+<p>Cho đường tròn $(O; 9)$ và điểm $M$ với $OM = 15$. Tính độ dài đoạn tiếp tuyến kẻ từ $M$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sqrt{15^2 - 9^2} = 12$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 10 <span class="q-level">Bài 4</span></div>
+<p>Hai tiếp tuyến tại $A$ và $B$ của đường tròn $(O)$ cắt nhau tại $M$. Khẳng định nào <b>đúng</b>?</p>
+<div class="options">
+<label><input type="radio" name="q10" value="a"> $MA \perp MB$</label>
+<label><input type="radio" name="q10" value="b"> $MO$ là tia phân giác của góc $\widehat{AMB}$</label>
+<label><input type="radio" name="q10" value="c"> $MA = OA$</label>
+<label><input type="radio" name="q10" value="d"> $OM \perp OA$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tính chất hai tiếp tuyến cắt nhau.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="25.13" data-tol="0.02">
+<div class="q-head">Câu 11 <span class="q-level">Bài 5</span></div>
+<p>Tính diện tích hình quạt bán kính $8$, cung $45^\circ$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$S = \dfrac{\pi\cdot 64\cdot 45}{360} = 8\pi \approx 25{,}13$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="28.54" data-tol="0.02">
+<div class="q-head">Câu 12 <span class="q-level">Bài 5</span></div>
+<p>Tính diện tích hình viên phân giới hạn bởi cung $90^\circ$ và dây căng cung, trong đường tròn bán kính $10$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$25\pi - \dfrac12\cdot 10\cdot 10 = 25\pi - 50 \approx 28{,}54$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="32" data-tol="0.01">
+<div class="q-head">Câu 13 <span class="q-level">Bài 6</span></div>
+<p>Tính diện tích hình vuông nội tiếp đường tròn bán kính $4$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Cạnh $4\sqrt2$, diện tích $(4\sqrt2)^2 = 32 = 2R^2$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 14 <span class="q-level">Bài 6</span></div>
+<p>Chu vi lục giác đều nội tiếp đường tròn bán kính $7$ là:</p>
+<div class="options">
+<label><input type="radio" name="q14" value="a"> $21$</label>
+<label><input type="radio" name="q14" value="b"> $42$</label>
+<label><input type="radio" name="q14" value="c"> $14\pi$</label>
+<label><input type="radio" name="q14" value="d"> $42\sqrt3$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cạnh bằng $R = 7$, chu vi $6\cdot 7$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 15 <span class="q-level">Bài 7</span></div>
+<p>Tính bán kính đường tròn $x^2 + y^2 + 6x - 8y = 0$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(x+3)^2 + (y-4)^2 = 25$, nên $r = 5$ (đường tròn đi qua gốc tọa độ).</p></details>
+</div>
+<div class="score" id="score"></div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

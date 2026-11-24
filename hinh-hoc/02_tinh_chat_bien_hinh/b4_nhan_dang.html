@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhận dạng phép biến hình · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch02_common.js"></script>
+<script defer src="../assets/widgets/ch02_nhan_dang.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 2 · Tính chất phép biến hình và chứng minh · Bài 4</div>
+<h1>Bài 4. Nhận dạng phép biến hình <span class="en">(Identifying transformations)</span></h1>
+<p class="lead">Cho một hình và ảnh của nó. Phép biến hình nào đã được dùng, với tham số nào? Bài này đưa ra một quy trình ba câu hỏi để trả lời, và một trò chơi để luyện tập.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phân biệt phép dời hình với phép vị tự qua độ dài các đoạn tương ứng.</li><li>Dùng hướng của hình (bị lật hay không) để phân biệt phép đối xứng trục với phép tịnh tiến và phép quay.</li><li>Xác định tham số: vectơ tịnh tiến, tâm và góc quay, trục đối xứng, tâm và tỉ số vị tự.</li><li>Kiểm tra lại kết quả bằng tọa độ.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Trong một trò chơi xếp hình trên điện thoại, mảnh ghép chỉ có ba nút: "trượt", "xoay" và "lật". Bạn thấy mảnh ghép ở vị trí đầu và vị trí cuối. Làm sao biết người chơi đã bấm nút nào? Manh mối đầu tiên: mảnh ghép có bị <b>lật mặt</b> không?</p>
+<h2>2. Kiến thức trọng tâm</h2>
+<p>Gọi $A, B, C$ là ba điểm không thẳng hàng của hình, $A', B', C'$ là ảnh của chúng. Ta trả lời lần lượt ba câu hỏi.</p>
+<div class="box dinh-ly">
+<div class="box-title">Quy trình ba câu hỏi</div>
+<ol>
+<li><b>Độ dài có giữ nguyên không?</b> So sánh $A'B'$ với $AB$. Nếu $A'B' = |k|\cdot AB$ với $|k| \ne 1$ và mỗi đoạn ảnh song song (hoặc trùng phương) với đoạn ban đầu thì đó là phép vị tự: tâm là giao điểm của $AA'$ và $BB'$; tỉ số $k = \dfrac{A'B'}{AB}$ nếu $\overrightarrow{A'B'}$ cùng hướng $\overrightarrow{AB}$, $k = -\dfrac{A'B'}{AB}$ nếu ngược hướng.</li>
+<li><b>Hướng có giữ nguyên không?</b> Nếu đi quanh $A \to B \to C$ và $A' \to B' \to C'$ ngược chiều nhau (hình bị lật), phép dời hình đó là phép đối xứng trục (hoặc phép đối xứng trượt). Trục đối xứng là <b>đường trung trực của $AA'$</b>; kiểm tra nó cũng là trung trực của $BB'$.</li>
+<li><b>Giữ hướng: các đoạn tương ứng quay đi bao nhiêu?</b>
+<ul>
+<li>$\overrightarrow{A'B'} = \overrightarrow{AB}$ (cùng hướng, cùng độ dài): phép tịnh tiến theo $\vec v = \overrightarrow{AA'}$.</li>
+<li>$\overrightarrow{A'B'} = -\overrightarrow{AB}$: phép đối xứng tâm, tâm là trung điểm của $AA'$.</li>
+<li>Trường hợp còn lại: phép quay. Góc quay là góc $(\overrightarrow{AB}, \overrightarrow{A'B'})$; tâm quay là <b>giao điểm của trung trực $AA'$ và trung trực $BB'$</b>, vì tâm cách đều mỗi điểm và ảnh của nó.</li>
+</ul></li>
+</ol>
+</div>
+<p>Để biết hướng có giữ không, dùng dấu của <b>tích chéo</b> <span class="en">(cross product)</span>: với $\overrightarrow{AB} = (u_1; u_2)$, $\overrightarrow{AC} = (w_1; w_2)$, số $u_1w_2 - u_2w_1$ dương khi $A \to B \to C$ ngược chiều kim đồng hồ, âm khi cùng chiều. Tính số này cho tam giác $ABC$ và tam giác $A'B'C'$: cùng dấu thì giữ hướng, khác dấu thì đổi hướng.</p>
+<table>
+<tr><th>Dấu hiệu</th><th>Phép biến hình</th><th>Cách tìm tham số</th></tr>
+<tr><td>Độ dài nhân $|k| \ne 1$, đoạn tương ứng song song</td><td>Vị tự</td><td>Tâm: $AA' \cap BB'$; tỉ số: $\pm\dfrac{A'B'}{AB}$</td></tr>
+<tr><td>Giữ độ dài, bị lật</td><td>Đối xứng trục</td><td>Trục: trung trực của $AA'$</td></tr>
+<tr><td>Giữ độ dài, $\overrightarrow{A'B'} = \overrightarrow{AB}$</td><td>Tịnh tiến</td><td>$\vec v = \overrightarrow{AA'}$</td></tr>
+<tr><td>Giữ độ dài, $\overrightarrow{A'B'} = -\overrightarrow{AB}$</td><td>Đối xứng tâm</td><td>Tâm: trung điểm $AA'$</td></tr>
+<tr><td>Giữ độ dài, giữ hướng, bị xoay</td><td>Quay</td><td>Tâm: giao hai trung trực của $AA'$, $BB'$; góc $(\overrightarrow{AB}, \overrightarrow{A'B'})$</td></tr>
+</table>
+<h2>3. Khám phá: trò chơi đoán phép biến hình</h2>
+<div data-widget="ch02_nhan_dang"  data-title="Đoán phép biến hình" data-try="hình chữ F màu xanh có ảnh màu cam. Chọn loại phép biến hình bạn đoán, <b>gõ số</b> cho tham số (hoặc kéo điểm tím). Hình nét đứt xanh lá là ảnh theo dự đoán của bạn; khi nó trùng với hình cam, bấm “✔ Kiểm tra”. Bấm “Gợi ý” nếu bí, “Câu mới” để chơi tiếp. Bảng bên phải cho biết độ dài và hướng có giữ không."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Mẹo chơi</div>
+<p>Đọc bảng số đo trước: dòng "Cạnh đáy F: trước → sau" cho biết độ dài có đổi không (câu hỏi 1), dòng "Hướng của hình" cho biết có bị lật không (câu hỏi 2). Với phép quay, kéo điểm tím tới chỗ cách đều $A$ và $A'$, rồi chỉnh góc. Phép quay $180^\circ$ và phép đối xứng tâm cho cùng kết quả: cả hai cách trả lời đều được chấm đúng.</p>
+</div>
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Nhận ra phép tịnh tiến</div>
+<p>Tam giác $A(1; 1)$, $B(3; 1)$, $C(1; 2)$ có ảnh $A'(4; -1)$, $B'(6; -1)$, $C'(4; 0)$. Đó là phép biến hình nào?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\overrightarrow{AA'} = \overrightarrow{BB'} = \overrightarrow{CC'} = (3; -2)$: mọi điểm dời cùng một vectơ. Đó là phép tịnh tiến theo $\vec v = (3; -2)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Tìm tâm và góc quay</div>
+<p>Tam giác $A(2; 1)$, $B(4; 1)$, $C(2; 3)$ có ảnh $A'(-1; 0)$, $B'(-1; 2)$, $C'(-3; 0)$. Chứng tỏ đây là phép quay, tìm tâm và góc quay.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p><b>Độ dài:</b> $AB = A'B' = 2$, $AC = A'C' = 2$, $BC = B'C' = 2\sqrt2$.</p>
+<p><b>Hướng:</b> $\overrightarrow{AB} = (2; 0)$, $\overrightarrow{AC} = (0; 2)$, tích chéo $2\cdot 2 - 0\cdot 0 = 4 > 0$. $\overrightarrow{A'B'} = (0; 2)$, $\overrightarrow{A'C'} = (-2; 0)$, tích chéo $0\cdot 0 - 2\cdot(-2) = 4 > 0$. Giữ hướng.</p>
+<p><b>Góc:</b> $\overrightarrow{AB} = (2; 0)$ thành $\overrightarrow{A'B'} = (0; 2)$: quay $90^\circ$.</p>
+<p><b>Tâm:</b> trung trực của $AA'$ đi qua trung điểm $(0{,}5; 0{,}5)$, vuông góc với $\overrightarrow{AA'} = (-3; -1)$: $3x + y = 2$. Trung trực của $BB'$ đi qua $(1{,}5; 1{,}5)$, vuông góc với $\overrightarrow{BB'} = (-5; 1)$: $5x - y = 6$. Giải hệ được $x = 1$, $y = -1$. Tâm quay $I(1; -1)$.</p>
+<p>Kiểm tra: $\overrightarrow{IC} = (1; 4)$ quay $90^\circ$ thành $(-4; 1)$, nên $C' = (1 - 4;\ -1 + 1) = (-3; 0)$. Đúng.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Nhận ra phép đối xứng trục</div>
+<p>Tam giác $A(1; 3)$, $B(4; 3)$, $C(1; 5)$ có ảnh $A'(3; 1)$, $B'(3; 4)$, $C'(5; 1)$. Xác định phép biến hình.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AB = A'B' = 3$, $AC = A'C' = 2$. Tích chéo của tam giác $ABC$: $\overrightarrow{AB} = (3; 0)$, $\overrightarrow{AC} = (0; 2)$, được $6 > 0$; của tam giác ảnh: $\overrightarrow{A'B'} = (0; 3)$, $\overrightarrow{A'C'} = (2; 0)$, được $0 - 6 = -6 < 0$. Hình bị lật: nghĩ tới phép đối xứng trục.</p>
+<p>Trung trực của $AA'$: trung điểm $(2; 2)$, $\overrightarrow{AA'} = (2; -2)$, nên trung trực là $x - y = 0$, tức $y = x$. Kiểm tra: $\text{Đ}_{y=x}$ biến $(x; y)$ thành $(y; x)$: $B(4; 3) \mapsto (3; 4) = B'$, $C(1; 5) \mapsto (5; 1) = C'$. Vậy đó là phép đối xứng trục $y = x$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Nhận ra phép vị tự</div>
+<p>Tam giác $A(1; 1)$, $B(2; 1)$, $C(1; 3)$ có ảnh $A'(3; 3)$, $B'(5; 3)$, $C'(3; 7)$. Xác định phép biến hình.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\overrightarrow{AB} = (1; 0)$, $\overrightarrow{A'B'} = (2; 0) = 2\overrightarrow{AB}$; $\overrightarrow{AC} = (0; 2)$, $\overrightarrow{A'C'} = (0; 4) = 2\overrightarrow{AC}$. Độ dài nhân 2, cùng hướng: phép vị tự tỉ số $k = 2$.</p>
+<p>Tâm $I$ thỏa $\overrightarrow{IA'} = 2\overrightarrow{IA}$, tức $A' - I = 2(A - I)$, $I = 2A - A' = (2 - 3;\ 2 - 3) = (-1; -1)$. Kiểm tra: $I + 2\overrightarrow{IB} = (-1; -1) + 2(3; 2) = (5; 3) = B'$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Đối xứng tâm</div>
+<p>Đoạn $AB$ với $A(1; 2)$, $B(3; 2)$ có ảnh $A'(5; 0)$, $B'(3; 0)$ qua một phép dời hình giữ hướng. Đó là phép nào?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\overrightarrow{AB} = (2; 0)$, $\overrightarrow{A'B'} = (-2; 0) = -\overrightarrow{AB}$: đoạn bị quay $180^\circ$. Đó là phép đối xứng tâm $I$, với $I$ là trung điểm $AA'$: $I(3; 1)$. Kiểm tra: trung điểm $BB'$ cũng là $(3; 1)$.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Hai điểm chưa đủ</b> để nhận dạng: $A(3; 0) \mapsto (0; 3)$ và $B(5; 0) \mapsto (0; 5)$ có thể do phép quay $Q_{(O, 90^\circ)}$ hoặc phép đối xứng trục $y = x$. Cần thêm điểm thứ ba (không thẳng hàng) để biết hướng.</li>
+<li>Hai trung trực của $AA'$ và $BB'$ có thể trùng nhau (ví dụ khi $A$, $B$ và tâm quay thẳng hàng). Khi đó hãy dùng cặp điểm khác, như $CC'$.</li>
+<li>Hình bị lật nhưng trung trực của $AA'$ và của $BB'$ khác nhau: đó không phải phép đối xứng trục mà là <b>phép đối xứng trượt</b>.</li>
+<li>Phép quay $180^\circ$ chính là phép đối xứng tâm; cả hai tên gọi đều đúng.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hình và ảnh có cùng kích thước nhưng hình bị lật (chiều đi quanh các đỉnh bị đảo). Phép biến hình nào có thể đã được dùng?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Phép tịnh tiến</label>
+<label><input type="radio" name="q1" value="b"> Phép quay $90^\circ$</label>
+<label><input type="radio" name="q1" value="c"> Phép đối xứng trục</label>
+<label><input type="radio" name="q1" value="d"> Phép vị tự tỉ số $2$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Trong các phép đã cho, chỉ phép đối xứng trục đổi hướng.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Một phép tịnh tiến biến $A(2; 1)$ thành $A'(5; -3)$. Vectơ tịnh tiến là</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $(3; -4)$</label>
+<label><input type="radio" name="q2" value="b"> $(-3; 4)$</label>
+<label><input type="radio" name="q2" value="c"> $(3; 4)$</label>
+<label><input type="radio" name="q2" value="d"> $(7; -2)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\vec v = \overrightarrow{AA'} = (5 - 2;\ -3 - 1)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Phép tịnh tiến biến $A(-1; 2)$ thành $A'(3; 5)$. Tính độ dài vectơ tịnh tiến.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\vec v = (4; 3)$, $|\vec v| = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Phép đối xứng tâm $I$ biến $A(-2; 5)$ thành $A'(4; -1)$. Tìm hoành độ của $I$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$I$ là trung điểm $AA'$: $I(1; 2)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Một phép dời hình <b>giữ hướng</b> biến $A(3; 0)$ thành $A'(0; 3)$ và $B(5; 0)$ thành $B'(0; 5)$. Đó là</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> phép quay tâm $O$ góc $90^\circ$</label>
+<label><input type="radio" name="q5" value="b"> phép quay tâm $O$ góc $-90^\circ$</label>
+<label><input type="radio" name="q5" value="c"> phép đối xứng trục $y = x$</label>
+<label><input type="radio" name="q5" value="d"> một phép tịnh tiến</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép đối xứng trục $y = x$ cũng biến $A \mapsto A'$, $B \mapsto B'$ nhưng nó đổi hướng. Giữ hướng nên là phép quay; $\overrightarrow{AB} = (2; 0)$ thành $(0; 2)$: góc $90^\circ$, tâm $O$ cách đều $A, A'$ và $B, B'$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Một phép vị tự biến $A(1; 2)$ thành $A'(3; 6)$ và $B(2; 0)$ thành $B'(6; 0)$. Tìm tỉ số vị tự $k$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{AB} = (1; -2)$, $\overrightarrow{A'B'} = (3; -6) = 3\overrightarrow{AB}$, nên $k = 3$ (tâm là gốc $O$).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Một phép quay biến $A(4; 0)$ thành $A'(2; 2)$ và $B(4; 2)$ thành $B'(0; 2)$. Tìm hoành độ của tâm quay.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Trung trực $AA'$: qua $(3; 1)$, vuông góc với $(-2; 2)$: $y = x - 2$. Trung trực $BB'$: $x = 2$. Giao điểm $(2; 0)$. (Góc quay: $(0; 2)$ thành $(-2; 0)$, tức $90^\circ$.)</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một phép đối xứng trục biến $A(1; 5)$ thành $A'(5; 1)$. Tìm tung độ ảnh của $B(4; 0)$ qua phép đó.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Trục là trung trực của $AA'$: qua $(3; 3)$, vuông góc với $(4; -4)$, tức $y = x$. Ảnh của $B$: $(0; 4)$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Câu hỏi 1: độ dài có giữ không? Không giữ mà các đoạn tương ứng song song: phép vị tự.</li><li>Câu hỏi 2: hướng có giữ không? Bị lật: phép đối xứng trục, trục là trung trực của đoạn nối một điểm với ảnh.</li><li>Câu hỏi 3: giữ hướng thì so $\overrightarrow{A'B'}$ với $\overrightarrow{AB}$: bằng nhau là tịnh tiến, đối nhau là đối xứng tâm, còn lại là phép quay.</li><li>Tâm quay là giao của hai đường trung trực; luôn kiểm tra lại bằng một điểm thứ ba.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giải tam giác vuông · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch05_giai.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 5 · Tam giác vuông và lượng giác · Bài 5</div>
+<h1>Bài 5. Giải tam giác vuông <span class="en">(Solving right triangles)</span></h1>
+<p class="lead">Một tam giác vuông có năm yếu tố cần biết: ba cạnh và hai góc nhọn. Chỉ cần biết hai trong số đó (ít nhất một cạnh), ta tính được tất cả những yếu tố còn lại.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Nắm các hệ thức giữa cạnh và góc trong tam giác vuông.</li><li>Giải tam giác vuông trong các trường hợp: biết hai cạnh; biết một cạnh và một góc nhọn.</li><li>Trình bày lời giải theo từng bước, làm tròn hợp lý.</li><li>Vận dụng vào tam giác cân, hình thang và các hình có thể chia thành tam giác vuông.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Một chiếc cầu trượt có mặt trượt dài 4 m, nghiêng $35^\circ$ so với mặt đất. Bậc thang cao nhất cách đất bao nhiêu? Chân cầu trượt cách chân thang bao xa? Đó là bài toán <i>giải tam giác vuông</i>: biết cạnh huyền và một góc, tìm hai cạnh còn lại.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Giải tam giác vuông</div>
+<p><b>Giải tam giác vuông</b> <span class="en">(solving a right triangle)</span> là tìm tất cả các cạnh và góc chưa biết của tam giác vuông khi biết hai yếu tố, trong đó có ít nhất một cạnh.</p>
+</div>
+<p>Trong suốt bài, ta xét tam giác $ABC$ vuông tại $A$ với $a = BC$ (cạnh huyền), $b = AC$, $c = AB$.</p>
+<div class="box dinh-ly">
+<div class="box-title">Hệ thức giữa cạnh và góc</div>
+<p>Mỗi cạnh góc vuông bằng:</p>
+<ul>
+<li>cạnh huyền nhân sin góc đối hoặc nhân cos góc kề: $b = a\sin B = a\cos C$, $\; c = a\sin C = a\cos B$;</li>
+<li>cạnh góc vuông kia nhân tan góc đối: $b = c\tan B$, $\; c = b\tan C$.</li>
+</ul>
+<p>Ngoài ra $\widehat{B} + \widehat{C} = 90^\circ$ và $a^2 = b^2 + c^2$.</p>
+</div>
+<table>
+<tr><th>Đã biết</th><th>Cách tìm các yếu tố còn lại</th></tr>
+<tr><td>Hai cạnh góc vuông $b, c$</td><td>$a = \sqrt{b^2 + c^2}$; $\tan B = \dfrac bc$ suy ra $\widehat B$; $\widehat C = 90^\circ - \widehat B$</td></tr>
+<tr><td>Cạnh huyền $a$ và cạnh góc vuông $c$</td><td>$b = \sqrt{a^2 - c^2}$; $\cos B = \dfrac ca$ suy ra $\widehat B$; $\widehat C = 90^\circ - \widehat B$</td></tr>
+<tr><td>Cạnh huyền $a$ và góc $\widehat B$</td><td>$b = a\sin B$; $c = a\cos B$; $\widehat C = 90^\circ - \widehat B$</td></tr>
+<tr><td>Cạnh góc vuông $c$ và góc kề $\widehat B$</td><td>$b = c\tan B$; $a = \dfrac{c}{\cos B}$; $\widehat C = 90^\circ - \widehat B$</td></tr>
+<tr><td>Cạnh góc vuông $b$ và góc đối $\widehat B$</td><td>$c = \dfrac{b}{\tan B}$; $a = \dfrac{b}{\sin B}$; $\widehat C = 90^\circ - \widehat B$</td></tr>
+</table>
+
+<h2>3. Khám phá bằng minh họa động</h2>
+<div data-widget="ch05_giai"  data-title="Máy giải tam giác vuông" data-try="chọn trường hợp trong ô “Đã biết”, <b>nhập hai yếu tố</b> rồi nhấn Enter. Các yếu tố đã biết tô cam, các yếu tố tính được tô xanh; khung “Các bước giải” ghi lại từng phép tính. Bạn cũng có thể kéo B, C: các ô nhập tự cập nhật."></div>
+<p>Dùng máy giải để kiểm tra lại các ví dụ dưới đây. Ví dụ, chọn “Cạnh huyền và góc nhọn”, nhập $a = 15$, góc $B = 40$.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Biết hai cạnh góc vuông</div>
+<p>Giải tam giác $ABC$ vuông tại $A$ biết $AC = 7$, $AB = 10$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$BC = \sqrt{7^2 + 10^2} = \sqrt{149} \approx 12{,}21$.</p>
+<p>$\tan B = \dfrac{AC}{AB} = 0{,}7$ nên $\widehat B \approx 34{,}99^\circ$; $\widehat C \approx 90^\circ - 34{,}99^\circ = 55{,}01^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Biết cạnh huyền và một góc nhọn</div>
+<p>Giải tam giác $ABC$ vuông tại $A$ biết $BC = 15$, $\widehat B = 40^\circ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat C = 90^\circ - 40^\circ = 50^\circ$.</p>
+<p>$AC = BC\sin B = 15\sin 40^\circ \approx 9{,}64$; $AB = BC\cos B = 15\cos 40^\circ \approx 11{,}49$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Biết cạnh góc vuông và góc kề</div>
+<p>Giải tam giác $ABC$ vuông tại $A$ biết $AB = 6$, $\widehat B = 55^\circ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat C = 35^\circ$. $AC = AB\tan B = 6\tan 55^\circ \approx 8{,}57$. $BC = \dfrac{AB}{\cos B} = \dfrac{6}{\cos 55^\circ} \approx 10{,}46$.</p>
+<p>Kiểm tra bằng Pythagore: $6^2 + 8{,}57^2 \approx 109{,}4 \approx 10{,}46^2$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Biết cạnh huyền và cạnh góc vuông</div>
+<p>Giải tam giác $ABC$ vuông tại $A$ biết $BC = 20$, $AB = 12$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AC = \sqrt{400 - 144} = 16$. $\cos B = \dfrac{12}{20} = 0{,}6$ nên $\widehat B \approx 53{,}13^\circ$, $\widehat C \approx 36{,}87^\circ$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Vẽ hình và đánh dấu yếu tố đã biết trước khi chọn công thức. Hỏi: cạnh cần tìm là <b>đối</b>, <b>kề</b> hay <b>huyền</b> đối với góc đã biết?</li>
+<li>Ưu tiên dùng các số <b>đề bài cho</b>, không dùng số đã làm tròn ở bước trước, để sai số không tích lũy.</li>
+<li>Biết hai góc nhọn mà không biết cạnh nào thì <b>không</b> giải được: có vô số tam giác đồng dạng thỏa mãn.</li>
+<li>Khi biết cạnh huyền $a$ và cạnh góc vuông $c$, phải có $c < a$; nếu không, đề bài vô lý.</li>
+<li>Sau khi giải, kiểm tra nhanh: cạnh huyền lớn nhất, góc lớn đối diện cạnh lớn, $\widehat B + \widehat C = 90^\circ$.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác $ABC$ vuông tại $A$, $a = BC$, $b = AC$, $c = AB$. Hệ thức nào đúng?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $b = a\cos B$</label>
+<label><input type="radio" name="q1" value="b"> $b = a\sin B$</label>
+<label><input type="radio" name="q1" value="c"> $c = a\sin B$</label>
+<label><input type="radio" name="q1" value="d"> $b = c\sin B$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>b là cạnh đối của góc B nên b = a·sin B.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $BC = 10$, $\widehat B = 30^\circ$. Tính $AC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AC = BC\sin 30^\circ = 10 \cdot 0{,}5 = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5.6017" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 8$, $\widehat B = 35^\circ$. Tính $AC$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AC = AB\tan B = 8\tan 35^\circ \approx 5{,}60$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="36.8699" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AC = 9$, $AB = 12$. Tính góc $B$ (độ, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\tan B = \dfrac{9}{12} = 0{,}75$ nên $\widehat B \approx 36{,}87^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="24" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $BC = 25$, $AC = 7$. Tính $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = \sqrt{625 - 49} = 24$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $BC = 12$, $\widehat C = 60^\circ$. Độ dài $AB$ là</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> $6$</label>
+<label><input type="radio" name="q6" value="b"> $6\sqrt3$</label>
+<label><input type="radio" name="q6" value="c"> $12\sqrt3$</label>
+<label><input type="radio" name="q6" value="d"> $4\sqrt3$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$AB$ đối diện góc $C$: $AB = BC\sin C = 12 \cdot \dfrac{\sqrt3}{2} = 6\sqrt3$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="11.831" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AC = 5$, $\widehat B = 25^\circ$. Tính cạnh huyền $BC$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AC$ là cạnh đối của góc $B$: $BC = \dfrac{AC}{\sin B} = \dfrac{5}{\sin 25^\circ} \approx 11{,}83$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="13.7374" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Tam giác cân có đáy 10 cm và góc ở đáy $70^\circ$. Tính đường cao ứng với cạnh đáy (cm, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Đường cao chia tam giác cân thành hai tam giác vuông có cạnh kề (nửa đáy) bằng 5: $h = 5\tan 70^\circ \approx 13{,}74$ cm.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Giải tam giác vuông: biết 2 yếu tố (có ít nhất 1 cạnh) thì tìm được 3 yếu tố còn lại.</li><li>Cạnh góc vuông $=$ huyền $\times$ sin góc đối $=$ huyền $\times$ cos góc kề $=$ cạnh góc vuông kia $\times$ tan góc đối.</li><li>Hai góc nhọn phụ nhau: $\widehat B + \widehat C = 90^\circ$; ba cạnh liên hệ bởi $a^2 = b^2 + c^2$.</li><li>Vẽ hình, đánh dấu yếu tố đã biết, chọn đúng tỉ số, dùng số gốc và làm tròn ở bước cuối.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

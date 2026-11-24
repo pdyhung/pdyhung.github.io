@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dựng hình bằng thước và compa · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch03_common.js"></script>
+<script defer src="../assets/widgets/ch03_dung_hinh.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 3 · Sự bằng nhau · Bài 7</div>
+<h1>Bài 7. Dựng hình bằng thước và compa <span class="en">(Compass and straightedge constructions)</span></h1>
+<p class="lead">Người Hy Lạp cổ đại đặt ra một trò chơi: chỉ với một cây thước không chia vạch và một chiếc compa, hãy vẽ chính xác các hình. Mỗi bước dựng đều được bảo đảm bằng một lập luận về tam giác bằng nhau.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Biết các thao tác được phép khi dựng hình bằng thước và compa.</li><li>Dựng được đường trung trực, tia phân giác, góc bằng góc cho trước, đường song song, đường vuông góc.</li><li>Giải thích vì sao mỗi phép dựng đúng, dựa vào các trường hợp bằng nhau của tam giác.</li><li>Phối hợp các phép dựng cơ bản để dựng góc 60°, 30°, 45°, chia đoạn thẳng.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Không có thước đo độ, làm sao chia đôi một góc thật chính xác? Không có thước chia vạch, làm sao tìm trung điểm của một đoạn thẳng? Thước và compa đủ để làm cả hai, và còn nhiều hơn thế.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Luật chơi</div>
+<p>Trong <b>dựng hình bằng thước và compa</b> <span class="en">(compass and straightedge construction)</span>, chỉ được:</p>
+<ul><li>dùng <b>thước</b> (không chia vạch) để kẻ đường thẳng đi qua hai điểm đã có;</li>
+<li>dùng <b>compa</b> để vẽ đường tròn (hoặc cung tròn) có tâm là một điểm đã có và bán kính bằng khoảng cách giữa hai điểm đã có;</li>
+<li>lấy giao điểm của các đường đã vẽ làm điểm mới.</li></ul>
+</div>
+<table>
+<tr><th>Bài toán dựng</th><th>Cách dựng tóm tắt</th><th>Vì sao đúng</th></tr>
+<tr><td>Đường trung trực của $AB$</td><td>Hai cung tâm $A$, $B$ cùng bán kính $r > \frac{AB}{2}$ cắt nhau tại $P$, $Q$; kẻ $PQ$</td><td>$P$, $Q$ cách đều $A$, $B$; $\triangle PAQ = \triangle PBQ$ (c.c.c)</td></tr>
+<tr><td>Tia phân giác của $\widehat{xOy}$</td><td>Cung tâm $O$ cắt $Ox$, $Oy$ tại $E$, $F$; hai cung tâm $E$, $F$ cùng bán kính cắt nhau tại $T$; kẻ tia $OT$</td><td>$\triangle OET = \triangle OFT$ (c.c.c)</td></tr>
+<tr><td>Góc bằng góc cho trước</td><td>Chép $OE$, rồi chép $EF$ sang tia mới</td><td>$\triangle O'E'F' = \triangle OEF$ (c.c.c)</td></tr>
+<tr><td>Đường song song qua $P$</td><td>Dựng $Q$ sao cho $PQ = AB$, $BQ = AP$; kẻ $PQ$</td><td>$ABQP$ có cạnh đối bằng nhau nên là hình bình hành</td></tr>
+<tr><td>Đường vuông góc qua $P$</td><td>Cung tâm $P$ cắt $d$ tại $E$, $F$; hai cung tâm $E$, $F$ cắt nhau tại $Q$; kẻ $PQ$</td><td>$PQ$ là trung trực của $EF$</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Chứng minh phép dựng trung trực</div>
+<p>Vì $PA = PB = QA = QB = r$ nên $\triangle PAQ = \triangle PBQ$ (c.c.c), suy ra $\widehat{APM} = \widehat{BPM}$ với $M$ là giao của $PQ$ và $AB$. Khi đó $\triangle PAM = \triangle PBM$ (c.g.c) nên $MA = MB$ và $\widehat{PMA} = \widehat{PMB} = 90^\circ$. Vậy $PQ$ là <b>đường trung trực</b> <span class="en">(perpendicular bisector)</span> của $AB$.</p>
+<p>Điều kiện $r > \frac{AB}{2}$ là cần thiết: nếu $2r \le AB$, hai cung không cắt nhau tại hai điểm.</p>
+</div>
+
+<h2>3. Khám phá: dựng hình từng bước</h2>
+<div data-widget="ch03_dung_hinh"  data-title="Hoạt ảnh dựng hình bằng thước và compa" data-try="chọn bài toán, bấm “Tiếp ▶” để xem từng bước: compa quay vẽ cung, thước kẻ đường. “◀ Lùi” để xem lại. Kéo các điểm cho trước hoặc nhập số đo rồi dựng lại: bảng số đo kiểm chứng kết quả (hai đoạn bằng nhau, góc 90°, hai góc bằng nhau…). Thử nhập bán kính quá nhỏ để xem khi nào phép dựng thất bại."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Bài <b>Đường trung trực</b>: nhập $AB = 8$, $r = 5$, bấm “Dựng tự động”: $PA = PB = 5$, $MA = MB = 4$, góc giữa $PQ$ và $AB$ bằng $90^\circ$. Bài <b>Đường vuông góc</b>: nhập khoảng cách $3$, $r = 5$: hai giao điểm $E$, $F$ cách nhau $8$ (Ví dụ 4).</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Chia đoạn thẳng thành 4 phần bằng nhau</div>
+<p>Cho đoạn $AB = 10$ cm. Nêu cách dựng các điểm chia $AB$ thành 4 phần bằng nhau. Mỗi phần dài bao nhiêu?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Dựng trung trực của $AB$, được trung điểm $M$. Dựng tiếp trung trực của $AM$ và $MB$, được trung điểm $M_1$, $M_2$. Bốn đoạn $AM_1, M_1M, MM_2, M_2B$ bằng nhau, mỗi đoạn dài $10 : 4 = 2{,}5$ cm.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Dựng góc 60° và 30°</div>
+<p>Dựng một góc $60^\circ$ và một góc $30^\circ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Vẽ đoạn $OA$. Hai cung tâm $O$ và tâm $A$ cùng bán kính $OA$ cắt nhau tại $B$. Tam giác $OAB$ có ba cạnh bằng nhau nên là tam giác đều, $\widehat{AOB} = 60^\circ$. Dựng tia phân giác của $\widehat{AOB}$ được góc $30^\circ$; chia đôi lần nữa được $15^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Dựng góc 45°</div>
+<p>Dựng một góc $45^\circ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Vẽ đường thẳng $d$ và điểm $O$ trên $d$. Dựng đường vuông góc với $d$ tại $O$ (dựng trung trực của một đoạn trên $d$ nhận $O$ làm trung điểm) được góc $90^\circ$. Dựng tia phân giác của góc vuông được góc $45^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Độ dài trong phép dựng đường vuông góc</div>
+<p>Điểm $P$ cách đường thẳng $d$ một khoảng $3$. Vẽ cung tâm $P$ bán kính $5$ cắt $d$ tại $E$, $F$. Tính $EF$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $K$ là chân đường vuông góc từ $P$. $\triangle PKE$ vuông tại $K$: $KE = \sqrt{5^2 - 3^2} = 4$. Vì $PE = PF$ nên $K$ là trung điểm $EF$, do đó $EF = 8$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Thước dùng để <b>kẻ</b>, không dùng để <b>đo</b>. Mọi độ dài phải được "chép" bằng compa.</li>
+<li>Khi vẽ hai cung để lấy giao điểm, bán kính phải đủ lớn: lớn hơn nửa đoạn thẳng (trung trực), lớn hơn khoảng cách từ điểm đến đường thẳng (đường vuông góc).</li>
+<li>Không phải góc nào cũng dựng được bằng thước và compa: người ta đã chứng minh không thể chia ba một góc $60^\circ$ bằng thước và compa.</li>
+</ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Trong dựng hình bằng thước và compa, thước được dùng để:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Đo độ dài đoạn thẳng</label>
+<label><input type="radio" name="q1" value="b"> Kẻ đường thẳng qua hai điểm đã có</label>
+<label><input type="radio" name="q1" value="c"> Đo góc</label>
+<label><input type="radio" name="q1" value="d"> Chia đoạn thẳng theo vạch</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Thước không chia vạch.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="35" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Dựng tia phân giác của góc $70^\circ$. Mỗi góc tạo thành bằng bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$70 : 2 = 35$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3.5" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Để dựng trung trực của đoạn $AB = 7$, bán kính compa phải lớn hơn bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$r > \frac{AB}{2} = 3{,}5$. Thử nhập $r = 3{,}5$ trong minh họa: hai cung chỉ chạm nhau.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Dựng trung trực của $AB = 6$ với bán kính $r = 5$. Tính khoảng cách $PQ$ giữa hai giao điểm.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$P$, $Q$ đối xứng qua $AB$, $PM = \sqrt{25 - 9} = 4$, nên $PQ = 8$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Phép dựng tia phân giác dựa vào trường hợp bằng nhau nào?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> c.c.c</label>
+<label><input type="radio" name="q5" value="b"> c.g.c</label>
+<label><input type="radio" name="q5" value="c"> g.c.g</label>
+<label><input type="radio" name="q5" value="d"> g.g.c</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$OE = OF$, $TE = TF$, $OT$ chung.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Phép dựng đường song song trong bài dựa vào tính chất của hình nào?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> Tam giác đều</label>
+<label><input type="radio" name="q6" value="b"> Hình bình hành</label>
+<label><input type="radio" name="q6" value="c"> Hình thoi</label>
+<label><input type="radio" name="q6" value="d"> Tam giác vuông</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tứ giác có các cạnh đối bằng nhau là hình bình hành.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Điểm $P$ cách đường thẳng $d$ một khoảng $4$. Cung tâm $P$ bán kính $5$ cắt $d$ tại $E$, $F$. Tính $EF$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$KE = \sqrt{25 - 16} = 3$, $EF = 6$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Từ tam giác đều, chia đôi góc liên tiếp hai lần ta được góc bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$60 \to 30 \to 15$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Chỉ dùng thước để kẻ đường thẳng và compa để vẽ đường tròn, chép độ dài.</li><li>Năm phép dựng cơ bản: trung trực, phân giác, góc bằng góc cho trước, đường song song, đường vuông góc.</li><li>Mỗi phép dựng đúng nhờ một trường hợp bằng nhau của tam giác (thường là c.c.c) hoặc tính chất hình bình hành.</li><li>Phối hợp các phép dựng cơ bản để dựng góc 60°, 30°, 45°, chia đoạn thẳng thành 2, 4, 8… phần.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

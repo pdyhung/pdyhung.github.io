@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phép đối xứng trục · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch01_chung.js"></script>
+<script defer src="../assets/widgets/ch01_doi_xung.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 1 · Thực hiện phép biến hình · Bài 5</div>
+<h1>Bài 5. Phép đối xứng trục <span class="en">(Reflections)</span></h1>
+<p class="lead">Mặt hồ phẳng lặng phản chiếu hàng cây; tấm gương cho ta thấy "bản sao lộn trái" của chính mình. Trong toán học, hiện tượng phản chiếu được mô tả bằng phép đối xứng trục.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu định nghĩa phép đối xứng trục qua khái niệm đường trung trực.</li><li>Tìm ảnh qua phép đối xứng trục $Ox$, trục $Oy$, đường thẳng $y = x$, $y = -x$ và các đường thẳng $x = a$, $y = b$.</li><li>Xác định trục đối xứng khi biết một điểm và ảnh của nó.</li><li>Hiểu vì sao phép đối xứng trục là phép dời hình nhưng đảo ngược chiều của hình; vận dụng tìm đường đi ngắn nhất.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Đứng trước gương và giơ tay phải lên: người trong gương giơ tay nào? Bạn bước lại gần gương 1 m thì "người trong gương" tiến lại gần gương bao nhiêu? Đường nối bạn với ảnh của bạn có vị trí gì so với mặt gương?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Đường trung trực</div>
+<p><b>Đường trung trực</b> <span class="en">(perpendicular bisector)</span> của đoạn thẳng $AB$ là đường thẳng <b>vuông góc</b> với $AB$ tại <b>trung điểm</b> của $AB$.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Phép đối xứng trục</div>
+<p>Cho đường thẳng $d$. <b>Phép đối xứng trục</b> <span class="en">(reflection)</span> $d$ là phép biến hình biến mỗi điểm $M$ thành điểm $M'$ sao cho:</p>
+<ul>
+<li>nếu $M \in d$ thì $M' = M$;</li>
+<li>nếu $M \notin d$ thì $d$ là đường trung trực của đoạn thẳng $MM'$.</li>
+</ul>
+<p>Ký hiệu $\text{Đ}_d$. Đường thẳng $d$ gọi là <b>trục đối xứng</b> <span class="en">(line of reflection)</span>.</p>
+</div>
+<p>Hệ quả: $M$ và $M'$ <b>cách đều</b> trục $d$ và nằm ở hai phía của $d$; đoạn $MM'$ vuông góc với $d$.</p>
+<div class="box dinh-ly">
+<div class="box-title">Biểu thức tọa độ</div>
+<table>
+<tr><th>Trục đối xứng</th><th>Ảnh của $M(x; y)$</th><th>Ảnh của $A(3; -2)$</th></tr>
+<tr><td>Trục $Ox$ ($y = 0$)</td><td>$(x; -y)$</td><td>$(3; 2)$</td></tr>
+<tr><td>Trục $Oy$ ($x = 0$)</td><td>$(-x; y)$</td><td>$(-3; -2)$</td></tr>
+<tr><td>Đường thẳng $y = x$</td><td>$(y; x)$</td><td>$(-2; 3)$</td></tr>
+<tr><td>Đường thẳng $y = -x$</td><td>$(-y; -x)$</td><td>$(2; -3)$</td></tr>
+<tr><td>Đường thẳng $x = a$</td><td>$(2a - x; y)$</td><td>với $a = 2$: $(1; -2)$</td></tr>
+<tr><td>Đường thẳng $y = b$</td><td>$(x; 2b - y)$</td><td>với $b = -1$: $(3; 0)$</td></tr>
+</table>
+</div>
+<p>Giải thích dòng $x = a$: $M$ và $M'$ có cùng tung độ, và trung điểm của $MM'$ nằm trên trục, nên $\dfrac{x + x'}{2} = a$, suy ra $x' = 2a - x$.</p>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<ul>
+<li>Phép đối xứng trục là <b>phép dời hình</b>: biến đoạn thẳng, góc, tam giác thành đoạn thẳng, góc, tam giác bằng nó.</li>
+<li>Nó <b>đảo ngược chiều</b> của hình: nếu $A \to B \to C$ ngược chiều kim đồng hồ thì $A' \to B' \to C'$ cùng chiều kim đồng hồ.</li>
+<li>Thực hiện phép đối xứng trục $d$ hai lần thì mọi điểm trở về vị trí cũ: $\text{Đ}_d(\text{Đ}_d(M)) = M$.</li>
+<li>Các điểm nằm trên trục là các điểm duy nhất đứng yên.</li>
+</ul>
+</div>
+
+<h2>3. Khám phá: kéo trục đối xứng</h2>
+<div data-widget="ch01_doi_xung"  data-title="Phép đối xứng qua trục d" data-try="bấm các nút chọn nhanh “Trục Ox”, “Trục Oy”, “y = x”, “y = −x” và đọc công thức trong bảng. Kéo hai điểm xanh lá P, Q để nghiêng trục d, hoặc gõ tọa độ của P, Q. Bấm “Lật hình” để thấy tam giác lật quanh trục như lật một tờ giấy: đó là lý do chiều của tam giác bị đảo ngược."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra bài tập</div>
+<p>Ví dụ 1 dùng vị trí ban đầu của minh họa (trục $Oy$). Với Ví dụ 3: nhập $P(3; -4)$, $Q(3; 4)$ để có trục $x = 3$, rồi nhập $A(1; 2)$: bảng cho $A'(5; 2)$. Với Câu 5: trục $x = 1$ và $M(4; 2)$.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Đối xứng tam giác qua trục Oy</div>
+<p>Tìm ảnh của tam giác $A(-5; 1)$, $B(-2; 1)$, $C(-4; 4)$ qua phép đối xứng trục $Oy$. So sánh chiều của hai tam giác.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đổi dấu hoành độ: $A'(5; 1)$, $B'(2; 1)$, $C'(4; 4)$.</p>
+<p>Đi theo $A \to B \to C$: từ $A$ sang phải tới $B$, rồi lên trái tới $C$: ngược chiều kim đồng hồ. Đi theo $A' \to B' \to C'$: từ $A'$ sang trái tới $B'$, rồi lên phải tới $C'$: cùng chiều kim đồng hồ. Chiều đã bị đảo ngược.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Bốn trục đặc biệt</div>
+<p>Tìm ảnh của $A(3; -2)$ qua phép đối xứng trục $Ox$, trục $Oy$, đường thẳng $y = x$, đường thẳng $y = -x$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Lần lượt: $(3; 2)$, $(-3; -2)$, $(-2; 3)$, $(2; -3)$ (xem bảng ở mục 2). Bạn hãy chọn từng trục trong minh họa, nhập $A(3; -2)$ để kiểm tra.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Trục song song với trục tọa độ</div>
+<p>Tìm ảnh của $M(5; 1)$ qua phép đối xứng trục $x = 2$, và ảnh của $N(0; 3)$ qua phép đối xứng trục $y = -1$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$M' = (2 \cdot 2 - 5; 1) = (-1; 1)$. Kiểm tra: $M$ cách trục $5 - 2 = 3$ đơn vị, $M'$ cách trục $2 - (-1) = 3$ đơn vị.</p>
+<p>$N' = (0; 2 \cdot (-1) - 3) = (0; -5)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Tìm trục đối xứng</div>
+<p>Phép đối xứng trục $d$ biến $A(1; 2)$ thành $A'(5; 2)$. Tìm $d$. Nếu phép đối xứng trục $d_1$ biến $B(0; 4)$ thành $B'(4; 0)$ thì $d_1$ là đường nào?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$d$ là đường trung trực của $AA'$. Trung điểm của $AA'$ là $(3; 2)$; $AA'$ nằm ngang nên $d$ thẳng đứng: $d: x = 3$.</p>
+<p>Trung điểm của $BB'$ là $(2; 2)$. Đoạn $BB'$ đi "sang phải 4, xuống 4", nên đường vuông góc với nó đi "sang phải 1, lên 1": $d_1$ qua $(2; 2)$ và song song với đường $y = x$, tức là chính đường thẳng $y = x$. Thật vậy, đối xứng qua $y = x$ đổi chỗ hai tọa độ: $(0; 4) \to (4; 0)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Đường đi ngắn nhất</div>
+<p>Hai nhà ở $A(1; 3)$ và $B(5; 1)$, con đường thẳng là trục $Ox$. Cần đặt trạm xe buýt $M$ trên đường sao cho $MA + MB$ nhỏ nhất. Tìm $M$ và giá trị nhỏ nhất đó.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $A_1(1; -3)$ là ảnh của $A$ qua $\text{Đ}_{Ox}$. Với mọi $M$ trên $Ox$: $MA = MA_1$ (vì $Ox$ là trung trực của $AA_1$), nên</p>
+<p>$$MA + MB = MA_1 + MB \ge A_1B.$$</p>
+<p>Dấu bằng xảy ra khi $M$ nằm trên đoạn $A_1B$. Đường thẳng $A_1B$ đi qua $(1; -3)$ và $(5; 1)$, có dạng $y = x - 4$, cắt $Ox$ tại $M(4; 0)$. Giá trị nhỏ nhất:</p>
+<p>$$A_1B = \sqrt{4^2 + 4^2} = 4\sqrt2 \approx 5{,}66.$$</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Đối xứng qua $Ox$ thì <b>giữ hoành độ</b>, đổi dấu tung độ (không phải ngược lại). Nhớ: điểm "lật" theo phương vuông góc với trục.</li>
+<li>Đối xứng qua $y = x$ là <b>đổi chỗ</b> hai tọa độ, không đổi dấu; qua $y = -x$ là đổi chỗ <b>và</b> đổi dấu.</li>
+<li>$MM'$ phải <b>vuông góc</b> với trục; chỉ "cách đều trục" thôi chưa đủ.</li>
+<li>Phép đối xứng trục không thể thay bằng một phép quay hay tịnh tiến, vì nó đảo ngược chiều của hình.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Ảnh của $M(4; -1)$ qua phép đối xứng trục $Ox$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $(-4; -1)$</label>
+<label><input type="radio" name="q1" value="b"> $(4; 1)$</label>
+<label><input type="radio" name="q1" value="c"> $(-4; 1)$</label>
+<label><input type="radio" name="q1" value="d"> $(-1; 4)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Trục $Ox$: giữ hoành độ, đổi dấu tung độ.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Ảnh của $N(-2; 7)$ qua phép đối xứng qua đường thẳng $y = x$ là:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $(2; -7)$</label>
+<label><input type="radio" name="q2" value="b"> $(-7; 2)$</label>
+<label><input type="radio" name="q2" value="c"> $(7; -2)$</label>
+<label><input type="radio" name="q2" value="d"> $(-2; -7)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đối xứng qua $y = x$: đổi chỗ hai tọa độ.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Tìm hoành độ của ảnh của $P(-3; 5)$ qua phép đối xứng trục $Oy$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Trục $Oy$: $(x; y) \to (-x; y)$, ảnh là $(3; 5)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Khẳng định nào đúng về phép đối xứng trục?</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> Nó không bảo toàn độ dài</label>
+<label><input type="radio" name="q4" value="b"> Nó giữ nguyên chiều của tam giác</label>
+<label><input type="radio" name="q4" value="c"> Nó là phép dời hình và đảo ngược chiều của tam giác</label>
+<label><input type="radio" name="q4" value="d"> Nó không có điểm nào đứng yên</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Thử nút “Lật hình” trong minh họa và đọc dòng “Chiều”.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-2" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tìm hoành độ của ảnh của $M(4; 2)$ qua phép đối xứng trục $x = 1$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$x' = 2 \cdot 1 - 4 = -2$, ảnh là $(-2; 2)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-1" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Hai điểm $A(2; 3)$ và $A'(2; -5)$ đối xứng nhau qua đường thẳng $y = b$. Tìm $b$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Trục đi qua trung điểm $(2; -1)$ của $AA'$ và vuông góc với $AA'$ (đoạn thẳng đứng), nên $b = \dfrac{3 + (-5)}{2} = -1$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Cho $A(1; 2)$ và $B(4; 2)$. Điểm $M$ chạy trên trục $Ox$. Tính giá trị nhỏ nhất của $MA + MB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Lấy $A_1(1; -2)$ đối xứng với $A$ qua $Ox$. Khi đó $MA + MB = MA_1 + MB \ge A_1B = \sqrt{3^2 + 4^2} = 5$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Lấy đối xứng một hình qua trục $Ox$, rồi lấy đối xứng tiếp qua trục $Oy$. Kết quả giống với phép biến hình nào?</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Phép đối xứng qua đường thẳng $y = x$</label>
+<label><input type="radio" name="q8" value="b"> Phép quay tâm $O$ góc $180^\circ$</label>
+<label><input type="radio" name="q8" value="c"> Phép quay tâm $O$ góc $90^\circ$</label>
+<label><input type="radio" name="q8" value="d"> Phép đồng nhất</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$(x; y) \to (x; -y) \to (-x; -y)$. So sánh với công thức phép quay $180^\circ$ ở Bài 4.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>$\text{Đ}_d(M) = M'$: $d$ là đường trung trực của $MM'$ (nếu $M \notin d$); điểm trên $d$ đứng yên.</li><li>$Ox$: $(x; -y)$; $Oy$: $(-x; y)$; $y = x$: $(y; x)$; $y = -x$: $(-y; -x)$; $x = a$: $(2a - x; y)$; $y = b$: $(x; 2b - y)$.</li><li>Phép đối xứng trục là phép dời hình nhưng đảo ngược chiều của hình.</li><li>Muốn tìm trục: dựng đường trung trực của đoạn nối một điểm với ảnh của nó.</li><li>Bài toán đường đi ngắn nhất: lấy đối xứng một điểm qua đường thẳng để biến tổng hai đoạn thành một đoạn thẳng.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

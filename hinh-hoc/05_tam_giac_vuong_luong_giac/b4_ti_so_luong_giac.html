@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tỉ số lượng giác · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch05_ti_so.js"></script>
+<script defer src="../assets/widgets/ch05_duong_tron.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 5 · Tam giác vuông và lượng giác · Bài 4</div>
+<h1>Bài 4. Tỉ số lượng giác <span class="en">(Trigonometric ratios)</span></h1>
+<p class="lead">Ba tỉ số của tam giác vuông ở bài trước được đặt tên là sin, côsin và tang. Chúng là "bảng tra" nối giữa góc và cạnh: biết góc thì biết tỉ số, biết tỉ số thì tìm được góc.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Định nghĩa được sin, cos, tan (và cot) của một góc nhọn trong tam giác vuông.</li><li>Xác định đúng cạnh đối, cạnh kề, cạnh huyền để lập tỉ số lượng giác.</li><li>Nhớ giá trị lượng giác của các góc $30^\circ$, $45^\circ$, $60^\circ$; dùng máy tính cầm tay để tính tỉ số và tìm góc.</li><li>Hiểu các tỉ số qua đường tròn đơn vị và các hệ thức $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$, $\sin^2\alpha + \cos^2\alpha = 1$.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Một con dốc có góc nghiêng $10^\circ$. Đi bộ 100 m dọc theo dốc, bạn lên cao thêm bao nhiêu mét? Mọi con dốc nghiêng $10^\circ$ đều cho cùng một tỉ số "độ cao : quãng đường" (Bài 3). Chỉ cần biết tỉ số đó là trả lời được, và máy tính cầm tay cho ta tỉ số ấy bằng một phím bấm: phím <b>sin</b>.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Tỉ số lượng giác của góc nhọn</div>
+<p>Cho tam giác $ABC$ vuông tại $A$, góc nhọn $\widehat{B} = \alpha$. Đối với góc $B$: cạnh đối là $AC$, cạnh kề là $AB$, cạnh huyền là $BC$.</p>
+<p>$$\sin\alpha = \frac{\text{đối}}{\text{huyền}} = \frac{AC}{BC}, \qquad \cos\alpha = \frac{\text{kề}}{\text{huyền}} = \frac{AB}{BC},$$</p>
+<p>$$\tan\alpha = \frac{\text{đối}}{\text{kề}} = \frac{AC}{AB}, \qquad \cot\alpha = \frac{\text{kề}}{\text{đối}} = \frac{AB}{AC}.$$</p>
+<p>Đọc là: <b>sin</b> <span class="en">(sine)</span>, <b>côsin</b> <span class="en">(cosine)</span>, <b>tang</b> <span class="en">(tangent)</span>, <b>côtang</b> <span class="en">(cotangent)</span>. Theo Bài 3, các tỉ số này chỉ phụ thuộc vào góc $\alpha$.</p>
+</div>
+<p><b>Mẹo nhớ:</b> "<b>S</b>in <b>đ</b>i <b>h</b>ọc, <b>C</b>os <b>k</b>hông <b>h</b>ư, <b>T</b>an <b>đ</b>oàn <b>k</b>ết": sin = đối : huyền, cos = kề : huyền, tan = đối : kề.</p>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<ul>
+<li>$0 < \sin\alpha < 1$ và $0 < \cos\alpha < 1$ (vì cạnh huyền dài nhất); $\tan\alpha > 0$.</li>
+<li>$\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$, $\cot\alpha = \dfrac{1}{\tan\alpha}$.</li>
+<li>$\sin^2\alpha + \cos^2\alpha = 1$. (Chia hai vế của $AC^2 + AB^2 = BC^2$ cho $BC^2$.)</li>
+</ul>
+</div>
+<p><b>Đường tròn đơn vị.</b> Vẽ tam giác vuông có cạnh huyền bằng 1, đặt đỉnh góc $\alpha$ tại tâm $O$ của <b>đường tròn đơn vị</b> <span class="en">(unit circle)</span> (bán kính 1). Khi đó cạnh đối <i>chính là</i> $\sin\alpha$ và cạnh kề <i>chính là</i> $\cos\alpha$. Kéo dài cạnh huyền tới tiếp tuyến tại $A(1; 0)$, đoạn tiếp tuyến chắn được có độ dài $\tan\alpha$.</p>
+<p><b>Giá trị của các góc đặc biệt</b> (suy từ Bài 2):</p>
+<table>
+<tr><th></th><th>$30^\circ$</th><th>$45^\circ$</th><th>$60^\circ$</th></tr>
+<tr><td>$\sin$</td><td>$\dfrac12$</td><td>$\dfrac{\sqrt2}{2}$</td><td>$\dfrac{\sqrt3}{2}$</td></tr>
+<tr><td>$\cos$</td><td>$\dfrac{\sqrt3}{2}$</td><td>$\dfrac{\sqrt2}{2}$</td><td>$\dfrac12$</td></tr>
+<tr><td>$\tan$</td><td>$\dfrac{\sqrt3}{3}$</td><td>$1$</td><td>$\sqrt3$</td></tr>
+</table>
+<p><b>Dùng máy tính cầm tay.</b> Chuyển máy về chế độ đo góc bằng độ (màn hình hiện chữ D hoặc Deg). Bấm <code>sin 35 =</code> được $0{,}5736$. Muốn tìm góc khi biết tỉ số, dùng phím <code>SHIFT sin</code> (tức $\sin^{-1}$), tương tự với cos, tan.</p>
+
+<h2>3. Khám phá bằng minh họa động</h2>
+<div data-widget="ch05_ti_so"  data-title="Cạnh đối, cạnh kề, cạnh huyền và ba tỉ số" data-try="kéo B, C hoặc <b>nhập</b> AB, AC. Chọn góc B hay góc C trong ô “Góc nhọn đang xét”: màu đỏ (đối) và xanh (kề) đổi chỗ cho nhau, cạnh huyền tím thì giữ nguyên. So sánh sin B với cos C."></div>
+<div data-widget="ch05_duong_tron"  data-title="Đường tròn đơn vị: sin, cos, tan là những đoạn thẳng" data-try="kéo điểm P trên đường tròn hoặc <b>nhập góc θ</b>. Đoạn đỏ là sin θ, đoạn xanh là cos θ, đoạn xanh lá trên tiếp tuyến là tan θ. Bấm “▶ Quét góc” để xem: khi θ tăng, sin tăng, cos giảm, tan tăng rất nhanh khi θ gần 90°."></div>
+<p>Quan sát bảng số đo: dòng $\sin^2\theta + \cos^2\theta$ luôn bằng 1, và dòng $\sin\theta : \cos\theta$ luôn bằng $\tan\theta$. Bấm các nút $30^\circ$, $45^\circ$, $60^\circ$ để đối chiếu với bảng giá trị đặc biệt.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tam giác 3 – 4 – 5</div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 4$, $AC = 3$. Tính các tỉ số lượng giác của góc $B$ và góc $C$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$BC = \sqrt{4^2 + 3^2} = 5$.</p>
+<p>Góc $B$: $\sin B = \dfrac{AC}{BC} = \dfrac35$, $\cos B = \dfrac{AB}{BC} = \dfrac45$, $\tan B = \dfrac{AC}{AB} = \dfrac34$.</p>
+<p>Góc $C$: $\sin C = \dfrac{AB}{BC} = \dfrac45$, $\cos C = \dfrac{AC}{BC} = \dfrac35$, $\tan C = \dfrac{AB}{AC} = \dfrac43$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Phải tính cạnh huyền trước</div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 12$, $AC = 5$. Tính $\sin B$, $\cos B$, $\tan B$ (làm tròn đến bốn chữ số thập phân).</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$BC = \sqrt{144 + 25} = 13$. $\sin B = \dfrac{5}{13} \approx 0{,}3846$; $\cos B = \dfrac{12}{13} \approx 0{,}9231$; $\tan B = \dfrac{5}{12} \approx 0{,}4167$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Biết sin, tìm cos và tan</div>
+<p>Cho góc nhọn $\alpha$ có $\sin\alpha = 0{,}6$. Tính $\cos\alpha$ và $\tan\alpha$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\cos^2\alpha = 1 - 0{,}36 = 0{,}64$, mà $\cos\alpha > 0$ nên $\cos\alpha = 0{,}8$. Khi đó $\tan\alpha = \dfrac{0{,}6}{0{,}8} = 0{,}75$.</p>
+<p>Cách hình học: vẽ tam giác vuông có cạnh đối 3, cạnh huyền 5 (tỉ số $0{,}6$), cạnh kề là 4.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Dùng máy tính</div>
+<p>(a) Tính $\sin 35^\circ$, $\cos 35^\circ$, $\tan 35^\circ$. (b) Tìm góc nhọn $\alpha$ biết $\tan\alpha = 1{,}5$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>(a) $\sin 35^\circ \approx 0{,}5736$; $\cos 35^\circ \approx 0{,}8192$; $\tan 35^\circ \approx 0{,}7002$. Kiểm tra trên đường tròn đơn vị: nhập $\theta = 35$.</p>
+<p>(b) Bấm <code>SHIFT tan 1,5 =</code>: $\alpha \approx 56{,}31^\circ$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Tỉ số lượng giác ở đây định nghĩa cho <b>góc nhọn của tam giác vuông</b>. Phải xác định góc đang xét trước, rồi mới gọi tên cạnh đối, cạnh kề.</li>
+<li>Lỗi hay gặp: lấy cạnh kề chia cạnh huyền khi tính sin. Hãy đọc mẹo: sin đi với "đối".</li>
+<li>Nếu tính được $\sin\alpha > 1$ hoặc $\cos\alpha > 1$ thì chắc chắn đã sai (thường do đặt nhầm cạnh huyền).</li>
+<li>Máy tính phải ở chế độ <b>độ</b> (D). Ở chế độ radian (R), $\sin 30$ cho $-0{,}988$ thay vì $0{,}5$.</li>
+<li>$\sin\alpha$ là một số, không phải "sin nhân $\alpha$". Viết $\sin^2\alpha$ nghĩa là $(\sin\alpha)^2$.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác $ABC$ vuông tại $A$. Khi đó $\sin B$ bằng</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $\dfrac{AC}{BC}$</label>
+<label><input type="radio" name="q1" value="b"> $\dfrac{AB}{BC}$</label>
+<label><input type="radio" name="q1" value="c"> $\dfrac{AC}{AB}$</label>
+<label><input type="radio" name="q1" value="d"> $\dfrac{BC}{AC}$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>sin = đối : huyền; đối với góc B, cạnh đối là AC, cạnh huyền là BC.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác $ABC$ vuông tại $A$. Khi đó $\tan C$ bằng</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $\dfrac{AC}{AB}$</label>
+<label><input type="radio" name="q2" value="b"> $\dfrac{AB}{BC}$</label>
+<label><input type="radio" name="q2" value="c"> $\dfrac{AB}{AC}$</label>
+<label><input type="radio" name="q2" value="d"> $\dfrac{AC}{BC}$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>tan = đối : kề; đối với góc C, cạnh đối là AB, cạnh kề là AC.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="0.8" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 8$, $AC = 6$. Tính $\cos B$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$BC = \sqrt{64 + 36} = 10$, $\cos B = \dfrac{AB}{BC} = \dfrac{8}{10} = 0{,}8$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.7321" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tính $\tan 60^\circ$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\tan 60^\circ = \sqrt3 \approx 1{,}73$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.3333" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Cho góc nhọn $\alpha$ có $\cos\alpha = 0{,}6$. Tính $\tan\alpha$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sin\alpha = \sqrt{1 - 0{,}36} = 0{,}8$, nên $\tan\alpha = \dfrac{0{,}8}{0{,}6} = \dfrac43 \approx 1{,}33$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="d">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Với góc nhọn $\alpha$, đẳng thức nào <b>không thể</b> xảy ra?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> $\sin\alpha = 0{,}2$</label>
+<label><input type="radio" name="q6" value="b"> $\cos\alpha = 0{,}99$</label>
+<label><input type="radio" name="q6" value="c"> $\tan\alpha = 3$</label>
+<label><input type="radio" name="q6" value="d"> $\sin\alpha = 1{,}2$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>sin của góc nhọn luôn nhỏ hơn 1 (cạnh đối ngắn hơn cạnh huyền). tan thì có thể lớn hơn 1.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $BC = 20$ và $\sin B = 0{,}35$. Tính $AC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AC = BC \cdot \sin B = 20 \cdot 0{,}35 = 7$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="36.8699" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Tìm góc nhọn $\alpha$ (đơn vị độ, làm tròn đến hai chữ số thập phân) biết $\tan\alpha = 0{,}75$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\alpha = \tan^{-1} 0{,}75 \approx 36{,}87^\circ$ (đây là góc nhỏ của tam giác 3 – 4 – 5).</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>$\sin\alpha = \dfrac{\text{đối}}{\text{huyền}}$, $\cos\alpha = \dfrac{\text{kề}}{\text{huyền}}$, $\tan\alpha = \dfrac{\text{đối}}{\text{kề}}$, $\cot\alpha = \dfrac{\text{kề}}{\text{đối}}$.</li><li>$0 < \sin\alpha, \cos\alpha < 1$; $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$; $\sin^2\alpha + \cos^2\alpha = 1$.</li><li>Góc đặc biệt: $\sin 30^\circ = \cos 60^\circ = \dfrac12$, $\sin 45^\circ = \cos 45^\circ = \dfrac{\sqrt2}{2}$, $\tan 45^\circ = 1$, $\tan 60^\circ = \sqrt3$.</li><li>Trên đường tròn đơn vị, sin và cos là tung độ và hoành độ của điểm $P$; máy tính (chế độ độ) cho giá trị tỉ số và góc ($\sin^{-1}$, $\cos^{-1}$, $\tan^{-1}$).</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

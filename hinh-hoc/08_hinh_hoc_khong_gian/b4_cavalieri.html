@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 4. Nguyên lý Cavalieri · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/vendor/three/three.min.js"></script>
+<script defer src="../assets/vendor/three/OrbitControls.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/scene3d.js"></script>
+<script defer src="../assets/widgets/ch08_cavalieri.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 8 · Hình học không gian · Bài 4</div>
+<h1>Nguyên lý Cavalieri <span class="en">(Cavalieri's principle)</span></h1>
+<p class="lead">Xô lệch một chồng đồng xu, hình dạng thay đổi nhưng lượng kim loại thì không. Ý tưởng giản dị này, do Bonaventura Cavalieri phát biểu năm 1635, là chìa khóa để tìm thể tích nhiều khối.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu nguyên lý Cavalieri trong mặt phẳng và trong không gian.</li><li>Giải thích vì sao lăng trụ xiên, trụ xiên có cùng công thức thể tích với lăng trụ đứng, trụ đứng.</li><li>Dùng nguyên lý Cavalieri để tìm thể tích hình cầu (cách của Archimedes).</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Hai chồng sách, mỗi chồng 10 cuốn giống hệt nhau. Chồng thứ nhất xếp ngay ngắn, chồng thứ hai xếp xô lệch. Chồng nào “chiếm chỗ” nhiều hơn?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Nguyên lý Cavalieri trong mặt phẳng</div>
+<p>Cho hai hình phẳng nằm giữa hai đường thẳng song song. Nếu <b>mọi</b> đường thẳng song song với hai đường đó cắt hai hình theo hai đoạn thẳng <b>bằng nhau</b>, thì hai hình có <b>diện tích bằng nhau</b>. Ví dụ: hình bình hành và hình chữ nhật cùng đáy, cùng chiều cao.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Nguyên lý Cavalieri trong không gian</div>
+<p>Cho hai khối nằm giữa hai mặt phẳng song song. Nếu <b>mọi</b> mặt phẳng song song với hai mặt phẳng đó cắt hai khối theo hai thiết diện có <b>diện tích bằng nhau</b>, thì hai khối có <b>thể tích bằng nhau</b>.</p>
+</div>
+<p>Các hệ quả quan trọng:</p>
+<ul>
+<li><b>Lăng trụ xiên</b> và lăng trụ đứng có cùng đáy $B$ và cùng chiều cao $h$ thì có cùng thể tích: $V = B \cdot h$.</li>
+<li><b>Hình trụ xiên</b> bán kính $r$, chiều cao $h$: $V = \pi r^2 h$.</li>
+<li>Hai hình chóp (hoặc chóp và nón) có <b>cùng diện tích đáy</b> và <b>cùng chiều cao</b> thì có cùng thể tích.</li>
+<li>Mở rộng: nếu ở mọi độ cao, thiết diện của khối A luôn gấp $k$ lần thiết diện của khối B, thì $V_A = k \cdot V_B$.</li>
+</ul>
+
+<h2>3. Khám phá bằng mô hình 3D</h2>
+<div data-widget="ch08_cavalieri"  data-title="Thiết diện bằng nhau, thể tích bằng nhau" data-try="chọn tình huống rồi bấm “Quét mặt cắt”: hai thiết diện màu cam luôn có diện tích bằng nhau (xem bảng số). Với chồng đồng xu, <b>gõ độ xô lệch</b> khác nhau và bật “uốn lượn”: thể tích không đổi."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Chồng đồng xu</div>
+<p>Một chồng 20 đồng xu, mỗi đồng có bán kính 1 cm, dày 0,2 cm. Tính thể tích chồng xu khi xếp thẳng và khi xếp xô lệch.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Chiều cao chồng xu $h = 20 \cdot 0{,}2 = 4$ cm. Ở mọi độ cao, thiết diện là hình tròn bán kính 1 cm, nên theo Cavalieri hai cách xếp có cùng thể tích: $V = \pi \cdot 1^2 \cdot 4 = 4\pi \approx 12{,}57$ cm³.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Hình trụ xiên</div>
+<p>Một hình trụ xiên có bán kính đáy 2 cm, khoảng cách giữa hai mặt đáy là 5 cm. Tính thể tích.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$V = \pi r^2 h = \pi \cdot 4 \cdot 5 = 20\pi \approx 62{,}83$ cm³. Chú ý: $h$ là <b>khoảng cách giữa hai đáy</b>, không phải độ dài đường sinh xiên.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Thể tích hình cầu (Archimedes)</div>
+<p>Chứng minh thể tích nửa hình cầu bán kính $R$ bằng $\frac23 \pi R^3$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đặt nửa hình cầu (mặt phẳng ở dưới) cạnh một hình trụ bán kính $R$, cao $R$, đã khoét bỏ một hình nón có đỉnh ở tâm đáy dưới và đáy trùng mặt trên của trụ.</p>
+<p>Ở độ cao $y$ ($0 \le y \le R$):</p>
+<ul><li>Nửa hình cầu cho hình tròn bán kính $\sqrt{R^2 - y^2}$, diện tích $\pi(R^2 - y^2)$.</li>
+<li>Trụ khoét nón cho hình vành khăn bán kính ngoài $R$, bán kính trong $y$, diện tích $\pi R^2 - \pi y^2 = \pi(R^2 - y^2)$.</li></ul>
+<p>Hai thiết diện luôn bằng nhau, nên theo Cavalieri: $$V_{\text{nửa cầu}} = V_{\text{trụ}} - V_{\text{nón}} = \pi R^3 - \frac13 \pi R^3 = \frac23 \pi R^3.$$ Suy ra thể tích hình cầu $V = \frac43 \pi R^3$. Chọn tình huống thứ ba trong mô hình để kiểm chứng.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li>Thiết diện phải bằng nhau ở <b>mọi</b> độ cao, không chỉ ở đáy. Hình trụ và hình nón cùng đáy, cùng chiều cao <b>không</b> có cùng thể tích, vì thiết diện của nón nhỏ dần.</li><li>Chiều cao luôn đo <b>vuông góc</b> với đáy.</li></ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>37,7</code>). Làm tròn đến hai chữ số thập phân nếu cần; với kết quả chứa $\pi$, dùng $\pi \approx 3{,}14159$.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Theo nguyên lý Cavalieri, hai khối có cùng chiều cao sẽ có cùng thể tích nếu:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Chúng có cùng diện tích đáy</label>
+<label><input type="radio" name="q1" value="b"> Chúng có cùng diện tích toàn phần</label>
+<label><input type="radio" name="q1" value="c"> Ở mọi độ cao, hai thiết diện có diện tích bằng nhau</label>
+<label><input type="radio" name="q1" value="d"> Chúng có cùng số mặt</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Điều kiện phải đúng ở mọi mặt phẳng cắt song song.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="60" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Một lăng trụ xiên có diện tích đáy 12 cm² và chiều cao 5 cm. Thể tích bằng bao nhiêu cm³?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = B \cdot h = 12 \cdot 5 = 60$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Hình trụ đứng và hình trụ xiên có cùng bán kính đáy, cùng chiều cao. So sánh thể tích:</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Trụ đứng lớn hơn</label>
+<label><input type="radio" name="q3" value="b"> Trụ xiên lớn hơn</label>
+<label><input type="radio" name="q3" value="c"> Bằng nhau</label>
+<label><input type="radio" name="q3" value="d"> Không so sánh được</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Thiết diện ở mọi độ cao đều là hình tròn cùng bán kính.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="18.85" data-tol="0.02">
+<div class="q-head">Câu 4 <span class="q-level">Vận dụng</span></div>
+<p>Chồng 30 đồng xu, mỗi đồng bán kính 1 cm, dày 0,2 cm, xếp xô lệch. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = 6$ cm, $V = \pi \cdot 1 \cdot 6 = 6\pi \approx 18{,}85$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="56.55" data-tol="0.02">
+<div class="q-head">Câu 5 <span class="q-level">Vận dụng</span></div>
+<p>Tính thể tích nửa hình cầu bán kính 3 cm (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$V = \frac23 \pi \cdot 27 = 18\pi \approx 56{,}55$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Ở mọi độ cao, thiết diện của khối A luôn gấp 3 lần thiết diện của khối B (cùng chiều cao). Khi đó:</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> $V_A = V_B$</label>
+<label><input type="radio" name="q6" value="b"> $V_A = 3V_B$</label>
+<label><input type="radio" name="q6" value="c"> $V_A = 9V_B$</label>
+<label><input type="radio" name="q6" value="d"> $V_A = 27V_B$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cavalieri mở rộng: tỉ số thiết diện không đổi thì tỉ số thể tích bằng tỉ số đó.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="62.83" data-tol="0.02">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Một hình trụ xiên có bán kính đáy 2 cm, đường sinh dài 10 cm và nghiêng 30° so với mặt đáy. Tính thể tích (cm³).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Chiều cao $h = 10 \sin 30° = 5$ cm. $V = \pi \cdot 4 \cdot 5 = 20\pi \approx 62{,}83$ cm³.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Thông hiểu</span></div>
+<p>Trong cách chứng minh của Archimedes, thiết diện của hình trụ khoét nón ở độ cao $y$ là:</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Hình tròn bán kính $y$</label>
+<label><input type="radio" name="q8" value="b"> Hình vành khăn bán kính ngoài $R$, bán kính trong $y$</label>
+<label><input type="radio" name="q8" value="c"> Hình tròn bán kính $R - y$</label>
+<label><input type="radio" name="q8" value="d"> Hình vuông cạnh $R$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Bán kính hình nón bị khoét tăng đều từ 0 (ở đáy) đến $R$ (ở trên).</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<div class="box-title"></div>
+<ul><li>Nguyên lý Cavalieri: thiết diện bằng nhau ở mọi độ cao ⇒ thể tích bằng nhau.</li><li>Lăng trụ, hình trụ (đứng hay xiên): $V = B \cdot h$, với $h$ là khoảng cách giữa hai đáy.</li><li>Chóp, nón cùng diện tích đáy, cùng chiều cao có cùng thể tích.</li><li>Archimedes: $V_{\text{nửa cầu}} = V_{\text{trụ}} - V_{\text{nón}}$, suy ra $V_{\text{cầu}} = \frac43\pi R^3$.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

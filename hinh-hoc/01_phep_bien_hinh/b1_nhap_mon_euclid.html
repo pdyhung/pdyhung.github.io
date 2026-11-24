@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhập môn hình học Euclid · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch01_chung.js"></script>
+<script defer src="../assets/widgets/ch01_euclid.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 1 · Thực hiện phép biến hình · Bài 1</div>
+<h1>Bài 1. Nhập môn hình học Euclid <span class="en">(Intro to Euclidean geometry)</span></h1>
+<p class="lead">Khoảng 300 năm trước Công nguyên, nhà toán học Hy Lạp Euclid viết bộ sách <i>Cơ sở</i>, xây dựng cả môn hình học chỉ từ vài khái niệm và vài điều hiển nhiên. Bài này giới thiệu những "viên gạch" đầu tiên đó: điểm, đường thẳng, đoạn thẳng, tia, góc, cùng cách gọi tên và ký hiệu chúng.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phân biệt điểm, đường thẳng, mặt phẳng, đoạn thẳng, tia và góc.</li><li>Đọc và viết đúng ký hiệu: đoạn thẳng $AB$, tia $Ox$, góc $\widehat{xOy}$, đường thẳng $d$.</li><li>Hiểu vì sao hình học cần <b>định nghĩa chính xác</b> và một số tính chất được thừa nhận.</li><li>Tính độ dài đoạn thẳng và tọa độ trung điểm trên mặt phẳng tọa độ.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Một tia nắng lọt qua khe cửa, một sợi chỉ được kéo căng, mép thước kẻ… Ta gọi chúng là "thẳng". Nhưng "thẳng" là gì? Nếu phải giải thích cho một người chưa từng thấy đường thẳng, bạn sẽ nói thế nào?</p>
+<p>Euclid nhận ra rằng không thể định nghĩa <i>mọi thứ</i>: định nghĩa nào cũng phải dùng những từ khác, và chuỗi đó phải dừng lại ở đâu đó. Vì vậy hình học bắt đầu từ vài <b>khái niệm cơ bản</b> không định nghĩa, rồi dùng chúng để định nghĩa chính xác mọi khái niệm còn lại.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>2.1. Ba khái niệm cơ bản</h3>
+<ul>
+<li><b>Điểm</b> <span class="en">(point)</span>: chỉ một vị trí, không có kích thước. Đặt tên bằng chữ in hoa: $A, B, M$.</li>
+<li><b>Đường thẳng</b> <span class="en">(line)</span>: thẳng, kéo dài vô hạn về hai phía, không có độ dày. Đặt tên bằng chữ thường ($d$, $a$) hoặc bằng hai điểm nằm trên nó (đường thẳng $AB$).</li>
+<li><b>Mặt phẳng</b> <span class="en">(plane)</span>: phẳng, trải rộng vô hạn mọi phía, như mặt bàn kéo dài mãi. Ở các chương đầu, mọi hình đều nằm trên một mặt phẳng.</li>
+</ul>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất được thừa nhận (tiên đề)</div>
+<ul>
+<li>Qua hai điểm phân biệt có <b>một và chỉ một</b> đường thẳng.</li>
+<li>Hai đường thẳng phân biệt hoặc cắt nhau tại đúng một điểm, hoặc không có điểm chung (khi đó ta nói chúng <b>song song</b> <span class="en">(parallel)</span>).</li>
+<li>Trong ba điểm <b>thẳng hàng</b> <span class="en">(collinear)</span> (cùng nằm trên một đường thẳng), có đúng một điểm nằm giữa hai điểm còn lại.</li>
+</ul>
+</div>
+<h3>2.2. Các hình được định nghĩa từ điểm và đường thẳng</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Đoạn thẳng, tia, góc, trung điểm</div>
+<ul>
+<li><b>Đoạn thẳng</b> <span class="en">(line segment)</span> $AB$ là hình gồm hai điểm $A$, $B$ và mọi điểm nằm giữa $A$ và $B$. $A$, $B$ là hai <b>đầu mút</b>. Đoạn thẳng có <b>độ dài</b> <span class="en">(length)</span>, ký hiệu cũng là $AB$.</li>
+<li><b>Tia</b> <span class="en">(ray)</span> $Ox$ là hình gồm điểm $O$ (gọi là <b>gốc</b>) và một phần đường thẳng bị chia ra bởi $O$. Tia gốc $A$ đi qua $B$ gọi là tia $AB$; gốc luôn viết trước.</li>
+<li>Hai tia chung gốc tạo thành một đường thẳng gọi là hai <b>tia đối nhau</b> <span class="en">(opposite rays)</span>.</li>
+<li><b>Góc</b> <span class="en">(angle)</span> là hình gồm hai tia chung gốc. Gốc chung là <b>đỉnh</b> <span class="en">(vertex)</span>, hai tia là hai <b>cạnh</b>. Góc có đỉnh $O$, cạnh $Ox$, $Oy$ viết là $\widehat{xOy}$ (hoặc $\angle xOy$, $\widehat{O}$); nếu $A$ thuộc $Ox$, $B$ thuộc $Oy$ thì cũng viết $\widehat{AOB}$, đỉnh luôn ở giữa.</li>
+<li><b>Trung điểm</b> <span class="en">(midpoint)</span> $M$ của đoạn thẳng $AB$ là điểm nằm giữa $A$, $B$ và $MA = MB$.</li>
+</ul>
+</div>
+<p>Số đo góc tính bằng độ, từ $0^\circ$ đến $180^\circ$. Ta phân loại:</p>
+<table>
+<tr><th>Loại góc</th><th>Số đo</th><th>Ví dụ trong đời sống</th></tr>
+<tr><td><b>Góc nhọn</b> <span class="en">(acute angle)</span></td><td>$0^\circ < \alpha < 90^\circ$</td><td>Hai kim đồng hồ lúc 1 giờ (30°)</td></tr>
+<tr><td><b>Góc vuông</b> <span class="en">(right angle)</span></td><td>$\alpha = 90^\circ$</td><td>Góc của trang giấy</td></tr>
+<tr><td><b>Góc tù</b> <span class="en">(obtuse angle)</span></td><td>$90^\circ < \alpha < 180^\circ$</td><td>Hai kim đồng hồ lúc 4 giờ (120°)</td></tr>
+<tr><td><b>Góc bẹt</b> <span class="en">(straight angle)</span></td><td>$\alpha = 180^\circ$</td><td>Hai kim đồng hồ lúc 6 giờ</td></tr>
+</table>
+<p>Hai góc có chung một cạnh, hai cạnh còn lại là hai tia đối nhau, gọi là hai góc <b>kề bù</b> <span class="en">(linear pair)</span>; tổng số đo của chúng bằng $180^\circ$.</p>
+<h3>2.3. Ký hiệu cần nhớ</h3>
+<table>
+<tr><th>Đối tượng</th><th>Cách đọc</th><th>Ký hiệu</th><th>Ghi chú</th></tr>
+<tr><td>Điểm</td><td>điểm A</td><td>$A$</td><td>chữ in hoa</td></tr>
+<tr><td>Đường thẳng</td><td>đường thẳng AB, đường thẳng d</td><td>$AB$, $d$</td><td>không có độ dài; đường thẳng $AB$ và $BA$ là một</td></tr>
+<tr><td>Đoạn thẳng</td><td>đoạn thẳng AB</td><td>$AB$</td><td>đoạn $AB$ trùng đoạn $BA$</td></tr>
+<tr><td>Tia</td><td>tia AB (gốc A), tia Ox</td><td>tia $AB$, tia $Ox$</td><td>tia $AB$ khác tia $BA$</td></tr>
+<tr><td>Góc</td><td>góc AOB, góc xOy</td><td>$\widehat{AOB}$, $\widehat{xOy}$</td><td>đỉnh viết ở giữa</td></tr>
+<tr><td>Điểm thuộc đường thẳng</td><td>A thuộc d, B không thuộc d</td><td>$A \in d$, $B \notin d$</td><td></td></tr>
+</table>
+<h3>2.4. Độ dài và trung điểm trên mặt phẳng tọa độ</h3>
+<p>Khi các điểm có tọa độ, ta tính được độ dài và trung điểm (công thức độ dài sẽ được giải thích bằng định lý Pythagore ở Chương 5):</p>
+<div class="box dinh-ly">
+<div class="box-title">Công thức</div>
+<p>Với $A(x_A; y_A)$ và $B(x_B; y_B)$:</p>
+<p>$$AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}, \qquad M\left(\frac{x_A + x_B}{2}; \frac{y_A + y_B}{2}\right)\ \text{là trung điểm của}\ AB.$$</p>
+</div>
+<h3>2.5. Vì sao cần định nghĩa chính xác?</h3>
+<p>Một định nghĩa tốt phải xác định đúng một loại hình, không thừa không thiếu. Chẳng hạn "trung điểm của $AB$ là điểm cách đều $A$ và $B$" là <b>chưa đủ</b>: mọi điểm trên đường trung trực của $AB$ đều cách đều $A$ và $B$. Phải thêm điều kiện "nằm giữa $A$ và $B$". Ở các chương sau, ta dùng những định nghĩa chính xác như vậy để <b>chứng minh</b> các tính chất, thay vì chỉ "nhìn hình".</p>
+
+<h2>3. Khám phá: điểm, đoạn thẳng, tia và góc</h2>
+<div data-widget="ch01_euclid"  data-title="Gọi tên và đo các hình cơ bản" data-try="chọn lần lượt “Đoạn thẳng AB”, “Đường thẳng AB”, “Tia AB”, “Góc AOB” trong ô Đối tượng. Kéo các điểm A, B (và O) để xem độ dài, trung điểm M và số đo góc thay đổi. Gõ tọa độ vào các ô rồi nhấn Enter để đặt điểm chính xác. Ở chế độ góc, gõ số đo (ví dụ 90 hoặc 135) vào ô “Số đo góc AOB” để tia OB quay tới đúng góc đó và xem loại góc."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra bài tập</div>
+<p>Ví dụ 2 ở dưới: để nguyên $A(-4; -1)$, $B(3; 2)$ ở chế độ “Đoạn thẳng AB”, bảng số đo cho $AB = 7{,}62$ và $M(-0{,}5; 0{,}5)$. Với Câu 4: nhập $A(1; 2)$, $B(4; 6)$ để thấy $AB = 5$.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Kể tên đoạn thẳng và tia</div>
+<p>Ba điểm $A, B, C$ thẳng hàng, $B$ nằm giữa $A$ và $C$. Kể tên các đoạn thẳng, các tia gốc $B$. Tia $AB$ và tia $AC$ có quan hệ gì?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Các đoạn thẳng: $AB$, $BC$, $AC$ (ba đoạn, vì mỗi cặp điểm cho một đoạn).</p>
+<p>Các tia gốc $B$: tia $BA$ và tia $BC$. Hai tia này chung gốc $B$ và tạo thành đường thẳng $AC$, nên chúng là <b>hai tia đối nhau</b>.</p>
+<p>Tia $AB$ và tia $AC$ cùng gốc $A$, và $B$, $C$ nằm cùng một phía đối với $A$, nên hai tia này <b>trùng nhau</b>.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Độ dài và trung điểm</div>
+<p>Cho $A(-4; -1)$ và $B(3; 2)$. Tính độ dài $AB$ và tọa độ trung điểm $M$ của $AB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$$AB = \sqrt{(3-(-4))^2 + (2-(-1))^2} = \sqrt{49 + 9} = \sqrt{58} \approx 7{,}62.$$</p>
+<p>$$M\left(\frac{-4+3}{2}; \frac{-1+2}{2}\right) = M(-0{,}5;\ 0{,}5).$$</p>
+<p>Kiểm tra bằng minh họa ở mục 3 (đây là vị trí ban đầu của $A$, $B$).</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Hai góc kề bù</div>
+<p>Cho $\widehat{xOy} = 50^\circ$. Vẽ tia $Oz$ là tia đối của tia $Ox$. Tính $\widehat{yOz}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai tia $Ox$, $Oz$ đối nhau nên $\widehat{xOy}$ và $\widehat{yOz}$ là hai góc kề bù:</p>
+<p>$$\widehat{yOz} = 180^\circ - \widehat{xOy} = 180^\circ - 50^\circ = 130^\circ.$$</p>
+<p>Đây là một góc tù. Thử trong minh họa: chế độ “Góc AOB”, nhập số đo $50$, rồi $130$; hai vị trí của tia $OB$ đối xứng nhau qua đường vuông góc với $OA$ tại $O$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Đếm số đường thẳng</div>
+<p>Cho 5 điểm, không có ba điểm nào thẳng hàng. Vẽ các đường thẳng đi qua từng cặp điểm. Có bao nhiêu đường thẳng?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Mỗi điểm nối với 4 điểm còn lại, được $5 \cdot 4 = 20$ lần nối. Nhưng mỗi đường thẳng được đếm hai lần (đường $AB$ và đường $BA$ là một), nên số đường thẳng là</p>
+<p>$$\frac{5 \cdot 4}{2} = 10.$$</p>
+<p>Tổng quát, với $n$ điểm không có ba điểm nào thẳng hàng, có $\dfrac{n(n-1)}{2}$ đường thẳng. Điều kiện "không có ba điểm thẳng hàng" rất quan trọng: nếu ba điểm thẳng hàng thì chúng chỉ cho một đường thẳng.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Tia $AB$ khác tia $BA$</b> (khác gốc, khác hướng), trong khi đoạn thẳng $AB$ và đoạn thẳng $BA$ là một.</li>
+<li>Đường thẳng và tia <b>không có độ dài</b>; chỉ đoạn thẳng mới có độ dài.</li>
+<li>Khi viết góc bằng ba chữ cái, chữ ở giữa phải là <b>đỉnh</b>: $\widehat{AOB}$ có đỉnh $O$, còn $\widehat{OAB}$ là góc có đỉnh $A$.</li>
+<li>Hình vẽ chỉ giúp hình dung. Hai đoạn thẳng "trông bằng nhau" chưa chắc bằng nhau; phải đo hoặc chứng minh.</li>
+<li>Viết tọa độ dùng dấu chấm phẩy: $A(1; 2)$, để không nhầm với dấu phẩy thập phân như $A(1{,}5; 2)$.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Tia có gốc $O$ và đi qua điểm $A$ được ký hiệu là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> tia $AO$</label>
+<label><input type="radio" name="q1" value="b"> tia $OA$</label>
+<label><input type="radio" name="q1" value="c"> đoạn thẳng $OA$</label>
+<label><input type="radio" name="q1" value="d"> đường thẳng $OA$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Trong ký hiệu tia, chữ cái chỉ gốc luôn viết trước.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Qua hai điểm phân biệt $A$ và $B$ có bao nhiêu đường thẳng?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> Không có</label>
+<label><input type="radio" name="q2" value="b"> Đúng một</label>
+<label><input type="radio" name="q2" value="c"> Đúng hai</label>
+<label><input type="radio" name="q2" value="d"> Vô số</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đây là một tính chất được thừa nhận (tiên đề) của hình học Euclid.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Góc có số đo $135^\circ$ là:</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> góc nhọn</label>
+<label><input type="radio" name="q3" value="b"> góc vuông</label>
+<label><input type="radio" name="q3" value="c"> góc tù</label>
+<label><input type="radio" name="q3" value="d"> góc bẹt</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>So sánh với $90^\circ$ và $180^\circ$: $90^\circ < 135^\circ < 180^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $A(1; 2)$ và $B(4; 6)$. Tính độ dài đoạn thẳng $AB$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = \sqrt{(4-1)^2 + (6-2)^2} = \sqrt{9 + 16} = \sqrt{25} = 5$. Kiểm tra bằng minh họa: nhập tọa độ hai điểm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4.5" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Điểm $B$ nằm giữa hai điểm $A$ và $C$, biết $AB = 3{,}5$ cm và $AC = 8$ cm. Tính $BC$ (cm).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Vì $B$ nằm giữa $A$ và $C$ nên $AB + BC = AC$, suy ra $BC = 8 - 3{,}5 = 4{,}5$ cm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="142" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Hai góc $\widehat{xOy}$ và $\widehat{yOz}$ kề bù, $\widehat{xOy} = 38^\circ$. Tính số đo $\widehat{yOz}$ (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai góc kề bù có tổng $180^\circ$: $\widehat{yOz} = 180^\circ - 38^\circ = 142^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Cho 6 điểm, không có ba điểm nào thẳng hàng. Vẽ đường thẳng qua từng cặp điểm. Có tất cả bao nhiêu đường thẳng?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Theo Ví dụ 4: $\dfrac{6 \cdot 5}{2} = 15$ đường thẳng.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Cho $A(-2; 5)$, $B(6; -1)$ và $M$ là trung điểm của $AB$. Tính độ dài $AM$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = \sqrt{8^2 + (-6)^2} = \sqrt{100} = 10$. Vì $M$ là trung điểm nên $AM = \dfrac{AB}{2} = 5$. (Kiểm tra lại: $M(2; 2)$ và $AM = \sqrt{4^2 + 3^2} = 5$.)</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Điểm, đường thẳng, mặt phẳng là các khái niệm cơ bản, không định nghĩa; mọi hình khác được định nghĩa từ chúng.</li><li>Qua hai điểm phân biệt có đúng một đường thẳng. Đoạn thẳng có độ dài; tia và đường thẳng thì không.</li><li>Tia viết gốc trước (tia $Ox$, tia $AB$); góc viết đỉnh ở giữa ($\widehat{xOy}$, $\widehat{AOB}$).</li><li>Góc nhọn nhỏ hơn 90°, góc vuông bằng 90°, góc tù lớn hơn 90° và nhỏ hơn 180°, góc bẹt bằng 180°; hai góc kề bù có tổng 180°.</li><li>$AB = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$; trung điểm có tọa độ là trung bình cộng tọa độ hai đầu mút.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

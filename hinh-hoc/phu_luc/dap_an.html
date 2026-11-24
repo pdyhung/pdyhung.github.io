@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phụ lục C. Đáp án · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Phụ lục</div>
+<h1>Phụ lục C. Đáp án</h1>
+<p class="lead">Đáp án của 525 câu luyện tập và kiểm tra trong sách, xếp theo chương và bài. Bấm vào tên chương để mở.</p>
+<p>Đáp án được tổng hợp tự động từ các câu luyện tập. Hãy tự làm trước khi xem!</p>
+<details class="loi-giai"><summary><b>Chương 1. Thực hiện phép biến hình</b></summary>
+<h3><a href="../01_phep_bien_hinh/b1_nhap_mon_euclid.html">Nhập môn hình học Euclid</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tia có gốc $O$ và đi qua điểm $A$ được ký hiệu là:</td><td><b>B. tia $OA$</b></td></tr>
+<tr><td>2</td><td>Qua hai điểm phân biệt $A$ và $B$ có bao nhiêu đường thẳng?</td><td><b>B. Đúng một</b></td></tr>
+<tr><td>3</td><td>Góc có số đo $135^\circ$ là:</td><td><b>C. góc tù</b></td></tr>
+<tr><td>4</td><td>Cho $A(1; 2)$ và $B(4; 6)$. Tính độ dài đoạn thẳng $AB$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$AB = \sqrt{(4-1)^2 + (6-2)^2} = \sqrt{9 + 16} = \sqrt{25} = 5$. Kiểm tra bằng minh họa: nhập tọa độ hai điểm.</span></td></tr>
+<tr><td>5</td><td>Điểm $B$ nằm giữa hai điểm $A$ và $C$, biết $AB = 3{,}5$ cm và $AC = 8$ cm. Tính $BC$ (cm).</td><td><b>4,5</b><br><span style="color:var(--muted);font-size:14px">Vì $B$ nằm giữa $A$ và $C$ nên $AB + BC = AC$, suy ra $BC = 8 - 3{,}5 = 4{,}5$ cm.</span></td></tr>
+<tr><td>6</td><td>Hai góc $\widehat{xOy}$ và $\widehat{yOz}$ kề bù, $\widehat{xOy} = 38^\circ$. Tính số đo $\widehat{yOz}$ (độ).</td><td><b>142</b><br><span style="color:var(--muted);font-size:14px">Hai góc kề bù có tổng $180^\circ$: $\widehat{yOz} = 180^\circ - 38^\circ = 142^\circ$.</span></td></tr>
+<tr><td>7</td><td>Cho 6 điểm, không có ba điểm nào thẳng hàng. Vẽ đường thẳng qua từng cặp điểm. Có tất cả bao nhiêu đường th…</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">Theo Ví dụ 4: $\dfrac{6 \cdot 5}{2} = 15$ đường thẳng.</span></td></tr>
+<tr><td>8</td><td>Cho $A(-2; 5)$, $B(6; -1)$ và $M$ là trung điểm của $AB$. Tính độ dài $AM$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$AB = \sqrt{8^2 + (-6)^2} = \sqrt{100} = 10$. Vì $M$ là trung điểm nên $AM = \dfrac{AB}{2} = 5$. (Kiểm tra lại: $M(2; 2)$ và $AM = \sqrt{4^2 + 3^2} = 5$.)</span></td></tr>
+</table>
+<h3><a href="../01_phep_bien_hinh/b2_gioi_thieu_bien_hinh.html">Giới thiệu phép biến hình</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Phép biến hình nào sau đây không phải phép dời hình?</td><td><b>D. Phép vị tự tỉ số 2</b></td></tr>
+<tr><td>2</td><td>Cho $F(x; y) = (x - 1; y + 4)$. Ảnh của $A(2; -3)$ là:</td><td><b>B. $(1; 1)$</b></td></tr>
+<tr><td>3</td><td>Cho $F(x; y) = (x + 3; 2y)$. Điểm $N$ có ảnh là $N'(5; 8)$. Tính hoành độ của $N$.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">Gọi $N(x; y)$: $x + 3 = 5$ và $2y = 8$, nên $N(2; 4)$. Hoành độ bằng 2.</span></td></tr>
+<tr><td>4</td><td>Phép dời hình $F$ biến tam giác $ABC$ có $AB = 5$, $BC = 7$, $CA = 8$ thành tam giác $A'B'C'$. Tính chu vi …</td><td><b>20</b><br><span style="color:var(--muted);font-size:14px">Phép dời hình giữ nguyên độ dài nên $A'B' = 5$, $B'C' = 7$, $C'A' = 8$; chu vi bằng $20$.</span></td></tr>
+<tr><td>5</td><td>Phép biến hình $F(x; y) = (3x; 3y)$ bảo toàn đại lượng nào?</td><td><b>B. Số đo góc</b></td></tr>
+<tr><td>6</td><td>Cho $F(x; y) = (2x; y)$ và tam giác $O(0; 0)$, $A(3; 0)$, $B(0; 2)$. Tính diện tích tam giác ảnh $O'A'B'$.</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$O'(0; 0)$, $A'(6; 0)$, $B'(0; 2)$. Tam giác vuông tại $O'$: $S = \dfrac{6 \cdot 2}{2} = 6$ (gấp đôi diện tích ban đầu là 3). Kiểm tra bằng minh họa: chọn “Co giãn theo trục Ox”, $k = 2$.</span></td></tr>
+<tr><td>7</td><td>Cho $F(x; y) = (-y; x)$, $A(1; 2)$ và $B(4; 6)$. Tính độ dài $A'B'$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$A'(-2; 1)$, $B'(-6; 4)$, $A'B' = \sqrt{(-4)^2 + 3^2} = 5$. Cũng có thể dùng Ví dụ 3: $F$ là phép dời hình nên $A'B' = AB = \sqrt{3^2 + 4^2} = 5$.</span></td></tr>
+<tr><td>8</td><td>Cho $F(x; y) = (x; -y)$. Khẳng định nào đúng?</td><td><b>C. $F$ là phép dời hình và đảo ngược chiều của tam giác</b></td></tr>
+</table>
+<h3><a href="../01_phep_bien_hinh/b3_tinh_tien.html">Phép tịnh tiến</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Ảnh của $M(1; -2)$ qua phép tịnh tiến theo $\vec v = (3; 5)$ là:</td><td><b>A. $(4; 3)$</b></td></tr>
+<tr><td>2</td><td>Trên lưới ô vuông, phép tịnh tiến "sang trái 4 ô, lên trên 2 ô" có vectơ là:</td><td><b>C. $(-4; 2)$</b></td></tr>
+<tr><td>3</td><td>Phép tịnh tiến biến $A(-1; 4)$ thành $A'(3; 1)$. Tính độ dài của vectơ tịnh tiến.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$\vec v = \overrightarrow{AA'} = (4; -3)$, $|\vec v| = \sqrt{16 + 9} = 5$.</span></td></tr>
+<tr><td>4</td><td>Cho $\vec v = (2; -3)$. Điểm $B$ có ảnh qua $T_{\vec v}$ là $B'(5; 1)$. Tính tung độ của $B$.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$B = (5 - 2;\ 1 - (-3)) = (3; 4)$. Tung độ bằng 4.</span></td></tr>
+<tr><td>5</td><td>Qua một phép tịnh tiến (vectơ khác $\vec 0$), ảnh của đường thẳng $d$ là:</td><td><b>B. một đường thẳng song song hoặc trùng với $d$</b></td></tr>
+<tr><td>6</td><td>Tam giác $ABC$ có diện tích $12$ cm². Tính diện tích (cm²) của ảnh tam giác qua phép tịnh tiến theo $\vec v…</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">\text{Phép} \text{tịnh} \text{tiến} \text{là} \text{phép} \text{dời} \text{hình}, \text{biến} tam \text{giác} \text{thành} tam \text{giác} \text{bằng} \text{nó}, \text{nên} \text{diện} \text{tích} \text{vẫn} \text{là} $12$ cm².</span></td></tr>
+<tr><td>7</td><td>Ảnh của đường thẳng $d: y = 3x - 2$ qua phép tịnh tiến theo $\vec v = (1; 4)$ cắt trục $Oy$ tại điểm có tun…</td><td><b>-1</b><br><span style="color:var(--muted);font-size:14px">$M'(x'; y') \in d'$ khi $M(x' - 1; y' - 4) \in d$: $y' - 4 = 3(x' - 1) - 2$, tức $y' = 3x' - 1$. Cho $x' = 0$: tung độ $-1$.</span></td></tr>
+<tr><td>8</td><td>Tịnh tiến theo $\vec v_1 = (3; -1)$ rồi tịnh tiến tiếp theo $\vec v_2 = (-7; 4)$. Mỗi điểm đã dịch chuyển (…</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">Hợp của hai phép tịnh tiến là phép tịnh tiến theo $\vec v_1 + \vec v_2 = (-4; 3)$, có độ dài $\sqrt{16 + 9} = 5$.</span></td></tr>
+</table>
+<h3><a href="../01_phep_bien_hinh/b4_phep_quay.html">Phép quay</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Ảnh của $M(3; 1)$ qua phép quay tâm $O$ góc $90^\circ$ là:</td><td><b>B. $(-1; 3)$</b></td></tr>
+<tr><td>2</td><td>Ảnh của $N(-2; 5)$ qua phép quay tâm $O$ góc $180^\circ$ là:</td><td><b>A. $(2; -5)$</b></td></tr>
+<tr><td>3</td><td>Góc quay $\alpha < 0$ nghĩa là quay:</td><td><b>B. cùng chiều kim đồng hồ</b></td></tr>
+<tr><td>4</td><td>Phép quay tâm $O$ góc $-90^\circ$ biến $P(4; -2)$ thành $P'$. Tính hoành độ của $P'$.</td><td><b>-2</b><br><span style="color:var(--muted);font-size:14px">$Q_{(O, -90^\circ)}: (x; y) \to (y; -x)$, nên $P'(-2; -4)$. Hoành độ bằng $-2$.</span></td></tr>
+<tr><td>5</td><td>Trong 2 giờ, kim giờ của đồng hồ quay một góc bao nhiêu độ? Ghi cả dấu theo quy ước chiều quay.</td><td><b>-60</b><br><span style="color:var(--muted);font-size:14px">Kim giờ quay $360^\circ$ trong 12 giờ, tức $30^\circ$ mỗi giờ, theo chiều kim đồng hồ (âm). Trong 2 giờ: $-60^\circ$.</span></td></tr>
+<tr><td>6</td><td>Tìm tung độ của ảnh của $A(4; 1)$ qua phép quay tâm $I(1; 1)$ góc $90^\circ$.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{IA} = (3; 0) \to (0; 3)$, nên $A' = (1 + 0; 1 + 3) = (1; 4)$. Tung độ bằng 4. Kiểm tra bằng minh họa: nhập $I(1; 1)$, $\alpha = 90$, $A(4; 1)$.</span></td></tr>
+<tr><td>7</td><td>Phép quay tâm $O$ góc $60^\circ$ biến $A(2; 0)$ thành $A'$. Tính tung độ của $A'$ (làm tròn đến hai chữ số …</td><td><b>1,73</b><br><span style="color:var(--muted);font-size:14px">$A'$ nằm trên đường tròn tâm $O$ bán kính 2, tia $OA'$ hợp với $Ox$ góc $60^\circ$. Tam giác $OAA'$ đều cạnh 2, nên $A'(1; \sqrt 3)$ và tung độ $\sqrt 3 \approx 1{,}73$. Kiểm tra bằng minh họa với $\alpha = 60$.</span></td></tr>
+<tr><td>8</td><td>Quay $M(2; 3)$ quanh $O$ một góc $90^\circ$, rồi quay tiếp quanh $O$ một góc $180^\circ$. Tìm hoành độ của …</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$(2; 3) \to (-3; 2) \to (3; -2)$. Hoặc: tổng hai góc là $270^\circ$, $(x; y) \to (y; -x) = (3; -2)$. Hoành độ bằng 3.</span></td></tr>
+</table>
+<h3><a href="../01_phep_bien_hinh/b5_doi_xung_truc.html">Phép đối xứng trục</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Ảnh của $M(4; -1)$ qua phép đối xứng trục $Ox$ là:</td><td><b>B. $(4; 1)$</b></td></tr>
+<tr><td>2</td><td>Ảnh của $N(-2; 7)$ qua phép đối xứng qua đường thẳng $y = x$ là:</td><td><b>C. $(7; -2)$</b></td></tr>
+<tr><td>3</td><td>Tìm hoành độ của ảnh của $P(-3; 5)$ qua phép đối xứng trục $Oy$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">Trục $Oy$: $(x; y) \to (-x; y)$, ảnh là $(3; 5)$.</span></td></tr>
+<tr><td>4</td><td>Khẳng định nào đúng về phép đối xứng trục?</td><td><b>C. Nó là phép dời hình và đảo ngược chiều của tam giác</b></td></tr>
+<tr><td>5</td><td>Tìm hoành độ của ảnh của $M(4; 2)$ qua phép đối xứng trục $x = 1$.</td><td><b>-2</b><br><span style="color:var(--muted);font-size:14px">$x' = 2 \cdot 1 - 4 = -2$, ảnh là $(-2; 2)$.</span></td></tr>
+<tr><td>6</td><td>Hai điểm $A(2; 3)$ và $A'(2; -5)$ đối xứng nhau qua đường thẳng $y = b$. Tìm $b$.</td><td><b>-1</b><br><span style="color:var(--muted);font-size:14px">Trục đi qua trung điểm $(2; -1)$ của $AA'$ và vuông góc với $AA'$ (đoạn thẳng đứng), nên $b = \dfrac{3 + (-5)}{2} = -1$.</span></td></tr>
+<tr><td>7</td><td>Cho $A(1; 2)$ và $B(4; 2)$. Điểm $M$ chạy trên trục $Ox$. Tính giá trị nhỏ nhất của $MA + MB$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">Lấy $A_1(1; -2)$ đối xứng với $A$ qua $Ox$. Khi đó $MA + MB = MA_1 + MB \ge A_1B = \sqrt{3^2 + 4^2} = 5$.</span></td></tr>
+<tr><td>8</td><td>Lấy đối xứng một hình qua trục $Ox$, rồi lấy đối xứng tiếp qua trục $Oy$. Kết quả giống với phép biến hình …</td><td><b>B. Phép quay tâm $O$ góc $180^\circ$</b></td></tr>
+</table>
+<h3><a href="../01_phep_bien_hinh/b6_vi_tu.html">Phép vị tự</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Ảnh của $M(3; -1)$ qua phép vị tự tâm $O$ tỉ số $2$ là:</td><td><b>B. $(6; -2)$</b></td></tr>
+<tr><td>2</td><td>Phép vị tự tâm $O$ tỉ số $-1$ chính là:</td><td><b>C. phép quay tâm $O$ góc $180^\circ$</b></td></tr>
+<tr><td>3</td><td>Phép vị tự tỉ số $k = -3$ biến đoạn thẳng $AB = 4$ cm thành đoạn $A'B'$. Tính $A'B'$ (cm).</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$A'B' = |k| \cdot AB = 3 \cdot 4 = 12$ cm.</span></td></tr>
+<tr><td>4</td><td>Tam giác $ABC$ có diện tích $5$. Tính diện tích ảnh của nó qua phép vị tự tỉ số $k = 0{,}5$.</td><td><b>1,25</b><br><span style="color:var(--muted);font-size:14px">$S' = k^2 S = 0{,}25 \cdot 5 = 1{,}25$.</span></td></tr>
+<tr><td>5</td><td>Phép vị tự tỉ số $k = 3$ bảo toàn đại lượng nào?</td><td><b>B. Số đo góc</b></td></tr>
+<tr><td>6</td><td>Tìm tung độ của ảnh của $M(2; 0)$ qua phép vị tự tâm $I(1; 2)$ tỉ số $k = 3$.</td><td><b>-4</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{IM} = (1; -2)$, $\overrightarrow{IM'} = (3; -6)$, $M' = (1 + 3; 2 - 6) = (4; -4)$. Tung độ bằng $-4$. Kiểm tra bằng minh họa: $I(1; 2)$, $k = 3$, $A(2; 0)$.</span></td></tr>
+<tr><td>7</td><td>Phép vị tự tỉ số $k = 3$ biến $A(2; 1)$ thành $A'(5; 7)$. Tìm hoành độ của tâm vị tự.</td><td><b>0,5</b><br><span style="color:var(--muted);font-size:14px">$I = \dfrac{A' - 3A}{1 - 3} = \dfrac{(5 - 6;\ 7 - 3)}{-2} = (0{,}5; -2)$. Kiểm tra: $\overrightarrow{IA} = (1{,}5; 3)$, $\overrightarrow{IA'} = (4{,}5; 9) = 3\,\overrightarrow{IA}$.</span></td></tr>
+<tr><td>8</td><td>Một tam giác có diện tích $4$ cm², ảnh của nó qua một phép vị tự có diện tích $36$ cm². Tính $|k|$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$k^2 = \dfrac{36}{4} = 9$, nên $|k| = 3$ (tỉ số có thể là $3$ hoặc $-3$).</span></td></tr>
+</table>
+<h3><a href="../01_phep_bien_hinh/kiem_tra_chuong.html">Kiểm tra chương 1</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Cho ba điểm $A, B, C$ thẳng hàng, $B$ nằm giữa $A$ và $C$. Khẳng định nào đúng?</td><td><b>B. Tia $BA$ và tia $BC$ đối nhau</b></td></tr>
+<tr><td>2</td><td>Cho $A(-1; -2)$ và $B(5; 6)$. Tính độ dài $AB$.</td><td><b>10</b><br><span style="color:var(--muted);font-size:14px">$AB = \sqrt{6^2 + 8^2} = \sqrt{100} = 10$.</span></td></tr>
+<tr><td>3</td><td>Phép biến hình nào sau đây là phép dời hình?</td><td><b>C. $(x; y) \to (x - 4; y + 1)$</b></td></tr>
+<tr><td>4</td><td>Cho $F(x; y) = (x; 3y)$. Một tam giác có diện tích $4$. Tính diện tích ảnh của nó qua $F$.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$F$ kéo giãn mọi chiều cao theo phương thẳng đứng gấp 3, giữ nguyên độ dài theo phương ngang. Chẳng hạn tam giác $(0; 0)$, $(4; 0)$, $(0; 2)$ có diện tích $4$, ảnh $(0; 0)$, $(4; 0)$, $(0; 6)$ có diện tích $12$. Tổng quát diện tích nhân 3: $S' = 12$.</span></td></tr>
+<tr><td>5</td><td>Ảnh của $M(5; -1)$ qua phép tịnh tiến theo $\vec v = (-2; 3)$ là:</td><td><b>B. $(3; 2)$</b></td></tr>
+<tr><td>6</td><td>Phép tịnh tiến biến $A(1; 1)$ thành $A'(7; 9)$. Tính độ dài vectơ tịnh tiến.</td><td><b>10</b><br><span style="color:var(--muted);font-size:14px">$\vec v = (6; 8)$, $|\vec v| = \sqrt{36 + 64} = 10$.</span></td></tr>
+<tr><td>7</td><td>Ảnh của $P(5; 2)$ qua phép quay tâm $O$ góc $90^\circ$ là:</td><td><b>C. $(-2; 5)$</b></td></tr>
+<tr><td>8</td><td>Phép quay tâm $O$ góc $270^\circ$ biến $M(-3; 4)$ thành $M'$. Tính hoành độ của $M'$.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$Q_{(O, 270^\circ)} = Q_{(O, -90^\circ)}: (x; y) \to (y; -x)$, nên $M'(4; 3)$.</span></td></tr>
+<tr><td>9</td><td>Phép quay tâm $I(2; -1)$ góc $180^\circ$ biến $M(5; 3)$ thành $M'$. Tính tung độ của $M'$.</td><td><b>-5</b><br><span style="color:var(--muted);font-size:14px">Quay $180^\circ$ quanh $I$: $I$ là trung điểm của $MM'$, nên $M' = (2 \cdot 2 - 5;\ 2 \cdot (-1) - 3) = (-1; -5)$.</span></td></tr>
+<tr><td>10</td><td>Ảnh của $N(6; -1)$ qua phép đối xứng qua đường thẳng $y = x$ là:</td><td><b>C. $(-1; 6)$</b></td></tr>
+<tr><td>11</td><td>Tìm tung độ của ảnh của $M(2; -1)$ qua phép đối xứng trục $y = 3$.</td><td><b>7</b><br><span style="color:var(--muted);font-size:14px">$y' = 2 \cdot 3 - (-1) = 7$, ảnh là $(2; 7)$.</span></td></tr>
+<tr><td>12</td><td>Phép biến hình nào sau đây đảo ngược chiều của tam giác?</td><td><b>C. Phép đối xứng trục</b></td></tr>
+<tr><td>13</td><td>Qua phép vị tự tâm $I$ tỉ số $k < 0$, ảnh $M'$ của điểm $M \ne I$:</td><td><b>B. nằm trên tia đối của tia $IM$</b></td></tr>
+<tr><td>14</td><td>Phép vị tự tâm $O$ tỉ số $k$ biến $A(2; -4)$ thành $A'(-3; 6)$. Tìm $k$.</td><td><b>-1,5</b><br><span style="color:var(--muted);font-size:14px">$(kx; ky) = (-3; 6)$ với $x = 2$, $y = -4$: $k = -\dfrac32 = -1{,}5$ (cả hai tọa độ cho cùng kết quả).</span></td></tr>
+<tr><td>15</td><td>Một tam giác có diện tích $10$ cm². Tính diện tích (cm²) ảnh của nó qua phép vị tự tỉ số $k = -2$.</td><td><b>40</b><br><span style="color:var(--muted);font-size:14px">$S' = k^2 S = 4 \cdot 10 = 40$ cm².</span></td></tr>
+</table>
+</details>
+<details class="loi-giai"><summary><b>Chương 2. Tính chất phép biến hình và chứng minh</b></summary>
+<h3><a href="../02_tinh_chat_bien_hinh/b1_doi_hinh_bao_toan.html">Phép dời hình và tính bảo toàn</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Phép biến hình nào sau đây không phải là phép dời hình?</td><td><b>C. Phép vị tự tâm $O$ tỉ số $2$</b></td></tr>
+<tr><td>2</td><td>Một phép dời hình biến đoạn thẳng $AB$ dài $7{,}5$ cm thành đoạn $A'B'$. Tính $A'B'$ (cm).</td><td><b>7,5</b><br><span style="color:var(--muted);font-size:14px">Phép dời hình bảo toàn khoảng cách: $A'B' = AB = 7{,}5$ cm.</span></td></tr>
+<tr><td>3</td><td>Phép vị tự tâm $O$ tỉ số $k = -2$ biến góc $\widehat{xAy} = 40^\circ$ thành một góc có số đo</td><td><b>A. $40^\circ$</b></td></tr>
+<tr><td>4</td><td>Phép vị tự tỉ số $k = -3$ biến một tam giác có diện tích $5$ thành tam giác có diện tích bằng bao nhiêu?</td><td><b>45</b><br><span style="color:var(--muted);font-size:14px">Diện tích nhân $k^2 = 9$: $5 \cdot 9 = 45$.</span></td></tr>
+<tr><td>5</td><td>Phép $F$ biến $M(x; y)$ thành $M'(-y + 2;\ x - 1)$. Cho $A(1; 1)$, $B(4; 5)$. Tính $A'B'$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$A'(1; 0)$, $B'(-3; 3)$, $A'B' = \sqrt{16 + 9} = 5$. Thật ra $F$ là phép dời hình nên $A'B' = AB = 5$.</span></td></tr>
+<tr><td>6</td><td>Phép co giãn $(x; y) \mapsto (2x; y)$ bảo toàn điều gì?</td><td><b>A. Độ dài mọi đoạn thẳng song song với $Oy$</b></td></tr>
+<tr><td>7</td><td>Phép co giãn $(x; y) \mapsto (3x; y)$ biến tam giác $O(0; 0)$, $A(2; 0)$, $B(0; 2)$ thành tam giác $O'A'B'$…</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$O' = O$, $A'(6; 0)$, $B' = B$: diện tích $\tfrac12 \cdot 6 \cdot 2 = 6$, gấp 3 lần diện tích ban đầu là 2.</span></td></tr>
+<tr><td>8</td><td>Phép $G\colon (x; y) \mapsto (2x; y)$. Tam giác $O(0; 0)$, $P(1; 0)$, $Q(0; 1)$ có $\widehat{OPQ} = 45^\cir…</td><td><b>26,57</b><br><span style="color:var(--muted);font-size:14px">$P'(2; 0)$, $Q' = Q$: $\tan\widehat{O'P'Q'} = \tfrac{1}{2}$, \text{nên} \text{góc} $\approx 26{,}57^\circ$. Có thể kiểm tra bằng minh họa ở mục 3.</span></td></tr>
+</table>
+<h3><a href="../02_tinh_chat_bien_hinh/b2_dinh_nghia_chinh_xac.html">Định nghĩa chính xác các phép biến hình</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Điểm $M$ không thuộc đường thẳng $d$. Điểm $M'$ là ảnh của $M$ qua phép đối xứng trục $d$ khi và chỉ khi</td><td><b>C. $d$ là đường trung trực của $MM'$</b></td></tr>
+<tr><td>2</td><td>Ảnh của $M(2; 5)$ qua phép quay tâm $O$ góc $90^\circ$ là</td><td><b>A. $(-5; 2)$</b></td></tr>
+<tr><td>3</td><td>Phép đối xứng tâm $I(1; 3)$ biến $M(4; -1)$ thành $M'(x; y)$. Tính $x + y$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$M'(2 - 4;\ 6 + 1) = (-2; 7)$, nên $x + y = 5$.</span></td></tr>
+<tr><td>4</td><td>Tìm hoành độ ảnh của $M(7; 2)$ qua phép đối xứng trục $d\colon x = 3$.</td><td><b>-1</b><br><span style="color:var(--muted);font-size:14px">$(x; y) \mapsto (2\cdot 3 - x;\ y)$: $M'(-1; 2)$.</span></td></tr>
+<tr><td>5</td><td>Phép quay tâm $O$ góc $60^\circ$ biến $M(4; 0)$ thành $M'$. Tính tung độ của $M'$ (làm tròn 2 chữ số thập p…</td><td><b>3,46</b><br><span style="color:var(--muted);font-size:14px">$y' = 4\sin 60^\circ = 2\sqrt3 \approx 3{,}46$.</span></td></tr>
+<tr><td>6</td><td>Phép quay tâm $O$ góc $\alpha$ với $0^\circ < \alpha < 360^\circ$ có bao nhiêu điểm bất động?</td><td><b>B. Một (là $O$)</b></td></tr>
+<tr><td>7</td><td>Tìm tung độ ảnh của $M(5; 0)$ qua phép đối xứng trục $d\colon y = x + 1$.</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">Hình chiếu: $(5 + s; -s)$ thuộc $d$ khi $-s = 6 + s$, $s = -3$, $H(2; 3)$. $M' = 2H - M = (-1; 6)$.</span></td></tr>
+<tr><td>8</td><td>Phép quay tâm $I(1; 1)$ góc $-90^\circ$ biến $M(2; 0)$ thành $M'$. Tính độ dài $MM'$.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{IM} = (1; -1)$, quay $-90^\circ$ theo quy tắc $(x; y) \mapsto (y; -x)$ được $(-1; -1)$, nên $M'(0; 0)$ và $MM' = 2$. (Kiểm tra: tam giác $IMM'$ vuông cân tại $I$ với $IM = \sqrt2$, cạnh huyền $\sqrt2\cdot\sqrt2 = 2$.)</span></td></tr>
+</table>
+<h3><a href="../02_tinh_chat_bien_hinh/b3_hop_bien_hinh.html">Hợp các phép biến hình</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hợp của phép tịnh tiến theo $\vec u$ và phép tịnh tiến theo $\vec v$ là</td><td><b>A. phép tịnh tiến theo $\vec u + \vec v$</b></td></tr>
+<tr><td>2</td><td>Thực hiện phép quay tâm $O$ góc $35^\circ$ rồi phép quay tâm $O$ góc $55^\circ$. Phép hợp thành là phép qua…</td><td><b>90</b><br><span style="color:var(--muted);font-size:14px">Cùng tâm nên cộng góc: $35^\circ + 55^\circ = 90^\circ$.</span></td></tr>
+<tr><td>3</td><td>Thực hiện phép đối xứng trục $x = 1$ rồi phép đối xứng trục $x = 4{,}5$. Phép hợp thành là phép tịnh tiến t…</td><td><b>7</b><br><span style="color:var(--muted);font-size:14px">Khoảng cách hai trục $h = 3{,}5$, hướng từ $d_1$ sang $d_2$ là chiều dương: $a = 2h = 7$.</span></td></tr>
+<tr><td>4</td><td>Hai đường thẳng $d_1$, $d_2$ cắt nhau tại $O$, góc từ $d_1$ đến $d_2$ là $30^\circ$. Phép $\text{Đ}_{d_2} \…</td><td><b>B. phép quay tâm $O$ \text{góc} $60^\circ$</b></td></tr>
+<tr><td>5</td><td>Tịnh tiến điểm $M(2; 3)$ theo $(1; 0)$ rồi quay quanh $O$ góc $90^\circ$. Tìm hoành độ của ảnh cuối cùng.</td><td><b>-3</b><br><span style="color:var(--muted);font-size:14px">$(2; 3) \mapsto (3; 3) \mapsto (-3; 3)$.</span></td></tr>
+<tr><td>6</td><td>Với $M(2; 3)$, gọi $P$ là ảnh qua "tịnh tiến theo $(1; 0)$ rồi quay quanh $O$ góc $90^\circ$", $R$ là ảnh q…</td><td><b>1,41</b><br><span style="color:var(--muted);font-size:14px">$P(-3; 3)$; $R$: $(2; 3) \mapsto (-3; 2) \mapsto (-2; 2)$. $PR = \sqrt{1 + 1} = \sqrt2 \approx 1{,}41$.</span></td></tr>
+<tr><td>7</td><td>Hợp của ba phép đối xứng trục là</td><td><b>B. một phép dời hình đổi hướng</b></td></tr>
+<tr><td>8</td><td>Thực hiện $\text{Đ}_{Ox}$ rồi phép đối xứng qua đường thẳng $y = \sqrt3\,x$ (góc nghiêng $60^\circ$). Tìm t…</td><td><b>1,73</b><br><span style="color:var(--muted);font-size:14px">Hợp thành là $Q_{(O, 120^\circ)}$. Ảnh của $(2; 0)$: $(2\cos120^\circ;\ 2\sin120^\circ) = (-1; \sqrt3)$, tung độ $\approx 1{,}73$.</span></td></tr>
+</table>
+<h3><a href="../02_tinh_chat_bien_hinh/b4_nhan_dang.html">Nhận dạng phép biến hình</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hình và ảnh có cùng kích thước nhưng hình bị lật (chiều đi quanh các đỉnh bị đảo). Phép biến hình nào có th…</td><td><b>C. Phép đối xứng trục</b></td></tr>
+<tr><td>2</td><td>Một phép tịnh tiến biến $A(2; 1)$ thành $A'(5; -3)$. Vectơ tịnh tiến là</td><td><b>A. $(3; -4)$</b></td></tr>
+<tr><td>3</td><td>Phép tịnh tiến biến $A(-1; 2)$ thành $A'(3; 5)$. Tính độ dài vectơ tịnh tiến.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$\vec v = (4; 3)$, $|\vec v| = 5$.</span></td></tr>
+<tr><td>4</td><td>Phép đối xứng tâm $I$ biến $A(-2; 5)$ thành $A'(4; -1)$. Tìm hoành độ của $I$.</td><td><b>1</b><br><span style="color:var(--muted);font-size:14px">$I$ là trung điểm $AA'$: $I(1; 2)$.</span></td></tr>
+<tr><td>5</td><td>Một phép dời hình giữ hướng biến $A(3; 0)$ thành $A'(0; 3)$ và $B(5; 0)$ thành $B'(0; 5)$. Đó là</td><td><b>A. phép quay tâm $O$ góc $90^\circ$</b></td></tr>
+<tr><td>6</td><td>Một phép vị tự biến $A(1; 2)$ thành $A'(3; 6)$ và $B(2; 0)$ thành $B'(6; 0)$. Tìm tỉ số vị tự $k$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{AB} = (1; -2)$, $\overrightarrow{A'B'} = (3; -6) = 3\overrightarrow{AB}$, nên $k = 3$ (tâm là gốc $O$).</span></td></tr>
+<tr><td>7</td><td>Một phép quay biến $A(4; 0)$ thành $A'(2; 2)$ và $B(4; 2)$ thành $B'(0; 2)$. Tìm hoành độ của tâm quay.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">Trung trực $AA'$: qua $(3; 1)$, vuông góc với $(-2; 2)$: $y = x - 2$. Trung trực $BB'$: $x = 2$. Giao điểm $(2; 0)$. (Góc quay: $(0; 2)$ thành $(-2; 0)$, tức $90^\circ$.)</span></td></tr>
+<tr><td>8</td><td>Một phép đối xứng trục biến $A(1; 5)$ thành $A'(5; 1)$. Tìm tung độ ảnh của $B(4; 0)$ qua phép đó.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">Trục là trung trực của $AA'$: qua $(3; 3)$, vuông góc với $(4; -4)$, tức $y = x$. Ảnh của $B$: $(0; 4)$.</span></td></tr>
+</table>
+<h3><a href="../02_tinh_chat_bien_hinh/b5_doi_xung_hinh_phang.html">Tính đối xứng của hình phẳng</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hình vuông có bao nhiêu trục đối xứng?</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">Hai đường chéo và hai đường nối trung điểm các cặp cạnh đối diện.</span></td></tr>
+<tr><td>2</td><td>Khẳng định nào đúng về hình chữ nhật không phải hình vuông?</td><td><b>B. Có đúng 2 trục đối xứng: hai đường nối trung điểm các cặp cạnh đối diện</b></td></tr>
+<tr><td>3</td><td>Góc quay nhỏ nhất (khác $0^\circ$) làm bát giác đều trùng với chính nó là bao nhiêu độ?</td><td><b>45</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{360^\circ}{8} = 45^\circ$.</span></td></tr>
+<tr><td>4</td><td>Một đa giác đều có góc quay nhỏ nhất là $24^\circ$. Đa giác đó có bao nhiêu cạnh?</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">$n = \dfrac{360^\circ}{24^\circ} = 15$.</span></td></tr>
+<tr><td>5</td><td>Chữ cái in hoa nào có tâm đối xứng nhưng không có trục đối xứng?</td><td><b>A. N</b></td></tr>
+<tr><td>6</td><td>Đa giác đều nào sau đây không có tâm đối xứng?</td><td><b>B. Ngũ giác đều</b></td></tr>
+<tr><td>7</td><td>Tính tổng số trục đối xứng và bậc đối xứng quay của thập nhị giác đều (12 cạnh).</td><td><b>24</b><br><span style="color:var(--muted);font-size:14px">12 trục và bậc 12: tổng 24.</span></td></tr>
+<tr><td>8</td><td>Quay một lục giác đều quanh tâm một góc $200^\circ$. Cần quay tiếp (cùng chiều) ít nhất bao nhiêu độ nữa để…</td><td><b>40</b><br><span style="color:var(--muted);font-size:14px">Các góc trùng là bội của $60^\circ$; bội nhỏ nhất lớn hơn $200^\circ$ là $240^\circ$. Cần quay thêm $240^\circ - 200^\circ = 40^\circ$.</span></td></tr>
+</table>
+<h3><a href="../02_tinh_chat_bien_hinh/b6_chung_minh_bien_hinh.html">Chứng minh bằng phép biến hình</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Để chứng minh hai góc đối đỉnh bằng nhau, phép biến hình thích hợp nhất là</td><td><b>B. phép đối xứng tâm tại đỉnh chung của hai góc</b></td></tr>
+<tr><td>2</td><td>Trong chứng minh "tam giác cân tại A có hai góc ở đáy bằng nhau", trục đối xứng được chọn là</td><td><b>B. đường phân giác của góc A</b></td></tr>
+<tr><td>3</td><td>Trong chứng minh đó, vì sao phép đối xứng qua phân giác góc A biến B thành C?</td><td><b>B. Vì nó biến tia AB thành tia AC và AB = AC</b></td></tr>
+<tr><td>4</td><td>Hai đường thẳng $AA'$ và $BB'$ cắt nhau tại $O$, $\widehat{AOB} = 47^\circ$. Tính $\widehat{BOA'}$ (độ).</td><td><b>133</b><br><span style="color:var(--muted);font-size:14px">$\widehat{AOB}$ và $\widehat{BOA'}$ kề bù: $180^\circ - 47^\circ = 133^\circ$. (Còn $\widehat{A'OB'} = 47^\circ$ do đối đỉnh.)</span></td></tr>
+<tr><td>5</td><td>Hình bình hành $ABCD$ có $A(-3; -2)$, $B(3; -2)$, $D(-1; 2)$. Tìm hoành độ của $C$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{AB} = \overrightarrow{DC}$ nên $C = D + \overrightarrow{AB} = (-1 + 6;\ 2 + 0) = (5; 2)$.</span></td></tr>
+<tr><td>6</td><td>Với hình bình hành ở câu trên, gọi $O$ là tâm đối xứng. Tính $OD$ (làm tròn 2 chữ số thập phân).</td><td><b>2,83</b><br><span style="color:var(--muted);font-size:14px">$O$ là trung điểm $AC$: $O(1; 0)$. $OD = \sqrt{2^2 + 2^2} = 2\sqrt2 \approx 2{,}83$ (bằng $OB$).</span></td></tr>
+<tr><td>7</td><td>Cho $A(0; 2)$, $B(6; 4)$. Tìm giá trị nhỏ nhất của $MA + MB$ với $M$ chạy trên trục $Ox$ (làm tròn 2 chữ số…</td><td><b>8,49</b><br><span style="color:var(--muted);font-size:14px">$A' = (0; -2)$, giá trị nhỏ nhất là $A'B = \sqrt{36 + 36} = 6\sqrt2 \approx 8{,}49$.</span></td></tr>
+<tr><td>8</td><td>Với $A(0; 2)$, $B(6; 4)$ như câu trên, tìm hoành độ của điểm $M$ trên $Ox$ làm $MA + MB$ nhỏ nhất.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">Đường thẳng $A'B$ qua $(0; -2)$ và $(6; 4)$: $y = x - 2$, cắt $Ox$ tại $M(2; 0)$.</span></td></tr>
+</table>
+<h3><a href="../02_tinh_chat_bien_hinh/kiem_tra_chuong.html">Kiểm tra chương 2</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Phép biến hình nào bảo toàn số đo góc nhưng không bảo toàn độ dài?</td><td><b>B. Phép vị tự tỉ số $3$</b></td></tr>
+<tr><td>2</td><td>Phép vị tự tỉ số $-2$ biến một tam giác có diện tích $3{,}5$ thành tam giác có diện tích bằng bao nhiêu?</td><td><b>14</b><br><span style="color:var(--muted);font-size:14px">Diện tích nhân $k^2 = 4$: $3{,}5\cdot 4 = 14$.</span></td></tr>
+<tr><td>3</td><td>Một phép dời hình biến đường tròn bán kính $2{,}5$ thành một đường tròn. Tính diện tích hình tròn ảnh (làm …</td><td><b>19,63</b><br><span style="color:var(--muted);font-size:14px">Bán kính giữ nguyên $2{,}5$: $S = \pi\cdot 2{,}5^2 \approx 19{,}63$.</span></td></tr>
+<tr><td>4</td><td>Tìm hoành độ ảnh của $M(-3; 4)$ qua phép quay tâm $O$ góc $-90^\circ$.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$(x; y) \mapsto (y; -x)$: $M'(4; 3)$.</span></td></tr>
+<tr><td>5</td><td>Tìm tung độ ảnh của $M(1; 6)$ qua phép đối xứng trục $y = 2$.</td><td><b>-2</b><br><span style="color:var(--muted);font-size:14px">$(x; y) \mapsto (x;\ 2\cdot 2 - y)$: $M'(1; -2)$.</span></td></tr>
+<tr><td>6</td><td>$M$ không thuộc $d$, $M' = \text{Đ}_d(M)$. Khẳng định nào đúng?</td><td><b>A. $d$ vuông góc với $MM'$ tại trung điểm của $MM'$</b></td></tr>
+<tr><td>7</td><td>Thực hiện phép đối xứng trục $x = -2$ rồi phép đối xứng trục $x = 3$. Phép hợp thành là phép tịnh tiến theo…</td><td><b>10</b><br><span style="color:var(--muted);font-size:14px">Hai trục cách nhau $h = 5$, hướng từ trục thứ nhất sang trục thứ hai là chiều dương: $a = 2h = 10$.</span></td></tr>
+<tr><td>8</td><td>Hai trục đối xứng cắt nhau tại $O$, góc từ trục thứ nhất đến trục thứ hai là $50^\circ$. Hợp của hai phép đ…</td><td><b>100</b><br><span style="color:var(--muted);font-size:14px">Góc quay gấp đôi: $2\cdot 50^\circ = 100^\circ$.</span></td></tr>
+<tr><td>9</td><td>Quay $M(1; 2)$ quanh $O$ góc $90^\circ$, rồi tịnh tiến theo $(2; -1)$, được $M''$. Tính $MM''$ (làm tròn 2 …</td><td><b>2,24</b><br><span style="color:var(--muted);font-size:14px">$(1; 2) \mapsto (-2; 1) \mapsto (0; 0)$. $MM'' = \sqrt{1 + 4} = \sqrt5 \approx 2{,}24$.</span></td></tr>
+<tr><td>10</td><td>Một phép dời hình biến $A(1; 2)$ thành $A'(-1; -2)$ và $B(3; 0)$ thành $B'(-3; 0)$. Phép đó có thể là</td><td><b>A. phép đối xứng tâm $O$</b></td></tr>
+<tr><td>11</td><td>Một phép vị tự biến $A(2; 2)$ thành $A'(5; 5)$ và $B(4; 2)$ thành $B'(11; 5)$. Tìm tỉ số vị tự.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{AB} = (2; 0)$, $\overrightarrow{A'B'} = (6; 0) = 3\overrightarrow{AB}$: $k = 3$ (tâm $(0{,}5; 0{,}5)$).</span></td></tr>
+<tr><td>12</td><td>Góc quay nhỏ nhất (khác $0^\circ$) làm thập giác đều (10 cạnh) trùng với chính nó là bao nhiêu độ?</td><td><b>36</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{360^\circ}{10} = 36^\circ$.</span></td></tr>
+<tr><td>13</td><td>Hình nào có đúng 2 trục đối xứng và có tâm đối xứng?</td><td><b>A. Hình thoi không phải hình vuông</b></td></tr>
+<tr><td>14</td><td>Để chứng minh $AB = CD$ trong hình bình hành $ABCD$, ta dùng phép biến hình nào?</td><td><b>A. Phép đối xứng tâm tại trung điểm của $AC$</b></td></tr>
+<tr><td>15</td><td>Cho $A(1; 1)$, $B(7; 3)$. Tìm giá trị nhỏ nhất của $MA + MB$ với $M$ chạy trên trục $Ox$ (làm tròn 2 chữ số…</td><td><b>7,21</b><br><span style="color:var(--muted);font-size:14px">$A' = \text{Đ}_{Ox}(A) = (1; -1)$. Giá trị nhỏ nhất là $A'B = \sqrt{6^2 + 4^2} = \sqrt{52} \approx 7{,}21$.</span></td></tr>
+</table>
+</details>
+<details class="loi-giai"><summary><b>Chương 3. Sự bằng nhau</b></summary>
+<h3><a href="../03_bang_nhau/b1_hai_hinh_bang_nhau.html">Hai hình bằng nhau</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hai hình được gọi là bằng nhau khi:</td><td><b>B. Có một phép dời hình biến hình này thành hình kia</b></td></tr>
+<tr><td>2</td><td>Cho $\triangle ABC = \triangle DEF$. Góc nào bằng $\widehat{B}$?</td><td><b>B. $\widehat{E}$</b></td></tr>
+<tr><td>3</td><td>Cho $\triangle ABC = \triangle PQR$, $AB = 6$ cm, $BC = 8$ cm. Tính $QR$ (cm).</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">$QR$ ứng với $BC$ nên $QR = 8$ cm.</span></td></tr>
+<tr><td>4</td><td>Phép biến hình nào sau đây không luôn biến một hình thành hình bằng nó?</td><td><b>D. Phép vị tự tỉ số 2</b></td></tr>
+<tr><td>5</td><td>Cho $\triangle ABC = \triangle DEF$, $AB = 5$, $AC = 7$, $EF = 9$. Tính chu vi $\triangle ABC$.</td><td><b>21</b><br><span style="color:var(--muted);font-size:14px">$BC = EF = 9$, chu vi $= 5 + 7 + 9 = 21$.</span></td></tr>
+<tr><td>6</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 6$, $AC = 8$. Biết $\triangle ABC = \triangle DEF$, tính diện tích $\…</td><td><b>24</b><br><span style="color:var(--muted);font-size:14px">Hai \text{hình} \text{bằng} nhau \text{có} \text{diện} \text{tích} \text{bằng} nhau: $S = \frac12 \cdot 6 \cdot 8 = 24$.</span></td></tr>
+<tr><td>7</td><td>Phép quay tâm $O$ biến $A(0; 0)$ thành $A'$ và $B(3; 4)$ thành $B'$. Tính độ dài $A'B'$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">Phép quay là phép dời hình nên $A'B' = AB = \sqrt{3^2 + 4^2} = 5$.</span></td></tr>
+<tr><td>8</td><td>$\triangle ABC$ có hướng $A \to B \to C$ ngược chiều kim đồng hồ, $\triangle DEF$ có hướng $D \to E \to F$ …</td><td><b>C. Có chứa phép đối xứng trục</b></td></tr>
+</table>
+<h3><a href="../03_bang_nhau/b2_truong_hop_bang_nhau.html">Các trường hợp bằng nhau của tam giác</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Bộ ba yếu tố nào sau đây không phải trường hợp bằng nhau của tam giác?</td><td><b>D. c.c.g (góc không xen giữa)</b></td></tr>
+<tr><td>2</td><td>$\triangle ABC$ và $\triangle DEF$ có $AB = DE$, $\widehat{A} = \widehat{D}$, $AC = DF$. Chúng bằng nhau th…</td><td><b>B. c.g.c</b></td></tr>
+<tr><td>3</td><td>Để $\triangle ABC = \triangle DEF$ theo trường hợp g.c.g khi đã có $\widehat{B} = \widehat{E}$, $\widehat{C…</td><td><b>B. $BC = EF$</b></td></tr>
+<tr><td>4</td><td>Hai tam giác vuông $ABC$ (vuông tại $A$) và $DEF$ (vuông tại $D$) có $AB = DE = 3$, $AC = DF = 4$. Tính $EF$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">Hai tam giác bằng nhau (c.g.c) nên $EF = BC = \sqrt{3^2 + 4^2} = 5$.</span></td></tr>
+<tr><td>5</td><td>$\triangle ABC = \triangle DEF$ theo trường hợp g.g.c với $\widehat{A} = 50^\circ$, $\widehat{B} = 70^\circ…</td><td><b>60</b><br><span style="color:var(--muted);font-size:14px">$\widehat{F} = \widehat{C} = 180^\circ - 50^\circ - 70^\circ = 60^\circ$.</span></td></tr>
+<tr><td>6</td><td>Có bao nhiêu tam giác $ABC$ thỏa mãn $\widehat{A} = 30^\circ$, $AB = 10$, $BC = 6$?</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$h = 10 \sin 30^\circ = 5 < 6 < 10$ nên có 2 tam giác. Kiểm tra bằng minh họa c.c.g.</span></td></tr>
+<tr><td>7</td><td>Có bao nhiêu tam giác $ABC$ thỏa mãn $\widehat{A} = 30^\circ$, $AB = 10$, $BC = 5$?</td><td><b>1</b><br><span style="color:var(--muted);font-size:14px">$h = 10 \sin 30^\circ = 5 = BC$: đường tròn tâm $B$ chỉ chạm tia $Ax$ tại một điểm, có đúng 1 tam giác (vuông tại $C$).</span></td></tr>
+<tr><td>8</td><td>Tam giác $ABC$ có $\widehat{A} = 30^\circ$, $AB = 8$, $BC = 5$ và $\widehat{C}$ nhọn. Tính $AC$ (làm tròn đ…</td><td><b>9,93</b><br><span style="color:var(--muted);font-size:14px">$h = 8\sin30^\circ = 4$, $AH = 8\cos 30^\circ = 4\sqrt3$, $HC = \sqrt{25 - 16} = 3$. Góc $C$ nhọn khi chân đường vuông góc $H$ nằm giữa $A$ và $C$: $AC = 4\sqrt3 + 3 \approx 9{,}93$.</span></td></tr>
+</table>
+<h3><a href="../03_bang_nhau/b3_chung_minh_bang_nhau.html">Chứng minh các trường hợp bằng nhau</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Để đưa một tam giác về trùng tam giác bằng nó, quy trình trong bài dùng nhiều nhất bao nhiêu phép biến hình…</td><td><b>C. 3</b></td></tr>
+<tr><td>2</td><td>$A(1; 2)$, $D(4; -1)$. Phép tịnh tiến ở bước 1 theo vectơ $\overrightarrow{AD} = (a; b)$. Tính $a$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$a = 4 - 1 = 3$ (và $b = -1 - 2 = -3$).</span></td></tr>
+<tr><td>3</td><td>Sau bước 1, tia $DB_1$ có hướng của vectơ $(1; 0)$, tia $DE$ có hướng của vectơ $(0; 1)$. Góc quay ngược ch…</td><td><b>90</b><br><span style="color:var(--muted);font-size:14px">Từ hướng sang phải đến hướng lên trên: quay 90° ngược chiều kim đồng hồ.</span></td></tr>
+<tr><td>4</td><td>Trong chứng minh trường hợp c.c.c, ảnh C* của C (sau bước 2) và điểm F cùng nằm trên:</td><td><b>B. Hai đường tròn tâm D và tâm E</b></td></tr>
+<tr><td>5</td><td>Khi nào cần bước 3 (phép đối xứng trục)?</td><td><b>B. Khi hai tam giác ngược hướng</b></td></tr>
+<tr><td>6</td><td>Sau hai bước có $D(5; 1)$, $E(5; 5)$ và $C^*(2; 2)$. Ảnh của $C^*$ qua phép đối xứng trục $DE$ có hoành độ …</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">$DE$ là đường thẳng $x = 5$; điểm đối xứng của $(2; 2)$ là $(8; 2)$.</span></td></tr>
+<tr><td>7</td><td>Phép quay $90^\circ$ ngược chiều kim đồng hồ quanh $D(5; 1)$ biến điểm $(6; 4)$ thành điểm có tung độ bằng …</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$(6; 4) - D = (1; 3) \mapsto (-3; 1)$; cộng $D$ được $(2; 2)$. Tung độ bằng 2.</span></td></tr>
+<tr><td>8</td><td>Vì sao không chứng minh được "c.c.g" bằng quy trình ba bước?</td><td><b>B. Vì tia DF có thể cắt đường tròn tâm E bán kính EF tại hai điểm không đối xứng qua DE</b></td></tr>
+</table>
+<h3><a href="../03_bang_nhau/b4_duong_thang_goc.html">Định lý về đường thẳng và góc</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hai góc đối đỉnh thì:</td><td><b>B. Bằng nhau</b></td></tr>
+<tr><td>2</td><td>Hai góc kề bù, một góc bằng $65^\circ$. Góc còn lại bằng bao nhiêu độ?</td><td><b>115</b><br><span style="color:var(--muted);font-size:14px">$180^\circ - 65^\circ = 115^\circ$.</span></td></tr>
+<tr><td>3</td><td>Qua một điểm nằm ngoài đường thẳng d có bao nhiêu đường thẳng song song với d?</td><td><b>B. Đúng một</b></td></tr>
+<tr><td>4</td><td>Với cách đánh số trong bài, $\widehat{4}$ và $\widehat{6}$ là cặp góc:</td><td><b>B. So le trong</b></td></tr>
+<tr><td>5</td><td>Cho $a \parallel b$. Một góc trong cùng phía bằng $72^\circ$. Góc trong cùng phía còn lại bằng bao nhiêu độ?</td><td><b>108</b><br><span style="color:var(--muted);font-size:14px">Hai góc trong cùng phía bù nhau: $180^\circ - 72^\circ = 108^\circ$.</span></td></tr>
+<tr><td>6</td><td>Cho $a \parallel b$, hai góc so le trong có số đo $3x^\circ$ và $(2x + 25)^\circ$. Tìm $x$.</td><td><b>25</b><br><span style="color:var(--muted);font-size:14px">$3x = 2x + 25 \Rightarrow x = 25$.</span></td></tr>
+<tr><td>7</td><td>Cho $a \parallel b$, hai góc đồng vị có số đo $(4x - 10)^\circ$ và $(2x + 30)^\circ$. Tính số đo mỗi góc.</td><td><b>70</b><br><span style="color:var(--muted);font-size:14px">$4x - 10 = 2x + 30 \Rightarrow x = 20$; mỗi góc bằng $70^\circ$.</span></td></tr>
+<tr><td>8</td><td>Như Ví dụ 4, nhưng $\widehat{OAa'} = 32^\circ$ và $\widehat{OBb'} = 48^\circ$. Tính $\widehat{AOB}$ (độ).</td><td><b>80</b><br><span style="color:var(--muted);font-size:14px">Kẻ qua $O$ đường song song với $a$: $\widehat{AOB} = 32^\circ + 48^\circ = 80^\circ$.</span></td></tr>
+</table>
+<h3><a href="../03_bang_nhau/b5_dinh_ly_tam_giac.html">Định lý về tam giác</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tam giác $ABC$ có $\widehat{A} = 70^\circ$, $\widehat{B} = 45^\circ$. Tính $\widehat{C}$ (độ).</td><td><b>65</b><br><span style="color:var(--muted);font-size:14px">$180 - 70 - 45 = 65$.</span></td></tr>
+<tr><td>2</td><td>Mỗi góc của tam giác đều bằng:</td><td><b>B. 60°</b></td></tr>
+<tr><td>3</td><td>Tam giác $ABC$ có $\widehat{A} = 55^\circ$, $\widehat{B} = 60^\circ$. Tính góc ngoài tại đỉnh $C$ (độ).</td><td><b>115</b><br><span style="color:var(--muted);font-size:14px">Góc ngoài tại $C$ bằng $\widehat{A} + \widehat{B} = 115^\circ$.</span></td></tr>
+<tr><td>4</td><td>Tam giác cân có một góc ở đáy bằng $50^\circ$. Tính góc ở đỉnh (độ).</td><td><b>80</b><br><span style="color:var(--muted);font-size:14px">$180 - 2 \cdot 50 = 80$.</span></td></tr>
+<tr><td>5</td><td>Tam giác vuông có một góc nhọn bằng $35^\circ$. Tính góc nhọn còn lại (độ).</td><td><b>55</b><br><span style="color:var(--muted);font-size:14px">$90 - 35 = 55$.</span></td></tr>
+<tr><td>6</td><td>$G$ là trọng tâm $\triangle ABC$, $BM$ là trung tuyến, $BG = 8$. Tính $BM$.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$BG = \frac23 BM \Rightarrow BM = 12$.</span></td></tr>
+<tr><td>7</td><td>Tìm tung độ trọng tâm của tam giác $A(0; 0)$, $B(6; 0)$, $C(0; 9)$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$y_G = \frac{0 + 0 + 9}{3} = 3$ (và $x_G = 2$).</span></td></tr>
+<tr><td>8</td><td>Trong tam giác cân $ABC$ ($AB = AC$), trung tuyến $AM$ có tính chất nào?</td><td><b>B. Vuông góc với BC và là phân giác của góc A</b></td></tr>
+</table>
+<h3><a href="../03_bang_nhau/b6_dinh_ly_tu_giac.html">Định lý về tứ giác</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hình bình hành $ABCD$ có $\widehat{A} = 70^\circ$. Tính $\widehat{D}$ (độ).</td><td><b>110</b><br><span style="color:var(--muted);font-size:14px">Hai góc kề cạnh $AD$ bù nhau: $\widehat{D} = 180^\circ - 70^\circ = 110^\circ$.</span></td></tr>
+<tr><td>2</td><td>Tứ giác nào có hai đường chéo vừa bằng nhau vừa vuông góc với nhau và cắt nhau tại trung điểm mỗi đường?</td><td><b>D. Hình vuông</b></td></tr>
+<tr><td>3</td><td>Dấu hiệu nào đủ để kết luận tứ giác là hình bình hành?</td><td><b>C. Hai đường chéo cắt nhau tại trung điểm mỗi đường</b></td></tr>
+<tr><td>4</td><td>Hình bình hành $ABCD$ có hai đường chéo cắt nhau tại $O$, $OA = 3{,}5$. Tính $AC$.</td><td><b>7</b><br><span style="color:var(--muted);font-size:14px">$O$ là trung điểm $AC$ nên $AC = 7$.</span></td></tr>
+<tr><td>5</td><td>Hình chữ nhật có hai cạnh $5$ và $12$. Tính độ dài đường chéo.</td><td><b>13</b><br><span style="color:var(--muted);font-size:14px">$\sqrt{25 + 144} = 13$.</span></td></tr>
+<tr><td>6</td><td>Hình thoi có hai đường chéo $10$ và $24$. Tính chu vi.</td><td><b>52</b><br><span style="color:var(--muted);font-size:14px">Cạnh $= \sqrt{5^2 + 12^2} = 13$, chu vi $= 4 \cdot 13 = 52$.</span></td></tr>
+<tr><td>7</td><td>Cho $A(1; 1)$, $B(5; 2)$, $D(2; 4)$. Tìm hoành độ của $C$ để $ABCD$ là hình bình hành.</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$C = B + D - A = (6; 5)$.</span></td></tr>
+<tr><td>8</td><td>Tứ giác $ABCD$ có $\widehat{A} = \widehat{C} = 2\widehat{B}$ và $\widehat{B} = \widehat{D}$. Tính $\widehat…</td><td><b>120</b><br><span style="color:var(--muted);font-size:14px">$2x + x + 2x + x = 360 \Rightarrow x = 60$, \text{nên} $\widehat{A} = 120^\circ$ (tứ giác là hình bình hành vì các góc đối bằng nhau).</span></td></tr>
+</table>
+<h3><a href="../03_bang_nhau/b7_dung_hinh.html">Dựng hình bằng thước và compa</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Trong dựng hình bằng thước và compa, thước được dùng để:</td><td><b>B. Kẻ đường thẳng qua hai điểm đã có</b></td></tr>
+<tr><td>2</td><td>Dựng tia phân giác của góc $70^\circ$. Mỗi góc tạo thành bằng bao nhiêu độ?</td><td><b>35</b><br><span style="color:var(--muted);font-size:14px">$70 : 2 = 35$.</span></td></tr>
+<tr><td>3</td><td>Để dựng trung trực của đoạn $AB = 7$, bán kính compa phải lớn hơn bao nhiêu?</td><td><b>3,5</b><br><span style="color:var(--muted);font-size:14px">$r > \frac{AB}{2} = 3{,}5$. Thử nhập $r = 3{,}5$ trong minh họa: hai cung chỉ chạm nhau.</span></td></tr>
+<tr><td>4</td><td>Dựng trung trực của $AB = 6$ với bán kính $r = 5$. Tính khoảng cách $PQ$ giữa hai giao điểm.</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">$P$, $Q$ đối xứng qua $AB$, $PM = \sqrt{25 - 9} = 4$, nên $PQ = 8$.</span></td></tr>
+<tr><td>5</td><td>Phép dựng tia phân giác dựa vào trường hợp bằng nhau nào?</td><td><b>A. c.c.c</b></td></tr>
+<tr><td>6</td><td>Phép dựng đường song song trong bài dựa vào tính chất của hình nào?</td><td><b>B. Hình bình hành</b></td></tr>
+<tr><td>7</td><td>Điểm $P$ cách đường thẳng $d$ một khoảng $4$. Cung tâm $P$ bán kính $5$ cắt $d$ tại $E$, $F$. Tính $EF$.</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$KE = \sqrt{25 - 16} = 3$, $EF = 6$.</span></td></tr>
+<tr><td>8</td><td>Từ tam giác đều, chia đôi góc liên tiếp hai lần ta được góc bao nhiêu độ?</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">$60 \to 30 \to 15$.</span></td></tr>
+</table>
+<h3><a href="../03_bang_nhau/kiem_tra_chuong.html">Kiểm tra chương 3</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Cho $\triangle MNP = \triangle XYZ$. Khẳng định nào đúng?</td><td><b>B. $NP = YZ$</b></td></tr>
+<tr><td>2</td><td>Cho $\triangle ABC = \triangle DEF$ với $AB = 7$, $BC = 9$, $DF = 6$. Tính chu vi $\triangle DEF$.</td><td><b>22</b><br><span style="color:var(--muted);font-size:14px">$DE = 7$, $EF = 9$, $DF = 6$: chu vi $22$.</span></td></tr>
+<tr><td>3</td><td>$\triangle ABC$ và $\triangle DEF$ có $\widehat{A} = \widehat{D}$, $AB = DE$, $\widehat{B} = \widehat{E}$. …</td><td><b>C. g.c.g</b></td></tr>
+<tr><td>4</td><td>Có bao nhiêu tam giác $ABC$ thỏa mãn $\widehat{A} = 30^\circ$, $AB = 12$, $BC = 8$?</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$h = 12 \sin 30^\circ = 6 < 8 < 12$: có 2 tam giác.</span></td></tr>
+<tr><td>5</td><td>Phép quay $90^\circ$ ngược chiều kim đồng hồ quanh gốc $O$ biến $B(4; 1)$ thành điểm có hoành độ bằng bao n…</td><td><b>-1</b><br><span style="color:var(--muted);font-size:14px">$(x; y) \mapsto (-y; x)$: $(4; 1) \mapsto (-1; 4)$.</span></td></tr>
+<tr><td>6</td><td>Hai tam giác bằng nhau nhưng ngược hướng. Dãy phép dời hình đưa tam giác này về tam giác kia cần ít nhất một:</td><td><b>C. Phép đối xứng trục</b></td></tr>
+<tr><td>7</td><td>Hai góc đối đỉnh có số đo $(2x + 15)^\circ$ và $(4x - 25)^\circ$. Tính số đo mỗi góc (độ).</td><td><b>55</b><br><span style="color:var(--muted);font-size:14px">$2x + 15 = 4x - 25 \Rightarrow x = 20$; mỗi góc $55^\circ$.</span></td></tr>
+<tr><td>8</td><td>Cho $a \parallel b$, cát tuyến $c$ tạo một góc so le trong bằng $48^\circ$. Góc trong cùng phía với nó bằng…</td><td><b>132</b><br><span style="color:var(--muted);font-size:14px">Hai góc so le trong bằng nhau, còn hai góc trong cùng phía bù nhau, nên góc cần tìm bằng $180^\circ - 48^\circ = 132^\circ$.</span></td></tr>
+<tr><td>9</td><td>Tam giác cân có góc ở đỉnh bằng $36^\circ$. Tính một góc ở đáy (độ).</td><td><b>72</b><br><span style="color:var(--muted);font-size:14px">$(180 - 36) : 2 = 72$.</span></td></tr>
+<tr><td>10</td><td>Góc ngoài tại $C$ của $\triangle ABC$ bằng $130^\circ$, $\widehat{A} = 70^\circ$. Tính $\widehat{B}$ (độ).</td><td><b>60</b><br><span style="color:var(--muted);font-size:14px">$\widehat{B} = 130^\circ - 70^\circ = 60^\circ$.</span></td></tr>
+<tr><td>11</td><td>Tính hoành độ trọng tâm của tam giác $A(-2; 1)$, $B(4; 3)$, $C(7; -1)$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$x_G = \frac{-2 + 4 + 7}{3} = 3$.</span></td></tr>
+<tr><td>12</td><td>Hình thoi $ABCD$ có cạnh $10$ và đường chéo $AC = 12$. Tính đường chéo $BD$.</td><td><b>16</b><br><span style="color:var(--muted);font-size:14px">$OA = 6$, $OB = \sqrt{100 - 36} = 8$, $BD = 16$.</span></td></tr>
+<tr><td>13</td><td>Hình bình hành có hai đường chéo bằng nhau là:</td><td><b>B. Hình chữ nhật</b></td></tr>
+<tr><td>14</td><td>Dựng trung trực của đoạn $AB = 8$ với bán kính compa $r = 5$. Tính khoảng cách giữa hai giao điểm $P$, $Q$ …</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$PM = \sqrt{25 - 16} = 3$, $PQ = 6$.</span></td></tr>
+</table>
+</details>
+<details class="loi-giai"><summary><b>Chương 4. Sự đồng dạng</b></summary>
+<h3><a href="../04_dong_dang/b1_dinh_nghia_dong_dang.html">Định nghĩa hai hình đồng dạng</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Phép vị tự tỉ số $k = -2$ là phép đồng dạng tỉ số bao nhiêu?</td><td><b>B. $2$</b></td></tr>
+<tr><td>2</td><td>Cặp hình nào sau đây luôn đồng dạng?</td><td><b>C. Hai hình vuông</b></td></tr>
+<tr><td>3</td><td>Cho $\triangle A'B'C' \backsim \triangle ABC$, $AB = 5$, $A'B' = 8$, $BC = 7{,}5$. Tính $B'C'$.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$k = \dfrac85 = 1{,}6$, nên $B'C' = 1{,}6 \cdot 7{,}5 = 12$.</span></td></tr>
+<tr><td>4</td><td>$\triangle MNP \backsim \triangle ABC$ theo tỉ số $3$. Chu vi $\triangle ABC$ là $14$ cm. Tính chu vi $\tri…</td><td><b>42</b><br><span style="color:var(--muted);font-size:14px"> \text{Tỉ} \text{số} chu vi \text{bằng} \text{tỉ} \text{số} \text{đồng} \text{dạng}: $3 \cdot 14 = 42$ cm.</span></td></tr>
+<tr><td>5</td><td>Cho $\triangle ABC \backsim \triangle DEF$. Khẳng định nào đúng ?</td><td><b>A. $\dfrac{AB}{DE} = \dfrac{BC}{EF}$</b></td></tr>
+<tr><td>6</td><td>Phép vị tự tâm $O(0; 0)$ tỉ số $k = -1{,}5$ biến $A(2; -4)$ thành $A'$. Tung độ của $A'$ bằng bao nhiêu?</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{OA'} = -1{,}5\,\overrightarrow{OA} = (-3; 6)$. Tung độ của $A'$ là $6$.</span></td></tr>
+<tr><td>7</td><td>Hai tam giác đồng dạng có diện tích $18$ cm² và $50$ cm². Cạnh của tam giác lớn gấp bao nhiêu lần cạnh tươn…</td><td><b>1,6667</b><br><span style="color:var(--muted);font-size:14px">$k^2 = \dfrac{50}{18} = \dfrac{25}{9}$, nên $k = \dfrac53 \approx 1{,}67$.</span></td></tr>
+<tr><td>8</td><td>Một tấm ảnh $10 \times 15$ cm được phóng to (giữ đồng dạng) sao cho cạnh ngắn dài $25$ cm. Tính diện tích t…</td><td><b>937,5</b><br><span style="color:var(--muted);font-size:14px">$k = \dfrac{25}{10} = 2{,}5$. Cạnh dài mới là $2{,}5\cdot15 = 37{,}5$ cm, diện tích $25 \cdot 37{,}5 = 937{,}5$ cm². Cách khác: $150 \cdot 2{,}5^2 = 937{,}5$.</span></td></tr>
+</table>
+<h3><a href="../04_dong_dang/b2_truong_hop_dong_dang.html">Các trường hợp đồng dạng của tam giác</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Điều kiện nào sau đây không đủ để kết luận hai tam giác đồng dạng?</td><td><b>D. Hai cạnh tỉ lệ và một góc không xen giữa bằng nhau</b></td></tr>
+<tr><td>2</td><td>Tam giác có ba cạnh $2, 3, 4$ đồng dạng với tam giác nào sau đây?</td><td><b>C. $5;\ 7{,}5;\ 10$</b></td></tr>
+<tr><td>3</td><td>Cho $\triangle ABC \backsim \triangle DEF$ với $AB = 6$, $BC = 9$, $DE = 4$. Tính $EF$.</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$k = \dfrac{DE}{AB} = \dfrac46 = \dfrac23$, nên $EF = \dfrac23 \cdot 9 = 6$.</span></td></tr>
+<tr><td>4</td><td>Hai tam giác vuông chắc chắn đồng dạng nếu chúng có:</td><td><b>A. một góc nhọn bằng nhau</b></td></tr>
+<tr><td>5</td><td>Tam giác $ABC$ có $\hat A = 40^\circ$, $\hat B = 75^\circ$; tam giác $MNP$ có $\hat M = 40^\circ$, $\hat P …</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$\hat C = 65^\circ = \hat P$, $\hat A = \hat M$ \text{nên} $\triangle MNP \backsim \triangle ABC$ (g.g), $k = \dfrac{MN}{AB} = 1{,}5$. \text{Vậy} $MP = 1{,}5 \cdot AC = 6$.</span></td></tr>
+<tr><td>6</td><td>Hình thang $ABCD$ ($AB \parallel CD$) có $AB = 6$, $CD = 15$. Hai đường chéo cắt nhau tại $O$, biết $AC = 1…</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$\triangle OAB \backsim \triangle OCD$ (g.g) \text{nên} $\dfrac{OA}{OC} = \dfrac{6}{15} = \dfrac25$. Do $OA + OC = 14$, ta \text{có} $OA = 14 \cdot \dfrac{2}{7} = 4$.</span></td></tr>
+<tr><td>7</td><td>Tam giác $ABC$ có $AB = 4$, $AC = 6$, $\hat A = 60^\circ$, $BC \approx 5{,}29$. Tam giác $DEF$ có $DE = 6$,…</td><td><b>7,94</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{DE}{AB} = \dfrac{DF}{AC} = 1{,}5$ và $\hat D = \hat A$ nên $\triangle DEF \backsim \triangle ABC$ (c.g.c). $EF = 1{,}5 \cdot BC \approx 7{,}94$ (chính xác: $BC = 2\sqrt7$, $EF = 3\sqrt7$).</span></td></tr>
+<tr><td>8</td><td>Cho tam giác $ABC$, $D$ thuộc cạnh $AB$ với $AD = 4$, $DB = 5$; $AC = 12$. Lấy $E$ trên cạnh $AC$ sao cho $…</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$\triangle ADE \backsim \triangle ACB$ cho $\dfrac{AD}{AC} = \dfrac{AE}{AB}$, \text{với} $AB = 4 + 5 = 9$. \text{Vậy} $AE = \dfrac{4 \cdot 9}{12} = 3$. \text{Chú} \text{ý}: $D$ \text{ứng} \text{với} $C$ \text{và} $E$ \text{ứng} \text{với} $B$, \text{nên} $AD$ \text{đi} \text{với} $AC$ \text{chứ} \text{không} \text{đi} \text{với} $AB$.</span></td></tr>
+</table>
+<h3><a href="../04_dong_dang/b3_xac_dinh_dong_dang.html">Xác định tam giác đồng dạng</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tam giác $ABC$ có $MN \parallel BC$ ($M \in AB$, $N \in AC$), $AM = 2$, $AB = 6$, $AC = 9$. Tính $AN$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{AN}{AC} = \dfrac{AM}{AB} = \dfrac13$, nên $AN = 3$.</span></td></tr>
+<tr><td>2</td><td>Tam giác $ABC$ có $MN \parallel BC$, $AM = 4$, $MB = 6$, $BC = 15$. Tính $MN$.</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{MN}{BC} = \dfrac{AM}{AB} = \dfrac{4}{10}$, nên $MN = 6$.</span></td></tr>
+<tr><td>3</td><td>Tam giác $ABC$ vuông tại $A$, đường cao $AH$. Hệ thức nào đúng ?</td><td><b>A. $AH^2 = BH\cdot HC$</b></td></tr>
+<tr><td>4</td><td>Tam giác $ABC$ vuông tại $A$, đường cao $AH$, $BH = 2$, $HC = 8$. Tính $AH$.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$AH^2 = 2\cdot 8 = 16$, $AH = 4$.</span></td></tr>
+<tr><td>5</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 5$, $BC = 13$, đường cao $AH$. Tính $BH$ (làm tròn đến hai chữ số thậ…</td><td><b>1,9231</b><br><span style="color:var(--muted);font-size:14px">$AB^2 = BC \cdot BH$ nên $BH = \dfrac{25}{13} \approx 1{,}92$.</span></td></tr>
+<tr><td>6</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 9$, $AC = 12$. Tính đường cao $AH$.</td><td><b>7,2</b><br><span style="color:var(--muted);font-size:14px">$BC = \sqrt{81 + 144} = 15$; $AH = \dfrac{9 \cdot 12}{15} = 7{,}2$.</span></td></tr>
+<tr><td>7</td><td>Trên cạnh $AB$, $AC$ của tam giác $ABC$ lấy $M$, $N$ với $AM = 3$, $MB = 4$, $AN = 4{,}5$, $NC = 6$. Khẳng …</td><td><b>A. $MN \parallel BC$</b></td></tr>
+<tr><td>8</td><td>Tam giác $ABC$ có $D$ trên cạnh $AC$ sao cho $\widehat{ABD} = \hat C$. Biết $AD = 4$, $DC = 5$. Tính $AB$.</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$\triangle ABD \backsim \triangle ACB$ (g.g) nên $AB^2 = AD\cdot AC = 4 \cdot 9 = 36$, $AB = 6$.</span></td></tr>
+</table>
+<h3><a href="../04_dong_dang/b4_duong_phan_giac.html">Định lý đường phân giác</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>$AD$ là phân giác của góc $A$ trong tam giác $ABC$ ($D \in BC$). Đẳng thức nào đúng?</td><td><b>A. $\dfrac{DB}{DC} = \dfrac{AB}{AC}$</b></td></tr>
+<tr><td>2</td><td>Tam giác $ABC$ có $AB = 4$, $AC = 6$, $BC = 5$. Phân giác $AD$. Tính $DB$.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$DB = \dfrac{5 \cdot 4}{4 + 6} = 2$.</span></td></tr>
+<tr><td>3</td><td>Phân giác $AD$ của tam giác $ABC$ có $DC = 4{,}5$; biết $AB = 8$, $AC = 12$. Tính $DB$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$DB = DC\cdot\dfrac{AB}{AC} = 4{,}5 \cdot \dfrac{8}{12} = 3$.</span></td></tr>
+<tr><td>4</td><td>Tam giác $ABC$ có $AB = 7$, $AC = 5$, $BC = 6$. Phân giác $AD$. Tính $DC$.</td><td><b>2,5</b><br><span style="color:var(--muted);font-size:14px">$DC = \dfrac{6\cdot 5}{7 + 5} = 2{,}5$.</span></td></tr>
+<tr><td>5</td><td>Chân $D$ của đường phân giác góc $A$ là trung điểm của $BC$ khi nào?</td><td><b>B. Khi $AB = AC$</b></td></tr>
+<tr><td>6</td><td>Tam giác $ABC$ có $AB = 3$, $BC = 4$, $AC = 5$. Phân giác ngoài tại $A$ cắt đường thẳng $BC$ tại $E$. Tính …</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{EB}{EC} = \dfrac35$, $E$ nằm phía $B$ (cạnh ngắn hơn) nên $EC - EB = 4$. Đặt $EB = 3t$, $EC = 5t$: $2t = 4$, $t = 2$, $EB = 6$.</span></td></tr>
+<tr><td>7</td><td>Tam giác $ABC$ có $AB = 10$, $AC = 15$, $BC = 20$. Phân giác của góc $B$ cắt $AC$ tại $E$. Tính $AE$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px"> Phân giác góc $B$: $\dfrac{EA}{EC} = \dfrac{BA}{BC} = \dfrac{10}{20} = \dfrac12$, nên $AE = \dfrac{15}{3} = 5$.</span></td></tr>
+<tr><td>8</td><td>Tam giác $ABC$ có $AB = 9$, $AC = 12$ và diện tích $42$ cm². Phân giác $AD$. Tính diện tích tam giác $ABD$ …</td><td><b>18</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{S_{ABD}}{S_{ACD}} = \dfrac{DB}{DC} = \dfrac{9}{12} = \dfrac34$, nên $S_{ABD} = 42 \cdot \dfrac37 = 18$ cm².</span></td></tr>
+</table>
+<h3><a href="../04_dong_dang/b5_ung_dung_dong_dang.html">Ứng dụng thực tế của đồng dạng</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Cọc cao $2$ m có bóng dài $1{,}5$ m. Cùng lúc, bóng của một cây dài $6$ m. Tính chiều cao cây (m).</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">$H = \dfrac{6 \cdot 2}{1{,}5} = 8$ m.</span></td></tr>
+<tr><td>2</td><td>Gương đặt cách gốc cây $10$ m; người đứng cách gương $1{,}2$ m, mắt cao $1{,}5$ m thì thấy ngọn cây trong g…</td><td><b>12,5</b><br><span style="color:var(--muted);font-size:14px">$H = \dfrac{1{,}5 \cdot 10}{1{,}2} = 12{,}5$ m.</span></td></tr>
+<tr><td>3</td><td>Tỉ lệ vàng $\varphi$ có giá trị gần đúng là:</td><td><b>C. $1{,}618$</b></td></tr>
+<tr><td>4</td><td>Hình chữ nhật vàng có chiều rộng $10$ cm. Tính chiều dài (làm tròn đến hai chữ số thập phân).</td><td><b>16,18</b><br><span style="color:var(--muted);font-size:14px">$a = 10\varphi \approx 16{,}18$ cm.</span></td></tr>
+<tr><td>5</td><td>Băng dưới của bàn bi-a là trục $Ox$. Bi $P(1; 2)$ cần chạm băng dưới rồi trúng bi $Q(9; 3)$. Tìm hoành độ đ…</td><td><b>4,2</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{P_0I}{IQ_0} = \dfrac23$ và $P_0I + IQ_0 = 8$, nên $P_0I = 8 \cdot \dfrac25 = 3{,}2$. Hoành độ của $I$ là $1 + 3{,}2 = 4{,}2$.</span></td></tr>
+<tr><td>6</td><td>Dùng mẹo ngón tay cái: tay duỗi dài $60$ cm, hai mắt cách nhau $6$ cm. Ngón tay “nhảy” một đoạn khoảng $20$…</td><td><b>200</b><br><span style="color:var(--muted);font-size:14px">$D \approx 20 \cdot \dfrac{60}{6} = 200$ m.</span></td></tr>
+<tr><td>7</td><td>Đồng xu đường kính $2$ cm cách mắt $2{,}2$ m che vừa khít Mặt Trăng; Mặt Trăng cách Trái Đất $384\,000$ km.…</td><td><b>3491</b><br><span style="color:var(--muted);font-size:14px">$d = 384\,000 \cdot \dfrac{0{,}02}{2{,}2} \approx 3490{,}9 \approx 3491$ km.</span></td></tr>
+<tr><td>8</td><td>Vì sao trong bài toán bi-a, tỉ số khoảng cách từ hai bi đến băng bằng tỉ số $PI : IQ$?</td><td><b>A. Vì hai tam giác vuông tạo bởi các bi, chân đường vuông góc và điểm $I$ đồng dạng (g.g)</b></td></tr>
+</table>
+<h3><a href="../04_dong_dang/kiem_tra_chuong.html">Kiểm tra chương 4</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hai tam giác đồng dạng theo tỉ số $k = 3$. Tỉ số diện tích của chúng là:</td><td><b>C. $9$</b></td></tr>
+<tr><td>2</td><td>$\triangle ABC \backsim \triangle DEF$ với $AB = 3$, $DE = 7{,}5$. Chu vi $\triangle ABC$ là $12$. Tính chu…</td><td><b>30</b><br><span style="color:var(--muted);font-size:14px">$k = \dfrac{7{,}5}{3} = 2{,}5$, chu vi $\triangle DEF = 2{,}5 \cdot 12 = 30$.</span></td></tr>
+<tr><td>3</td><td>Phép vị tự tâm $I(1; 1)$ tỉ số $2$ biến $A(3; 2)$ thành $A'$. Tính hoành độ của $A'$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$\overrightarrow{IA'} = 2\overrightarrow{IA} = 2(2; 1) = (4; 2)$, nên $A'(5; 3)$.</span></td></tr>
+<tr><td>4</td><td>Tam giác có ba cạnh $3, 5, 7$ đồng dạng với tam giác nào?</td><td><b>B. $4{,}5;\ 7{,}5;\ 10{,}5$</b></td></tr>
+<tr><td>5</td><td>Tam giác $ABC$ và $A'B'C'$ có $\hat A = \hat A'$, $\hat B = \hat B'$. Biết $AB = 8$, $BC = 10$, $A'B' = 6$.…</td><td><b>7,5</b><br><span style="color:var(--muted);font-size:14px">$\triangle A'B'C' \backsim \triangle ABC$ (g.g), $k = \dfrac68 = 0{,}75$, $B'C' = 0{,}75\cdot 10 = 7{,}5$.</span></td></tr>
+<tr><td>6</td><td>Tam giác $ABC$ có $AB = 4$, $AC = 6$; tam giác $DEF$ có $DE = 6$, $DF = 9$. Cần thêm điều kiện nào để $\tri…</td><td><b>A. $\hat D = \hat A$</b></td></tr>
+<tr><td>7</td><td>Tam giác $ABC$ có $MN \parallel BC$ ($M \in AB$, $N \in AC$), $AN = 5$, $NC = 3$, $AB = 12$. Tính $AM$.</td><td><b>7,5</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{AM}{AB} = \dfrac{AN}{AC} = \dfrac58$, nên $AM = 12\cdot \dfrac58 = 7{,}5$.</span></td></tr>
+<tr><td>8</td><td>Tam giác $ABC$ vuông tại $A$, đường cao $AH$, $AH = 6$, $BH = 3$. Tính $HC$.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$AH^2 = BH\cdot HC$ nên $HC = \dfrac{36}{3} = 12$.</span></td></tr>
+<tr><td>9</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 7$, $BC = 25$. Tính đường cao $AH$.</td><td><b>6,72</b><br><span style="color:var(--muted);font-size:14px">$AC = \sqrt{625 - 49} = 24$; $AH = \dfrac{7\cdot 24}{25} = 6{,}72$.</span></td></tr>
+<tr><td>10</td><td>Tam giác $ABC$ có diện tích $50$ cm². Đường thẳng $MN \parallel BC$ với $\dfrac{AM}{AB} = \dfrac25$. Tính d…</td><td><b>42</b><br><span style="color:var(--muted);font-size:14px">$\triangle AMN \backsim \triangle ABC$ tỉ số $\tfrac25$, nên $S_{AMN} = 50 \cdot \tfrac{4}{25} = 8$. Diện tích tứ giác $BMNC = 50 - 8 = 42$ cm².</span></td></tr>
+<tr><td>11</td><td>Tam giác $ABC$ có $AB = 6$, $AC = 10$, $BC = 12$. Phân giác $AD$. Tính $DB$.</td><td><b>4,5</b><br><span style="color:var(--muted);font-size:14px">$DB = \dfrac{12 \cdot 6}{6 + 10} = 4{,}5$.</span></td></tr>
+<tr><td>12</td><td>Phân giác $AD$ của tam giác $ABC$ có $DB = 3$, $DC = 5$, $AC = 8$. Tính $AB$.</td><td><b>4,8</b><br><span style="color:var(--muted);font-size:14px">$AB = AC \cdot \dfrac{DB}{DC} = 8 \cdot \dfrac35 = 4{,}8$.</span></td></tr>
+<tr><td>13</td><td>Cọc cao $1{,}5$ m có bóng $2{,}5$ m. Cùng lúc, bóng của cột cờ dài $15$ m. Tính chiều cao cột cờ (m).</td><td><b>9</b><br><span style="color:var(--muted);font-size:14px">$H = \dfrac{15 \cdot 1{,}5}{2{,}5} = 9$ m.</span></td></tr>
+<tr><td>14</td><td>Băng dưới bàn bi-a là trục $Ox$. Bi $P(2; 3)$ chạm băng dưới rồi trúng bi $Q(8; 1)$. Tìm hoành độ điểm chạm…</td><td><b>6,5</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{P_0I}{IQ_0} = \dfrac31$, $P_0I + IQ_0 = 6$, nên $P_0I = 4{,}5$ và $I(6{,}5; 0)$.</span></td></tr>
+<tr><td>15</td><td>Hình chữ nhật có chiều dài $a$, chiều rộng $b$. Cắt đi hình vuông cạnh $b$, phần còn lại đồng dạng với hình…</td><td><b>C. $\dfrac ab = \dfrac{1+\sqrt5}{2}$</b></td></tr>
+</table>
+</details>
+<details class="loi-giai"><summary><b>Chương 5. Tam giác vuông và lượng giác</b></summary>
+<h3><a href="../05_tam_giac_vuong_luong_giac/b1_pythagore.html">Định lý Pythagore</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tam giác $ABC$ vuông tại $A$. Đẳng thức nào đúng?</td><td><b>A. $BC^2 = AB^2 + AC^2$</b></td></tr>
+<tr><td>2</td><td>Một tam giác vuông có hai cạnh góc vuông dài 9 và 12. Tính cạnh huyền.</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">$\sqrt{9^2 + 12^2} = \sqrt{81 + 144} = \sqrt{225} = 15$.</span></td></tr>
+<tr><td>3</td><td>Một tam giác vuông có cạnh huyền 25 và một cạnh góc vuông 7. Tính cạnh góc vuông còn lại.</td><td><b>24</b><br><span style="color:var(--muted);font-size:14px">$\sqrt{25^2 - 7^2} = \sqrt{625 - 49} = \sqrt{576} = 24$.</span></td></tr>
+<tr><td>4</td><td>Bộ ba độ dài nào là ba cạnh của một tam giác vuông?</td><td><b>C. $10; 24; 26$</b></td></tr>
+<tr><td>5</td><td>Tính độ dài đường chéo của hình vuông cạnh 5 cm (làm tròn đến hai chữ số thập phân).</td><td><b>7,0711</b><br><span style="color:var(--muted);font-size:14px">Đường chéo chia hình vuông thành hai tam giác vuông cân: $d = \sqrt{5^2 + 5^2} = 5\sqrt2 \approx 7{,}07$ cm.</span></td></tr>
+<tr><td>6</td><td>Một chiếc thang dài 6,5 m dựa vào tường, đầu thang chạm tường ở độ cao 6 m. Chân thang cách chân tường bao …</td><td><b>2,5</b><br><span style="color:var(--muted);font-size:14px">$\sqrt{6{,}5^2 - 6^2} = \sqrt{42{,}25 - 36} = \sqrt{6{,}25} = 2{,}5$ m.</span></td></tr>
+<tr><td>7</td><td>Tam giác có ba cạnh 6, 7, 9 là tam giác gì?</td><td><b>B. Tam giác nhọn</b></td></tr>
+<tr><td>8</td><td>Một khu vườn hình chữ nhật dài 40 m, rộng 30 m. Bạn An đi từ góc này sang góc đối diện theo đường chéo thay…</td><td><b>20</b><br><span style="color:var(--muted);font-size:14px">Đường chéo: $\sqrt{40^2 + 30^2} = 50$ m. Đi dọc hai cạnh: $40 + 30 = 70$ m. Ngắn hơn $70 - 50 = 20$ m.</span></td></tr>
+</table>
+<h3><a href="../05_tam_giac_vuong_luong_giac/b2_tam_giac_vuong_dac_biet.html">Tam giác vuông đặc biệt</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tỉ lệ ba cạnh (đối $30^\circ$ : đối $60^\circ$ : huyền) của tam giác 30° – 60° – 90° là</td><td><b>B. $1 : \sqrt3 : 2$</b></td></tr>
+<tr><td>2</td><td>Tam giác vuông cân có cạnh góc vuông 5. Tính cạnh huyền (làm tròn đến hai chữ số thập phân).</td><td><b>7,0711</b><br><span style="color:var(--muted);font-size:14px">$5\sqrt2 \approx 7{,}07$.</span></td></tr>
+<tr><td>3</td><td>Tam giác vuông cân có cạnh huyền 8. Tính cạnh góc vuông (làm tròn đến hai chữ số thập phân).</td><td><b>5,6569</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{8}{\sqrt2} = 4\sqrt2 \approx 5{,}66$.</span></td></tr>
+<tr><td>4</td><td>Tam giác vuông có một góc $30^\circ$ và cạnh huyền 14. Tính cạnh góc vuông đối diện góc $30^\circ$.</td><td><b>7</b><br><span style="color:var(--muted);font-size:14px">Cạnh đối diện góc 30° bằng nửa cạnh huyền: $14 : 2 = 7$.</span></td></tr>
+<tr><td>5</td><td>Tam giác 30° – 60° – 90° có cạnh đối diện góc $30^\circ$ bằng 4. Tính cạnh đối diện góc $60^\circ$ (làm trò…</td><td><b>6,9282</b><br><span style="color:var(--muted);font-size:14px">$4\sqrt3 \approx 6{,}93$.</span></td></tr>
+<tr><td>6</td><td>Tam giác 30° – 60° – 90° có cạnh đối diện góc $60^\circ$ bằng 6. Cạnh huyền bằng</td><td><b>B. $4\sqrt3$</b></td></tr>
+<tr><td>7</td><td>Tính đường cao của tam giác đều cạnh 10 (làm tròn đến hai chữ số thập phân).</td><td><b>8,6603</b><br><span style="color:var(--muted);font-size:14px">$h = \dfrac{10\sqrt3}{2} = 5\sqrt3 \approx 8{,}66$.</span></td></tr>
+<tr><td>8</td><td>Một hình vuông có đường chéo dài 12 cm. Tính diện tích hình vuông (cm²).</td><td><b>72</b><br><span style="color:var(--muted);font-size:14px">Cạnh hình vuông $= \dfrac{12}{\sqrt2} = 6\sqrt2$, diện tích $= (6\sqrt2)^2 = 72$ cm². Cách khác: $S = \dfrac{d^2}{2} = \dfrac{144}{2} = 72$.</span></td></tr>
+</table>
+<h3><a href="../05_tam_giac_vuong_luong_giac/b3_ti_so_dong_dang.html">Tỉ số trong tam giác vuông đồng dạng</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hai tam giác vuông có một góc nhọn bằng nhau thì</td><td><b>B. đồng dạng</b></td></tr>
+<tr><td>2</td><td>Tam giác vuông có hai cạnh góc vuông 5 và 12, cạnh huyền 13. Gọi $\alpha$ là góc đối diện cạnh 5. Tính tỉ s…</td><td><b>0,3846</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{5}{13} \approx 0{,}38$.</span></td></tr>
+<tr><td>3</td><td>Tam giác vuông thứ nhất có cạnh kề 8 và cạnh đối 6 đối với góc $\alpha$. Tam giác vuông thứ hai cũng chứa g…</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">Tỉ số đối : kề như nhau: $\dfrac{x}{20} = \dfrac68$ nên $x = 15$.</span></td></tr>
+<tr><td>4</td><td>Góc nhọn $\alpha$ có tỉ số đối : kề bằng $0{,}75$. Tam giác vuông chứa $\alpha$ có cạnh kề 12. Tính cạnh hu…</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">Cạnh đối $= 0{,}75 \cdot 12 = 9$; cạnh huyền $= \sqrt{12^2 + 9^2} = 15$.</span></td></tr>
+<tr><td>5</td><td>Phóng to một tam giác vuông gấp 3 lần (giữ nguyên các góc). Đại lượng nào thay đổi ?</td><td><b>D. Độ dài cạnh huyền</b></td></tr>
+<tr><td>6</td><td>Một cây gậy cao 2 m có bóng dài 1,5 m. Cùng lúc đó, bóng của một tòa nhà dài 18 m. Tòa nhà cao bao nhiêu mét?</td><td><b>24</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{h}{18} = \dfrac{2}{1{,}5}$ nên $h = 24$ m.</span></td></tr>
+<tr><td>7</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 9$, $AC = 12$. Trên cạnh $AB$ lấy $M$ với $AM = 3$; đường thẳng qua $…</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">Tam \text{giác} $BMN$ \text{vuông} \text{tại} $M$ \text{và} tam \text{giác} $BAC$ \text{vuông} \text{tại} $A$ \text{có} chung \text{góc} $B$ \text{nên} \text{đồng} \text{dạng}. $BM = 9 - 3 = 6$, \text{nên} $\dfrac{MN}{AC} = \dfrac{BM}{BA}$, $MN = 12 \cdot \dfrac69 = 8$.</span></td></tr>
+<tr><td>8</td><td>Tam giác vuông có hai cạnh góc vuông 7 và 24 (cạnh huyền 25). Một tam giác đồng dạng với nó có cạnh huyền 5…</td><td><b>B. $14$</b></td></tr>
+</table>
+<h3><a href="../05_tam_giac_vuong_luong_giac/b4_ti_so_luong_giac.html">Tỉ số lượng giác</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tam giác $ABC$ vuông tại $A$. Khi đó $\sin B$ bằng</td><td><b>A. $\dfrac{AC}{BC}$</b></td></tr>
+<tr><td>2</td><td>Tam giác $ABC$ vuông tại $A$. Khi đó $\tan C$ bằng</td><td><b>C. $\dfrac{AB}{AC}$</b></td></tr>
+<tr><td>3</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 8$, $AC = 6$. Tính $\cos B$.</td><td><b>0,8</b><br><span style="color:var(--muted);font-size:14px">$BC = \sqrt{64 + 36} = 10$, $\cos B = \dfrac{AB}{BC} = \dfrac{8}{10} = 0{,}8$.</span></td></tr>
+<tr><td>4</td><td>Tính $\tan 60^\circ$ (làm tròn đến hai chữ số thập phân).</td><td><b>1,7321</b><br><span style="color:var(--muted);font-size:14px">$\tan 60^\circ = \sqrt3 \approx 1{,}73$.</span></td></tr>
+<tr><td>5</td><td>Cho góc nhọn $\alpha$ có $\cos\alpha = 0{,}6$. Tính $\tan\alpha$ (làm tròn đến hai chữ số thập phân).</td><td><b>1,3333</b><br><span style="color:var(--muted);font-size:14px">$\sin\alpha = \sqrt{1 - 0{,}36} = 0{,}8$, nên $\tan\alpha = \dfrac{0{,}8}{0{,}6} = \dfrac43 \approx 1{,}33$.</span></td></tr>
+<tr><td>6</td><td>Với góc nhọn $\alpha$, đẳng thức nào không thể xảy ra?</td><td><b>D. $\sin\alpha = 1{,}2$</b></td></tr>
+<tr><td>7</td><td>Tam giác $ABC$ vuông tại $A$ có $BC = 20$ và $\sin B = 0{,}35$. Tính $AC$.</td><td><b>7</b><br><span style="color:var(--muted);font-size:14px">$AC = BC \cdot \sin B = 20 \cdot 0{,}35 = 7$.</span></td></tr>
+<tr><td>8</td><td>Tìm góc nhọn $\alpha$ (đơn vị độ, làm tròn đến hai chữ số thập phân) biết $\tan\alpha = 0{,}75$.</td><td><b>36,8699</b><br><span style="color:var(--muted);font-size:14px">$\alpha = \tan^{-1} 0{,}75 \approx 36{,}87^\circ$ (đây là góc nhỏ của tam giác 3 – 4 – 5).</span></td></tr>
+</table>
+<h3><a href="../05_tam_giac_vuong_luong_giac/b5_giai_tam_giac_vuong.html">Giải tam giác vuông</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tam giác $ABC$ vuông tại $A$, $a = BC$, $b = AC$, $c = AB$. Hệ thức nào đúng?</td><td><b>B. $b = a\sin B$</b></td></tr>
+<tr><td>2</td><td>Tam giác $ABC$ vuông tại $A$ có $BC = 10$, $\widehat B = 30^\circ$. Tính $AC$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$AC = BC\sin 30^\circ = 10 \cdot 0{,}5 = 5$.</span></td></tr>
+<tr><td>3</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 8$, $\widehat B = 35^\circ$. Tính $AC$ (làm tròn đến hai chữ số thập …</td><td><b>5,6017</b><br><span style="color:var(--muted);font-size:14px">$AC = AB\tan B = 8\tan 35^\circ \approx 5{,}60$.</span></td></tr>
+<tr><td>4</td><td>Tam giác $ABC$ vuông tại $A$ có $AC = 9$, $AB = 12$. Tính góc $B$ (độ, làm tròn đến hai chữ số thập phân).</td><td><b>36,8699</b><br><span style="color:var(--muted);font-size:14px">$\tan B = \dfrac{9}{12} = 0{,}75$ nên $\widehat B \approx 36{,}87^\circ$.</span></td></tr>
+<tr><td>5</td><td>Tam giác $ABC$ vuông tại $A$ có $BC = 25$, $AC = 7$. Tính $AB$.</td><td><b>24</b><br><span style="color:var(--muted);font-size:14px">$AB = \sqrt{625 - 49} = 24$.</span></td></tr>
+<tr><td>6</td><td>Tam giác $ABC$ vuông tại $A$ có $BC = 12$, $\widehat C = 60^\circ$. Độ dài $AB$ là</td><td><b>B. $6\sqrt3$</b></td></tr>
+<tr><td>7</td><td>Tam giác $ABC$ vuông tại $A$ có $AC = 5$, $\widehat B = 25^\circ$. Tính cạnh huyền $BC$ (làm tròn đến hai c…</td><td><b>11,831</b><br><span style="color:var(--muted);font-size:14px">$AC$ là cạnh đối của góc $B$: $BC = \dfrac{AC}{\sin B} = \dfrac{5}{\sin 25^\circ} \approx 11{,}83$.</span></td></tr>
+<tr><td>8</td><td>Tam giác cân có đáy 10 cm và góc ở đáy $70^\circ$. Tính đường cao ứng với cạnh đáy (cm, làm tròn đến hai ch…</td><td><b>13,7374</b><br><span style="color:var(--muted);font-size:14px">Đường cao chia tam giác cân thành hai tam giác vuông có cạnh kề (nửa đáy) bằng 5: $h = 5\tan 70^\circ \approx 13{,}74$ cm.</span></td></tr>
+</table>
+<h3><a href="../05_tam_giac_vuong_luong_giac/b6_goc_phu_nhau.html">Sin và cos của hai góc phụ nhau</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Đẳng thức nào đúng?</td><td><b>A. $\cos 30^\circ = \sin 60^\circ$</b></td></tr>
+<tr><td>2</td><td>Tìm góc nhọn $\alpha$ (độ) biết $\sin\alpha = \cos 35^\circ$.</td><td><b>55</b><br><span style="color:var(--muted);font-size:14px">$\cos 35^\circ = \sin 55^\circ$, nên $\alpha = 55^\circ$.</span></td></tr>
+<tr><td>3</td><td>Tính $\dfrac{\cos 50^\circ}{\sin 40^\circ} + \tan 30^\circ \cdot \tan 60^\circ$.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$\cos 50^\circ = \sin 40^\circ$ nên phân số bằng 1; $\tan 30^\circ \cdot \tan 60^\circ = 1$. Tổng bằng 2.</span></td></tr>
+<tr><td>4</td><td>Tính $\sin^2 35^\circ + \sin^2 55^\circ$.</td><td><b>1</b><br><span style="color:var(--muted);font-size:14px">$\sin 55^\circ = \cos 35^\circ$ nên tổng bằng $\sin^2 35^\circ + \cos^2 35^\circ = 1$.</span></td></tr>
+<tr><td>5</td><td>Tam giác $ABC$ vuông tại $A$. Khi đó $\cos B$ bằng</td><td><b>B. $\sin C$</b></td></tr>
+<tr><td>6</td><td>Cho góc nhọn $\alpha$ có $\sin\alpha = 0{,}28$. Tính $\sin(90^\circ - \alpha)$.</td><td><b>0,96</b><br><span style="color:var(--muted);font-size:14px">$\sin(90^\circ - \alpha) = \cos\alpha = \sqrt{1 - 0{,}28^2} = \sqrt{0{,}9216} = 0{,}96$.</span></td></tr>
+<tr><td>7</td><td>Thứ tự tăng dần của $\sin 20^\circ$, $\cos 40^\circ$, $\sin 75^\circ$, $\cos 85^\circ$ là</td><td><b>C. $\cos 85^\circ < \sin 20^\circ < \cos 40^\circ < \sin 75^\circ$</b></td></tr>
+<tr><td>8</td><td>Tam giác $ABC$ vuông tại $A$ có $\sin B = 0{,}8$. Tính $\tan C$.</td><td><b>0,75</b><br><span style="color:var(--muted);font-size:14px">$\cos B = 0{,}6$. $\tan C = \dfrac{AB}{AC} = \dfrac{\cos B}{\sin B} = \dfrac{0{,}6}{0{,}8} = 0{,}75$.</span></td></tr>
+</table>
+<h3><a href="../05_tam_giac_vuong_luong_giac/b7_bai_toan_thuc_te.html">Bài toán thực tế</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Góc hạ là góc tạo bởi</td><td><b>B. tia nhìn xuống và đường nằm ngang qua mắt</b></td></tr>
+<tr><td>2</td><td>Khi tia nắng tạo với mặt đất góc $35^\circ$, bóng của một cây trên mặt đất dài 12 m. Tính chiều cao của cây…</td><td><b>8,4025</b><br><span style="color:var(--muted);font-size:14px">$h = 12\tan 35^\circ \approx 8{,}40$ m.</span></td></tr>
+<tr><td>3</td><td>Dây diều dài 80 m, căng thẳng và tạo với mặt đất góc $50^\circ$. Diều cao bao nhiêu mét so với tay cầm (làm…</td><td><b>61,2836</b><br><span style="color:var(--muted);font-size:14px">$h = 80\sin 50^\circ \approx 61{,}28$ m.</span></td></tr>
+<tr><td>4</td><td>Từ nóc một tòa nhà cao 60 m, nhìn một chiếc ô tô với góc hạ $25^\circ$. Ô tô cách chân tòa nhà bao nhiêu mé…</td><td><b>128,6704</b><br><span style="color:var(--muted);font-size:14px">$d = \dfrac{60}{\tan 25^\circ} \approx 128{,}67$ m.</span></td></tr>
+<tr><td>5</td><td>Một tấm ván dài 10 m (đo dọc tấm ván) bắc lên bậc cao 1 m. Góc nghiêng của tấm ván với mặt đất xấp xỉ</td><td><b>A. $5{,}74^\circ$</b></td></tr>
+<tr><td>6</td><td>Một người có mắt cách mặt đất 1,5 m, đứng cách chân tháp 40 m, nhìn đỉnh tháp với góc nâng $32^\circ$. Tính…</td><td><b>26,4948</b><br><span style="color:var(--muted);font-size:14px">$H = 1{,}5 + 40\tan 32^\circ \approx 1{,}5 + 24{,}99 = 26{,}49$ m.</span></td></tr>
+<tr><td>7</td><td>Đứng tại $P$ nhìn đỉnh tháp với góc nâng $25^\circ$; tiến 30 m thẳng về phía tháp đến $Q$ thì góc nâng là $…</td><td><b>31,4877</b><br><span style="color:var(--muted);font-size:14px">\text{Gọi} $x$ \text{là} \text{khoảng} \text{cách} \text{từ} $Q$ \text{tới} \text{chân} \text{tháp}: $x\tan 40^\circ = (x + 30)\tan 25^\circ$, \text{nên} $x = \dfrac{30\tan 25^\circ}{\tan 40^\circ - \tan 25^\circ} \approx 37{,}53$ m \text{và} $H = x\tan 40^\circ \approx 31{,}49$ m.</span></td></tr>
+<tr><td>8</td><td>Một máy bay đang ở độ cao 1500 m bắt đầu hạ cánh theo đường thẳng tạo với mặt đất góc $3^\circ$. Tính khoản…</td><td><b>28,6217</b><br><span style="color:var(--muted);font-size:14px">$d = \dfrac{1500}{\tan 3^\circ} \approx 28\,622$ m $\approx 28{,}62$ km.</span></td></tr>
+</table>
+<h3><a href="../05_tam_giac_vuong_luong_giac/kiem_tra_chuong.html">Kiểm tra chương 5</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tam giác vuông có hai cạnh góc vuông 20 và 21. Tính cạnh huyền.</td><td><b>29</b><br><span style="color:var(--muted);font-size:14px">$\sqrt{400 + 441} = \sqrt{841} = 29$.</span></td></tr>
+<tr><td>2</td><td>Bộ ba độ dài nào là ba cạnh của một tam giác vuông?</td><td><b>A. $12; 35; 37$</b></td></tr>
+<tr><td>3</td><td>Tam giác vuông cân có cạnh góc vuông 9. Tính cạnh huyền (làm tròn đến hai chữ số thập phân).</td><td><b>12,7279</b><br><span style="color:var(--muted);font-size:14px">$9\sqrt2 \approx 12{,}73$.</span></td></tr>
+<tr><td>4</td><td>Tam giác 30° – 60° – 90° có cạnh huyền 18. Tính cạnh đối diện góc $60^\circ$ (làm tròn đến hai chữ số thập …</td><td><b>15,5885</b><br><span style="color:var(--muted);font-size:14px">Cạnh đối $30^\circ$ bằng 9, cạnh đối $60^\circ$ bằng $9\sqrt3 \approx 15{,}59$.</span></td></tr>
+<tr><td>5</td><td>Hai tam giác vuông $ABC$ (vuông tại $A$) và $DEF$ (vuông tại $D$) có $\widehat B = \widehat E$. Khẳng định …</td><td><b>A. $\dfrac{AC}{BC} = \dfrac{DF}{EF}$</b></td></tr>
+<tr><td>6</td><td>Một cọc cao 3 m có bóng dài 4 m. Cùng lúc đó, bóng của một tháp nước dài 36 m. Tháp nước cao bao nhiêu mét?</td><td><b>27</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{h}{36} = \dfrac34$ nên $h = 27$ m.</span></td></tr>
+<tr><td>7</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 15$, $AC = 8$. Tính $\sin B$ (làm tròn đến hai chữ số thập phân).</td><td><b>0,4706</b><br><span style="color:var(--muted);font-size:14px">$BC = \sqrt{225 + 64} = 17$, $\sin B = \dfrac{AC}{BC} = \dfrac{8}{17} \approx 0{,}47$.</span></td></tr>
+<tr><td>8</td><td>Giá trị của $\sin 45^\circ$ là</td><td><b>C. $\dfrac{\sqrt2}{2}$</b></td></tr>
+<tr><td>9</td><td>Tam giác $ABC$ vuông tại $A$ có $BC = 30$, $\widehat B = 52^\circ$. Tính $AB$ (làm tròn đến hai chữ số thập…</td><td><b>18,4698</b><br><span style="color:var(--muted);font-size:14px">$AB$ là cạnh kề góc $B$: $AB = 30\cos 52^\circ \approx 18{,}47$.</span></td></tr>
+<tr><td>10</td><td>Tam giác $ABC$ vuông tại $A$ có $AB = 7$, $AC = 24$. Tính góc $C$ (độ, làm tròn đến hai chữ số thập phân).</td><td><b>16,2602</b><br><span style="color:var(--muted);font-size:14px">$\tan C = \dfrac{AB}{AC} = \dfrac{7}{24}$, nên $\widehat C \approx 16{,}26^\circ$.</span></td></tr>
+<tr><td>11</td><td>$\tan 25^\circ$ bằng</td><td><b>B. $\dfrac{1}{\tan 65^\circ}$</b></td></tr>
+<tr><td>12</td><td>Tính $\sin^2 10^\circ + \sin^2 80^\circ$.</td><td><b>1</b><br><span style="color:var(--muted);font-size:14px">$\sin 80^\circ = \cos 10^\circ$, tổng bằng $\sin^2 10^\circ + \cos^2 10^\circ = 1$.</span></td></tr>
+<tr><td>13</td><td>Đứng cách chân cột ăng-ten 50 m, mắt cách mặt đất 1,6 m, nhìn đỉnh cột với góc nâng $38^\circ$. Tính chiều …</td><td><b>40,6643</b><br><span style="color:var(--muted);font-size:14px">$H = 1{,}6 + 50\tan 38^\circ \approx 1{,}6 + 39{,}06 = 40{,}66$ m.</span></td></tr>
+<tr><td>14</td><td>Từ đỉnh vách đá cao 80 m so với mặt biển, nhìn hai chiếc thuyền nằm cùng một phía, thẳng hàng với chân vách…</td><td><b>58,5641</b><br><span style="color:var(--muted);font-size:14px">Khoảng cách tới chân vách: $\dfrac{80}{\tan 30^\circ} = 80\sqrt3 \approx 138{,}56$ m và $\dfrac{80}{\tan 45^\circ} = 80$ m. Hai thuyền cách nhau $80\sqrt3 - 80 \approx 58{,}56$ m.</span></td></tr>
+</table>
+</details>
+<details class="loi-giai"><summary><b>Chương 6. Hình học giải tích</b></summary>
+<h3><a href="../06_hinh_hoc_giai_tich/b1_khoang_cach_trung_diem.html">Khoảng cách và trung điểm</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Khoảng cách từ gốc tọa độ $O(0; 0)$ đến điểm $B(3; 4)$ bằng:</td><td><b>B. $5$</b></td></tr>
+<tr><td>2</td><td>Cho $A(2; -4)$ và $B(6; 8)$. Tìm tung độ trung điểm của $AB$.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$y_M = \frac{-4 + 8}{2} = 2$.</span></td></tr>
+<tr><td>3</td><td>Tính khoảng cách giữa $C(-1; 2)$ và $D(5; -6)$.</td><td><b>10</b><br><span style="color:var(--muted);font-size:14px">$CD = \sqrt{(5 + 1)^2 + (-6 - 2)^2} = \sqrt{36 + 64} = 10$.</span></td></tr>
+<tr><td>4</td><td>Tính khoảng cách giữa $E(2; 1)$ và $F(5; 3)$ (làm tròn đến hai chữ số thập phân).</td><td><b>3,61</b><br><span style="color:var(--muted);font-size:14px">$EF = \sqrt{3^2 + 2^2} = \sqrt{13} \approx 3{,}61$.</span></td></tr>
+<tr><td>5</td><td>Điểm $M(1; 4)$ là trung điểm của $AB$ với $A(-3; 2)$. Tọa độ của $B$ là:</td><td><b>B. $(5; 6)$</b></td></tr>
+<tr><td>6</td><td>Tính chu vi tam giác có các đỉnh $A(1; 1)$, $B(4; 5)$, $C(1; 5)$.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$AB = \sqrt{9 + 16} = 5$, $BC = |1 - 4| = 3$, $CA = |5 - 1| = 4$. Chu vi $= 5 + 3 + 4 = 12$.</span></td></tr>
+<tr><td>7</td><td>Tam giác có các đỉnh $A(-2; 0)$, $B(2; 0)$, $C(0; 3)$ là tam giác gì?</td><td><b>B. Tam giác cân tại $C$ (không đều)</b></td></tr>
+<tr><td>8</td><td>Điểm $P(x; 3)$ với $x > 0$ cách $Q(1; -1)$ một khoảng bằng 5. Tìm $x$.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$(x - 1)^2 + (3 + 1)^2 = 25 \Rightarrow (x - 1)^2 = 9 \Rightarrow x = 4$ hoặc $x = -2$. Vì $x > 0$ nên $x = 4$.</span></td></tr>
+</table>
+<h3><a href="../06_hinh_hoc_giai_tich/b2_chia_doan_thang.html">Chia đoạn thẳng theo tỉ số</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Điểm chia đoạn $AB$ theo tỉ số $AP : PB = 1 : 1$ chính là:</td><td><b>C. Trung điểm của $AB$</b></td></tr>
+<tr><td>2</td><td>Cho $A(0; 0)$, $B(6; 9)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 2 : 1$. Tìm hoành độ của $P$.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">$x_P = \frac{1\cdot 0 + 2\cdot 6}{3} = 4$ (và $y_P = 6$).</span></td></tr>
+<tr><td>3</td><td>Cho $A(2; -1)$, $B(10; 7)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 3 : 1$. Tìm tung độ của $P$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$y_P = \frac{1\cdot(-1) + 3\cdot 7}{4} = \frac{20}{4} = 5$. (Hoành độ: $\frac{2 + 30}{4} = 8$.)</span></td></tr>
+<tr><td>4</td><td>Chia đoạn $AB$ với $A(-3; 4)$, $B(9; -4)$ thành 4 phần bằng nhau. Điểm chia gần $A$ nhất là:</td><td><b>A. $(0; 2)$</b></td></tr>
+<tr><td>5</td><td>Tìm tung độ trọng tâm $G$ của tam giác $A(2; 7)$, $B(-4; 1)$, $C(5; -2)$.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$y_G = \frac{7 + 1 + (-2)}{3} = 2$. (Hoành độ: $\frac{2 - 4 + 5}{3} = 1$.)</span></td></tr>
+<tr><td>6</td><td>Điểm $P(1; 2)$ nằm trên đoạn $AB$ với $AP : PB = 1 : 2$, biết $A(-1; 1)$. Tìm hoành độ của $B$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$AP = \frac{1}{3}AB$ nên độ dời $A \to B$ gấp 3 lần độ dời $A \to P = (2; 1)$. Vậy $B(-1 + 6; 1 + 3) = (5; 4)$.</span></td></tr>
+<tr><td>7</td><td>Cho $A(1; 1)$, $B(7; 4)$, $P(5; 3)$. Tỉ số $AP : PB$ bằng:</td><td><b>B. $2 : 1$</b></td></tr>
+<tr><td>8</td><td>Cho $A(-2; 3)$, $B(10; -3)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 5 : 1$. Tính độ dài $PB$ (làm tròn đến …</td><td><b>2,24</b><br><span style="color:var(--muted);font-size:14px">$P\left(\frac{-2 + 50}{6}; \frac{3 - 15}{6}\right) = (8; -2)$. $PB = \sqrt{2^2 + 1^2} = \sqrt5 \approx 2{,}24$. (Hoặc: $PB = \frac{1}{6}AB = \frac{\sqrt{180}}{6}$.)</span></td></tr>
+</table>
+<h3><a href="../06_hinh_hoc_giai_tich/b3_chu_vi_dien_tich_toa_do.html">Chu vi, diện tích trên mặt phẳng tọa độ</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Diện tích hình chữ nhật $A(1; 1)$, $B(6; 1)$, $C(6; 4)$, $D(1; 4)$ bằng:</td><td><b>A. $15$</b></td></tr>
+<tr><td>2</td><td>Tính chu vi hình chữ nhật $A(1; 1)$, $B(6; 1)$, $C(6; 4)$, $D(1; 4)$.</td><td><b>16</b><br><span style="color:var(--muted);font-size:14px">Chu vi $= 2(5 + 3) = 16$.</span></td></tr>
+<tr><td>3</td><td>Tính diện tích tam giác $A(0; 0)$, $B(8; 0)$, $C(3; 6)$.</td><td><b>24</b><br><span style="color:var(--muted);font-size:14px">Đáy $AB = 8$ nằm trên trục hoành, chiều cao là tung độ của $C$: $6$. $S = \frac{1}{2}\cdot 8\cdot 6 = 24$.</span></td></tr>
+<tr><td>4</td><td>Tính chu vi tam giác $A(1; 2)$, $B(4; 6)$, $C(7; 2)$.</td><td><b>16</b><br><span style="color:var(--muted);font-size:14px">$AB = \sqrt{9 + 16} = 5$, $BC = \sqrt{9 + 16} = 5$, $CA = 6$. Chu vi $= 16$.</span></td></tr>
+<tr><td>5</td><td>Dùng công thức dây giày, tính diện tích tam giác $A(-2; 1)$, $B(3; -2)$, $C(4; 3)$.</td><td><b>14</b><br><span style="color:var(--muted);font-size:14px">$(-2)(-2) - 3\cdot 1 = 1$; $3\cdot 3 - 4\cdot(-2) = 17$; $4\cdot 1 - (-2)\cdot 3 = 10$. $\Sigma = 28$, $S = 14$.</span></td></tr>
+<tr><td>6</td><td>Khi tính bằng công thức dây giày, tổng $\Sigma$ (trước khi lấy giá trị tuyệt đối) là một số âm. Điều đó có …</td><td><b>C. Các đỉnh được liệt kê cùng chiều kim đồng hồ</b></td></tr>
+<tr><td>7</td><td>Tính diện tích tứ giác $A(-3; 0)$, $B(0; -4)$, $C(5; 0)$, $D(0; 3)$.</td><td><b>28</b><br><span style="color:var(--muted);font-size:14px">Hai đường chéo $AC$ (trên trục hoành, dài 8) và $BD$ (trên trục tung, dài 7) vuông góc, nên $S = \frac{1}{2}\cdot 8\cdot 7 = 28$.</span></td></tr>
+<tr><td>8</td><td>Cho tam giác $A(0; 0)$, $B(6; 8)$, $C(10; 0)$. Tính độ dài đường cao kẻ từ $C$ xuống $AB$.</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">Đáy $AC = 10$, chiều cao từ $B$ là $8$, nên $S = 40$. $AB = \sqrt{36 + 64} = 10$. $h_C = \frac{2S}{AB} = \frac{80}{10} = 8$.</span></td></tr>
+</table>
+<h3><a href="../06_hinh_hoc_giai_tich/b4_song_song_vuong_goc.html">Đường thẳng song song và vuông góc</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tính hệ số góc của đường thẳng đi qua $A(2; -1)$ và $B(5; 8)$.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">$a = \frac{8 - (-1)}{5 - 2} = \frac{9}{3} = 3$.</span></td></tr>
+<tr><td>2</td><td>Đường thẳng nào song song với $y = -2x + 5$?</td><td><b>B. $y = -2x - 1$</b></td></tr>
+<tr><td>3</td><td>Đường thẳng nào vuông góc với $y = 4x + 1$?</td><td><b>C. $y = -\frac{1}{4}x + 3$</b></td></tr>
+<tr><td>4</td><td>Cho $A(-1; 3)$, $B(3; -5)$. Tính hệ số góc của đường thẳng vuông góc với $AB$.</td><td><b>0,5</b><br><span style="color:var(--muted);font-size:14px">Hệ số góc $AB$: $\frac{-5 - 3}{3 + 1} = -2$. Hệ số góc vuông góc: $-\frac{1}{-2} = \frac{1}{2} = 0{,}5$.</span></td></tr>
+<tr><td>5</td><td>Đường thẳng đi qua $(1; 1)$ và $(1; 5)$ có hệ số góc:</td><td><b>C. Không có (đường thẳng đứng)</b></td></tr>
+<tr><td>6</td><td>Tìm $m$ để đường thẳng $y = (2m + 1)x - 3$ song song với đường thẳng $y = 5x + 2$.</td><td><b>2</b><br><span style="color:var(--muted);font-size:14px">$2m + 1 = 5 \Rightarrow m = 2$ (và $-3 \ne 2$ nên không trùng).</span></td></tr>
+<tr><td>7</td><td>Đường thẳng qua $O(0; 0)$ và $B(2; k)$ vuông góc với đường thẳng qua $C(1; 1)$ và $D(5; 3)$. Tìm $k$.</td><td><b>-4</b><br><span style="color:var(--muted);font-size:14px">Hệ số góc $CD = \frac{2}{4} = \frac{1}{2}$, nên hệ số góc $OB$ phải là $-2$: $\frac{k}{2} = -2 \Rightarrow k = -4$.</span></td></tr>
+<tr><td>8</td><td>Tứ giác $A(0; 0)$, $B(4; 1)$, $C(5; 5)$, $D(1; 4)$ là:</td><td><b>B. Hình thoi (không phải hình vuông)</b></td></tr>
+</table>
+<h3><a href="../06_hinh_hoc_giai_tich/b5_phuong_trinh_duong_thang.html">Phương trình đường thẳng song song, vuông góc</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Đường thẳng qua $M(1; 2)$ và song song với $y = 3x + 5$ là:</td><td><b>B. $y = 3x - 1$</b></td></tr>
+<tr><td>2</td><td>Đường thẳng qua $M(2; 5)$ có hệ số góc $-3$ có phương trình $y = -3x + b$. Tìm $b$.</td><td><b>11</b><br><span style="color:var(--muted);font-size:14px">$b = y_0 - a x_0 = 5 - (-3)\cdot 2 = 11$.</span></td></tr>
+<tr><td>3</td><td>Đường thẳng qua $M(4; 0)$ và vuông góc với $y = 2x + 1$ là:</td><td><b>C. $y = -\frac{1}{2}x + 2$</b></td></tr>
+<tr><td>4</td><td>Đường thẳng qua $M(-3; 1)$ song song với đường thẳng $2x - y + 4 = 0$ có phương trình $y = ax + b$. Tìm $b$.</td><td><b>7</b><br><span style="color:var(--muted);font-size:14px">$2x - y + 4 = 0 \iff y = 2x + 4$, hệ số góc 2. $b = 1 - 2\cdot(-3) = 7$. Đường cần tìm: $y = 2x + 7$.</span></td></tr>
+<tr><td>5</td><td>Đường thẳng qua $M(3; -2)$ vuông góc với $y = 3x - 4$ có phương trình $y = ax + b$. Tìm $b$.</td><td><b>-1</b><br><span style="color:var(--muted);font-size:14px">Hệ số góc $-\frac{1}{3}$; $b = -2 - \left(-\frac{1}{3}\right)\cdot 3 = -1$.</span></td></tr>
+<tr><td>6</td><td>Đường trung trực của đoạn $AB$ với $A(1; 1)$, $B(5; 3)$ cắt trục tung tại điểm có tung độ bằng bao nhiêu?</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">Trung điểm $(3; 2)$, hệ số góc $AB = \frac{1}{2}$ nên trung trực có hệ số góc $-2$: $y = -2(x - 3) + 2 = -2x + 8$. Cắt trục tung tại $y = 8$.</span></td></tr>
+<tr><td>7</td><td>Tính khoảng cách từ $M(2; 3)$ đến đường thẳng $d: y = x - 3$ (làm tròn đến hai chữ số thập phân).</td><td><b>2,83</b><br><span style="color:var(--muted);font-size:14px">Đường vuông góc qua $M$: $y = -x + 5$. Giao với $d$: $x - 3 = -x + 5 \Rightarrow x = 4$, $H(4; 1)$. $MH = \sqrt{4 + 4} = 2\sqrt2 \approx 2{,}83$.</span></td></tr>
+<tr><td>8</td><td>Đường thẳng qua gốc tọa độ và vuông góc với đường thẳng $x = 5$ là:</td><td><b>B. $y = 0$</b></td></tr>
+</table>
+<h3><a href="../06_hinh_hoc_giai_tich/b6_chung_minh_toa_do.html">Chứng minh bằng tọa độ</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Muốn chứng minh hai đường thẳng (không thẳng đứng) vuông góc bằng tọa độ, ta kiểm tra:</td><td><b>B. Tích hai hệ số góc bằng $-1$</b></td></tr>
+<tr><td>2</td><td>Cách đặt tọa độ thuận tiện nhất cho hình vuông cạnh $a$ là:</td><td><b>A. $(0; 0)$, $(a; 0)$, $(a; a)$, $(0; a)$</b></td></tr>
+<tr><td>3</td><td>Cho $A(1; 2)$, $B(5; 4)$, $C(7; 8)$. Tìm hoành độ điểm $D$ để $ABCD$ là hình bình hành.</td><td><b>3</b><br><span style="color:var(--muted);font-size:14px">Hai đường chéo $AC$, $BD$ có chung trung điểm: $x_D = x_A + x_C - x_B = 1 + 7 - 5 = 3$ (và $y_D = 2 + 8 - 4 = 6$).</span></td></tr>
+<tr><td>4</td><td>Ba điểm $A(1; 1)$, $B(3; 5)$, $C(5; 9)$:</td><td><b>A. Thẳng hàng</b></td></tr>
+<tr><td>5</td><td>Tam giác $A(0; 0)$, $B(8; 0)$, $C(0; 6)$. Tính độ dài trung tuyến $AM$ ứng với cạnh huyền $BC$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$M(4; 3)$, $AM = 5$; cũng bằng $\frac{1}{2}BC = \frac{1}{2}\cdot 10$.</span></td></tr>
+<tr><td>6</td><td>Tứ giác $A(0; 0)$, $B(4; 0)$, $C(5; 3)$, $D(1; 3)$ là:</td><td><b>A. Hình bình hành, không phải hình chữ nhật hay hình thoi</b></td></tr>
+<tr><td>7</td><td>Cho tam giác $A(-2; 4)$, $B(-4; -2)$, $C(6; -2)$. Gọi $M$, $N$ là trung điểm của $AB$, $AC$. Tính $MN$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$M(-3; 1)$, $N(2; 1)$, $MN = 5$, đúng bằng $\frac{1}{2}BC = \frac{10}{2}$.</span></td></tr>
+<tr><td>8</td><td>Tứ giác $A(0; 0)$, $B(6; 0)$, $C(8; 6)$, $D(2; 8)$. Gọi $M, N, P, Q$ là trung điểm của $AB, BC, CD, DA$. Tí…</td><td><b>22</b><br><span style="color:var(--muted);font-size:14px">$M(3; 0)$, $N(7; 3)$, $P(5; 7)$, $Q(1; 4)$. Dây giày: $9 + 34 + 13 - 12 = 44$, $S = 22$. Nhận xét: $S_{ABCD} = 44$, gấp đôi $S_{MNPQ}$ (điều này luôn đúng).</span></td></tr>
+</table>
+<h3><a href="../06_hinh_hoc_giai_tich/kiem_tra_chuong.html">Kiểm tra chương 6</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tính khoảng cách giữa $A(-3; 1)$ và $B(3; 9)$.</td><td><b>10</b><br><span style="color:var(--muted);font-size:14px">$AB = \sqrt{6^2 + 8^2} = 10$.</span></td></tr>
+<tr><td>2</td><td>Trung điểm của đoạn thẳng nối $A(-1; 6)$ và $B(5; -2)$ là:</td><td><b>A. $(2; 2)$</b></td></tr>
+<tr><td>3</td><td>$M(0; 3)$ là trung điểm của $AB$ với $A(-4; 1)$. Tìm tung độ của $B$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$y_B = 2\cdot 3 - 1 = 5$ (và $x_B = 4$).</span></td></tr>
+<tr><td>4</td><td>Cho $A(1; -2)$, $B(10; 4)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 2 : 1$. Tìm hoành độ của $P$.</td><td><b>7</b><br><span style="color:var(--muted);font-size:14px">$x_P = \frac{1\cdot 1 + 2\cdot 10}{3} = 7$ (và $y_P = \frac{-2 + 8}{3} = 2$).</span></td></tr>
+<tr><td>5</td><td>Trọng tâm của tam giác $A(0; 0)$, $B(6; 0)$, $C(3; 9)$ là:</td><td><b>B. $(3; 3)$</b></td></tr>
+<tr><td>6</td><td>Tính diện tích tam giác $A(-1; -1)$, $B(5; 1)$, $C(1; 4)$.</td><td><b>13</b><br><span style="color:var(--muted);font-size:14px">Dây giày: $(-1)\cdot 1 - 5\cdot(-1) = 4$; $5\cdot 4 - 1\cdot 1 = 19$; $1\cdot(-1) - (-1)\cdot 4 = 3$. $\Sigma = 26$, $S = 13$.</span></td></tr>
+<tr><td>7</td><td>Tính chu vi tam giác $A(0; 0)$, $B(5; 12)$, $C(5; 0)$.</td><td><b>30</b><br><span style="color:var(--muted);font-size:14px">$AB = 13$, $BC = 12$, $CA = 5$; chu vi bằng $30$.</span></td></tr>
+<tr><td>8</td><td>Tính diện tích tứ giác $A(0; 0)$, $B(5; 0)$, $C(6; 4)$, $D(1; 3)$.</td><td><b>17</b><br><span style="color:var(--muted);font-size:14px">Dây giày: $0 + (5\cdot 4 - 6\cdot 0) + (6\cdot 3 - 1\cdot 4) + 0 = 34$, $S = 17$.</span></td></tr>
+<tr><td>9</td><td>Cho $A(1; 4)$, $B(5; -2)$. Tính hệ số góc của đường thẳng vuông góc với $AB$ (làm tròn đến hai chữ số thập …</td><td><b>0,67</b><br><span style="color:var(--muted);font-size:14px">Hệ số góc $AB = \frac{-6}{4} = -\frac{3}{2}$, nên đường vuông góc có hệ số góc $\frac{2}{3} \approx 0{,}67$.</span></td></tr>
+<tr><td>10</td><td>Cặp đường thẳng nào vuông góc với nhau?</td><td><b>C. $y = 2x + 1$ và $y = -\frac{1}{2}x + 3$</b></td></tr>
+<tr><td>11</td><td>Đường thẳng qua $M(2; -1)$ và song song với $y = -3x + 4$ là:</td><td><b>A. $y = -3x + 5$</b></td></tr>
+<tr><td>12</td><td>Đường thẳng qua $M(-2; 5)$ và vuông góc với $y = \frac{1}{2}x - 1$ có phương trình $y = ax + b$. Tìm $b$.</td><td><b>1</b><br><span style="color:var(--muted);font-size:14px">Hệ số góc $-2$; $b = 5 - (-2)\cdot(-2) = 1$. Đường cần tìm: $y = -2x + 1$.</span></td></tr>
+<tr><td>13</td><td>Tứ giác $A(-2; 0)$, $B(0; 4)$, $C(4; 2)$, $D(2; -2)$ là:</td><td><b>D. Hình vuông</b></td></tr>
+<tr><td>14</td><td>Tam giác $A(2; 1)$, $B(6; 4)$, $C(-1; 5)$ vuông tại $A$. Tính độ dài trung tuyến $AM$ (làm tròn đến hai chữ…</td><td><b>3,54</b><br><span style="color:var(--muted);font-size:14px">$AB^2 = 25$, $AC^2 = 25$, $BC^2 = 50$ nên tam giác vuông tại $A$. $AM = \frac{1}{2}BC = \frac{\sqrt{50}}{2} \approx 3{,}54$.</span></td></tr>
+</table>
+</details>
+<details class="loi-giai"><summary><b>Chương 7. Đường tròn</b></summary>
+<h3><a href="../07_duong_tron/b1_yeu_to_duong_tron.html">Các yếu tố của đường tròn</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Đường tròn có đường kính $10$ cm thì bán kính bằng:</td><td><b>C. $5$ cm</b></td></tr>
+<tr><td>2</td><td>Trong các dây của một đường tròn, dây lớn nhất là:</td><td><b>B. đường kính</b></td></tr>
+<tr><td>3</td><td>Đường tròn có bán kính $4{,}5$ cm. Tính đường kính (cm).</td><td><b>9</b><br><span style="color:var(--muted);font-size:14px">$d = 2r = 2 \cdot 4{,}5 = 9$ cm.</span></td></tr>
+<tr><td>4</td><td>Cho đường tròn $(O; 5)$ và điểm $M$ với $OM = 6$. Điểm $M$:</td><td><b>C. nằm ngoài đường tròn</b></td></tr>
+<tr><td>5</td><td>Đường tròn $(O; 10)$ có dây $AB = 12$. Tính khoảng cách từ $O$ đến $AB$.</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">Gọi $H$ là trung điểm $AB$: $HA = 6$, $OH = \sqrt{10^2 - 6^2} = 8$.</span></td></tr>
+<tr><td>6</td><td>Tính chu vi đường tròn bán kính $7$ cm.</td><td><b>43,98</b><br><span style="color:var(--muted);font-size:14px">$C = 2\pi r = 14\pi \approx 43{,}98$ cm.</span></td></tr>
+<tr><td>7</td><td>Dây $AB$ của đường tròn $(O; 10)$ cách tâm một khoảng bằng $6$. Tính độ dài $AB$.</td><td><b>16</b><br><span style="color:var(--muted);font-size:14px">Gọi $H$ là trung điểm $AB$: $HA = \sqrt{10^2 - 6^2} = 8$, nên $AB = 2 \cdot 8 = 16$.</span></td></tr>
+<tr><td>8</td><td>Một đường tròn có chu vi $31{,}4$ cm. Lấy $pi approx 3{,}14$, tính bán kính (cm).</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$r = \dfrac{C}{2\pi} \approx \dfrac{31{,}4}{6{,}28} = 5$ cm.</span></td></tr>
+</table>
+<h3><a href="../07_duong_tron/b2_cung_radian.html">Số đo cung, độ dài cung, radian</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Góc ở tâm $\widehat{AOB} = 70^\circ$. Số đo cung nhỏ $\overset{\frown}{AB}$ là:</td><td><b>B. $70^\circ$</b></td></tr>
+<tr><td>2</td><td>$\pi$ rad bằng:</td><td><b>B. $180^\circ$</b></td></tr>
+<tr><td>3</td><td>Cung nhỏ $\overset{\frown}{AB}$ có số đo $110^\circ$. Cung lớn $\overset{\frown}{AB}$ có số đo bao nhiêu độ?</td><td><b>250</b><br><span style="color:var(--muted);font-size:14px">$360^\circ - 110^\circ = 250^\circ$.</span></td></tr>
+<tr><td>4</td><td>Đổi $\dfrac{3\pi}{4}$ rad sang độ.</td><td><b>135</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{3\pi}{4} \cdot \dfrac{180}{\pi} = 135^\circ$.</span></td></tr>
+<tr><td>5</td><td>Đổi $72^\circ$ sang radian (làm tròn đến hai chữ số thập phân).</td><td><b>1,26</b><br><span style="color:var(--muted);font-size:14px">$72 \cdot \dfrac{\pi}{180} = \dfrac{2\pi}{5} \approx 1{,}2566 \approx 1{,}26$ rad.</span></td></tr>
+<tr><td>6</td><td>Tính độ dài cung $40^\circ$ của đường tròn bán kính $9$ cm.</td><td><b>6,28</b><br><span style="color:var(--muted);font-size:14px">$l = \dfrac{\pi \cdot 9 \cdot 40}{180} = 2\pi \approx 6{,}28$ cm.</span></td></tr>
+<tr><td>7</td><td>Góc $1$ radian là góc ở tâm chắn một cung có độ dài bằng:</td><td><b>C. bán kính</b></td></tr>
+<tr><td>8</td><td>Một bánh xe bán kính $30$ cm lăn không trượt được quãng đường $1$ m. Bánh xe đã quay được một góc bao nhiêu…</td><td><b>3,33</b><br><span style="color:var(--muted);font-size:14px">Điểm trên vành bánh xe đi được cung dài $l = 100$ cm, nên $\theta = \dfrac{l}{r} = \dfrac{100}{30} \approx 3{,}33$ rad.</span></td></tr>
+</table>
+<h3><a href="../07_duong_tron/b3_goc_noi_tiep.html">Góc nội tiếp và góc ở tâm</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Góc nội tiếp chắn cung có số đo $80^\circ$ thì có số đo:</td><td><b>A. $40^\circ$</b></td></tr>
+<tr><td>2</td><td>Góc nội tiếp chắn nửa đường tròn có số đo:</td><td><b>C. $90^\circ$</b></td></tr>
+<tr><td>3</td><td>Góc nội tiếp $\widehat{ACB} = 35^\circ$. Tính số đo (độ) của cung bị chắn $\overset{\frown}{AB}$.</td><td><b>70</b><br><span style="color:var(--muted);font-size:14px">Cung bị chắn có số đo gấp đôi góc nội tiếp: $2 \cdot 35^\circ = 70^\circ$.</span></td></tr>
+<tr><td>4</td><td>Cho $\widehat{AOB} = 130^\circ$ và $M$ nằm trên cung lớn $\overset{\frown}{AB}$. Tính $\widehat{AMB}$ (độ).</td><td><b>65</b><br><span style="color:var(--muted);font-size:14px">$\widehat{AMB}$ chắn cung nhỏ $130^\circ$, nên $\widehat{AMB} = 65^\circ$.</span></td></tr>
+<tr><td>5</td><td>Tứ giác $ABCD$ nội tiếp có $\widehat{A} = 68^\circ$. Tính $\widehat{C}$ (độ).</td><td><b>112</b><br><span style="color:var(--muted);font-size:14px">Hai góc đối bù nhau: $\widehat{C} = 180^\circ - 68^\circ = 112^\circ$.</span></td></tr>
+<tr><td>6</td><td>Hai điểm $C, D$ nằm trên cùng một cung $\overset{\frown}{AB}$ của đường tròn. So sánh $\widehat{ACB}$ và $\…</td><td><b>C. $\widehat{ACB} = \widehat{ADB}$</b></td></tr>
+<tr><td>7</td><td>$AB$ là đường kính của đường tròn, $AB = 13$; điểm $C$ trên đường tròn có $AC = 5$. Tính $BC$.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$\widehat{ACB} = 90^\circ$ (chắn nửa đường tròn), nên $BC = \sqrt{13^2 - 5^2} = 12$.</span></td></tr>
+<tr><td>8</td><td>Tam giác $ABC$ nội tiếp đường tròn $(O; R)$ có $\widehat{BAC} = 45^\circ$ và $BC = 8$. Tính $R$ (làm tròn đ…</td><td><b>5,66</b><br><span style="color:var(--muted);font-size:14px">$\widehat{BOC} = 90^\circ$, tam giác $OBC$ vuông cân tại $O$: $BC = R\sqrt2$, nên $R = \dfrac{8}{\sqrt2} = 4\sqrt2 \approx 5{,}66$.</span></td></tr>
+</table>
+<h3><a href="../07_duong_tron/b4_tiep_tuyen.html">Tiếp tuyến</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Đường thẳng $a$ cách tâm $O$ một khoảng $3$, đường tròn $(O; 5)$. Vị trí tương đối của $a$ và $(O)$ là:</td><td><b>A. cắt nhau</b></td></tr>
+<tr><td>2</td><td>Tiếp tuyến của đường tròn $(O)$ tại điểm $A$ thì vuông góc với:</td><td><b>B. bán kính $OA$</b></td></tr>
+<tr><td>3</td><td>Cho đường tròn $(O; 8)$ và điểm $M$ với $OM = 17$. Tính độ dài đoạn tiếp tuyến $MT$.</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">$MT = \sqrt{17^2 - 8^2} = \sqrt{225} = 15$.</span></td></tr>
+<tr><td>4</td><td>Đoạn tiếp tuyến $MT = 24$, bán kính $r = 7$. Tính $OM$.</td><td><b>25</b><br><span style="color:var(--muted);font-size:14px">$OM = \sqrt{MT^2 + r^2} = \sqrt{576 + 49} = 25$.</span></td></tr>
+<tr><td>5</td><td>Đường thẳng cách tâm một khoảng đúng bằng bán kính thì có bao nhiêu điểm chung với đường tròn?</td><td><b>B. 1</b></td></tr>
+<tr><td>6</td><td>Từ $M$ kẻ hai tiếp tuyến $MA, MB$ đến đường tròn $(O; 3)$ sao cho $\widehat{AMB} = 60^\circ$. Tính $MA$ (là…</td><td><b>5,2</b><br><span style="color:var(--muted);font-size:14px">$\widehat{OMA} = 30^\circ$ nên $OM = \dfrac{OA}{\sin 30^\circ} = 6$, do đó $MA = \sqrt{36 - 9} = 3\sqrt3 \approx 5{,}20$.</span></td></tr>
+<tr><td>7</td><td>Coi Trái Đất là hình cầu bán kính $6371$ km. Từ độ cao $50$ m, khoảng cách tới đường chân trời là bao nhiêu…</td><td><b>25,24</b><br><span style="color:var(--muted);font-size:14px">$h = 0{,}05$ km: $\sqrt{2\cdot 6371\cdot 0{,}05 + 0{,}05^2} = \sqrt{637{,}1025} \approx 25{,}24$ km.</span></td></tr>
+<tr><td>8</td><td>Đường thẳng $a$ cắt đường tròn $(O; 10)$ theo một dây dài $12$. Tính khoảng cách từ $O$ đến $a$.</td><td><b>8</b><br><span style="color:var(--muted);font-size:14px">$d = \sqrt{10^2 - 6^2} = 8$.</span></td></tr>
+</table>
+<h3><a href="../07_duong_tron/b5_hinh_quat.html">Diện tích hình quạt</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Diện tích hình tròn bán kính $3$ là:</td><td><b>B. $9\pi$</b></td></tr>
+<tr><td>2</td><td>Hình quạt có cung $90^\circ$ chiếm bao nhiêu phần hình tròn?</td><td><b>C. $\frac14$</b></td></tr>
+<tr><td>3</td><td>Tính diện tích hình quạt bán kính $10$, cung $72^\circ$ (làm tròn đến hai chữ số thập phân).</td><td><b>62,83</b><br><span style="color:var(--muted);font-size:14px">$S = \dfrac{\pi\cdot 100\cdot 72}{360} = 20\pi \approx 62{,}83$.</span></td></tr>
+<tr><td>4</td><td>Hình quạt bán kính $4$ có góc ở tâm $1{,}5$ rad. Tính diện tích.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$S = \dfrac{r^2\theta}{2} = \dfrac{16 \cdot 1{,}5}{2} = 12$.</span></td></tr>
+<tr><td>5</td><td>Hình quạt bán kính $5$ có độ dài cung $l = 6$. Tính diện tích.</td><td><b>15</b><br><span style="color:var(--muted);font-size:14px">$S = \dfrac{l r}{2} = \dfrac{6\cdot 5}{2} = 15$.</span></td></tr>
+<tr><td>6</td><td>Tính diện tích hình viên phân giới hạn bởi cung $60^\circ$ và dây căng cung đó, trong đường tròn bán kính $…</td><td><b>3,26</b><br><span style="color:var(--muted);font-size:14px">$S_{\text{quạt}} = 6\pi$; tam \text{giác} $OAB$ \text{đều} \text{cạnh} $6$: $S = 9\sqrt3$. \text{Vậy} $S_{vp} = 6\pi - 9\sqrt3 \approx 3{,}26$.</span></td></tr>
+<tr><td>7</td><td>Hình quạt bán kính $12$ có diện tích $24\pi$. Tính số đo cung (độ).</td><td><b>60</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{144\pi n}{360} = 24\pi \Rightarrow n = 60$.</span></td></tr>
+<tr><td>8</td><td>Mặt cắt một ống nước là hình vành khăn với bán kính ngoài $2{,}5$ cm, bán kính trong $2$ cm. Tính diện tích…</td><td><b>7,07</b><br><span style="color:var(--muted);font-size:14px">$S = \pi(2{,}5^2 - 2^2) = 2{,}25\pi \approx 7{,}07$ cm².</span></td></tr>
+</table>
+<h3><a href="../07_duong_tron/b6_da_giac_deu_noi_tiep.html">Dựng đa giác đều nội tiếp</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Lục giác đều nội tiếp đường tròn $(O; R)$ có cạnh bằng:</td><td><b>A. $R$</b></td></tr>
+<tr><td>2</td><td>Mỗi góc ở tâm chắn một cạnh của ngũ giác đều có số đo:</td><td><b>B. $72^\circ$</b></td></tr>
+<tr><td>3</td><td>Hình vuông nội tiếp đường tròn bán kính $3$. Tính cạnh (làm tròn đến hai chữ số thập phân).</td><td><b>4,24</b><br><span style="color:var(--muted);font-size:14px">$a = R\sqrt2 = 3\sqrt2 \approx 4{,}24$.</span></td></tr>
+<tr><td>4</td><td>Tam giác đều nội tiếp đường tròn bán kính $2$. Tính cạnh (làm tròn đến hai chữ số thập phân).</td><td><b>3,46</b><br><span style="color:var(--muted);font-size:14px">$a = R\sqrt3 = 2\sqrt3 \approx 3{,}46$.</span></td></tr>
+<tr><td>5</td><td>Tính số đo (độ) mỗi góc trong của đa giác đều $10$ cạnh.</td><td><b>144</b><br><span style="color:var(--muted);font-size:14px">$\dfrac{(10-2)\cdot 180^\circ}{10} = 144^\circ$.</span></td></tr>
+<tr><td>6</td><td>Sau khi chia đường tròn thành sáu cung bằng nhau tại $A, B, C, D, E, F$, để được tam giác đều ta nối:</td><td><b>B. $A, C, E$</b></td></tr>
+<tr><td>7</td><td>Tính diện tích lục giác đều nội tiếp đường tròn bán kính $5$ (làm tròn đến hai chữ số thập phân).</td><td><b>64,95</b><br><span style="color:var(--muted);font-size:14px">$S = \dfrac{3\sqrt3}{2}\cdot 25 = \dfrac{75\sqrt3}{2} \approx 64{,}95$.</span></td></tr>
+<tr><td>8</td><td>Tính cạnh bát giác đều nội tiếp đường tròn bán kính $10$ (làm tròn đến hai chữ số thập phân).</td><td><b>7,65</b><br><span style="color:var(--muted);font-size:14px">$a = 2\cdot 10\cdot \sin 22{,}5^\circ \approx 7{,}65$.</span></td></tr>
+</table>
+<h3><a href="../07_duong_tron/b7_phuong_trinh_duong_tron.html">Phương trình đường tròn</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Đường tròn $(x - 2)^2 + (y + 5)^2 = 9$ có tâm và bán kính là:</td><td><b>A. $I(2; -5)$, $r = 3$</b></td></tr>
+<tr><td>2</td><td>Phương trình đường tròn tâm $O$, bán kính $4$ là:</td><td><b>B. $x^2 + y^2 = 16$</b></td></tr>
+<tr><td>3</td><td>Tính bán kính đường tròn $(x + 1)^2 + y^2 = 20$ (làm tròn đến hai chữ số thập phân).</td><td><b>4,47</b><br><span style="color:var(--muted);font-size:14px">$r = \sqrt{20} = 2\sqrt5 \approx 4{,}47$.</span></td></tr>
+<tr><td>4</td><td>Tính bán kính đường tròn $x^2 + y^2 - 8x + 2y - 8 = 0$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$(x-4)^2 + (y+1)^2 = 8 + 16 + 1 = 25$, nên $r = 5$.</span></td></tr>
+<tr><td>5</td><td>Phương trình nào là phương trình đường tròn?</td><td><b>C. $x^2 + y^2 - 4x + 6y - 3 = 0$</b></td></tr>
+<tr><td>6</td><td>Đường tròn có đường kính $AB$ với $A(-1; 3)$, $B(5; -5)$. Tính bán kính.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">Tâm $I(2; -1)$; $r = IA = \sqrt{9 + 16} = 5$ (hoặc $r = \frac{AB}{2} = \frac{10}{2}$).</span></td></tr>
+<tr><td>7</td><td>Điểm $M(1; 1)$ đối với đường tròn $(x - 3)^2 + (y + 2)^2 = 16$:</td><td><b>A. nằm trong</b></td></tr>
+<tr><td>8</td><td>Đường tròn tâm $I(-4; 3)$ tiếp xúc với trục $Oy$. Tính bán kính.</td><td><b>4</b><br><span style="color:var(--muted);font-size:14px">Bán kính bằng khoảng cách từ $I$ đến trục $Oy$, tức $|x_I| = 4$ (tiếp tuyến cách tâm đúng bằng bán kính, Bài 4).</span></td></tr>
+</table>
+<h3><a href="../07_duong_tron/kiem_tra_chuong.html">Kiểm tra chương 7</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Đường tròn $(O; 13)$ có dây $AB = 24$. Tính khoảng cách từ $O$ đến $AB$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">Gọi $H$ là trung điểm $AB$: $HA = 12$, $OH = \sqrt{13^2 - 12^2} = 5$.</span></td></tr>
+<tr><td>2</td><td>Cho đường tròn $(O; 5)$ và điểm $M$ với $OM = 5$. Điểm $M$:</td><td><b>B. nằm trên đường tròn</b></td></tr>
+<tr><td>3</td><td>Đổi $225^\circ$ sang radian (làm tròn đến hai chữ số thập phân).</td><td><b>3,93</b><br><span style="color:var(--muted);font-size:14px">$225\cdot\dfrac{\pi}{180} = \dfrac{5\pi}{4} \approx 3{,}93$.</span></td></tr>
+<tr><td>4</td><td>Tính độ dài cung $75^\circ$ của đường tròn bán kính $12$ (làm tròn đến hai chữ số thập phân).</td><td><b>15,71</b><br><span style="color:var(--muted);font-size:14px">$l = \dfrac{\pi\cdot 12\cdot 75}{180} = 5\pi \approx 15{,}71$.</span></td></tr>
+<tr><td>5</td><td>Góc $2$ rad gần bằng:</td><td><b>B. $114{,}6^\circ$</b></td></tr>
+<tr><td>6</td><td>Góc nội tiếp chắn cung có số đo $150^\circ$. Tính số đo góc (độ).</td><td><b>75</b><br><span style="color:var(--muted);font-size:14px">Bằng nửa số đo cung bị chắn: $75^\circ$.</span></td></tr>
+<tr><td>7</td><td>Tứ giác $ABCD$ nội tiếp có $\widehat{B} = 95^\circ$. Khi đó $\widehat{D}$ bằng:</td><td><b>B. $85^\circ$</b></td></tr>
+<tr><td>8</td><td>$AB = 10$ là đường kính, $C$ nằm trên đường tròn với $\widehat{CAB} = 30^\circ$. Tính $BC$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$\widehat{ACB} = 90^\circ$ nên $BC = AB\sin 30^\circ = 5$.</span></td></tr>
+<tr><td>9</td><td>Cho đường tròn $(O; 9)$ và điểm $M$ với $OM = 15$. Tính độ dài đoạn tiếp tuyến kẻ từ $M$.</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$\sqrt{15^2 - 9^2} = 12$.</span></td></tr>
+<tr><td>10</td><td>Hai tiếp tuyến tại $A$ và $B$ của đường tròn $(O)$ cắt nhau tại $M$. Khẳng định nào đúng ?</td><td><b>B. $MO$ là tia phân giác của góc $\widehat{AMB}$</b></td></tr>
+<tr><td>11</td><td>Tính diện tích hình quạt bán kính $8$, cung $45^\circ$ (làm tròn đến hai chữ số thập phân).</td><td><b>25,13</b><br><span style="color:var(--muted);font-size:14px">$S = \dfrac{\pi\cdot 64\cdot 45}{360} = 8\pi \approx 25{,}13$.</span></td></tr>
+<tr><td>12</td><td>Tính diện tích hình viên phân giới hạn bởi cung $90^\circ$ và dây căng cung, trong đường tròn bán kính $10$…</td><td><b>28,54</b><br><span style="color:var(--muted);font-size:14px">$25\pi - \dfrac12\cdot 10\cdot 10 = 25\pi - 50 \approx 28{,}54$.</span></td></tr>
+<tr><td>13</td><td>Tính diện tích hình vuông nội tiếp đường tròn bán kính $4$.</td><td><b>32</b><br><span style="color:var(--muted);font-size:14px">Cạnh $4\sqrt2$, diện tích $(4\sqrt2)^2 = 32 = 2R^2$.</span></td></tr>
+<tr><td>14</td><td>Chu vi lục giác đều nội tiếp đường tròn bán kính $7$ là:</td><td><b>B. $42$</b></td></tr>
+<tr><td>15</td><td>Tính bán kính đường tròn $x^2 + y^2 + 6x - 8y = 0$.</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">$(x+3)^2 + (y-4)^2 = 25$, nên $r = 5$ (đường tròn đi qua gốc tọa độ).</span></td></tr>
+</table>
+</details>
+<details class="loi-giai"><summary><b>Chương 8. Hình học không gian</b></summary>
+<h3><a href="../08_hinh_hoc_khong_gian/b1_thuat_ngu.html">Thuật ngữ hình học không gian</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Lon nước ngọt có dạng hình gì?</td><td><b>B. Hình trụ</b></td></tr>
+<tr><td>2</td><td>Hình lăng trụ lục giác có bao nhiêu cạnh?</td><td><b>18</b><br><span style="color:var(--muted);font-size:14px">Với $n = 6$: $C = 3n = 18$.</span></td></tr>
+<tr><td>3</td><td>Hình chóp tứ giác có bao nhiêu mặt?</td><td><b>5</b><br><span style="color:var(--muted);font-size:14px">1 mặt đáy + 4 mặt bên = 5 mặt.</span></td></tr>
+<tr><td>4</td><td>Khối nào không phải khối đa diện?</td><td><b>C. Hình nón</b></td></tr>
+<tr><td>5</td><td>Một khối đa diện lồi có 12 đỉnh và 30 cạnh. Nó có bao nhiêu mặt?</td><td><b>20</b><br><span style="color:var(--muted);font-size:14px">$M = 2 - \text{Đ} + C = 2 - 12 + 30 = 20$.</span></td></tr>
+<tr><td>6</td><td>Hình nón có bán kính đáy 5 cm, chiều cao 12 cm. Đường sinh dài bao nhiêu cm?</td><td><b>13</b><br><span style="color:var(--muted);font-size:14px">$l = \sqrt{25 + 144} = 13$ cm.</span></td></tr>
+<tr><td>7</td><td>Một hình chóp có 20 cạnh. Hình chóp đó có bao nhiêu đỉnh?</td><td><b>11</b><br><span style="color:var(--muted);font-size:14px">Chóp n-giác có $2n$ cạnh nên $n = 10$; số đỉnh $n + 1 = 11$.</span></td></tr>
+<tr><td>8</td><td>Một hình trải gồm 1 hình vuông và 4 tam giác cân bằng nhau, mỗi tam giác có đáy là một cạnh của hình vuông.…</td><td><b>B. Hình chóp tứ giác đều</b></td></tr>
+</table>
+<h3><a href="../08_hinh_hoc_khong_gian/b2_thiet_dien.html">Thiết diện của hình khối</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Thiết diện của hình lập phương có nhiều nhất bao nhiêu cạnh?</td><td><b>C. 6</b></td></tr>
+<tr><td>2</td><td>Hình nào không thể là thiết diện của hình lập phương?</td><td><b>C. Tam giác vuông</b></td></tr>
+<tr><td>3</td><td>Cắt hình nón bởi một mặt phẳng đi qua đỉnh và cắt đáy, thiết diện là:</td><td><b>B. Tam giác cân</b></td></tr>
+<tr><td>4</td><td>Thiết diện của hình chóp tứ giác có nhiều nhất bao nhiêu cạnh?</td><td><b>B. 5</b></td></tr>
+<tr><td>5</td><td>Hình lập phương cạnh 4 cm bị cắt bởi một mặt phẳng song song với một mặt của nó. Diện tích thiết diện bằng …</td><td><b>16</b><br><span style="color:var(--muted);font-size:14px">Thiết diện là hình vuông bằng mặt của khối: $S = 4^2 = 16$ cm².</span></td></tr>
+<tr><td>6</td><td>Hình lập phương cạnh 4 cm. Tính diện tích mặt chéo $(ACC'A')$, đơn vị cm².</td><td><b>22,63</b><br><span style="color:var(--muted);font-size:14px">Theo Ví dụ 3: $S = a^2\sqrt2 = 16\sqrt2 \approx 22{,}63$ cm².</span></td></tr>
+<tr><td>7</td><td>Hình lập phương cạnh 2. Mặt phẳng qua ba đỉnh $A', B, D$ tạo thiết diện có diện tích bằng bao nhiêu?</td><td><b>3,46</b><br><span style="color:var(--muted);font-size:14px">Tam giác đều cạnh $2\sqrt2$: $S = \frac{\sqrt3}{4}\cdot 8 = 2\sqrt3 \approx 3{,}46$.</span></td></tr>
+<tr><td>8</td><td>Một hình trụ có bán kính đáy 5 cm, chiều cao 8 cm. Tính diện tích thiết diện qua trục, đơn vị cm².</td><td><b>80</b><br><span style="color:var(--muted);font-size:14px">Hình chữ nhật $10 \times 8$: $S = 80$ cm².</span></td></tr>
+</table>
+<h3><a href="../08_hinh_hoc_khong_gian/b3_tron_xoay.html">Quay hình phẳng tạo khối tròn xoay</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Quay hình chữ nhật một vòng quanh một cạnh của nó, ta được:</td><td><b>B. Hình trụ</b></td></tr>
+<tr><td>2</td><td>Quay nửa hình tròn quanh đường kính của nó, ta được:</td><td><b>A. Hình cầu</b></td></tr>
+<tr><td>3</td><td>Quay tam giác vuông quanh cạnh huyền , ta được:</td><td><b>C. Hai hình nón chung đáy</b></td></tr>
+<tr><td>4</td><td>Hình chữ nhật 2 cm × 6 cm quay quanh cạnh dài 2 cm. Tính thể tích khối tạo thành (cm³).</td><td><b>226,19</b><br><span style="color:var(--muted);font-size:14px">Cạnh 2 cm nằm trên trục nên $h = 2$, $r = 6$: $V = \pi \cdot 36 \cdot 2 = 72\pi \approx 226{,}19$ cm³.</span></td></tr>
+<tr><td>5</td><td>Tam giác vuông có cạnh góc vuông 6 cm và 8 cm, quay quanh cạnh 8 cm. Tính thể tích (cm³).</td><td><b>301,59</b><br><span style="color:var(--muted);font-size:14px">$r = 6$, $h = 8$: $V = \frac13 \pi \cdot 36 \cdot 8 = 96\pi \approx 301{,}59$ cm³.</span></td></tr>
+<tr><td>6</td><td>Quay một hình tròn quanh một đường thẳng nằm trong mặt phẳng của nó và không cắt nó, ta được:</td><td><b>B. Hình xuyến</b></td></tr>
+<tr><td>7</td><td>Hình thang vuông có hai đáy 3 cm và 1 cm, chiều cao 2 cm, quay quanh cạnh góc vuông (chiều cao). Tính thể t…</td><td><b>27,23</b><br><span style="color:var(--muted);font-size:14px">$V = \frac13 \pi \cdot 2 \cdot (9 + 3 + 1) = \frac{26\pi}{3} \approx 27{,}23$ cm³.</span></td></tr>
+<tr><td>8</td><td>Hình chữ nhật 3 cm × 5 cm quay quanh cạnh 5 cm. Mặt phẳng vuông góc với trục cắt khối theo hình gì, diện tí…</td><td><b>28,27</b><br><span style="color:var(--muted);font-size:14px">Thiết diện là hình tròn bán kính 3: $S = 9\pi \approx 28{,}27$ cm².</span></td></tr>
+</table>
+<h3><a href="../08_hinh_hoc_khong_gian/b4_cavalieri.html">Nguyên lý Cavalieri</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Theo nguyên lý Cavalieri, hai khối có cùng chiều cao sẽ có cùng thể tích nếu:</td><td><b>C. Ở mọi độ cao, hai thiết diện có diện tích bằng nhau</b></td></tr>
+<tr><td>2</td><td>Một lăng trụ xiên có diện tích đáy 12 cm² và chiều cao 5 cm. Thể tích bằng bao nhiêu cm³?</td><td><b>60</b><br><span style="color:var(--muted);font-size:14px">$V = B \cdot h = 12 \cdot 5 = 60$ cm³.</span></td></tr>
+<tr><td>3</td><td>Hình trụ đứng và hình trụ xiên có cùng bán kính đáy, cùng chiều cao. So sánh thể tích:</td><td><b>C. Bằng nhau</b></td></tr>
+<tr><td>4</td><td>Chồng 30 đồng xu, mỗi đồng bán kính 1 cm, dày 0,2 cm, xếp xô lệch. Tính thể tích (cm³).</td><td><b>18,85</b><br><span style="color:var(--muted);font-size:14px">$h = 6$ cm, $V = \pi \cdot 1 \cdot 6 = 6\pi \approx 18{,}85$ cm³.</span></td></tr>
+<tr><td>5</td><td>Tính thể tích nửa hình cầu bán kính 3 cm (cm³).</td><td><b>56,55</b><br><span style="color:var(--muted);font-size:14px">$V = \frac23 \pi \cdot 27 = 18\pi \approx 56{,}55$ cm³.</span></td></tr>
+<tr><td>6</td><td>Ở mọi độ cao, thiết diện của khối A luôn gấp 3 lần thiết diện của khối B (cùng chiều cao). Khi đó:</td><td><b>B. $V_A = 3V_B$</b></td></tr>
+<tr><td>7</td><td>Một hình trụ xiên có bán kính đáy 2 cm, đường sinh dài 10 cm và nghiêng 30° so với mặt đáy. Tính thể tích (…</td><td><b>62,83</b><br><span style="color:var(--muted);font-size:14px">Chiều cao $h = 10 \sin 30° = 5$ cm. $V = \pi \cdot 4 \cdot 5 = 20\pi \approx 62{,}83$ cm³.</span></td></tr>
+<tr><td>8</td><td>Trong cách chứng minh của Archimedes, thiết diện của hình trụ khoét nón ở độ cao $y$ là:</td><td><b>B. Hình vành khăn bán kính ngoài $R$, bán kính trong $y$</b></td></tr>
+</table>
+<h3><a href="../08_hinh_hoc_khong_gian/b5_the_tich_chop_non.html">Thể tích hình chóp và hình nón</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hình chóp có đáy là hình vuông cạnh 9 cm, chiều cao 10 cm. Tính thể tích (cm³).</td><td><b>270</b><br><span style="color:var(--muted);font-size:14px">$V = \frac13 \cdot 81 \cdot 10 = 270$ cm³.</span></td></tr>
+<tr><td>2</td><td>Hình nón có bán kính đáy 6 cm, chiều cao 7 cm. Tính thể tích (cm³).</td><td><b>263,89</b><br><span style="color:var(--muted);font-size:14px">$V = \frac13 \pi \cdot 36 \cdot 7 = 84\pi \approx 263{,}89$ cm³.</span></td></tr>
+<tr><td>3</td><td>Hình nón và hình trụ có cùng bán kính đáy, cùng chiều cao. Thể tích hình nón bằng:</td><td><b>C. $\frac13$ thể tích hình trụ</b></td></tr>
+<tr><td>4</td><td>Một hình chóp có thể tích 40 cm³ và diện tích đáy 12 cm². Tính chiều cao (cm).</td><td><b>10</b><br><span style="color:var(--muted);font-size:14px">$h = \dfrac{3V}{B} = \dfrac{120}{12} = 10$ cm.</span></td></tr>
+<tr><td>5</td><td>Hình nón có đường sinh 10 cm và bán kính đáy 6 cm. Tính thể tích (cm³).</td><td><b>301,59</b><br><span style="color:var(--muted);font-size:14px">$h = \sqrt{100 - 36} = 8$. $V = \frac13 \pi \cdot 36 \cdot 8 = 96\pi \approx 301{,}59$ cm³.</span></td></tr>
+<tr><td>6</td><td>Giữ nguyên đáy, tăng chiều cao hình chóp lên gấp đôi thì thể tích:</td><td><b>B. Gấp đôi</b></td></tr>
+<tr><td>7</td><td>Giữ nguyên chiều cao, tăng bán kính đáy hình nón lên gấp đôi thì thể tích:</td><td><b>C. Gấp 4</b></td></tr>
+<tr><td>8</td><td>Một cái phễu hình nón có bán kính miệng 5 cm, sâu 12 cm. Phễu chứa được bao nhiêu ml nước? (1 ml = 1 cm³)</td><td><b>314,16</b><br><span style="color:var(--muted);font-size:14px">$V = \frac13 \pi \cdot 25 \cdot 12 = 100\pi \approx 314{,}16$ ml.</span></td></tr>
+</table>
+<h3><a href="../08_hinh_hoc_khong_gian/b6_the_tich.html">Thể tích lăng trụ, hình trụ, hình cầu</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Tính thể tích hình lập phương cạnh 7 cm (cm³).</td><td><b>343</b><br><span style="color:var(--muted);font-size:14px">$V = 7^3 = 343$ cm³.</span></td></tr>
+<tr><td>2</td><td>Tính thể tích hình trụ bán kính 4 cm, cao 5 cm (cm³).</td><td><b>251,33</b><br><span style="color:var(--muted);font-size:14px">$V = \pi \cdot 16 \cdot 5 = 80\pi \approx 251{,}33$ cm³.</span></td></tr>
+<tr><td>3</td><td>Tính thể tích hình cầu bán kính 3 cm (cm³).</td><td><b>113,1</b><br><span style="color:var(--muted);font-size:14px">$V = \frac43 \pi \cdot 27 = 36\pi \approx 113{,}10$ cm³.</span></td></tr>
+<tr><td>4</td><td>Nếu bán kính hình cầu tăng gấp đôi thì thể tích:</td><td><b>D. Gấp 8</b></td></tr>
+<tr><td>5</td><td>Bể cá dài 60 cm, rộng 40 cm, cao 50 cm. Bể chứa được bao nhiêu lít?</td><td><b>120</b><br><span style="color:var(--muted);font-size:14px">$V = 120\,000$ cm³ $= 120$ lít.</span></td></tr>
+<tr><td>6</td><td>Một silo gồm hình trụ bán kính 3 m, cao 10 m và một nửa hình cầu bán kính 3 m úp trên đỉnh. Tính thể tích (…</td><td><b>339,29</b><br><span style="color:var(--muted);font-size:14px">$V = 90\pi + 18\pi = 108\pi \approx 339{,}29$ m³.</span></td></tr>
+<tr><td>7</td><td>Lăng trụ đứng có đáy là tam giác vuông với hai cạnh góc vuông 3 cm và 4 cm, chiều cao 10 cm. Tính thể tích …</td><td><b>60</b><br><span style="color:var(--muted);font-size:14px">$B = 6$ cm², $V = 6 \cdot 10 = 60$ cm³.</span></td></tr>
+<tr><td>8</td><td>Hình hộp chữ nhật có thể tích 120 cm³, đáy là hình chữ nhật 4 cm × 5 cm. Tính chiều cao (cm).</td><td><b>6</b><br><span style="color:var(--muted);font-size:14px">$c = \dfrac{120}{4 \cdot 5} = 6$ cm.</span></td></tr>
+</table>
+<h3><a href="../08_hinh_hoc_khong_gian/b7_mat_do.html">Mật độ</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Một khu dân cư có 500 người sống trên 2 km². Mật độ dân số là bao nhiêu người/km²?</td><td><b>250</b><br><span style="color:var(--muted);font-size:14px">$500 : 2 = 250$ người/km².</span></td></tr>
+<tr><td>2</td><td>Khối nhôm lập phương cạnh 3 cm, khối lượng riêng 2,7 g/cm³. Tính khối lượng (g).</td><td><b>72,9</b><br><span style="color:var(--muted);font-size:14px">$V = 27$ cm³, $m = 2{,}7 \cdot 27 = 72{,}9$ g.</span></td></tr>
+<tr><td>3</td><td>Vật đặc nào sau đây nổi trên nước?</td><td><b>C. Khối gỗ sồi</b></td></tr>
+<tr><td>4</td><td>Khúc gỗ có khối lượng riêng 0,8 g/cm³ nổi trên nước. Phần chìm chiếm bao nhiêu phần trăm thể tích?</td><td><b>80</b><br><span style="color:var(--muted);font-size:14px">Phần chìm $= 0{,}8 : 1 = 80\%$.</span></td></tr>
+<tr><td>5</td><td>Một vật bằng sắt nặng 158 g, khối lượng riêng 7,9 g/cm³. Tính thể tích (cm³).</td><td><b>20</b><br><span style="color:var(--muted);font-size:14px">$V = 158 : 7{,}9 = 20$ cm³.</span></td></tr>
+<tr><td>6</td><td>2,7 g/cm³ bằng bao nhiêu kg/m³?</td><td><b>2700</b><br><span style="color:var(--muted);font-size:14px">$1$ g/cm³ $= 1000$ kg/m³ nên $2{,}7$ g/cm³ $= 2\,700$ kg/m³.</span></td></tr>
+<tr><td>7</td><td>Một khu rừng rộng 30 000 m² có 1 200 cây. Mật độ là bao nhiêu cây trên 1 ha? (1 ha = 10 000 m²)</td><td><b>400</b><br><span style="color:var(--muted);font-size:14px">$30\,000$ m² $= 3$ ha; $1\,200 : 3 = 400$ cây/ha.</span></td></tr>
+<tr><td>8</td><td>Bồn chứa 2 m³ dầu có khối lượng riêng 0,8 g/cm³. Tính khối lượng dầu (kg).</td><td><b>1600</b><br><span style="color:var(--muted);font-size:14px">$0{,}8$ g/cm³ $= 800$ kg/m³; $m = 800 \cdot 2 = 1\,600$ kg.</span></td></tr>
+</table>
+<h3><a href="../08_hinh_hoc_khong_gian/kiem_tra_chuong.html">Kiểm tra chương 8</a></h3>
+<table>
+<tr><th>Câu</th><th>Đề (rút gọn)</th><th>Đáp án</th></tr>
+<tr><td>1</td><td>Hình lăng trụ tam giác có bao nhiêu mặt?</td><td><b>C. 5</b></td></tr>
+<tr><td>2</td><td>Một khối đa diện lồi có 8 đỉnh và 6 mặt. Nó có bao nhiêu cạnh?</td><td><b>12</b><br><span style="color:var(--muted);font-size:14px">$C = \text{Đ} + M - 2 = 8 + 6 - 2 = 12$.</span></td></tr>
+<tr><td>3</td><td>Hình nào không thể là thiết diện của hình lập phương?</td><td><b>D. Hình bảy cạnh</b></td></tr>
+<tr><td>4</td><td>Cắt hình trụ bởi mặt phẳng chứa trục, thiết diện là:</td><td><b>C. Hình chữ nhật</b></td></tr>
+<tr><td>5</td><td>Quay nửa hình tròn quanh đường kính, ta được:</td><td><b>B. Hình cầu</b></td></tr>
+<tr><td>6</td><td>Hình chữ nhật 4 cm × 7 cm quay quanh cạnh 7 cm. Tính thể tích khối tạo thành (cm³).</td><td><b>351,86</b><br><span style="color:var(--muted);font-size:14px">$r = 4$, $h = 7$: $V = 112\pi \approx 351{,}86$ cm³.</span></td></tr>
+<tr><td>7</td><td>Hai khối cùng chiều cao, ở mọi độ cao có thiết diện bằng nhau. Kết luận nào đúng?</td><td><b>B. Hai khối có cùng thể tích</b></td></tr>
+<tr><td>8</td><td>Hình chóp có đáy là hình vuông cạnh 5 cm, chiều cao 9 cm. Tính thể tích (cm³).</td><td><b>75</b><br><span style="color:var(--muted);font-size:14px">$V = \frac13 \cdot 25 \cdot 9 = 75$ cm³.</span></td></tr>
+<tr><td>9</td><td>Hình nón có bán kính đáy 3 cm, đường sinh 5 cm. Tính thể tích (cm³).</td><td><b>37,7</b><br><span style="color:var(--muted);font-size:14px">$h = 4$; $V = 12\pi \approx 37{,}70$ cm³.</span></td></tr>
+<tr><td>10</td><td>Hình trụ có bán kính 2 cm, cao 7 cm. Tính thể tích (cm³).</td><td><b>87,96</b><br><span style="color:var(--muted);font-size:14px">$V = 28\pi \approx 87{,}96$ cm³.</span></td></tr>
+<tr><td>11</td><td>Hình cầu có đường kính 6 cm. Tính thể tích (cm³).</td><td><b>113,1</b><br><span style="color:var(--muted);font-size:14px">$R = 3$: $V = 36\pi \approx 113{,}10$ cm³.</span></td></tr>
+<tr><td>12</td><td>Viên thuốc gồm hình trụ bán kính 1 mm, dài 3 mm và hai nửa hình cầu bán kính 1 mm ở hai đầu. Tính thể tích …</td><td><b>13,61</b><br><span style="color:var(--muted);font-size:14px">$V = 3\pi + \frac43\pi = \frac{13\pi}{3} \approx 13{,}61$ mm³.</span></td></tr>
+<tr><td>13</td><td>Khối lập phương cạnh 6 cm bị khoét một lỗ trụ bán kính 1 cm xuyên qua hai mặt đối diện. Tính thể tích còn l…</td><td><b>197,15</b><br><span style="color:var(--muted);font-size:14px">$216 - 6\pi \approx 197{,}15$ cm³.</span></td></tr>
+<tr><td>14</td><td>Một huyện có 12 000 người sống trên 8 km². Tính mật độ dân số (người/km²).</td><td><b>1500</b><br><span style="color:var(--muted);font-size:14px">$12\,000 : 8 = 1\,500$.</span></td></tr>
+<tr><td>15</td><td>Khối sắt có thể tích 50 cm³, khối lượng riêng 7,87 g/cm³. Tính khối lượng (g).</td><td><b>393,5</b><br><span style="color:var(--muted);font-size:14px">$m = 7{,}87 \cdot 50 = 393{,}5$ g.</span></td></tr>
+</table>
+</details>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

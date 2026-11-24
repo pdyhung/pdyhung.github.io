@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài toán thực tế · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/three/three.min.js"></script>
+<script defer src="../assets/vendor/three/OrbitControls.js"></script>
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/scene3d.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch05_goc_nang.js"></script>
+<script defer src="../assets/widgets/ch05_canh_3d.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 5 · Tam giác vuông và lượng giác · Bài 7</div>
+<h1>Bài 7. Bài toán thực tế <span class="en">(Modeling with right triangles)</span></h1>
+<p class="lead">Làm sao đo chiều cao một tòa nhà mà không cần leo lên, hay biết con thuyền cách bờ bao xa khi đứng trên ngọn hải đăng? Chỉ cần một thước dây, một dụng cụ đo góc và tỉ số lượng giác.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu khái niệm góc nâng và góc hạ; biết hai góc này bằng nhau (so le trong).</li><li>Lập mô hình tam giác vuông cho bài toán đo chiều cao, khoảng cách.</li><li>Giải bài toán đo từ hai vị trí khi không đến được chân vật.</li><li>Trình bày lời giải có đơn vị và làm tròn hợp lý.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Một bạn học sinh đứng cách chân cột cờ 30 m, ngước nhìn đỉnh cột. Tia nhìn tạo với phương nằm ngang một góc $40^\circ$. Mắt bạn cách mặt đất 1,6 m. Cột cờ cao bao nhiêu? Các kỹ sư trắc địa vẫn đo đạc theo đúng cách này, với máy kinh vĩ thay cho đôi mắt.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Góc nâng và góc hạ</div>
+<ul>
+<li><b>Góc nâng</b> <span class="en">(angle of elevation)</span>: góc tạo bởi tia nhìn <b>lên</b> một vật và đường nằm ngang qua mắt người quan sát.</li>
+<li><b>Góc hạ</b> <span class="en">(angle of depression)</span>: góc tạo bởi đường nằm ngang qua mắt và tia nhìn <b>xuống</b> một vật.</li>
+</ul>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Góc hạ bằng góc nâng</div>
+<p>Người ở $A$ nhìn xuống $B$ với góc hạ $\beta$ thì người ở $B$ nhìn lên $A$ với góc nâng cũng bằng $\beta$. Lý do: hai đường nằm ngang qua $A$ và qua $B$ song song, tia nhìn $AB$ là cát tuyến, hai góc là hai góc so le trong.</p>
+</div>
+<p><b>Các bước giải bài toán thực tế:</b></p>
+<ol>
+<li>Vẽ hình, xác định tam giác vuông (thường vuông tại chân vật hoặc tại điểm cùng độ cao với mắt).</li>
+<li>Ghi số liệu đã biết lên hình, xác định góc đang dùng và cạnh đối, kề, huyền của nó.</li>
+<li>Chọn tỉ số chứa yếu tố cần tìm: đo chiều cao khi biết khoảng cách nằm ngang thì thường dùng tan.</li>
+<li>Tính, cộng thêm chiều cao mắt (nếu có), ghi đơn vị và làm tròn.</li>
+</ol>
+<table>
+<tr><th>Tình huống</th><th>Công thức</th></tr>
+<tr><td>Biết khoảng cách $d$, góc nâng $\alpha$, chiều cao mắt $e$</td><td>$H = e + d\tan\alpha$</td></tr>
+<tr><td>Từ độ cao $h$ nhìn xuống với góc hạ $\beta$</td><td>$d = \dfrac{h}{\tan\beta}$</td></tr>
+<tr><td>Hai vị trí cách nhau $m$, góc nâng $\alpha_1 < \alpha_2$</td><td>$H = \dfrac{m\tan\alpha_1\tan\alpha_2}{\tan\alpha_2 - \tan\alpha_1}$</td></tr>
+</table>
+
+<h2>3. Khám phá bằng minh họa động</h2>
+<div data-widget="ch05_goc_nang"  data-title="Góc nâng, góc hạ và phép đo gián tiếp" data-try="chọn tình huống, <b>nhập số đo</b> (khoảng cách, góc, chiều cao mắt) rồi nhấn Enter: chiều cao hoặc khoảng cách được tính lại kèm cách tính. Kéo chân nhà, đỉnh nhà, con thuyền hay hai vị trí đo P, Q để thấy các góc thay đổi."></div>
+<div data-widget="ch05_canh_3d"  data-title="Cảnh 3D: đi quanh tháp và đo góc nâng" data-try="kéo <b>vòng tròn màu cam</b> dưới chân người quan sát để đi lại trên mặt đất (kéo chỗ khác để xoay cảnh), hoặc nhập khoảng cách d, hướng φ, chiều cao tháp H. Tam giác cam là tam giác vuông dùng để tính. Dù đứng ở đâu, H = e + d·tan α luôn cho đúng chiều cao tháp."></div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Đo chiều cao bằng góc nâng</div>
+<p>Từ vị trí cách chân tòa nhà 30 m, một người có mắt cách mặt đất 1,6 m nhìn đỉnh tòa nhà với góc nâng $40^\circ$. Tính chiều cao tòa nhà.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $E$ là mắt, $K$ là điểm trên tòa nhà ngang tầm mắt, $T$ là đỉnh. Tam giác $EKT$ vuông tại $K$, $EK = 30$ m, $\widehat{KET} = 40^\circ$.</p>
+<p>$KT = EK\tan 40^\circ = 30\tan 40^\circ \approx 25{,}17$ m. Chiều cao tòa nhà: $H = 1{,}6 + 30\tan 40^\circ \approx 26{,}77$ m.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Khoảng cách tới thuyền (góc hạ)</div>
+<p>Từ đỉnh một ngọn hải đăng cao 45 m so với mặt biển, người gác nhìn một con thuyền với góc hạ $12^\circ$. Thuyền cách chân hải đăng bao xa?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Góc nâng từ thuyền lên đỉnh cũng bằng $12^\circ$ (so le trong). Trong tam giác vuông tại chân hải đăng: $\tan 12^\circ = \dfrac{45}{d}$, nên $d = \dfrac{45}{\tan 12^\circ} \approx 211{,}71$ m.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Đo từ hai vị trí</div>
+<p>Không đến được chân một tháp (bị ngăn bởi con sông). Tại $P$, góc nâng tới đỉnh tháp là $30^\circ$; tiến thêm 20 m về phía tháp đến $Q$, góc nâng là $45^\circ$. Tính chiều cao tháp (bỏ qua chiều cao người đo).</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Gọi $x = QH$ là khoảng cách từ $Q$ tới chân tháp $H$. Khi đó $H_t = x\tan 45^\circ = x$ và $H_t = (x + 20)\tan 30^\circ$.</p>
+<p>$$x = (x + 20)\cdot\frac{\sqrt3}{3} \;\Rightarrow\; x(3 - \sqrt3) = 20\sqrt3 \;\Rightarrow\; x = \frac{20\sqrt3}{3 - \sqrt3} = 10(\sqrt3 + 1) \approx 27{,}32 \text{ (m)}.$$</p>
+<p>Tháp cao khoảng $27{,}32$ m. Kiểm tra bằng minh họa: tình huống “Đo từ hai vị trí”, nhập 30, 45, 20.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Độ dốc của đường dốc</div>
+<p>Một đường dốc cho xe lăn dài 6 m (đo dọc mặt dốc) và nâng lên cao 0,5 m. Tính góc nghiêng của dốc so với mặt đất.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Chiều dài mặt dốc là cạnh huyền, độ cao là cạnh đối: $\sin\alpha = \dfrac{0{,}5}{6} \approx 0{,}0833$, nên $\alpha \approx 4{,}78^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Thả diều</div>
+<p>Dây diều dài 50 m được kéo căng, tạo với mặt đất góc $60^\circ$. Tính độ cao của diều so với tay người cầm dây.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Dây là cạnh huyền, độ cao là cạnh đối của góc $60^\circ$: $h = 50\sin 60^\circ = 25\sqrt3 \approx 43{,}30$ m.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Góc nâng và góc hạ đều đo <b>từ đường nằm ngang</b>, không đo từ phương thẳng đứng.</li>
+<li>Đừng quên <b>chiều cao mắt</b> (hoặc chiều cao giá máy đo) khi đề bài cho; lỗi hay gặp là chỉ tính $d\tan\alpha$.</li>
+<li>Đọc kỹ chiều dài đã cho là chiều dài <b>nằm ngang</b> (cạnh kề, dùng tan) hay chiều dài <b>dọc theo dốc</b> (cạnh huyền, dùng sin).</li>
+<li>Trong bài toán hai vị trí, góc nâng ở vị trí <b>gần</b> luôn lớn hơn góc ở vị trí xa.</li>
+<li>Kết quả thực tế nên làm tròn hợp lý (thường đến cm hoặc dm) và ghi đơn vị.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Góc hạ là góc tạo bởi</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> tia nhìn xuống và phương thẳng đứng</label>
+<label><input type="radio" name="q1" value="b"> tia nhìn xuống và đường nằm ngang qua mắt</label>
+<label><input type="radio" name="q1" value="c"> tia nhìn lên và đường nằm ngang qua mắt</label>
+<label><input type="radio" name="q1" value="d"> hai tia nhìn tới hai vật</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Góc hạ đo từ đường nằm ngang xuống tia nhìn.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8.4025" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Thông hiểu</span></div>
+<p>Khi tia nắng tạo với mặt đất góc $35^\circ$, bóng của một cây trên mặt đất dài 12 m. Tính chiều cao của cây (m, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = 12\tan 35^\circ \approx 8{,}40$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="61.2836" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Dây diều dài 80 m, căng thẳng và tạo với mặt đất góc $50^\circ$. Diều cao bao nhiêu mét so với tay cầm (làm tròn đến hai chữ số thập phân)?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$h = 80\sin 50^\circ \approx 61{,}28$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="128.6704" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Từ nóc một tòa nhà cao 60 m, nhìn một chiếc ô tô với góc hạ $25^\circ$. Ô tô cách chân tòa nhà bao nhiêu mét (làm tròn đến hai chữ số thập phân)?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$d = \dfrac{60}{\tan 25^\circ} \approx 128{,}67$ m.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Một tấm ván dài 10 m (đo dọc tấm ván) bắc lên bậc cao 1 m. Góc nghiêng của tấm ván với mặt đất xấp xỉ</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> $5{,}74^\circ$</label>
+<label><input type="radio" name="q5" value="b"> $5{,}71^\circ$</label>
+<label><input type="radio" name="q5" value="c"> $84{,}26^\circ$</label>
+<label><input type="radio" name="q5" value="d"> $6^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tấm ván là cạnh huyền: $\sin\alpha = 0{,}1$, $\alpha \approx 5{,}74^\circ$. (Đáp án $5{,}71^\circ$ là do dùng nhầm tan.)</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="26.4948" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Một người có mắt cách mặt đất 1,5 m, đứng cách chân tháp 40 m, nhìn đỉnh tháp với góc nâng $32^\circ$. Tính chiều cao tháp (m, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$H = 1{,}5 + 40\tan 32^\circ \approx 1{,}5 + 24{,}99 = 26{,}49$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="31.4877" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Đứng tại $P$ nhìn đỉnh tháp với góc nâng $25^\circ$; tiến 30 m thẳng về phía tháp đến $Q$ thì góc nâng là $40^\circ$. Tính chiều cao tháp (m, làm tròn đến hai chữ số thập phân; bỏ qua chiều cao người đo).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Gọi $x$ là khoảng cách từ $Q$ tới chân tháp: $x\tan 40^\circ = (x + 30)\tan 25^\circ$, nên $x = \dfrac{30\tan 25^\circ}{\tan 40^\circ - \tan 25^\circ} \approx 37{,}53$ m và $H = x\tan 40^\circ \approx 31{,}49$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="28.6217" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Một máy bay đang ở độ cao 1500 m bắt đầu hạ cánh theo đường thẳng tạo với mặt đất góc $3^\circ$. Tính khoảng cách nằm ngang từ máy bay tới điểm chạm đất (km, làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$d = \dfrac{1500}{\tan 3^\circ} \approx 28\,622$ m $\approx 28{,}62$ km.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Góc nâng (nhìn lên) và góc hạ (nhìn xuống) đều đo từ đường nằm ngang; góc hạ từ $A$ tới $B$ bằng góc nâng từ $B$ tới $A$.</li><li>Đo chiều cao: $H = e + d\tan\alpha$; đo khoảng cách từ trên cao: $d = \dfrac{h}{\tan\beta}$.</li><li>Không tới được chân vật: đo góc nâng ở hai vị trí rồi lập phương trình theo khoảng cách chưa biết.</li><li>Luôn vẽ hình, xác định đúng tam giác vuông và loại cạnh (đối, kề, huyền) trước khi chọn tỉ số.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

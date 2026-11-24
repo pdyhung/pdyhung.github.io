@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra chương 2: Tính chất phép biến hình và chứng minh · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 2 · Tính chất phép biến hình và chứng minh · Kiểm tra chương</div>
+<h1>Kiểm tra chương 2: Tính chất phép biến hình và chứng minh <span class="en">(Unit test)</span></h1>
+<p class="lead">Bài kiểm tra gồm 15 câu, bao quát cả sáu bài của chương. Hãy làm hết rồi mới xem gợi ý; điểm tổng hiện ở cuối trang.</p>
+<h2>Bài kiểm tra</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Bài 1</span></div>
+<p>Phép biến hình nào bảo toàn số đo góc nhưng <b>không</b> bảo toàn độ dài?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Phép quay góc $90^\circ$</label>
+<label><input type="radio" name="q1" value="b"> Phép vị tự tỉ số $3$</label>
+<label><input type="radio" name="q1" value="c"> Phép đối xứng trục</label>
+<label><input type="radio" name="q1" value="d"> Phép co giãn $(x; y) \mapsto (2x; y)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép vị tự giữ góc, nhân độ dài với 3; phép co giãn làm thay đổi cả góc.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="14" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Bài 1</span></div>
+<p>Phép vị tự tỉ số $-2$ biến một tam giác có diện tích $3{,}5$ thành tam giác có diện tích bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Diện tích nhân $k^2 = 4$: $3{,}5\cdot 4 = 14$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="19.63" data-tol="0.02">
+<div class="q-head">Câu 3 <span class="q-level">Bài 1</span></div>
+<p>Một phép dời hình biến đường tròn bán kính $2{,}5$ thành một đường tròn. Tính diện tích hình tròn ảnh (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Bán kính giữ nguyên $2{,}5$: $S = \pi\cdot 2{,}5^2 \approx 19{,}63$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Bài 2</span></div>
+<p>Tìm hoành độ ảnh của $M(-3; 4)$ qua phép quay tâm $O$ góc $-90^\circ$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(x; y) \mapsto (y; -x)$: $M'(4; 3)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-2" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Bài 2</span></div>
+<p>Tìm tung độ ảnh của $M(1; 6)$ qua phép đối xứng trục $y = 2$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(x; y) \mapsto (x;\ 2\cdot 2 - y)$: $M'(1; -2)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 6 <span class="q-level">Bài 2</span></div>
+<p>$M$ không thuộc $d$, $M' = \text{Đ}_d(M)$. Khẳng định nào đúng?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> $d$ vuông góc với $MM'$ tại trung điểm của $MM'$</label>
+<label><input type="radio" name="q6" value="b"> $d$ song song với $MM'$</label>
+<label><input type="radio" name="q6" value="c"> $d$ đi qua $M$</label>
+<label><input type="radio" name="q6" value="d"> $MM'$ là phân giác của một góc tạo bởi $d$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đó chính là định nghĩa: d là đường trung trực của MM′.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="10" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Bài 3</span></div>
+<p>Thực hiện phép đối xứng trục $x = -2$ rồi phép đối xứng trục $x = 3$. Phép hợp thành là phép tịnh tiến theo vectơ $(a; 0)$. Tìm $a$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai trục cách nhau $h = 5$, hướng từ trục thứ nhất sang trục thứ hai là chiều dương: $a = 2h = 10$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="100" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Bài 3</span></div>
+<p>Hai trục đối xứng cắt nhau tại $O$, góc từ trục thứ nhất đến trục thứ hai là $50^\circ$. Hợp của hai phép đối xứng (theo thứ tự đó) là phép quay tâm $O$ góc bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Góc quay gấp đôi: $2\cdot 50^\circ = 100^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2.24" data-tol="0.02">
+<div class="q-head">Câu 9 <span class="q-level">Bài 3</span></div>
+<p>Quay $M(1; 2)$ quanh $O$ góc $90^\circ$, rồi tịnh tiến theo $(2; -1)$, được $M''$. Tính $MM''$ (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(1; 2) \mapsto (-2; 1) \mapsto (0; 0)$. $MM'' = \sqrt{1 + 4} = \sqrt5 \approx 2{,}24$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 10 <span class="q-level">Bài 4</span></div>
+<p>Một phép dời hình biến $A(1; 2)$ thành $A'(-1; -2)$ và $B(3; 0)$ thành $B'(-3; 0)$. Phép đó có thể là</p>
+<div class="options">
+<label><input type="radio" name="q10" value="a"> phép đối xứng tâm $O$</label>
+<label><input type="radio" name="q10" value="b"> phép đối xứng trục $Ox$</label>
+<label><input type="radio" name="q10" value="c"> phép tịnh tiến theo $(-2; -4)$</label>
+<label><input type="radio" name="q10" value="d"> phép vị tự tâm $O$ tỉ số $2$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$(x; y) \mapsto (-x; -y)$ đúng cho cả hai điểm. $\text{Đ}_{Ox}$ biến $A$ thành $(1; -2)$; tịnh tiến biến $B$ thành $(1; -4)$; vị tự tỉ số 2 không là phép dời hình.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 11 <span class="q-level">Bài 4</span></div>
+<p>Một phép vị tự biến $A(2; 2)$ thành $A'(5; 5)$ và $B(4; 2)$ thành $B'(11; 5)$. Tìm tỉ số vị tự.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{AB} = (2; 0)$, $\overrightarrow{A'B'} = (6; 0) = 3\overrightarrow{AB}$: $k = 3$ (tâm $(0{,}5; 0{,}5)$).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="36" data-tol="0.01">
+<div class="q-head">Câu 12 <span class="q-level">Bài 5</span></div>
+<p>Góc quay nhỏ nhất (khác $0^\circ$) làm thập giác đều (10 cạnh) trùng với chính nó là bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{360^\circ}{10} = 36^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 13 <span class="q-level">Bài 5</span></div>
+<p>Hình nào có đúng 2 trục đối xứng và có tâm đối xứng?</p>
+<div class="options">
+<label><input type="radio" name="q13" value="a"> Hình thoi không phải hình vuông</label>
+<label><input type="radio" name="q13" value="b"> Hình bình hành không phải hình chữ nhật, không phải hình thoi</label>
+<label><input type="radio" name="q13" value="c"> Tam giác đều</label>
+<label><input type="radio" name="q13" value="d"> Hình thang cân</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hình thoi: hai trục là hai đường chéo, tâm là giao điểm hai đường chéo. Hình bình hành nói chung không có trục; tam giác đều có 3 trục và không có tâm; hình thang cân có 1 trục.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 14 <span class="q-level">Bài 6</span></div>
+<p>Để chứng minh $AB = CD$ trong hình bình hành $ABCD$, ta dùng phép biến hình nào?</p>
+<div class="options">
+<label><input type="radio" name="q14" value="a"> Phép đối xứng tâm tại trung điểm của $AC$</label>
+<label><input type="radio" name="q14" value="b"> Phép đối xứng trục $AC$</label>
+<label><input type="radio" name="q14" value="c"> Phép tịnh tiến theo $\overrightarrow{AC}$</label>
+<label><input type="radio" name="q14" value="d"> Phép quay tâm $A$ góc $90^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Phép đối xứng tâm O biến A ↔ C, B ↔ D, nên biến đoạn AB thành đoạn CD.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7.21" data-tol="0.02">
+<div class="q-head">Câu 15 <span class="q-level">Bài 6</span></div>
+<p>Cho $A(1; 1)$, $B(7; 3)$. Tìm giá trị nhỏ nhất của $MA + MB$ với $M$ chạy trên trục $Ox$ (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$A' = \text{Đ}_{Ox}(A) = (1; -1)$. Giá trị nhỏ nhất là $A'B = \sqrt{6^2 + 4^2} = \sqrt{52} \approx 7{,}21$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 1. Thuật ngữ hình học không gian · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/vendor/three/three.min.js"></script>
+<script defer src="../assets/vendor/three/OrbitControls.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/scene3d.js"></script>
+<script defer src="../assets/widgets/ch08_da_dien.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 8 · Hình học không gian · Bài 1</div>
+<h1>Thuật ngữ hình học không gian <span class="en">(Solid geometry vocabulary)</span></h1>
+<p class="lead">Hộp sữa, lon nước ngọt, quả bóng, chiếc nón lá… quanh ta có rất nhiều hình khối. Bài này giới thiệu tên gọi và các bộ phận của chúng, làm nền cho cả chương.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Gọi đúng tên các khối thường gặp: hình lăng trụ, hình hộp chữ nhật, hình lập phương, hình chóp, hình trụ, hình nón, hình cầu.</li><li>Chỉ ra đỉnh, cạnh, mặt của khối đa diện; đáy, đường sinh, trục… của khối tròn xoay.</li><li>Đếm số đỉnh, cạnh, mặt và kiểm tra hệ thức Euler $\text{Đ} - C + M = 2$.</li><li>Hiểu hình trải (net) của một khối đa diện.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Hãy ghép mỗi đồ vật với một khối: <i>hộp sữa, lon nước ngọt, quả bóng, chiếc nón lá, viên xúc xắc, kim tự tháp</i>. Hai trong số đó không có mặt nào phẳng hoàn toàn. Đó là những vật nào?</p>
+
+<h2>2. Khối đa diện</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p><b>Khối đa diện</b> <span class="en">(polyhedron)</span> là khối giới hạn bởi các <b>mặt</b> là đa giác phẳng. Hai mặt kề nhau gặp nhau theo một <b>cạnh</b> <span class="en">(edge)</span>; các cạnh gặp nhau tại <b>đỉnh</b> <span class="en">(vertex)</span>.</p>
+</div>
+<table>
+<tr><th>Khối</th><th>Mô tả</th><th>Đỉnh Đ</th><th>Cạnh C</th><th>Mặt M</th></tr>
+<tr><td><b>Hình lăng trụ</b> n-giác <span class="en">(prism)</span></td><td>Hai <b>đáy</b> là hai đa giác bằng nhau nằm trên hai mặt phẳng song song; các <b>mặt bên</b> là hình bình hành (hình chữ nhật nếu là lăng trụ đứng); các <b>cạnh bên</b> song song và bằng nhau.</td><td>$2n$</td><td>$3n$</td><td>$n+2$</td></tr>
+<tr><td><b>Hình hộp chữ nhật</b></td><td>Lăng trụ đứng có đáy là hình chữ nhật: 6 mặt đều là hình chữ nhật.</td><td>8</td><td>12</td><td>6</td></tr>
+<tr><td><b>Hình lập phương</b> <span class="en">(cube)</span></td><td>Hình hộp chữ nhật có 6 mặt là hình vuông bằng nhau.</td><td>8</td><td>12</td><td>6</td></tr>
+<tr><td><b>Hình chóp</b> n-giác <span class="en">(pyramid)</span></td><td>Một <b>đáy</b> là đa giác; các <b>mặt bên</b> là tam giác chung một <b>đỉnh</b>. <b>Chiều cao</b> là khoảng cách từ đỉnh đến mặt phẳng đáy. Hình chóp <b>đều</b> có đáy là đa giác đều và chân đường cao là tâm đáy.</td><td>$n+1$</td><td>$2n$</td><td>$n+1$</td></tr>
+</table>
+<div class="box dinh-ly">
+<div class="box-title">Hệ thức Euler</div>
+<p>Với mọi khối đa diện lồi: $$\text{Đ} - C + M = 2.$$ Ví dụ hình lập phương: $8 - 12 + 6 = 2$.</p>
+</div>
+
+<h2>3. Khối tròn xoay</h2>
+<p>Các khối có mặt cong <b>không phải</b> khối đa diện:</p>
+<ul>
+<li><b>Hình trụ</b> <span class="en">(cylinder)</span>: hai <b>đáy</b> là hai hình tròn bằng nhau, song song; <b>trục</b> nối hai tâm đáy; <b>đường sinh</b> là đoạn thẳng trên mặt xung quanh, song song với trục, dài bằng <b>chiều cao</b> $h$.</li>
+<li><b>Hình nón</b> <span class="en">(cone)</span>: một <b>đáy</b> hình tròn bán kính $r$ và một <b>đỉnh</b>; <b>chiều cao</b> $h$ là khoảng cách từ đỉnh tới tâm đáy; <b>đường sinh</b> $l$ nối đỉnh với một điểm trên đường tròn đáy. Theo định lý Pythagore: $$l^2 = r^2 + h^2.$$</li>
+<li><b>Hình cầu</b> <span class="en">(sphere)</span>: gồm các điểm cách <b>tâm</b> $O$ một khoảng bằng <b>bán kính</b> $R$. Mặt phẳng qua tâm cắt hình cầu theo <b>đường tròn lớn</b>.</li>
+</ul>
+
+<h2>4. Hình trải</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p><b>Hình trải</b> <span class="en">(net)</span> của một khối đa diện là hình phẳng thu được khi “mở” khối ra theo một số cạnh. Gấp ngược hình trải lại ta được khối ban đầu. Diện tích hình trải bằng tổng diện tích các mặt (diện tích toàn phần).</p>
+</div>
+
+<h2>5. Khám phá bằng mô hình 3D</h2>
+<div data-widget="ch08_da_dien"  data-title="Đỉnh, cạnh, mặt và hình trải" data-try="chọn một khối, đếm số đỉnh, cạnh, mặt ở bảng bên phải và kiểm tra Đ − C + M. Với lăng trụ và chóp, <b>gõ số cạnh đáy n</b> để thấy công thức 2n, 3n, n + 2… Kéo “Trải hình” hoặc bấm “Mở ra / Gấp lại” để xem hình trải."></div>
+
+<h2>6. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Lăng trụ ngũ giác</div>
+<p>Đếm số đỉnh, cạnh, mặt của hình lăng trụ ngũ giác và kiểm tra hệ thức Euler.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Với $n = 5$: $\text{Đ} = 2n = 10$, $C = 3n = 15$, $M = n + 2 = 7$. Kiểm tra: $10 - 15 + 7 = 2$. ✔ Bạn có thể nhập $n = 5$ trong mô hình để xem.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Khối hai mươi mặt</div>
+<p>Một khối đa diện lồi có 20 mặt, mỗi mặt là một tam giác. Tính số cạnh và số đỉnh.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Mỗi mặt có 3 cạnh, mỗi cạnh là cạnh chung của đúng 2 mặt: $C = \dfrac{20 \cdot 3}{2} = 30$. Theo Euler: $\text{Đ} = 2 - M + C = 2 - 20 + 30 = 12$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Đường sinh hình nón</div>
+<p>Hình nón có bán kính đáy 3 cm, chiều cao 4 cm. Tính độ dài đường sinh.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$l = \sqrt{r^2 + h^2} = \sqrt{9 + 16} = 5$ cm.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Hình trải của hình lập phương</div>
+<p>Sáu hình vuông xếp thành “chữ thập” (một hàng 4 ô, thêm 1 ô ở trên và 1 ô ở dưới ô thứ hai) có gấp được thành hình lập phương không? Sáu hình vuông xếp thành một hàng thẳng thì sao?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hình chữ thập gấp được: 4 ô của hàng ngang tạo thành 4 mặt bên, 2 ô còn lại làm đáy và nắp (đây chính là hình trải trong mô hình). Sáu ô thẳng hàng thì không: khi gấp 4 ô đầu thành vòng quanh khối, ô thứ 5 và 6 chồng lên các mặt đã có, còn đáy và nắp bị bỏ trống. Hình lập phương có tất cả 11 hình trải khác nhau.</p>
+</details>
+</div>
+
+<h2>7. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Hình trụ, hình nón, hình cầu có mặt cong nên <b>không</b> là khối đa diện, và không áp dụng hệ thức Euler.</li>
+<li><b>Chiều cao</b> hình chóp (đoạn vuông góc từ đỉnh xuống đáy) khác <b>cạnh bên</b>. Tương tự, chiều cao hình nón khác đường sinh.</li>
+<li>Một khối có thể có nhiều hình trải khác nhau, tùy cách chọn các cạnh để cắt.</li>
+</ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>37,7</code>). Làm tròn đến hai chữ số thập phân nếu cần; với kết quả chứa $\pi$, dùng $\pi \approx 3{,}14159$.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Lon nước ngọt có dạng hình gì?</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Hình lăng trụ</label>
+<label><input type="radio" name="q1" value="b"> Hình trụ</label>
+<label><input type="radio" name="q1" value="c"> Hình nón</label>
+<label><input type="radio" name="q1" value="d"> Hình cầu</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hai đáy là hai hình tròn bằng nhau.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="18" data-tol="0.001">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Hình lăng trụ lục giác có bao nhiêu cạnh?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Với $n = 6$: $C = 3n = 18$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.001">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Hình chóp tứ giác có bao nhiêu mặt?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>1 mặt đáy + 4 mặt bên = 5 mặt.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Khối nào <b>không</b> phải khối đa diện?</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> Hình lập phương</label>
+<label><input type="radio" name="q4" value="b"> Hình chóp tam giác</label>
+<label><input type="radio" name="q4" value="c"> Hình nón</label>
+<label><input type="radio" name="q4" value="d"> Hình lăng trụ ngũ giác</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Khối đa diện chỉ có mặt phẳng.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="20" data-tol="0.001">
+<div class="q-head">Câu 5 <span class="q-level">Vận dụng</span></div>
+<p>Một khối đa diện lồi có 12 đỉnh và 30 cạnh. Nó có bao nhiêu mặt?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$M = 2 - \text{Đ} + C = 2 - 12 + 30 = 20$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="13" data-tol="0.001">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Hình nón có bán kính đáy 5 cm, chiều cao 12 cm. Đường sinh dài bao nhiêu cm?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$l = \sqrt{25 + 144} = 13$ cm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="11" data-tol="0.001">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Một hình chóp có 20 cạnh. Hình chóp đó có bao nhiêu đỉnh?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Chóp n-giác có $2n$ cạnh nên $n = 10$; số đỉnh $n + 1 = 11$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Thông hiểu</span></div>
+<p>Một hình trải gồm 1 hình vuông và 4 tam giác cân bằng nhau, mỗi tam giác có đáy là một cạnh của hình vuông. Gấp lại ta được:</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Hình lăng trụ tam giác</label>
+<label><input type="radio" name="q8" value="b"> Hình chóp tứ giác đều</label>
+<label><input type="radio" name="q8" value="c"> Hình lập phương</label>
+<label><input type="radio" name="q8" value="d"> Hình chóp tam giác</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đáy vuông, 4 mặt bên tam giác chụm vào một đỉnh.</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<div class="box-title"></div>
+<ul><li>Khối đa diện có mặt, cạnh, đỉnh. Lăng trụ n-giác: $2n$ đỉnh, $3n$ cạnh, $n + 2$ mặt. Chóp n-giác: $n + 1$ đỉnh, $2n$ cạnh, $n + 1$ mặt.</li><li>Hệ thức Euler cho khối đa diện lồi: $\text{Đ} - C + M = 2$.</li><li>Hình trụ, hình nón, hình cầu là khối tròn xoay (có mặt cong). Hình nón: $l^2 = r^2 + h^2$.</li><li>Hình trải là hình phẳng gấp được thành khối.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

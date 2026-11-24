@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tỉ số trong tam giác vuông đồng dạng · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch05_dong_dang.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 5 · Tam giác vuông và lượng giác · Bài 3</div>
+<h1>Bài 3. Tỉ số trong tam giác vuông đồng dạng <span class="en">(Ratios in similar right triangles)</span></h1>
+<p class="lead">Mọi tam giác vuông có cùng một góc nhọn đều đồng dạng với nhau. Vì vậy tỉ số giữa hai cạnh của chúng chỉ phụ thuộc vào góc, không phụ thuộc vào độ to nhỏ. Đây là ý tưởng nền tảng của lượng giác.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Giải thích được vì sao hai tam giác vuông có một góc nhọn bằng nhau thì đồng dạng.</li><li>Gọi tên cạnh đối, cạnh kề, cạnh huyền đối với một góc nhọn.</li><li>Nhận ra các tỉ số đối : huyền, kề : huyền, đối : kề chỉ phụ thuộc vào góc nhọn.</li><li>Dùng tỉ số bằng nhau để tính cạnh của tam giác vuông đồng dạng (bài toán bóng nắng).</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Lúc 9 giờ sáng, một cây cọc cao 1,5 m có bóng dài 2 m trên mặt đất. Cùng lúc đó, một cây xanh có bóng dài 12 m. Không cần trèo lên cây, bạn có tính được cây cao bao nhiêu không?</p>
+<p>Tia nắng chiếu xuống cọc và cây theo <b>cùng một góc</b>. Bài học này cho thấy chỉ cần biết một góc nhọn là đã biết "hình dạng" của tam giác vuông.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Cạnh đối, cạnh kề, cạnh huyền</div>
+<p>Xét tam giác $ABC$ vuông tại $B$ và góc nhọn $\alpha = \widehat{A}$.</p>
+<ul>
+<li><b>Cạnh huyền</b> <span class="en">(hypotenuse)</span> $AC$: đối diện góc vuông.</li>
+<li><b>Cạnh đối</b> <span class="en">(opposite side)</span> của góc $A$: cạnh $BC$, nằm đối diện góc $A$.</li>
+<li><b>Cạnh kề</b> <span class="en">(adjacent side)</span> của góc $A$: cạnh $AB$, là cạnh góc vuông nằm trên một cạnh của góc $A$.</li>
+</ul>
+<p>Cạnh đối và cạnh kề <b>đổi vai</b> khi ta xét góc nhọn còn lại: đối với góc $C$, cạnh đối là $AB$ còn cạnh kề là $BC$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tam giác vuông đồng dạng</div>
+<p>Nếu hai tam giác vuông có một góc nhọn bằng nhau thì chúng đồng dạng (trường hợp góc – góc: ngoài góc nhọn bằng nhau, chúng còn có góc vuông bằng nhau).</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tỉ số chỉ phụ thuộc vào góc</div>
+<p>Nếu tam giác $ABC$ vuông tại $B$ và tam giác $A'B'C'$ vuông tại $B'$ có $\widehat{A} = \widehat{A'} = \alpha$ thì</p>
+<p>$$\frac{BC}{AC} = \frac{B'C'}{A'C'}, \qquad \frac{AB}{AC} = \frac{A'B'}{A'C'}, \qquad \frac{BC}{AB} = \frac{B'C'}{A'B'} .$$</p>
+<p><i>Chứng minh.</i> Hai tam giác đồng dạng theo tỉ số $k$: $A'B' = k\cdot AB$, $B'C' = k\cdot BC$, $A'C' = k\cdot AC$. Khi lập tỉ số, $k$ ở tử và ở mẫu triệt tiêu nhau, ví dụ $\dfrac{B'C'}{A'C'} = \dfrac{k\cdot BC}{k\cdot AC} = \dfrac{BC}{AC}$.</p>
+</div>
+<p>Như vậy, với mỗi góc nhọn $\alpha$, ba tỉ số $\dfrac{\text{đối}}{\text{huyền}}$, $\dfrac{\text{kề}}{\text{huyền}}$, $\dfrac{\text{đối}}{\text{kề}}$ là ba số <b>xác định</b>. Ở bài sau, ta sẽ đặt tên cho chúng là sin, cos và tan của góc $\alpha$.</p>
+
+<h2>3. Khám phá bằng minh họa động</h2>
+<div data-widget="ch05_dong_dang"  data-title="Hai tam giác vuông có chung góc nhọn α" data-try="kéo B₁ hoặc B₂ (hoặc <b>nhập</b> AB₁, AB₂) để phóng to, thu nhỏ: các cạnh đổi nhưng ba dòng tỉ số trong bảng giữ nguyên ở cả hai cột. Sau đó kéo C₂ lên xuống (hoặc nhập góc α): lúc này các tỉ số mới thay đổi."></div>
+<p>Hãy thử nhập $\alpha = 45^\circ$: tỉ số đối : kề bằng 1 (tam giác vuông cân). Nhập $\alpha = 30^\circ$: tỉ số đối : huyền bằng $0{,}5$, đúng như kết quả "cạnh đối diện góc $30^\circ$ bằng nửa cạnh huyền" ở Bài 2.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tính cạnh nhờ tỉ số đồng dạng</div>
+<p>Tam giác $ABC$ vuông tại $B$ có $AB = 4$, $BC = 3$, $AC = 5$. Tam giác $DEF$ vuông tại $E$ có $\widehat{D} = \widehat{A}$ và $DE = 10$. Tính $EF$ và $DF$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai tam giác vuông có $\widehat{D} = \widehat{A}$ nên đồng dạng, tỉ số $k = \dfrac{DE}{AB} = \dfrac{10}{4} = 2{,}5$.</p>
+<p>$EF = 2{,}5 \cdot 3 = 7{,}5$ và $DF = 2{,}5 \cdot 5 = 12{,}5$.</p>
+<p>Cách khác, dùng tỉ số: $\dfrac{EF}{DE} = \dfrac{BC}{AB} = \dfrac34$ nên $EF = \dfrac34 \cdot 10 = 7{,}5$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. So sánh tỉ số của hai tam giác</div>
+<p>So sánh các tỉ số đối : huyền, kề : huyền, đối : kề của góc nhỏ nhất trong tam giác có ba cạnh $3; 4; 5$ và trong tam giác có ba cạnh $6; 8; 10$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Góc nhỏ nhất đối diện cạnh nhỏ nhất. Tam giác thứ nhất: $\dfrac35 = 0{,}6$; $\dfrac45 = 0{,}8$; $\dfrac34 = 0{,}75$. Tam giác thứ hai: $\dfrac{6}{10} = 0{,}6$; $\dfrac{8}{10} = 0{,}8$; $\dfrac68 = 0{,}75$.</p>
+<p>Ba cặp tỉ số bằng nhau, phù hợp với việc hai tam giác đồng dạng (tỉ số 2), nên góc nhỏ nhất của chúng bằng nhau.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Bài toán bóng nắng</div>
+<p>Cây cọc cao 1,5 m có bóng dài 2 m; cùng lúc đó bóng của một cây dài 12 m. Tính chiều cao của cây.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Cọc và bóng của nó, cây và bóng của nó tạo thành hai tam giác vuông có cùng góc tạo bởi tia nắng với mặt đất, nên đồng dạng. Tỉ số đối : kề như nhau:</p>
+<p>$$\frac{h}{12} = \frac{1{,}5}{2} \;\Rightarrow\; h = 12 \cdot 0{,}75 = 9 \text{ (m)}.$$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Biết tỉ số của góc</div>
+<p>Một góc nhọn $\alpha$ có tỉ số đối : huyền bằng $0{,}6$. Một tam giác vuông chứa góc $\alpha$ có cạnh huyền 15. Tính hai cạnh góc vuông.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Cạnh đối $= 0{,}6 \cdot 15 = 9$. Cạnh kề $= \sqrt{15^2 - 9^2} = \sqrt{144} = 12$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>"Cạnh đối" và "cạnh kề" luôn được gọi <b>đối với một góc nhọn cụ thể</b>. Đổi góc thì đổi tên. Cạnh huyền thì không đổi.</li>
+<li>Tỉ số không đổi khi phóng to, thu nhỏ, nhưng <b>độ dài</b> thì có. Đừng nhầm hai tam giác đồng dạng với hai tam giác bằng nhau.</li>
+<li>Tỉ số đối : huyền và kề : huyền luôn nhỏ hơn 1, vì cạnh huyền là cạnh dài nhất. Tỉ số đối : kề có thể lớn hơn 1.</li>
+<li>Khi lập tỉ lệ, phải ghép đúng các cạnh tương ứng (đối với đối, kề với kề).</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hai tam giác vuông có một góc nhọn bằng nhau thì</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> bằng nhau</label>
+<label><input type="radio" name="q1" value="b"> đồng dạng</label>
+<label><input type="radio" name="q1" value="c"> có cạnh huyền bằng nhau</label>
+<label><input type="radio" name="q1" value="d"> có diện tích bằng nhau</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Chúng có hai cặp góc bằng nhau (góc vuông và góc nhọn) nên đồng dạng theo trường hợp góc – góc.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="0.3846" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác vuông có hai cạnh góc vuông 5 và 12, cạnh huyền 13. Gọi $\alpha$ là góc đối diện cạnh 5. Tính tỉ số đối : huyền của $\alpha$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{5}{13} \approx 0{,}38$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác vuông thứ nhất có cạnh kề 8 và cạnh đối 6 đối với góc $\alpha$. Tam giác vuông thứ hai cũng chứa góc $\alpha$, có cạnh kề 20. Tính cạnh đối của tam giác thứ hai.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Tỉ số đối : kề như nhau: $\dfrac{x}{20} = \dfrac68$ nên $x = 15$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="15" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Góc nhọn $\alpha$ có tỉ số đối : kề bằng $0{,}75$. Tam giác vuông chứa $\alpha$ có cạnh kề 12. Tính cạnh huyền.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Cạnh đối $= 0{,}75 \cdot 12 = 9$; cạnh huyền $= \sqrt{12^2 + 9^2} = 15$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="d">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Phóng to một tam giác vuông gấp 3 lần (giữ nguyên các góc). Đại lượng nào <b>thay đổi</b>?</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> Tỉ số đối : huyền</label>
+<label><input type="radio" name="q5" value="b"> Tỉ số kề : huyền</label>
+<label><input type="radio" name="q5" value="c"> Tỉ số đối : kề</label>
+<label><input type="radio" name="q5" value="d"> Độ dài cạnh huyền</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Các tỉ số giữ nguyên; độ dài các cạnh đều gấp 3.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="24" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Một cây gậy cao 2 m có bóng dài 1,5 m. Cùng lúc đó, bóng của một tòa nhà dài 18 m. Tòa nhà cao bao nhiêu mét?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{h}{18} = \dfrac{2}{1{,}5}$ nên $h = 24$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tam giác $ABC$ vuông tại $A$ có $AB = 9$, $AC = 12$. Trên cạnh $AB$ lấy $M$ với $AM = 3$; đường thẳng qua $M$ vuông góc với $AB$ cắt $BC$ tại $N$. Tính $MN$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Tam giác $BMN$ vuông tại $M$ và tam giác $BAC$ vuông tại $A$ có chung góc $B$ nên đồng dạng. $BM = 9 - 3 = 6$, nên $\dfrac{MN}{AC} = \dfrac{BM}{BA}$, $MN = 12 \cdot \dfrac69 = 8$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Tam giác vuông có hai cạnh góc vuông 7 và 24 (cạnh huyền 25). Một tam giác đồng dạng với nó có cạnh huyền 50. Cạnh góc vuông ngắn nhất của tam giác mới là</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> $12$</label>
+<label><input type="radio" name="q8" value="b"> $14$</label>
+<label><input type="radio" name="q8" value="c"> $21$</label>
+<label><input type="radio" name="q8" value="d"> $28$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Tỉ số đồng dạng $50 : 25 = 2$, nên cạnh ngắn nhất là $7 \cdot 2 = 14$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Hai tam giác vuông có một góc nhọn bằng nhau thì đồng dạng (g.g).</li><li>Đối với góc nhọn $\alpha$: cạnh đối nằm đối diện $\alpha$, cạnh kề là cạnh góc vuông nằm trên cạnh của $\alpha$, cạnh huyền đối diện góc vuông.</li><li>Các tỉ số đối : huyền, kề : huyền, đối : kề chỉ phụ thuộc vào góc $\alpha$, không phụ thuộc kích thước tam giác.</li><li>Ứng dụng: đo chiều cao bằng bóng nắng, tính cạnh của tam giác vuông đồng dạng.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

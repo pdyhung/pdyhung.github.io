@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phương trình đường thẳng song song, vuông góc · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch06_chung.js"></script>
+<script defer src="../assets/widgets/ch06_pt_duong_thang.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 6 · Hình học giải tích · Bài 5</div>
+<h1>Bài 5. Phương trình đường thẳng song song, vuông góc <span class="en">(Equations of parallel and perpendicular lines)</span></h1>
+<p class="lead">Biết một điểm và hệ số góc là viết được phương trình đường thẳng. Kết hợp với điều kiện song song, vuông góc ở Bài 4, ta viết được đường song song, đường vuông góc, đường trung trực và đường cao.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Viết phương trình đường thẳng đi qua một điểm và có hệ số góc cho trước.</li><li>Viết phương trình đường thẳng đi qua một điểm, song song hoặc vuông góc với một đường thẳng cho trước.</li><li>Viết phương trình đường trung trực của đoạn thẳng, đường cao của tam giác.</li><li>Tìm chân đường vuông góc và khoảng cách từ một điểm đến một đường thẳng.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Trên bản đồ, một con đường thẳng có phương trình $y = 2x - 1$. Nhà Bình ở điểm $M(-2; 3)$. Người ta muốn làm một lối đi ngắn nhất từ nhà Bình ra đường; lối đi ngắn nhất phải vuông góc với con đường. Lối đi nằm trên đường thẳng nào, và gặp con đường tại đâu?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Phương trình đường thẳng qua một điểm, biết hệ số góc</div>
+<p>Đường thẳng đi qua $M(x_0; y_0)$ và có hệ số góc $a$ có phương trình (<b>dạng điểm – hệ số góc</b> <span class="en">(point-slope form)</span>)</p>
+<p>$$y - y_0 = a(x - x_0), \qquad\text{hay}\qquad y = ax + b \ \text{ với } \ b = y_0 - a\,x_0.$$</p>
+</div>
+<p>Lý do: điểm $(x; y)$ khác $M$ nằm trên đường thẳng khi và chỉ khi đường nối nó với $M$ có hệ số góc $a$, tức $\frac{y - y_0}{x - x_0} = a$.</p>
+<p><b>Quy trình ba bước</b> để viết phương trình đường thẳng $d_1$ qua $M$ song song (hoặc vuông góc) với $d$:</p>
+<ol>
+<li>Đọc hệ số góc $a$ của $d$ (nếu $d$ chưa ở dạng $y = ax + b$ thì giải theo $y$).</li>
+<li>Hệ số góc cần dùng: $a_1 = a$ nếu song song; $a_1 = -\frac{1}{a}$ nếu vuông góc.</li>
+<li>Thay tọa độ $M$: $b_1 = y_0 - a_1x_0$. Viết $y = a_1x + b_1$.</li>
+</ol>
+<table>
+<tr><th>Đường thẳng $d$</th><th>Qua $M(x_0; y_0)$, song song với $d$</th><th>Qua $M(x_0; y_0)$, vuông góc với $d$</th></tr>
+<tr><td>$y = ax + b$, $a \ne 0$</td><td>$y = a(x - x_0) + y_0$</td><td>$y = -\frac{1}{a}(x - x_0) + y_0$</td></tr>
+<tr><td>$y = b$ (nằm ngang)</td><td>$y = y_0$</td><td>$x = x_0$</td></tr>
+<tr><td>$x = c$ (thẳng đứng)</td><td>$x = x_0$</td><td>$y = y_0$</td></tr>
+</table>
+<div class="box dinh-nghia">
+<div class="box-title">Đường trung trực, đường cao, khoảng cách</div>
+<ul>
+<li><b>Đường trung trực</b> <span class="en">(perpendicular bisector)</span> của đoạn $AB$: đi qua trung điểm của $AB$ và vuông góc với $AB$.</li>
+<li><b>Đường cao</b> <span class="en">(altitude)</span> kẻ từ $C$ của tam giác $ABC$: đi qua $C$ và vuông góc với $AB$.</li>
+<li>Khoảng cách từ điểm $M$ đến đường thẳng $d$ là độ dài $MH$, với $H$ là <b>chân đường vuông góc</b> <span class="en">(foot of the perpendicular)</span> hạ từ $M$ xuống $d$. Tìm $H$ bằng cách giải hệ gồm phương trình của $d$ và của đường vuông góc qua $M$.</li>
+</ul>
+<p>Với $d: y = ax + b$, người ta chứng minh được công thức tính nhanh: $MH = \dfrac{|a x_0 - y_0 + b|}{\sqrt{a^2 + 1}}$.</p>
+</div>
+<h2>3. Khám phá: viết phương trình từ hình vẽ</h2>
+<div data-widget="ch06_pt_duong_thang"  data-title="Đường song song và vuông góc qua điểm M" data-try="<b>gõ hệ số a, b</b> của đường d: y = ax + b và tọa độ điểm M (nhấn Enter), hoặc kéo M và hai chấm tím trên d. Bảng số đo viết sẵn phương trình d₁ ∥ d, d₂ ⊥ d qua M kèm các bước thay số, tọa độ chân đường vuông góc H và khoảng cách MH. Thử a = 0 để thấy d₂ thành đường thẳng đứng."></div>
+<p>Hình mặc định chính là bài toán Khởi động: lối đi ngắn nhất nằm trên $d_2: y = -\frac{1}{2}x + 2$ và gặp con đường tại $H(1{,}2; 1{,}4)$.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Song song và vuông góc</div>
+<p>Cho $d: y = 2x - 1$ và $M(-2; 3)$. Viết phương trình đường thẳng $d_1$ qua $M$ song song với $d$, và $d_2$ qua $M$ vuông góc với $d$. Tìm giao điểm $H$ của $d$ và $d_2$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p><b>$d_1$:</b> hệ số góc $2$, $b_1 = 3 - 2\cdot(-2) = 7$. Vậy $d_1: y = 2x + 7$.</p>
+<p><b>$d_2$:</b> hệ số góc $-\frac{1}{2}$, $b_2 = 3 - \left(-\frac{1}{2}\right)(-2) = 2$. Vậy $d_2: y = -\frac{1}{2}x + 2$.</p>
+<p><b>$H$:</b> giải $2x - 1 = -\frac{1}{2}x + 2 \iff \frac{5}{2}x = 3 \iff x = 1{,}2$; $y = 2\cdot 1{,}2 - 1 = 1{,}4$. Vậy $H(1{,}2; 1{,}4)$ và lối đi dài $MH = \sqrt{3{,}2^2 + 1{,}6^2} = \sqrt{12{,}8} \approx 3{,}58$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Đường thẳng cho ở dạng tổng quát</div>
+<p>Cho $d: 3x + 2y - 6 = 0$ và $M(4; 1)$. Viết phương trình đường thẳng qua $M$ song song với $d$, và đường thẳng qua $M$ vuông góc với $d$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Giải theo $y$: $2y = -3x + 6 \iff y = -\frac{3}{2}x + 3$. Hệ số góc của $d$ là $-\frac{3}{2}$.</p>
+<p>Song song: $y - 1 = -\frac{3}{2}(x - 4) \iff y = -\frac{3}{2}x + 7$.</p>
+<p>Vuông góc: hệ số góc $\frac{2}{3}$; $y - 1 = \frac{2}{3}(x - 4) \iff y = \frac{2}{3}x - \frac{5}{3}$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Đường trung trực</div>
+<p>Viết phương trình đường trung trực của đoạn thẳng $AB$ với $A(-1; 2)$, $B(3; 4)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Trung điểm $I(1; 3)$. Hệ số góc $AB$: $\frac{4 - 2}{3 + 1} = \frac{1}{2}$, nên đường trung trực có hệ số góc $-2$.</p>
+<p>$y - 3 = -2(x - 1) \iff y = -2x + 5$. Kiểm tra: điểm $(0; 5)$ trên đường này cách $A$ một khoảng $\sqrt{1 + 9} = \sqrt{10}$ và cách $B$ một khoảng $\sqrt{9 + 1} = \sqrt{10}$, đúng là cách đều.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Đường cao và chân đường cao</div>
+<p>Cho tam giác $A(0; 0)$, $B(6; 2)$, $C(1; 5)$. Viết phương trình đường cao kẻ từ $C$, tìm chân đường cao $H$ và tính $CH$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Đường $AB$: hệ số góc $\frac{2}{6} = \frac{1}{3}$, đi qua gốc nên $AB: y = \frac{1}{3}x$.</p>
+<p>Đường cao từ $C$ có hệ số góc $-3$: $y - 5 = -3(x - 1) \iff y = -3x + 8$.</p>
+<p>$H$: $\frac{1}{3}x = -3x + 8 \iff \frac{10}{3}x = 8 \iff x = 2{,}4$, $y = 0{,}8$. Vậy $H(2{,}4; 0{,}8)$.</p>
+<p>$CH = \sqrt{(2{,}4 - 1)^2 + (0{,}8 - 5)^2} = \sqrt{1{,}96 + 17{,}64} = \sqrt{19{,}6} \approx 4{,}43$.</p>
+<p>Kiểm tra bằng diện tích: $AB = \sqrt{40}$, $\frac{1}{2}\cdot\sqrt{40}\cdot\sqrt{19{,}6} = \frac{1}{2}\sqrt{784} = 14$, đúng bằng diện tích tính theo công thức dây giày ở Bài 3.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Đường nằm ngang và thẳng đứng</div>
+<p>Cho $d: y = 4$ và $M(2; -1)$. Viết phương trình đường thẳng qua $M$ song song với $d$ và đường thẳng qua $M$ vuông góc với $d$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$d$ nằm ngang (hệ số góc 0). Đường song song qua $M$: $y = -1$. Đường vuông góc qua $M$ là đường thẳng đứng $x = 2$ (không viết được ở dạng $y = ax + b$).</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Dấu khi thay số:</b> $b = y_0 - a x_0$. Với $a = -\frac{1}{2}$, $x_0 = -2$: $a x_0 = 1$, nên $b = y_0 - 1$. Hãy viết rõ ngoặc: $y_0 - \left(-\frac{1}{2}\right)(-2)$.</li>
+<li>Đường thẳng song song có <b>cùng $a$ nhưng khác $b$</b>. Nếu tính ra $b_1 = b$, nghĩa là $M$ nằm trên $d$ và "đường song song" trùng với $d$.</li>
+<li>Với đường nằm ngang $y = b$, đường vuông góc là $x = x_0$; đừng tính $-\frac{1}{0}$.</li>
+<li>Đường trung trực đi qua <b>trung điểm</b>, đường cao đi qua <b>đỉnh</b>; cả hai đều vuông góc với cạnh tương ứng. Đừng nhầm hai đường này.</li>
+<li>Luôn thử lại: thay tọa độ $M$ vào phương trình vừa viết, hai vế phải bằng nhau.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Đường thẳng qua $M(1; 2)$ và song song với $y = 3x + 5$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $y = 3x + 2$</label>
+<label><input type="radio" name="q1" value="b"> $y = 3x - 1$</label>
+<label><input type="radio" name="q1" value="c"> $y = -\frac{1}{3}x + \frac{7}{3}$</label>
+<label><input type="radio" name="q1" value="d"> $y = 3x + 5$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hệ số góc 3; $b = 2 - 3\cdot 1 = -1$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="11" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Đường thẳng qua $M(2; 5)$ có hệ số góc $-3$ có phương trình $y = -3x + b$. Tìm $b$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$b = y_0 - a x_0 = 5 - (-3)\cdot 2 = 11$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Đường thẳng qua $M(4; 0)$ và vuông góc với $y = 2x + 1$ là:</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> $y = 2x - 8$</label>
+<label><input type="radio" name="q3" value="b"> $y = -2x + 8$</label>
+<label><input type="radio" name="q3" value="c"> $y = -\frac{1}{2}x + 2$</label>
+<label><input type="radio" name="q3" value="d"> $y = \frac{1}{2}x - 2$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hệ số góc $-\frac{1}{2}$; $b = 0 - \left(-\frac{1}{2}\right)\cdot 4 = 2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Đường thẳng qua $M(-3; 1)$ song song với đường thẳng $2x - y + 4 = 0$ có phương trình $y = ax + b$. Tìm $b$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$2x - y + 4 = 0 \iff y = 2x + 4$, hệ số góc 2. $b = 1 - 2\cdot(-3) = 7$. Đường cần tìm: $y = 2x + 7$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-1" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Đường thẳng qua $M(3; -2)$ vuông góc với $y = 3x - 4$ có phương trình $y = ax + b$. Tìm $b$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hệ số góc $-\frac{1}{3}$; $b = -2 - \left(-\frac{1}{3}\right)\cdot 3 = -1$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Đường trung trực của đoạn $AB$ với $A(1; 1)$, $B(5; 3)$ cắt trục tung tại điểm có tung độ bằng bao nhiêu?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Trung điểm $(3; 2)$, hệ số góc $AB = \frac{1}{2}$ nên trung trực có hệ số góc $-2$: $y = -2(x - 3) + 2 = -2x + 8$. Cắt trục tung tại $y = 8$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2.83" data-tol="0.02">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tính khoảng cách từ $M(2; 3)$ đến đường thẳng $d: y = x - 3$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Đường vuông góc qua $M$: $y = -x + 5$. Giao với $d$: $x - 3 = -x + 5 \Rightarrow x = 4$, $H(4; 1)$. $MH = \sqrt{4 + 4} = 2\sqrt2 \approx 2{,}83$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Đường thẳng qua gốc tọa độ và vuông góc với đường thẳng $x = 5$ là:</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> $x = 0$</label>
+<label><input type="radio" name="q8" value="b"> $y = 0$</label>
+<label><input type="radio" name="q8" value="c"> $y = x$</label>
+<label><input type="radio" name="q8" value="d"> $y = -\frac{1}{5}x$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$x = 5$ thẳng đứng nên đường vuông góc nằm ngang; qua $O$ nên là $y = 0$ (trục hoành).</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Qua $M(x_0; y_0)$, hệ số góc $a$: $y = a(x - x_0) + y_0$.</li><li>Song song với $y = ax + b$: giữ nguyên $a$. Vuông góc: dùng $-\frac{1}{a}$. Sau đó thay $M$ để tìm tung độ gốc.</li><li>Đường nằm ngang và đường thẳng đứng là trường hợp riêng: $y = y_0$ và $x = x_0$.</li><li>Đường trung trực qua trung điểm, đường cao qua đỉnh; chân đường vuông góc là nghiệm của hệ hai phương trình.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

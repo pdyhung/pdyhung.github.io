@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định lý về tứ giác · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch03_common.js"></script>
+<script defer src="../assets/widgets/ch03_tu_giac.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 3 · Sự bằng nhau · Bài 6</div>
+<h1>Bài 6. Định lý về tứ giác <span class="en">(Theorems about quadrilaterals)</span></h1>
+<p class="lead">Khung cửa sổ, mặt bàn, viên gạch lát hoa: rất nhiều vật quanh ta có dạng hình bình hành, hình chữ nhật, hình thoi, hình vuông. Bài này dùng tam giác bằng nhau để chứng minh các tính chất của chúng.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Biết tổng bốn góc của tứ giác lồi bằng 360°.</li><li>Chứng minh các tính chất của hình bình hành: cạnh đối, góc đối, đường chéo.</li><li>Nêu tính chất riêng của hình chữ nhật, hình thoi, hình vuông và các dấu hiệu nhận biết.</li><li>Vận dụng để tính cạnh, góc, đường chéo, tọa độ đỉnh.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Một chiếc giá phơi đồ xếp được có các thanh tạo thành những hình bình hành. Khi kéo giãn hay gập lại, các góc thay đổi nhưng các thanh đối diện vẫn luôn song song. Những gì luôn giữ nguyên trong một hình bình hành?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-ly">
+<div class="box-title">Tổng các góc của tứ giác</div>
+<p>Tổng bốn góc của một tứ giác lồi bằng $360^\circ$. (Đường chéo $AC$ chia tứ giác $ABCD$ thành hai tam giác, mỗi tam giác có tổng ba góc $180^\circ$.)</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Hình bình hành</div>
+<p><b>Hình bình hành</b> <span class="en">(parallelogram)</span> là tứ giác có các cạnh đối song song: $AB \parallel CD$ và $AD \parallel BC$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất hình bình hành</div>
+<p>Trong hình bình hành $ABCD$:</p>
+<ol><li>các cạnh đối bằng nhau: $AB = CD$, $AD = BC$;</li><li>các góc đối bằng nhau: $\widehat{A} = \widehat{C}$, $\widehat{B} = \widehat{D}$; hai góc kề một cạnh bù nhau;</li>
+<li>hai đường chéo cắt nhau tại trung điểm $O$ của mỗi đường: $OA = OC$, $OB = OD$.</li></ol>
+<p><i>Chứng minh.</i> Xét $\triangle ABC$ và $\triangle CDA$: $\widehat{BAC} = \widehat{DCA}$ (so le trong, $AB \parallel CD$), $AC$ chung, $\widehat{BCA} = \widehat{DAC}$ (so le trong, $AD \parallel BC$). Vậy $\triangle ABC = \triangle CDA$ (g.c.g), suy ra $AB = CD$, $BC = DA$, $\widehat{B} = \widehat{D}$. Tương tự với đường chéo $BD$ được $\widehat{A} = \widehat{C}$. Cuối cùng $\triangle OAB = \triangle OCD$ (g.c.g) cho $OA = OC$, $OB = OD$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Dấu hiệu nhận biết hình bình hành</div>
+<p>Tứ giác là hình bình hành nếu có một trong các điều kiện: các cạnh đối song song; các cạnh đối bằng nhau; hai cạnh đối song song và bằng nhau; các góc đối bằng nhau; hai đường chéo cắt nhau tại trung điểm mỗi đường.</p>
+</div>
+<table>
+<tr><th>Hình</th><th>Định nghĩa</th><th>Tính chất riêng của đường chéo</th></tr>
+<tr><td><b>Hình chữ nhật</b> <span class="en">(rectangle)</span></td><td>Tứ giác có bốn góc vuông</td><td>Hai đường chéo bằng nhau</td></tr>
+<tr><td><b>Hình thoi</b> <span class="en">(rhombus)</span></td><td>Tứ giác có bốn cạnh bằng nhau</td><td>Hai đường chéo vuông góc, là phân giác các góc</td></tr>
+<tr><td><b>Hình vuông</b> <span class="en">(square)</span></td><td>Tứ giác có bốn góc vuông và bốn cạnh bằng nhau</td><td>Bằng nhau, vuông góc, cắt nhau tại trung điểm</td></tr>
+</table>
+<p>Hình chữ nhật, hình thoi, hình vuông đều là hình bình hành, nên có đủ mọi tính chất của hình bình hành. Ví dụ, trong hình chữ nhật $ABCD$: $\triangle ABC = \triangle BAD$ (c.g.c: $AB$ chung, $\widehat{B} = \widehat{A} = 90^\circ$, $BC = AD$) nên $AC = BD$. Trong hình thoi: $\triangle AOB = \triangle AOD$ (c.c.c) nên $\widehat{AOB} = \widehat{AOD} = 90^\circ$.</p>
+
+<h2>3. Khám phá: kiểm tra tính chất bằng số đo</h2>
+<div data-widget="ch03_tu_giac" data-type="hbh" data-title="Tứ giác và các trường hợp đặc biệt" data-try="chọn loại tứ giác, kéo các đỉnh xanh hoặc nhập cạnh và góc. Khung “Kiểm tra tính chất” cho biết tính chất nào đúng. Với “Tứ giác bất kỳ”, kéo C sao cho các cạnh đối bằng nhau và xem các tính chất khác tự thỏa mãn."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Chọn <b>Hình thoi</b>, nhập cạnh $AB = 5$ và góc $A = 60$: hai đường chéo $AC \approx 8{,}66$, $BD = 5$, góc giữa chúng $90^\circ$. Chọn <b>Hình chữ nhật</b>, nhập $AB = 6$, $AD = 8$: hai đường chéo bằng $10$ (Ví dụ 4).</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Góc của tứ giác</div>
+<p>Tứ giác $ABCD$ có $\widehat{A} = 80^\circ$, $\widehat{B} = 95^\circ$, $\widehat{C} = 110^\circ$. Tính $\widehat{D}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat{D} = 360^\circ - 80^\circ - 95^\circ - 110^\circ = 75^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Hình bình hành</div>
+<p>Hình bình hành $ABCD$ có $AB = 6$, $AD = 4$, $\widehat{A} = 65^\circ$. Tính các góc còn lại và chu vi.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat{C} = \widehat{A} = 65^\circ$; $\widehat{B} = \widehat{D} = 180^\circ - 65^\circ = 115^\circ$. Chu vi $= 2(6 + 4) = 20$. Đây chính là hình ban đầu của minh họa.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Hình thoi</div>
+<p>Hình thoi có hai đường chéo dài $8$ và $6$. Tính cạnh của hình thoi.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai đường chéo vuông góc tại trung điểm $O$, nên $\triangle AOB$ vuông tại $O$ với $OA = 4$, $OB = 3$: $AB = \sqrt{4^2 + 3^2} = 5$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Hình chữ nhật</div>
+<p>Hình chữ nhật $ABCD$ có $AB = 6$, $AD = 8$. Tính $AC$ và $OA$ với $O$ là giao điểm hai đường chéo.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AC = \sqrt{6^2 + 8^2} = 10$; $OA = \frac{AC}{2} = 5$. Vì $AC = BD$ nên $O$ cách đều bốn đỉnh.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Tìm đỉnh thứ tư</div>
+<p>Cho $A(0; 0)$, $B(4; 1)$, $D(1; 3)$. Tìm $C$ để $ABCD$ là hình bình hành.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai đường chéo cắt nhau tại trung điểm, nên trung điểm của $AC$ trùng trung điểm của $BD$: $C = B + D - A = (4 + 1 - 0; 1 + 3 - 0) = (5; 4)$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Tứ giác có hai cạnh đối song song, hai cạnh kia bằng nhau <b>chưa chắc</b> là hình bình hành (có thể là hình thang cân).</li>
+<li>Hai đường chéo bằng nhau chưa đủ để là hình chữ nhật; phải là hình bình hành có hai đường chéo bằng nhau.</li>
+<li>Thứ tự đỉnh: $ABCD$ đi vòng quanh hình; $AC$ và $BD$ mới là hai đường chéo.</li>
+</ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="110" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hình bình hành $ABCD$ có $\widehat{A} = 70^\circ$. Tính $\widehat{D}$ (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hai góc kề cạnh $AD$ bù nhau: $\widehat{D} = 180^\circ - 70^\circ = 110^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="d">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Tứ giác nào có hai đường chéo vừa bằng nhau vừa vuông góc với nhau và cắt nhau tại trung điểm mỗi đường?</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> Hình bình hành</label>
+<label><input type="radio" name="q2" value="b"> Hình chữ nhật</label>
+<label><input type="radio" name="q2" value="c"> Hình thoi</label>
+<label><input type="radio" name="q2" value="d"> Hình vuông</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hình vuông vừa là hình chữ nhật vừa là hình thoi.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Dấu hiệu nào đủ để kết luận tứ giác là hình bình hành?</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> Hai đường chéo bằng nhau</label>
+<label><input type="radio" name="q3" value="b"> Hai đường chéo vuông góc</label>
+<label><input type="radio" name="q3" value="c"> Hai đường chéo cắt nhau tại trung điểm mỗi đường</label>
+<label><input type="radio" name="q3" value="d"> Có một góc vuông</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem các dấu hiệu nhận biết.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Hình bình hành $ABCD$ có hai đường chéo cắt nhau tại $O$, $OA = 3{,}5$. Tính $AC$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$O$ là trung điểm $AC$ nên $AC = 7$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="13" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Hình chữ nhật có hai cạnh $5$ và $12$. Tính độ dài đường chéo.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\sqrt{25 + 144} = 13$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="52" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Hình thoi có hai đường chéo $10$ và $24$. Tính chu vi.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Cạnh $= \sqrt{5^2 + 12^2} = 13$, chu vi $= 4 \cdot 13 = 52$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Cho $A(1; 1)$, $B(5; 2)$, $D(2; 4)$. Tìm hoành độ của $C$ để $ABCD$ là hình bình hành.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$C = B + D - A = (6; 5)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="120" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Tứ giác $ABCD$ có $\widehat{A} = \widehat{C} = 2\widehat{B}$ và $\widehat{B} = \widehat{D}$. Tính $\widehat{A}$ (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$2x + x + 2x + x = 360 \Rightarrow x = 60$, nên $\widehat{A} = 120^\circ$ (tứ giác là hình bình hành vì các góc đối bằng nhau).</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Tổng bốn góc của tứ giác lồi bằng 360°.</li><li>Hình bình hành: cạnh đối bằng nhau, góc đối bằng nhau, hai đường chéo cắt nhau tại trung điểm mỗi đường (chứng minh bằng tam giác bằng nhau).</li><li>Hình chữ nhật: thêm hai đường chéo bằng nhau; hình thoi: thêm hai đường chéo vuông góc; hình vuông: có cả hai.</li><li>Trên tọa độ, đỉnh thứ tư của hình bình hành ABCD là C = B + D − A.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

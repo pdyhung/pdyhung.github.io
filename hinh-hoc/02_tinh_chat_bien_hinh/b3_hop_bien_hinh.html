@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hợp các phép biến hình · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch02_common.js"></script>
+<script defer src="../assets/widgets/ch02_hop.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 2 · Tính chất phép biến hình và chứng minh · Bài 3</div>
+<h1>Bài 3. Hợp các phép biến hình <span class="en">(Compositions of transformations)</span></h1>
+<p class="lead">Thực hiện liên tiếp nhiều phép biến hình, ta được một phép biến hình mới. Kết quả có phụ thuộc thứ tự không? Hai lần "lật" có thể thay bằng một lần "trượt" hay một lần "xoay" không? Bài này trả lời các câu hỏi đó.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Hiểu hợp của hai phép biến hình và cách viết $G \circ F$ (thực hiện $F$ trước, $G$ sau).</li><li>Thấy được thứ tự thực hiện thường làm thay đổi kết quả.</li><li>Biết các kết quả cơ bản: hai phép tịnh tiến, hai phép quay cùng tâm, hai phép đối xứng trục song song hoặc cắt nhau.</li><li>Xác định phép biến hình là hợp của một dãy phép biến hình cho trước.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Đặt chữ F trên lưới ô vuông. Cách 1: trượt sang phải 3 ô rồi quay $90^\circ$ quanh gốc $O$. Cách 2: quay $90^\circ$ quanh $O$ trước rồi mới trượt sang phải 3 ô. Hai cách có cho cùng một vị trí cuối không? Hãy đoán, rồi kiểm tra bằng minh họa ở mục 3 (hai ví dụ có sẵn "Quay 90° rồi tịnh tiến" và "Tịnh tiến rồi quay 90°").</p>
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p>Cho hai phép biến hình $F$ và $G$. Thực hiện $F$ trước, được $M' = F(M)$, rồi thực hiện $G$, được $M'' = G(M')$. Quy tắc $M \mapsto M''$ là một phép biến hình, gọi là <b>hợp của hai phép biến hình</b> <span class="en">(composition of transformations)</span> $F$ và $G$, kí hiệu $G \circ F$:
+$$(G \circ F)(M) = G\big(F(M)\big).$$
+Chú ý thứ tự: trong $G \circ F$, phép viết <b>bên phải</b> ($F$) được thực hiện <b>trước</b>.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý (các hợp thường gặp)</div>
+<ol>
+<li>Hợp của các phép dời hình là một phép dời hình.</li>
+<li>$T_{\vec v} \circ T_{\vec u} = T_{\vec u + \vec v}$: hai phép tịnh tiến cho một phép tịnh tiến, và đổi thứ tự không đổi kết quả.</li>
+<li>$Q_{(O,\beta)} \circ Q_{(O,\alpha)} = Q_{(O,\alpha+\beta)}$: hai phép quay <b>cùng tâm</b> cho một phép quay cùng tâm.</li>
+<li>Nếu $d_1 \parallel d_2$, khoảng cách giữa chúng là $h$, thì $\text{Đ}_{d_2} \circ \text{Đ}_{d_1}$ là phép tịnh tiến theo vectơ vuông góc với $d_1$, độ dài $2h$, hướng từ $d_1$ sang $d_2$.</li>
+<li>Nếu $d_1$ và $d_2$ cắt nhau tại $O$, góc từ $d_1$ đến $d_2$ là $\varphi$, thì $\text{Đ}_{d_2} \circ \text{Đ}_{d_1} = Q_{(O, 2\varphi)}$.</li>
+</ol>
+</div>
+<p><b>Chứng minh ý 4.</b> Chọn hệ trục sao cho $d_1\colon x = 0$, $d_2\colon x = h$. Khi đó $\text{Đ}_{d_1}\colon (x; y) \mapsto (-x; y)$, rồi $\text{Đ}_{d_2}\colon (-x; y) \mapsto (2h - (-x); y) = (x + 2h;\ y)$. Đây là phép tịnh tiến theo $(2h; 0)$.</p>
+<p><b>Chứng minh ý 5.</b> Lấy $O$ làm gốc, gọi góc giữa tia $OM$ và $Ox$ là $\mu$, góc nghiêng của $d_1$, $d_2$ là $\theta_1$, $\theta_2$ (nên $\varphi = \theta_2 - \theta_1$). Phép đối xứng qua đường thẳng có góc nghiêng $\theta$ đưa tia có góc $\mu$ thành tia có góc $2\theta - \mu$ và giữ khoảng cách tới $O$. Sau hai lần: $2\theta_2 - (2\theta_1 - \mu) = \mu + 2(\theta_2 - \theta_1) = \mu + 2\varphi$. Vậy $M$ được quay quanh $O$ một góc $2\varphi$.</p>
+<p>Mỗi phép đối xứng trục đổi hướng một lần, nên hợp của một số <b>chẵn</b> phép đối xứng trục giữ hướng, hợp của một số <b>lẻ</b> phép đối xứng trục đổi hướng. Hợp của phép tịnh tiến dọc theo trục $d$ với phép đối xứng trục $d$ là một phép mới, gọi là <b>phép đối xứng trượt</b> <span class="en">(glide reflection)</span>: hình vừa trượt dọc trục vừa bị lật.</p>
+<h2>3. Khám phá: trình phát dãy phép biến hình</h2>
+<div data-widget="ch02_hop" data-preset="song_song" data-title="Trình phát dãy phép biến hình" data-try="chọn một ví dụ có sẵn rồi bấm “▶ Phát” để xem chữ F đi qua từng bước; bấm “⏮ Tua lại” để xem lại. Bấm “⇄ Đảo thứ tự” và phát lại: kết quả cuối có đổi không? Muốn tự tạo dãy: chọn loại phép trong khung “Soạn bước”, <b>gõ số</b> cho tham số, bấm “+ Thêm bước”. Bấm vào một bước trong danh sách để sửa nó; nút ↑ đưa bước lên trước, × xóa bước. Dòng “Hợp các bước là” cho biết cả dãy tương đương với phép biến hình nào."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Ví dụ "Hai đối xứng trục song song" gồm $d_1\colon x = 0$ rồi $d_2\colon x = 2$. Theo định lý, hợp là phép tịnh tiến theo $(2\cdot 2; 0) = (4; 0)$; bảng ghi đúng "Phép tịnh tiến theo vectơ (4; 0)". Đảo thứ tự, vectơ thành $(-4; 0)$. Chọn "Hai đối xứng trục cắt nhau" ($d_1\colon y = 0$, rồi $d_2\colon y = x$, $\varphi = 45^\circ$): bảng ghi "Phép quay tâm (0; 0), góc 90°". Bấm vào bước 2 và nhập góc nghiêng $\varphi = 60$: góc quay thành $120^\circ$.</p>
+</div>
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Hai phép tịnh tiến</div>
+<p>Thực hiện $T_{\vec u}$ với $\vec u = (2; -1)$, rồi $T_{\vec v}$ với $\vec v = (-5; 3)$. Tìm phép hợp thành và ảnh của $A(4; 4)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hợp thành là $T_{\vec u + \vec v}$ với $\vec u + \vec v = (-3; 2)$. Ảnh của $A$: $(4 - 3;\ 4 + 2) = (1; 6)$. Kiểm tra từng bước: $A \mapsto (6; 3) \mapsto (1; 6)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Hai trục song song</div>
+<p>Tìm phép hợp thành $\text{Đ}_{d_2} \circ \text{Đ}_{d_1}$ với $d_1\colon x = 1$, $d_2\colon x = 4$. Tìm ảnh của $M(0; 2)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai trục song song, cách nhau $h = 3$, hướng từ $d_1$ sang $d_2$ là chiều dương của $Ox$. Hợp thành là phép tịnh tiến theo $(6; 0)$.</p>
+<p>Kiểm tra: $\text{Đ}_{d_1}(M) = (2\cdot 1 - 0;\ 2) = (2; 2)$, rồi $\text{Đ}_{d_2}(2; 2) = (8 - 2;\ 2) = (6; 2) = M + (6; 0)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Hai trục cắt nhau</div>
+<p>Tìm phép hợp thành $\text{Đ}_{d_2} \circ \text{Đ}_{d_1}$ với $d_1 = Ox$, $d_2\colon y = x$. Tìm ảnh của $M(3; 1)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Hai trục cắt nhau tại $O$, góc từ $d_1$ đến $d_2$ là $\varphi = 45^\circ$, nên hợp thành là $Q_{(O, 90^\circ)}$.</p>
+<p>Kiểm tra: $\text{Đ}_{Ox}(3; 1) = (3; -1)$, rồi qua $y = x$: $(-1; 3)$. Mà $Q_{(O, 90^\circ)}(3; 1) = (-1; 3)$. Khớp.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Thứ tự quan trọng</div>
+<p>Gọi $T$ là phép tịnh tiến theo $(3; 0)$, $Q = Q_{(O, 90^\circ)}$. Tìm ảnh của $A(1; 1)$ qua $Q \circ T$ và qua $T \circ Q$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$Q \circ T$ (tịnh tiến trước): $A \mapsto (4; 1) \mapsto (-1; 4)$.</p>
+<p>$T \circ Q$ (quay trước): $A \mapsto (-1; 1) \mapsto (2; 1)$.</p>
+<p>Hai kết quả khác nhau, nên $Q \circ T \ne T \circ Q$. Thật ra cả hai đều là phép quay $90^\circ$ nhưng khác tâm: $Q \circ T$ biến $(x; y)$ thành $(-y;\ x + 3)$, có điểm bất động là nghiệm của hệ $-y = x$, $x + 3 = y$, tức tâm $(-1{,}5; 1{,}5)$; còn $T \circ Q$ biến $(x; y)$ thành $(-y + 3;\ x)$, có tâm $(1{,}5; 1{,}5)$. Minh họa ở mục 3 cho đúng hai tâm này.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Ba phép biến hình</div>
+<p>Tìm phép hợp thành khi thực hiện lần lượt $\text{Đ}_{Ox}$, $\text{Đ}_{Oy}$, rồi phép tịnh tiến theo $(2; 0)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$Ox \perp Oy$ nên góc giữa hai trục là $90^\circ$ và $\text{Đ}_{Oy} \circ \text{Đ}_{Ox} = Q_{(O, 180^\circ)}$: $(x; y) \mapsto (-x; -y)$. Sau đó tịnh tiến: $(-x + 2;\ -y)$.</p>
+<p>Phép $(x; y) \mapsto (2 - x;\ 0 - y)$ có dạng $(2a - x;\ 2b - y)$ với $a = 1$, $b = 0$: đó là phép đối xứng tâm $I(1; 0)$.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Kí hiệu $G \circ F$ đọc từ phải sang trái: $F$ trước, $G$ sau.</li>
+<li>Hai trục song song cách nhau $h$ cho phép tịnh tiến độ dài <b>$2h$</b>, không phải $h$. Đổi thứ tự hai trục thì vectơ đổi hướng.</li>
+<li>Hai trục cắt nhau góc $\varphi$ cho phép quay góc <b>$2\varphi$</b>. Đổi thứ tự thì góc quay đổi dấu.</li>
+<li>Phép quay và phép tịnh tiến nói chung <b>không</b> giao hoán; hai phép quay khác tâm cũng vậy.</li>
+<li>Hai phép quay khác tâm có tổng góc bằng $0^\circ$ (hoặc bội của $360^\circ$) cho một phép tịnh tiến, không phải phép quay (thử ví dụ "Hai phép quay ngược chiều" ở mục 3).</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Hợp của phép tịnh tiến theo $\vec u$ và phép tịnh tiến theo $\vec v$ là</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> phép tịnh tiến theo $\vec u + \vec v$</label>
+<label><input type="radio" name="q1" value="b"> phép tịnh tiến theo $\vec u - \vec v$</label>
+<label><input type="radio" name="q1" value="c"> một phép quay</label>
+<label><input type="radio" name="q1" value="d"> một phép đối xứng trục</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\overrightarrow{MM''} = \overrightarrow{MM'} + \overrightarrow{M'M''} = \vec u + \vec v$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="90" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Thực hiện phép quay tâm $O$ góc $35^\circ$ rồi phép quay tâm $O$ góc $55^\circ$. Phép hợp thành là phép quay tâm $O$ góc bao nhiêu độ?</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Cùng tâm nên cộng góc: $35^\circ + 55^\circ = 90^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Thực hiện phép đối xứng trục $x = 1$ rồi phép đối xứng trục $x = 4{,}5$. Phép hợp thành là phép tịnh tiến theo vectơ $(a; 0)$. Tìm $a$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Khoảng cách hai trục $h = 3{,}5$, hướng từ $d_1$ sang $d_2$ là chiều dương: $a = 2h = 7$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Hai đường thẳng $d_1$, $d_2$ cắt nhau tại $O$, góc từ $d_1$ đến $d_2$ là $30^\circ$. Phép $\text{Đ}_{d_2} \circ \text{Đ}_{d_1}$ là</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> phép quay tâm $O$ góc $30^\circ$</label>
+<label><input type="radio" name="q4" value="b"> phép quay tâm $O$ góc $60^\circ$</label>
+<label><input type="radio" name="q4" value="c"> một phép tịnh tiến</label>
+<label><input type="radio" name="q4" value="d"> một phép đối xứng trục</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Góc quay gấp đôi góc giữa hai trục: $2\cdot 30^\circ = 60^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-3" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tịnh tiến điểm $M(2; 3)$ theo $(1; 0)$ rồi quay quanh $O$ góc $90^\circ$. Tìm hoành độ của ảnh cuối cùng.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(2; 3) \mapsto (3; 3) \mapsto (-3; 3)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.41" data-tol="0.02">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Với $M(2; 3)$, gọi $P$ là ảnh qua "tịnh tiến theo $(1; 0)$ rồi quay quanh $O$ góc $90^\circ$", $R$ là ảnh qua "quay quanh $O$ góc $90^\circ$ rồi tịnh tiến theo $(1; 0)$". Tính $PR$ (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$P(-3; 3)$; $R$: $(2; 3) \mapsto (-3; 2) \mapsto (-2; 2)$. $PR = \sqrt{1 + 1} = \sqrt2 \approx 1{,}41$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Hợp của ba phép đối xứng trục là</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> một phép dời hình luôn giữ hướng</label>
+<label><input type="radio" name="q7" value="b"> một phép dời hình đổi hướng</label>
+<label><input type="radio" name="q7" value="c"> không phải phép dời hình</label>
+<label><input type="radio" name="q7" value="d"> luôn là một phép tịnh tiến</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Mỗi phép đối xứng trục đổi hướng một lần; ba lần (số lẻ) thì đổi hướng. Hợp các phép dời hình vẫn là phép dời hình.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.73" data-tol="0.02">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Thực hiện $\text{Đ}_{Ox}$ rồi phép đối xứng qua đường thẳng $y = \sqrt3\,x$ (góc nghiêng $60^\circ$). Tìm tung độ ảnh của $M(2; 0)$ (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hợp thành là $Q_{(O, 120^\circ)}$. Ảnh của $(2; 0)$: $(2\cos120^\circ;\ 2\sin120^\circ) = (-1; \sqrt3)$, tung độ $\approx 1{,}73$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>$G \circ F$: thực hiện $F$ trước, $G$ sau. Thứ tự thường làm thay đổi kết quả.</li><li>Hợp của các phép dời hình là phép dời hình; số phép đối xứng trục chẵn thì giữ hướng, lẻ thì đổi hướng.</li><li>Hai trục song song cách nhau $h$: tịnh tiến độ dài $2h$. Hai trục cắt nhau góc $\varphi$: quay góc $2\varphi$ quanh giao điểm.</li><li>Hai phép tịnh tiến cho phép tịnh tiến; hai phép quay cùng tâm cho phép quay cùng tâm, góc bằng tổng hai góc.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

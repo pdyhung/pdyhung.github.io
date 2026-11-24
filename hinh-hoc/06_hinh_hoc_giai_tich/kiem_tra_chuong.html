@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra chương 6: Hình học giải tích · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 6 · Hình học giải tích · Kiểm tra chương</div>
+<h1>Kiểm tra chương 6: Hình học giải tích <span class="en">(Unit test)</span></h1>
+<p class="lead">Bài kiểm tra gồm 14 câu, bao quát cả sáu bài của chương. Hãy làm hết rồi mới xem gợi ý; điểm số hiện ở cuối trang.</p>
+<h2>Bài kiểm tra</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="10" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Bài 1</span></div>
+<p>Tính khoảng cách giữa $A(-3; 1)$ và $B(3; 9)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = \sqrt{6^2 + 8^2} = 10$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 2 <span class="q-level">Bài 1</span></div>
+<p>Trung điểm của đoạn thẳng nối $A(-1; 6)$ và $B(5; -2)$ là:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $(2; 2)$</label>
+<label><input type="radio" name="q2" value="b"> $(3; -4)$</label>
+<label><input type="radio" name="q2" value="c"> $(4; 4)$</label>
+<label><input type="radio" name="q2" value="d"> $(-3; 4)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\left(\frac{-1 + 5}{2}; \frac{6 - 2}{2}\right) = (2; 2)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Bài 1</span></div>
+<p>$M(0; 3)$ là trung điểm của $AB$ với $A(-4; 1)$. Tìm tung độ của $B$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$y_B = 2\cdot 3 - 1 = 5$ (và $x_B = 4$).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="7" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Bài 2</span></div>
+<p>Cho $A(1; -2)$, $B(10; 4)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 2 : 1$. Tìm hoành độ của $P$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$x_P = \frac{1\cdot 1 + 2\cdot 10}{3} = 7$ (và $y_P = \frac{-2 + 8}{3} = 2$).</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 5 <span class="q-level">Bài 2</span></div>
+<p>Trọng tâm của tam giác $A(0; 0)$, $B(6; 0)$, $C(3; 9)$ là:</p>
+<div class="options">
+<label><input type="radio" name="q5" value="a"> $(3; 4{,}5)$</label>
+<label><input type="radio" name="q5" value="b"> $(3; 3)$</label>
+<label><input type="radio" name="q5" value="c"> $(2; 3)$</label>
+<label><input type="radio" name="q5" value="d"> $(4; 3)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$G\left(\frac{0 + 6 + 3}{3}; \frac{0 + 0 + 9}{3}\right) = (3; 3)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="13" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Bài 3</span></div>
+<p>Tính diện tích tam giác $A(-1; -1)$, $B(5; 1)$, $C(1; 4)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Dây giày: $(-1)\cdot 1 - 5\cdot(-1) = 4$; $5\cdot 4 - 1\cdot 1 = 19$; $1\cdot(-1) - (-1)\cdot 4 = 3$. $\Sigma = 26$, $S = 13$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="30" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Bài 3</span></div>
+<p>Tính chu vi tam giác $A(0; 0)$, $B(5; 12)$, $C(5; 0)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB = 13$, $BC = 12$, $CA = 5$; chu vi bằng $30$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="17" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Bài 3</span></div>
+<p>Tính diện tích tứ giác $A(0; 0)$, $B(5; 0)$, $C(6; 4)$, $D(1; 3)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Dây giày: $0 + (5\cdot 4 - 6\cdot 0) + (6\cdot 3 - 1\cdot 4) + 0 = 34$, $S = 17$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="0.67" data-tol="0.01">
+<div class="q-head">Câu 9 <span class="q-level">Bài 4</span></div>
+<p>Cho $A(1; 4)$, $B(5; -2)$. Tính hệ số góc của đường thẳng vuông góc với $AB$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hệ số góc $AB = \frac{-6}{4} = -\frac{3}{2}$, nên đường vuông góc có hệ số góc $\frac{2}{3} \approx 0{,}67$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 10 <span class="q-level">Bài 4</span></div>
+<p>Cặp đường thẳng nào vuông góc với nhau?</p>
+<div class="options">
+<label><input type="radio" name="q10" value="a"> $y = 2x + 1$ và $y = 2x - 3$</label>
+<label><input type="radio" name="q10" value="b"> $y = 2x + 1$ và $y = -2x + 3$</label>
+<label><input type="radio" name="q10" value="c"> $y = 2x + 1$ và $y = -\frac{1}{2}x + 3$</label>
+<label><input type="radio" name="q10" value="d"> $y = 2x + 1$ và $y = \frac{1}{2}x + 3$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$2\cdot\left(-\frac{1}{2}\right) = -1$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 11 <span class="q-level">Bài 5</span></div>
+<p>Đường thẳng qua $M(2; -1)$ và song song với $y = -3x + 4$ là:</p>
+<div class="options">
+<label><input type="radio" name="q11" value="a"> $y = -3x + 5$</label>
+<label><input type="radio" name="q11" value="b"> $y = -3x - 7$</label>
+<label><input type="radio" name="q11" value="c"> $y = \frac{1}{3}x - \frac{5}{3}$</label>
+<label><input type="radio" name="q11" value="d"> $y = 3x - 7$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Hệ số góc $-3$; $b = -1 - (-3)\cdot 2 = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1" data-tol="0.01">
+<div class="q-head">Câu 12 <span class="q-level">Bài 5</span></div>
+<p>Đường thẳng qua $M(-2; 5)$ và vuông góc với $y = \frac{1}{2}x - 1$ có phương trình $y = ax + b$. Tìm $b$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hệ số góc $-2$; $b = 5 - (-2)\cdot(-2) = 1$. Đường cần tìm: $y = -2x + 1$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="d">
+<div class="q-head">Câu 13 <span class="q-level">Bài 6</span></div>
+<p>Tứ giác $A(-2; 0)$, $B(0; 4)$, $C(4; 2)$, $D(2; -2)$ là:</p>
+<div class="options">
+<label><input type="radio" name="q13" value="a"> Hình bình hành (không phải hình chữ nhật, hình thoi)</label>
+<label><input type="radio" name="q13" value="b"> Hình chữ nhật không phải hình vuông</label>
+<label><input type="radio" name="q13" value="c"> Hình thoi không phải hình vuông</label>
+<label><input type="radio" name="q13" value="d"> Hình vuông</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Trung điểm $AC$ và $BD$ đều là $(1; 1)$: hình bình hành. $AB = BC = \sqrt{20}$: hình thoi. Hệ số góc $AB = 2$, $BC = -\frac{1}{2}$, tích bằng $-1$: có góc vuông. Vậy là hình vuông.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3.54" data-tol="0.02">
+<div class="q-head">Câu 14 <span class="q-level">Bài 6</span></div>
+<p>Tam giác $A(2; 1)$, $B(6; 4)$, $C(-1; 5)$ vuông tại $A$. Tính độ dài trung tuyến $AM$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AB^2 = 25$, $AC^2 = 25$, $BC^2 = 50$ nên tam giác vuông tại $A$. $AM = \frac{1}{2}BC = \frac{\sqrt{50}}{2} \approx 3{,}54$.</p></details>
+</div>
+<div class="score" id="score"></div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

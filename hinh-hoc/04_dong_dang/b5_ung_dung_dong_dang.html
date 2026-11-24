@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ứng dụng thực tế của đồng dạng · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch04_bong_nang.js"></script>
+<script defer src="../assets/widgets/ch04_ti_le_vang.js"></script>
+<script defer src="../assets/widgets/ch04_bi_a.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 4 · Sự đồng dạng · Bài 5</div>
+<h1>Bài 5. Ứng dụng thực tế của đồng dạng <span class="en">(Applications of similarity)</span></h1>
+<p class="lead">Làm sao đo chiều cao một cái cây mà không trèo lên? Làm sao người xưa ước lượng được kích thước Trái Đất và Mặt Trăng? Câu trả lời chung: tam giác đồng dạng.</p>
+
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Dùng tam giác đồng dạng để đo gián tiếp chiều cao, khoảng cách (bóng nắng, gương, thước ngắm).</li><li>Hiểu tỉ lệ vàng và hình chữ nhật vàng qua tính chất đồng dạng.</li><li>Giải thích đường đi của bi trên bàn bi-a bằng phép đối xứng trục và tam giác đồng dạng.</li><li>Biết cách Eratosthenes và các nhà thiên văn cổ ước lượng kích thước Trái Đất, Mặt Trăng.</li></ul>
+</div>
+
+<h2>1. Khởi động</h2>
+<p>Khoảng 600 năm trước Công nguyên, Thales xứ Miletus được cho là đã đo chiều cao kim tự tháp Ai Cập chỉ bằng một cây gậy. Ông cắm gậy thẳng đứng và chờ đến lúc bóng của gậy dài bằng chính cây gậy. Khi đó, bóng của kim tự tháp (tính từ tâm đáy) cũng dài đúng bằng chiều cao kim tự tháp. Vì sao?</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>Đo gián tiếp</h3>
+<p><b>Đo gián tiếp</b> <span class="en">(indirect measurement)</span> là tính một độ dài khó đo (chiều cao cây, bề rộng sông…) từ những độ dài dễ đo, nhờ hai tam giác đồng dạng.</p>
+<table>
+<tr><th>Cách đo</th><th>Hai tam giác đồng dạng vì</th><th>Công thức</th></tr>
+<tr><td>Bóng nắng: cọc cao $h$ có bóng $s$, cây có bóng $S$</td><td>Tia nắng song song nên góc nắng bằng nhau; cọc và cây đều vuông góc mặt đất (g.g)</td><td>$H = \dfrac{S\cdot h}{s}$</td></tr>
+<tr><td>Gương phẳng: gương cách gốc cây $d_1$, người đứng cách gương $d_2$, mắt cao $e$</td><td>Góc tới bằng góc phản xạ, hai góc vuông (g.g)</td><td>$H = \dfrac{e\cdot d_1}{d_2}$</td></tr>
+<tr><td>Thước ngắm: vật cao $H$ trông vừa bằng đoạn $h$ trên thước đặt cách mắt $L$</td><td>Định lý Thales (thước song song với vật)</td><td>$D = \dfrac{L\cdot H}{h}$</td></tr>
+</table>
+
+<h3>Tỉ lệ vàng</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Hình chữ nhật vàng</div>
+<p>Hình chữ nhật có chiều dài $a$, chiều rộng $b$ là <b>hình chữ nhật vàng</b> nếu khi cắt đi hình vuông cạnh $b$, phần còn lại ($b \times (a-b)$) <b>đồng dạng</b> với hình ban đầu:
+$$\frac{a}{b} = \frac{b}{a - b}.$$
+Đặt $r = \dfrac ab$, ta được $r^2 - r - 1 = 0$, nên $r = \varphi = \dfrac{1 + \sqrt5}{2} \approx 1{,}618$. Số $\varphi$ gọi là <b>tỉ lệ vàng</b> <span class="en">(golden ratio)</span>.</p>
+</div>
+<p>Vì phần còn lại lại là hình chữ nhật vàng, ta cắt mãi được: các hình vuông nhỏ dần theo tỉ số $\tfrac1\varphi \approx 0{,}618$. Nối các cung phần tư trong các hình vuông ta được <b>đường xoắn ốc vàng</b>, gần giống vỏ ốc anh vũ. Chú ý $\varphi^2 = \varphi + 1 \approx 2{,}618$ và $\dfrac{1}{\varphi} = \varphi - 1 \approx 0{,}618$.</p>
+
+<h3>Bàn bi-a: góc tới bằng góc phản xạ</h3>
+<div class="box dinh-ly">
+<div class="box-title">Đường đi qua một băng</div>
+<p>Bi $P$ chạm băng tại $I$ rồi lăn tới bi $Q$. Theo quy luật phản xạ, <b>góc tới</b> <span class="en">(angle of incidence)</span> bằng <b>góc phản xạ</b> <span class="en">(angle of reflection)</span>. Gọi $Q'$ là điểm đối xứng với $Q$ qua băng thì $I$ là giao điểm của $PQ'$ với băng, và đường gấp khúc $P \to I \to Q$ ngắn nhất trong mọi đường đi chạm băng.</p>
+<p>Gọi $P_0$, $Q_0$ là chân đường vuông góc hạ từ $P$, $Q$ xuống băng. Hai tam giác vuông $PP_0I$ và $QQ_0I$ có góc tại $I$ bằng nhau nên đồng dạng (g.g):
+$$\frac{P_0I}{Q_0I} = \frac{PP_0}{QQ_0} = \frac{PI}{IQ}.$$</p>
+</div>
+
+<h2>3. Khám phá</h2>
+<h3>Đo chiều cao cây</h3>
+<div data-widget="ch04_bong_nang"  data-title="Đo chiều cao cây bằng bóng nắng hoặc gương" data-try="kéo đầu cọc, mút bóng cọc (s) và mút bóng cây (S); chiều cao cây tự tính lại. Hoặc <b>gõ số</b> đo được rồi nhấn Enter. Đổi “Cách đo” sang “Gương phẳng” rồi kéo gương, kéo mắt người quan sát."></div>
+<h3>Hình chữ nhật vàng</h3>
+<div data-widget="ch04_ti_le_vang"  data-title="Hình chữ nhật vàng và đường xoắn ốc" data-try="kéo thanh <b>r</b> hoặc kéo góc trên bên phải của hình chữ nhật. Chỉ khi r = φ ≈ 1,618 thì phần còn lại đồng dạng với hình ban đầu và đường xoắn ốc khép kín đều đặn. So sánh với khổ giấy A4 (r = √2): cắt đôi tờ A4 được tờ A5 đồng dạng, nhưng cắt đi một hình vuông thì không."></div>
+<h3>Đường đi của bi</h3>
+<div data-widget="ch04_bi_a"  data-title="Bi-a: đối xứng trục và tam giác đồng dạng" data-try="kéo bi cái <b>P</b> và bi mục tiêu <b>Q</b> (hoặc gõ tọa độ), chọn băng cần chạm. Điểm chạm I nằm trên đường thẳng PQ′. Bảng cho thấy d(P) : d(Q) = PI : IQ và góc tới bằng góc phản xạ. Bấm “Đánh bi” để xem bi lăn."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Trong minh họa bi-a, nhập $P(1; 2)$, $Q(9; 3)$, chọn “Băng dưới”: bảng cho điểm chạm $I(4{,}2; 0)$, đúng với Câu 5 phần Luyện tập. Trong minh họa đo cây, nhập $h = 1{,}2$, $s = 1{,}6$, $S = 9$: chiều cao cây là $6{,}75$ m (Ví dụ 1).</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Đo cây bằng bóng nắng</div>
+<p> Một cọc cao $1{,}2$ m có bóng dài $1{,}6$ m. Cùng lúc đó, bóng của một cây dài $9$ m. Tính chiều cao cây.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Tia nắng song song nên tam giác (cọc, bóng cọc) đồng dạng với tam giác (cây, bóng cây):
+$$\frac{H}{9} = \frac{1{,}2}{1{,}6} \;\Rightarrow\; H = \frac{9 \cdot 1{,}2}{1{,}6} = 6{,}75 \text{ m}.$$</p>
+<p>Trở lại câu chuyện của Thales: khi bóng gậy bằng chiều cao gậy, tỉ số $\tfrac{h}{s} = 1$, nên chiều cao kim tự tháp cũng bằng độ dài bóng của nó.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Đo cây bằng gương</div>
+<p> Đặt một gương phẳng trên mặt đất, cách gốc cây $12$ m. Một người lùi ra xa đến khi thấy ngọn cây trong gương; lúc đó người cách gương $2{,}4$ m, mắt cách mặt đất $1{,}6$ m. Tính chiều cao cây.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Góc tới bằng góc phản xạ, cây và người đều vuông góc với mặt đất, nên hai tam giác vuông đồng dạng (g.g):
+$$\frac{H}{12} = \frac{1{,}6}{2{,}4} \;\Rightarrow\; H = 8 \text{ m}.$$</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Ước lượng khoảng cách bằng thước</div>
+<p> Bạn biết một tháp nước cao $45$ m. Cầm thước thẳng đứng, duỗi thẳng tay (thước cách mắt $60$ cm), bạn thấy tháp vừa che khít đoạn $3$ cm trên thước. Bạn đứng cách tháp bao xa?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Mắt, thước và tháp tạo ra hai tam giác đồng dạng chung đỉnh ở mắt (thước song song với tháp):
+$$\frac{D}{0{,}6} = \frac{45}{0{,}03} \;\Rightarrow\; D = \frac{0{,}6 \cdot 45}{0{,}03} = 900 \text{ m}.$$</p>
+<p><b>Mẹo “ngón tay cái”:</b> hai mắt cách nhau khoảng $6$ cm, ngón tay cái khi duỗi tay cách mắt khoảng $60$ cm, tỉ số $1 : 10$. Nhắm lần lượt từng mắt, ngón tay “nhảy” một đoạn $W$ trên vật ở xa. Khi đó khoảng cách tới vật xấp xỉ $10 \cdot W$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Hình chữ nhật vàng</div>
+<p> Một bức tranh hình chữ nhật vàng có chiều dài $50$ cm. Tính chiều rộng và kích thước phần còn lại sau khi cắt đi một hình vuông.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$b = \dfrac{50}{\varphi} \approx \dfrac{50}{1{,}618} \approx 30{,}90$ cm. Phần còn lại: $30{,}90 \times 19{,}10$ cm, có tỉ số $\dfrac{30{,}90}{19{,}10} \approx 1{,}618$, đúng bằng $\varphi$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Điểm chạm băng</div>
+<p> Trên bàn bi-a đặt hệ trục với băng dưới là trục $Ox$. Bi cái ở $P(2; 1{,}5)$, bi mục tiêu ở $Q(7; 3{,}5)$. Tìm điểm $I$ trên băng dưới để đánh bi $P$ chạm băng rồi trúng $Q$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$Q' (7; -3{,}5)$ đối xứng với $Q$ qua $Ox$. Theo tam giác đồng dạng, $\dfrac{P_0I}{Q_0I} = \dfrac{1{,}5}{3{,}5} = \dfrac37$, với $P_0I + IQ_0 = 7 - 2 = 5$. Vậy $P_0I = 5\cdot\dfrac{3}{10} = 1{,}5$ và $I(3{,}5; 0)$.</p>
+<p>Quãng đường bi lăn: $PQ' = \sqrt{5^2 + 5^2} \approx 7{,}07$. Đây là cấu hình mặc định của minh họa bi-a.</p>
+</details>
+</div>
+
+<div class="box vi-du">
+<div class="box-title">📖 Đọc thêm: đo Trái Đất và Mặt Trăng</div>
+<p><b>Eratosthenes (khoảng 240 TCN).</b> Vào trưa ngày hạ chí, ở Syene Mặt Trời chiếu thẳng đứng xuống đáy giếng, còn ở Alexandria một cây cột tạo bóng ứng với góc $7{,}2^\circ$, tức $\tfrac{1}{50}$ vòng tròn. Tia nắng song song, nên góc ở tâm Trái Đất chắn cung Syene–Alexandria cũng là $7{,}2^\circ$ (góc so le trong). Hai thành phố cách nhau khoảng $800$ km, vậy chu vi Trái Đất khoảng $50 \cdot 800 = 40\,000$ km, bán kính khoảng $\dfrac{40\,000}{2\pi} \approx 6366$ km.</p>
+<p><b>Đồng xu che Mặt Trăng.</b> Một đồng xu đường kính $2$ cm đặt cách mắt khoảng $2{,}2$ m thì che vừa khít Mặt Trăng. Biết Mặt Trăng cách Trái Đất khoảng $384\,000$ km, theo tam giác đồng dạng đường kính Mặt Trăng xấp xỉ $384\,000 \cdot \dfrac{0{,}02}{2{,}2} \approx 3491$ km (giá trị đo hiện đại: khoảng $3475$ km). Hiện tượng nhật thực toàn phần cho thấy điều tương tự: Mặt Trăng che vừa khít Mặt Trời vì tỉ số đường kính : khoảng cách của chúng gần bằng nhau.</p>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul><li>Các số đo trong cùng một tỉ lệ thức phải cùng đơn vị (đổi cm sang m trước khi tính).</li><li>Phương pháp bóng nắng chỉ đúng khi đo bóng cọc và bóng cây <b>cùng một lúc</b> (cùng góc nắng) và mặt đất phẳng.</li><li> Trong phương pháp gương, $d_1$ là khoảng cách từ <b>gốc cây</b> đến gương, $d_2$ từ <b>chân người</b> đến gương; ghép $H$ với $d_1$, $e$ với $d_2$.</li><li>$\varphi \approx 1{,}618$, không phải $1{,}6$ hay $1{,}5$. Khổ A4 có tỉ số $\sqrt2 \approx 1{,}414$, không phải hình chữ nhật vàng.</li></ul>
+</div>
+
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="8" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Cọc cao $2$ m có bóng dài $1{,}5$ m. Cùng lúc, bóng của một cây dài $6$ m. Tính chiều cao cây (m).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$H = \dfrac{6 \cdot 2}{1{,}5} = 8$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12.5" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Thông hiểu</span></div>
+<p>Gương đặt cách gốc cây $10$ m; người đứng cách gương $1{,}2$ m, mắt cao $1{,}5$ m thì thấy ngọn cây trong gương. Tính chiều cao cây (m).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$H = \dfrac{1{,}5 \cdot 10}{1{,}2} = 12{,}5$ m.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Tỉ lệ vàng $\varphi$ có giá trị gần đúng là:</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> $1{,}414$</label>
+<label><input type="radio" name="q3" value="b"> $1{,}5$</label>
+<label><input type="radio" name="q3" value="c"> $1{,}618$</label>
+<label><input type="radio" name="q3" value="d"> $3{,}14$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$\varphi = \dfrac{1+\sqrt5}{2} \approx 1{,}618$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="16.18" data-tol="0.02">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Hình chữ nhật vàng có chiều rộng $10$ cm. Tính chiều dài (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$a = 10\varphi \approx 16{,}18$ cm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4.2" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Vận dụng</span></div>
+<p> Băng dưới của bàn bi-a là trục $Ox$. Bi $P(1; 2)$ cần chạm băng dưới rồi trúng bi $Q(9; 3)$. Tìm hoành độ điểm chạm $I$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\dfrac{P_0I}{IQ_0} = \dfrac23$ và $P_0I + IQ_0 = 8$, nên $P_0I = 8 \cdot \dfrac25 = 3{,}2$. Hoành độ của $I$ là $1 + 3{,}2 = 4{,}2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="200" data-tol="0.5">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Dùng mẹo ngón tay cái: tay duỗi dài $60$ cm, hai mắt cách nhau $6$ cm. Ngón tay “nhảy” một đoạn khoảng $20$ m trên một tòa nhà. Ước lượng khoảng cách tới tòa nhà (m) theo công thức $D \approx W \cdot \dfrac{L}{e}$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$D \approx 20 \cdot \dfrac{60}{6} = 200$ m.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3491" data-tol="1">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Đồng xu đường kính $2$ cm cách mắt $2{,}2$ m che vừa khít Mặt Trăng; Mặt Trăng cách Trái Đất $384\,000$ km. Ước lượng đường kính Mặt Trăng (km, làm tròn đến hàng đơn vị).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$d = 384\,000 \cdot \dfrac{0{,}02}{2{,}2} \approx 3490{,}9 \approx 3491$ km.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 8 <span class="q-level">Thông hiểu</span></div>
+<p>Vì sao trong bài toán bi-a, tỉ số khoảng cách từ hai bi đến băng bằng tỉ số $PI : IQ$?</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Vì hai tam giác vuông tạo bởi các bi, chân đường vuông góc và điểm $I$ đồng dạng (g.g)</label>
+<label><input type="radio" name="q8" value="b"> Vì $PI = IQ$</label>
+<label><input type="radio" name="q8" value="c"> Vì $P$ và $Q$ đối xứng nhau qua băng</label>
+<label><input type="radio" name="q8" value="d"> Vì góc tới luôn bằng $45^\circ$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Góc tới bằng góc phản xạ, cộng với hai góc vuông, cho hai tam giác vuông đồng dạng theo trường hợp g.g.</p></details>
+</div>
+<div class="score" id="score"></div>
+
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li> Đo gián tiếp: bóng nắng $H = \dfrac{Sh}{s}$; gương $H = \dfrac{e\,d_1}{d_2}$; thước ngắm $D = \dfrac{LH}{h}$.</li><li> Hình chữ nhật vàng: cắt đi một hình vuông, phần còn lại đồng dạng với hình cũ; $\varphi = \dfrac{1+\sqrt5}{2} \approx 1{,}618$.</li><li> Bi-a: lấy đối xứng bi mục tiêu qua băng; điểm chạm chia đoạn theo tỉ số khoảng cách của hai bi tới băng.</li><li>Người xưa đã ước lượng được kích thước Trái Đất, Mặt Trăng chỉ bằng góc và tam giác đồng dạng.</li></ul>
+</div>
+
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

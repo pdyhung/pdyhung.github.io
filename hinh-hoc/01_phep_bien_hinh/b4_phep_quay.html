@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phép quay · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch01_chung.js"></script>
+<script defer src="../assets/widgets/ch01_phep_quay.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 1 · Thực hiện phép biến hình · Bài 4</div>
+<h1>Bài 4. Phép quay <span class="en">(Rotations)</span></h1>
+<p class="lead">Kim đồng hồ, cánh quạt, vòng đu quay: mọi điểm chuyển động trên những đường tròn quanh một tâm cố định, cùng quét một góc như nhau. Đó là phép quay.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu định nghĩa phép quay tâm $O$ góc $\alpha$; hiểu quy ước chiều dương, chiều âm.</li><li>Tìm ảnh của điểm và hình qua phép quay $90^\circ$, $180^\circ$, $270^\circ$ quanh gốc tọa độ bằng công thức.</li><li>Tìm ảnh qua phép quay quanh một tâm bất kỳ; xác định góc quay từ hình và ảnh.</li><li>Biết phép quay là phép dời hình, giữ nguyên chiều của hình.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Từ 12 giờ đến 12 giờ 15 phút, kim phút đã quay một góc bao nhiêu độ? Theo chiều nào? Nếu đầu kim phút lúc 12 giờ ở điểm $(0; 3)$ (tâm đồng hồ là gốc tọa độ) thì lúc 12 giờ 15 nó ở đâu?</p>
+<p>Để trả lời, ta cần ba thông tin: <b>tâm</b> quay, <b>số đo</b> góc quay và <b>chiều</b> quay.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Phép quay</div>
+<p>Cho điểm $O$ và góc $\alpha$. <b>Phép quay</b> <span class="en">(rotation)</span> tâm $O$ góc $\alpha$ là phép biến hình biến $O$ thành chính nó, và biến mỗi điểm $M \ne O$ thành điểm $M'$ sao cho</p>
+<p>$$OM' = OM \quad \text{và} \quad \text{góc quay từ tia } OM \text{ đến tia } OM' \text{ bằng } \alpha.$$</p>
+<p>Ký hiệu $Q_{(O, \alpha)}$. $O$ gọi là <b>tâm quay</b> <span class="en">(center of rotation)</span>, $\alpha$ là <b>góc quay</b> <span class="en">(angle of rotation)</span>.</p>
+</div>
+<p><b>Quy ước chiều:</b> $\alpha > 0$ khi quay <b>ngược chiều kim đồng hồ</b> (chiều dương), $\alpha < 0$ khi quay <b>cùng chiều kim đồng hồ</b> (chiều âm). Quay $\alpha$ và quay $\alpha \pm 360^\circ$ cho cùng một ảnh, nên $Q_{(O, 270^\circ)}$ và $Q_{(O, -90^\circ)}$ là một.</p>
+<div class="box dinh-ly">
+<div class="box-title">Công thức quay quanh gốc tọa độ O</div>
+<p>Với $M(x; y)$:</p>
+<table>
+<tr><th>Phép quay</th><th>Ảnh của $(x; y)$</th><th>Ví dụ: ảnh của $(2; 1)$</th></tr>
+<tr><td>$Q_{(O, 90^\circ)}$</td><td>$(-y; x)$</td><td>$(-1; 2)$</td></tr>
+<tr><td>$Q_{(O, 180^\circ)}$</td><td>$(-x; -y)$</td><td>$(-2; -1)$</td></tr>
+<tr><td>$Q_{(O, 270^\circ)} = Q_{(O, -90^\circ)}$</td><td>$(y; -x)$</td><td>$(1; -2)$</td></tr>
+</table>
+<p>Tổng quát, với góc $\alpha$ bất kỳ: $\;x' = x\cos\alpha - y\sin\alpha,\quad y' = x\sin\alpha + y\cos\alpha$ (công thức này dùng tỉ số lượng giác, sẽ học ở Chương 5).</p>
+</div>
+<p>Mẹo nhớ quay $90^\circ$: "đổi chỗ hai tọa độ, rồi đổi dấu tọa độ <b>mới</b> đứng đầu". Bạn có thể kiểm tra bằng điểm $(1; 0)$ trên trục $Ox$: quay $90^\circ$ ngược chiều kim đồng hồ phải đến $(0; 1)$ trên trục $Oy$.</p>
+<p><b>Quay quanh tâm $I(a; b)$ bất kỳ:</b> dời gốc về $I$, quay, rồi dời lại. Chẳng hạn với góc $90^\circ$:</p>
+<p>$$x' = a - (y - b), \qquad y' = b + (x - a).$$</p>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất</div>
+<ul>
+<li>Phép quay là <b>phép dời hình</b> và <b>giữ nguyên chiều</b> của hình.</li>
+<li>Tâm quay là điểm duy nhất đứng yên (khi $\alpha$ không phải bội của $360^\circ$).</li>
+<li>Phép quay $180^\circ$ quanh $O$ còn gọi là <b>phép đối xứng tâm</b> <span class="en">(point reflection)</span> $O$: $O$ là trung điểm của $MM'$.</li>
+<li>Quay $\alpha$ rồi quay $\beta$ (cùng tâm) bằng quay $\alpha + \beta$.</li>
+</ul>
+</div>
+
+<h2>3. Khám phá: quay tam giác quanh một tâm</h2>
+<div data-widget="ch01_phep_quay"  data-title="Phép quay tâm I góc α" data-try="gõ góc quay vào ô “Góc quay α” (thử 90, 180, 270, −90, cả số lẻ như 37) rồi nhấn Enter, hoặc bấm các nút chọn nhanh. Bấm “Quay” để xem tam giác quay dần quanh tâm I. Kéo tâm I (điểm đỏ) ra khỏi gốc tọa độ, hoặc gõ tọa độ của I, và quan sát cung tròn mà đỉnh A đi qua. Bảng số đo luôn cho IA = IA′."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra bài tập</div>
+<p>Bảng ở mục 2 dùng tam giác ban đầu của minh họa: $A(2; 1)$, $B(5; 1)$, $C(3; 3)$. Thử $\alpha = 90$, $180$, $270$ để đối chiếu. Với Ví dụ 2: nhập tâm $I(1; 2)$, $\alpha = 90$ và $A(4; 3)$, bảng cho $A'(0; 5)$.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Ba phép quay đặc biệt</div>
+<p>Cho tam giác $A(2; 1)$, $B(5; 1)$, $C(3; 3)$. Tìm ảnh của tam giác qua phép quay tâm $O$ góc $90^\circ$ và qua phép quay tâm $O$ góc $-90^\circ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Quay $90^\circ$: $(x; y) \to (-y; x)$, được $A'(-1; 2)$, $B'(-1; 5)$, $C'(-3; 3)$.</p>
+<p>Quay $-90^\circ$: $(x; y) \to (y; -x)$, được $A''(1; -2)$, $B''(1; -5)$, $C''(3; -3)$.</p>
+<p>Kiểm tra: $OA = \sqrt{5}$ và $OA' = \sqrt{1 + 4} = \sqrt 5$. Hai ảnh đối xứng nhau qua $O$, vì từ $90^\circ$ đến $-90^\circ$ chênh nhau $180^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Quay quanh một tâm khác gốc tọa độ</div>
+<p>Tìm ảnh của $A(4; 3)$ qua phép quay tâm $I(1; 2)$ góc $90^\circ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Vectơ $\overrightarrow{IA} = (3; 1)$. Quay vectơ này $90^\circ$: $(3; 1) \to (-1; 3)$. Vậy</p>
+<p>$$A' = I + (-1; 3) = (1 - 1;\ 2 + 3) = (0; 5).$$</p>
+<p>Kiểm tra: $IA = \sqrt{9 + 1} = \sqrt{10}$ và $IA' = \sqrt{1 + 9} = \sqrt{10}$. Trên lưới, vectơ $(3; 1)$ "sang phải 3, lên 1" sau khi quay thành "sang trái 1, lên 3": hai đoạn $IA$, $IA'$ vuông góc với nhau. Minh họa ở mục 3 cho cùng kết quả.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Xác định góc quay</div>
+<p>Phép quay tâm $O$ biến $A(3; 0)$ thành $A'(0; 3)$. Tìm góc quay. Nếu ảnh là $A''(-3; 0)$ thì sao?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$A$ nằm trên tia $Ox$, $A'$ nằm trên tia $Oy$, và đi từ $Ox$ đến $Oy$ ngược chiều kim đồng hồ mất một góc vuông: góc quay là $90^\circ$ (hay $-270^\circ$).</p>
+<p>$A''(-3; 0)$ nằm trên tia đối của $Ox$: góc quay là $180^\circ$ (quay theo chiều nào cũng được).</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Kim đồng hồ</div>
+<p>Tính góc quay (có dấu) của kim phút trong 20 phút, và tìm vị trí đầu kim lúc 12 giờ 15 phút nếu lúc 12 giờ đầu kim ở $(0; 3)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Kim phút quay một vòng ($360^\circ$) trong 60 phút, tức $6^\circ$ mỗi phút, theo chiều kim đồng hồ (chiều âm). Trong 20 phút: $-20 \cdot 6^\circ = -120^\circ$.</p>
+<p>Trong 15 phút kim quay $-90^\circ$: $(0; 3) \to (y; -x) = (3; 0)$, đúng là vị trí "số 3" trên mặt đồng hồ.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý và lỗi thường gặp</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Nhầm chiều quay là lỗi phổ biến nhất: <b>dương = ngược chiều kim đồng hồ</b>.</li>
+<li>Công thức $(x; y) \to (-y; x)$ chỉ đúng khi <b>tâm là gốc tọa độ</b>. Với tâm $I$ khác $O$, phải làm việc với vectơ $\overrightarrow{IM}$.</li>
+<li>Không nhầm $Q_{(O, 90^\circ)}$: $(x; y) \to (-y; x)$ với $Q_{(O, -90^\circ)}$: $(x; y) \to (y; -x)$. Thử với điểm $(1; 0)$ để kiểm tra.</li>
+<li>Phép quay giữ nguyên chiều của tam giác (khác phép đối xứng trục), dù hình có thể "lộn ngược" khi quay $180^\circ$.</li>
+</ul>
+</div>
+<h2>6. Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Ảnh của $M(3; 1)$ qua phép quay tâm $O$ góc $90^\circ$ là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $(1; -3)$</label>
+<label><input type="radio" name="q1" value="b"> $(-1; 3)$</label>
+<label><input type="radio" name="q1" value="c"> $(-3; -1)$</label>
+<label><input type="radio" name="q1" value="d"> $(1; 3)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Dùng $(x; y) \to (-y; x)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Ảnh của $N(-2; 5)$ qua phép quay tâm $O$ góc $180^\circ$ là:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $(2; -5)$</label>
+<label><input type="radio" name="q2" value="b"> $(5; -2)$</label>
+<label><input type="radio" name="q2" value="c"> $(-5; 2)$</label>
+<label><input type="radio" name="q2" value="d"> $(-2; -5)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Quay $180^\circ$ quanh $O$: đổi dấu cả hai tọa độ.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Góc quay $\alpha < 0$ nghĩa là quay:</p>
+<div class="options">
+<label><input type="radio" name="q3" value="a"> ngược chiều kim đồng hồ</label>
+<label><input type="radio" name="q3" value="b"> cùng chiều kim đồng hồ</label>
+<label><input type="radio" name="q3" value="c"> nửa vòng</label>
+<label><input type="radio" name="q3" value="d"> không quay</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Quy ước: chiều dương là ngược chiều kim đồng hồ.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-2" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Phép quay tâm $O$ góc $-90^\circ$ biến $P(4; -2)$ thành $P'$. Tính hoành độ của $P'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$Q_{(O, -90^\circ)}: (x; y) \to (y; -x)$, nên $P'(-2; -4)$. Hoành độ bằng $-2$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-60" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Trong 2 giờ, kim giờ của đồng hồ quay một góc bao nhiêu độ? Ghi cả dấu theo quy ước chiều quay.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Kim giờ quay $360^\circ$ trong 12 giờ, tức $30^\circ$ mỗi giờ, theo chiều kim đồng hồ (âm). Trong 2 giờ: $-60^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Tìm tung độ của ảnh của $A(4; 1)$ qua phép quay tâm $I(1; 1)$ góc $90^\circ$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{IA} = (3; 0) \to (0; 3)$, nên $A' = (1 + 0; 1 + 3) = (1; 4)$. Tung độ bằng 4. Kiểm tra bằng minh họa: nhập $I(1; 1)$, $\alpha = 90$, $A(4; 1)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="1.73" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Phép quay tâm $O$ góc $60^\circ$ biến $A(2; 0)$ thành $A'$. Tính tung độ của $A'$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$A'$ nằm trên đường tròn tâm $O$ bán kính 2, tia $OA'$ hợp với $Ox$ góc $60^\circ$. Tam giác $OAA'$ đều cạnh 2, nên $A'(1; \sqrt 3)$ và tung độ $\sqrt 3 \approx 1{,}73$. Kiểm tra bằng minh họa với $\alpha = 60$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Quay $M(2; 3)$ quanh $O$ một góc $90^\circ$, rồi quay tiếp quanh $O$ một góc $180^\circ$. Tìm hoành độ của điểm cuối cùng.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(2; 3) \to (-3; 2) \to (3; -2)$. Hoặc: tổng hai góc là $270^\circ$, $(x; y) \to (y; -x) = (3; -2)$. Hoành độ bằng 3.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>$Q_{(O, \alpha)}$: $OM' = OM$ và góc quay từ $OM$ đến $OM'$ bằng $\alpha$; $\alpha > 0$ là ngược chiều kim đồng hồ.</li><li>Quanh gốc $O$: $90^\circ$: $(x; y) \to (-y; x)$; $180^\circ$: $(-x; -y)$; $270^\circ$ hay $-90^\circ$: $(y; -x)$.</li><li>Quay quanh tâm $I$ khác $O$: quay vectơ $\overrightarrow{IM}$ rồi cộng vào $I$.</li><li>Phép quay là phép dời hình, giữ nguyên chiều; phép quay 180° là phép đối xứng tâm.</li><li>Quay α rồi quay β cùng tâm bằng quay α + β.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

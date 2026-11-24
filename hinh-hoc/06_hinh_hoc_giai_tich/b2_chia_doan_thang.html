@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chia đoạn thẳng theo tỉ số · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch06_chung.js"></script>
+<script defer src="../assets/widgets/ch06_chia_doan.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 6 · Hình học giải tích · Bài 2</div>
+<h1>Bài 2. Chia đoạn thẳng theo tỉ số <span class="en">(Dividing a segment in a given ratio)</span></h1>
+<p class="lead">Trung điểm chia đoạn thẳng thành hai phần bằng nhau. Nếu muốn chia theo tỉ số 1 : 2, 3 : 1 hay một tỉ số bất kỳ thì sao? Công thức "trung bình có trọng số" trả lời câu hỏi đó.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Tìm được tọa độ điểm $P$ trên đoạn $AB$ sao cho $AP : PB = m : n$.</li><li>Hiểu công thức chia đoạn như việc "đi một phần của quãng đường" từ $A$ đến $B$.</li><li>Tìm tọa độ trọng tâm tam giác; tìm đầu mút hoặc tỉ số khi biết điểm chia.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Một con đường thẳng nối hai làng $A(0; 0)$ và $B(9; 6)$ (đơn vị: km). Người ta muốn đặt trạm xe buýt $P$ trên đường sao cho quãng $AP$ dài gấp đôi quãng $PB$. Trạm đặt ở đâu?</p>
+<p>Gấp đôi nghĩa là $AP : PB = 2 : 1$: chia đường thành $2 + 1 = 3$ phần bằng nhau, trạm nằm ở cuối phần thứ hai tính từ $A$. Mỗi phần ứng với độ dời $\left(\frac{9}{3}; \frac{6}{3}\right) = (3; 2)$, nên $P = (0 + 2\cdot 3;\ 0 + 2\cdot 2) = (6; 4)$.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<p>Ta nói điểm $P$ nằm trên đoạn $AB$ 
+<b>chia đoạn thẳng theo tỉ số</b> <span class="en">(divides the segment in the ratio)</span>
+ $m : n$ (tính từ $A$) nếu $AP : PB = m : n$, với $m, n \ge 0$ và $m + n > 0$. Khi đó $AP = \frac{m}{m+n}\,AB$.</p>
+<p>Đi từ $A$ đến $B$, hoành độ thay đổi $x_B - x_A$, tung độ thay đổi $y_B - y_A$. Đi được $\frac{m}{m+n}$ quãng đường thì mỗi tọa độ cũng thay đổi đúng $\frac{m}{m+n}$ lượng đó (do các tam giác vuông đồng dạng):</p>
+<p>$$x_P = x_A + \frac{m}{m+n}(x_B - x_A), \qquad y_P = y_A + \frac{m}{m+n}(y_B - y_A).$$</p>
+<div class="box dinh-ly">
+<div class="box-title">Công thức tọa độ điểm chia</div>
+<p>Nếu $P$ nằm trên đoạn $AB$ và $AP : PB = m : n$ thì</p>
+<p>$$P\left(\frac{n\,x_A + m\,x_B}{m + n};\ \frac{n\,y_A + m\,y_B}{m + n}\right).$$</p>
+<p>Đây là <b>trung bình có trọng số</b> <span class="en">(weighted average)</span> của tọa độ hai đầu mút. Chú ý trọng số "bắt chéo": $A$ nhân với $n$, $B$ nhân với $m$. Điểm $P$ gần $A$ hơn khi $m < n$, nên $A$ phải có trọng số lớn hơn.</p>
+<p>Với $m = n = 1$ ta được lại công thức trung điểm.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Trọng tâm tam giác</div>
+<p><b>Trọng tâm</b> <span class="en">(centroid)</span> $G$ của tam giác $ABC$ là giao điểm ba đường trung tuyến. $G$ nằm trên trung tuyến $AM$ và chia nó theo tỉ số $AG : GM = 2 : 1$. Áp dụng công thức điểm chia với $M\left(\frac{x_B + x_C}{2}; \frac{y_B + y_C}{2}\right)$:</p>
+<p>$$x_G = \frac{1\cdot x_A + 2\cdot x_M}{3} = \frac{x_A + x_B + x_C}{3}, \qquad y_G = \frac{y_A + y_B + y_C}{3}.$$</p>
+</div>
+<table>
+<tr><th>Tỉ số $AP : PB$</th><th>Phần quãng đường $AP/AB$</th><th>Vị trí của $P$</th></tr>
+<tr><td>$1 : 1$</td><td>$\frac{1}{2}$</td><td>Trung điểm</td></tr>
+<tr><td>$1 : 2$</td><td>$\frac{1}{3}$</td><td>Một phần ba quãng đường tính từ $A$</td></tr>
+<tr><td>$2 : 1$</td><td>$\frac{2}{3}$</td><td>Một phần ba quãng đường tính từ $B$</td></tr>
+<tr><td>$3 : 1$</td><td>$\frac{3}{4}$</td><td>Gần $B$</td></tr>
+<tr><td>$0 : 1$ và $1 : 0$</td><td>$0$ và $1$</td><td>Trùng $A$ và trùng $B$</td></tr>
+</table>
+<h2>3. Khám phá: điểm chia chạy dọc đoạn thẳng</h2>
+<div data-widget="ch06_chia_doan"  data-title="Điểm chia P theo tỉ số m : n" data-try="kéo thanh trượt hoặc <b>gõ số</b> vào ô m, n (nhấn Enter). Các vạch nhỏ chia AB thành m + n phần bằng nhau, P nằm ở vạch thứ m tính từ A. Bấm “Cho P chạy từ A đến B” để xem P đi hết đoạn thẳng. Bảng số đo hiện từng bước thay số vào công thức. Thử m = 2, n = 1 rồi đặt A(0; 0), B(9; 6) để kiểm tra phần Khởi động."></div>
+<p>Hãy thử giữ nguyên tỉ số nhưng đổi cặp số, ví dụ $1 : 2$ và $2 : 4$. Điểm $P$ không đổi, vì chỉ tỉ số $\frac{m}{m+n}$ mới quan trọng. Các đường gạch đỏ là hình chiếu của $P$ lên hai trục: hình chiếu của $P$ cũng chia hình chiếu của $AB$ theo đúng tỉ số $m : n$.</p>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Thay số vào công thức</div>
+<p>Cho $A(1; 2)$, $B(7; 5)$. Tìm điểm $P$ trên $AB$ sao cho $AP : PB = 1 : 2$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Với $m = 1$, $n = 2$, $m + n = 3$:</p>
+<p>$$x_P = \frac{2\cdot 1 + 1\cdot 7}{3} = 3, \qquad y_P = \frac{2\cdot 2 + 1\cdot 5}{3} = 3.$$</p>
+<p>Vậy $P(3; 3)$. Kiểm tra bằng cách "đi một phần ba quãng đường": $1 + \frac{1}{3}\cdot 6 = 3$, $2 + \frac{1}{3}\cdot 3 = 3$. Khớp.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Chia đoạn thẳng thành ba phần bằng nhau</div>
+<p>Cho $A(-4; -2)$, $B(5; 4)$. Tìm hai điểm $P$, $Q$ chia $AB$ thành ba đoạn bằng nhau ($P$ gần $A$).</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$P$ ứng với tỉ số $1 : 2$: $P\left(\frac{2\cdot(-4) + 1\cdot 5}{3}; \frac{2\cdot(-2) + 1\cdot 4}{3}\right) = (-1; 0)$.</p>
+<p>$Q$ ứng với tỉ số $2 : 1$: $Q\left(\frac{1\cdot(-4) + 2\cdot 5}{3}; \frac{1\cdot(-2) + 2\cdot 4}{3}\right) = (2; 2)$.</p>
+<p>Đây chính là hình mặc định của minh họa: các vạch chia nằm tại $(-1; 0)$ và $(2; 2)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Trọng tâm tam giác</div>
+<p>Tìm trọng tâm $G$ của tam giác $A(1; 5)$, $B(-3; -1)$, $C(5; 2)$, và kiểm tra rằng $G$ chia trung tuyến $AM$ theo tỉ số $2 : 1$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$G\left(\frac{1 - 3 + 5}{3}; \frac{5 - 1 + 2}{3}\right) = (1; 2)$.</p>
+<p>Trung điểm của $BC$: $M\left(\frac{-3 + 5}{2}; \frac{-1 + 2}{2}\right) = (1; 0{,}5)$. Điểm chia $AM$ theo tỉ số $2 : 1$ là $\left(\frac{1\cdot 1 + 2\cdot 1}{3}; \frac{1\cdot 5 + 2\cdot 0{,}5}{3}\right) = (1; 2)$, trùng với $G$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Tìm đầu mút</div>
+<p>Điểm $P(2; 3)$ nằm trên đoạn $AB$ với $AP : PB = 1 : 3$, biết $A(-1; 0)$. Tìm $B$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$AP : PB = 1 : 3$ nghĩa là $AP = \frac{1}{4}AB$: đi từ $A$ đến $P$ là một phần tư quãng đường. Độ dời từ $A$ đến $P$ là $(2 - (-1); 3 - 0) = (3; 3)$, nên độ dời từ $A$ đến $B$ gấp 4 lần: $(12; 12)$.</p>
+<p>Vậy $B(-1 + 12; 0 + 12) = (11; 12)$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Tìm tỉ số</div>
+<p>Cho $A(-2; 1)$, $B(6; 5)$ và $P(4; 4)$. Chứng tỏ $P$ nằm trên đoạn $AB$ và tìm tỉ số $AP : PB$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Độ dời $A \to P$ là $(6; 3)$, độ dời $A \to B$ là $(8; 4)$. Hai tỉ số $\frac{6}{8} = \frac{3}{4}$ và $\frac{3}{4}$ bằng nhau, nên $P$ nằm trên đoạn $AB$ và $AP = \frac{3}{4}AB$.</p>
+<p>Suy ra $PB = \frac{1}{4}AB$, và $AP : PB = 3 : 1$.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li><b>Trọng số bắt chéo:</b> trong $\frac{n\,x_A + m\,x_B}{m+n}$, số $m$ (phần $AP$) đi với $B$. Viết nhầm thành $\frac{m\,x_A + n\,x_B}{m+n}$ sẽ cho điểm chia theo tỉ số $n : m$, đối xứng với điểm đúng qua trung điểm.</li>
+<li><b>"Tính từ $A$" hay "tính từ $B$":</b> tỉ số $1 : 3$ tính từ $A$ cho điểm gần $A$; tính từ $B$ cho điểm gần $B$. Đọc kỹ đề.</li>
+<li>Chia đoạn thành $k$ phần bằng nhau thì có $k - 1$ điểm chia, ứng với các tỉ số $1 : (k-1)$, $2 : (k-2)$, …</li>
+<li>Muốn kiểm tra $P$ có nằm trên đoạn $AB$ hay không, so sánh các tỉ số $\frac{x_P - x_A}{x_B - x_A}$ và $\frac{y_P - y_A}{y_B - y_A}$: chúng phải bằng nhau và nằm trong khoảng từ 0 đến 1.</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Điểm chia đoạn $AB$ theo tỉ số $AP : PB = 1 : 1$ chính là:</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> Điểm $A$</label>
+<label><input type="radio" name="q1" value="b"> Trọng tâm</label>
+<label><input type="radio" name="q1" value="c"> Trung điểm của $AB$</label>
+<label><input type="radio" name="q1" value="d"> Điểm $B$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Với $m = n = 1$, công thức điểm chia trở thành công thức trung điểm.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="4" data-tol="0.01">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Cho $A(0; 0)$, $B(6; 9)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 2 : 1$. Tìm hoành độ của $P$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$x_P = \frac{1\cdot 0 + 2\cdot 6}{3} = 4$ (và $y_P = 6$).</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Cho $A(2; -1)$, $B(10; 7)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 3 : 1$. Tìm tung độ của $P$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$y_P = \frac{1\cdot(-1) + 3\cdot 7}{4} = \frac{20}{4} = 5$. (Hoành độ: $\frac{2 + 30}{4} = 8$.)</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Chia đoạn $AB$ với $A(-3; 4)$, $B(9; -4)$ thành 4 phần bằng nhau. Điểm chia gần $A$ nhất là:</p>
+<div class="options">
+<label><input type="radio" name="q4" value="a"> $(0; 2)$</label>
+<label><input type="radio" name="q4" value="b"> $(6; -2)$</label>
+<label><input type="radio" name="q4" value="c"> $(3; 0)$</label>
+<label><input type="radio" name="q4" value="d"> $(-1; 3)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Đi $\frac{1}{4}$ quãng đường: $\left(-3 + \frac{12}{4};\ 4 + \frac{-8}{4}\right) = (0; 2)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tìm tung độ trọng tâm $G$ của tam giác $A(2; 7)$, $B(-4; 1)$, $C(5; -2)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$y_G = \frac{7 + 1 + (-2)}{3} = 2$. (Hoành độ: $\frac{2 - 4 + 5}{3} = 1$.)</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>Điểm $P(1; 2)$ nằm trên đoạn $AB$ với $AP : PB = 1 : 2$, biết $A(-1; 1)$. Tìm hoành độ của $B$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$AP = \frac{1}{3}AB$ nên độ dời $A \to B$ gấp 3 lần độ dời $A \to P = (2; 1)$. Vậy $B(-1 + 6; 1 + 3) = (5; 4)$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Cho $A(1; 1)$, $B(7; 4)$, $P(5; 3)$. Tỉ số $AP : PB$ bằng:</p>
+<div class="options">
+<label><input type="radio" name="q7" value="a"> $1 : 2$</label>
+<label><input type="radio" name="q7" value="b"> $2 : 1$</label>
+<label><input type="radio" name="q7" value="c"> $2 : 3$</label>
+<label><input type="radio" name="q7" value="d"> $3 : 2$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Độ dời $A \to P = (4; 2)$ bằng $\frac{2}{3}$ độ dời $A \to B = (6; 3)$. Vậy $AP = \frac{2}{3}AB$, $PB = \frac{1}{3}AB$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2.24" data-tol="0.02">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Cho $A(-2; 3)$, $B(10; -3)$. Điểm $P$ trên $AB$ thỏa mãn $AP : PB = 5 : 1$. Tính độ dài $PB$ (làm tròn đến hai chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$P\left(\frac{-2 + 50}{6}; \frac{3 - 15}{6}\right) = (8; -2)$. $PB = \sqrt{2^2 + 1^2} = \sqrt5 \approx 2{,}24$. (Hoặc: $PB = \frac{1}{6}AB = \frac{\sqrt{180}}{6}$.)</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>$P$ trên $AB$ với $AP : PB = m : n$: $P\left(\frac{n x_A + m x_B}{m+n}; \frac{n y_A + m y_B}{m+n}\right)$, trọng số bắt chéo.</li><li>Cách nghĩ trực quan: từ $A$ đi thêm $\frac{m}{m+n}$ độ dời $A \to B$.</li><li>Trọng tâm: $G\left(\frac{x_A + x_B + x_C}{3}; \frac{y_A + y_B + y_C}{3}\right)$, chia mỗi trung tuyến theo tỉ số $2 : 1$ tính từ đỉnh.</li><li>Bài toán ngược (tìm đầu mút, tìm tỉ số) giải bằng cách so sánh độ dời.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định lý về tam giác · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch03_common.js"></script>
+<script defer src="../assets/widgets/ch03_tong_goc.js"></script>
+<script defer src="../assets/widgets/ch03_trung_tuyen.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 3 · Sự bằng nhau · Bài 5</div>
+<h1>Bài 5. Định lý về tam giác <span class="en">(Theorems about triangles)</span></h1>
+<p class="lead">Dù tam giác nhọn, vuông hay tù, to hay nhỏ, tổng ba góc của nó luôn bằng 180°. Bài này chứng minh điều đó cùng ba định lý quan trọng khác: góc ngoài, tam giác cân, và ba đường trung tuyến.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Chứng minh định lý tổng ba góc của tam giác và tính chất góc ngoài.</li><li>Chứng minh tính chất tam giác cân: hai góc ở đáy bằng nhau, và định lý đảo.</li><li>Biết ba đường trung tuyến đồng quy tại trọng tâm, trọng tâm chia mỗi đường theo tỉ số 2 : 1.</li><li>Vận dụng để tính góc, độ dài và tọa độ trọng tâm.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Cắt một tam giác bằng giấy, xé ba góc ra rồi đặt cạnh nhau sao cho ba đỉnh trùng nhau. Bạn sẽ luôn được một đường thẳng. Vì sao? Thí nghiệm gợi ý, còn chứng minh mới cho ta chắc chắn với <i>mọi</i> tam giác.</p>
+
+<h2>2. Kiến thức trọng tâm</h2>
+<h3>2.1. Tổng ba góc và góc ngoài</h3>
+<div class="box dinh-ly">
+<div class="box-title">Định lý tổng ba góc</div>
+<p>Trong mọi tam giác $ABC$: $\widehat{A} + \widehat{B} + \widehat{C} = 180^\circ$.</p>
+<p><i>Chứng minh.</i> Qua $C$ kẻ đường thẳng $xy \parallel AB$ ($x$ cùng phía với $A$). Theo tính chất so le trong: $\widehat{xCA} = \widehat{A}$ và $\widehat{yCB} = \widehat{B}$. Ba góc $\widehat{xCA}$, $\widehat{ACB}$, $\widehat{BCy}$ ghép lại thành góc bẹt $\widehat{xCy} = 180^\circ$. Vậy $\widehat{A} + \widehat{C} + \widehat{B} = 180^\circ$.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Góc ngoài</div>
+<p><b>Góc ngoài</b> <span class="en">(exterior angle)</span> của tam giác là góc kề bù với một góc của tam giác. Ví dụ, kéo dài $BC$ về phía $C$ thành tia $Cx$; khi đó $\widehat{ACx}$ là góc ngoài tại đỉnh $C$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất góc ngoài</div>
+<p>Mỗi góc ngoài của tam giác bằng tổng hai góc trong không kề với nó: $\widehat{ACx} = \widehat{A} + \widehat{B}$. Do đó góc ngoài lớn hơn mỗi góc trong không kề với nó.</p>
+<p><i>Chứng minh.</i> $\widehat{ACx} = 180^\circ - \widehat{C} = \widehat{A} + \widehat{B}$.</p>
+</div>
+<h3>2.2. Tam giác cân</h3>
+<div class="box dinh-nghia">
+<div class="box-title">Định nghĩa</div>
+<p><b>Tam giác cân</b> <span class="en">(isosceles triangle)</span> là tam giác có hai cạnh bằng nhau. Nếu $AB = AC$ thì $A$ là đỉnh, $BC$ là cạnh đáy, $\widehat{B}$, $\widehat{C}$ là hai góc ở đáy. <b>Tam giác đều</b> <span class="en">(equilateral triangle)</span> là tam giác có ba cạnh bằng nhau.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Định lý</div>
+<p>Trong tam giác cân, hai góc ở đáy bằng nhau. Ngược lại, tam giác có hai góc bằng nhau là tam giác cân.</p>
+<p><i>Chứng minh.</i> Gọi $M$ là trung điểm $BC$. Hai tam giác $ABM$ và $ACM$ có $AB = AC$, $BM = CM$, $AM$ chung nên $\triangle ABM = \triangle ACM$ (c.c.c), suy ra $\widehat{B} = \widehat{C}$. Hơn nữa $\widehat{AMB} = \widehat{AMC}$ mà hai góc này kề bù, nên mỗi góc bằng $90^\circ$: trung tuyến $AM$ cũng là đường cao và đường phân giác. (Đảo lại: nếu $\widehat{B} = \widehat{C}$, kẻ phân giác $AD$; $\triangle ABD = \triangle ACD$ theo g.g.c nên $AB = AC$.)</p>
+<p>Hệ quả: mỗi góc của tam giác đều bằng $60^\circ$.</p>
+</div>
+<h3>2.3. Ba đường trung tuyến</h3>
+<div class="box dinh-ly">
+<div class="box-title">Định lý</div>
+<p>Ba <b>đường trung tuyến</b> <span class="en">(median)</span> của một tam giác cùng đi qua một điểm $G$, gọi là <b>trọng tâm</b> <span class="en">(centroid)</span>. Trọng tâm cách mỗi đỉnh một khoảng bằng $\dfrac23$ độ dài đường trung tuyến đi qua đỉnh đó:</p>
+<p>$$AG = \tfrac23 AM_1, \qquad GM_1 = \tfrac13 AM_1, \qquad AG : GM_1 = 2 : 1.$$</p>
+<p>Trên mặt phẳng tọa độ: $G\left(\dfrac{x_A + x_B + x_C}{3}; \dfrac{y_A + y_B + y_C}{3}\right)$.</p>
+</div>
+
+<h2>3. Khám phá</h2>
+<div data-widget="ch03_tong_goc"  data-title="Xé ba góc và ghép thành góc bẹt" data-try="kéo các đỉnh để có tam giác nhọn, vuông, tù tùy ý, rồi bấm “Xé và ghép ba góc”: ba góc bay xuống và ghép khít thành góc 180°. Đánh dấu “Hiện góc ngoài tại đỉnh C” rồi so sánh hai dòng cuối của bảng số đo."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Nhập $A(0; 0)$, $B(4; 0)$, $C(0; 3)$: tam giác vuông tại $A$ với $\widehat{B} \approx 36{,}9^\circ$, $\widehat{C} \approx 53{,}1^\circ$; góc ngoài tại $C$ bằng $\widehat{A} + \widehat{B} \approx 126{,}9^\circ$.</p>
+</div>
+<div data-widget="ch03_trung_tuyen"  data-title="Ba đường trung tuyến và trọng tâm" data-try="kéo các đỉnh: ba trung tuyến luôn cắt nhau tại một điểm G và tỉ số trên bảng luôn là 2 : 1. Đánh dấu “Giữ tam giác cân tại A”: hai góc ở đáy luôn bằng nhau và trung tuyến AM₁ vuông góc với BC."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Nhập $A(1; 2)$, $B(5; 0)$, $C(3; 7)$: trọng tâm hiện $G(3; 3)$, đúng như Ví dụ 4.</p>
+</div>
+
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Tính góc còn lại</div>
+<p>Tam giác $ABC$ có $\widehat{A} = 50^\circ$, $\widehat{B} = 65^\circ$. Tính $\widehat{C}$. Tam giác này có đặc biệt gì?</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat{C} = 180^\circ - 50^\circ - 65^\circ = 65^\circ = \widehat{B}$. Tam giác có hai góc bằng nhau nên cân tại $A$: $AB = AC$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Góc ngoài</div>
+<p>Góc ngoài tại $C$ của $\triangle ABC$ bằng $120^\circ$, và $\widehat{A} = 45^\circ$. Tính $\widehat{B}$ và $\widehat{ACB}$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat{A} + \widehat{B} = 120^\circ \Rightarrow \widehat{B} = 75^\circ$; $\widehat{ACB} = 180^\circ - 120^\circ = 60^\circ$. Kiểm tra: $45 + 75 + 60 = 180$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Tam giác cân</div>
+<p>Tam giác $ABC$ cân tại $A$ có $\widehat{A} = 40^\circ$. Tính các góc ở đáy.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\widehat{B} = \widehat{C} = \dfrac{180^\circ - 40^\circ}{2} = 70^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Trọng tâm</div>
+<p>(a) Trung tuyến $AM$ dài $9$ cm. Tính $AG$, $GM$. (b) Tìm trọng tâm của tam giác $A(1; 2)$, $B(5; 0)$, $C(3; 7)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>(a) $AG = \frac23 \cdot 9 = 6$ cm, $GM = 3$ cm.</p><p>(b) $G\left(\frac{1 + 5 + 3}{3}; \frac{2 + 0 + 7}{3}\right) = (3; 3)$.</p>
+</details>
+</div>
+
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Góc ngoài bằng tổng hai góc trong <b>không kề</b> với nó, không phải tổng của mọi góc.</li>
+<li>Một tam giác có nhiều nhất một góc vuông hoặc một góc tù (vì tổng ba góc bằng $180^\circ$).</li>
+<li>Trọng tâm chia trung tuyến theo tỉ số $2 : 1$ <b>tính từ đỉnh</b>: $AG$ là đoạn dài, $GM$ là đoạn ngắn.</li>
+</ul>
+</div>
+
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="num" data-answer="65" data-tol="0.01">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Tam giác $ABC$ có $\widehat{A} = 70^\circ$, $\widehat{B} = 45^\circ$. Tính $\widehat{C}$ (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$180 - 70 - 45 = 65$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Mỗi góc của tam giác đều bằng:</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> 45°</label>
+<label><input type="radio" name="q2" value="b"> 60°</label>
+<label><input type="radio" name="q2" value="c"> 90°</label>
+<label><input type="radio" name="q2" value="d"> 120°</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>180° : 3.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="115" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác $ABC$ có $\widehat{A} = 55^\circ$, $\widehat{B} = 60^\circ$. Tính góc ngoài tại đỉnh $C$ (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Góc ngoài tại $C$ bằng $\widehat{A} + \widehat{B} = 115^\circ$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="80" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác cân có một góc ở đáy bằng $50^\circ$. Tính góc ở đỉnh (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$180 - 2 \cdot 50 = 80$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="55" data-tol="0.01">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Tam giác vuông có một góc nhọn bằng $35^\circ$. Tính góc nhọn còn lại (độ).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$90 - 35 = 55$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="12" data-tol="0.01">
+<div class="q-head">Câu 6 <span class="q-level">Vận dụng</span></div>
+<p>$G$ là trọng tâm $\triangle ABC$, $BM$ là trung tuyến, $BG = 8$. Tính $BM$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$BG = \frac23 BM \Rightarrow BM = 12$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tìm tung độ trọng tâm của tam giác $A(0; 0)$, $B(6; 0)$, $C(0; 9)$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$y_G = \frac{0 + 0 + 9}{3} = 3$ (và $x_G = 2$).</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Trong tam giác cân $ABC$ ($AB = AC$), trung tuyến $AM$ có tính chất nào?</p>
+<div class="options">
+<label><input type="radio" name="q8" value="a"> Bằng nửa BC</label>
+<label><input type="radio" name="q8" value="b"> Vuông góc với BC và là phân giác của góc A</label>
+<label><input type="radio" name="q8" value="c"> Song song với BC</label>
+<label><input type="radio" name="q8" value="d"> Bằng AB</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Xem chứng minh định lý tam giác cân; kiểm tra bằng minh họa thứ hai.</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Tổng ba góc của tam giác bằng 180° (chứng minh bằng đường song song và góc so le trong).</li><li>Góc ngoài bằng tổng hai góc trong không kề với nó.</li><li>Tam giác cân có hai góc ở đáy bằng nhau và ngược lại; trung tuyến từ đỉnh cũng là đường cao, phân giác.</li><li>Ba trung tuyến đồng quy tại trọng tâm G, với AG = 2/3 AM; tọa độ G là trung bình cộng tọa độ ba đỉnh.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>

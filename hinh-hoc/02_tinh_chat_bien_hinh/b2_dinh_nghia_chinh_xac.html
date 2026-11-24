@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Định nghĩa chính xác các phép biến hình · Hình học cơ bản</title>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+<script>try{var t=localStorage.getItem('book-theme');if(!t&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script defer src="../assets/vendor/katex/katex.min.js"></script>
+<script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<script defer src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script defer src="../assets/js/widget-core.js"></script>
+<script defer src="../assets/js/board2d.js"></script>
+<script defer src="../assets/widgets/ch02_common.js"></script>
+<script defer src="../assets/widgets/ch02_dinh_nghia.js"></script>
+<script defer src="../assets/js/book.js"></script>
+</head>
+<body data-root="../">
+<main>
+<article class="prose">
+<div class="breadcrumb">Chương 2 · Tính chất phép biến hình và chứng minh · Bài 2</div>
+<h1>Bài 2. Định nghĩa chính xác các phép biến hình <span class="en">(Precise definitions of transformations)</span></h1>
+<p class="lead">"Xoay hình một chút", "lật hình qua đường kia": cách nói đời thường đủ để hình dung, nhưng chưa đủ để chứng minh. Bài này định nghĩa chính xác từng phép biến hình bằng khoảng cách, góc, trung điểm và đường trung trực, rồi dùng chính định nghĩa đó để dựng ảnh của một điểm.</p>
+<div class="box muc-tieu">
+<div class="box-title">🎯 Mục tiêu bài học</div>
+<ul><li>Phát biểu chính xác định nghĩa phép tịnh tiến, phép quay, phép đối xứng trục, phép đối xứng tâm.</li><li>Dựng được ảnh của một điểm theo đúng định nghĩa, từng bước bằng thước và compa.</li><li>Viết được biểu thức tọa độ của các phép biến hình thường gặp và tính tọa độ ảnh.</li><li>Biết điểm bất động của từng phép biến hình.</li></ul>
+</div>
+<h2>1. Khởi động</h2>
+<p>Bạn nói với bạn mình: "Quay điểm $M$ quanh điểm $O$ một góc $90^\circ$". Bạn của bạn hỏi lại: "Quay theo chiều nào?" Nếu không nói rõ chiều quay, có <b>hai</b> điểm khác nhau có thể là "ảnh". Một định nghĩa tốt phải chỉ ra <b>đúng một</b> ảnh cho mỗi điểm.</p>
+<h2>2. Kiến thức trọng tâm</h2>
+<div class="box dinh-nghia">
+<div class="box-title">Phép biến hình</div>
+<p>Một <b>phép biến hình</b> <span class="en">(transformation)</span> trong mặt phẳng là một quy tắc đặt tương ứng mỗi điểm $M$ với <b>một và chỉ một</b> điểm $M'$. Điểm $M'$ gọi là ảnh của $M$. Điểm $M$ có $M' = M$ gọi là <b>điểm bất động</b> <span class="en">(fixed point)</span>.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Phép tịnh tiến</div>
+<p>Cho vectơ $\vec v$. <b>Phép tịnh tiến</b> <span class="en">(translation)</span> theo $\vec v$, kí hiệu $T_{\vec v}$, biến mỗi điểm $M$ thành điểm $M'$ sao cho
+$$\overrightarrow{MM'} = \vec v.$$
+Tọa độ: với $\vec v = (a; b)$ thì $M'(x + a;\ y + b)$.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Phép quay</div>
+<p>Cho điểm $O$ và góc lượng giác $\alpha$. <b>Phép quay</b> <span class="en">(rotation)</span> tâm $O$ góc $\alpha$, kí hiệu $Q_{(O,\alpha)}$, biến $O$ thành chính nó và biến mỗi điểm $M \ne O$ thành $M'$ sao cho
+$$OM' = OM \quad\text{và}\quad (OM, OM') = \alpha.$$
+Quy ước: $\alpha > 0$ là quay ngược chiều kim đồng hồ, $\alpha < 0$ là cùng chiều kim đồng hồ.</p>
+<p>Tọa độ khi tâm là gốc $O$: $x' = x\cos\alpha - y\sin\alpha$, $y' = x\sin\alpha + y\cos\alpha$. Đặc biệt: $Q_{(O, 90^\circ)}\colon (x; y) \mapsto (-y; x)$, $Q_{(O, -90^\circ)}\colon (x; y) \mapsto (y; -x)$, $Q_{(O, 180^\circ)}\colon (x; y) \mapsto (-x; -y)$.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Phép đối xứng trục</div>
+<p>Cho đường thẳng $d$. <b>Phép đối xứng trục</b> <span class="en">(reflection)</span> $d$, kí hiệu $\text{Đ}_d$, biến mỗi điểm $M$ thuộc $d$ thành chính nó, và biến mỗi điểm $M$ không thuộc $d$ thành $M'$ sao cho <b>$d$ là đường trung trực của đoạn $MM'$</b>.</p>
+<p>Tọa độ: qua $Ox$: $(x; -y)$; qua $Oy$: $(-x; y)$; qua đường $y = x$: $(y; x)$; qua đường $y = -x$: $(-y; -x)$; qua đường $x = c$: $(2c - x;\ y)$; qua đường $y = c$: $(x;\ 2c - y)$.</p>
+</div>
+<div class="box dinh-nghia">
+<div class="box-title">Phép đối xứng tâm</div>
+<p>Cho điểm $I$. <b>Phép đối xứng tâm</b> <span class="en">(point reflection)</span> $I$, kí hiệu $\text{Đ}_I$, biến $I$ thành chính nó và biến mỗi điểm $M \ne I$ thành $M'$ sao cho <b>$I$ là trung điểm của $MM'$</b>.</p>
+<p>Tọa độ: với $I(a; b)$ thì $M'(2a - x;\ 2b - y)$. Phép đối xứng tâm $I$ chính là phép quay tâm $I$ góc $180^\circ$.</p>
+</div>
+<div class="box dinh-ly">
+<div class="box-title">Tính chất đường trung trực (dùng rất nhiều trong chứng minh)</div>
+<p>Điểm $P$ cách đều hai điểm $M$ và $M'$ khi và chỉ khi $P$ nằm trên đường trung trực của $MM'$. Vì vậy: nếu $M' = \text{Đ}_d(M)$ thì <b>mọi điểm $P$ trên $d$ đều có $PM = PM'$</b>.</p>
+</div>
+<table>
+<tr><th>Phép biến hình</th><th>Điều kiện xác định ảnh $M'$</th><th>Điểm bất động</th></tr>
+<tr><td>Tịnh tiến $T_{\vec v}$, $\vec v \ne \vec 0$</td><td>$\overrightarrow{MM'} = \vec v$</td><td>Không có</td></tr>
+<tr><td>Quay $Q_{(O,\alpha)}$, $\alpha \ne k\cdot 360^\circ$</td><td>$OM' = OM$, $(OM, OM') = \alpha$</td><td>Chỉ có $O$</td></tr>
+<tr><td>Đối xứng trục $\text{Đ}_d$</td><td>$d$ là trung trực của $MM'$</td><td>Mọi điểm thuộc $d$</td></tr>
+<tr><td>Đối xứng tâm $\text{Đ}_I$</td><td>$I$ là trung điểm của $MM'$</td><td>Chỉ có $I$</td></tr>
+</table>
+<h2>3. Khám phá: dựng ảnh theo định nghĩa</h2>
+<div data-widget="ch02_dinh_nghia" data-type="quay" data-title="Dựng ảnh của điểm M từng bước" data-try="chọn một phép biến hình, rồi bấm “Bước tiếp” để dựng ảnh M′ đúng theo định nghĩa. Kéo điểm M, kéo tâm O (hoặc điểm I trên trục, đầu mút V của vectơ) và quan sát bảng số đo: OM luôn bằng OM′, MH luôn bằng HM′… Có thể <b>gõ số</b> vào các ô tham số và tọa độ của M."></div>
+<div class="box luu-y">
+<div class="box-title">⌨️ Nhập số để kiểm tra</div>
+<p>Chọn <b>Phép quay</b>, nhập tâm $(0; 0)$, góc $\alpha = 90$, điểm $M(4; 1)$, bấm "Hiện hết". Theo công thức $(x; y) \mapsto (-y; x)$ ta có $M'(-1; 4)$ và $OM = OM' = \sqrt{17} \approx 4{,}12$. Bảng số đo hiện đúng các giá trị này và góc $MOM'$ bằng $90^\circ$. Nhập $\alpha = -90$: ảnh chuyển sang $M'(1; -4)$, phía bên kia.</p>
+</div>
+<h2>4. Ví dụ minh họa</h2>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 1. Quay quanh gốc tọa độ</div>
+<p>Tìm ảnh của $M(3; 1)$ qua phép quay tâm $O$ góc $90^\circ$. Kiểm tra lại định nghĩa.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Theo công thức $(x; y) \mapsto (-y; x)$: $M'(-1; 3)$.</p>
+<p>Kiểm tra: $OM = \sqrt{9 + 1} = \sqrt{10}$, $OM' = \sqrt{1 + 9} = \sqrt{10}$. Tích vô hướng $\overrightarrow{OM}\cdot\overrightarrow{OM'} = 3\cdot(-1) + 1\cdot 3 = 0$ nên $OM \perp OM'$; và $M'$ nằm ở phía ngược chiều kim đồng hồ so với $M$. Vậy $(OM, OM') = 90^\circ$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 2. Quay quanh một điểm khác gốc</div>
+<p>Tìm ảnh của $M(2; 0)$ qua phép quay tâm $I(1; 1)$ góc $90^\circ$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>Dời gốc về $I$: $\overrightarrow{IM} = (1; -1)$. Quay vectơ này $90^\circ$ theo quy tắc $(x; y) \mapsto (-y; x)$ được $(1; 1)$. Vậy $\overrightarrow{IM'} = (1; 1)$ và $M' = (1 + 1;\ 1 + 1) = (2; 2)$.</p>
+<p>Kiểm tra: $IM = IM' = \sqrt2$ và $\overrightarrow{IM}\cdot\overrightarrow{IM'} = 1 - 1 = 0$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 3. Đối xứng qua một đường thẳng xiên</div>
+<p>Tìm ảnh của $M(3; 0)$ qua phép đối xứng trục $d\colon y = x + 1$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p><b>Bước 1</b> (theo định nghĩa): tìm hình chiếu $H$ của $M$ lên $d$. Đường thẳng qua $M$ vuông góc với $d$ có vectơ chỉ phương $(1; -1)$, gồm các điểm $(3 + s;\ -s)$. Điểm này thuộc $d$ khi $-s = 3 + s + 1$, tức $s = -2$. Vậy $H(1; 2)$.</p>
+<p><b>Bước 2</b>: $H$ là trung điểm của $MM'$ nên $M' = (2\cdot 1 - 3;\ 2\cdot 2 - 0) = (-1; 4)$.</p>
+<p>Kiểm tra: $\overrightarrow{MM'} = (-4; 4)$ vuông góc với vectơ chỉ phương $(1; 1)$ của $d$, và trung điểm $(1; 2)$ thuộc $d$. Vậy $d$ là trung trực của $MM'$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 4. Đối xứng tâm</div>
+<p>Tìm ảnh của $M(5; 3)$ qua phép đối xứng tâm $I(2; -1)$. Tính $IM$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$M'(2\cdot 2 - 5;\ 2\cdot(-1) - 3) = (-1; -5)$. $IM = \sqrt{3^2 + 4^2} = 5 = IM'$, và $I$ là trung điểm của $MM'$.</p>
+</details>
+</div>
+<div class="box vi-du">
+<div class="box-title">Ví dụ 5. Tìm vectơ tịnh tiến</div>
+<p>Phép tịnh tiến $T_{\vec v}$ biến $A(1; 2)$ thành $A'(4; -2)$. Tìm $\vec v$, $|\vec v|$ và ảnh của $B(-3; 0)$.</p>
+<details class="loi-giai"><summary>Lời giải</summary>
+<p>$\vec v = \overrightarrow{AA'} = (3; -4)$, $|\vec v| = \sqrt{9 + 16} = 5$. Ảnh của $B$: $B'(-3 + 3;\ 0 - 4) = (0; -4)$.</p>
+</details>
+</div>
+<h2>5. Lưu ý</h2>
+<div class="box luu-y">
+<div class="box-title">⚠️ Lưu ý</div>
+<ul>
+<li>Phép quay phải nói rõ <b>chiều</b>: $Q_{(O, 90^\circ)}$ và $Q_{(O, -90^\circ)}$ cho hai ảnh khác nhau. Quay $-90^\circ$ cũng chính là quay $270^\circ$.</li>
+<li>Trong định nghĩa phép đối xứng trục, đừng quên trường hợp $M \in d$: khi đó $M' = M$ (không có "đoạn $MM'$").</li>
+<li>"$d$ đi qua trung điểm của $MM'$" chưa đủ; "$d$ vuông góc với $MM'$" cũng chưa đủ. Cần <b>cả hai</b>: $d$ là đường trung trực.</li>
+<li>Phép tịnh tiến xác định bởi vectơ (có hướng), không chỉ bởi độ dài: $T_{(3; 0)}$ và $T_{(-3; 0)}$ khác nhau.</li>
+<li>Phép đối xứng tâm là phép quay $180^\circ$, nhưng phép đối xứng trục <b>không</b> là phép quay nào cả (nó đổi hướng).</li>
+</ul>
+</div>
+<h2>Luyện tập</h2>
+<p>Nhập số thập phân dùng dấu phẩy hoặc dấu chấm (ví dụ <code>3,46</code>), có thể nhập phân số như <code>2/3</code>. Làm tròn đến hai chữ số thập phân nếu cần.</p>
+<div class="quiz" data-type="mc" data-answer="c">
+<div class="q-head">Câu 1 <span class="q-level">Nhận biết</span></div>
+<p>Điểm $M$ không thuộc đường thẳng $d$. Điểm $M'$ là ảnh của $M$ qua phép đối xứng trục $d$ khi và chỉ khi</p>
+<div class="options">
+<label><input type="radio" name="q1" value="a"> $d$ đi qua trung điểm của $MM'$</label>
+<label><input type="radio" name="q1" value="b"> $d$ vuông góc với $MM'$</label>
+<label><input type="radio" name="q1" value="c"> $d$ là đường trung trực của $MM'$</label>
+<label><input type="radio" name="q1" value="d"> $MM'$ song song với $d$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Cần đồng thời vuông góc và đi qua trung điểm, tức là đường trung trực.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="a">
+<div class="q-head">Câu 2 <span class="q-level">Nhận biết</span></div>
+<p>Ảnh của $M(2; 5)$ qua phép quay tâm $O$ góc $90^\circ$ là</p>
+<div class="options">
+<label><input type="radio" name="q2" value="a"> $(-5; 2)$</label>
+<label><input type="radio" name="q2" value="b"> $(5; -2)$</label>
+<label><input type="radio" name="q2" value="c"> $(-2; -5)$</label>
+<label><input type="radio" name="q2" value="d"> $(2; -5)$</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>$(x; y) \mapsto (-y; x)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="5" data-tol="0.01">
+<div class="q-head">Câu 3 <span class="q-level">Nhận biết</span></div>
+<p>Phép đối xứng tâm $I(1; 3)$ biến $M(4; -1)$ thành $M'(x; y)$. Tính $x + y$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$M'(2 - 4;\ 6 + 1) = (-2; 7)$, nên $x + y = 5$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="-1" data-tol="0.01">
+<div class="q-head">Câu 4 <span class="q-level">Thông hiểu</span></div>
+<p>Tìm hoành độ ảnh của $M(7; 2)$ qua phép đối xứng trục $d\colon x = 3$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$(x; y) \mapsto (2\cdot 3 - x;\ y)$: $M'(-1; 2)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="3.46" data-tol="0.02">
+<div class="q-head">Câu 5 <span class="q-level">Thông hiểu</span></div>
+<p>Phép quay tâm $O$ góc $60^\circ$ biến $M(4; 0)$ thành $M'$. Tính tung độ của $M'$ (làm tròn 2 chữ số thập phân).</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$y' = 4\sin 60^\circ = 2\sqrt3 \approx 3{,}46$.</p></details>
+</div>
+<div class="quiz" data-type="mc" data-answer="b">
+<div class="q-head">Câu 6 <span class="q-level">Thông hiểu</span></div>
+<p>Phép quay tâm $O$ góc $\alpha$ với $0^\circ < \alpha < 360^\circ$ có bao nhiêu điểm bất động?</p>
+<div class="options">
+<label><input type="radio" name="q6" value="a"> Không có</label>
+<label><input type="radio" name="q6" value="b"> Một (là $O$)</label>
+<label><input type="radio" name="q6" value="c"> Hai</label>
+<label><input type="radio" name="q6" value="d"> Vô số</label>
+</div>
+<div class="q-actions"><button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Gợi ý</summary><p>Với $M \ne O$, $M'$ nằm trên đường tròn tâm $O$ nhưng lệch một góc $\alpha$ nên $M' \ne M$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="6" data-tol="0.01">
+<div class="q-head">Câu 7 <span class="q-level">Vận dụng</span></div>
+<p>Tìm tung độ ảnh của $M(5; 0)$ qua phép đối xứng trục $d\colon y = x + 1$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>Hình chiếu: $(5 + s; -s)$ thuộc $d$ khi $-s = 6 + s$, $s = -3$, $H(2; 3)$. $M' = 2H - M = (-1; 6)$.</p></details>
+</div>
+<div class="quiz" data-type="num" data-answer="2" data-tol="0.01">
+<div class="q-head">Câu 8 <span class="q-level">Vận dụng</span></div>
+<p>Phép quay tâm $I(1; 1)$ góc $-90^\circ$ biến $M(2; 0)$ thành $M'$. Tính độ dài $MM'$.</p>
+<div class="q-actions"><input type="text" inputmode="decimal" aria-label="Đáp số"> <button class="btn check-btn" type="button">Kiểm tra</button><span class="feedback"></span></div>
+<details><summary>Lời giải</summary><p>$\overrightarrow{IM} = (1; -1)$, quay $-90^\circ$ theo quy tắc $(x; y) \mapsto (y; -x)$ được $(-1; -1)$, nên $M'(0; 0)$ và $MM' = 2$. (Kiểm tra: tam giác $IMM'$ vuông cân tại $I$ với $IM = \sqrt2$, cạnh huyền $\sqrt2\cdot\sqrt2 = 2$.)</p></details>
+</div>
+<div class="score" id="score"></div>
+<h2>Tóm tắt</h2>
+<div class="box tom-tat">
+<ul><li>Tịnh tiến: $\overrightarrow{MM'} = \vec v$. Quay: $OM' = OM$ và $(OM, OM') = \alpha$.</li><li>Đối xứng trục: $d$ là đường trung trực của $MM'$ (với $M \notin d$). Đối xứng tâm: $I$ là trung điểm của $MM'$.</li><li>Dựng ảnh theo định nghĩa: dựng hình chiếu, trung điểm, đường tròn, rồi lấy giao điểm.</li><li>Tịnh tiến (vectơ khác 0) không có điểm bất động; phép quay chỉ có tâm; đối xứng trục giữ mọi điểm trên trục.</li></ul>
+</div>
+<nav class="pager" data-auto aria-label="Chuyển bài"></nav>
+</article>
+</main>
+</body>
+</html>
