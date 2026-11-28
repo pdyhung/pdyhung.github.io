@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="04_tai_trong_tcvn/b5_vi_du_hoa_binh.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 4.5. Ví dụ Hòa Bình – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 4 · Tải trọng TCVN 2737:2023 · Bài 5</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 4.5. Ví dụ Hòa Bình <span class="en">Worked example: Hoa Binh factory</span></h1>
+<p class="lead">Ví dụ đi trọn chuỗi tính gió cho khung giữa nhà xưởng Hòa Bình: từ $W_0$ đến bảng tải daN/m gán lên cột và kèo, có xét hai trường hợp áp lực trong.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Lập được bảng tải gió trên khung (<a href="#tbl-4-6">Bảng 4.6</a>) cho một hướng gió với $c_i = \pm 0{,}2$.</li>
+<li>Khai báo các load pattern gió và gán tải theo đoạn kèo trong SAP2000.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mô hình mẫu <code>250317_NhaXuong</code> của nhà xưởng <b>Hòa Bình</b> gán cột đón gió 784 kG/m. Kiểm tra lại cho thấy con số này bằng $1120 \times 0{,}7$, tức chưa có áp lực trong. Khi xét $c_i = -0{,}2$, tải cột đón gió tăng lên 1008 daN/m.</p>
+</div>
+<h2 id="s2">2. Ví dụ tính toán</h2>
+<figure><img class="zoom" src="../assets/img/ch04_tai_gio_khung.svg" alt="Sơ đồ tải gió tính toán trên khung giữa nhà xưởng Hòa Bình, trường hợp ci = −0,2"><figcaption>Hình 4.1. Tải gió tính toán (daN/m) trên khung giữa Hòa Bình, gió ngang nhà, $c_i = -0{,}2$.</figcaption></figure>
+<div class="box ex"><div class="bt">📝 Ví dụ – Nhà xưởng Hòa Bình</div>
+<p><b>Số liệu.</b> Nhịp $d = 50$ m, dài $b = 72$ m, cao đỉnh cột 7,07 m, cao đỉnh mái $h = 8{,}82$ m, độ dốc 7 % ($\alpha = 4{,}0°$), bước khung 8 m, vùng gió II ($W_0 = 95$ daN/m²), địa hình B, cấp hậu quả C2.</p>
+<details class="sol"><summary>Lời giải</summary>
+<p><b>Bước 1.</b> $W_{3s,10} = 0{,}852 \times 95 = 80{,}94$ daN/m².</p>
+<p><b>Bước 2.</b> $h = 8{,}82 \le b$ nên $z_e = h = 8{,}82$ m. Nội suy Bảng 9 (B): $k = 0{,}969$.</p>
+<p><b>Bước 3.</b> Chạy Modal được $T_1 &lt; 1$ s, nên $G_f = 0{,}85$.</p>
+<p><b>Bước 4.</b> $W_k/c = 80{,}94 \times 0{,}969 \times 0{,}85 = 66{,}7$ daN/m². Giá trị tính toán $W/c = 1{,}0 \times 2{,}1 \times 66{,}7 = 140{,}0$ daN/m². Trên khung giữa (bước 8 m): $q/c = 1120$ daN/m.</p>
+<p><b>Bước 5 – Phân vùng</b> (gió vuông góc trục dọc nhà): $e = \min(72;\ 2 \times 8{,}82) = 17{,}64$ m. Tường đầu hồi: A = 3,53 m; B = 14,11 m; C = 32,36 m. Mái ($\alpha = 4° &lt; 5°$, coi là mái bằng): vùng G, F sâu $e/10 = 1{,}76$ m; vùng H đến $e/2 = 8{,}82$ m; vùng I phần còn lại. $h/d = 0{,}18 \le 0{,}25$.</p>
+<p><b>Bước 6 – Tải trên khung giữa</b> (daN/m):</p>
+<div class="tbl" id="tbl-4-6"><table><thead><tr><th>Vùng</th><th>$c_e$</th><th>$c_i = +0{,}2$: $c_p$</th><th>$q$</th><th>$c_i = -0{,}2$: $c_p$</th><th>$q$</th></tr></thead><tbody>
+<tr><td>D – cột đón gió</td><td>+0,7</td><td>+0,5</td><td>560</td><td>+0,9</td><td>1008</td></tr>
+<tr><td>E – cột khuất gió</td><td>−0,3</td><td>−0,5</td><td>−560</td><td>−0,1</td><td>−112</td></tr>
+<tr><td>G – kèo, 0–1,76 m</td><td>−1,2</td><td>−1,4</td><td>−1569</td><td>−1,0</td><td>−1120</td></tr>
+<tr><td>H – kèo, 1,76–8,82 m</td><td>−0,7</td><td>−0,9</td><td>−1008</td><td>−0,5</td><td>−560</td></tr>
+<tr><td>I – kèo, phần còn lại (âm)</td><td>−0,2</td><td>−0,4</td><td>−448</td><td>0,0</td><td>0</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 4.6.</b> Tải gió tính toán trên khung giữa – công trình Hòa Bình</p>
+<p>Dấu dương: áp vào bề mặt. Dấu âm: hút ra khỏi bề mặt (kèo bị nâng lên).</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Đối chiếu mô hình mẫu <code>250317_NhaXuong</code>.</b> Mô hình gán cột đón gió 784 kG/m (bằng $1120 \times 0{,}7$), tức <b>chưa xét áp lực trong</b>. Theo F.12, nhà xưởng tôn kín vẫn phải xét $c_i = \pm 0{,}2$. Trường hợp $c_i = -0{,}2$ làm cột đón gió tăng lên 1008 daN/m (+29 %). Khi lập mô hình mới nên khai báo đủ hai trường hợp áp lực trong cho mỗi hướng gió, giống cách làm với ASCE ở Chương 9.</p>
+</div>
+</details>
+</div>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Thực hành trên SAP2000</h3>
+<ol><li>Define → Load Patterns: SW (Dead, multiplier 1,05), D (Dead, 0), L (Live, 0), và 8 trường hợp gió: WX+i, WX−i, WX'+i, WX'−i (gió ngược chiều), WY+i, WY−i, WY'+i, WY'−i.</li>
+<li>Gán tải tính toán theo <a href="#tbl-4-6">Bảng 4.6</a> lên cột (Global X/Y) và kèo (Local 2, theo đoạn RelDist).</li>
+<li>Khung biên lấy một nửa tải. Khung trong phạm vi $e/4$ từ đầu hồi dùng vùng F thay cho G.</li></ol>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Gán tải mái theo phương Global Z thay cho Local 2 của kèo: phần tải vuông góc mặt mái bị lệch.</li>
+<li>Chỉ khai báo một trường hợp áp lực trong cho mỗi hướng gió; phải đủ $+0{,}2$ và $-0{,}2$.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vì sao trường hợp $c_i = -0{,}2$ làm tải lên cột đón gió lớn hơn?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Vì áp lực trong âm làm tăng $c_e$ của tường đón gió</label></li><li><label><input type="radio" name="q1" value="1"> Vì $c_p = c_e - c_i = 0{,}7 + 0{,}2 = 0{,}9$: áp lực trong âm (hút ra) cộng thêm vào áp lực ngoài đẩy vào tường</label></li><li><label><input type="radio" name="q1" value="2"> Vì $c_i = -0{,}2$ chỉ áp dụng cho tường đón gió</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Viết $c_p$ cho vùng D với hai dấu của $c_i$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$c_i = +0{,}2$: $c_p = 0{,}5$; $c_i = -0{,}2$: $c_p = 0{,}9$ → tải cột đón gió 1008 daN/m thay vì 560.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="504" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Khung biên (đầu hồi) nhận một nửa tải so với khung giữa. Tính tải gió lên cột đón gió của khung biên khi $c_i = -0{,}2$ (dùng <a href="#tbl-4-6">Bảng 4.6</a>).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Khung biên lấy $B/2$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$q = 1008/2 = 504$ daN/m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="2241" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Giả sử một khung trong nằm trong phạm vi $e/4$ từ đầu hồi nên đoạn kèo 0–1,76 m thuộc vùng F ($c_e = -1{,}8$), bước khung 8 m, $W/c = 140{,}05$ daN/m². Tính <b>độ lớn</b> tải hút trên đoạn đó khi $c_i = +0{,}2$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$c_p = c_e - c_i$; $q = |c_p| \cdot W/c \cdot B$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$c_p = -1{,}8 - 0{,}2 = -2{,}0$; $q = 2{,}0 \times 140{,}05 \times 8 = 2241$ daN/m (lấy $W/c = 140{,}0$ thì được 2240).</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Hòa Bình, khung giữa: $q/c = 1120$ daN/m; cột đón gió 560 / 1008 daN/m với $c_i = +0{,}2$ / $-0{,}2$.</li>
+<li>Kèo vùng G nặng nhất: −1569 daN/m ($c_i = +0{,}2$); trường hợp $c_i = +0{,}2$ bất lợi cho kèo, $c_i = -0{,}2$ bất lợi cho cột đón gió.</li>
+<li>Mỗi hướng gió khai báo hai load pattern ($\pm c_i$); khung biên lấy nửa tải, khung trong phạm vi $e/4$ dùng vùng F.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

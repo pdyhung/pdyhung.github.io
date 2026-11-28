@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="15_lien_ket_aisc/b4_chan_cot.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 15.4. Chân cột (J8, DG1, ACI) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 15 · Liên kết AISC · Bài 4</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 15.4. Chân cột (J8, DG1, ACI) <span class="en">Column base plates (AISC J8, Design Guide 1, ACI 318-08)</span></h1>
+<p class="lead">Chân cột khớp được kiểm tra qua một chuỗi trạng thái giới hạn: ép mặt bê tông (J8), chiều dày bản đế (DG1), neo chịu kéo và nón bê tông (ACI 318) và truyền lực cắt.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $m$, $n$, $\lambda n'$ và chiều dày bản đế khi nén, khi nhổ theo DG1.</li>
+<li>Kiểm tra truyền lực cắt bằng ma sát và so sánh hệ số $\mu$ của DG1 (0,55) với TCVN (0,25).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Bài tập Buổi 15: chân cột H(300)×200×6×10, bản đế 350 × 240 × 16, 4 bu lông neo M24, chịu $P_u$ = 65,02 kN (nén) và $-46{,}73$ kN (nhổ). RAM Connection cho tỷ số 0,6 sau khi bật chốt chống cắt. Kỹ sư cần tính tay để biết trạng thái giới hạn nào quyết định.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<p>Trình tự kiểm tra chân cột khớp theo hệ Mỹ:</p>
+<ul><li>Ép mặt bê tông (J8-2): $\phi_cP_p = 0{,}65 \times 0{,}85f'_cA_1\sqrt{A_2/A_1}$, với $\sqrt{A_2/A_1} \le 2$.</li>
+<li>Bản đế khi nén (DG1): $t_{\min} = l\sqrt{2P_u/(0{,}9F_yBN)}$, $l = \max(m, n, \lambda n')$.</li>
+<li>Bản đế khi nhổ: bản làm việc như công-xôn từ bu lông neo đến chân đường hàn bụng, bề rộng hiệu dụng $2a$.</li>
+<li>Neo (ACI 318-08 Phụ lục D): thép neo chịu kéo, phá vỡ nón bê tông, chịu cắt và tương tác kéo – cắt.</li>
+<li>Lực cắt: ma sát $\phi\mu P_u$ chỉ khi có nén đồng thời; khi nhổ cần chốt chống cắt hoặc cho neo chịu cắt.</li></ul>
+<h2 id="s3">3. Khám phá</h2>
+<p>Thay kích thước bản đế và nội lực, theo dõi chiều dày yêu cầu khi nén, khi nhổ và khả năng truyền cắt bằng ma sát theo DG1 và TCVN. Mặc định là Ví dụ 15.2.</p>
+<div data-widget="W20"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 15.2 – Chân cột khớp theo AISC 360-10, DG1, ACI 318-08 (bài tập Buổi 15)</div>
+<p><b>Số liệu</b> (theo RAM Connection trong video): cột $d$ = 300, $b_f$ = 200, $t_f$ = 10, $t_w$ = 6 mm. Bản đế $N \times B \times t$ = 350 × 240 × 16, Q235 ($F_y$ = 235 MPa). 4 bu lông neo M24 bằng Q235 ($F_u$ = 370 MPa), bố trí 160 × 120 mm (nằm giữa hai cánh, hai bên bụng), chiều sâu chôn $h_{ef}$ = 500 mm. Bê tông $f'_c$ = 27,6 MPa (4 ksi). Móng rộng 2,44 m. Tải LRFD: $P_u$ = 65,02 kN (nén) đi kèm $V_u$ = 26,21 kN; $P_u$ = −46,73 kN (nhổ) đi kèm $V_u$ = −7,99 kN.</p>
+<details class="sol"><summary>Lời giải</summary>
+<p><b>1) Ép mặt bê tông</b> (J8-2), $\sqrt{A_2/A_1} \le 2$: $\phi_c P_p = 0{,}65 \times 1{,}7 \times 27{,}6 \times 84\,000 = 2562$ kN $\gg$ 65 kN. Đạt.</p>
+<p><b>2) Chiều dày bản đế khi nén</b> (Design Guide 1, mục 3.1): $m = (N - 0{,}95d)/2 = 32{,}5$ mm; $n = (B - 0{,}8b_f)/2 = 40$ mm; $\lambda n' = 9{,}6$ mm, nên $l = 40$ mm. $t_{\min} = l\sqrt{2P_u/(0{,}9F_yBN)} = 40\sqrt{2\times65\,020/(0{,}9\times235\times84\,000)} = 3{,}4$ mm.</p>
+<p><b>3) Chiều dày bản đế khi nhổ.</b> Mỗi bu lông chịu $T_u/4$ = 11,7 kN. Cánh tay đòn từ bu lông đến chân đường hàn bụng $a = 60 - 3 - 6 = 51$ mm. Bề rộng hiệu dụng $2a$ = 102 mm (lan 45°). $M_u = 11{,}7 \times 0{,}051 = 0{,}60$ kNm. $t_{req} = \sqrt{4M_u/(0{,}9F_yb_{eff})} = 10{,}5$ mm ≤ 16 mm. Đạt. Trường hợp này quyết định chiều dày bản đế.</p>
+<p><b>4) Bu lông neo chịu kéo</b> (ACI 318-08, D.5.1): $\phi N_{sa} = 0{,}75 \times A_{se}f_{uta} = 0{,}75 \times 353 \times 370 = 98{,}0$ kN/bu lông $\gg$ 11,7 kN.</p>
+<p><b>5) Phá vỡ hình nón bê tông của nhóm neo</b> (D.5.2), bê tông có nứt, xa mép móng: $N_b = k_c\sqrt{f'_c}\,h_{ef}^{1{,}5} = 10\sqrt{27{,}6}\,(500)^{1{,}5} = 587$ kN (hệ SI, $k_c$ = 10 cho neo đặt sẵn). $A_{Nc}/A_{Nco} = (160 + 1500)(120 + 1500)/(9 \times 500^2) = 1{,}195$. $\phi N_{cbg} = 0{,}70 \times 1{,}195 \times 587 = 491$ kN $\gg$ 46,7 kN. Đạt.</p>
+<p><b>6) Lực cắt.</b></p>
+<ul><li>Tổ hợp có nén: ma sát giữa thép và vữa, $\phi\mu P_u = 0{,}75 \times 0{,}55 \times 65{,}02 = 26{,}8$ kN ≥ 26,21 kN. Vừa đạt (tỷ số 0,98). Hệ số $\mu$ = 0,55 theo DG1 cho thép trên vữa.</li>
+<li>Tổ hợp nhổ: không có ma sát, cần chốt chống cắt hoặc cho bu lông neo chịu cắt: $\phi V_{sa} = 0{,}65 \times 0{,}6A_{se}f_{uta} \times 0{,}8$ (hệ số 0,8 do lớp vữa) $= 40{,}8$ kN/bu lông. Phải kiểm tra thêm tương tác kéo – cắt D.7.</li>
+<li>Video đã bật tùy chọn <b>shear lug</b> (127 × 25,4 mm). Đây là cách bố trí an toàn nhất, nhất quán với kết luận ở Ví dụ 7.3.</li></ul>
+<div class="tbl" id="tbl-15-5"><table><thead><tr><th>Kiểm tra</th><th>Yêu cầu</th><th>Khả năng</th><th>Tỷ số</th></tr></thead><tbody>
+<tr><td>Ép mặt bê tông</td><td>65,0 kN</td><td>2562 kN</td><td>0,03</td></tr>
+<tr><td>Bản đế – nén</td><td>3,4 mm</td><td>16 mm</td><td>0,21</td></tr>
+<tr><td>Bản đế – nhổ</td><td>10,5 mm</td><td>16 mm</td><td>0,66 (theo $t$) / 0,43 (theo $t^2$)</td></tr>
+<tr><td>Neo – kéo thép</td><td>11,7 kN</td><td>98,0 kN</td><td>0,12</td></tr>
+<tr><td>Neo – nón bê tông</td><td>46,7 kN</td><td>491 kN</td><td>0,10</td></tr>
+<tr><td>Cắt – ma sát (tổ hợp nén)</td><td>26,2 kN</td><td>26,8 kN</td><td>0,98</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 15.5.</b> Tổng hợp kiểm tra chân cột khớp theo AISC/ACI</p>
+<p>Tỷ số lớn nhất tính tay nằm trong khoảng 0,6–1,0 tùy cách đọc trạng thái giới hạn. Con số 0,6 trong RAM Connection ở video có thể đã bao gồm chốt chống cắt. Khi đối chiếu nên mở báo cáo chi tiết (<i>Report → Base plate (AISC 360-10 LRFD)</i>) để xem từng trạng thái giới hạn.</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>So sánh với TCVN (Ví dụ 7.3).</b> Hệ số ma sát của AISC DG1 là <b>0,55</b> (thép trên vữa). TCVN 5575:2024 Phụ lục L lấy $\mu$ = <b>0,25</b>. Với cùng lực nén 65 kN, TCVN chỉ cho ma sát $0{,}25 \times 65 = 16{,}3$ kN (chưa kể phần lực siết bu lông), không đủ cho 26,2 kN. Khi thiết kế theo TCVN, <b>chốt chống cắt gần như luôn cần thiết</b> cho chân cột nhà khung thép chịu gió lớn.</p>
+</div>
+</details>
+</div>
+<h2 id="s5">5. Thực hành SAP2000</h2>
+<h3>Quy trình trong khóa học (video Buổi 15)</h3>
+<p>Trong video, giảng viên làm liên kết theo trình tự sau:</p>
+<ol><li>Xuất bảng <b>Joint Reactions</b> từ SAP2000 theo các tổ hợp ASD-COMB/LRFD sang Excel. Lọc nút chân cột, sắp xếp $F_3$ để tìm nén lớn nhất và nhổ lớn nhất.</li>
+<li>Dùng bảng tính <code>COT-KEO</code> (bu lông nút kèo – cột) và <code>2.6.2 Bản mã chân cột Khớp</code> (bu lông neo) để kiểm tra nhanh. Như Chương 7 đã chỉ ra, hai bảng tính này dùng số liệu TCXDVN 338:2005.</li>
+<li>Mở <b>RAM Connection Standalone</b> (Bentley) và tạo liên kết <i>Column – Base, Pinned BP</i>. Khai báo tiết diện cột H(300)×200×6×10 Q235, bản đế 350×240×16 Q235, đường hàn E70XX 4/16 in (≈ 6 mm), có chốt chống cắt (shear lug), 4 bu lông neo M24, móng bê tông $f'_c$ = 4 ksi. Tiêu chuẩn: AISC 360-10 LRFD và ACI 318-08.</li>
+<li>Nhập tải trọng: $P_u$ = 65,02 kN (nén) và $P_u = -46{,}73$ kN (nhổ); $V_u$ = 26,21 kN và −7,99 kN. Chạy, xem tỷ số (từ đỏ 5,44 → 2,64 → xanh 0,6 sau khi chỉnh thông số) và xuất báo cáo.</li>
+<li>Đưa chi tiết lên bản vẽ AutoCAD: bản đế BP-PL16 350×240, bu lông 4M24×750.</li></ol>
+<p>Phần sau tính tay đúng ví dụ đó để người học hiểu RAM Connection đang kiểm tra những gì.</p>
+<div class="box sap"><div class="bt">🖥️ Hình: RAM Connection – chân cột khớp, tiêu chuẩn AISC 2010 / ACI 318-08</div>
+<ol><li>RAM Connection Standalone</li><li>Joints</li><li>New joint</li><li>Column base (CB)</li><li>General information</li><li>Design criteria</li><li>Optimize</li></ol><figure><img class="zoom" loading="lazy" src="../assets/img/sap/ram_connection_chan_cot.jpg" alt="Hình: RAM Connection – chân cột khớp, tiêu chuẩn AISC 2010 / ACI 318-08"><figcaption>Hình: RAM Connection – chân cột khớp, tiêu chuẩn AISC 2010 / ACI 318-08</figcaption></figure>
+</div>
+<div class="box sap"><div class="bt">🖥️ Hình: Báo cáo RAM Connection – nội lực thiết kế và kiểm tra bản đế (AISC 360-10)</div>
+<ol><li>Connection Pad</li><li>Reports</li><li>Results</li><li>Demands</li><li>Design calculations</li></ol><figure><img class="zoom" loading="lazy" src="../assets/img/sap/ram_connection_bao_cao.jpg" alt="Hình: Báo cáo RAM Connection – nội lực thiết kế và kiểm tra bản đế (AISC 360-10)"><figcaption>Hình: Báo cáo RAM Connection – nội lực thiết kế và kiểm tra bản đế (AISC 360-10)</figcaption></figure>
+</div>
+<h2 id="s6">6. Lỗi thường gặp</h2>
+<ul><li>Dùng ma sát để truyền cắt trong tổ hợp gây nhổ: khi đó không có lực nén nên ma sát bằng 0.</li>
+<li>Chỉ kiểm tra bản đế khi nén: với chân cột khớp nhà khung nhẹ, trường hợp <b>nhổ</b> thường quyết định chiều dày.</li></ul>
+<h2 id="s7">7. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Hệ số ma sát giữa bản đế thép và lớp vữa theo AISC DG1 là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 0,25</label></li><li><label><input type="radio" name="q1" value="1"> 0,30</label></li><li><label><input type="radio" name="q1" value="2"> 0,55</label></li><li><label><input type="radio" name="q1" value="3"> 0,70</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>TCVN 5575:2024 Phụ lục L lấy giá trị nhỏ hơn nhiều.</p>
+</details>
+<details><summary>Lời giải</summary><p>DG1: $\mu$ = 0,55 (thép trên vữa); TCVN 5575:2024: $\mu$ = 0,25.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="3660" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Bản đế 400 × 300 mm trên móng đủ rộng ($\sqrt{A_2/A_1}$ = 2), $f'_c$ = 27,6 MPa. Tính $\phi_cP_p$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\phi_cP_p = 0{,}65 \times 1{,}7f'_cA_1$ khi $\sqrt{A_2/A_1} = 2$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$A_1 = 120\,000$ mm²; $\phi_cP_p = 0{,}65 \times 1{,}7 \times 27{,}6 \times 120\,000 = 3660$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="7.61" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cột của Ví dụ 15.2 ($d$ = 300, $b_f$ = 200 mm) đặt trên bản đế $N \times B$ = 400 × 300 mm, Q235, chịu $P_u$ = 150 kN. Tính chiều dày bản đế yêu cầu khi nén theo DG1 (dùng $\phi_cP_p$ của câu trước).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính $m$, $n$, $\lambda n'$ rồi lấy $l$ lớn nhất.</p>
+</details>
+<details><summary>Lời giải</summary><p>$m = (400 - 285)/2 = 57{,}5$ mm; $n = (300 - 160)/2 = 70$ mm; $X = 0{,}96 \times 150/3660 = 0{,}039$ → $\lambda = 0{,}200$, $\lambda n' = 12{,}3$ mm → $l = 70$ mm; $t_{\min} = 70\sqrt{2 \times 150\,000/(0{,}9 \times 235 \times 120\,000)} = 7{,}61$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Ví dụ 15.2: bản đế khi nhổ cần 10,5 mm, khi nén chỉ 3,4 mm; ép mặt và neo dư nhiều.</li>
+<li>Ma sát DG1 $0{,}75 \times 0{,}55 \times 65{,}02 = 26{,}8$ kN vừa đủ cho 26,2 kN; theo TCVN ($\mu$ = 0,25) chỉ 16,3 kN → cần chốt chống cắt.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w20.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

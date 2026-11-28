@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="13_cau_kien_aisc/b6_vi_du_keo_cot.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 13.6. Ví dụ kèo và cột C1 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 13 · Kiểm tra cấu kiện AISC · Bài 6</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 13.6. Ví dụ kèo và cột C1 <span class="en">Worked examples: rafter and column C1</span></h1>
+<p class="lead">Hai ví dụ tổng hợp: kiểm tra kèo H500×250 (Fy 345) và cột C1 H650×200 (Fy 235), đối chiếu với kết quả SAP2000.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tự kiểm tra lại toàn bộ chuỗi phân loại → nén → uốn → cắt → tương tác.</li>
+<li>So sánh LRFD với ASD.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Bảng kết quả <i>Steel Design</i> của SAP2000 cho nhà máy DNP cần được kiểm tra độc lập trước khi ký hồ sơ. Hai cấu kiện quan trọng nhất là kèo nhịp 54 m và cột C1.</p>
+</div>
+<h2 id="s2">2. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 13.1 – Kèo H500×250×8×12, A572 Gr50 ($F_y = 345$ MPa)</div>
+<p>Để so sánh với Ví dụ 6.2, lấy cùng nội lực làm nội lực yêu cầu LRFD (giả định): $M_u = 420{,}4$ kNm; $V_u = 81{,}0$ kN. Chống xiên cánh nén mỗi $L_b = 3{,}0$ m; $C_b = 1{,}0$.</p>
+<details class="sol"><summary>Lời giải</summary>
+<div class="tbl" id="tbl-13-2"><table><thead><tr><th>Bước</th><th>Kết quả</th></tr></thead><tbody>
+<tr><td>Đặc trưng</td><td>$A = 9808$ mm²; $S_x = 1717\times10^3$ mm³; $Z_x = 1917\times10^3$ mm³; $r_y = 56{,}5$ mm; $r_{ts} = 66{,}7$ mm</td></tr>
+<tr><td>Cánh</td><td>$b/2t = 10{,}42$; $\lambda_{pf} = 9{,}15$; $k_c = 0{,}519$; $\lambda_{rf} = 19{,}7$ → <b>noncompact</b></td></tr>
+<tr><td>Bụng</td><td>$h/t_w = 59{,}5 &lt; \lambda_{pw} = 90{,}5$ → <b>compact</b> → dùng <b>F3</b></td></tr>
+<tr><td>$M_p$</td><td>$345 \times 1917\times10^3 = 661{,}4$ kNm</td></tr>
+<tr><td>LTB</td><td>$L_p = 2{,}39$ m; $L_r = 6{,}47$ m; $L_b = 3{,}0$ m → $M_n = 624{,}7$ kNm</td></tr>
+<tr><td>FLB (F3-1)</td><td>$M_n = 631{,}7$ kNm</td></tr>
+<tr><td>$\phi M_n$</td><td>$0{,}9 \times 624{,}7 = 562{,}2$ kNm → $M_u/\phi M_n =$ <b>0,748</b></td></tr>
+<tr><td>Cắt</td><td>$h/t_w = 59{,}5 &gt; 59{,}2$ → $C_v = 0{,}995$; $\phi V_n = 706$ kN → <b>0,115</b></td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 13.2.</b> Ví dụ 13.1</p>
+<p>Ảnh hưởng của khoảng cách chống xiên: $\phi M_n = 568{,}6$ kNm ($L_b = 1{,}5$ m); 562,2 kNm (3 m); 453,3 kNm (5 m); 259,2 kNm (8 m). Khi không có chống xiên mà cánh dưới chịu nén lúc gió hút, khả năng chịu uốn có thể giảm còn <b>một nửa</b>.</p>
+</details>
+</div>
+<div class="box ex"><div class="bt">📝 Ví dụ 13.2 – Cột C1, tiết diện đỉnh H650×200×6×10, $F_y = 235$ MPa</div>
+<p>Lấy nội lực Ví dụ 6.3 làm nội lực yêu cầu (giả định): $P_u = 79{,}85$ kN; $M_u = 278{,}08$ kNm. DAM nên $K = 1$: $L_{cx} = 7{,}07$ m. Ngoài mặt phẳng $L_{cy} = L_b = 5{,}0$ m.</p>
+<details class="sol"><summary>Lời giải</summary>
+<ol><li><b>Phân loại khi nén:</b> bụng $h/t_w = 105 &gt; 1{,}49\sqrt{E/F_y} = 43{,}5$ → <b>bụng mảnh</b>. Cánh $b/t = 10 &lt; 0{,}64\sqrt{k_cE/F_y} = 11{,}7$ → cánh không mảnh, $Q_s = 1$.</li>
+<li><b>Nén:</b> $KL/r$: $x$ = 27, $y$ = 121. Bề rộng hiệu dụng bụng $b_e = 418$ mm (bụng thật 630 mm) → $Q_a = 0{,}836$; $F_{cr} = 107{,}1$ MPa; $\phi P_n = 750$ kN.</li>
+<li><b>Phân loại khi uốn:</b> bụng $105 &lt; 3{,}76\sqrt{E/F_y} = 109{,}7$ → compact; cánh $10 &lt; 11{,}09$ → compact → <b>F2</b>.</li>
+<li><b>Uốn:</b> $M_p = 441$ kNm; $L_p = 2{,}13$ m; $L_r = 5{,}81$ m; $L_b = 5$ m → $\phi M_n = 277{,}3$ kNm.</li>
+<li><b>Tương tác:</b> $P_u/\phi P_n = 0{,}107 &lt; 0{,}2$ → H1-1b: $0{,}107/2 + 278{,}08/277{,}3 =$ <b>1,056 > 1 → không đạt.</b></li>
+<li><b>Giải pháp:</b> thêm chống xiên cánh trong để $L_b = 4{,}2$ m → $\phi M_n = 310{,}5$ kNm → tỷ số <b>0,949</b>. Với $L_b = 3{,}0$ m → 0,825.</li></ol>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Hai tiêu chuẩn cho cùng kết luận.</b> Ví dụ 6.3 (TCVN 5575:2024, điều 8.4.4b) cũng cần $L_{ef} \le 4{,}2$ m để được miễn kiểm tra ổn định tổng thể. Với cột nhà tiền chế, <b>khoảng cách chống xiên cánh trong</b> thường quyết định tiết diện nhiều hơn lực dọc. Khi đối chiếu với SAP, xem trong Details: dòng <i>Lb</i> và <i>Cb</i>, và phân loại <i>Slender</i> của bụng khi nén.</p>
+</div>
+</details>
+</div>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<h3>Lỗi thường gặp</h3>
+<ul><li>Bỏ qua bụng mảnh khi nén, dùng $Q = 1$.</li>
+<li>Dùng F2 cho tiết diện có cánh noncompact; phải dùng F3 (thêm FLB).</li>
+<li>Lấy $C_b &gt; 1$ mà không kiểm tra biểu đồ mô men giữa các điểm giằng.</li>
+<li>Kiểm tra tương tác bằng mô men lớn nhất của cả thanh nhưng lực dọc ở vị trí khác.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Muốn tăng khả năng chịu uốn của cột C1 mà không đổi tiết diện, cách hiệu quả nhất là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Tăng $C_b$ lên 2,0 trong SAP2000</label></li><li><label><input type="radio" name="q1" value="1"> Thêm chống xiên cánh trong để giảm $L_b$</label></li><li><label><input type="radio" name="q1" value="2"> Đổi chân cột từ khớp sang ngàm</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Cột C1 bị khống chế bởi LTB.</p>
+</details>
+<details><summary>Lời giải</summary><p>Giảm $L_b$ từ 5 m xuống 4,2 m tăng $\phi M_n$ từ 277,3 lên 310,5 kNm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.748" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Kèo ví dụ 13.1: $M_u = 420{,}4$ kNm, $\phi M_n = 562{,}2$ kNm. Tính tỷ số $M_u/\phi M_n$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tỷ số = yêu cầu / khả năng.</p>
+</details>
+<details><summary>Lời giải</summary><p>$420{,}4/562{,}2 = 0{,}748$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.749" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Làm lại Ví dụ 13.1 theo ASD: $M_a = M_u/1{,}5$, $\Omega_b = 1{,}67$, $M_n = 624{,}7$ kNm. Tính $M_a/(M_n/\Omega_b)$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$M_a = 420{,}4/1{,}5$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$M_a = 280{,}3$ kNm; $M_n/\Omega_b = 374{,}1$ kNm; tỷ số $= 0{,}749$ ≈ LRFD (0,748).</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Kèo: $\phi M_n = 562{,}2$ kNm (F3, LTB khống chế), tỷ số 0,748; cắt 0,115.</li>
+<li>Cột C1: bụng mảnh khi nén ($Q = 0{,}836$), $\phi P_n = 750$ kN; H1-1b = 1,056 → cần $L_b \le 4{,}2$ m.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

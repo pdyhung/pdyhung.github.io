@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="12_steel_frame_design/b4_tiet_dien_thay_doi.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 12.4. Tiết diện thay đổi – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 12 · Steel Frame Design · Bài 4</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 12.4. Tiết diện thay đổi <span class="en">Nonprismatic members in Steel Frame Design</span></h1>
+<p class="lead">Kèo, cột nhà tiền chế thường có tiết diện thay đổi. SAP2000 kiểm tra chúng một cách gần đúng, nên người thiết kế cần biết giới hạn của cách làm đó.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Hiểu cách SAP kiểm tra tiết diện thay đổi tại các trạm xuất nội lực.</li>
+<li>Xác định tiết diện tại vị trí bất kỳ để kiểm tra tay.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Cột C1 của nhà máy DNP là H(300–650)×200×6×10, chân 300 mm, đỉnh 650 mm. Với 3 trạm mặc định, SAP chỉ kiểm tra ở chân, giữa và đỉnh cột; vị trí có tỷ số lớn nhất có thể nằm giữa các trạm.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Tiết diện thay đổi (Nonprismatic)</h3>
+<p>SAP2000 kiểm tra tiết diện thay đổi tại các trạm xuất nội lực (output station), mỗi trạm dùng đặc trưng hình học tại vị trí đó. Chiều dài không giằng và $C_b$ vẫn lấy theo cả thanh. Cách này gần đúng, chưa theo đầy đủ AISC Design Guide 25 (Frame Design Using Web-Tapered Members). Khi kiểm tra tay nên lấy tiết diện tại vị trí nội lực lớn nhất (Ví dụ 13.2) và tăng số trạm xuất (Assign → Frame → Output Stations, tối thiểu 9 trạm).</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Để số trạm mặc định (3) cho cấu kiện tiết diện thay đổi.</li>
+<li>Kiểm tra tay bằng tiết diện trung bình của cả thanh thay vì tiết diện tại vị trí nội lực lớn nhất.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>SAP2000 kiểm tra cấu kiện tiết diện thay đổi như thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Dùng tiết diện nhỏ nhất cho cả thanh</label></li><li><label><input type="radio" name="q1" value="1"> Tại mỗi trạm xuất nội lực dùng đặc trưng hình học tại vị trí đó; $L_b$ và $C_b$ lấy theo cả thanh</label></li><li><label><input type="radio" name="q1" value="2"> Theo đầy đủ AISC Design Guide 25</label></li><li><label><input type="radio" name="q1" value="3"> Dùng tiết diện trung bình</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem đoạn "Tiết diện thay đổi".</p>
+</details>
+<details><summary>Lời giải</summary><p>Kiểm tra tại các trạm với tiết diện tại chỗ; $L_b$, $C_b$ theo cả thanh → gần đúng, chưa theo DG25.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.6375" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Một phần tử kèo dài 13,1 m được gán 9 trạm xuất nội lực chia đều (kể cả hai đầu). Khoảng cách giữa hai trạm liên tiếp là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>9 trạm → 8 khoảng.</p>
+</details>
+<details><summary>Lời giải</summary><p>$13{,}1/8 = 1{,}6375$ m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="562.4" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cột H(300–650) cao 7,07 m, chiều cao tiết diện thay đổi tuyến tính từ 300 mm (chân) đến 650 mm (đỉnh). Tính chiều cao tiết diện tại trạm cách chân 5,3 m.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Nội suy tuyến tính theo chiều cao.</p>
+</details>
+<details><summary>Lời giải</summary><p>$d = 300 + (650 - 300) \times 5{,}3/7{,}07 = 300 + 262{,}4 = 562{,}4$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>SAP kiểm tra tại output station với tiết diện tại chỗ; $L_b$, $C_b$ theo cả thanh: gần đúng so với DG25.</li>
+<li>Tăng số trạm (tối thiểu 9); kiểm tra tay tại vị trí nội lực lớn nhất (Ví dụ 13.2).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

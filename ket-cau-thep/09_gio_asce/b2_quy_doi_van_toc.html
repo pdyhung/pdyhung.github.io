@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="09_gio_asce/b2_quy_doi_van_toc.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 9.2. Quy đổi vận tốc từ QCVN 02:2022 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 9 · Gió ASCE 7-10 · Bài 2</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 9.2. Quy đổi vận tốc từ QCVN 02:2022 <span class="en">Basic wind speed from QCVN 02:2022</span></h1>
+<p class="lead">QCVN 02:2022 cho áp lực gió $W_0$ chu kỳ lặp 20 năm, còn ASCE 7-10 cần vận tốc gió $V$ chu kỳ lặp 700 năm. Bài này quy đổi qua ba bước.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Quy đổi được $W_0 \to V_{20} \to V_{50} \to V_{700}$ và giải thích từng hệ số 0,91 và 1,26.</li>
+<li>Nhận ra sai sót khi dùng nhầm vận tốc của vùng gió khác (ví dụ tệp Excel phát cho học viên).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nhà máy DNP ở Quảng Ninh thuộc vùng gió II, $W_0 = 95$ daN/m². Tệp Excel mẫu của khóa học lại nhập sẵn $V = 62{,}77$ m/s. Nếu giữ nguyên số này, áp lực gió sẽ lớn hơn khoảng $(62{,}77/54{,}51)^2 = 1{,}33$ lần. Cần tự quy đổi lại từ $W_0$.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h4>Vận tốc gió cơ sở – quy đổi từ QCVN 02</h4>
+<p>ASCE 7-10 dùng vận tốc gió giật 3 s, ở độ cao 10 m, dạng địa hình C, ứng với chu kỳ lặp <b>700 năm</b> cho cấp rủi ro II. QCVN 02:2022 (mục 5.2.1) cho áp lực gió $W_0$ ứng với vận tốc gió giật 3 s, chu kỳ lặp <b>20 năm</b>, ở độ cao 10 m, <b>dạng địa hình B</b> của Việt Nam. Dạng B của QCVN (tương đối trống trải, vật cản thưa cao không quá 10 m) tương đương dạng C của ASCE. Vì vậy chỉ cần quy đổi chu kỳ lặp, qua ba bước:</p>
+<p><b>Bước 1 – Đổi áp lực sang vận tốc</b> (QCVN 02:2022, công thức 5.1):</p>
+<div class="eq" id="eq-9-q1"><div class="m">$$V_{20} = \sqrt{W_0/0{,}0613}\quad (\text{m/s};\ W_0\ \text{tính bằng daN/m}^2).$$</div><span class="tag">(9.q1)</span></div>
+<p><b>Bước 2 – Đổi chu kỳ lặp 20 năm sang 50 năm.</b> QCVN 02:2022 Bảng 5.2 cho hệ số $K_{s,T}$ đổi vận tốc gió 3 s từ 50 năm sang $T$ năm; với $T = 20$ năm, $K_{s,20} = 0{,}91$. Do đó</p>
+<div class="eq" id="eq-9-q2"><div class="m">$$V_{50} = V_{20}/0{,}91 = 1{,}10\,V_{20}.$$</div><span class="tag">(9.q2)</span></div>
+<p>Kết quả này khớp với công thức C26.5-4 trong phần giải thích của ASCE 7-10: $V_T/V_{50} = 0{,}36 + 0{,}1\ln(12T)$, với $T = 20$ năm cho $0{,}908$.</p>
+<p><b>Bước 3 – Đổi 50 năm sang 700 năm.</b> ASCE 7-10 thay cách dùng hệ số tải gió 1,6 với gió 50 năm (ASCE 7-05) bằng gió "cường độ" 700 năm với hệ số tải 1,0. Hai cách tương đương khi $V_{700} = \sqrt{1{,}6}\,V_{50} \approx 1{,}26\,V_{50}$ (giải thích C26.5, công thức C26.5-5 và Bảng C26.5-6, ví dụ $85\sqrt{1{,}6} = 108$ mph). Vậy</p>
+<div class="eq" id="eq-9-q3"><div class="m">$$V_{700} = \frac{1{,}26}{0{,}91}\sqrt{\frac{W_0}{0{,}0613}} = 1{,}385\sqrt{\frac{W_0}{0{,}0613}}.$$</div><span class="tag">(9.q3)</span></div>
+<div class="tbl" id="tbl-9-2"><table><thead><tr><th>Vùng gió</th><th>$W_0$ (daN/m²)</th><th>$V_{20}$ (m/s)</th><th>$V_{50}$ (m/s)</th><th>$V = V_{700}$ (m/s)</th></tr></thead><tbody>
+<tr><td>I</td><td>65</td><td>32,56</td><td>35,78</td><td>45,09</td></tr>
+<tr><td>II</td><td>95</td><td>39,37</td><td>43,26</td><td>54,51</td></tr>
+<tr><td>III</td><td>125</td><td>45,16</td><td>49,62</td><td>62,53</td></tr>
+<tr><td>IV</td><td>155</td><td>50,28</td><td>55,26</td><td>69,62</td></tr>
+<tr><td>V</td><td>185</td><td>54,94</td><td>60,37</td><td>76,06</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 9.2.</b> Quy đổi áp lực gió QCVN 02 sang vận tốc gió cơ sở ASCE 7-10 (cấp rủi ro II)</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Đối chiếu bài giảng.</b> Video Buổi 11 dùng đúng công thức (<a href="#eq-9-q3">(9.q3)</a>): trên màn hình, $q_z = 108{,}01$ kG/m² tại $z = 9$ m với $K_z = 0{,}70$, ứng với $V \approx 54{,}5$ m/s (vùng II). File <code>ASCE7-10-TAI TRONG (TEST).xlsx</code> phát cho học viên có ô nhập tay $V = 62{,}77$ m/s, gần bằng giá trị của <b>vùng III</b> (62,53 m/s). Khi dùng file này cần sửa lại theo vùng gió của công trình. <b>Cách khác:</b> QCVN 02:2022 Bảng 5.1 (cột 4) cho sẵn $V_{3s,50}$ theo địa danh. Khi đó $V_{700} = 1{,}26\,V_{3s,50}$, không cần qua $W_0$.</p>
+</div>
+<h2 id="s3">3. Khám phá</h2>
+<p>Chọn vùng gió hoặc kéo $W_0$, xem ba bước quy đổi và bảng đối chiếu cho năm vùng gió.</p>
+<div data-widget="W11"></div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Dùng thẳng $V_{20}$ của QCVN làm $V$ trong ASCE 7-10: áp lực vận tốc thiếu khoảng $1{,}385^2 \approx 1{,}92$ lần.</li>
+<li>Nhân thêm hệ số tải 1,6 cho gió trong tổ hợp LRFD của ASCE 7-10: $V_{700}$ đã bao gồm hệ số này.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vận tốc gió cơ sở $V$ trong ASCE 7-10 cho công trình cấp rủi ro II ứng với chu kỳ lặp bao nhiêu năm?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 20 năm</label></li><li><label><input type="radio" name="q1" value="1"> 50 năm</label></li><li><label><input type="radio" name="q1" value="2"> 700 năm</label></li><li><label><input type="radio" name="q1" value="3"> 1700 năm</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Vận tốc gió cơ sở – quy đổi từ QCVN 02".</p>
+</details>
+<details><summary>Lời giải</summary><p>Cấp rủi ro II: gió "cường độ" chu kỳ lặp 700 năm, dùng với hệ số tải 1,0.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="42.36" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Một địa điểm có $W_0 = 110$ daN/m². Tính vận tốc gió $V_{20}$ theo QCVN 02:2022.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m/s</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p><a href="#eq-9-q1">(9.q1)</a>: $V_{20} = \sqrt{W_0/0{,}0613}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$V_{20} = \sqrt{110/0{,}0613} = \sqrt{1794{,}5} = 42{,}36$ m/s.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="50.95" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Địa điểm có $W_0 = 83$ daN/m². Tính vận tốc gió cơ sở $V = V_{700}$ dùng cho ASCE 7-10 (cấp rủi ro II).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m/s</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$V_{20} \to V_{50} = V_{20}/0{,}91 \to V_{700} = 1{,}26\,V_{50}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$V_{20} = \sqrt{83/0{,}0613} = 36{,}80$ m/s; $V_{50} = 36{,}80/0{,}91 = 40{,}44$ m/s; $V_{700} = 1{,}26 \times 40{,}44 = 50{,}95$ m/s.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$V_{700} = \dfrac{1{,}26}{0{,}91}\sqrt{W_0/0{,}0613} = 1{,}385\sqrt{W_0/0{,}0613}$ (<a href="#eq-9-q3">(9.q3)</a>).</li>
+<li>Vùng II ($W_0 = 95$ daN/m²): $V = 54{,}51$ m/s; vùng III: 62,53 m/s (<a href="#tbl-9-2">Bảng 9.2</a>).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w11.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

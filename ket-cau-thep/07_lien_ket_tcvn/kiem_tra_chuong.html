@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="07_lien_ket_tcvn/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 7: Liên kết TCVN – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 7 · Liên kết TCVN · Kiểm tra chương</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Kiểm tra Chương 7: Liên kết TCVN</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<ul><li>Dùng <b>Bảng 4, 5 và Phụ lục C</b> của TCVN 5575:2024. Bỏ các giá trị của TCXDVN 338:2005 trong bảng tính cũ. Bu lông 8.8 chịu kéo được nâng 12 %.</li>
+<li>Hàn góc: kiểm tra cả hai tiết diện (176)/(177) và các giới hạn cấu tạo $h_{f,\min}$ (Bảng 41, lưu ý Chú thích 3) và $h_f \le 1{,}2t$. Cánh kèo chịu mô men lớn thường phải <b>hàn thấu có kiểm tra NDT</b>.</li>
+<li>Bu lông: có $\gamma_b$ = 0,9 khi tính cắt và ép mặt với cấp chính xác B, không có $\gamma_b$ khi tính kéo. <b>Bắt buộc kiểm tra tương tác (190)</b> khi bu lông chịu đồng thời cắt và kéo.</li>
+<li>Bu lông neo: $f_{ba} = 0{,}8f_y$ của thép S235B; diện tích theo (L.1). Lực trượt do ma sát chịu theo (L.9). Nếu không đủ thì dùng chốt chống cắt.</li>
+<li>Lấy nội lực từ SAP2000 phải là <b>cặp nội lực đồng thời</b>, tại trạm đầu phần tử. Với chân cột, lấy riêng tổ hợp nhổ lớn nhất.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Tại sao đường hàn góc cánh kèo ở Ví dụ 7.1 không đạt dù đã chọn $h_f$ lớn nhất cho phép, và giải pháp là gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Vì que E43 quá yếu; chỉ cần đổi sang que E51 là đủ trong mọi trường hợp</label></li><li><label><input type="radio" name="q1" value="1"> Vì $h_f$ cần thiết 14,8 mm vượt $1{,}2t_f = 14{,}4$ mm; dùng hàn đối đầu thấu suốt có kiểm tra siêu âm, hoặc tăng chiều dài/chiều dày cánh tại nút</label></li><li><label><input type="radio" name="q1" value="2"> Vì Bảng 41 yêu cầu $h_f \ge 16$ mm; tăng $h_f$ lên 16 mm</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>So sánh $h_f$ cần thiết với giới hạn $1{,}2t$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$h_f = 861\,500/(0{,}7 \times 180 \times 462) = 14{,}8$ mm $&gt; 1{,}2 \times 12 = 14{,}4$ mm. Giải pháp: hàn đối đầu thấu cánh (kiểm tra NDT để dùng $f_w = f_{yd}$); hoặc tăng kích thước cánh tại nút để giảm lực.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="169.2" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Bu lông M24 cấp 10.9, cấp chính xác B, một mặt cắt. Tính $N_{bv}$ ($\gamma_c = 1$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$f_{vb} = 416$ MPa, $A_b = 452$ mm², $\gamma_b = 0{,}9$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$N_{bv} = 416 \times 452 \times 0{,}9 = 169\,229$ N $= 169{,}2$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="257.0" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Bu lông M24 cấp 10.9. Tính $N_{bt}$ ($\gamma_c = 1$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$f_{tb} = 728$ MPa, $A_{bn} = 353$ mm², không có $\gamma_b$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$N_{bt} = 728 \times 353 = 256\,984$ N $= 257{,}0$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.773" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bu lông M24 cấp 8.8 (cấp chính xác B) chịu $N_s = 60$ kN và $N_t = 120$ kN. Tính vế trái của (190) (bu lông đạt khi giá trị ≤ 1).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$N_{bv} = 135{,}1$ kN, $N_{bt} = 158{,}1$ kN.</p>
+</details>
+<details><summary>Lời giải</summary><p>$(60/135{,}1)^2 + (120/158{,}1)^2 = 0{,}197 + 0{,}576 = 0{,}773 \le 1$; $N_t &lt; N_{bt}$ → đạt.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="27.9" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Chân cột khớp chịu $V = 30$ kN, lực nén nhỏ nhất đi kèm $N = 80$ kN, có 2 bu lông neo M24 (S235B) phía nén. Tính giới hạn ma sát theo (L.9). (Lực trượt có được phép do ma sát chịu không?)</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$A_{ba} = 353$ mm², $f_{ba} = 180$ MPa, $\mu = 0{,}25$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}25 \times (2 \times 353 \times 180/4/1000 + 80) = 27{,}9$ kN $&lt; 30$ kN → không được; cần chốt chống cắt hoặc tổ hợp có lực nén lớn hơn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.08" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Cánh kèo Ví dụ 7.1 hàn đối đầu thấu suốt, ứng suất 287,2 MPa, thép Q345 ($f_{yd} = 313{,}6$ MPa), <b>không</b> kiểm tra bằng phương pháp không phá hủy. Tính tỷ số ứng suất/cường độ.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Không NDT: $f_w = 0{,}85f_{yd}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_w = 0{,}85 \times 313{,}6 = 266{,}6$ MPa; $287{,}2/266{,}6 = 1{,}08 &gt; 1$ → không đạt.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Trong SAP2000, lấy nội lực đầu kèo và phản lực chân cột ở bảng nào, và vì sao phải lấy nội lực của cùng một tổ hợp?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q7" value="0"> <i>Element Forces – Frames</i> (trạm đầu phần tử) và <i>Joint Reactions</i>; vì bu lông, đường hàn chịu đồng thời các nội lực của cùng một trạng thái tải</label></li><li><label><input type="radio" name="q7" value="1"> <i>Joint Displacements</i> và <i>Base Reactions</i>; vì bảng tính Excel yêu cầu</label></li><li><label><input type="radio" name="q7" value="2"> <i>Element Forces – Frames</i> cho cả hai; vì ghép $M_{\max}$, $V_{\max}$ của các tổ hợp khác nhau luôn thiên về an toàn</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Lấy nội lực liên kết từ SAP2000".</p>
+</details>
+<details><summary>Lời giải</summary><p>Đầu kèo: <i>Element Forces – Frames</i>, trạm đầu phần tử; chân cột: <i>Joint Reactions</i>. Ghép giá trị lớn nhất của các tổ hợp khác nhau không phản ánh trạng thái thật, và với chân cột còn có thể bỏ sót trường hợp nhổ (lực nén nhỏ) đi kèm lực trượt lớn.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

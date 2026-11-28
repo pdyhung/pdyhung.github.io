@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="02_sap_vat_lieu_tiet_dien/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 2: SAP2000 – vật liệu, tiết diện – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 2 · SAP2000 – vật liệu, tiết diện · Kiểm tra chương</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 2: SAP2000 – vật liệu, tiết diện</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<ul><li>Tạo mô hình theo đơn vị SI (N, mm hoặc kN, m). Chỉ dùng Kgf, m để nhập tải theo bảng tính cũ.</li>
+<li>Vật liệu: khai báo đúng $F_y$, $F_u$ theo chiều dày, $E$ theo tiêu chuẩn thiết kế, Region = User.</li>
+<li>Tiết diện thay đổi: chú ý chiều I → J và kiểm tra bằng Extrude.</li>
+<li>Property Modifiers không dùng để mô phỏng DM hoặc thanh chỉ chịu kéo.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="num" data-ans="33140000" data-tol="0.002"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>(Câu hỏi ôn tập 1) Khai báo vật liệu Q345 với $t$ = 20 mm theo đơn vị N, mm. Đổi sang Kgf, m thì $F_y$ hiển thị bằng bao nhiêu kgf/m²?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kgf/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$t$ = 20 mm thuộc khoảng 16–35 mm → $F_y$ = 325 MPa; 1 MPa = 101 972 kgf/m².</p>
+</details>
+<details><summary>Lời giải</summary><p>$325 \times 101\,972 = 33\,140\,000$ kgf/m² (≈ 3,314 × 10⁷).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>(Câu hỏi ôn tập 2) Cột tiết diện thay đổi H(300–650) bị vẽ từ đỉnh xuống chân. Cách sửa nào đúng?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Đổi <i>EI33 Variation</i> từ Parabolic sang Cubic</label></li><li><label><input type="radio" name="q2" value="1"> <i>Assign → Frame → Reverse Connectivity</i> (hoặc vẽ lại từ chân lên, hoặc tạo tiết diện có Start/End đổi chỗ), rồi kiểm tra bằng Extrude</label></li><li><label><input type="radio" name="q2" value="2"> Gán Property Modifier âm cho $I_{33}$</label></li><li><label><input type="radio" name="q2" value="3"> Xoay trục địa phương 180°</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Hướng tiết diện phụ thuộc thứ tự nút I → J.</p>
+</details>
+<details><summary>Lời giải</summary><p>Đảo thứ tự nút (<i>Reverse Connectivity</i>) hoặc đổi Start/End Section; xác nhận bằng <i>View Type = Extrude</i>.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>(Câu hỏi ôn tập 3) Vì sao không gán Property Modifier 0,8 cho EI khi dùng Direct Analysis Method trong SAP2000?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Vì DM không yêu cầu giảm độ cứng</label></li><li><label><input type="radio" name="q3" value="1"> Vì SAP2000 đã tự giảm độ cứng qua <i>Steel Design Preferences</i>; gán thêm là giảm hai lần</label></li><li><label><input type="radio" name="q3" value="2"> Vì Property Modifier chỉ áp dụng cho phần tử tấm</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Hệ số hiệu chỉnh".</p>
+</details>
+<details><summary>Lời giải</summary><p>DM yêu cầu giảm độ cứng, nhưng SAP tự áp dụng; tự gán thêm 0,8 → độ cứng còn 0,64.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi khai báo vật liệu thép theo số liệu riêng của dự án, chọn <i>Region</i> nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> United States</label></li><li><label><input type="radio" name="q4" value="1"> China</label></li><li><label><input type="radio" name="q4" value="2"> User</label></li><li><label><input type="radio" name="q4" value="3"> Europe</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Muốn tự nhập $E$, $F_y$, $F_u$.</p>
+</details>
+<details><summary>Lời giải</summary><p><i>Region</i> = <b>User</b>, rồi nhập đủ $E$, $\nu$, $\alpha$, $F_y$, $F_u$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tiết diện I có cánh dày 20 mm, bụng dày 8 mm, thép Q345. Gán vật liệu nào cho tiết diện?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q5" value="0"> <code>Q345-t16</code> ($F_y$ = 345 MPa), theo bụng</label></li><li><label><input type="radio" name="q5" value="1"> <code>Q345-t40</code> ($F_y$ = 325 MPa), theo bản dày nhất</label></li><li><label><input type="radio" name="q5" value="2"> Trung bình hai giá trị, 335 MPa</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Một tiết diện chỉ có một vật liệu.</p>
+</details>
+<details><summary>Lời giải</summary><p>Lấy $F_y$ theo bản dày nhất (cánh 20 mm) → 325 MPa, thiên về an toàn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.770" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Trọng lượng riêng khai báo 78,5 kN/m³. Tính trọng lượng bản thân 1 m dài của H500×250×8×12 ($A$ = 9808 mm²).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$g = \gamma A$, đổi $A$ sang m².</p>
+</details>
+<details><summary>Lời giải</summary><p>$78{,}5 \times 9808\times10^{-6} = 0{,}770$ kN/m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="17148" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cột <code>H(300-650)x200x6x10</code> vẽ từ chân (I) lên đỉnh (J), <i>EI33 Variation</i> = Parabolic. Tính $I_{33}$ SAP2000 dùng tại 1/4 chiều dài cột tính từ chân.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>cm⁴</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$I_I = 9511$ cm⁴, $I_J = 53\,466$ cm⁴; $\sqrt{I}$ biến thiên tuyến tính.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sqrt{I} = 0{,}75\sqrt{9511} + 0{,}25\sqrt{53\,466} = 73{,}14 + 57{,}81 = 130{,}95$ → $I = 17\,148$ cm⁴ (chính xác 16 736 cm⁴, sai +2,5 %).</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

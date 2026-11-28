@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="08_he_tieu_chuan_my/b3_risk_category.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 8.3. Risk Category, đầu vào ở Việt Nam, vật liệu – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 8 · Hệ tiêu chuẩn Mỹ · Bài 3</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 8.3. Risk Category, đầu vào ở Việt Nam, vật liệu <span class="en">Risk Category, input data in Vietnam, steel materials</span></h1>
+<p class="lead">Ba nhóm số liệu cần chốt trước khi dựng mô hình theo tiêu chuẩn Mỹ: Risk Category của công trình, số liệu khí hậu – động đất quy đổi từ QCVN 02:2022, và vật liệu thép khai báo theo mác thực tế.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Xác định Risk Category, $I_e$, $I_s$ và chu kỳ lặp của bản đồ gió ASCE 7-10.</li>
+<li>Lập bảng đầu vào cho nhà xưởng ở Việt Nam và khai báo đúng $F_y$, $F_u$ của thép Việt Nam, Trung Quốc, Nhật trong SAP2000.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nhà máy DNP là xưởng sản xuất thông thường nên thuộc Risk Category II, dùng gió 700 năm. Mô hình khai báo hoạt tải mái $L_r$ = 30 kG/m² theo TCVN, trong khi ASCE 7-10 yêu cầu 20 psf = 0,96 kN/m², gấp hơn 3 lần. Kèo nhịp 54 m dùng thép Q345B; với bản cánh dày trên 16 mm, giới hạn chảy khai báo phải giảm còn 325 MPa.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Phân loại rủi ro và hệ số tầm quan trọng</h3>
+<p>ASCE 7-10 Bảng 1.5-1 xếp công trình vào bốn <b>Risk Category</b> (I–IV). Nhà xưởng sản xuất, kho thông thường thuộc <b>Category II</b>. Kho chứa chất độc hại thuộc III hoặc IV, nhà kho nông nghiệp ít người thuộc I.</p>
+<div class="tbl" id="tbl-8-3"><table><thead><tr><th></th><th>I</th><th>II</th><th>III</th><th>IV</th></tr></thead><tbody>
+<tr><td>Bản đồ gió ASCE 7-10 (chu kỳ lặp)</td><td>300 năm</td><td><b>700 năm</b></td><td>1700 năm</td><td>1700 năm</td></tr>
+<tr><td>$I_e$ động đất (Bảng 1.5-2)</td><td>1,00</td><td>1,00</td><td>1,25</td><td>1,50</td></tr>
+<tr><td>$I_s$ tải tuyết</td><td>0,80</td><td>1,00</td><td>1,10</td><td>1,20</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 8.3.</b> Ảnh hưởng của Risk Category (ASCE 7-10)</p>
+<p>Ở ASCE 7-10, ảnh hưởng của Risk Category lên gió nằm <b>trong bản đồ vận tốc</b> (mỗi Category một bản đồ), không còn hệ số $I_w$ như ASCE 7-05. Vì vậy cách quy đổi vận tốc gió ở Chương 9 ($V_{700}$) chỉ đúng cho Category II. Với Category III–IV phải quy đổi sang chu kỳ 1700 năm.</p>
+<p>So với TCVN 2737:2023: cấp hậu quả C1/C2/C3 (Phụ lục H) với $\gamma_n$ = 0,87/1,0/1,15 đóng vai trò tương tự Risk Category, nhưng nhân vào <b>tải trọng</b> (hoặc nội lực) chứ không đổi chu kỳ lặp.</p>
+<h3>Đầu vào cho công trình tại Việt Nam</h3>
+<div class="tbl" id="tbl-8-4"><table><thead><tr><th>Dữ liệu</th><th>Nguồn</th></tr></thead><tbody>
+<tr><td>Vận tốc gió $V$</td><td>QCVN 02:2022 (Bảng 5.1, 5.2), quy đổi sang 3 s, 700 năm (Chương 9)</td></tr>
+<tr><td>Dạng địa hình (Exposure B/C/D)</td><td>Xác định theo ASCE 7-10 mục 26.7 từ hiện trạng. Địa hình B của TCVN gần với Exposure C</td></tr>
+<tr><td>Động đất $S_S$, $S_1$</td><td>Không có bản đồ ASCE cho Việt Nam. Quy đổi từ đỉnh gia tốc nền $a_{gR}$ của QCVN 02:2022 (Chương 10)</td></tr>
+<tr><td>Hoạt tải mái $L_r$</td><td>ASCE 7-10 Bảng 4-1: 20 psf = 0,96 kN/m² (giảm theo diện chịu tải mục 4.8.2). TCVN: 0,3 kN/m² (mái tôn không sử dụng)</td></tr>
+<tr><td>Tải treo (collateral)</td><td>Theo hồ sơ thiết bị, thường 0,10–0,25 kN/m² cho đèn, ống, sprinkler</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 8.4.</b> Dữ liệu đầu vào khi thiết kế theo tiêu chuẩn Mỹ tại Việt Nam</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p>Hoạt tải mái theo ASCE 7-10 là 0,96 kN/m², <b>gấp hơn 3 lần</b> TCVN 2737:2023 (0,3 kN/m²). Với nhà khung thép nhịp lớn, đây thường là tải trọng quyết định tiết diện kèo. Mô hình DNP khai báo Lr = 30 kG/m², tức giá trị của TCVN (Chương 10). Cách làm này được nếu tiêu chí thiết kế ghi rõ và chủ đầu tư chấp thuận. Nếu hồ sơ tuyên bố "theo ASCE 7-10" mà không có điều khoản này thì sẽ không nhất quán.</p>
+</div>
+<h3>Vật liệu thép – quy đổi khi khai báo trong SAP2000</h3>
+<div class="tbl" id="tbl-8-5"><table><thead><tr><th>Ký hiệu thực tế</th><th>Tương đương ASTM gần nhất</th><th>$F_y$ / $F_u$ (MPa)</th><th>Ghi chú</th></tr></thead><tbody>
+<tr><td>CCT34, SS400, Q235B</td><td>A36</td><td>235–250 / 370–400</td><td>Q235: $F_y$ = 235 khi $t \le 16$; 225 khi 16–40 mm</td></tr>
+<tr><td>CCT38</td><td>A36</td><td>240 / 380</td><td></td></tr>
+<tr><td>Q345B, SM490</td><td>A572 Gr.50</td><td>345 / 470</td><td>Q345 giảm còn 325 khi $t$ = 16–40 mm</td></tr>
+<tr><td>S355JR (EN)</td><td>A572 Gr.50</td><td>355 / 470</td><td></td></tr>
+<tr><td>Ống STK400</td><td>A500 Gr.B</td><td>235–290 / 400</td><td>A500 dùng $t_{des} = 0{,}93t$</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 8.5.</b> Quy đổi vật liệu thép</p>
+<p>Trong SAP2000 nên <b>tạo vật liệu mới</b> với đúng $F_y$, $F_u$ của mác thép thực tế (Define → Materials → Add New → Region: User). Không nên chọn sẵn A992 hoặc A572. Khi thiết kế theo AISC, $F_y$ là <b>giá trị tối thiểu quy định</b> của mác thép. <b>Không</b> chia cho $\gamma_m$ như TCVN, vì độ tin cậy vật liệu đã nằm trong $\phi$ (hoặc $\Omega$).</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Chia $F_y$ cho $\gamma_m$ như TCVN khi thiết kế theo AISC: độ tin cậy vật liệu đã nằm trong $\phi$ (hoặc $\Omega$).</li>
+<li>Dùng vận tốc gió quy đổi về 700 năm cho công trình Risk Category III–IV (phải quy đổi về 1700 năm).</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Nhà xưởng sản xuất thông thường thuộc Risk Category nào và dùng bản đồ gió ASCE 7-10 với chu kỳ lặp bao nhiêu?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Category I, 300 năm</label></li><li><label><input type="radio" name="q1" value="1"> Category II, 700 năm</label></li><li><label><input type="radio" name="q1" value="2"> Category III, 1700 năm</label></li><li><label><input type="radio" name="q1" value="3"> Category II, 50 năm</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="#tbl-8-3">Bảng 8.3</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Nhà xưởng, kho thông thường: Category II, bản đồ gió 700 năm, $I_e = 1{,}00$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.958" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Đổi hoạt tải mái $L_r = 20$ psf của ASCE 7-10 Bảng 4-1 ra kN/m² (1 psf = 0,04788 kN/m²).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Nhân trực tiếp.</p>
+</details>
+<details><summary>Lời giải</summary><p>$20 \times 0{,}04788 = 0{,}958 \approx 0{,}96$ kN/m², gấp $0{,}96/0{,}3 = 3{,}2$ lần giá trị TCVN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1448" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Ống tròn STK400 $D = 114{,}3$ mm, $t = 4{,}5$ mm, khai báo theo A500 Gr.B. Tính diện tích tiết diện dùng trong thiết kế với $t_{des} = 0{,}93t$ (lấy $A = \pi(D - t_{des})t_{des}$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính $t_{des}$ trước, rồi thay vào công thức diện tích.</p>
+</details>
+<details><summary>Lời giải</summary><p>$t_{des} = 0{,}93 \times 4{,}5 = 4{,}185$ mm; $A = \pi(114{,}3 - 4{,}185) \times 4{,}185 = 1448$ mm² (nhỏ hơn 1552 mm² khi dùng $t$ danh nghĩa khoảng 6,7 %).</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nhà xưởng thông thường: Risk Category II, gió 700 năm, $I_e = 1{,}0$; ảnh hưởng của Category lên gió nằm trong bản đồ, không có $I_w$.</li>
+<li>Gió, động đất lấy từ QCVN 02:2022 rồi quy đổi; $L_r$ ASCE 7-10 = 0,96 kN/m² so với 0,3 kN/m² của TCVN.</li>
+<li>Khai báo vật liệu User với $F_y$, $F_u$ đúng mác và chiều dày; không chia $\gamma_m$.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

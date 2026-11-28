@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="06_cau_kien_tcvn/b2_keo_nen.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 6.2. Thanh chịu kéo, nén đúng tâm – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 6 · Kiểm tra cấu kiện TCVN 5575:2024 · Bài 2</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 6.2. Thanh chịu kéo, nén đúng tâm <span class="en">Axially loaded members: tension and compression (Clause 7)</span></h1>
+<p class="lead">Thanh nén đúng tâm thường không bị phá hoại vì bền mà vì mất ổn định. Hệ số $\varphi$ giảm rất nhanh khi độ mảnh quy ước $\bar\lambda$ tăng.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $\lambda$, $\bar\lambda$ và tra $\varphi$ theo công thức <a href="#eq-6-2">(6.2)</a> với $\alpha$, $\beta$ của Bảng 7.</li>
+<li>Kiểm tra đồng thời khả năng chịu nén và độ mảnh giới hạn của thanh chống, thanh giằng.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Thanh chống dọc nhà của xưởng <b>Hòa Bình</b> dài 8 m, bằng bước khung. Mô hình mẫu dùng ống D90×3 và SAP2000 báo lực nén chỉ vài kN, tỷ số rất nhỏ. Nhưng thanh có $\lambda = 260$, vượt xa giới hạn 200. Cần chọn lại ống sao cho đạt cả độ bền, ổn định và độ mảnh.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Cấu kiện chịu kéo, nén đúng tâm (điều 7)</h3>
+<p><b>Độ bền</b> (7.1.1): $N/(A_n f_{yd}\gamma_c) \le 1$.</p>
+<p><b>Ổn định khi nén đúng tâm</b> (7.1.2.1):</p>
+<div class="eq" id="eq-6-1"><div class="m">$$\frac{N}{\varphi A f_{yd}\gamma_c} \le 1,$$</div><span class="tag">(6.1)</span></div>
+<p>trong đó $\bar\lambda = \lambda\sqrt{f_{yd}/E}$ là độ mảnh quy ước. Khi $\bar\lambda \ge 0{,}6$:</p>
+<div class="eq" id="eq-6-2"><div class="m">$$\varphi = \frac{0{,}5\left(\delta - \sqrt{\delta^2 - 39{,}48\bar\lambda^2}\right)}{\bar\lambda^2},\qquad \delta = 9{,}87(1 - \alpha + \beta\bar\lambda) + \bar\lambda^2 .$$</div><span class="tag">(6.2)</span></div>
+<p>Khi $\bar\lambda &lt; 0{,}6$ thì $\varphi = 1$ (tiết diện loại a, b). $\varphi$ không lấy lớn hơn $7{,}6/\bar\lambda^2$ khi $\bar\lambda$ vượt 3,8; 4,4; 5,8 tương ứng với loại a, b, c.</p>
+<div class="tbl" id="tbl-6-3"><table><thead><tr><th>Loại tiết diện</th><th>Ví dụ</th><th>$\alpha$</th><th>$\beta$</th></tr></thead><tbody>
+<tr><td>a</td><td>Ống tròn, hộp cán nóng</td><td>0,03</td><td>0,06</td></tr>
+<tr><td>b</td><td>I hàn, I cán, hộp hàn, thép góc</td><td>0,04</td><td>0,09</td></tr>
+<tr><td>c</td><td>Chữ U, T, I có cánh mỏng ghép</td><td>0,04</td><td>0,14</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 6.3.</b> Hệ số $\alpha$, $\beta$ (Bảng 7)</p>
+<h2 id="s3">3. Khám phá</h2>
+<p>Chọn tiết diện ống và chiều dài để xem $\lambda$, $\bar\lambda$, $\varphi$ và $N_c$; hoặc kéo trực tiếp $\bar\lambda$ để so sánh ba đường cong a, b, c. Mặc định là thanh D90×3 dài 8 m của <a href="#tbl-6-4">Bảng 6.4</a>.</p>
+<div data-widget="W7"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ – Tính lại dòng D141×4 của Bảng 6-4</div>
+<p>Ống D141×4: $A = 17{,}22$ cm², $i = 4{,}85$ cm, $L = 8$ m, $f_y = 235$ MPa, $\gamma_m = 1{,}05$, tiết diện loại a. Tính $\varphi$ và $N_c$.</p>
+<details class="sol"><summary>Lời giải</summary>
+<ul><li>$f_{yd} = 235/1{,}05 = 223{,}8$ MPa; $\lambda = 800/4{,}85 = 164{,}9$.</li>
+<li>$\bar\lambda = 164{,}9\sqrt{223{,}8/206\,000} = 5{,}44 &gt; 3{,}8$ (giới hạn loại a).</li>
+<li>Công thức <a href="#eq-6-2">(6.2)</a>: $\delta = 9{,}87(1 - 0{,}03 + 0{,}06 \times 5{,}44) + 5{,}44^2 = 42{,}35$ → $\varphi = 0{,}293$; nhưng không lấy lớn hơn $7{,}6/\bar\lambda^2 = 0{,}257$ → $\varphi = 0{,}257$.</li>
+<li>$N_c = 0{,}257 \times 1722 \times 223{,}8 = 99{,}1$ kN (bảng ghi 98,9 kN do làm tròn). $\lambda = 165 &lt; 200$ → đạt độ mảnh.</li></ul>
+</details>
+</div>
+<div class="box ex"><div class="bt">📝 Ví dụ 6.1 – Thanh chống dọc nhà</div>
+<p>Mô hình mẫu <code>250317_NhaXuong</code> dùng thanh chống ống <b>D90×3</b> dài 8 m (bằng bước khung), thép $f_y = 235$ MPa, $\gamma_m = 1{,}05$.</p>
+<details class="sol"><summary>Lời giải</summary>
+<div class="tbl" id="tbl-6-4"><table><thead><tr><th>Tiết diện</th><th>$A$ (cm²)</th><th>$i$ (cm)</th><th>$\lambda = L/i$</th><th>$\bar\lambda$</th><th>$\varphi$</th><th>$N_c = \varphi A f_{yd}$ (kN)</th></tr></thead><tbody>
+<tr><td>D90×3</td><td>8,20</td><td>3,08</td><td><b>260</b></td><td>8,57</td><td>0,104</td><td>19,0</td></tr>
+<tr><td>D114×4</td><td>13,82</td><td>3,89</td><td><b>206</b></td><td>6,78</td><td>0,166</td><td>51,2</td></tr>
+<tr><td>D141×4</td><td>17,22</td><td>4,85</td><td>165</td><td>5,44</td><td>0,257</td><td>98,9</td></tr>
+<tr><td>D141×5</td><td>21,36</td><td>4,81</td><td>166</td><td>5,48</td><td>0,253</td><td>121,0</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 6.4.</b> Khả năng chịu nén của thanh chống dài 8 m</p>
+<p>Theo Bảng 33 (điểm 6), thanh dùng để giảm chiều dài tính toán của thanh chịu nén có độ mảnh giới hạn $\lambda_u = 200$. D90×3 ($\lambda = 260$) và D114×4 ($\lambda = 206$) <b>không đạt độ mảnh</b>, dù lực nén có thể nhỏ. Cần chọn từ D141×4 trở lên (bảng tính <code>5. Tính thép tròn rỗng</code> của khóa dùng D141×5), hoặc thêm điểm giữ giữa nhịp.</p>
+</details>
+</div>
+<h2 id="s5">5. Lỗi thường gặp</h2>
+<ul><li>Chỉ xem tỷ số $N/(\varphi A f_{yd}\gamma_c)$ của SAP2000 mà quên kiểm tra $\lambda \le \lambda_u$ (Bảng 33).</li>
+<li>Bỏ qua giới hạn $\varphi \le 7{,}6/\bar\lambda^2$ khi $\bar\lambda$ lớn, làm khả năng chịu nén bị đánh giá cao.</li></ul>
+<h2 id="s6">6. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Theo Bảng 7, tiết diện <b>I tổ hợp hàn</b> thuộc loại nào và có $\alpha$, $\beta$ bằng bao nhiêu?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Loại a: $\alpha = 0{,}03$; $\beta = 0{,}06$</label></li><li><label><input type="radio" name="q1" value="1"> Loại b: $\alpha = 0{,}04$; $\beta = 0{,}09$</label></li><li><label><input type="radio" name="q1" value="2"> Loại c: $\alpha = 0{,}04$; $\beta = 0{,}14$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Loại a là ống tròn và hộp cán nóng; loại c là chữ U, T, I cánh mỏng ghép.</p>
+</details>
+<details><summary>Lời giải</summary><p>I hàn, I cán, hộp hàn, thép góc thuộc loại <b>b</b>: $\alpha = 0{,}04$; $\beta = 0{,}09$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="3.955" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Thanh có $\lambda = 120$, thép $f_y = 235$ MPa, $\gamma_m = 1{,}05$, $E = 206\,000$ MPa. Tính độ mảnh quy ước $\bar\lambda$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\bar\lambda = \lambda\sqrt{f_{yd}/E}$, với $f_{yd} = f_y/\gamma_m$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_{yd} = 223{,}8$ MPa; $\bar\lambda = 120\sqrt{223{,}8/206\,000} = 120 \times 0{,}03296 = 3{,}955$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="176.2" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Thanh chống ống D141×4 ($A = 17{,}22$ cm², $i = 4{,}85$ cm, loại a) được thêm một điểm giữ để chiều dài tính toán còn $L = 6$ m. Thép $f_y = 235$ MPa, $\gamma_m = 1{,}05$, $\gamma_c = 1$. Tính $N_c = \varphi A f_{yd}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\lambda = 600/4{,}85$; tính $\bar\lambda$, so sánh với 3,8 để xét giới hạn $7{,}6/\bar\lambda^2$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\lambda = 123{,}7$; $\bar\lambda = 123{,}7 \times 0{,}03296 = 4{,}078 &gt; 3{,}8$. Công thức <a href="#eq-6-2">(6.2)</a> cho $\varphi = 0{,}477$, giới hạn $7{,}6/4{,}078^2 = 0{,}457$ → $\varphi = 0{,}457$. $N_c = 0{,}457 \times 1722 \times 223{,}8 = 176{,}2$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$\bar\lambda = \lambda\sqrt{f_{yd}/E}$; $\varphi$ theo <a href="#eq-6-2">(6.2)</a> với $\alpha$, $\beta$ của Bảng 7; $\varphi = 1$ khi $\bar\lambda &lt; 0{,}6$ (loại a, b); $\varphi \le 7{,}6/\bar\lambda^2$ khi $\bar\lambda$ lớn.</li>
+<li>Thanh chống dài 8 m: D90×3 và D114×4 không đạt $\lambda_u = 200$; cần từ D141×4 trở lên.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w07.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

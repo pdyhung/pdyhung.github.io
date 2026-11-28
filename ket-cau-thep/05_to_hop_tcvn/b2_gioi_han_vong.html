@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="05_to_hop_tcvn/b2_gioi_han_vong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 5.2. Giới hạn võng, chuyển vị (Phụ lục G) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 5 · Tổ hợp, phân tích, điều kiện sử dụng · Bài 2</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 5.2. Giới hạn võng, chuyển vị (Phụ lục G) <span class="en">Deflection and drift limits (Annex G)</span></h1>
+<p class="lead">Trạng thái giới hạn thứ hai kiểm tra độ võng kèo và chuyển vị ngang đỉnh cột với tải tiêu chuẩn, so với giới hạn của TCVN 2737:2023 Phụ lục G.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tra đúng giới hạn độ võng, chuyển vị cho kèo, dầm cầu trục, nhà một tầng (<a href="#tbl-5-2">Bảng 5.2</a>).</li>
+<li>Tính độ võng tương đối của kèo đã trừ chuyển vị hai đầu (<a href="#eq-5-3">(5.3)</a>).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Kèo nhà xưởng <b>Hòa Bình</b> nhịp 50 m, chiều cao phòng lớn hơn 6 m, cột cao 7,07 m với tường tôn treo. Bảng tính cũ dùng $L/250$ cho kèo và $H/100$ cho chuyển vị ngang. Theo Phụ lục G, giới hạn đúng là $L/300 = 167$ mm và 30,6 mm, chặt hơn nhiều so với $H/100 = 70{,}7$ mm.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Giới hạn độ võng và chuyển vị</h3>
+<p>TCVN 5575:2024 điều 4.2.2 quy định giới hạn độ võng và chuyển vị lấy theo <b>TCVN 2737:2023</b> (Phụ lục G thay cho Phụ lục M của TCVN 5574:2018).</p>
+<div class="tbl" id="tbl-5-2"><table><thead><tr><th>Cấu kiện</th><th>Yêu cầu</th><th>Giới hạn $f_u$</th><th>Nguồn</th></tr></thead><tbody>
+<tr><td>Kèo, xà, dầm mái nhịp $L \le 1$ m / 3 m / 6 m</td><td>Thẩm mỹ – tâm lý</td><td>$L/120$ / $L/150$ / $L/200$</td><td>Bảng G.1 mục 2a</td></tr>
+<tr><td>Kèo nhịp $L = 24$ m (12 m*)</td><td>Thẩm mỹ – tâm lý</td><td>$L/250$</td><td>Bảng G.1 mục 2a</td></tr>
+<tr><td>Kèo nhịp $L \ge 36$ m (24 m*)</td><td>Thẩm mỹ – tâm lý</td><td>$L/300$</td><td>Bảng G.1 mục 2a</td></tr>
+<tr><td>Mái có pa lăng, cầu trục treo điều khiển từ dưới nền</td><td>Công nghệ</td><td>$\min(L/300;\ a/150)$</td><td>Bảng G.4 mục 2b</td></tr>
+<tr><td>Dầm cầu trục điều khiển từ dưới nền</td><td>Công nghệ</td><td>$L/250$</td><td>Bảng G.4 mục 1a</td></tr>
+<tr><td>Dầm cầu trục điều khiển từ cabin, nhóm A1–A6 / A7 / A8</td><td>Công nghệ</td><td>$L/400$ / $L/500$ / $L/600$</td><td>Bảng G.4 mục 1b</td></tr>
+<tr><td>Xà gồ vách kính, lanh tô</td><td>Cấu tạo</td><td>$L/200$</td><td>Bảng G.4 mục 3</td></tr>
+<tr><td><b>Nhà một tầng, tường tự chịu lực</b> (chuyển vị ngang đỉnh cột)</td><td>Cấu tạo</td><td>$h_s/300$</td><td>Bảng G.5 mục 3</td></tr>
+<tr><td><b>Nhà một tầng có tường treo (tôn)</b></td><td>Cấu tạo</td><td>tăng 30 %, nhưng không lớn hơn $h_s/150$</td><td>Bảng G.5, chú thích 3</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 5.2.</b> Giới hạn độ võng và chuyển vị cho nhà xưởng thép (trích TCVN 2737:2023 Phụ lục G)</p>
+<p><b>Ví dụ – công trình Hòa Bình.</b> Nhịp kèo 50 m nên $f_u = L/300 = 167$ mm (chiều cao phòng > 6 m). Đỉnh cột $h_s \approx 7{,}07$ m, tường tôn treo nên $f_u = \min(1{,}3 \times h_s/300;\ h_s/150) = \min(30{,}6;\ 47{,}1) = 30{,}6$ mm.</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Nhiều bảng tính trong bộ tài liệu dùng giới hạn cũ:</b> độ võng kèo $L/250$, chuyển vị ngang $H/100$ (bảng tính tải chi tiết theo mẫu cũ), xà gồ $L/200$ ghi là "TCVN 5575-2024 Bảng M.1". Giáo trình thống nhất dùng TCVN 2737:2023 Phụ lục G theo <a href="#tbl-5-2">Bảng 5.2</a>. <b>Bảng 49 của TCVN 5575:2024</b> quy định độ lệch đỉnh cột cho <b>cột đường dây tải điện</b> (điều 16.15), không áp dụng cho nhà xưởng.</p>
+</div>
+<p><b>Độ võng tương đối của kèo</b> phải trừ chuyển vị của hai đầu kèo:</p>
+<div class="eq" id="eq-5-3"><div class="m">$$f = U_{3,\text{giữa}} - \tfrac12\left(U_{3,\text{trái}} + U_{3,\text{phải}}\right).$$</div><span class="tag">(5.3)</span></div>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Đọc trực tiếp $U_3$ ở giữa kèo làm độ võng mà không trừ chuyển vị đầu kèo.</li>
+<li>Áp dụng Bảng 49 TCVN 5575:2024 (cột đường dây tải điện) cho nhà xưởng.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Giới hạn độ võng thẩm mỹ – tâm lý cho kèo nhịp $L \ge 36$ m, chiều cao phòng lớn hơn 6 m, là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> $L/200$</label></li><li><label><input type="radio" name="q1" value="1"> $L/250$</label></li><li><label><input type="radio" name="q1" value="2"> $L/300$</label></li><li><label><input type="radio" name="q1" value="3"> $L/400$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="#tbl-5-2">Bảng 5.2</a>, Bảng G.1 mục 2a.</p>
+</details>
+<details><summary>Lời giải</summary><p>Nhịp từ 36 m trở lên: $f_u = L/300$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="166.7" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính giới hạn độ võng của kèo nhà xưởng Hòa Bình nhịp 50 m (chiều cao phòng > 6 m).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$L \ge 36$ m → $L/300$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_u = 50\,000/300 = 166{,}7$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="172" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Combo DEF của một kèo nhịp 50 m cho $U_3$ giữa nhịp $= -185$ mm, đầu trái $-12$ mm, đầu phải $-14$ mm. Tính <b>độ lớn</b> độ võng tương đối $f$ (sau đó so với giới hạn của câu trên).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Dùng <a href="#eq-5-3">(5.3)</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f = -185 - \tfrac12(-12 - 14) = -172$ mm; $|f| = 172 &gt; 166{,}7$ mm → không đạt.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Kèo nhịp ≥ 36 m: $L/300$; nhịp 24 m: $L/250$ (Bảng G.1); nhịp trung gian nội suy.</li>
+<li>Nhà một tầng: $h_s/300$; tường tôn treo tăng 30 % nhưng không quá $h_s/150$ (Bảng G.5). Hòa Bình: 167 mm và 30,6 mm.</li>
+<li>Độ võng kèo phải trừ chuyển vị hai đầu (<a href="#eq-5-3">(5.3)</a>).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

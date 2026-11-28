@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="12_steel_frame_design/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 12: Steel Frame Design – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 12 · Steel Frame Design · Kiểm tra chương</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 12: Steel Frame Design</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<ul><li>Trình tự: vật liệu → AISC 360-10 → Preferences → Design Combos → Overwrites → Start Design/Check → đọc kết quả.</li>
+<li>Preferences nhà xưởng: OMF/OCBF, Direct Analysis, General 2nd Order, Tau-b Fixed, Provision thống nhất với tổ hợp, Stress Ratio Limit 0,95.</li>
+<li>Overwrites: tỷ số Minor, LTB = khoảng cách điểm giữ ÷ chiều dài phần tử; không đặt gần 0.</li>
+<li>Tiết diện thay đổi: kiểm tra tại các trạm, tối thiểu 9 trạm; $L_b$, $C_b$ theo cả thanh.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vì sao không nên chọn Framing Type = SMF cho khung nhà tiền chế?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Vì SMF chỉ dùng cho kết cấu bê tông</label></li><li><label><input type="radio" name="q1" value="1"> Vì SMF đòi hỏi các yêu cầu kháng chấn của AISC 341 (chi tiết liên kết, tỷ lệ cấu kiện) không phù hợp nhà tiền chế thông thường</label></li><li><label><input type="radio" name="q1" value="2"> Vì SMF làm SAP bỏ qua phân tích bậc hai</label></li><li><label><input type="radio" name="q1" value="3"> Vì SMF chỉ có trong ASD</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem ghi chú dòng Framing Type trong <a href="../12_steel_frame_design/b1_preferences.html#tbl-12-1">Bảng 12.1</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>SMF kéo theo các yêu cầu kháng chấn đặc biệt của AISC 341; khung nhà xưởng dùng OMF.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.229" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Kèo dài 13,1 m có chống xiên cánh dưới mỗi 3 m. Khai báo Unbraced Length Ratio (LTB) bằng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tỷ số = 3 / 13,1.</p>
+</details>
+<details><summary>Lời giải</summary><p>$3/13{,}1 = 0{,}229 \approx 0{,}23$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.333" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Cột (một phần tử) cao 9 m, dầm tường có chống xiên mỗi 3 m. Khai báo Minor = LTB bằng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tỷ số = 3 / 9.</p>
+</details>
+<details><summary>Lời giải</summary><p>$3/9 = 0{,}333$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Stress Ratio Limit = 0,95 có ý nghĩa gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> SAP giảm khả năng chịu lực 5 %</label></li><li><label><input type="radio" name="q4" value="1"> Thanh có tỷ số lớn hơn 0,95 sẽ hiện màu đỏ, chừa 5 % dự trữ</label></li><li><label><input type="radio" name="q4" value="2"> Hệ số $\phi$ được lấy bằng 0,95</label></li><li><label><input type="radio" name="q4" value="3"> Tỷ số dưới 0,95 được bỏ qua</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem dòng Stress Ratio Limit trong <a href="../12_steel_frame_design/b1_preferences.html#tbl-12-1">Bảng 12.1</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Đây là ngưỡng cảnh báo: tỷ số vượt 0,95 thì thanh hiện màu đỏ.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>SAP2000 kiểm tra tiết diện thay đổi như thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q5" value="0"> Tại từng trạm xuất nội lực với tiết diện tại đó; $L_b$, $C_b$ lấy theo cả thanh</label></li><li><label><input type="radio" name="q5" value="1"> Theo đầy đủ AISC Design Guide 25</label></li><li><label><input type="radio" name="q5" value="2"> Quy về tiết diện không đổi tương đương</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Cách làm gần đúng.</p>
+</details>
+<details><summary>Lời giải</summary><p>Kiểm tra tại các output station; chưa theo đầy đủ DG25 nên cần tăng số trạm và kiểm tra tay.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.835" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Thiết kế ASD: một dầm có $M_n = 500$ kNm, $\Omega_b = 1{,}67$, mô men yêu cầu $M_a = 250$ kNm. Tính tỷ số SAP báo.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Khả năng cho phép $M_n/\Omega_b$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$M_n/\Omega_b = 299{,}4$ kNm; tỷ số $= 250/299{,}4 = 0{,}835$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>(Bài tập) Trong mô hình <code>NM DNP-21.04</code>, sửa Stiffness Reduction từ "No Modification" sang <i>Tau-b Fixed</i> rồi chạy lại. Tỷ số của các cột khung thường thay đổi thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q7" value="0"> Giảm, vì độ cứng nhỏ hơn hút ít nội lực hơn</label></li><li><label><input type="radio" name="q7" value="1"> Tăng nhẹ, vì độ cứng giảm làm chuyển vị ngang và hiệu ứng P-Δ tăng</label></li><li><label><input type="radio" name="q7" value="2"> Không đổi, vì $\tau_b$ chỉ ảnh hưởng chuyển vị</label></li><li><label><input type="radio" name="q7" value="3"> Tăng gấp 1/0,8 = 1,25 lần</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Giảm đều độ cứng không đổi phân phối nội lực bậc nhất, nhưng làm chuyển vị lớn hơn.</p>
+</details>
+<details><summary>Lời giải</summary><p>Với nhà mái nhẹ, độ cứng $\times 0{,}8$ làm $\Delta$ và $P\Delta$ tăng → mô men bậc hai tăng vài phần trăm (W14: 70,0 → 72,5 kNm), tỷ số tăng nhẹ.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

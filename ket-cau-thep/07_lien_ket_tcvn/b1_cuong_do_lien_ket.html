@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="07_lien_ket_tcvn/b1_cuong_do_lien_ket.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 7.1. Cường độ vật liệu liên kết – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 7 · Liên kết TCVN · Bài 1</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 7.1. Cường độ vật liệu liên kết <span class="en">Design strengths of welds, bolts and anchor bolts</span></h1>
+<p class="lead">Kiểm tra liên kết bắt đầu bằng việc tra đúng cường độ của que hàn, bu lông và bu lông neo. TCVN 5575:2024 thay đổi một số giá trị so với TCXDVN 338:2005 mà các bảng tính cũ vẫn dùng.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tra được $f_{wf}$, $f_{ws}$, $f_{vb}$, $f_{tb}$, $f_{cb}$ và $f_{ba}$ theo Bảng 4, Bảng 5, Phụ lục C và công thức (1).</li>
+<li>Lấy đúng bộ nội lực đồng thời tại nút và chân cột từ các bảng kết quả SAP2000.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Hồ sơ nhà xưởng Hòa Bình (nhịp 50 m, bước khung 8 m) có hai bảng tính Excel cũ: bu lông nút kèo – cột và bu lông neo chân cột khớp. Cả hai đều ghi "Bảng 10 TCXDVN 338:2005", lấy $f_{tb} = 400$ MPa cho bu lông 8.8 và $f_{tb} = 210$ MPa cho bu lông neo. Trước khi dùng lại, kỹ sư phải thay bằng số liệu của TCVN 5575:2024.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Vị trí của liên kết trong quy trình thiết kế</h3>
+<p>SAP2000 mô hình hóa nút khung bằng các giả thiết lý tưởng: <b>ngàm cứng</b> (kèo – cột, mối nối kèo) hoặc <b>khớp</b> (chân cột khớp, thanh giằng, xà gồ). Các giả thiết này chỉ đúng khi liên kết thật được cấu tạo và tính toán để đạt được độ cứng và khả năng chịu lực tương ứng. Chương 6 đã kiểm tra cấu kiện. Chương này kiểm tra phần còn lại của đường truyền lực, gồm đường hàn tiết diện với bản mã, bu lông bản mã, bản đế và bu lông neo.</p>
+<p>Các liên kết điển hình trong nhà công nghiệp một tầng:</p>
+<div class="tbl" id="tbl-7-1"><table><thead><tr><th>Liên kết</th><th>Giả thiết trong SAP</th><th>Thành phần cần kiểm tra</th></tr></thead><tbody>
+<tr><td>Kèo – cột (nút đỉnh cột)</td><td>Ngàm cứng</td><td>Bu lông bản mã chịu kéo + cắt; đường hàn cánh, bụng với bản mã; bản mã chịu uốn; bụng cột vùng nút (panel zone)</td></tr>
+<tr><td>Mối nối kèo (đỉnh mái, giữa nhịp)</td><td>Ngàm cứng</td><td>Như trên</td></tr>
+<tr><td>Chân cột khớp</td><td>Khớp (U1, U2, U3 cố định)</td><td>Bu lông neo chịu kéo (nhổ) và cắt; bản đế chịu ép mặt bê tông</td></tr>
+<tr><td>Chân cột ngàm</td><td>Ngàm</td><td>Bu lông neo chịu kéo do mô men; bản đế, sườn</td></tr>
+<tr><td>Giằng mái, giằng cột</td><td>Khớp, chỉ chịu kéo</td><td>Bu lông/đường hàn đầu thanh giằng; bản mã</td></tr>
+<tr><td>Xà gồ – kèo</td><td>Khớp</td><td>Bu lông bát (thường cấu tạo)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 7.1.</b> Các liên kết điển hình và thành phần cần kiểm tra</p>
+<h3>Cường độ tính toán của vật liệu liên kết</h3>
+<h4>Liên kết hàn (Bảng 4, Bảng C.1)</h4>
+<div class="tbl" id="tbl-7-2"><table><thead><tr><th>Dạng liên kết</th><th>Trạng thái ứng suất</th><th>Cường độ tính toán</th></tr></thead><tbody>
+<tr><td>Hàn đối đầu</td><td>Nén; kéo, uốn khi <b>có kiểm tra chất lượng bằng phương pháp không phá hủy</b>, theo giới hạn chảy</td><td>$f_w = f_{yd}$</td></tr>
+<tr><td></td><td>Như trên, theo giới hạn bền</td><td>$f_{wu} = f_{ud}$</td></tr>
+<tr><td></td><td>Kéo, uốn <b>khi không kiểm tra</b> bằng phương pháp không phá hủy</td><td>$f_w = 0{,}85 f_{yd}$</td></tr>
+<tr><td></td><td>Trượt</td><td>$f_{wv} = f_v$</td></tr>
+<tr><td>Hàn góc</td><td>Cắt quy ước theo kim loại đường hàn</td><td>$f_{wf} = 0{,}55 f_{wun}/\gamma_{wm}$</td></tr>
+<tr><td></td><td>Cắt quy ước theo kim loại biên nóng chảy</td><td>$f_{ws} = 0{,}45 f_u$</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 7.2.</b> Cường độ tính toán của liên kết hàn (TCVN 5575:2024, Bảng 4)</p>
+<p>$\gamma_{wm} = 1{,}25$ khi $f_{wun} \le 490$ MPa và $1{,}35$ khi $f_{wun} \ge 590$ MPa. Bảng C.1 cho sẵn hai loại que hàn theo TCVN 3223:2000: <b>E43</b> có $f_{wun} = 430$, $f_{wf} = 180$ MPa; <b>E51</b> có $f_{wun} = 510$, $f_{wf} = 225$ MPa.</p>
+<h4>Bu lông (Bảng 5, Bảng C.4, Bảng C.5, Bảng C.6)</h4>
+<div class="tbl" id="tbl-7-3"><table><thead><tr><th>Cấp độ bền</th><th>$f_{ub}$</th><th>$f_{yb}$</th><th>$f_{vb}$ (cắt)</th><th>$f_{tb}$ (kéo)</th><th>$f_{vb}$ / $f_{tb}$ theo TCXDVN 338:2005</th></tr></thead><tbody>
+<tr><td>5.6</td><td>500</td><td>300</td><td>210</td><td>225</td><td>190 / 210</td></tr>
+<tr><td>5.8</td><td>500</td><td>400</td><td>210</td><td>210</td><td>200 / 200</td></tr>
+<tr><td>8.8</td><td>830</td><td>660</td><td>332</td><td>448</td><td>320 / 400</td></tr>
+<tr><td>10.9</td><td>1040</td><td>940</td><td>416</td><td>728</td><td>–</td></tr>
+<tr><td>12.9</td><td>1220</td><td>1100</td><td>427</td><td>854</td><td>–</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 7.3.</b> Cường độ của bu lông, MPa (TCVN 5575:2024 Bảng C.4; cột cuối là giá trị cũ trong bảng tính của khóa)</p>
+<p>Công thức trong Bảng 5: với bu lông 5.6 thì $f_{vb} = 0{,}42 f_{ub}$, $f_{tb} = 0{,}45 f_{ub}$; với 8.8 thì $f_{vb} = 0{,}4 f_{ub}$, $f_{tb} = 0{,}54 f_{ub}$; với 10.9 thì $f_{tb} = 0{,}7 f_{ub}$. Cường độ ép mặt của cấu kiện được liên kết: $f_{cb} = 1{,}60 f_{ud}$ với bu lông cấp chính xác A và $1{,}35 f_{ud}$ với cấp chính xác B. Bảng C.5 đã tính sẵn, ví dụ $f_u = 370$ MPa (thép CCT34/S235) cho $f_{cb}$ = 580 (A) và 485 (B) MPa; $f_u = 470$ MPa (Q345) cho 735 và 620 MPa.</p>
+<div class="tbl" id="tbl-7-4"><table><thead><tr><th>$d_b$ (mm)</th><th>16</th><th>20</th><th>22</th><th>24</th><th>27</th><th>30</th><th>36</th><th>42</th><th>48</th></tr></thead><tbody>
+<tr><td>$A_b$ (mm²)</td><td>201</td><td>314</td><td>380</td><td>452</td><td>572</td><td>706</td><td>1017</td><td>1385</td><td>1809</td></tr>
+<tr><td>$A_{bn}$ (mm²)</td><td>157</td><td>245</td><td>303</td><td>353</td><td>459</td><td>561</td><td>816</td><td>1120</td><td>1472</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 7.4.</b> Diện tích tiết diện bu lông (Bảng C.6)</p>
+<h4>Bu lông neo (6.5, Bảng C.3)</h4>
+<div class="eq" id="eq-7-1"><div class="m">$$f_{ba} = 0{,}8\,f_y \qquad (1)$$</div><span class="tag">(7.1)</span></div>
+<p>$f_y$ là giới hạn chảy của <b>thép làm bu lông neo</b>, không phải của cấp bền bu lông. Bảng C.3 quy định dùng mác <b>S235B</b> theo TCVN 9986-2:2013 cho các kết cấu thông thường. Với đường kính lớn hơn 16 mm, $f_y = 225$ MPa, nên $f_{ba} = 180$ MPa.</p>
+<div class="box check"><div class="bt">🔶 Cần đối chiếu</div>
+<p><b>Bảng tính của khóa còn dùng số liệu cũ.</b> Các bảng <code>COT-KEO.xlsx</code> (bu lông liên kết cột – kèo) và <code>2.6.2 Bản mã chân cột Khớp.xlsx</code> (bu lông neo) ghi rõ "Bảng 10 TCXDVN 338:2005". Chúng dùng $f_{vb} = 320$, $f_{tb} = 400$ MPa cho bu lông 8.8 và dùng cường độ của <b>bu lông cấp bền 5.6</b> ($f_{tb} = 210$ MPa) cho <b>bu lông neo</b>. Theo TCVN 5575:2024:</p>
+<ul><li>Bu lông 8.8: $f_{vb} = 332$ MPa (tăng 4 %), $f_{tb} = 448$ MPa (tăng 12 %).</li>
+<li>Bu lông neo tính theo công thức (1), $f_{ba} = 0{,}8 f_y$ của thép S235B, tức 180 MPa. Không lấy theo cấp bền bu lông.</li>
+<li>Hai bảng tính kiểm tra cắt và kéo <b>riêng rẽ</b>. TCVN 5575:2024 (14.2.13) yêu cầu thêm kiểm tra tương tác, xem công thức ([-@eq:7-9]).</li></ul>
+<p>Ngoài ra, các tệp Excel này có các trang ẩn chứa <b>macro Excel 4.0 dạng virus</b> (dòng chữ "Infect Workbook", "XLSTART\\Book1"). Trước khi dùng, nên mở ở chế độ tắt macro, chép số liệu sang sổ tính mới, rồi xóa tệp gốc. Xem thêm Phụ lục về nguồn tài liệu.</p>
+</div>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Lấy nội lực liên kết từ SAP2000</h3>
+<ol><li><b>Nút kèo – cột, mối nối kèo.</b> Dùng <i>Display → Show Tables → Analysis Results → Element Output → Frame Output → Table: Element Forces – Frames</i>. Lọc phần tử kèo tại nút và chọn <b>trạm (Station) ở đầu phần tử</b>, không chọn trạm giữa. Với mỗi tổ hợp cần lấy bộ ba $(M_3, V_2, P)$ <b>xảy ra cùng lúc</b>. Không ghép $M_{\max}$ của tổ hợp này với $V_{\max}$ của tổ hợp khác.</li>
+<li><b>Chân cột.</b> Dùng <i>Table: Joint Reactions</i>. Cần ít nhất hai bộ: (a) lực nhổ lớn nhất $F_3^{\min}$ (thường do gió hút + tĩnh tải với hệ số 0,9 hoặc 1,0) kèm lực ngang đồng thời; (b) lực nén lớn nhất kèm lực ngang. Bộ (a) quyết định bu lông neo. Bộ (b) quyết định bản đế.</li>
+<li><b>Thanh giằng.</b> Lực dọc $P$ lớn nhất của phần tử giằng, đã chạy theo <i>Tension Only</i> (xem Chương 3).</li>
+<li><b>Dấu.</b> SAP2000 quy ước $P &gt; 0$ là kéo. Phản lực $F_3 &gt; 0$ là hướng lên, tức gối chịu nén. Cần đổi dấu cho đúng quy ước của bảng tính Excel.</li></ol>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p>Trong mô hình phần tử thanh, mô men tại "đầu phần tử" là mô men tại <b>tim nút</b>. Mặt cắt thật của liên kết nằm ở mép cột, cách tim nút khoảng $h_c/2$. Với cột cao 650 mm, mô men tại mép cột nhỏ hơn mô men tại tim nút khoảng $V \cdot 0{,}325$ m. Dùng mô men tại tim nút là thiên về an toàn. Nếu muốn lấy đúng mặt cắt, khai báo <i>End Length Offset</i> (Assign → Frame → End Length Offsets) với <i>Rigid-zone factor</i> phù hợp và đọc nội lực tại trạm mép.</p>
+</div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Lấy cường độ bu lông neo theo cấp bền bu lông (5.6: $f_{tb} = 210$ MPa) thay vì $f_{ba} = 0{,}8f_y$ của thép S235B (180 MPa).</li>
+<li>Ghép $M_{\max}$ của tổ hợp này với $V_{\max}$ của tổ hợp khác, hoặc đọc nội lực ở trạm giữa phần tử thay vì trạm đầu.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Cường độ tính toán chịu kéo của bu lông neo bằng thép S235B, đường kính lớn hơn 16 mm, theo TCVN 5575:2024 là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 210 MPa, lấy theo bu lông cấp bền 5.6</label></li><li><label><input type="radio" name="q1" value="1"> 225 MPa, bằng giới hạn chảy $f_y$</label></li><li><label><input type="radio" name="q1" value="2"> 180 MPa, theo $f_{ba} = 0{,}8f_y$</label></li><li><label><input type="radio" name="q1" value="3"> 400 MPa, như bu lông cấp bền 8.8</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem công thức (1) và Bảng C.3.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_{ba} = 0{,}8f_y = 0{,}8 \times 225 = 180$ MPa. $f_y$ là giới hạn chảy của thép làm bu lông neo, không phải của cấp bền bu lông.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="211.5" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính cường độ tính toán của đường hàn góc theo kim loại biên nóng chảy $f_{ws}$ khi hàn thép Q345 ($f_u = 470$ MPa).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>MPa</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bảng 4: $f_{ws} = 0{,}45f_u$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_{ws} = 0{,}45 \times 470 = 211{,}5$ MPa.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="63.5" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bu lông neo M24 bằng thép S235B ($f_y = 225$ MPa). Tính khả năng chịu kéo $f_{ba}A_{bn}$ của một bu lông (chưa xét hệ số $k_d$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính $f_{ba}$ theo (1), lấy $A_{bn}$ của M24 ở <a href="#tbl-7-4">Bảng 7.4</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_{ba} = 0{,}8 \times 225 = 180$ MPa; $A_{bn} = 353$ mm²; $180 \times 353 = 63\,540$ N $= 63{,}5$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Hàn góc: $f_{wf}$ = 180 MPa (E43), 225 MPa (E51); $f_{ws} = 0{,}45f_u$.</li>
+<li>Bu lông 8.8: $f_{vb} = 332$, $f_{tb} = 448$ MPa (TCXDVN 338 cũ: 320 và 400). Bu lông neo: $f_{ba} = 0{,}8f_y$ = 180 MPa với S235B.</li>
+<li>Nội lực liên kết: lấy bộ $(M_3, V_2, P)$ đồng thời tại trạm đầu phần tử; chân cột lấy riêng tổ hợp nhổ lớn nhất và tổ hợp nén lớn nhất.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

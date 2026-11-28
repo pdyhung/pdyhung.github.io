@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="08_he_tieu_chuan_my/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 8: Hệ tiêu chuẩn Mỹ – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 8 · Hệ tiêu chuẩn Mỹ · Kiểm tra chương</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 8: Hệ tiêu chuẩn Mỹ</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<ul><li>Bộ đồng bộ của khóa: IBC 2012 – ASCE 7-10 – AISC 360-10 – ACI 318-08/11. Bản -16 được ghi chú trong từng chương.</li>
+<li>Ưu tiên LRFD. Mô hình DNP dùng ASD.</li>
+<li>Nhà xưởng thông thường thuộc Risk Category II, dùng gió 700 năm.</li>
+<li>Vật liệu khai báo đúng $F_y$, $F_u$ thực, không chia $\gamma_m$.</li>
+<li>Số liệu khí hậu từ QCVN 02:2022, rồi quy đổi sang dạng ASCE.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Nhà kho chứa hóa chất độc hại ở Hải Phòng thuộc Risk Category nào, và ảnh hưởng thế nào đến vận tốc gió dùng trong ASCE 7-10?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Category II; dùng gió 700 năm như nhà xưởng thông thường</label></li><li><label><input type="radio" name="q1" value="1"> Category III hoặc IV; phải dùng bản đồ gió chu kỳ 1700 năm, quy đổi vận tốc QCVN về 1700 năm thay vì 700 năm</label></li><li><label><input type="radio" name="q1" value="2"> Category III; giữ gió 700 năm và nhân thêm $I_w = 1{,}15$</label></li><li><label><input type="radio" name="q1" value="3"> Category I; dùng gió 300 năm</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Kho chứa chất độc hại; xem <a href="../08_he_tieu_chuan_my/b3_risk_category.html#tbl-8-3">Bảng 8.3</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Kho chất độc hại thuộc III hoặc IV. Ở ASCE 7-10 ảnh hưởng của Category nằm trong bản đồ gió: III–IV dùng 1700 năm, nên cách quy đổi $V_{700}$ không dùng được.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vì sao ASCE 7-10 không có hệ số tầm quan trọng gió $I_w$?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Vì gió không phụ thuộc mức độ quan trọng của công trình</label></li><li><label><input type="radio" name="q2" value="1"> Vì mỗi Risk Category đã có bản đồ vận tốc gió riêng (chu kỳ lặp khác nhau)</label></li><li><label><input type="radio" name="q2" value="2"> Vì $I_w$ được chuyển vào hệ số tải trọng 1,6</label></li><li><label><input type="radio" name="q2" value="3"> Vì $I_w$ được gộp vào hệ số hướng gió $K_d$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>So sánh với ASCE 7-05.</p>
+</details>
+<details><summary>Lời giải</summary><p>Từ ASCE 7-10, mức rủi ro được đưa vào chu kỳ lặp của bản đồ (300/700/1700 năm), nên bỏ $I_w$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="325" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Khai báo thép Q345 dày 20 mm trong SAP2000 để thiết kế theo AISC 360-10. $F_y$ lấy bằng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>MPa</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem ghi chú Q345 trong <a href="../08_he_tieu_chuan_my/b3_risk_category.html#tbl-8-5">Bảng 8.5</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$t = 20$ mm nằm trong 16–40 mm → $F_y = 325$ MPa; dùng trực tiếp, không chia $\gamma_m$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Thép SS400 trong hồ sơ Nhật Bản tương đương gần nhất với mác ASTM nào khi đối chiếu, và cách khai báo khuyến nghị trong SAP2000 là gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> A572 Gr.50; chọn sẵn A572 trong thư viện</label></li><li><label><input type="radio" name="q4" value="1"> A36; tạo vật liệu mới (Region: User) với đúng $F_y$, $F_u$ của SS400</label></li><li><label><input type="radio" name="q4" value="2"> A992; chọn sẵn A992 trong thư viện</label></li><li><label><input type="radio" name="q4" value="3"> A500 Gr.B; khai báo $F_y/\gamma_m$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="../08_he_tieu_chuan_my/b3_risk_category.html#tbl-8-5">Bảng 8.5</a> và đoạn sau bảng.</p>
+</details>
+<details><summary>Lời giải</summary><p>SS400 ~ A36, nhưng nên tạo vật liệu User với giá trị thực của mác thép, không chọn sẵn A992/A572.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="3"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Nội dung nào <b>không</b> cần có trong Tiêu chí thiết kế (Design Criteria) của nhà xưởng thép theo tiêu chuẩn Mỹ tại Việt Nam?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q5" value="0"> Phiên bản IBC/ASCE/AISC và Risk Category</label></li><li><label><input type="radio" name="q5" value="1"> Vận tốc gió $V$, Exposure, hoạt tải mái $L_r$</label></li><li><label><input type="radio" name="q5" value="2"> Giới hạn sử dụng, vật liệu, phương pháp phân tích (DM/ELM), LRFD/ASD</label></li><li><label><input type="radio" name="q5" value="3"> Hệ số $\gamma_m$ của TCVN 5575:2024 để giảm $F_y$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Danh mục tối thiểu ở mục "Điều kiện pháp lý".</p>
+</details>
+<details><summary>Lời giải</summary><p>Tiêu chí thiết kế liệt kê phiên bản, Risk Category, $V$, Exposure, $L_r$, giới hạn sử dụng, vật liệu, phương pháp phân tích, LRFD/ASD. Theo AISC không dùng $\gamma_m$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="3.2" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính tỷ số giữa hoạt tải mái ASCE 7-10 (0,96 kN/m²) và hoạt tải mái tôn không sử dụng theo TCVN 2737:2023 (0,3 kN/m²).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Chia trực tiếp.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}96/0{,}3 = 3{,}2$: vì vậy $L_r$ thường quyết định tiết diện kèo nhịp lớn khi theo ASCE.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cấp hậu quả trong TCVN 2737:2023 khác Risk Category của ASCE 7-10 ở điểm nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q7" value="0"> Hai cách giống hệt nhau</label></li><li><label><input type="radio" name="q7" value="1"> TCVN nhân hệ số $\gamma_n$ (0,87/1,0/1,15) vào tải trọng hoặc nội lực; ASCE 7-10 đổi chu kỳ lặp của bản đồ gió</label></li><li><label><input type="radio" name="q7" value="2"> TCVN đổi chu kỳ lặp; ASCE nhân hệ số vào tải</label></li><li><label><input type="radio" name="q7" value="3"> TCVN không xét mức độ quan trọng công trình</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem đoạn so sánh với TCVN 2737:2023 ở bài Risk Category.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\gamma_n$ của cấp C1/C2/C3 nhân vào tải hoặc nội lực, không đổi chu kỳ lặp.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

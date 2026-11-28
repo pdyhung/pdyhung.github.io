@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="13_cau_kien_aisc/b3_chiu_uon.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 13.3. Chịu uốn (F2, F3) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 13 · Kiểm tra cấu kiện AISC · Bài 3</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 13.3. Chịu uốn (F2, F3) <span class="en">Flexure (AISC Chapter F)</span></h1>
+<p class="lead">Khả năng chịu uốn của kèo, cột nhà tiền chế thường bị khống chế bởi mất ổn định xoắn ngang (LTB), tức là bởi <b>khoảng cách chống xiên</b> $L_b$.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $L_p$, $L_r$ và $M_n$ theo F2-2; kiểm tra thêm FLB theo F3-1.</li>
+<li>Đánh giá ảnh hưởng của $L_b$ và $C_b$ đến $\phi M_n$.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Khi gió hút, cánh dưới của kèo nhà máy DNP chịu nén. Nếu không có chống xiên, chiều dài không giằng của cánh này có thể bằng cả nửa kèo. Câu hỏi: khả năng chịu uốn giảm bao nhiêu?</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Chịu uốn (Chương F)</h3>
+<ul><li><b>F2</b> – I đối xứng kép, bụng và cánh compact: $M_n = \min(M_p,\ M_{LTB})$.</li>
+<li><b>F3</b> – bụng compact, cánh noncompact hoặc slender: thêm giới hạn mất ổn định cục bộ cánh (F3-1).</li>
+<li><b>F4/F5</b> – bụng noncompact / slender: dùng hệ số $R_{pc}$, $R_{pg}$.</li></ul>
+<p>Mất ổn định xoắn ngang (F2):</p>
+<div class="eq"><div class="m">$$L_p = 1{,}76\,r_y\sqrt{\frac{E}{F_y}}\ (\text{F2-5});\qquad L_r = 1{,}95\,r_{ts}\frac{E}{0{,}7F_y}\sqrt{\frac{Jc}{S_xh_o} + \sqrt{\left(\frac{Jc}{S_xh_o}\right)^2 + 6{,}76\left(\frac{0{,}7F_y}{E}\right)^2}}\ (\text{F2-6})$$</div></div>
+<p>Khi $L_p &lt; L_b \le L_r$:</p>
+<div class="eq"><div class="m">$$M_n = C_b\left[M_p - (M_p - 0{,}7F_yS_x)\frac{L_b - L_p}{L_r - L_p}\right] \le M_p \quad (\text{F2-2})$$</div></div>
+<p>Mất ổn định cục bộ cánh (F3-1):</p>
+<div class="eq"><div class="m">$$M_n = M_p - (M_p - 0{,}7F_yS_x)\frac{\lambda - \lambda_{pf}}{\lambda_{rf} - \lambda_{pf}} .$$</div></div>
+<h2 id="s3">3. Khám phá</h2>
+<p>Kéo $L_b$ và $C_b$, quan sát ba vùng của đường cong: dẻo, không đàn hồi, đàn hồi. Đường đỏ nét đứt là mô men yêu cầu $M_u$.</p>
+<div data-widget="W16"></div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Dùng F2 cho tiết diện cánh không đặc chắc (phải dùng F3).</li>
+<li>Lấy $C_b &gt; 1$ mà không xét biểu đồ mô men giữa hai điểm giằng.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Tiết diện I có bụng đặc chắc, cánh <b>không đặc chắc</b> khi uốn được tính theo mục nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> F2</label></li><li><label><input type="radio" name="q1" value="1"> F3</label></li><li><label><input type="radio" name="q1" value="2"> F4</label></li><li><label><input type="radio" name="q1" value="3"> F5</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>F4/F5 dành cho bụng không đặc chắc / mảnh.</p>
+</details>
+<details><summary>Lời giải</summary><p>Bụng đặc chắc, cánh không đặc chắc hoặc mảnh → <b>F3</b> (thêm FLB).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="2.12" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính $L_p$ khi $r_y = 50$ mm, $F_y = 345$ MPa.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>(F2-5): $L_p = 1{,}76\,r_y\sqrt{E/F_y}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$L_p = 1{,}76 \times 50 \times 24{,}08 = 2119$ mm $= 2{,}12$ m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="507.7" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Kèo H500×250×8×12 ($F_y = 345$ MPa, $M_p = 661{,}4$ kNm, $0{,}7F_yS_x = 414{,}6$ kNm, $L_p = 2{,}39$ m, $L_r = 6{,}47$ m, $C_b = 1$). Tính $\phi M_n$ khi $L_b = 4$ m (FLB cho 631,7 kNm).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kNm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$L_p &lt; L_b \le L_r$ → dùng F2-2 rồi so với FLB.</p>
+</details>
+<details><summary>Lời giải</summary><p>$M_n = 661{,}4 - (661{,}4 - 414{,}6)\dfrac{4 - 2{,}39}{6{,}47 - 2{,}39} = 564{,}1$ kNm $&lt; 631{,}7$ → $\phi M_n = 0{,}9 \times 564{,}1 = 507{,}7$ kNm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$L_b \le L_p$: $M_n = M_p$; $L_p &lt; L_b \le L_r$: nội suy tuyến tính (F2-2); $L_b &gt; L_r$: đàn hồi (F2-3).</li>
+<li>Kèo ví dụ: $\phi M_n$ = 568,6 / 562,2 / 453,3 / 259,2 kNm khi $L_b$ = 1,5 / 3 / 5 / 8 m.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w16.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

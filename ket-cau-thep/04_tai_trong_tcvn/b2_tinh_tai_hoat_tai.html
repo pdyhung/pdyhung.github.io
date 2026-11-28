@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="04_tai_trong_tcvn/b2_tinh_tai_hoat_tai.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 4.2. Tĩnh tải, hoạt tải – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 4 · Tải trọng TCVN 2737:2023 · Bài 2</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 4.2. Tĩnh tải, hoạt tải <span class="en">Dead and live loads on the roof</span></h1>
+<p class="lead">Tĩnh tải mái gồm trọng lượng bản thân (SAP2000 tự tính) và các lớp hoàn thiện, thiết bị treo. Hoạt tải mái không sử dụng chỉ là tải người đi lại sửa chữa.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Lập được bảng tĩnh tải hoàn thiện mái (<a href="#tbl-4-2">Bảng 4.2</a>) và đổi sang giá trị tính toán.</li>
+<li>Quy tải phân bố trên mặt mái thành tải phân bố đều trên kèo $q = g\cdot B$.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Kèo khung giữa nhà xưởng <b>Hòa Bình</b> đỡ một dải mái rộng bằng bước khung 8 m. Chủ đầu tư chưa có số liệu hệ thống cơ điện, nên kỹ sư tạm lấy tải treo M&amp;E chung 12 kG/m² theo <a href="#tbl-4-2">Bảng 4.2</a>. Như vậy riêng tải M&amp;E đã cho kèo một tải tiêu chuẩn 96 kG/m.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Tĩnh tải</h3>
+<h4>Trọng lượng bản thân</h4>
+<p>SAP2000 tự tính trọng lượng bản thân từ khối lượng riêng của vật liệu. Đặt <b>Self Weight Multiplier = 1,05</b> cho load pattern SW để có ngay giá trị tính toán.</p>
+<h4>Tĩnh tải hoàn thiện mái</h4>
+<p>Theo các bảng tính của khóa, giá trị tham khảo như sau.</p>
+<div class="tbl" id="tbl-4-2"><table><thead><tr><th>Lớp</th><th>Quy cách</th><th>Tiêu chuẩn (kG/m²)</th></tr></thead><tbody>
+<tr><td>Tôn mái</td><td>dày 0,40–0,50 mm</td><td>3,4–4,3</td></tr>
+<tr><td>Xà gồ mái</td><td>C200 / Z200, bước 1,4–1,5 m</td><td>3,5–11,7</td></tr>
+<tr><td>Bông cách nhiệt</td><td>dày 50–75 mm, 12–16 kg/m³</td><td>0,6–1,2</td></tr>
+<tr><td>Trần thạch cao</td><td>dày 9 / 12 mm</td><td>7 / 9</td></tr>
+<tr><td>Chiếu sáng; thông gió; PCCC (sprinkler)</td><td>–</td><td>5; 5; 7</td></tr>
+<tr><td>Tải treo M&amp;E chung (khi chưa có số liệu)</td><td>–</td><td>12</td></tr>
+<tr><td>Pin mặt trời (solar)</td><td>–</td><td>15–20</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 4.2.</b> Tĩnh tải hoàn thiện mái thường dùng</p>
+<p>Quy về tải phân bố trên kèo: $q = g \cdot B$, với $B$ là bước khung (khung biên lấy $B/2$).</p>
+<h3>Hoạt tải</h3>
+<p>Mái không sử dụng, chỉ có người đi lại sửa chữa (khu vực H, Bảng 4): $q_k = 0{,}3$ kN/m² (30 kG/m²), $\gamma_f = 1{,}3$. Thiết bị không cố định tính như hoạt tải, $\gamma_f = 1{,}3$ (8.3.5a).</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Đặt Self Weight Multiplier = 1 rồi lại nhân 1,05 trong tổ hợp, hoặc ngược lại: trọng lượng bản thân bị nhân hai lần hoặc không được nhân.</li>
+<li>Lấy cả bước khung $B$ cho khung biên; khung biên chỉ nhận $B/2$.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Hoạt tải mái không sử dụng (khu vực H, Bảng 4) lấy giá trị tiêu chuẩn và hệ số độ tin cậy bao nhiêu?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> $q_k = 0{,}3$ kN/m², $\gamma_f = 1{,}2$</label></li><li><label><input type="radio" name="q1" value="1"> $q_k = 0{,}3$ kN/m², $\gamma_f = 1{,}3$</label></li><li><label><input type="radio" name="q1" value="2"> $q_k = 0{,}5$ kN/m², $\gamma_f = 1{,}3$</label></li><li><label><input type="radio" name="q1" value="3"> $q_k = 0{,}75$ kN/m², $\gamma_f = 1{,}05$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Hoạt tải".</p>
+</details>
+<details><summary>Lời giải</summary><p>Mái chỉ có người đi lại sửa chữa: $q_k = 0{,}3$ kN/m² (30 kG/m²), $\gamma_f = 1{,}3$ (8.3.5a).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="96" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tải treo M&amp;E 12 kG/m² (tiêu chuẩn). Khung giữa có bước khung 8 m. Tính tải tiêu chuẩn phân bố lên kèo.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kG/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$q = g \cdot B$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$q = 12 \times 8 = 96$ kG/m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="149.1" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Mái gồm: tôn 4,3 kG/m², xà gồ 6,0 kG/m², tải treo M&amp;E 12 kG/m² (cùng $\gamma_f = 1{,}05$) và bông cách nhiệt sản xuất trong nhà máy 1,2 kG/m². Bước khung 6 m. Tính tĩnh tải hoàn thiện <b>tính toán</b> phân bố lên kèo khung giữa.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kG/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Kim loại và thiết bị cố định lấy 1,05; cách nhiệt sản xuất trong nhà máy lấy 1,2.</p>
+</details>
+<details><summary>Lời giải</summary><p>$g = (4{,}3 + 6{,}0 + 12) \times 1{,}05 + 1{,}2 \times 1{,}2 = 23{,}415 + 1{,}44 = 24{,}855$ kG/m²; $q = 24{,}855 \times 6 = 149{,}1$ kG/m.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Trọng lượng bản thân: SAP2000 tự tính, đặt Self Weight Multiplier = 1,05 để có ngay giá trị tính toán.</li>
+<li>Tĩnh tải hoàn thiện lấy theo <a href="#tbl-4-2">Bảng 4.2</a>; tải lên kèo $q = g\cdot B$ (khung biên $B/2$).</li>
+<li>Hoạt tải mái sửa chữa $q_k = 0{,}3$ kN/m², $\gamma_f = 1{,}3$.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

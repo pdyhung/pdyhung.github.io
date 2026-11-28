@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="16_so_sanh/b3_lien_ket_su_dung.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 16.3. Liên kết và điều kiện sử dụng – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 16 · So sánh TCVN và Mỹ · Bài 3</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 16.3. Liên kết và điều kiện sử dụng <span class="en">Connections and serviceability</span></h1>
+<p class="lead">Liên kết là khâu khác biệt lớn nhất giữa hai hệ; điều kiện sử dụng quyết định cột theo TCVN nhưng hiếm khi theo DG3.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Nêu các khác biệt chính về hàn góc, bu lông, ma sát chân cột, mặt bích (<a href="#tbl-16-5">Bảng 16.5</a>).</li>
+<li>So sánh giới hạn chuyển vị ngang, độ võng kèo, chuyển vị tại ray (<a href="#tbl-16-6">Bảng 16.6</a>).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nút kèo – cột của nhà xưởng <b>Hòa Bình</b> dùng đường hàn góc 8 mm như hồ sơ tham khảo theo AISC. Khi kiểm tra theo TCVN 5575:2024, đường hàn cần $h_f$ = 14,8 mm, vượt $1{,}2t$, nên phải chuyển sang hàn thấu có kiểm tra không phá hủy (NDT). Chuyển vị đỉnh cột tính được 30,6 mm cũng là giới hạn chặt hơn nhiều so với DG3.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Liên kết</h3>
+<div class="tbl" id="tbl-16-5"><table><thead><tr><th></th><th>TCVN 5575:2024 (Ch.7)</th><th>AISC 360-10 (Ch.15)</th></tr></thead><tbody>
+<tr><td>Đường hàn góc cánh kèo</td><td>Hàn góc <b>không đạt</b> (cần $h_f$ = 14,8 mm > 1,2t). Phải hàn thấu có NDT</td><td>Hàn góc $w$ = 8,1 mm, đạt</td></tr>
+<tr><td>Nguyên nhân</td><td>Không có hệ số tăng theo phương lực; que E43 ($f_{wf}$ = 180 MPa)</td><td>Hệ số 1,5 cho đường hàn ngang; E70</td></tr>
+<tr><td>Bu lông kéo 8.8 / A325M, M27</td><td>$f_{tb}A_{bn}$ = 205,6 kN</td><td>$\phi F_{nt}A_b$ = 266 kN</td></tr>
+<tr><td>Ma sát chân cột</td><td>$\mu$ = 0,25</td><td>$\mu$ = 0,55 (DG1)</td></tr>
+<tr><td>Bản mã mặt bích</td><td>Không có công thức</td><td>DG16/AISC 358 (đường chảy $Y_p$)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 16.5.</b> So sánh liên kết</p>
+<p>Liên kết là khâu <b>khác biệt lớn nhất</b>. TCVN thận trọng hơn rõ rệt về đường hàn góc và ma sát chân cột. AISC có các thủ tục chuẩn hóa cho mặt bích mà TCVN không có.</p>
+<h3>Điều kiện sử dụng</h3>
+<div class="tbl" id="tbl-16-6"><table><thead><tr><th></th><th>TCVN 2737:2023 Phụ lục G</th><th>Mỹ (IBC, DG3)</th></tr></thead><tbody>
+<tr><td>Chuyển vị ngang đỉnh cột Hòa Bình</td><td>30,6 mm</td><td>70,7 mm ($H/100$) đến 118 mm ($H/60$), gió 10 năm</td></tr>
+<tr><td>Võng kèo nhịp 50 m</td><td>$L/300$ = 167 mm</td><td>$L/180$ = 278 mm ($L_r$)</td></tr>
+<tr><td>Chuyển vị tại ray, cầu trục A4–A6</td><td>$h/1000$</td><td>$h/240 \le 50$ mm</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 16.6.</b> So sánh điều kiện sử dụng</p>
+<p>Theo TCVN, <b>điều kiện sử dụng thường khống chế tiết diện cột</b> của nhà xưởng nhịp lớn. Theo DG3, cột thường do cường độ khống chế.</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Lấy $\mu$ = 0,55 (DG1) cho ma sát chân cột trong hồ sơ TCVN: TCVN chỉ cho 0,25, phần cắt còn lại do chốt chống cắt chịu.</li>
+<li>Áp giới hạn $H/100$ của DG3 cho công trình thiết kế theo TCVN 2737:2023 Phụ lục G.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Hệ số ma sát giữa bản đế chân cột và vữa/bê tông lấy theo hai hệ là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> TCVN 0,25; AISC DG1 0,55</label></li><li><label><input type="radio" name="q1" value="1"> TCVN 0,55; AISC DG1 0,25</label></li><li><label><input type="radio" name="q1" value="2"> Cả hai 0,40</label></li><li><label><input type="radio" name="q1" value="3"> TCVN 0,30; AISC DG1 0,70</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="#tbl-16-5">Bảng 16.5</a>, dòng "Ma sát chân cột".</p>
+</details>
+<details><summary>Lời giải</summary><p>TCVN $\mu$ = 0,25; AISC Design Guide 1 $\mu$ = 0,55.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="277.8" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính độ võng giới hạn của kèo nhịp 50 m theo giới hạn $L/180$ (tải $L_r$) của hệ Mỹ.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$L = 50\,000$ mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$50\,000/180 = 277{,}8$ mm (TCVN: $L/300$ = 166,7 mm).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="15" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Chân cột chịu lực nén $N$ = 120 kN đồng thời lực cắt $V$ = 45 kN. Theo TCVN, ma sát chịu được bao nhiêu và chốt chống cắt phải chịu phần lực cắt còn lại bằng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Lực ma sát $= \mu N$ với $\mu$ = 0,25.</p>
+</details>
+<details><summary>Lời giải</summary><p>Ma sát: $0{,}25 \times 120 = 30$ kN &lt; 45 kN → chốt chống cắt chịu $45 - 30 = 15$ kN. (Với $\mu$ = 0,55 theo DG1, ma sát 66 kN đã đủ.)</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Hàn góc cánh kèo: TCVN cần $h_f$ = 14,8 mm (phải hàn thấu); AISC $w$ = 8,1 mm đạt (hệ số 1,5, que E70).</li>
+<li>Bu lông M27: 205,6 kN (TCVN) so với 266 kN (AISC); ma sát chân cột 0,25 so với 0,55.</li>
+<li>Điều kiện sử dụng thường khống chế cột theo TCVN, cường độ khống chế cột theo DG3.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

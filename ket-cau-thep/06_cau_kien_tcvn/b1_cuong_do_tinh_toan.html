@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="06_cau_kien_tcvn/b1_cuong_do_tinh_toan.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 6.1. Cường độ tính toán, γm, γc – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 6 · Kiểm tra cấu kiện TCVN 5575:2024 · Bài 1</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 6.1. Cường độ tính toán, γm, γc <span class="en">Design strength, γm and γc (TCVN 5575:2024, 6.1)</span></h1>
+<p class="lead">Mọi phép kiểm tra cấu kiện theo TCVN 5575:2024 đều bắt đầu từ cường độ tính toán $f_{yd} = f_y/\gamma_m$ và hệ số điều kiện làm việc $\gamma_c$. Chọn sai hai hệ số này thì mọi tỷ số phía sau đều sai theo.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Xác định $f_{yd}$, $f_v$ theo Bảng 2 và chọn đúng $\gamma_m$ (Bảng 3) cho thép trong nước và thép nhập khẩu.</li>
+<li>Chọn $\gamma_c$ (Bảng 1) cho cột, kèo, thanh giằng, bản đế của nhà xưởng.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nhà xưởng <b>Hòa Bình</b> (nhịp 50 m, bước khung 8 m) dùng kèo tổ hợp hàn thép Q345 nhập từ Trung Quốc. Bảng tính kèo cũ của khóa lấy $\gamma_m = 1{,}05$ và $\gamma_c = 0{,}95$, cho $f_{yd}\gamma_c = 312{,}1$ MPa. Khi thẩm tra, kỹ sư phải chỉ ra cả hai hệ số đều chưa đúng tiêu chuẩn, dù kết quả cuối gần như không đổi.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Cường độ tính toán và các hệ số</h3>
+<p><b>Bảng 2 (điều 6.1)</b>:</p>
+<div class="tbl" id="tbl-6-1"><table><thead><tr><th>Trạng thái ứng suất</th><th>Cường độ tính toán</th></tr></thead><tbody>
+<tr><td>Kéo, nén, uốn theo giới hạn chảy</td><td>$f_{yd} = f_y/\gamma_m$</td></tr>
+<tr><td>Kéo, nén, uốn theo giới hạn bền</td><td>$f_{ud} = f_u/\gamma_m$</td></tr>
+<tr><td>Trượt (cắt)</td><td>$f_v = 0{,}58\,f_y/\gamma_m$</td></tr>
+<tr><td>Ép mặt tì đầu</td><td>$f_c = f_u/\gamma_m$</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 6.1.</b> Cường độ tính toán của thép cán, thép uốn định hình và thép ống</p>
+<p><b>Hệ số độ tin cậy về vật liệu $\gamma_m$ (Bảng 3)</b>:</p>
+<ul><li>1,05: thép cán và thép ống phù hợp yêu cầu của tiêu chuẩn này.</li>
+<li><b>1,10: thép cung cấp theo tiêu chuẩn nước ngoài</b> (ví dụ Q235, Q345 – GB; SS400 – JIS; A36, A572 – ASTM), và thép ống tạo hình nóng.</li>
+<li>1,00: công trình cấp C1 có thời hạn sử dụng hạn chế.</li></ul>
+<p><b>Hệ số điều kiện làm việc $\gamma_c$ (Bảng 1)</b> – các giá trị liên quan đến nhà xưởng:</p>
+<div class="tbl" id="tbl-6-2"><table><thead><tr><th>Cấu kiện</th><th>$\gamma_c$</th></tr></thead><tbody>
+<tr><td>Cột nhà công nghiệp một tầng có cầu trục</td><td>1,05</td></tr>
+<tr><td>Thanh chịu kéo (thanh căng, thanh neo), tính độ bền theo tiết diện không giảm yếu</td><td>0,90</td></tr>
+<tr><td>Thanh bụng chịu nén tiết diện chữ T ghép hai thép góc, $\lambda &gt; 60$</td><td>0,80</td></tr>
+<tr><td>Bản đế thép $f_y \le 390$ MPa, chịu tải tĩnh, dày ≤ 40 mm</td><td>1,20</td></tr>
+<tr><td><b>Các trường hợp không nêu trong bảng</b> (chú thích 5)</td><td><b>1,00</b></td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 6.2.</b> Hệ số $\gamma_c$ thường gặp (trích Bảng 1 TCVN 5575:2024)</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Đối chiếu bảng tính của khóa.</b> Bảng tính dầm–kèo dùng thép Q345 với $\gamma_m = 1{,}05$, $\gamma_c = 0{,}95$. Theo TCVN 5575:2024, Q345 (GB) là thép theo tiêu chuẩn nước ngoài nên $\gamma_m = 1{,}10$. Kèo nhà xưởng không có trong Bảng 1 nên $\gamma_c = 1{,}0$. Hai sai lệch này gần bù trừ nhau: $328{,}6 \times 0{,}95 = 312{,}1$ MPa so với $313{,}6 \times 1{,}0 = 313{,}6$ MPa. Tuy vậy vẫn nên nhập đúng từng hệ số để thuyết minh có căn cứ. Giá trị 0,95 trong Bảng 1 dành cho <b>cột nhà công cộng, nhà ở và nhà nhiều tầng</b>, không phải cho dầm, kèo.</p>
+</div>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Lấy $\gamma_m = 1{,}05$ cho mọi mác thép, kể cả Q345, SS400, A572 (đúng là 1,10).</li>
+<li>Dùng $\gamma_c = 0{,}95$ cho kèo nhà xưởng, trong khi giá trị này thuộc cột nhà công cộng, nhà ở.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Thép Q345 sản xuất theo tiêu chuẩn GB (Trung Quốc) dùng cho kèo nhà xưởng. Hệ số $\gamma_m$ theo Bảng 3 TCVN 5575:2024 là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 1,00</label></li><li><label><input type="radio" name="q1" value="1"> 1,05</label></li><li><label><input type="radio" name="q1" value="2"> 1,10</label></li><li><label><input type="radio" name="q1" value="3"> 1,15</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bảng 3 phân biệt thép theo tiêu chuẩn này và thép theo tiêu chuẩn nước ngoài.</p>
+</details>
+<details><summary>Lời giải</summary><p>Q345 là thép theo tiêu chuẩn nước ngoài (GB) nên $\gamma_m = 1{,}10$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="181.9" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính cường độ tính toán chịu cắt $f_v$ của thép Q345 ($f_y = 345$ MPa, $\gamma_m = 1{,}10$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>MPa</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bảng 2: $f_v = 0{,}58\,f_y/\gamma_m$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_v = 0{,}58 \times 345/1{,}10 = 181{,}9$ MPa.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="233.9" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cột nhà công nghiệp một tầng <b>có cầu trục</b>, thép SS400 (JIS) có $f_y = 245$ MPa. Tính tích $f_{yd}\gamma_c$ dùng trong các công thức kiểm tra.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>MPa</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>SS400 theo tiêu chuẩn Nhật → $\gamma_m = 1{,}10$; cột nhà một tầng có cầu trục → $\gamma_c = 1{,}05$ (Bảng 1).</p>
+</details>
+<details><summary>Lời giải</summary><p>$f_{yd} = 245/1{,}10 = 222{,}7$ MPa; $f_{yd}\gamma_c = 222{,}7 \times 1{,}05 = 233{,}9$ MPa.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$f_{yd} = f_y/\gamma_m$; $f_v = 0{,}58f_y/\gamma_m$. Thép theo tiêu chuẩn nước ngoài (Q345, SS400, A572, S235): $\gamma_m = 1{,}10$.</li>
+<li>$\gamma_c = 1{,}0$ cho dầm, kèo nhà xưởng; 1,05 cho cột nhà một tầng có cầu trục; 0,90 cho thanh kéo tính theo tiết diện không giảm yếu.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="18_nha_cau_truc/b4_dam_cau_truc.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 18.4. Dầm cầu trục, chuyển vị tại ray – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 18 · Nhà có cầu trục · Bài 4</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 18.4. Dầm cầu trục, chuyển vị tại ray <span class="en">Crane runway girder and lateral drift at rail level</span></h1>
+<p class="lead">Dầm cầu trục chịu tải bánh có hệ số động; mô men lớn nhất ứng với vị trí Winkler của hai bánh. Cột phải đủ cứng để chuyển vị ngang tại ray nằm trong giới hạn của Bảng G.3.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính tải bánh tính toán, $M_{\max}$ theo <a href="#eq-18-2">(18.2)</a> và kiểm tra ứng suất, độ võng của dầm.</li>
+<li>Xác định giới hạn chuyển vị ngang tại ray theo TCVN 2737:2023 và AISC DG3.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Tên bảng tính <code>03.2</code> ghi bước cột 8,5 m nhưng phần đường ảnh hưởng dùng 6,8 m. Dầm H600×200×6×10 (Q345) đạt với 6,8 m. Kỹ sư cần biết nó còn đạt không nếu dùng nhịp đúng 8,5 m của nhà xưởng Hòa Bình mở rộng.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Kiểm tra sơ bộ dầm cầu trục</h3>
+<h4>Nội lực</h4>
+<p>Mô men lớn nhất trong dầm đơn giản nhịp $B$ với hai bánh xe cách nhau $K$ (quy tắc Winkler: đặt hợp lực và một bánh đối xứng qua giữa nhịp, khi $K &lt; 0{,}586B$):</p>
+<div class="eq" id="eq-18-2"><div class="m">$$M_{\max} = \frac{P(B - K/2)^2}{2B}$$</div><span class="tag">(18.2)</span></div>
+<p>Tải bánh tính toán theo TCVN 2737:2023: $P = \gamma_f\,\eta\,\psi_t\,P^c_{\max} = 1{,}2 \times 1{,}2 \times 1{,}0 \times 108 = 155{,}5$ kN.</p>
+<h3>Chuyển vị ngang tại cao trình ray</h3>
+<p>TCVN 2737:2023 Phụ lục G, Bảng G.3: kiểm tra tại <b>đỉnh ray</b>, do lực hãm xe con của <b>một</b> cầu trục, không kể nghiêng móng, và không nhỏ hơn 6 mm. Giới hạn là chuyển vị ngang của cột nhà, tính với $h$ từ mặt móng đến đỉnh ray.</p>
+<div class="tbl" id="tbl-18-6"><table><thead><tr><th>Nhóm chế độ</th><th>Cột nhà (TCVN G.3)</th><th>AISC DG3 (đính chính 2020)</th></tr></thead><tbody>
+<tr><td>A1–A3</td><td>$h/500$</td><td>Pendant: $h/100$</td></tr>
+<tr><td>A4–A6</td><td>$h/1000$</td><td>Cabin: $h/240 \le 50$ mm</td></tr>
+<tr><td>A7–A8</td><td>$h/2000$</td><td>–</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 18.6.</b> Giới hạn chuyển vị ngang tại cao trình ray</p>
+<p>Với ray ở cao trình $h$ = 6,5 m, chế độ A4–A6: TCVN cho $6500/1000 = 6{,}5$ mm, AISC (cabin) cho $6500/240 = 27$ mm. <b>Giới hạn TCVN chặt gấp 4 lần.</b> Nhưng tải theo TCVN chỉ là lực hãm tiêu chuẩn $T^c = 4{,}046 \times 1{,}689 = 6{,}8$ kN tại một khung. Trong SAP2000: tạo một trường hợp riêng chỉ có $T^c$ ở một khung (không hệ số), đọc $U_1$ tại nút cao trình ray trong <i>Joint Displacements</i>. Phải dùng mô hình <b>có</b> dầm cầu trục và dầm hãm truyền lực sang các khung kề, nếu không kết quả quá bất lợi.</p>
+<h2 id="s3">3. Khám phá</h2>
+<p>Kéo vị trí bánh $a$ để thấy mô men dưới bánh thay đổi, rồi bật lại "Đặt theo Winkler". Mặc định là Ví dụ 18.2 với $B$ = 6,8 m.</p>
+<div data-widget="W22"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 18.2 – Dầm H600×200×6×10, Q345</div>
+<p>$I_x = 44\,566$ cm$^4$; $W_x = 1486$ cm³; $f_{yd} = 313{,}6$ MPa. Bỏ qua dầm hãm khi tính uốn đứng.</p>
+<details class="sol"><summary>Lời giải</summary>
+<div class="tbl" id="tbl-18-5"><table><thead><tr><th></th><th>$B$ = 6,8 m</th><th>$B$ = 8,5 m</th></tr></thead><tbody>
+<tr><td>$M_{\max}$ TCVN 2023 (kNm)</td><td>377,1</td><td>506,7</td></tr>
+<tr><td>$M_{\max}$ bảng tính 1995 (kNm)</td><td>260,2</td><td>–</td></tr>
+<tr><td>$\sigma = M/W_x$ (MPa)</td><td>253,8</td><td>341,1</td></tr>
+<tr><td>Tỷ số $\sigma/f_{yd}$</td><td><b>0,81</b></td><td><b>1,09 – không đạt</b></td></tr>
+<tr><td>Võng do 1 cầu trục tiêu chuẩn, gần đúng $ML^2/10EI$ (mm)</td><td>13,2 = $L/516$</td><td>27,7 = $L/307$</td></tr>
+<tr><td>Giới hạn G.4: cabin A1–A6 $L/400$; dưới nền $L/250$</td><td>Đạt</td><td>Không đạt $L/400$; đạt $L/250$</td></tr>
+<tr><td>$M_u$ LRFD theo ASCE (1,6 × 1,25 × 108) (kNm)</td><td>523,7</td><td>703,8</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 18.5.</b> Kiểm tra sơ bộ dầm cầu trục 15 T</p>
+<p>Kết luận: tiết diện H600×200×6×10 chỉ phù hợp với <b>bước cột 6,8 m</b> theo TCVN 2737:2023. Với bước 8,5 m (như tên tệp) phải tăng tiết diện. Còn phải kiểm tra thêm: uốn xiên do lực hãm (cánh trên và dầm hãm), ứng suất cục bộ dưới bánh xe với $\gamma_{f1}$ (9.9), ổn định cục bộ bụng có ứng suất cục bộ (TCVN 5575:2024 điều 8.5), mỏi (9.19, hệ số 0,5 cho A4–A6), ổn định tổng thể.</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p>Ổn định tổng thể của dầm cầu trục khi có dầm hãm: dầm hãm nối cánh trên với hệ sườn tường hoặc dầm hãm đối diện, nên cánh nén được giữ liên tục và thường không cần kiểm tra ổn định tổng thể. Nếu <b>không có dầm hãm</b> (cầu trục nhẹ dưới 10 T, bước cột nhỏ), cánh trên tự do trên toàn nhịp và ổn định tổng thể thường quyết định tiết diện.</p>
+</div>
+</details>
+</div>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Theo TCVN 2737:2023, hệ số động $\eta = 1{,}2$ được dùng khi:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Tính độ bền dầm cầu trục và liên kết</label></li><li><label><input type="radio" name="q1" value="1"> Tính độ võng dầm cầu trục</label></li><li><label><input type="radio" name="q1" value="2"> Tính chuyển vị ngang của cột tại ray</label></li><li><label><input type="radio" name="q1" value="3"> Tính mỏi dầm cầu trục</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="../18_nha_cau_truc/b1_tai_cau_truc_tcvn.html#tbl-18-2">Bảng 18.2</a>, dòng hệ số động.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\eta$ = 1,2 chỉ dùng khi tính độ bền dầm cầu trục và liên kết; không dùng cho mỏi, độ võng, chuyển vị cột, tác dụng cục bộ.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="122.4" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Cầu trục có $P^c_{\max}$ = 85 kN, nhà có một cầu trục. Tính tải bánh tính toán $P$ để kiểm tra độ bền dầm cầu trục theo TCVN 2737:2023.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$P = \gamma_f\,\eta\,\psi_t\,P^c_{\max}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$P = 1{,}2 \times 1{,}2 \times 1{,}0 \times 85 = 122{,}4$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="206.6" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Dầm cầu trục đơn giản nhịp $B$ = 6 m, hai bánh cách nhau $K$ = 3,0 m (giả định), $P$ = 122,4 kN mỗi bánh. Tính $M_{\max}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kNm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Kiểm tra $K &lt; 0{,}586B$ rồi dùng <a href="#eq-18-2">(18.2)</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}586 \times 6 = 3{,}516 &gt; 3{,}0$ → $M_{\max} = 122{,}4 \times (6 - 1{,}5)^2/(2 \times 6) = 206{,}6$ kNm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$M_{\max} = P(B - K/2)^2/2B$ khi $K &lt; 0{,}586B$; tải bánh TCVN $P = 1{,}2 \times 1{,}2 \times 1{,}0 \times P^c_{\max}$.</li>
+<li>H600×200×6×10: đạt với $B$ = 6,8 m ($\sigma/f_{yd}$ = 0,81), không đạt với 8,5 m (1,09).</li>
+<li>Chuyển vị tại ray A4–A6: TCVN $h/1000$, chặt hơn AISC cabin $h/240$ khoảng 4 lần.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w22.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

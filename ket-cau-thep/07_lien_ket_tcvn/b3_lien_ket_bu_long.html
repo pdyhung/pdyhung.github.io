@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="07_lien_ket_tcvn/b3_lien_ket_bu_long.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 7.3. Liên kết bu lông – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 7 · Liên kết TCVN · Bài 3</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 7.3. Liên kết bu lông <span class="en">Bolted connections (clause 14.2)</span></h1>
+<p class="lead">Một bu lông thường có ba khả năng chịu lực: cắt (186), ép mặt (187) và kéo (188). Khi bu lông chịu đồng thời cắt và kéo, TCVN 5575:2024 yêu cầu thêm điều kiện tương tác (190).</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $N_{bv}$, $N_{bp}$, $N_{bt}$ với đúng hệ số $\gamma_b$ và số bu lông cần thiết theo (189).</li>
+<li>Bố trí bu lông theo khoảng cách tối thiểu, tối đa của Bảng 43.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mối nối thanh giằng cột nhà xưởng Hòa Bình dùng bản mã dày 12 mm, bu lông M20 cấp 8.8. Bảng tính cũ lấy $\gamma_b = 1{,}0$ cho cả cắt và ép mặt. Với bu lông cấp chính xác B (lỗ rộng hơn thân 1–3 mm), TCVN 5575:2024 chỉ cho $\gamma_b = 0{,}9$, nên khả năng chịu cắt giảm 10 % và số bu lông có thể phải tăng.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Liên kết bu lông (điều 14.2)</h3>
+<h4>Bố trí bu lông (Bảng 43)</h4>
+<div class="tbl" id="tbl-7-7"><table><thead><tr><th>Khoảng cách</th><th>Giá trị ($d$ = đường kính lỗ; $t$ = chiều dày bản ngoài mỏng nhất)</th></tr></thead><tbody>
+<tr><td>Giữa tâm lỗ, tối thiểu</td><td>$2{,}5d$ (khi $f_y \le 540$ MPa)</td></tr>
+<tr><td>Giữa tâm lỗ, tối đa, hàng biên</td><td>$\min(8d;\ 12t)$</td></tr>
+<tr><td>Giữa tâm lỗ, tối đa, hàng giữa</td><td>kéo: $\min(16d;\ 24t)$; nén: $\min(12d;\ 18t)$</td></tr>
+<tr><td>Tâm lỗ đến mép, dọc lực, tối thiểu</td><td>$2d$</td></tr>
+<tr><td>Tâm lỗ đến mép, vuông góc lực, tối thiểu</td><td>mép cắt $1{,}5d$; mép cán $1{,}2d$</td></tr>
+<tr><td>Tâm lỗ đến mép, tối đa</td><td>$\min(4d;\ 8t)$</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 7.7.</b> Khoảng cách bố trí bu lông (Bảng 43, $f_y \le 540$ MPa)</p>
+<p>Đường kính lỗ: $d = d_b + (1 \div 3)$ mm với bu lông cấp chính xác B (Chú thích 1 Bảng 43).</p>
+<h4>Khả năng chịu lực của một bu lông (14.2.9)</h4>
+<div class="eq" id="eq-7-5"><div class="m">$$N_{bv} = f_{vb}\,A_b\,n_s\,\gamma_b\,\gamma_c \qquad (186)$$</div><span class="tag">(7.5)</span></div>
+<div class="eq" id="eq-7-6"><div class="m">$$N_{bp} = f_{cb}\,d_b\,\textstyle\sum t\,\gamma_b\,\gamma_c \qquad (187)$$</div><span class="tag">(7.6)</span></div>
+<div class="eq" id="eq-7-7"><div class="m">$$N_{bt} = f_{tb}\,A_{bn}\,\gamma_c \qquad (188)$$</div><span class="tag">(7.7)</span></div>
+<p>Hệ số $\gamma_b$ theo Bảng 44: liên kết nhiều bu lông khi tính cắt và ép mặt lấy <b>1,0 với cấp chính xác A</b> và <b>0,9 với cấp chính xác B</b>. Khi tính ép mặt với $a = 1{,}5d$ và $s = 2d$ lấy 0,8; với khoảng cách trung gian thì nội suy. Hai hệ số này lấy đồng thời. <b>Công thức kéo (188) không có $\gamma_b$.</b></p>
+<h4>Phân phối lực trong nhóm bu lông</h4>
+<ul><li><b>Lực dọc qua trọng tâm</b> (14.2.10): $n_b \ge N/N_{b,\min}$ (189). Khi chiều dài mối nối $L &gt; 16d$, chia thêm cho $\beta = 1 - 0{,}005(L/d - 16) \ge 0{,}75$.</li>
+<li><b>Mô men gây trượt</b> (14.2.11): lực bu lông tỷ lệ với khoảng cách đến trọng tâm nhóm.</li>
+<li><b>Cắt và kéo đồng thời</b> (14.2.13): ngoài $N_t \le N_{bt}$ còn phải thỏa mãn</li></ul>
+<div class="eq" id="eq-7-9"><div class="m">$$\left(\frac{N_s}{N_{bv}}\right)^2 + \left(\frac{N_t}{N_{bt}}\right)^2 \le 1 \qquad (190)$$</div><span class="tag">(7.9)</span></div>
+<ul><li><b>Bản đệm hoặc bản ghép một phía</b> (14.2.14): tăng số bu lông thêm 10 %.</li></ul>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Nhân $\gamma_b$ vào công thức kéo (188); công thức này không có $\gamma_b$.</li>
+<li>Kiểm tra cắt và kéo riêng rẽ mà bỏ qua tương tác (190) khi bu lông chịu đồng thời hai lực.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Công thức nào của 14.2.9 <b>không</b> có hệ số điều kiện làm việc của liên kết $\gamma_b$?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> (186) – chịu cắt</label></li><li><label><input type="radio" name="q1" value="1"> (187) – chịu ép mặt</label></li><li><label><input type="radio" name="q1" value="2"> (188) – chịu kéo</label></li><li><label><input type="radio" name="q1" value="3"> Cả ba đều có $\gamma_b$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem đoạn sau các công thức (186)–(188).</p>
+</details>
+<details><summary>Lời giải</summary><p>$N_{bt} = f_{tb}A_{bn}\gamma_c$: công thức kéo (188) không có $\gamma_b$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="93.8" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính $N_{bv}$ của bu lông M20 cấp 8.8, cấp chính xác B, một mặt cắt ($\gamma_c = 1$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$N_{bv} = f_{vb}A_bn_s\gamma_b\gamma_c$; $A_b$ của M20 xem <a href="../07_lien_ket_tcvn/b1_cuong_do_lien_ket.html#tbl-7-4">Bảng 7.4</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$N_{bv} = 332 \times 314 \times 1 \times 0{,}9 = 93\,823$ N $= 93{,}8$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="5" data-tol="0.001"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Mối nối chịu lực dọc $N = 400$ kN qua trọng tâm, bu lông M20 cấp 8.8 cấp chính xác B, một mặt cắt, $\sum t = 12$ mm, thép CCT34 ($f_{cb} = 485$ MPa), $\gamma_c = 1$. Bỏ qua hệ số $\beta$ của mối nối dài. Cần tối thiểu bao nhiêu bu lông?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>bu lông</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính $N_{bv}$ và $N_{bp}$, lấy giá trị nhỏ hơn rồi dùng (189).</p>
+</details>
+<details><summary>Lời giải</summary><p>$N_{bv} = 93{,}8$ kN; $N_{bp} = 485 \times 20 \times 12 \times 0{,}9 = 104{,}8$ kN → $N_{b,\min} = 93{,}8$ kN; $n_b \ge 400/93{,}8 = 4{,}26$ → 5 bu lông.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$N_{bv} = f_{vb}A_bn_s\gamma_b\gamma_c$; $N_{bp} = f_{cb}d_b\sum t\,\gamma_b\gamma_c$; $N_{bt} = f_{tb}A_{bn}\gamma_c$ (không có $\gamma_b$).</li>
+<li>Cấp chính xác B: $\gamma_b = 0{,}9$ khi tính cắt và ép mặt.</li>
+<li>Bu lông chịu đồng thời cắt và kéo: kiểm tra thêm $(N_s/N_{bv})^2 + (N_t/N_{bt})^2 \le 1$ (190).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="11_direct_analysis/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 11: Direct Analysis Method – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 11 · Direct Analysis Method · Kiểm tra chương</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 11: Direct Analysis Method</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<ul><li>Phân tích ổn định (C1) phải kể biến dạng, $P$-$\Delta$, $P$-$\delta$, sai lệch hình học, giảm độ cứng, sai số độ cứng và độ bền.</li>
+<li>DAM (C2): $N_i = 0{,}002\alpha Y_i$; độ cứng $\times 0{,}8$, uốn $\times\tau_b$; phân tích bậc hai ở mức LRFD hoặc 1,6 lần ASD; kiểm tra cột với $K = 1{,}0$.</li>
+<li>SAP2000: <i>Direct Analysis</i>, <i>General 2nd Order</i>, <i>Tau-b Fixed</i>, case <i>Nonlinear Static</i> + <i>P-Delta</i>, chia phần tử.</li>
+<li>ELM (Phụ lục 7) chỉ khi $\Delta_2/\Delta_1 \le 1{,}5$, không giảm độ cứng, $K &gt; 1$.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Hệ số 0,002 trong tải giả định $N_i = 0{,}002\alpha Y_i$ có ý nghĩa gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Hệ số an toàn bù sai số tải trọng đứng</label></li><li><label><input type="radio" name="q1" value="1"> Thay cho độ nghiêng ban đầu (sai lệch lắp dựng) 1/500 của cột</label></li><li><label><input type="radio" name="q1" value="2"> Thay cho giảm độ cứng do ứng suất dư</label></li><li><label><input type="radio" name="q1" value="3"> Tỷ số giữa tải gió và tải đứng tối thiểu</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$0{,}002 = 1/500$.</p>
+</details>
+<details><summary>Lời giải</summary><p>Tải ngang $0{,}002Y_i$ gây cùng mô men lật như khi cột nghiêng 1/500 dưới tải đứng $Y_i$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Khi nào $\tau_b &lt; 1$?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Khi $\Delta_2/\Delta_1 &gt; 1{,}5$</label></li><li><label><input type="radio" name="q2" value="1"> Khi $\alpha P_r/P_y &gt; 0{,}5$</label></li><li><label><input type="radio" name="q2" value="2"> Khi thiết kế theo ASD</label></li><li><label><input type="radio" name="q2" value="3"> Khi cột có tiết diện thay đổi</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="../11_direct_analysis/b2_tai_gia_dinh.html#eq-11-2">(11.2)</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\tau_b = 4(\alpha P_r/P_y)(1 - \alpha P_r/P_y) &lt; 1$ khi $\alpha P_r/P_y &gt; 0{,}5$; cột nhà mái nhẹ thường dưới 0,2 nên $\tau_b = 1$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Vì sao DAM cho phép lấy $K = 1$ khi kiểm tra cột?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Vì cột nhà xưởng luôn có chân ngàm</label></li><li><label><input type="radio" name="q3" value="1"> Vì sai lệch ban đầu, giảm độ cứng và hiệu ứng bậc hai đã nằm trong nội lực phân tích</label></li><li><label><input type="radio" name="q3" value="2"> Vì AISC dùng hệ số $\phi_c$ nhỏ hơn TCVN</label></li><li><label><input type="radio" name="q3" value="3"> Vì DAM chỉ áp dụng cho khung có giằng</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Phần ảnh hưởng ổn định đã được đưa vào đâu?</p>
+</details>
+<details><summary>Lời giải</summary><p>DAM đưa yếu tố 3, 4 và $P$-$\Delta$, $P$-$\delta$ vào phân tích → nội lực đã gồm ảnh hưởng ổn định, kiểm tra cột với $K = 1{,}0$ (C3).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vì sao phân tích bậc hai với tổ hợp ASD phải nhân tải 1,6?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> Vì ASD dùng $\Omega = 1{,}67 \approx 1{,}6$</label></li><li><label><input type="radio" name="q4" value="1"> Vì bài toán bậc hai không tuyến tính: khuếch đại phải tính ở mức tải cực hạn rồi mới chia lại</label></li><li><label><input type="radio" name="q4" value="2"> Vì tải gió ASD đã giảm 0,6</label></li><li><label><input type="radio" name="q4" value="3"> Không cần, SAP xử lý ASD như LRFD</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Nội lực bậc hai có tỷ lệ thuận với tải không?</p>
+</details>
+<details><summary>Lời giải</summary><p>Nội lực bậc hai không tỷ lệ với tải; phân tích ở mức ASD sẽ đánh giá thấp khuếch đại. AISC yêu cầu phân tích ở 1,6 lần tổ hợp ASD rồi chia 1,6 (SAP tự làm).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.2" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tổ hợp LRFD có tổng tải đứng tại mức đỉnh cột $Y_i = 600$ kN. Tính $N_i$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\alpha = 1{,}0$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$N_i = 0{,}002 \times 1{,}0 \times 600 = 1{,}2$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.8" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Như câu trên nhưng muốn dùng $\tau_b = 1{,}0$ cho mọi cấu kiện theo C2.3(3). Tổng tải ngang giả định phải đặt là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Cộng thêm $0{,}001\alpha Y_i$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$N = (0{,}002 + 0{,}001) \times 600 = 1{,}8$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.949" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cột $A = 7780$ mm², $F_y = 235$ MPa, tổ hợp ASD cho $P_r = 700$ kN. Tính $\tau_b$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>ASD: $\alpha = 1{,}6$; $P_y = F_yA$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$P_y = 1828{,}3$ kN; $\alpha P_r/P_y = 1{,}6 \times 700/1828{,}3 = 0{,}613 &gt; 0{,}5$ → $\tau_b = 4 \times 0{,}613 \times 0{,}387 = 0{,}949$.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

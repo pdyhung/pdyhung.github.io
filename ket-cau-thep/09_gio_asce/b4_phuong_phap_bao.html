@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="09_gio_asce/b4_phuong_phap_bao.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 9.4. Phương pháp bao (Ch.28) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 9 · Gió ASCE 7-10 · Bài 4</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 9.4. Phương pháp bao (Ch.28) <span class="en">Envelope procedure for low-rise buildings (Chapter 28)</span></h1>
+<p class="lead">Phương pháp bao của Chương 28 dùng một áp lực vận tốc $q_h$ cho mọi mặt và các hệ số $GC_{pf}$ lấy từ hầm gió, nên tính tay rất nhanh.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Kiểm tra điều kiện nhà thấp tầng; tính bề rộng vùng biên $a$.</li>
+<li>Nội suy $GC_{pf}$ theo góc mái và tính $p = q_h[(GC_{pf}) - (GC_{pi})]$ cho hai trường hợp $\pm GC_{pi}$.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Kèo nhà máy DNP nhịp 54 m, mái dốc 10 % ($\theta = 5{,}71°$). Hệ số $GC_{pf}$ của Hình 28.4-1 chỉ cho ở 5° và 20°, nên phải nội suy. Đồng thời mỗi hướng gió có hai giá trị áp lực trong, và kỹ sư cần biết trường hợp nào làm mái bị hút mạnh nhất.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h4>Áp lực thiết kế lên khung chính – phương pháp Envelope</h4>
+<p>Với nhà thấp tầng (chiều cao trung bình mái $h \le 18$ m và $h \le$ bề rộng nhỏ nhất), ASCE 7-10 Chương 28 cho phép dùng các hệ số áp lực <b>bao</b> $GC_{pf}$. Các hệ số này lấy từ thí nghiệm hầm gió, đã tổ hợp sẵn hệ số giật $G$ và hệ số áp lực ngoài $C_p$:</p>
+<div class="eq" id="eq-9-3"><div class="m">$$p = q_h\left[(GC_{pf}) - (GC_{pi})\right]$$</div><span class="tag">(9.3)</span></div>
+<ul><li>$q_h$: áp lực vận tốc tính tại <b>chiều cao trung bình mái</b> $h$, dùng cho mọi bề mặt.</li>
+<li>$GC_{pf}$: hệ số áp lực ngoài (Hình 28.4-1), phụ thuộc vùng bề mặt và góc dốc mái $\theta$.</li>
+<li>$GC_{pi}$: hệ số áp lực trong (Bảng 26.11-1): nhà kín $\pm0{,}18$; nhà kín một phần $\pm0{,}55$; nhà hở $0$.</li></ul>
+<p>Quy ước dấu: dương là áp lực đẩy vào bề mặt, âm là hút ra khỏi bề mặt. Vì áp lực trong có thể dương hoặc âm tùy vị trí ô cửa so với hướng gió, mỗi hướng gió phải xét <b>hai trường hợp</b> $+GC_{pi}$ và $-GC_{pi}$.</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Khác biệt với TCVN 2737:2023.</b> TCVN tính áp lực theo từng độ cao $z$ và nhân hệ số khí động $c$ riêng cho từng mặt. Phương pháp Envelope của ASCE dùng chung $q_h$ cho mọi mặt, còn vùng biên (1E–4E) có hệ số lớn hơn vùng giữa. Ngoài ra ASCE xét áp lực trong, còn TCVN 2737 chỉ xét áp lực trong khi nhà có lỗ cửa lớn.</p>
+</div>
+<h4>Hệ số $GC_{pf}$ (Hình 28.4-1)</h4>
+<p>Bề rộng vùng biên:</p>
+<div class="eq" id="eq-9-5"><div class="m">$$a = \min(0{,}1\,B_{\min};\ 0{,}4\,h) \ \ge\ \max(0{,}04\,B_{\min};\ 0{,}9\ \text{m}),$$</div><span class="tag">(9.5)</span></div>
+<p>với $B_{\min}$ là kích thước nhỏ nhất của mặt bằng. Vùng biên (1E–4E) rộng $2a$ tính từ góc nhà.</p>
+<div class="tbl" id="tbl-9-4"><table><thead><tr><th>Góc dốc $\theta$</th><th>1</th><th>2</th><th>3</th><th>4</th><th>1E</th><th>2E</th><th>3E</th><th>4E</th></tr></thead><tbody>
+<tr><td>0–5°</td><td>0,40</td><td>−0,69</td><td>−0,37</td><td>−0,29</td><td>0,61</td><td>−1,07</td><td>−0,53</td><td>−0,43</td></tr>
+<tr><td>20°</td><td>0,53</td><td>−0,69</td><td>−0,48</td><td>−0,43</td><td>0,80</td><td>−1,07</td><td>−0,69</td><td>−0,64</td></tr>
+<tr><td>30–45°</td><td>0,56</td><td>0,21</td><td>−0,43</td><td>−0,37</td><td>0,69</td><td>0,27</td><td>−0,53</td><td>−0,48</td></tr>
+<tr><td>90°</td><td>0,56</td><td>0,56</td><td>−0,37</td><td>−0,37</td><td>0,69</td><td>0,69</td><td>−0,48</td><td>−0,48</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 9.4.</b> $GC_{pf}$ – gió thổi vuông góc đỉnh mái (ngang nhà), nội suy tuyến tính theo $\theta$</p>
+<div class="tbl" id="tbl-9-5"><table><thead><tr><th>Vùng</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>1E</th><th>2E</th><th>3E</th><th>4E</th><th>5E</th><th>6E</th></tr></thead><tbody>
+<tr><td>$GC_{pf}$</td><td>−0,45</td><td>−0,69</td><td>−0,37</td><td>−0,45</td><td>0,40</td><td>−0,29</td><td>−0,48</td><td>−1,07</td><td>−0,53</td><td>−0,48</td><td>0,61</td><td>−0,43</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 9.5.</b> $GC_{pf}$ – gió thổi song song đỉnh mái (dọc nhà), mọi góc dốc</p>
+<p>Vùng 1: tường đón gió; 2: mái phía đón gió; 3: mái phía khuất gió; 4: tường khuất gió; 5, 6: tường đầu hồi đón gió và khuất gió.</p>
+<h2 id="s3">3. Khám phá</h2>
+<p>Kéo góc mái, đổi mức độ kín và bước khung. Bảng cho áp lực $p$ và tải phân bố $q$ lên khung của cả hai trường hợp $\pm GC_{pi}$; hình vẽ mũi tên theo trường hợp chọn.</p>
+<div data-widget="W13"></div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Nội suy $GC_{pf}$ theo độ dốc $i$ (%) thay vì theo góc $\theta$ (độ).</li>
+<li>Quên rằng giữa 20° và 30° hệ số vùng 2 đổi từ hút sang đẩy: mái dốc lớn có thể có hai trường hợp bất lợi khác nhau.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Hệ số áp lực trong $GC_{pi}$ của nhà kín theo Bảng 26.11-1 là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> $0$</label></li><li><label><input type="radio" name="q1" value="1"> $\pm0{,}18$</label></li><li><label><input type="radio" name="q1" value="2"> $\pm0{,}55$</label></li><li><label><input type="radio" name="q1" value="3"> $+0{,}8$ và $-0{,}5$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Ba mức độ kín: kín, kín một phần, hở.</p>
+</details>
+<details><summary>Lời giải</summary><p>Nhà kín $\pm0{,}18$; kín một phần $\pm0{,}55$; nhà hở $0$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="2.4" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà thấp tầng có kích thước mặt bằng nhỏ nhất $B_{\min} = 40$ m, chiều cao trung bình mái $h = 6$ m. Tính bề rộng vùng biên $a$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p><a href="#eq-9-5">(9.5)</a>: $a = \min(0{,}1B_{\min};\,0{,}4h) \ge \max(0{,}04B_{\min};\,0{,}9)$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$a = \min(4{,}0;\ 2{,}4) = 2{,}4$ m $\ge \max(1{,}6;\ 0{,}9)$ → $a = 2{,}4$ m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="292" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Nhà kín, mái dốc $\theta = 25°$, $q_h = 100$ daN/m², bước khung 8 m. Tính tải gió phân bố lên cột đón gió (vùng 1) của khung giữa, trường hợp $+GC_{pi}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Nội suy vùng 1 giữa 20° (0,53) và 30° (0,56).</p>
+</details>
+<details><summary>Lời giải</summary><p>$GC_{pf} = 0{,}53 + 0{,}03 \times 5/10 = 0{,}545$; $p = 100(0{,}545 - 0{,}18) = 36{,}5$ daN/m²; $q = 36{,}5 \times 8 = 292$ daN/m.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$p = q_h[(GC_{pf}) - (GC_{pi})]$, dùng $q_h$ chung cho mọi mặt; mỗi hướng gió xét cả $+GC_{pi}$ và $-GC_{pi}$.</li>
+<li>$GC_{pf}$ nội suy tuyến tính theo $\theta$ (<a href="#tbl-9-4">Bảng 9.4</a>); vùng biên rộng $2a$ có hệ số lớn hơn.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w13.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

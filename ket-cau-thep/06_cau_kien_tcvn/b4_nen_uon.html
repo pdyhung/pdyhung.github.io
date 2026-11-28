@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="06_cau_kien_tcvn/b4_nen_uon.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 6.4. Nén – uốn: bền, ổn định – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 6 · Kiểm tra cấu kiện TCVN 5575:2024 · Bài 4</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 6.4. Nén – uốn: bền, ổn định <span class="en">Members under axial force and bending (Clause 9)</span></h1>
+<p class="lead">Cột khung nhà xưởng chịu nén nhỏ nhưng mô men lớn, nên thường làm việc gần cấu kiện chịu uốn. Ổn định ngoài mặt phẳng khung quyết định bởi khoảng cách các điểm giữ cánh trong.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính độ lệch tâm tương đối $m$, $m_{ef}$ và chọn cách kiểm tra theo 9.1.1, 9.2.2, 9.2.4.</li>
+<li>Xác định khoảng cách giữ cánh nén $L_{ef}$ để cột được miễn kiểm tra ổn định tổng thể.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Cột C1 của xưởng <b>Hòa Bình</b> là H(300–650)×200×6×10, thép S235. Với COMBO 4: $N = 79{,}85$ kN, $M_x = 278{,}08$ kNm, $m = 16{,}5$. Dầm tường giữ cánh ngoài, chống xiên tại dầm tường giữ cánh trong, cách nhau 5,0 m. Bảng tính báo cánh nén chưa được miễn kiểm tra ổn định tổng thể.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Cấu kiện chịu nén uốn (điều 9)</h3>
+<h4>Độ bền (9.1.1)</h4>
+<p>Khi $\tau \le 0{,}5f_v$ và $N/A_n &gt; 0{,}1f_{yd}$:</p>
+<div class="eq"><div class="m">$$\left(\frac{N}{A_n f_{yd}\gamma_c}\right)^n + \frac{M_x}{c_x W_{xn,\min} f_{yd}\gamma_c} + \frac{M_y}{c_y W_{yn,\min} f_{yd}\gamma_c} + \frac{B}{W_{\omega n,\min} f_{yd}\gamma_c} \le 1 \ \ (104)$$</div></div>
+<p>$n$, $c_x$, $c_y$ lấy theo Bảng E.1. Khi $N/A_n \le 0{,}1f_{yd}$ chỉ dùng được (104) nếu thỏa mãn 8.5.8 và 8.5.18; nếu không thì dùng công thức đàn hồi (105).</p>
+<h4>Ổn định trong mặt phẳng uốn (9.2.2)</h4>
+<div class="eq"><div class="m">$$\frac{N}{\varphi_e A f_{yd}\gamma_c} \le 1 \ \ (108),\qquad m_{ef} = \eta\,m,\quad m = \frac{e\,A}{W_c} = \frac{M}{N}\cdot\frac{A}{W_c}.$$</div></div>
+<p>$\varphi_e$ tra Bảng D.3 theo $\bar\lambda$ và $m_{ef}$; $\eta$ tra Bảng D.2. <b>Khi $m_{ef} &gt; 20$ thì tính như cấu kiện chịu uốn (điều 8).</b> Mô men $M$ lấy theo 9.2.3, với cột khung tiết diện không đổi là mô men lớn nhất trên chiều dài cột.</p>
+<h4>Ổn định ngoài mặt phẳng uốn (9.2.4)</h4>
+<div class="eq"><div class="m">$$\frac{N}{c\,\varphi_y A f_{yd}\gamma_c} \le 1 \ \ (110)$$</div></div>
+<ul><li>$m_x \le 5$: $c = \beta/(1 + \alpha m_x)$ (111), với $\alpha$, $\beta$ theo Bảng 22.</li>
+<li>$m_x \ge 10$: $c = 1/(1 + m_x\varphi_y/\varphi_b)$ (112).</li>
+<li>$5 &lt; m_x &lt; 10$: nội suy theo (113).</li></ul>
+<h2 id="s3">3. Khám phá</h2>
+<p>Kéo $L_{ef}$ (khoảng cách chống xiên cánh trong) và quan sát điểm $\bar\lambda_b$ so với ngưỡng $\bar\lambda_{ub}$. Bảng cũng tính $\varphi_b$ theo Phụ lục F để tham khảo khi chưa được miễn.</p>
+<div data-widget="W8"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ – Ngưỡng 4,2 m của cột C1</div>
+<p>Từ Ví dụ 6.3: $\bar\lambda_{ub} = 0{,}602$; $f_{yd} = 223{,}8$ MPa; $\sigma = 278{,}08 \times 10^6/1\,645\,100 = 169{,}0$ MPa; $b = 200$ mm. Tìm $L_{ef}$ lớn nhất để được miễn.</p>
+<details class="sol"><summary>Lời giải</summary>
+<ul><li>$\bar\lambda_{ub}\sqrt{f_{yd}/\sigma} = 0{,}602 \times 1{,}151 = 0{,}693$.</li>
+<li>Điều kiện $(L_{ef}/b)\sqrt{f_{yd}/E} \le 0{,}693$ → $L_{ef} \le 0{,}693 \times 200/0{,}03296 = 4204$ mm.</li>
+<li>Thay $f_{yd}$ vào thì $L_{ef,\max} = \bar\lambda_{ub}\,b\sqrt{E/\sigma}$, <b>không phụ thuộc</b> $\gamma_m$: dùng 1,05 hay 1,10 ngưỡng vẫn là 4,2 m.</li></ul>
+</details>
+</div>
+<div class="box ex"><div class="bt">📝 Ví dụ 6.3 – Cột C1 H(300–650)×200×6×10 (tiết diện đỉnh cột)</div>
+<p>Số liệu (bảng tính <code>1. Tinh Toan Cot TCVN 5575-2024</code> của khóa): thép S235 ($f_y = 235$ MPa; bảng tính lấy $\gamma_m = 1{,}05$ nên $f_{yd} = 223{,}8$ MPa. S235 theo tiêu chuẩn châu Âu, đúng ra phải lấy $\gamma_m = 1{,}10$ và $f_{yd} = 213{,}6$ MPa, khiến các tỷ số dưới đây tăng khoảng 5 %); tiết diện đỉnh $h = 650$ mm: $A = 77{,}8$ cm², $W_x = 1645{,}1$ cm³, $i_x = 26{,}2$ cm, $i_y = 4{,}14$ cm. $L_x = 21{,}65$ m ($\mu \approx 3{,}06$, ứng với $n \approx 0{,}28$); $L_y = 5{,}0$ m. Nội lực COMBO 4: $N = 79{,}85$ kN; $M_x = 278{,}08$ kNm.</p>
+<details class="sol"><summary>Lời giải</summary>
+<ol><li><b>Độ lệch tâm tương đối:</b> $m = (278{,}08/79{,}85) \times 7780/1\,645\,100 \times 10^3 = 16{,}5$. Với $\eta$ tra Bảng D.2 thì $m_{ef} = \eta m$. Nếu $\eta \ge 1{,}22$ thì $m_{ef} &gt; 20$ và cột được tính như <b>cấu kiện chịu uốn</b>.</li>
+<li><b>Độ bền (104)</b> với $n = 1{,}5$, $c_x = 1{,}0$ (bảng tính khóa): $(0{,}046)^{1{,}5} + 0{,}755 = 0{,}765 &lt; 1$. <b>Đạt.</b></li>
+<li><b>Ổn định cánh nén</b> (8.4.4b, công thức 72): $b/t = 20$; $b/h = 200/640$; $\bar\lambda_{ub} = 0{,}602$. Nhân với $\sqrt{f_{yd}/\sigma} = \sqrt{223{,}8/169{,}0} = 1{,}151$ được $\bar\lambda_{ub} = 0{,}693$. Với $L_{ef} = 5{,}0$ m: $\bar\lambda_b = (5000/200)\sqrt{223{,}8/206\,000} = 0{,}824 &gt; 0{,}693$. → <b>Chưa được miễn</b> kiểm tra ổn định tổng thể. Hoặc tính $\varphi_b$ theo Phụ lục F, hoặc giảm $L_{ef}$ xuống <b>không quá 4,2 m</b> (thêm chống xiên cánh trong tại dầm tường).</li></ol>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p>Bảng tính cột của khóa có nhiều ô <code>#NAME?</code> do dùng macro (.xlsm). Khi mở file gốc phải bật macro (Enable Content) thì các bước tính $\varphi_e$, $m_{ef}$ mới hiển thị.</p>
+</div>
+</details>
+</div>
+<h2 id="s5">5. Lỗi thường gặp</h2>
+<ul><li>Kết luận cột "đạt" chỉ từ độ bền (104) mà chưa kiểm tra ổn định ngoài mặt phẳng.</li>
+<li>Lấy $L_y$ bằng chiều cao cột trong khi chống xiên cánh trong đã chia cột thành các đoạn ngắn hơn (hoặc ngược lại: coi dầm tường giữ cả cánh trong dù không có chống xiên).</li></ul>
+<h2 id="s6">6. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi $m_{ef} &gt; 20$, cấu kiện nén uốn được tính như thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Như cấu kiện nén đúng tâm với $\varphi$ theo Bảng 7</label></li><li><label><input type="radio" name="q1" value="1"> Như cấu kiện chịu uốn (điều 8)</label></li><li><label><input type="radio" name="q1" value="2"> Bỏ qua mô men, chỉ kiểm tra độ bền (104)</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Lệch tâm rất lớn thì ảnh hưởng của lực dọc là nhỏ.</p>
+</details>
+<details><summary>Lời giải</summary><p>Theo 9.2.2: $m_{ef} &gt; 20$ thì tính như cấu kiện chịu uốn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="7.88" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Cột C1 ($A = 77{,}8$ cm², $W_x = 1645{,}1$ cm³) chịu $N = 120$ kN, $M_x = 200$ kNm. Tính độ lệch tâm tương đối $m$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$m = (M/N)\cdot A/W_c$, đổi cùng đơn vị.</p>
+</details>
+<details><summary>Lời giải</summary><p>$e = 200/120 = 1{,}667$ m $= 1667$ mm; $m = 1667 \times 7780/1\,645\,100 = 7{,}88$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="4.43" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cột C1 (tiết diện đỉnh: $b = 200$, $t = 10$, $h = 640$ mm, $W_c = 1645{,}1$ cm³, $f_{yd} = 223{,}8$ MPa, $\gamma_c = 1$) với tổ hợp khác có $M_x = 250$ kNm. Tính $L_{ef}$ lớn nhất để được miễn kiểm tra ổn định tổng thể (dùng (72) và chú thích 3 Bảng 12).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\bar\lambda_{ub} = 0{,}602$ không đổi; $\sigma$ giảm nên hệ số $\sqrt{f_{yd}/\sigma}$ tăng.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sigma = 250 \times 10^6/1\,645\,100 = 152{,}0$ MPa; $L_{ef,\max} = 0{,}602 \times 200\sqrt{206\,000/152{,}0} = 4434$ mm $\approx 4{,}43$ m.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nén uốn: độ bền (104), ổn định trong mặt phẳng (108) với $m_{ef} = \eta m$, ngoài mặt phẳng (110); $m_{ef} &gt; 20$ → tính như cấu kiện chịu uốn.</li>
+<li>Cột C1: $\bar\lambda_b = 0{,}824 &gt; 0{,}693$ khi $L_{ef} = 5$ m → cần chống xiên cánh trong với $L_{ef} \le 4{,}2$ m.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w08.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

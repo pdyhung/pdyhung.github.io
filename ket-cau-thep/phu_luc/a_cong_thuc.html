@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="phu_luc/a_cong_thuc.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phụ lục A. Bảng công thức – hệ số TCVN và AISC – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Phụ lục A</div>
+<h1>Phụ lục A. Bảng công thức – hệ số TCVN và AISC</h1>
+<p class="lead">Tập hợp các công thức kiểm tra cấu kiện và tính tải gió đã dùng trong giáo trình theo hai hệ tiêu chuẩn, kèm bảng tra nhanh hệ số $K_z$, giới hạn độ mảnh bản và các hệ số TCVN thường dùng.</p>
+<h3>Kiểm tra cấu kiện – TCVN 5575:2024</h3>
+<div class="tbl" id="tbl-CT-1"><table><thead><tr><th>Trường hợp</th><th>Công thức</th><th>Điều khoản / chương</th></tr></thead><tbody>
+<tr><td>Cường độ tính toán</td><td>$f_{yd} = f_y/\gamma_m$; $f_{ud} = f_u/\gamma_m$; $f_v = 0{,}58\,f_y/\gamma_m$</td><td>Bảng 3; Ch. 6</td></tr>
+<tr><td>Kéo đúng tâm (độ bền)</td><td>$N/(A_n f_{yd}\gamma_c) \le 1$</td><td>7.1.1</td></tr>
+<tr><td>Nén đúng tâm (ổn định)</td><td>$N/(\varphi A f_{yd}\gamma_c) \le 1$, $\bar\lambda = \lambda\sqrt{f_{yd}/E}$</td><td>7.1.2.1, <a href="../06_cau_kien_tcvn/b2_keo_nen.html#eq-6-1">(6.1)</a></td></tr>
+<tr><td>Hệ số $\varphi$ ($\bar\lambda \ge 0{,}6$)</td><td>$\varphi = 0{,}5(\delta - \sqrt{\delta^2 - 39{,}48\bar\lambda^2})/\bar\lambda^2$, $\delta = 9{,}87(1 - \alpha + \beta\bar\lambda) + \bar\lambda^2$</td><td><a href="../06_cau_kien_tcvn/b2_keo_nen.html#eq-6-2">(6.2)</a>; loại a/b/c: $\alpha$ = 0,03/0,04/0,04; $\beta$ = 0,06/0,09/0,14</td></tr>
+<tr><td>Uốn (độ bền)</td><td>$M/(W_{n,\min} f_{yd}\gamma_c) \le 1$; $VS/(I t_w f_v\gamma_c) \le 1$</td><td>(40), (41)</td></tr>
+<tr><td>Uốn (ổn định tổng thể)</td><td>$M_x/(\varphi_b W_{cx} f_{yd}\gamma_c) \le 1$</td><td>(68); $\varphi_b$ theo Phụ lục F</td></tr>
+<tr><td>Nén – uốn (độ bền)</td><td>$\left(\dfrac{N}{A_n f_{yd}\gamma_c}\right)^n + \dfrac{M_x}{c_x W_{xn,\min} f_{yd}\gamma_c} + \dfrac{M_y}{c_y W_{yn,\min} f_{yd}\gamma_c} \le 1$</td><td>(104); Bảng E.1</td></tr>
+<tr><td>Nén – uốn (ổn định trong mặt phẳng)</td><td>$N/(\varphi_e A f_{yd}\gamma_c) \le 1$; $m_{ef} = \eta\,m$, $m = (M/N)(A/W_c)$</td><td>(108); Bảng D.2, D.3</td></tr>
+<tr><td>Nén – uốn (ổn định ngoài mặt phẳng)</td><td>$N/(c\,\varphi_y A f_{yd}\gamma_c) \le 1$; $c = \beta/(1 + \alpha m_x)$ khi $m_x \le 5$</td><td>(110), (111)</td></tr>
+<tr><td>Hệ số chiều dài cột khung (chân khớp)</td><td>$\mu = 2\sqrt{1 + 0{,}38/n}$, $n = I_sL_c/(I_cL)$</td><td><a href="../06_cau_kien_tcvn/b5_chieu_dai_tinh_toan.html#eq-6-3">(6.3)</a></td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng CT.1.</b> Công thức kiểm tra cấu kiện theo TCVN 5575:2024</p>
+<h3>Kiểm tra cấu kiện – AISC 360-10 (LRFD)</h3>
+<div class="tbl" id="tbl-CT-2"><table><thead><tr><th>Trường hợp</th><th>Công thức</th><th>Mục / chương</th></tr></thead><tbody>
+<tr><td>Nén – ứng suất tới hạn</td><td>$F_e = \pi^2E/(KL/r)^2$; $F_{cr} = Q\,[0{,}658^{QF_y/F_e}]F_y$ khi $KL/r \le 4{,}71\sqrt{E/(QF_y)}$, ngược lại $F_{cr} = 0{,}877F_e$</td><td>E3-4, E7-2, E7-3</td></tr>
+<tr><td>Nén – khả năng</td><td>$P_n = F_{cr}A_g$; $\phi_c = 0{,}90$; $Q = Q_sQ_a$</td><td>E7-1</td></tr>
+<tr><td>Uốn – chiều dài giới hạn</td><td>$L_p = 1{,}76\,r_y\sqrt{E/F_y}$; $L_r$ theo F2-6</td><td>F2-5, F2-6</td></tr>
+<tr><td>Uốn – LTB ($L_p &lt; L_b \le L_r$)</td><td>$M_n = C_b[M_p - (M_p - 0{,}7F_yS_x)(L_b - L_p)/(L_r - L_p)] \le M_p$</td><td>F2-2</td></tr>
+<tr><td>Uốn – FLB (cánh không đặc chắc)</td><td>$M_n = M_p - (M_p - 0{,}7F_yS_x)(\lambda - \lambda_{pf})/(\lambda_{rf} - \lambda_{pf})$</td><td>F3-1</td></tr>
+<tr><td>Cắt</td><td>$V_n = 0{,}6F_yA_wC_v$; $C_v = 1$ khi $h/t_w \le 1{,}10\sqrt{k_vE/F_y}$, $k_v = 5$; $\phi_v = 0{,}90$</td><td>G2-1</td></tr>
+<tr><td>Tương tác ($P_r/P_c \ge 0{,}2$)</td><td>$P_r/P_c + \tfrac{8}{9}(M_{rx}/M_{cx} + M_{ry}/M_{cy}) \le 1$</td><td>H1-1a</td></tr>
+<tr><td>Tương tác ($P_r/P_c &lt; 0{,}2$)</td><td>$P_r/(2P_c) + M_{rx}/M_{cx} + M_{ry}/M_{cy} \le 1$</td><td>H1-1b</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng CT.2.</b> Công thức kiểm tra cấu kiện theo AISC 360-10</p>
+<h3>Tải trọng gió</h3>
+<div class="tbl" id="tbl-CT-3"><table><thead><tr><th>Tiêu chuẩn</th><th>Công thức</th><th>Ghi chú</th></tr></thead><tbody>
+<tr><td>TCVN 2737:2023 – tiêu chuẩn</td><td>$W_k = W_{3s,10}\,k(z_e)\,c\,G_f$, $W_{3s,10} = 0{,}852\,W_0$</td><td><a href="../04_tai_trong_tcvn/b3_tai_gio.html#eq-4-1">(4.1)</a>; $G_f = 0{,}85$ khi $T_1 \le 1$ s</td></tr>
+<tr><td>TCVN 2737:2023 – tính toán</td><td>$W = \gamma_n\,\gamma_f\,W_k$, $\gamma_f = 2{,}1$</td><td><a href="../04_tai_trong_tcvn/b3_tai_gio.html#eq-4-2">(4.2)</a>; $c_p = c_e - c_i$</td></tr>
+<tr><td>ASCE 7-10 – áp lực vận tốc</td><td>$q_z = 0{,}613\,K_z K_{zt} K_d V^2$ (N/m²)</td><td><a href="../09_gio_asce/b1_ap_luc_qz.html#eq-9-2">(9.2)</a>; $K_d = 0{,}85$</td></tr>
+<tr><td>ASCE 7-10 – hệ số $K_z$</td><td>$K_z = 2{,}01(z/z_g)^{2/\alpha}$ ($z \ge 4{,}6$ m)</td><td><a href="../09_gio_asce/b3_kz_exposure.html#eq-9-4">(9.4)</a>; Bảng 28.3-1</td></tr>
+<tr><td>ASCE 7-10 – áp lực khung chính (bao)</td><td>$p = q_h[(GC_{pf}) - (GC_{pi})]$</td><td><a href="../09_gio_asce/b4_phuong_phap_bao.html#eq-9-3">(9.3)</a></td></tr>
+<tr><td>Quy đổi $W_0$ → $V$</td><td>$V_{700} = 1{,}385\sqrt{W_0/0{,}0613}$ (m/s; $W_0$ daN/m²)</td><td><a href="../09_gio_asce/b2_quy_doi_van_toc.html#eq-9-q3">(9.q3)</a></td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng CT.3.</b> Công thức tải gió theo TCVN 2737:2023 và ASCE 7-10</p>
+<h3>Hệ số $K_z$ – ASCE 7-10 Bảng 28.3-1 (phương pháp bao, nhà thấp tầng)</h3>
+<div class="tbl" id="tbl-B-1"><table><thead><tr><th>$z$ (m)</th><th>0–4,6</th><th>6,1</th><th>7,6</th><th>9,1</th><th>12,2</th><th>15,2</th><th>18</th></tr></thead><tbody>
+<tr><td>Exposure B</td><td>0,70</td><td>0,70</td><td>0,70</td><td>0,70</td><td>0,76</td><td>0,81</td><td>0,85</td></tr>
+<tr><td>Exposure C</td><td>0,85</td><td>0,90</td><td>0,94</td><td>0,98</td><td>1,04</td><td>1,09</td><td>1,13</td></tr>
+<tr><td>Exposure D</td><td>1,03</td><td>1,08</td><td>1,12</td><td>1,16</td><td>1,22</td><td>1,27</td><td>1,31</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng B.1.</b> $K_z$ theo ASCE 7-10 Bảng 28.3-1</p>
+<h3>Giới hạn độ mảnh bản – AISC 360-10 Bảng B4.1 (tiết diện I tổ hợp hàn)</h3>
+<div class="tbl" id="tbl-B-2"><table><thead><tr><th>Bộ phận</th><th>Chịu nén đúng tâm $\lambda_r$</th><th>Chịu uốn $\lambda_p$ / $\lambda_r$</th></tr></thead><tbody>
+<tr><td>Cánh, $b/t = b_f/2t_f$</td><td>$0{,}64\sqrt{k_cE/F_y}$</td><td>$0{,}38\sqrt{E/F_y}$ / $0{,}95\sqrt{k_cE/F_L}$</td></tr>
+<tr><td>Bụng, $h/t_w$</td><td>$1{,}49\sqrt{E/F_y}$</td><td>$3{,}76\sqrt{E/F_y}$ / $5{,}70\sqrt{E/F_y}$</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng B.2.</b> Giới hạn độ mảnh bản, tiết diện I tổ hợp</p>
+<p>$k_c = 4/\sqrt{h/t_w}$, trong khoảng 0,35–0,76. $F_L = 0{,}7F_y$ khi $S_{xt}/S_{xc} \ge 0{,}7$. Với $E$ = 200 000 MPa:</p>
+<div class="tbl" id="tbl-B-3"><table><thead><tr><th>$F_y$ (MPa)</th><th>$\sqrt{E/F_y}$</th><th>Bụng nén $1{,}49\sqrt{}$</th><th>Cánh uốn $\lambda_p$</th><th>Bụng uốn $\lambda_p$ / $\lambda_r$</th></tr></thead><tbody>
+<tr><td>235</td><td>29,17</td><td>43,5</td><td>11,1</td><td>109,7 / 166,3</td></tr>
+<tr><td>345</td><td>24,08</td><td>35,9</td><td>9,2</td><td>90,5 / 137,3</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng B.3.</b> Trị số giới hạn độ mảnh với hai mác thép thông dụng</p>
+<h3>Các hệ số chính – TCVN</h3>
+<div class="tbl" id="tbl-B-4"><table><thead><tr><th>Hệ số</th><th>Giá trị</th><th>Nguồn</th></tr></thead><tbody>
+<tr><td>$\gamma_f$ tĩnh tải thép / BTCT / lớp cách nhiệt</td><td>1,05 / 1,1 / 1,2–1,3</td><td>TCVN 2737:2023 Bảng 1</td></tr>
+<tr><td>$\gamma_f$ hoạt tải</td><td>1,3</td><td>8.3.5a</td></tr>
+<tr><td>$\gamma_f$ gió</td><td>2,1</td><td>10.1.6</td></tr>
+<tr><td>$\gamma_f$ cầu trục</td><td>1,2</td><td>9.8</td></tr>
+<tr><td>$\gamma_n$ (C1 / C2 / C3)</td><td>0,87 / 1,0 / 1,15</td><td>Phụ lục H</td></tr>
+<tr><td>$\gamma_m$ thép theo TCVN / nước ngoài</td><td>1,05 / 1,10</td><td>TCVN 5575:2024 Bảng 3</td></tr>
+<tr><td>$\gamma_c$ mặc định / thanh căng / bản đế</td><td>1,0 / 0,9 / 1,2</td><td>Bảng 1</td></tr>
+<tr><td>$\lambda_u$ giằng thép tròn có tăng đơ</td><td>500</td><td>Bảng 34 chú thích 2</td></tr>
+<tr><td>Bu lông 8.8: $f_{vb}$ / $f_{tb}$</td><td>332 / 448 MPa</td><td>Bảng C.4</td></tr>
+<tr><td>Bu lông neo $f_{ba}$ (S235B, $d$ > 16)</td><td>180 MPa</td><td>6.5</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng B.4.</b> Hệ số TCVN thường dùng</p>
+<ul><li>TCVN dùng cường độ tính toán $f_{yd} = f_y/\gamma_m$ và hệ số điều kiện làm việc $\gamma_c$; AISC dùng khả năng danh nghĩa nhân $\phi$ (LRFD).</li>
+<li>Gió TCVN 2737:2023 lấy $\gamma_f = 2{,}1$ với gió 10 năm; ASCE 7-10 dùng gió 700 năm với hệ số tải 1,0.</li></ul>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="06_cau_kien_tcvn/b6_bang_tinh_excel.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 6.6. Bảng tính Excel – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 6 · Kiểm tra cấu kiện TCVN 5575:2024 · Bài 6</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 6.6. Bảng tính Excel <span class="en">Using SAP2000 results with the course spreadsheets</span></h1>
+<p class="lead">SAP2000 cho nội lực; các bảng tính Excel của khóa kiểm tra cấu kiện theo TCVN 5575:2024. Chất lượng kết quả phụ thuộc vào việc chọn đúng cặp nội lực bất lợi và nhập đúng hệ số.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Xuất nội lực từ SAP2000, lọc các cặp ($M$, $N$, $V$) bất lợi và đưa vào bảng tính cột, dầm–kèo.</li>
+<li>Rà soát $\gamma_m$, $\gamma_c$, $L_{ef}$ trong bảng tính và tối ưu tiết diện theo tỷ số huy động.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Sau khi thêm áp lực trong vào mô hình xưởng <b>Hòa Bình</b> (Chương 4, 5), nội lực ENVELOPE của cột C1 và kèo K1 thay đổi. Kỹ sư cần xuất lại nội lực, cập nhật bảng tính và quyết định có phải đổi tiết diện hay không.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<p>Bảng tính dùng chung cho chương này:</p>
+<div class="tbl" id="tbl-6-8"><table><thead><tr><th>Bảng tính của khóa</th><th>Sheet nhập</th><th>Điều khoản kiểm tra chính</th></tr></thead><tbody>
+<tr><td><code>1. Tinh Toan Cot TCVN 5575-2024</code></td><td><code>Cal</code></td><td>(104), (108), (110), 8.4.4</td></tr>
+<tr><td>Bảng tính dầm–kèo</td><td><code>Cal 1</code></td><td>(40), (41), (68), Bảng 12</td></tr>
+<tr><td><code>5. Tính thép tròn rỗng</code></td><td>–</td><td><a href="../06_cau_kien_tcvn/b2_keo_nen.html#eq-6-1">(6.1)</a>, Bảng 33</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 6.8.</b> Bảng tính Excel dùng ở Chương 6</p>
+<p>Mọi ô hệ số ($\gamma_m$, $\gamma_c$) và chiều dài tính toán ($L_x$, $L_y$, $L_{ef}$) phải được kiểm tra lại theo <a href="../06_cau_kien_tcvn/b1_cuong_do_tinh_toan.html#tbl-6-2">Bảng 6.2</a> và vị trí giằng thực tế trước khi đọc kết quả.</p>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Quy trình dùng SAP2000 với bảng tính Excel</h3>
+<ol><li>Chạy phân tích, chọn nhóm cấu kiện (cột C1, kèo K1…).</li>
+<li>Ctrl+T → Element Forces – Frames → chọn ENVELOPE (hoặc từng COMB) → Export Excel.</li>
+<li>Lọc các cặp bất lợi: ($M_{\max}$, $N$ tương ứng), ($N_{\max}$, $M$ tương ứng), $V_{\max}$ tại đỉnh, chân cột, đầu kèo, giữa nhịp.</li>
+<li>Dán vào sheet <code>Cal</code> (cột) hoặc <code>Cal 1</code> (dầm, kèo), nhập tiết diện, $L_x$, $L_y$, mác thép.</li>
+<li>Kiểm tra lại $\gamma_m$, $\gamma_c$ theo <a href="../06_cau_kien_tcvn/b1_cuong_do_tinh_toan.html#tbl-6-2">Bảng 6.2</a>, $L_{ef}$ theo vị trí giằng thực tế.</li>
+<li>Tối ưu: mục tiêu tỷ số huy động 0,8–0,95. Đổi tiết diện thì <b>chạy lại SAP</b>, vì độ cứng đổi kéo theo nội lực đổi.</li></ol>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<h3>Lỗi thường gặp</h3>
+<ul><li>Dùng $\gamma_m = 1{,}05$ cho thép Trung Quốc, Nhật, Mỹ (đúng là 1,10).</li>
+<li>Lấy $\gamma_c = 0{,}95$ cho dầm, kèo (giá trị này dành cho cột nhà công cộng, nhà ở).</li>
+<li>Thanh chống và giằng không đạt độ mảnh giới hạn dù lực nhỏ.</li>
+<li>Lấy $L_{ef}$ của kèo bằng khoảng cách xà gồ khi kiểm tra cánh dưới chịu nén lúc gió hút.</li>
+<li>Dùng $\mu$ của khung không tự do ($\le 1$) cho khung nhà xưởng không có giằng trong mặt phẳng khung.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Trong SAP2000, đường dẫn để xuất nội lực thanh ra bảng là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Display → Show Forces/Stresses → Joints</label></li><li><label><input type="radio" name="q1" value="1"> Ctrl+T → Element Forces – Frames → Export Excel</label></li><li><label><input type="radio" name="q1" value="2"> Design → Steel Frame Design → Display Design Info</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Ctrl+T mở hộp thoại Display Tables.</p>
+</details>
+<details><summary>Lời giải</summary><p>Ctrl+T → Element Forces – Frames → chọn ENVELOPE hoặc COMB → Export Excel.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.706" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Kèo H500×250×8×12 ($W_x = 1716{,}8$ cm³), thép Q345 ($f_{yd} = 313{,}6$ MPa, $\gamma_c = 1$), sau khi cập nhật nội lực có $M_x = 380$ kNm. Tính tỷ số độ bền theo (40).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$M/(W f_{yd}\gamma_c)$, đổi đơn vị về N, mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$380 \times 10^6/(1\,716\,800 \times 313{,}6) = 0{,}706$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="511.5" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Với kèo ở câu trên và tỷ số huy động mục tiêu 0,95, mô men lớn nhất kèo được phép chịu theo điều kiện độ bền (40) là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kNm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$M_{\max} = 0{,}95\,W f_{yd}\gamma_c$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$M_{\max} = 0{,}95 \times 1\,716\,800 \times 313{,}6 = 511{,}5 \times 10^6$ Nmm $= 511{,}5$ kNm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Quy trình: chạy phân tích → Ctrl+T xuất nội lực → lọc cặp bất lợi → dán vào sheet → kiểm tra hệ số, $L_{ef}$ → tối ưu.</li>
+<li>Đổi tiết diện thì phải chạy lại SAP2000 vì nội lực phụ thuộc độ cứng.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

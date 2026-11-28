@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="09_gio_asce/b3_kz_exposure.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 9.3. Kz, Kzt, Kd, Exposure – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/vendor/jsxgraph/jsxgraph.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 9 · Gió ASCE 7-10 · Bài 3</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 9.3. Kz, Kzt, Kd, Exposure <span class="en">Kz, Kzt, Kd and exposure categories</span></h1>
+<p class="lead">Hệ số $K_z$ phản ánh gió mạnh dần theo độ cao và yếu đi khi mặt đất nhiều vật cản. Với nhà thấp tầng dạng địa hình B, Chương 28 đặt thêm một giới hạn dưới.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Phân loại được cấp rủi ro, dạng địa hình, mức độ kín; đối chiếu dạng địa hình ASCE với TCVN.</li>
+<li>Tính $K_z$ theo công thức (<a href="#eq-9-4">(9.4)</a>) hoặc nội suy Bảng 28.3-1, áp dụng đúng quy tắc $z \ge 30$ ft cho dạng B.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nhà máy DNP nằm trong khu công nghiệp, xung quanh là nhà xưởng một tầng: dạng địa hình <b>B</b>. Chiều cao trung bình mái $h = 10{,}35$ m. Một học viên tính tường bằng $K_z$ tại 4,6 m theo công thức và được 0,58, thấp hơn 17 % so với giá trị 0,70 mà Bảng 28.3-1 yêu cầu.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h4>Phân loại công trình</h4>
+<ol><li><b>Cấp rủi ro (Risk Category, Bảng 1.5-1):</b> nhà xưởng sản xuất thông thường thuộc cấp <b>II</b>.</li>
+<li><b>Dạng địa hình (Exposure, Mục 26.7):</b><ul><li>B: đô thị, ngoại ô, khu nhiều vật cản cao từ nhà một tầng trở lên.</li>
+<li>C: địa hình trống, vật cản rải rác cao dưới 9,1 m.</li>
+<li>D: mặt nước rộng, bãi bùn, bãi muối.</li></ul><p style="margin:.4em 0 0">Tương ứng gần đúng với TCVN 2737: dạng địa hình C của TCVN tương ứng B của ASCE; B tương ứng C; A tương ứng D.</p></li>
+<li><b>Mức độ kín (Mục 26.2, 26.10):</b> nhà xưởng tôn kín, cửa đóng được: <b>nhà kín</b>, $GC_{pi} = \pm0{,}18$.</li></ol>
+<h4>Hệ số $K_z$ (Bảng 28.3-1)</h4>
+<p>Công thức gốc (chú thích Bảng 28.3-1):</p>
+<div class="eq" id="eq-9-4"><div class="m">$$K_z = 2{,}01\left(\frac{z}{z_g}\right)^{2/\alpha}\quad (4{,}6\ \text{m} \le z \le z_g);\qquad K_z = 2{,}01\left(\frac{4{,}6}{z_g}\right)^{2/\alpha}\quad (z &lt; 4{,}6\ \text{m})$$</div><span class="tag">(9.4)</span></div>
+<div class="tbl" id="tbl-9-3"><table><thead><tr><th>Dạng địa hình</th><th>$\alpha$</th><th>$z_g$ (m)</th></tr></thead><tbody>
+<tr><td>B</td><td>7,0</td><td>366</td></tr>
+<tr><td>C</td><td>9,5</td><td>274</td></tr>
+<tr><td>D</td><td>11,5</td><td>213</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 9.3.</b> Thông số $\alpha$ và $z_g$ (Bảng 26.9-1)</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p>Với <b>Chương 28 (nhà thấp tầng) và dạng địa hình B</b>, Bảng 28.3-1 lấy $K_z$ không nhỏ hơn <b>0,70</b> cho chiều cao đến 9,1 m. Chú thích 1 của bảng ghi rõ: <i>"z shall not be taken less than 30 feet in exposure B"</i> (với dạng địa hình B, lấy $z$ không nhỏ hơn 30 ft, tức 9,1 m). Vì vậy không dùng công thức (<a href="#eq-9-4">(9.4)</a>) với $z$ thấp, vì công thức cho 0,57 ở 4,6 m.</p>
+</div>
+<h2 id="s3">3. Khám phá</h2>
+<p>Kéo $z$ và đổi dạng địa hình. Đường nét đứt là công thức gốc khi chưa áp quy tắc 30 ft cho dạng B; điểm đỏ là $K_z$ dùng trong tính toán.</p>
+<div data-widget="W12"></div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Lấy dạng địa hình B của ASCE cho khu đất trống vì "giống dạng B của TCVN": dạng B của TCVN tương ứng dạng C của ASCE.</li>
+<li>Tính $K_z$ theo công thức với $z &lt; 9{,}1$ m cho dạng B mà bỏ qua chú thích 1 của Bảng 28.3-1.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Nhà thấp tầng tính theo Chương 28, dạng địa hình B. Tại độ cao $z = 6$ m, lấy $K_z$ bằng bao nhiêu?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 0,62 (theo công thức <a href="#eq-9-4">(9.4)</a> với $z = 6$ m)</label></li><li><label><input type="radio" name="q1" value="1"> 0,58 (theo công thức tại 4,6 m)</label></li><li><label><input type="radio" name="q1" value="2"> 0,70 (lấy $z$ không nhỏ hơn 30 ft = 9,1 m)</label></li><li><label><input type="radio" name="q1" value="3"> 0,85</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Đọc chú thích 1 của Bảng 28.3-1 trong hộp Lưu ý.</p>
+</details>
+<details><summary>Lời giải</summary><p>Dạng B, Chương 28: $z \ge 9{,}1$ m → $K_z = 2{,}01(9{,}1/366)^{2/7} = 0{,}70$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.090" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính $K_z$ theo công thức (<a href="#eq-9-4">(9.4)</a>) cho dạng địa hình C tại $z = 15$ m.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Dạng C: $\alpha = 9{,}5$; $z_g = 274$ m (<a href="#tbl-9-3">Bảng 9.3</a>).</p>
+</details>
+<details><summary>Lời giải</summary><p>$K_z = 2{,}01\,(15/274)^{2/9{,}5} = 2{,}01 \times 0{,}5425 = 1{,}090$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="147.7" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Giả sử nhà xưởng Hòa Bình ($h = 7{,}945$ m) đặt ở vùng đất trống, dạng địa hình C, vùng gió II ($V = 54{,}51$ m/s), $K_{zt} = 1$, $K_d = 0{,}85$. Tính $q_h$ (daN/m²), lấy $K_h$ theo công thức (<a href="#eq-9-4">(9.4)</a>).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Dạng C: $z = 7{,}945$ m > 4,6 m nên dùng trực tiếp công thức; $q_h = 0{,}0613K_hK_{zt}K_dV^2$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$K_h = 2{,}01(7{,}945/274)^{2/9{,}5} = 0{,}954$; $q_h = 0{,}0613 \times 0{,}954 \times 0{,}85 \times 54{,}51^2 = 147{,}7$ daN/m² (dạng B chỉ 108,4).</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nhà xưởng thông thường: cấp rủi ro II, nhà kín $GC_{pi} = \pm0{,}18$. Dạng B (ASCE) ↔ C (TCVN); C ↔ B; D ↔ A.</li>
+<li>$K_z = 2{,}01(z/z_g)^{2/\alpha}$; Chương 28 dạng B: $z \ge 9{,}1$ m, tức $K_z \ge 0{,}70$.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/vendor/jsxgraph/jsxgraphcore.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w12.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

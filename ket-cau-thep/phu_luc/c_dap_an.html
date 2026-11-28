@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="phu_luc/c_dap_an.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phụ lục C. Đáp án – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Phụ lục C</div>
+<h1>Phụ lục C. Đáp án</h1>
+<p class="lead">Đáp án và lời giải của toàn bộ câu Luyện tập và Kiểm tra chương, sinh tự động từ nội dung các bài. </p>
+<h2>Chương 1. Tổng quan</h2>
+<h3><a href="../01_tong_quan/b1_he_ket_cau.html">Bài 1.1. Hệ kết cấu nhà khung thép</a></h3>
+<ol><li><p>Tôn mái truyền tải trọng trực tiếp lên cấu kiện nào?</p><p>Đáp án: Xà gồ</p><details class="sol"><summary>Lời giải</summary><p>Tôn mái đặt trên <b>xà gồ</b>; xà gồ truyền tải xuống kèo.</p>
+</details></li>
+<li><p>Nhà xưởng Hòa Bình dài 72 m, bước khung 8 m. Có bao nhiêu khung ngang (kể cả hai khung đầu hồi)?</p><p>Đáp án: <b>10</b> khung</p><details class="sol"><summary>Lời giải</summary><p>$72/8 = 9$ bước → $9 + 1 = 10$ khung.</p>
+</details></li>
+<li><p>Nhịp 50 m, mái dốc 7 %, hai mái đối xứng. Tính chiều dài thật của một nửa kèo (theo mặt dốc).</p><p>Đáp án: <b>25.06</b> m</p><details class="sol"><summary>Lời giải</summary><p>$L = 25\sqrt{1 + 0{,}07^2} = 25 \times 1{,}00245 = 25{,}06$ m.</p>
+</details></li>
+</ol>
+<h3><a href="../01_tong_quan/b2_duong_truyen_tai.html">Bài 1.2. Đường truyền tải trọng</a></h3>
+<ol><li><p>Gió thổi dọc nhà (vào tường đầu hồi) truyền xuống móng qua chuỗi nào?</p><p>Đáp án: Tôn đầu hồi → dầm tường → cột sườn tường → giằng mái → thanh chống → giằng cột → móng</p><details class="sol"><summary>Lời giải</summary><p>Gió dọc đi qua hệ giằng: giằng mái, thanh chống, giằng cột.</p>
+</details></li>
+<li><p>Áp lực gió lên tường 80 daN/m², dầm tường đặt cách nhau 1,5 m. Tính tải phân bố lên một dầm tường.</p><p>Đáp án: <b>120</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$q = 80 \times 1{,}5 = 120$ daN/m.</p>
+</details></li>
+<li><p>Mô hình có đủ khung ngang, xà gồ, giằng mái và thanh chống nhưng <b>không có giằng cột</b> ở khoang nào. Khi chạy SAP2000 sẽ xảy ra gì?</p><p>Đáp án: Mất ổn định theo phương dọc nhà (cơ cấu), vì chân cột khớp và khung không có độ cứng dọc</p><details class="sol"><summary>Lời giải</summary><p>Theo phương dọc, khung ngang chân khớp là cơ cấu; thiếu giằng cột thì hệ biến hình → SAP2000 báo mất ổn định.</p>
+</details></li>
+</ol>
+<h3><a href="../01_tong_quan/b3_vat_lieu_thep.html">Bài 1.3. Vật liệu thép (TCVN, ASTM)</a></h3>
+<ol><li><p>Thép S355, tấm dày 20 mm. Giới hạn chảy $f_y$ bằng bao nhiêu?</p><p>Đáp án: <b>345</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$t = 20$ mm thuộc khoảng 16–40 → $f_y = 345$ MPa.</p>
+</details></li>
+<li><p>Đổi $F_y = 245$ MPa sang kgf/m² để nhập vào SAP2000 khi đơn vị đang là Kgf, m, C.</p><p>Đáp án: <b>24983000</b> kgf/m²</p><details class="sol"><summary>Lời giải</summary><p>$245 \times 101\,972 \approx 24\,983\,000$ kgf/m² (không phải 24 500 000).</p>
+</details></li>
+<li><p>Thiết kế theo TCVN 5575:2024 với thép Q345B (GB/T 1591). Lấy hệ số độ tin cậy về vật liệu $\gamma_m$ bằng bao nhiêu?</p><p>Đáp án: 1,10</p><details class="sol"><summary>Lời giải</summary><p>Thép theo tiêu chuẩn nước ngoài: $\gamma_m = 1{,}10$ (TCVN 5575:2024 Bảng 3).</p>
+</details></li>
+</ol>
+<h3><a href="../01_tong_quan/b4_quy_trinh_cong_trinh_mau.html">Bài 1.4. Quy trình thiết kế và hai công trình mẫu</a></h3>
+<ol><li><p>Vì sao nhánh TCVN phải xuất nội lực sang Excel để kiểm tra cấu kiện?</p><p>Đáp án: Vì SAP2000 không có mô-đun thiết kế theo TCVN 5575:2024</p><details class="sol"><summary>Lời giải</summary><p>SAP2000 chỉ có các mô-đun thiết kế theo tiêu chuẩn nước ngoài (AISC…), không có TCVN 5575:2024.</p>
+</details></li>
+<li><p>Nhà xưởng Hòa Bình: đỉnh cột 7,07 m, đỉnh mái 8,82 m. Chênh cao giữa đỉnh mái và đỉnh cột là bao nhiêu?</p><p>Đáp án: <b>1.75</b> m</p><details class="sol"><summary>Lời giải</summary><p>$8{,}82 - 7{,}07 = 1{,}75$ m (kiểm tra: $25 \times 0{,}07 = 1{,}75$ m).</p>
+</details></li>
+<li><p>Nhà máy DNP: nhịp 54 m, đỉnh cột 9 m, mái dốc 10 %, hai mái đối xứng. Tính cao độ đỉnh mái.</p><p>Đáp án: <b>11.7</b> m</p><details class="sol"><summary>Lời giải</summary><p>$9 + 27 \times 0{,}10 = 11{,}7$ m.</p>
+</details></li>
+</ol>
+<h3><a href="../01_tong_quan/kiem_tra_chuong.html">Kiểm tra Chương 1: Tổng quan</a></h3>
+<ol><li><p>Cấu kiện nào <b>không</b> thuộc đường truyền tải đứng của mái?</p><p>Đáp án: Giằng cột</p><details class="sol"><summary>Lời giải</summary><p>Tải đứng: tôn → xà gồ → kèo → cột → móng. Giằng cột thuộc đường truyền gió dọc.</p>
+</details></li>
+<li><p>Chống xiên (fly brace) nối từ xà gồ/dầm tường đến đâu?</p><p>Đáp án: Cánh trong của kèo, cột</p><details class="sol"><summary>Lời giải</summary><p>Chống xiên giữ cánh trong (cánh chịu nén khi mô men đổi dấu) của kèo, cột.</p>
+</details></li>
+<li><p>Thép S355 (TCVN 9986-2) dày 30 mm, $\gamma_m = 1{,}05$. Tính cường độ tính toán $f_{yd} = f_y/\gamma_m$.</p><p>Đáp án: <b>328.6</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$f_y = 345$ MPa; $f_{yd} = 345/1{,}05 = 328{,}6$ MPa.</p>
+</details></li>
+<li><p>Thép Q345B dày 12 mm, giả sử $f_y = 345$ MPa. Tính $f_{yd}$ theo TCVN 5575:2024.</p><p>Đáp án: <b>313.6</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$\gamma_m = 1{,}10$ → $f_{yd} = 345/1{,}10 = 313{,}6$ MPa.</p>
+</details></li>
+<li><p>Mô hình khai báo SS400 với $F_u$ = 34 500 000 kgf/m². Đổi ra MPa (lấy 1 MPa = 101 972 kgf/m²) và so với giá trị nhỏ nhất 400 MPa của JIS: giá trị khai báo thấp hơn bao nhiêu phần trăm? (nhập số %)</p><p>Đáp án: <b>15.4</b> %</p><details class="sol"><summary>Lời giải</summary><p>$34\,500\,000/101\,972 = 338{,}3$ MPa; $(400 - 338{,}3)/400 = 15{,}4$ % → nhập ≈ 15,4.</p>
+</details></li>
+<li><p>Nhà máy DNP dài 60 m, bước khung 12 m. Nếu mở rộng thêm 60 m cùng bước khung, tổng số khung ngang là bao nhiêu?</p><p>Đáp án: <b>11</b> khung</p><details class="sol"><summary>Lời giải</summary><p>Dài 120 m → $120/12 = 10$ bước → 11 khung.</p>
+</details></li>
+</ol>
+<h2>Chương 2. SAP2000 – vật liệu, tiết diện</h2>
+<h3><a href="../02_sap_vat_lieu_tiet_dien/b1_giao_dien_don_vi.html">Bài 2.1. Giao diện, đơn vị, lưới trục</a></h3>
+<ol><li><p>SAP2000 lưu dữ liệu nội bộ theo hệ đơn vị nào?</p><p>Đáp án: Đơn vị gốc chọn lúc tạo mô hình (<i>Base units</i>)</p><details class="sol"><summary>Lời giải</summary><p>SAP2000 lưu dữ liệu theo <b>đơn vị gốc lúc tạo mô hình</b>; đơn vị hiển thị đổi được bất kỳ lúc nào.</p>
+</details></li>
+<li><p>Tĩnh tải mái 15 daN/m², bước khung 8 m. Tính tải phân bố lên kèo của một khung giữa, đơn vị kN/m.</p><p>Đáp án: <b>1.2</b> kN/m</p><details class="sol"><summary>Lời giải</summary><p>$q = 15 \times 8 = 120$ daN/m $= 1200$ N/m $= 1{,}2$ kN/m.</p>
+</details></li>
+<li><p>Muốn nhập tải 120 daN/m ở câu trên khi đơn vị hiển thị là Kgf, m, C. Phải gõ giá trị bao nhiêu (kgf/m)? Lấy 1 kgf = 9,80665 N.</p><p>Đáp án: <b>122.4</b> kgf/m</p><details class="sol"><summary>Lời giải</summary><p>$120$ daN/m $= 1200$ N/m; $1200/9{,}80665 = 122{,}4$ kgf/m. Gõ 120 là thiếu khoảng 2 %.</p>
+</details></li>
+</ol>
+<h3><a href="../02_sap_vat_lieu_tiet_dien/b2_vat_lieu.html">Bài 2.2. Khai báo vật liệu</a></h3>
+<ol><li><p>Với mô hình kiểm tra theo TCVN 5575:2024, nên khai báo mô đun đàn hồi $E$ bằng bao nhiêu?</p><p>Đáp án: 2,06 × 10⁵ MPa</p><details class="sol"><summary>Lời giải</summary><p>TCVN 5575:2024 dùng $E = 2{,}06\times10^5$ MPa; AISC 360-10 dùng $2{,}0\times10^5$ MPa.</p>
+</details></li>
+<li><p>Thép Q235B, $t \le 16$ mm. Đơn vị hiển thị là Kgf, m, C. Giá trị $F_y$ hiển thị trong hộp thoại vật liệu là bao nhiêu kgf/m²?</p><p>Đáp án: <b>23963000</b> kgf/m²</p><details class="sol"><summary>Lời giải</summary><p>$235 \times 101\,972 = 23\,963\,000$ kgf/m² (≈ 2,396 × 10⁷).</p>
+</details></li>
+<li><p>Giới hạn đặc chắc của cánh khi uốn theo AISC là $\lambda_{pf} = 0{,}38\sqrt{E/F_y}$. Với $F_y = 345$ MPa, nếu mô hình dùng $E = 206\,000$ MPa thay cho $200\,000$ MPa thì $\lambda_{pf}$ tăng bao nhiêu phần trăm? (nhập số %)</p><p>Đáp án: <b>1.49</b> %</p><details class="sol"><summary>Lời giải</summary><p>$\lambda_{pf}$: $0{,}38\sqrt{206\,000/345} = 9{,}286$ và $0{,}38\sqrt{200\,000/345} = 9{,}149$; tăng $\sqrt{1{,}03} - 1 = 1{,}49$ %. Tiết diện có thể được xếp "đặc chắc" sai khi dùng $E$ của TCVN cho kiểm tra AISC.</p>
+</details></li>
+</ol>
+<h3><a href="../02_sap_vat_lieu_tiet_dien/b3_tiet_dien.html">Bài 2.3. Tiết diện I tổ hợp, ống, thép tròn</a></h3>
+<ol><li><p>Trong tên tiết diện <code>H500x250x8x12</code>, chiều dày bụng là bao nhiêu?</p><p>Đáp án: 8 mm</p><details class="sol"><summary>Lời giải</summary><p>Thứ tự là $h$, $b_f$, $t_w$, $t_f$ → $t_w = 8$ mm.</p>
+</details></li>
+<li><p>Tính diện tích tiết diện H500×250×8×12.</p><p>Đáp án: <b>9808</b> mm²</p><details class="sol"><summary>Lời giải</summary><p>$A = 2\times250\times12 + 8\times476 = 9808$ mm².</p>
+</details></li>
+<li><p>Tính $I_{33}$ của cột sườn tường H250×200×5×6 để kiểm tra giá trị SAP2000 hiển thị.</p><p>Đáp án: <b>4135</b> cm⁴</p><details class="sol"><summary>Lời giải</summary><p>$h_w = 238$ mm; $I_{33} = (200\times250^3 - 195\times238^3)/12 = 4135$ cm⁴.</p>
+</details></li>
+</ol>
+<h3><a href="../02_sap_vat_lieu_tiet_dien/b4_nonprismatic.html">Bài 2.4. Tiết diện thay đổi (Nonprismatic)</a></h3>
+<ol><li><p>Với tiết diện I tổ hợp chỉ thay đổi chiều cao bụng, giáo trình khuyến nghị chọn <i>EI33 Variation</i> nào?</p><p>Đáp án: Parabolic</p><details class="sol"><summary>Lời giải</summary><p>$I_{33} \approx 2A_f(h/2)^2$ tỷ lệ gần đúng với $h^2$ → <b>Parabolic</b>; <i>EI22 Variation</i> = Linear.</p>
+</details></li>
+<li><p>Tính $I_{33}$ của tiết diện đầu lớn H650×200×6×10.</p><p>Đáp án: <b>53466</b> cm⁴</p><details class="sol"><summary>Lời giải</summary><p>$I_{33} = (200\times650^3 - 194\times630^3)/12 = 53\,466$ cm⁴.</p>
+</details></li>
+<li><p>Kèo <code>H(250-500)x200x6x8</code>. Tại giữa đoạn ($h$ = 375 mm), $I_{33}$ chính xác là 13 090 cm⁴. Nếu khai báo <i>EI33 Variation</i> = Linear, SAP2000 lấy $I_{33}$ giữa đoạn lớn hơn giá trị chính xác bao nhiêu phần trăm? (nhập số %)</p><p>Đáp án: <b>16</b> %</p><details class="sol"><summary>Lời giải</summary><p>$I_{250} = 5327{,}5$ cm⁴, $I_{500} = 25\,035{,}8$ cm⁴; Linear: $15\,181{,}6$ cm⁴ → $15\,181{,}6/13\,090{,}2 - 1 = 16{,}0$ %.</p>
+</details></li>
+</ol>
+<h3><a href="../02_sap_vat_lieu_tiet_dien/b5_property_modifiers.html">Bài 2.5. Property Modifiers</a></h3>
+<ol><li><p>Khi thiết kế theo Direct Analysis Method trong SAP2000, xử lý việc giảm độ cứng EI thế nào?</p><p>Đáp án: Không gán modifier; để SAP tự áp dụng qua <i>Steel Design Preferences → Stiffness Reduction</i></p><details class="sol"><summary>Lời giải</summary><p>SAP tự giảm độ cứng theo lựa chọn trong <i>Preferences</i>; tự gán thêm là giảm hai lần.</p>
+</details></li>
+<li><p>Trọng lượng thép khung tính từ tiết diện là 245 kN. Gán <i>Weight Modifier</i> = 1,08. Trọng lượng bản thân SAP2000 dùng là bao nhiêu?</p><p>Đáp án: <b>264.6</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$245 \times 1{,}08 = 264{,}6$ kN.</p>
+</details></li>
+<li><p>Một học viên gán modifier 0,8 cho $I_{33}$ trong khi <i>Preferences</i> đã bật giảm độ cứng 0,8 (DM). Giả thiết chuyển vị do uốn tỷ lệ nghịch với $EI$. Chuyển vị tính được lớn hơn chuyển vị đúng (chỉ giảm một lần) bao nhiêu phần trăm? (nhập số %)</p><p>Đáp án: <b>25</b> %</p><details class="sol"><summary>Lời giải</summary><p>Chuyển vị tỷ lệ $1/0{,}64 = 1{,}5625$ so với đúng $1/0{,}8 = 1{,}25$ → lớn hơn $1{,}5625/1{,}25 - 1 = 25$ %.</p>
+</details></li>
+</ol>
+<h3><a href="../02_sap_vat_lieu_tiet_dien/kiem_tra_chuong.html">Kiểm tra Chương 2: SAP2000 – vật liệu, tiết diện</a></h3>
+<ol><li><p>(Câu hỏi ôn tập 1) Khai báo vật liệu Q345 với $t$ = 20 mm theo đơn vị N, mm. Đổi sang Kgf, m thì $F_y$ hiển thị bằng bao nhiêu kgf/m²?</p><p>Đáp án: <b>33140000</b> kgf/m²</p><details class="sol"><summary>Lời giải</summary><p>$325 \times 101\,972 = 33\,140\,000$ kgf/m² (≈ 3,314 × 10⁷).</p>
+</details></li>
+<li><p>(Câu hỏi ôn tập 2) Cột tiết diện thay đổi H(300–650) bị vẽ từ đỉnh xuống chân. Cách sửa nào đúng?</p><p>Đáp án: <i>Assign → Frame → Reverse Connectivity</i> (hoặc vẽ lại từ chân lên, hoặc tạo tiết diện có Start/End đổi chỗ), rồi kiểm tra bằng Extrude</p><details class="sol"><summary>Lời giải</summary><p>Đảo thứ tự nút (<i>Reverse Connectivity</i>) hoặc đổi Start/End Section; xác nhận bằng <i>View Type = Extrude</i>.</p>
+</details></li>
+<li><p>(Câu hỏi ôn tập 3) Vì sao không gán Property Modifier 0,8 cho EI khi dùng Direct Analysis Method trong SAP2000?</p><p>Đáp án: Vì SAP2000 đã tự giảm độ cứng qua <i>Steel Design Preferences</i>; gán thêm là giảm hai lần</p><details class="sol"><summary>Lời giải</summary><p>DM yêu cầu giảm độ cứng, nhưng SAP tự áp dụng; tự gán thêm 0,8 → độ cứng còn 0,64.</p>
+</details></li>
+<li><p>Khi khai báo vật liệu thép theo số liệu riêng của dự án, chọn <i>Region</i> nào?</p><p>Đáp án: User</p><details class="sol"><summary>Lời giải</summary><p><i>Region</i> = <b>User</b>, rồi nhập đủ $E$, $\nu$, $\alpha$, $F_y$, $F_u$.</p>
+</details></li>
+<li><p>Tiết diện I có cánh dày 20 mm, bụng dày 8 mm, thép Q345. Gán vật liệu nào cho tiết diện?</p><p>Đáp án: <code>Q345-t40</code> ($F_y$ = 325 MPa), theo bản dày nhất</p><details class="sol"><summary>Lời giải</summary><p>Lấy $F_y$ theo bản dày nhất (cánh 20 mm) → 325 MPa, thiên về an toàn.</p>
+</details></li>
+<li><p>Trọng lượng riêng khai báo 78,5 kN/m³. Tính trọng lượng bản thân 1 m dài của H500×250×8×12 ($A$ = 9808 mm²).</p><p>Đáp án: <b>0.770</b> kN/m</p><details class="sol"><summary>Lời giải</summary><p>$78{,}5 \times 9808\times10^{-6} = 0{,}770$ kN/m.</p>
+</details></li>
+<li><p>Cột <code>H(300-650)x200x6x10</code> vẽ từ chân (I) lên đỉnh (J), <i>EI33 Variation</i> = Parabolic. Tính $I_{33}$ SAP2000 dùng tại 1/4 chiều dài cột tính từ chân.</p><p>Đáp án: <b>17148</b> cm⁴</p><details class="sol"><summary>Lời giải</summary><p>$\sqrt{I} = 0{,}75\sqrt{9511} + 0{,}25\sqrt{53\,466} = 73{,}14 + 57{,}81 = 130{,}95$ → $I = 17\,148$ cm⁴ (chính xác 16 736 cm⁴, sai +2,5 %).</p>
+</details></li>
+</ol>
+<h2>Chương 3. Xây dựng mô hình</h2>
+<h3><a href="../03_mo_hinh/b1_dung_khung.html">Bài 3.1. Dựng khung và nhân bản 3D</a></h3>
+<ol><li><p>Lệnh nào nhân bản khung ngang điển hình dọc theo trục X?</p><p>Đáp án: <i>Edit → Replicate → Linear</i></p><details class="sol"><summary>Lời giải</summary><p><i>Edit → Replicate → Linear</i>, nhập $dx$ và số lần nhân bản.</p>
+</details></li>
+<li><p>Nhà máy <b>DNP</b> dài 60 m, bước khung 12 m. Khung điển hình vẽ tại trục đầu tiên. Nhập <i>Number</i> (số lần nhân bản) bằng bao nhiêu?</p><p>Đáp án: <b>5</b> lần</p><details class="sol"><summary>Lời giải</summary><p>$60/12 = 5$ bước → 6 khung → nhân bản 5 lần với $dx$ = 12 m.</p>
+</details></li>
+<li><p>Giả thiết nhà xưởng Hòa Bình có ba tuyến thanh chống chạy suốt chiều dài 72 m (hai đỉnh cột và đỉnh mái), dùng ống D114×4, $\rho$ = 7850 kg/m³. Tính tổng khối lượng thanh chống.</p><p>Đáp án: <b>2344</b> kg</p><details class="sol"><summary>Lời giải</summary><p>$A = \pi(114^2 - 106^2)/4 = 1382{,}3$ mm² → $10{,}85$ kg/m; $3\times72 = 216$ m → $216\times10{,}85 = 2344$ kg.</p>
+</details></li>
+</ol>
+<h3><a href="../03_mo_hinh/b2_lien_ket_release.html">Bài 3.2. Liên kết, release, điều kiện biên</a></h3>
+<ol><li><p>Release nào sau đây chắc chắn làm thanh bị mất ổn định cục bộ?</p><p>Đáp án: T (xoắn) ở cả hai đầu</p><details class="sol"><summary>Lời giải</summary><p>Giải phóng T ở hai đầu → thanh tự quay quanh trục dọc → SAP báo mất ổn định.</p>
+</details></li>
+<li><p>Cột sườn tường đầu hồi (không thuộc khung chính) nên gán release thế nào?</p><p>Đáp án: M2, M3 hai đầu (hoặc chỉ M3), để không nhận mô men từ khung chính</p><details class="sol"><summary>Lời giải</summary><p>Cột sườn tường: M2, M3 hai đầu (hoặc chỉ M3); tránh nhận mô men từ khung chính.</p>
+</details></li>
+<li><p>Giằng thép tròn D20 được gán release M2, M3 hai đầu và Tension Only. Thanh chống D114×4 cùng khoang gán M2, M3, T hai đầu. Chạy Modal thấy mode 1 có chu kỳ 40 s, chỉ thanh chống dao động. Sửa thế nào?</p><p>Đáp án: Bỏ release T ở một đầu thanh chống (giữ M2, M3 hai đầu)</p><details class="sol"><summary>Lời giải</summary><p>Chu kỳ rất lớn với một thanh dao động là mất ổn định cục bộ do release T hai đầu; chỉ giải phóng T ở một đầu.</p>
+</details></li>
+</ol>
+<h3><a href="../03_mo_hinh/b3_thanh_chiu_keo.html">Bài 3.3. Thanh chỉ chịu kéo</a></h3>
+<ol><li><p>Giằng đã gán <i>Compression Limit</i> = 0 nhưng trường hợp tải là <i>Linear Static</i>. SAP2000 xử lý thế nào?</p><p>Đáp án: Giới hạn nén bị bỏ qua, giằng vẫn có thể chịu nén</p><details class="sol"><summary>Lời giải</summary><p>Với <i>Linear Static</i>, giới hạn nén <b>bị bỏ qua</b>; phải dùng <i>Nonlinear Static</i>.</p>
+</details></li>
+<li><p>Ô giằng vuông 6 m × 6 m, lực ngang ở đỉnh $H$ = 15 kN, giằng chỉ chịu kéo. Tính lực trong thanh giằng làm việc.</p><p>Đáp án: <b>21.21</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N = 15/\cos45° = 15\sqrt2 = 21{,}21$ kN.</p>
+</details></li>
+<li><p>Ô giằng cột nhà máy <b>DNP</b>: bước 12 m, cao 9 m, giằng D22 chỉ chịu kéo, lực ngang ở đỉnh 30 kN. Tính ứng suất kéo trong thanh giằng làm việc.</p><p>Đáp án: <b>98.65</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$L = 15$ m → $N = 30\times15/12 = 37{,}5$ kN; $A = \pi\times22^2/4 = 380{,}1$ mm² → $\sigma = 37\,500/380{,}1 = 98{,}65$ MPa.</p>
+</details></li>
+</ol>
+<h3><a href="../03_mo_hinh/b4_truc_dia_phuong.html">Bài 3.4. Trục địa phương, điểm đặt</a></h3>
+<ol><li><p>Điểm đặt tiết diện (<i>Cardinal Point</i>) mặc định trong SAP2000 là:</p><p>Đáp án: 10 – trọng tâm</p><details class="sol"><summary>Lời giải</summary><p>Mặc định là <b>10 – trọng tâm</b>; khóa học giữ nguyên.</p>
+</details></li>
+<li><p>Kèo H500×250×8×12 đổi <i>Cardinal Point</i> từ 10 sang 8 (giữa mép trên). Trục thanh dịch đi bao nhiêu so với trọng tâm?</p><p>Đáp án: <b>250</b> mm</p><details class="sol"><summary>Lời giải</summary><p>Khoảng cách trọng tâm – mép trên $= h/2 = 500/2 = 250$ mm.</p>
+</details></li>
+<li><p>Đoạn kèo <code>H(650-400)x200x6x10</code> dùng <i>Cardinal Point</i> = 8. Độ lệch giữa trục thanh và trọng tâm tiết diện ở hai đầu chênh nhau bao nhiêu? (Gợi ý tác hại: trục trọng tâm của đoạn kèo không còn song song với trục thanh.)</p><p>Đáp án: <b>125</b> mm</p><details class="sol"><summary>Lời giải</summary><p>Đầu lớn: $650/2 = 325$ mm; đầu nhỏ: $400/2 = 200$ mm; chênh $325 - 200 = 125$ mm.</p>
+</details></li>
+</ol>
+<h3><a href="../03_mo_hinh/b5_tai_bao_che.html">Bài 3.5. Đưa tải bao che vào mô hình</a></h3>
+<ol><li><p>Mô hình nhà xưởng Hòa Bình đưa tải bao che vào bằng cách nào?</p><p>Đáp án: (a) Gán tải phân bố trực tiếp lên kèo, cột theo bề rộng chịu tải</p><details class="sol"><summary>Lời giải</summary><p>Hòa Bình dùng cách (a); DNP dùng cách (b).</p>
+</details></li>
+<li><p>Áp lực gió lên tường dọc 0,55 kN/m², bước khung 8 m. Tính tải phân bố gán lên cột của một khung giữa (cách a).</p><p>Đáp án: <b>4.4</b> kN/m</p><details class="sol"><summary>Lời giải</summary><p>$q = 0{,}55\times8 = 4{,}4$ kN/m.</p>
+</details></li>
+<li><p>Hoạt tải mái 0,30 kN/m², nhập bằng tấm ảo <i>One way</i> đã xoay đúng phương. Khung giữa nhà xưởng Hòa Bình (bước 8 m) có nửa kèo dài 25,06 m theo mặt dốc. Tính tổng tải dồn lên một nửa kèo.</p><p>Đáp án: <b>60.14</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$q = 0{,}30\times8 = 2{,}4$ kN/m; tổng $2{,}4\times25{,}06 = 60{,}14$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../03_mo_hinh/b6_kiem_tra_mo_hinh.html">Bài 3.6. Kiểm tra mô hình trước khi chạy</a></h3>
+<ol><li><p>Chu kỳ dao động riêng $T_1$ hợp lý của nhà xưởng thép một tầng thường nằm trong khoảng nào?</p><p>Đáp án: 0,5–1,5 s</p><details class="sol"><summary>Lời giải</summary><p>Nhà xưởng thép 1 tầng: $T_1$ ≈ 0,5–1,5 s; trên 10 s là dấu hiệu mất ổn định.</p>
+</details></li>
+<li><p>Khối lượng thép khung theo thống kê là 38,5 t. Tổng phản lực đứng của trường hợp chỉ có trọng lượng bản thân thép phải xấp xỉ bao nhiêu kN? ($g$ = 9,80665 m/s²)</p><p>Đáp án: <b>377.6</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$W = 38{,}5\times9{,}80665 = 377{,}6$ kN.</p>
+</details></li>
+<li><p>Trường hợp DEAD gồm thép khung 38,5 t và tôn, xà gồ mái 0,15 kN/m² trên mặt bằng 50 × 72 m. Tổng phản lực đứng <i>Base Reactions</i> phải bằng bao nhiêu kN?</p><p>Đáp án: <b>917.6</b> kN</p><details class="sol"><summary>Lời giải</summary><p>Thép: $377{,}6$ kN; mái: $0{,}15\times50\times72 = 540$ kN; tổng $917{,}6$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../03_mo_hinh/kiem_tra_chuong.html">Kiểm tra Chương 3: Xây dựng mô hình</a></h3>
+<ol><li><p>(Câu hỏi ôn tập 1) Vì sao gán Tension Only cho giằng nhưng chạy Linear Static thì giằng vẫn chịu nén?</p><p>Đáp án: Vì trường hợp tải tuyến tính bỏ qua giới hạn kéo/nén; cần Nonlinear Static (hoặc DM)</p><details class="sol"><summary>Lời giải</summary><p>Linear Static giữ nguyên độ cứng của mọi thanh nên giới hạn nén bị bỏ qua; dùng Nonlinear Static cho từng tổ hợp.</p>
+</details></li>
+<li><p>(Câu hỏi ôn tập 2) Mô hình báo mất ổn định sau khi gán release M2, M3, T hai đầu cho thanh chống. Sửa thế nào?</p><p>Đáp án: Giữ M2, M3 hai đầu, chỉ giải phóng T ở một đầu</p><details class="sol"><summary>Lời giải</summary><p>Giải phóng T ở hai đầu làm thanh quay tự do; chỉ giải phóng T một đầu.</p>
+</details></li>
+<li><p>(Câu hỏi ôn tập 3) Khi tính gió theo vùng của TCVN 2737:2023, nhược điểm chính của cách (a) gán tải trực tiếp lên khung là gì?</p><p>Đáp án: Phải tự chia vùng gió cho từng khung; khung biên và khung giữa khác nhau</p><details class="sol"><summary>Lời giải</summary><p>Cách (a) minh bạch nhưng phải tự chia vùng; cách (b) chia vùng bằng cách chia tấm nhưng phải kiểm tra phương dồn tải.</p>
+</details></li>
+<li><p>(Câu hỏi ôn tập 4) Trình tự đúng để gán Tension Only cho toàn bộ giằng mái là:</p><p>Đáp án: Chọn giằng mái → <i>Assign → Assign to Group</i> <code>GIANG_MAI</code> → <i>Select → Groups</i> <code>GIANG_MAI</code> → <i>Assign → Frame → Tension/Compression Limits</i>, <i>Compression Limit</i> = 0</p><details class="sol"><summary>Lời giải</summary><p>Tạo nhóm, chọn nhóm, gán <i>Compression Limit</i> = 0, rồi đặt các trường hợp tải là Nonlinear Static.</p>
+</details></li>
+<li><p>Khung điển hình có 2 cột, nhân bản <i>Replicate Linear</i> $dx$ = 8 m, 9 lần. Trước khi thay khung đầu hồi, mô hình có bao nhiêu cột khung ngang?</p><p>Đáp án: <b>20</b> cột</p><details class="sol"><summary>Lời giải</summary><p>$(1 + 9)\times2 = 20$ cột.</p>
+</details></li>
+<li><p>Ô giằng $b$ = 8 m, $h$ = 7,07 m, lực ngang 30 kN. Nếu chạy <i>Linear Static</i> (giới hạn nén bị bỏ qua), SAP2000 cho thanh giằng nén chịu lực nén bao nhiêu kN?</p><p>Đáp án: <b>20.02</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$L = 10{,}676$ m; $N = 30\times10{,}676/(2\times8) = 20{,}02$ kN (nén) – giá trị không thực với thanh tròn.</p>
+</details></li>
+<li><p>Cùng ô giằng $b$ = 8 m, $h$ = 7,07 m nhưng lực ngang 20 kN, phân tích Nonlinear Static với Tension Only. Lực kéo trong thanh làm việc là bao nhiêu?</p><p>Đáp án: <b>26.69</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N = 20\times10{,}676/8 = 26{,}69$ kN; thanh kia bằng 0.</p>
+</details></li>
+</ol>
+<h2>Chương 4. Tải trọng TCVN 2737:2023</h2>
+<h3><a href="../04_tai_trong_tcvn/b1_phan_loai_tai.html">Bài 4.1. Phân loại tải, hệ số γf</a></h3>
+<ol><li><p>Theo TCVN 2737:2023 (điều 10.1.6), hệ số độ tin cậy về tải trọng gió là:</p><p>Đáp án: 2,1</p><details class="sol"><summary>Lời giải</summary><p>Gió lấy $\gamma_f = 2{,}1$ (điều 10.1.6). Giá trị 1,2 là của TCVN 2737:1995.</p>
+</details></li>
+<li><p>Xà gồ mái có trọng lượng tiêu chuẩn 8,0 kG/m². Tính giá trị tính toán theo Bảng 1.</p><p>Đáp án: <b>8.4</b> kG/m²</p><details class="sol"><summary>Lời giải</summary><p>$\gamma_f = 1{,}05$ → $g = 1{,}05 \times 8{,}0 = 8{,}4$ kG/m².</p>
+</details></li>
+<li><p>Một nhà kho thuộc cấp hậu quả C3 có áp lực gió tiêu chuẩn $W_k = 50$ daN/m². Tính giá trị tính toán $W$ dùng cho trạng thái giới hạn thứ nhất.</p><p>Đáp án: <b>120.75</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>C3: $\gamma_n = 1{,}15$; $W = 1{,}15 \times 2{,}1 \times 50 = 120{,}75$ daN/m².</p>
+</details></li>
+</ol>
+<h3><a href="../04_tai_trong_tcvn/b2_tinh_tai_hoat_tai.html">Bài 4.2. Tĩnh tải, hoạt tải</a></h3>
+<ol><li><p>Hoạt tải mái không sử dụng (khu vực H, Bảng 4) lấy giá trị tiêu chuẩn và hệ số độ tin cậy bao nhiêu?</p><p>Đáp án: $q_k = 0{,}3$ kN/m², $\gamma_f = 1{,}3$</p><details class="sol"><summary>Lời giải</summary><p>Mái chỉ có người đi lại sửa chữa: $q_k = 0{,}3$ kN/m² (30 kG/m²), $\gamma_f = 1{,}3$ (8.3.5a).</p>
+</details></li>
+<li><p>Tải treo M&amp;E 12 kG/m² (tiêu chuẩn). Khung giữa có bước khung 8 m. Tính tải tiêu chuẩn phân bố lên kèo.</p><p>Đáp án: <b>96</b> kG/m</p><details class="sol"><summary>Lời giải</summary><p>$q = 12 \times 8 = 96$ kG/m.</p>
+</details></li>
+<li><p>Mái gồm: tôn 4,3 kG/m², xà gồ 6,0 kG/m², tải treo M&amp;E 12 kG/m² (cùng $\gamma_f = 1{,}05$) và bông cách nhiệt sản xuất trong nhà máy 1,2 kG/m². Bước khung 6 m. Tính tĩnh tải hoàn thiện <b>tính toán</b> phân bố lên kèo khung giữa.</p><p>Đáp án: <b>149.1</b> kG/m</p><details class="sol"><summary>Lời giải</summary><p>$g = (4{,}3 + 6{,}0 + 12) \times 1{,}05 + 1{,}2 \times 1{,}2 = 23{,}415 + 1{,}44 = 24{,}855$ kG/m²; $q = 24{,}855 \times 6 = 149{,}1$ kG/m.</p>
+</details></li>
+</ol>
+<h3><a href="../04_tai_trong_tcvn/b3_tai_gio.html">Bài 4.3. Gió: áp lực, k(z), Gf</a></h3>
+<ol><li><p>Hệ số $\alpha_T = 0{,}852$ trong công thức $W_{3s,10} = \alpha_T W_0$ dùng để làm gì?</p><p>Đáp án: Đổi áp lực gió từ chu kỳ lặp 20 năm sang 10 năm</p><details class="sol"><summary>Lời giải</summary><p>$W_0$ (QCVN 02:2022) ứng với chu kỳ lặp 20 năm; $\alpha_T = 0{,}852$ đổi sang 10 năm (điều 10.2.2).</p>
+</details></li>
+<li><p>Công trình ở vùng gió III ($W_0 = 125$ daN/m²). Tính $W_{3s,10}$.</p><p>Đáp án: <b>106.5</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>$W_{3s,10} = 0{,}852 \times 125 = 106{,}5$ daN/m².</p>
+</details></li>
+<li><p>Nhà xưởng ở vùng gió III, địa hình C, $z_e = 12$ m, $T_1 &lt; 1$ s, cấp hậu quả C2. Tính $W/c$ (giá trị tính toán chia cho hệ số khí động).</p><p>Đáp án: <b>143.7</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>$k = 0{,}72 + (0{,}81 - 0{,}72)\times 2/5 = 0{,}756$; $W/c = 1{,}0 \times 2{,}1 \times 106{,}5 \times 0{,}756 \times 0{,}85 = 143{,}7$ daN/m².</p>
+</details></li>
+</ol>
+<h3><a href="../04_tai_trong_tcvn/b4_he_so_khi_dong.html">Bài 4.4. Hệ số khí động, phân vùng gió</a></h3>
+<ol><li><p>Mái có góc dốc $\alpha$ trong khoảng nào thì được coi là mái bằng (F.2.1)?</p><p>Đáp án: $-5° &lt; \alpha &lt; 5°$</p><details class="sol"><summary>Lời giải</summary><p>Mái có $-5° &lt; \alpha &lt; 5°$ được coi là mái bằng, tra Bảng F.2.</p>
+</details></li>
+<li><p>Nhà mặt bằng chữ nhật: cạnh vuông góc hướng gió $b = 48$ m, cao $h = 10$ m. Tính bề rộng vùng A trên tường song song hướng gió.</p><p>Đáp án: <b>4</b> m</p><details class="sol"><summary>Lời giải</summary><p>$e = \min(48;\,20) = 20$ m → vùng A rộng $20/5 = 4$ m.</p>
+</details></li>
+<li><p>Mái bằng, $W/c = 120$ daN/m², bước khung 6 m, áp lực trong $c_i = +0{,}2$. Tính <b>độ lớn</b> tải gió hút trên đoạn kèo khung giữa thuộc vùng H.</p><p>Đáp án: <b>648</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$c_p = -0{,}7 - 0{,}2 = -0{,}9$; $q = 0{,}9 \times 120 \times 6 = 648$ daN/m (hút lên).</p>
+</details></li>
+</ol>
+<h3><a href="../04_tai_trong_tcvn/b5_vi_du_hoa_binh.html">Bài 4.5. Ví dụ Hòa Bình</a></h3>
+<ol><li><p>Vì sao trường hợp $c_i = -0{,}2$ làm tải lên cột đón gió lớn hơn?</p><p>Đáp án: Vì $c_p = c_e - c_i = 0{,}7 + 0{,}2 = 0{,}9$: áp lực trong âm (hút ra) cộng thêm vào áp lực ngoài đẩy vào tường</p><details class="sol"><summary>Lời giải</summary><p>$c_i = +0{,}2$: $c_p = 0{,}5$; $c_i = -0{,}2$: $c_p = 0{,}9$ → tải cột đón gió 1008 daN/m thay vì 560.</p>
+</details></li>
+<li><p>Khung biên (đầu hồi) nhận một nửa tải so với khung giữa. Tính tải gió lên cột đón gió của khung biên khi $c_i = -0{,}2$ (dùng <a href="../04_tai_trong_tcvn/b5_vi_du_hoa_binh.html#tbl-4-6">Bảng 4.6</a>).</p><p>Đáp án: <b>504</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$q = 1008/2 = 504$ daN/m.</p>
+</details></li>
+<li><p>Giả sử một khung trong nằm trong phạm vi $e/4$ từ đầu hồi nên đoạn kèo 0–1,76 m thuộc vùng F ($c_e = -1{,}8$), bước khung 8 m, $W/c = 140{,}05$ daN/m². Tính <b>độ lớn</b> tải hút trên đoạn đó khi $c_i = +0{,}2$.</p><p>Đáp án: <b>2241</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$c_p = -1{,}8 - 0{,}2 = -2{,}0$; $q = 2{,}0 \times 140{,}05 \times 8 = 2241$ daN/m (lấy $W/c = 140{,}0$ thì được 2240).</p>
+</details></li>
+</ol>
+<h3><a href="../04_tai_trong_tcvn/b6_so_sanh_1995.html">Bài 4.6. So sánh với TCVN 2737:1995</a></h3>
+<ol><li><p>Theo TCVN 2737:2023, giới hạn độ võng và chuyển vị của nhà xưởng thép lấy theo tài liệu nào?</p><p>Đáp án: TCVN 2737:2023 Phụ lục G</p><details class="sol"><summary>Lời giải</summary><p>Độ võng, chuyển vị lấy theo <b>TCVN 2737:2023 Phụ lục G</b>.</p>
+</details></li>
+<li><p>Với $\gamma_n = 1{,}0$, hệ số nhân tổng hợp lên $W_0$ do chu kỳ lặp và độ tin cậy trong TCVN 2737:2023 là $\alpha_T\gamma_f$. Tính hệ số này.</p><p>Đáp án: <b>1.789</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}852 \times 2{,}1 = 1{,}789$ (so với 1,2 của cách làm cũ).</p>
+</details></li>
+<li><p>Áp lực gió tiêu chuẩn theo TCVN 2737:2023 của Hòa Bình là $W_k/c = 66{,}7$ daN/m². Một bảng tính cũ nhân với 1,2 thay vì 2,1. Hỏi giá trị tính toán bị thiếu bao nhiêu phần trăm so với $W/c = 140{,}0$ daN/m²? (nhập số %)</p><p>Đáp án: <b>42.8</b> %</p><details class="sol"><summary>Lời giải</summary><p>$1{,}2 \times 66{,}7 = 80{,}0$ daN/m²; $(140{,}0 - 80{,}0)/140{,}0 = 42{,}8$ %.</p>
+</details></li>
+</ol>
+<h3><a href="../04_tai_trong_tcvn/kiem_tra_chuong.html">Kiểm tra Chương 4: Tải trọng TCVN 2737:2023</a></h3>
+<ol><li><p>Vì sao TCVN 2737:2023 nhân $W_0$ với 0,852 rồi lại nhân với 2,1?</p><p>Đáp án: Vì 0,852 đổi áp lực sang chu kỳ lặp 10 năm (giá trị tiêu chuẩn), còn 2,1 là hệ số độ tin cậy để có giá trị tính toán</p><details class="sol"><summary>Lời giải</summary><p>$W_{3s,10} = 0{,}852\,W_0$ là áp lực tiêu chuẩn (chu kỳ lặp 10 năm); nhân $\gamma_f = 2{,}1$ để được giá trị tính toán.</p>
+</details></li>
+<li><p>Mái nhà xưởng dốc 7 % ($\alpha = 4{,}0°$). Hệ số khí động mái lấy theo bảng nào?</p><p>Đáp án: Bảng F.2 (mái bằng), vì $-5° &lt; \alpha &lt; 5°$</p><details class="sol"><summary>Lời giải</summary><p>$\alpha = 4{,}0° &lt; 5°$ → coi là mái bằng, tra Bảng F.2.</p>
+</details></li>
+<li><p>Bề rộng các vùng A, B, C trên tường đầu hồi phụ thuộc vào đại lượng nào?</p><p>Đáp án: $e = \min(b;\,2h)$, với $b$ là cạnh vuông góc hướng gió</p><details class="sol"><summary>Lời giải</summary><p>A: $0$–$e/5$; B: $e/5$–$e$; C: phần còn lại, với $e = \min(b;\,2h)$.</p>
+</details></li>
+<li><p>Áp lực trong $c_i = \pm 0{,}2$ áp dụng khi nào, và dấu nào bất lợi cho kèo khi gió hút mái?</p><p>Đáp án: Khi độ hở $\mu \le 5\,\%$; $c_i = +0{,}2$ bất lợi cho kèo (cộng thêm lực đẩy từ trong lên)</p><details class="sol"><summary>Lời giải</summary><p>F.12.2: $\mu \le 5\,\%$ → $c_i = \pm 0{,}2$. Với $c_i = +0{,}2$, vùng G: $c_p = -1{,}4$ (hút mạnh hơn) → bất lợi cho kèo.</p>
+</details></li>
+<li><p>Tính $k(z_e)$ cho $z_e = 8{,}82$ m nếu công trình Hòa Bình nằm ở địa hình A.</p><p>Đáp án: <b>1.149</b> </p><details class="sol"><summary>Lời giải</summary><p>$k = 1{,}05 + (1{,}18 - 1{,}05) \times 3{,}82/5 = 1{,}149$.</p>
+</details></li>
+<li><p>Hòa Bình: $e = 17{,}64$ m. Vùng F trên mái rộng $e/4$ tính từ đầu hồi. Tính bề rộng này.</p><p>Đáp án: <b>4.41</b> m</p><details class="sol"><summary>Lời giải</summary><p>$17{,}64/4 = 4{,}41$ m &lt; bước khung 8 m → chỉ khung biên nằm trong vùng F.</p>
+</details></li>
+<li><p>Bài tập cuối chương: tính <b>độ lớn</b> tải hút trên đoạn kèo vùng G (0–1,76 m) của khung biên Hòa Bình khi $c_i = +0{,}2$ nếu (giả định) vẫn dùng vùng G ($c_e = -1{,}2$).</p><p>Đáp án: <b>784</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$c_p = -1{,}4$; $q = 1{,}4 \times 140{,}05 \times 8/2 = 784$ daN/m (bằng nửa của 1569).</p>
+</details></li>
+<li><p>Bài tập cuối chương (tiếp): khung biên Hòa Bình nằm trong phạm vi $e/4 = 4{,}41$ m nên đoạn kèo 0–1,76 m thuộc vùng F ($c_e = -1{,}8$). Tính <b>độ lớn</b> tải hút trên đoạn này khi $c_i = +0{,}2$ ($W/c = 140{,}05$ daN/m², bước 8 m, khung biên lấy nửa tải).</p><p>Đáp án: <b>1120</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$c_p = -2{,}0$; $q = 2{,}0 \times 140{,}05 \times 4 = 1120$ daN/m, lớn hơn trường hợp dùng vùng G (784 daN/m) tới 43 %.</p>
+</details></li>
+</ol>
+<h2>Chương 5. Tổ hợp, phân tích, điều kiện sử dụng</h2>
+<h3><a href="../05_to_hop_tcvn/b1_to_hop.html">Bài 5.1. Tổ hợp theo TCVN 2737:2023</a></h3>
+<ol><li><p>Khi có hai tải tạm thời ngắn hạn (hoạt tải mái và gió), hệ số tổ hợp của tải <b>không</b> chủ đạo là:</p><p>Đáp án: 0,9</p><details class="sol"><summary>Lời giải</summary><p>$\psi_{t,1} = 1{,}0$ (chủ đạo); $\psi_{t,2} = 0{,}9$; $\psi_{t,3} = \ldots = 0{,}7$.</p>
+</details></li>
+<li><p>Hòa Bình, tải gió tính toán lên cột đón gió $W = 1008$ daN/m ($c_i = -0{,}2$). Trong tổ hợp TH3 (hoạt tải chủ đạo), phần gió lên cột bằng bao nhiêu?</p><p>Đáp án: <b>907.2</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$0{,}9 \times 1008 = 907{,}2$ daN/m.</p>
+</details></li>
+<li><p>Nhập tải gió ở giá trị <b>tiêu chuẩn</b> (cách a). Công trình cấp hậu quả C3. Tính hệ số combo của gió trong tổ hợp hoạt tải chủ đạo (TH3).</p><p>Đáp án: <b>2.17</b> </p><details class="sol"><summary>Lời giải</summary><p>$1{,}15 \times 2{,}1 \times 0{,}9 = 2{,}17$.</p>
+</details></li>
+</ol>
+<h3><a href="../05_to_hop_tcvn/b2_gioi_han_vong.html">Bài 5.2. Giới hạn võng, chuyển vị (Phụ lục G)</a></h3>
+<ol><li><p>Giới hạn độ võng thẩm mỹ – tâm lý cho kèo nhịp $L \ge 36$ m, chiều cao phòng lớn hơn 6 m, là:</p><p>Đáp án: $L/300$</p><details class="sol"><summary>Lời giải</summary><p>Nhịp từ 36 m trở lên: $f_u = L/300$.</p>
+</details></li>
+<li><p>Tính giới hạn độ võng của kèo nhà xưởng Hòa Bình nhịp 50 m (chiều cao phòng > 6 m).</p><p>Đáp án: <b>166.7</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$f_u = 50\,000/300 = 166{,}7$ mm.</p>
+</details></li>
+<li><p>Combo DEF của một kèo nhịp 50 m cho $U_3$ giữa nhịp $= -185$ mm, đầu trái $-12$ mm, đầu phải $-14$ mm. Tính <b>độ lớn</b> độ võng tương đối $f$ (sau đó so với giới hạn của câu trên).</p><p>Đáp án: <b>172</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$f = -185 - \tfrac12(-12 - 14) = -172$ mm; $|f| = 172 &gt; 166{,}7$ mm → không đạt.</p>
+</details></li>
+</ol>
+<h3><a href="../05_to_hop_tcvn/b3_phan_tich_sap.html">Bài 5.3. Phân tích trong SAP2000</a></h3>
+<ol><li><p>Trong SAP2000, tổ hợp ENVELOPE bao các COMB1–COMB13 phải khai báo kiểu nào?</p><p>Đáp án: Envelope</p><details class="sol"><summary>Lời giải</summary><p>Các COMB là <i>Linear Add</i>; tổ hợp bao là <i>Envelope</i>.</p>
+</details></li>
+<li><p>Mô hình nhập tải gió ở giá trị tính toán, cấp hậu quả C2. Tính hệ số của trường hợp gió trong combo DEF.</p><p>Đáp án: <b>0.476</b> </p><details class="sol"><summary>Lời giải</summary><p>$1/(2{,}1 \times 1{,}0) = 0{,}476$.</p>
+</details></li>
+<li><p>Mô hình nhập tải tính toán (cấp hậu quả C2). Riêng trường hợp gió WX tính toán cho chuyển vị ngang đỉnh cột 40 mm; tĩnh tải và hoạt tải gây chuyển vị ngang không đáng kể. Tính chuyển vị trong combo DEF.</p><p>Đáp án: <b>19.05</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\Delta = 40/2{,}1 = 19{,}05$ mm &lt; 30,6 mm → đạt.</p>
+</details></li>
+</ol>
+<h3><a href="../05_to_hop_tcvn/kiem_tra_chuong.html">Kiểm tra Chương 5: Tổ hợp, phân tích, điều kiện sử dụng</a></h3>
+<ol><li><p>Hệ số $\psi_{t,2}$ và $\psi_{t,3}$ khác nhau thế nào? Khi nào dùng 0,7?</p><p>Đáp án: $\psi_{t,2} = 0{,}9$ cho tải ngắn hạn thứ hai; $\psi_{t,3} = 0{,}7$ cho tải ngắn hạn thứ ba trở đi</p><details class="sol"><summary>Lời giải</summary><p>$\psi_{t,1} = 1{,}0$; $\psi_{t,2} = 0{,}9$; từ tải ngắn hạn thứ ba trở đi $\psi_t = 0{,}7$.</p>
+</details></li>
+<li><p>Vì sao tổ hợp kiểm tra độ võng thẩm mỹ – tâm lý không kể hoạt tải sửa chữa mái?</p><p>Đáp án: Vì yêu cầu này dùng tải thường xuyên và tạm thời dài hạn, mà hoạt tải mái khu vực H không có giá trị tiêu chuẩn giảm (điều 8.3.3)</p><details class="sol"><summary>Lời giải</summary><p>Bảng G.1 mục 2a dùng tải thường xuyên + tạm thời dài hạn; hoạt tải mái sửa chữa không có phần dài hạn.</p>
+</details></li>
+<li><p>Chuyển vị ngang giới hạn của nhà xưởng một tầng tường tôn treo, cao $h_s = 9$ m, là bao nhiêu?</p><p>Đáp án: <b>39</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\min(1{,}3 \times 9000/300;\ 9000/150) = \min(39;\ 60) = 39$ mm.</p>
+</details></li>
+<li><p>Tính chuyển vị ngang giới hạn của nhà xưởng Hòa Bình ($h_s = 7{,}07$ m, tường tôn treo).</p><p>Đáp án: <b>30.6</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\min(1{,}3 \times 7070/300;\ 7070/150) = \min(30{,}6;\ 47{,}1) = 30{,}6$ mm.</p>
+</details></li>
+<li><p>Bài tập cuối chương: nhà xưởng Hòa Bình có 8 trường hợp gió (4 hướng × $\pm c_i$). Lập tổ hợp theo các nhóm TH1–TH4 của <a href="../05_to_hop_tcvn/b1_to_hop.html#tbl-5-1">Bảng 5.1</a>. Có bao nhiêu tổ hợp cơ bản (chưa kể ENVELOPE)?</p><p>Đáp án: <b>25</b> tổ hợp</p><details class="sol"><summary>Lời giải</summary><p>$1 + 3 \times 8 = 25$ tổ hợp (mô hình mẫu với 4 hướng gió có $1 + 3 \times 4 = 13$).</p>
+</details></li>
+<li><p>Bài tập cuối chương (cách a, nhập tải tiêu chuẩn, cấp hậu quả C2): tính hệ số combo của gió trong tổ hợp TH3 $1{,}05SW + 1{,}1D + 1{,}3L + k_W W$.</p><p>Đáp án: <b>1.89</b> </p><details class="sol"><summary>Lời giải</summary><p>$k_W = 1{,}0 \times 0{,}9 \times 2{,}1 = 1{,}89$.</p>
+</details></li>
+<li><p>Kiểm tra độ võng kèo bằng tổ hợp tính toán thay vì tổ hợp tiêu chuẩn dẫn đến điều gì?</p><p>Đáp án: Độ võng tính ra lớn hơn thực tế khoảng 30–100 %, tiết diện bị chọn thừa</p><details class="sol"><summary>Lời giải</summary><p>Phân tích tuyến tính: độ võng tỉ lệ với tải, mà $\gamma_f$ = 1,05–2,1 → độ võng thừa khoảng 30–100 %, dẫn tới chọn tiết diện lớn không cần thiết.</p>
+</details></li>
+</ol>
+<h2>Chương 6. Kiểm tra cấu kiện TCVN 5575:2024</h2>
+<h3><a href="../06_cau_kien_tcvn/b1_cuong_do_tinh_toan.html">Bài 6.1. Cường độ tính toán, γm, γc</a></h3>
+<ol><li><p>Thép Q345 sản xuất theo tiêu chuẩn GB (Trung Quốc) dùng cho kèo nhà xưởng. Hệ số $\gamma_m$ theo Bảng 3 TCVN 5575:2024 là:</p><p>Đáp án: 1,10</p><details class="sol"><summary>Lời giải</summary><p>Q345 là thép theo tiêu chuẩn nước ngoài (GB) nên $\gamma_m = 1{,}10$.</p>
+</details></li>
+<li><p>Tính cường độ tính toán chịu cắt $f_v$ của thép Q345 ($f_y = 345$ MPa, $\gamma_m = 1{,}10$).</p><p>Đáp án: <b>181.9</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$f_v = 0{,}58 \times 345/1{,}10 = 181{,}9$ MPa.</p>
+</details></li>
+<li><p>Cột nhà công nghiệp một tầng <b>có cầu trục</b>, thép SS400 (JIS) có $f_y = 245$ MPa. Tính tích $f_{yd}\gamma_c$ dùng trong các công thức kiểm tra.</p><p>Đáp án: <b>233.9</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$f_{yd} = 245/1{,}10 = 222{,}7$ MPa; $f_{yd}\gamma_c = 222{,}7 \times 1{,}05 = 233{,}9$ MPa.</p>
+</details></li>
+</ol>
+<h3><a href="../06_cau_kien_tcvn/b2_keo_nen.html">Bài 6.2. Thanh chịu kéo, nén đúng tâm</a></h3>
+<ol><li><p>Theo Bảng 7, tiết diện <b>I tổ hợp hàn</b> thuộc loại nào và có $\alpha$, $\beta$ bằng bao nhiêu?</p><p>Đáp án: Loại b: $\alpha = 0{,}04$; $\beta = 0{,}09$</p><details class="sol"><summary>Lời giải</summary><p>I hàn, I cán, hộp hàn, thép góc thuộc loại <b>b</b>: $\alpha = 0{,}04$; $\beta = 0{,}09$.</p>
+</details></li>
+<li><p>Thanh có $\lambda = 120$, thép $f_y = 235$ MPa, $\gamma_m = 1{,}05$, $E = 206\,000$ MPa. Tính độ mảnh quy ước $\bar\lambda$.</p><p>Đáp án: <b>3.955</b> </p><details class="sol"><summary>Lời giải</summary><p>$f_{yd} = 223{,}8$ MPa; $\bar\lambda = 120\sqrt{223{,}8/206\,000} = 120 \times 0{,}03296 = 3{,}955$.</p>
+</details></li>
+<li><p>Thanh chống ống D141×4 ($A = 17{,}22$ cm², $i = 4{,}85$ cm, loại a) được thêm một điểm giữ để chiều dài tính toán còn $L = 6$ m. Thép $f_y = 235$ MPa, $\gamma_m = 1{,}05$, $\gamma_c = 1$. Tính $N_c = \varphi A f_{yd}$.</p><p>Đáp án: <b>176.2</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$\lambda = 123{,}7$; $\bar\lambda = 123{,}7 \times 0{,}03296 = 4{,}078 &gt; 3{,}8$. Công thức <a href="../06_cau_kien_tcvn/b2_keo_nen.html#eq-6-2">(6.2)</a> cho $\varphi = 0{,}477$, giới hạn $7{,}6/4{,}078^2 = 0{,}457$ → $\varphi = 0{,}457$. $N_c = 0{,}457 \times 1722 \times 223{,}8 = 176{,}2$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../06_cau_kien_tcvn/b3_chiu_uon.html">Bài 6.3. Cấu kiện chịu uốn</a></h3>
+<ol><li><p>Trường hợp nào sau đây <b>được miễn</b> kiểm tra ổn định tổng thể dầm theo 8.4.4?</p><p>Đáp án: Tải truyền qua sàn BTCT liên kết liên tục với cánh nén</p><details class="sol"><summary>Lời giải</summary><p>Sàn BTCT liên kết liên tục với cánh nén thỏa điều kiện a) của 8.4.4.</p>
+</details></li>
+<li><p>Tính $\bar\lambda_{ub}$ theo công thức (72) (đoạn giữa các điểm giằng, uốn thuần túy) khi $b/t = 25$ và $b/h = 0{,}5$.</p><p>Đáp án: <b>0.655</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}41 + 0{,}08 + (0{,}73 - 0{,}40) \times 0{,}5 = 0{,}655$.</p>
+</details></li>
+<li><p>Kèo H500×250×8×12, Q345 ($\gamma_m = 1{,}10$), cánh dưới chịu nén: $b = 250$ mm, $t = 12$ mm, $h = 488$ mm (khoảng cách trục hai cánh), $E = 206\,000$ MPa. Dùng công thức (72), <b>không</b> nhân hệ số $\sqrt{f_{yd}/\sigma}$. Tính khoảng cách chống xiên lớn nhất $L_{ef}$ để được miễn tính $\varphi_b$.</p><p>Đáp án: <b>4.36</b> m</p><details class="sol"><summary>Lời giải</summary><p>$b/t = 20{,}83$; $\bar\lambda_{ub} = 0{,}41 + 0{,}0667 + (0{,}73 - 0{,}333) \times 0{,}512 = 0{,}680$. $f_{yd} = 313{,}6$ MPa; $\sqrt{313{,}6/206\,000} = 0{,}03902$. $L_{ef} = 0{,}680 \times 250/0{,}03902 = 4356$ mm $\approx 4{,}36$ m.</p>
+</details></li>
+</ol>
+<h3><a href="../06_cau_kien_tcvn/b4_nen_uon.html">Bài 6.4. Nén – uốn: bền, ổn định</a></h3>
+<ol><li><p>Khi $m_{ef} &gt; 20$, cấu kiện nén uốn được tính như thế nào?</p><p>Đáp án: Như cấu kiện chịu uốn (điều 8)</p><details class="sol"><summary>Lời giải</summary><p>Theo 9.2.2: $m_{ef} &gt; 20$ thì tính như cấu kiện chịu uốn.</p>
+</details></li>
+<li><p>Cột C1 ($A = 77{,}8$ cm², $W_x = 1645{,}1$ cm³) chịu $N = 120$ kN, $M_x = 200$ kNm. Tính độ lệch tâm tương đối $m$.</p><p>Đáp án: <b>7.88</b> </p><details class="sol"><summary>Lời giải</summary><p>$e = 200/120 = 1{,}667$ m $= 1667$ mm; $m = 1667 \times 7780/1\,645\,100 = 7{,}88$.</p>
+</details></li>
+<li><p>Cột C1 (tiết diện đỉnh: $b = 200$, $t = 10$, $h = 640$ mm, $W_c = 1645{,}1$ cm³, $f_{yd} = 223{,}8$ MPa, $\gamma_c = 1$) với tổ hợp khác có $M_x = 250$ kNm. Tính $L_{ef}$ lớn nhất để được miễn kiểm tra ổn định tổng thể (dùng (72) và chú thích 3 Bảng 12).</p><p>Đáp án: <b>4.43</b> m</p><details class="sol"><summary>Lời giải</summary><p>$\sigma = 250 \times 10^6/1\,645\,100 = 152{,}0$ MPa; $L_{ef,\max} = 0{,}602 \times 200\sqrt{206\,000/152{,}0} = 4434$ mm $\approx 4{,}43$ m.</p>
+</details></li>
+</ol>
+<h3><a href="../06_cau_kien_tcvn/b5_chieu_dai_tinh_toan.html">Bài 6.5. Chiều dài tính toán, độ mảnh</a></h3>
+<ol><li><p>Thanh giằng thép tròn có tăng đơ, chịu tải tĩnh, độ võng do trọng lượng bản thân không vượt $L/150$. Độ mảnh giới hạn $\lambda_u$ là:</p><p>Đáp án: 500</p><details class="sol"><summary>Lời giải</summary><p>Chú thích 2 Bảng 34 cho phép $\lambda_u = 500$ với thanh giằng thỏa điều kiện độ võng $L/150$.</p>
+</details></li>
+<li><p>Tính hệ số chiều dài tính toán $\mu$ của cột khung tự do, chân khớp, xà liên kết cứng, khi $n = 0{,}3$.</p><p>Đáp án: <b>3.01</b> </p><details class="sol"><summary>Lời giải</summary><p>$\mu = 2\sqrt{1 + 0{,}38/0{,}3} = 2\sqrt{2{,}267} = 3{,}01$.</p>
+</details></li>
+<li><p>Khung giả định: kèo $I_s = 42\,919$ cm⁴, nhịp $L = 25$ m; cột $I_c = 53\,460$ cm⁴, cao $L_c = 7$ m; khung tự do, chân khớp. Tính chiều dài tính toán của cột trong mặt phẳng khung $L_x = \mu L_c$.</p><p>Đáp án: <b>22.96</b> m</p><details class="sol"><summary>Lời giải</summary><p>$n = 42\,919 \times 7/(53\,460 \times 25) = 0{,}2248$; $\mu = 2\sqrt{1 + 0{,}38/0{,}2248} = 3{,}280$; $L_x = 3{,}280 \times 7 = 22{,}96$ m.</p>
+</details></li>
+</ol>
+<h3><a href="../06_cau_kien_tcvn/b6_bang_tinh_excel.html">Bài 6.6. Bảng tính Excel</a></h3>
+<ol><li><p>Trong SAP2000, đường dẫn để xuất nội lực thanh ra bảng là:</p><p>Đáp án: Ctrl+T → Element Forces – Frames → Export Excel</p><details class="sol"><summary>Lời giải</summary><p>Ctrl+T → Element Forces – Frames → chọn ENVELOPE hoặc COMB → Export Excel.</p>
+</details></li>
+<li><p>Kèo H500×250×8×12 ($W_x = 1716{,}8$ cm³), thép Q345 ($f_{yd} = 313{,}6$ MPa, $\gamma_c = 1$), sau khi cập nhật nội lực có $M_x = 380$ kNm. Tính tỷ số độ bền theo (40).</p><p>Đáp án: <b>0.706</b> </p><details class="sol"><summary>Lời giải</summary><p>$380 \times 10^6/(1\,716\,800 \times 313{,}6) = 0{,}706$.</p>
+</details></li>
+<li><p>Với kèo ở câu trên và tỷ số huy động mục tiêu 0,95, mô men lớn nhất kèo được phép chịu theo điều kiện độ bền (40) là bao nhiêu?</p><p>Đáp án: <b>511.5</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$M_{\max} = 0{,}95 \times 1\,716\,800 \times 313{,}6 = 511{,}5 \times 10^6$ Nmm $= 511{,}5$ kNm.</p>
+</details></li>
+</ol>
+<h3><a href="../06_cau_kien_tcvn/kiem_tra_chuong.html">Kiểm tra Chương 6: Kiểm tra cấu kiện TCVN 5575:2024</a></h3>
+<ol><li><p>Khi nào lấy $\gamma_m = 1{,}10$ theo TCVN 5575:2024?</p><p>Đáp án: Khi thép cung cấp theo tiêu chuẩn nước ngoài (Q345, SS400, A572, S235…) và thép ống tạo hình nóng</p><details class="sol"><summary>Lời giải</summary><p>Thép theo tiêu chuẩn nước ngoài và thép ống tạo hình nóng: $\gamma_m = 1{,}10$.</p>
+</details></li>
+<li><p>Điều kiện để được miễn kiểm tra ổn định tổng thể dầm (8.4.4) là:</p><p>Đáp án: Tải truyền qua tấm cứng đặc liên kết liên tục với cánh nén, hoặc $\bar\lambda_b \le \bar\lambda_{ub}$ theo Bảng 12</p><details class="sol"><summary>Lời giải</summary><p>Điều 8.4.4: a) tấm cứng đặc liên kết liên tục với cánh nén; b) $\bar\lambda_b \le \bar\lambda_{ub}$.</p>
+</details></li>
+<li><p>$m_{ef} &gt; 20$ nghĩa là gì và tính tiếp thế nào?</p><p>Đáp án: Độ lệch tâm rất lớn, lực dọc ảnh hưởng ít; tính như cấu kiện chịu uốn (điều 8)</p><details class="sol"><summary>Lời giải</summary><p>Độ lệch tâm tương đối hiệu dụng lớn → cấu kiện làm việc chủ yếu chịu uốn → kiểm tra theo điều 8.</p>
+</details></li>
+<li><p>Vì sao giằng thép tròn có tăng đơ được phép có $\lambda_u = 500$?</p><p>Đáp án: Vì thanh chỉ chịu kéo, được căng bằng tăng đơ nên độ võng do trọng lượng bản thân không vượt $L/150$ (chú thích 2 Bảng 34)</p><details class="sol"><summary>Lời giải</summary><p>Thanh giằng thỏa điều kiện độ võng $L/150$ khi chịu tải tĩnh thì lấy $\lambda_u = 500$; giằng tròn có tăng đơ được căng nên thỏa điều kiện này.</p>
+</details></li>
+<li><p>Tính $\varphi$ của tiết diện loại b khi $\bar\lambda = 2{,}0$.</p><p>Đáp án: <b>0.826</b> </p><details class="sol"><summary>Lời giải</summary><p>$\delta = 9{,}87(0{,}96 + 0{,}18) + 4 = 15{,}252$; $\varphi = 0{,}5(15{,}252 - \sqrt{15{,}252^2 - 157{,}92})/4 = 0{,}826$.</p>
+</details></li>
+<li><p>Thanh chống D90×3 ($i = 3{,}08$ cm) dài 8 m. Tính độ mảnh $\lambda$ (so với $\lambda_u = 200$ để kết luận).</p><p>Đáp án: <b>260</b> </p><details class="sol"><summary>Lời giải</summary><p>$\lambda = 800/3{,}08 = 259{,}7 \approx 260 &gt; 200$ → không đạt độ mảnh.</p>
+</details></li>
+<li><p>Cột C1: $b = 200$ mm, $\bar\lambda_{ub} = 0{,}602$ (công thức 72), $\sigma = 169{,}0$ MPa, $E = 206\,000$ MPa. Tính khoảng cách giữ cánh nén lớn nhất $L_{ef}$ để được miễn kiểm tra ổn định tổng thể (có nhân hệ số chú thích 3 Bảng 12).</p><p>Đáp án: <b>4.20</b> m</p><details class="sol"><summary>Lời giải</summary><p>$L_{ef,\max} = 0{,}602 \times 200 \times \sqrt{206\,000/169{,}0} = 4203$ mm $\approx 4{,}20$ m.</p>
+</details></li>
+<li><p>Bài tập chương: đề xuất khoảng cách chống xiên cánh dưới kèo K1 (H500×250×8×12, Q345, $f_{yd} = 313{,}6$ MPa, $b = 250$, $t = 12$, $h = 488$ mm, $W = 1716{,}8$ cm³) khi gió hút gây mô men $M = 300$ kNm (giả định) làm cánh dưới chịu nén. Dùng (72) và nhân hệ số $\sqrt{f_{yd}/\sigma}$. Tính $L_{ef,\max}$.</p><p>Đáp án: <b>5.84</b> m</p><details class="sol"><summary>Lời giải</summary><p>$\sigma = 300 \times 10^6/1\,716\,800 = 174{,}7$ MPa; $\bar\lambda_{ub}\sqrt{f_{yd}/\sigma} = 0{,}680 \times 1{,}340 = 0{,}911$; $L_{ef,\max} = 0{,}911 \times 250/0{,}03902 = 5836$ mm $\approx 5{,}84$ m (chọn bố trí chống xiên cách nhau không quá khoảng này, theo bội số bước xà gồ).</p>
+</details></li>
+</ol>
+<h2>Chương 7. Liên kết TCVN</h2>
+<h3><a href="../07_lien_ket_tcvn/b1_cuong_do_lien_ket.html">Bài 7.1. Cường độ vật liệu liên kết</a></h3>
+<ol><li><p>Cường độ tính toán chịu kéo của bu lông neo bằng thép S235B, đường kính lớn hơn 16 mm, theo TCVN 5575:2024 là:</p><p>Đáp án: 180 MPa, theo $f_{ba} = 0{,}8f_y$</p><details class="sol"><summary>Lời giải</summary><p>$f_{ba} = 0{,}8f_y = 0{,}8 \times 225 = 180$ MPa. $f_y$ là giới hạn chảy của thép làm bu lông neo, không phải của cấp bền bu lông.</p>
+</details></li>
+<li><p>Tính cường độ tính toán của đường hàn góc theo kim loại biên nóng chảy $f_{ws}$ khi hàn thép Q345 ($f_u = 470$ MPa).</p><p>Đáp án: <b>211.5</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$f_{ws} = 0{,}45 \times 470 = 211{,}5$ MPa.</p>
+</details></li>
+<li><p>Bu lông neo M24 bằng thép S235B ($f_y = 225$ MPa). Tính khả năng chịu kéo $f_{ba}A_{bn}$ của một bu lông (chưa xét hệ số $k_d$).</p><p>Đáp án: <b>63.5</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$f_{ba} = 0{,}8 \times 225 = 180$ MPa; $A_{bn} = 353$ mm²; $180 \times 353 = 63\,540$ N $= 63{,}5$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../07_lien_ket_tcvn/b2_lien_ket_han.html">Bài 7.2. Liên kết hàn</a></h3>
+<ol><li><p>Hàn bụng dày $t = 8$ mm vào bản mã dày $T = 20$ mm bằng đường hàn góc hai bên. Chiều cao đường hàn $h_f$ lấy thế nào?</p><p>Đáp án: Theo tính toán, không lớn hơn $1{,}2t = 9{,}6$ mm (Chú thích 3 Bảng 41)</p><details class="sol"><summary>Lời giải</summary><p>$t = 8 &lt; 0{,}6 \times 20 = 12$ mm nên Bảng 41 không áp dụng; theo Chú thích 3, $h_f$ lấy theo tính toán và không lớn hơn $1{,}2t = 9{,}6$ mm.</p>
+</details></li>
+<li><p>Hai đường hàn góc tay ($\beta_f = 0{,}7$), $h_f = 8$ mm, mỗi đường dài thực 300 mm, chịu lực $N = 150$ kN qua trọng tâm. Kim loại đường hàn quyết định. Tính $\tau$.</p><p>Đáp án: <b>46.2</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$L_w = 2 \times (300 - 10) = 580$ mm; $\tau = 150\,000/(0{,}7 \times 8 \times 580) = 46{,}2$ MPa.</p>
+</details></li>
+<li><p>Thanh chịu $N = 300$ kN được hàn vào bản mã bằng hai đường hàn góc tay, mỗi đường dài thực 250 mm, que E43, thép Q345. Tính $h_f$ cần thiết theo bền.</p><p>Đáp án: <b>4.96</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\beta_f f_{wf} = 0{,}7 \times 180 = 126 &lt; \beta_s f_{ws} = 211{,}5$ MPa → (176). $L_w = 2 \times 240 = 480$ mm; $h_f = 300\,000/(126 \times 480) = 4{,}96$ mm. Chọn $h_f$ ≥ 5 mm và kiểm tra lại $h_{f,\min}$, $1{,}2t$.</p>
+</details></li>
+</ol>
+<h3><a href="../07_lien_ket_tcvn/b3_lien_ket_bu_long.html">Bài 7.3. Liên kết bu lông</a></h3>
+<ol><li><p>Công thức nào của 14.2.9 <b>không</b> có hệ số điều kiện làm việc của liên kết $\gamma_b$?</p><p>Đáp án: (188) – chịu kéo</p><details class="sol"><summary>Lời giải</summary><p>$N_{bt} = f_{tb}A_{bn}\gamma_c$: công thức kéo (188) không có $\gamma_b$.</p>
+</details></li>
+<li><p>Tính $N_{bv}$ của bu lông M20 cấp 8.8, cấp chính xác B, một mặt cắt ($\gamma_c = 1$).</p><p>Đáp án: <b>93.8</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N_{bv} = 332 \times 314 \times 1 \times 0{,}9 = 93\,823$ N $= 93{,}8$ kN.</p>
+</details></li>
+<li><p>Mối nối chịu lực dọc $N = 400$ kN qua trọng tâm, bu lông M20 cấp 8.8 cấp chính xác B, một mặt cắt, $\sum t = 12$ mm, thép CCT34 ($f_{cb} = 485$ MPa), $\gamma_c = 1$. Bỏ qua hệ số $\beta$ của mối nối dài. Cần tối thiểu bao nhiêu bu lông?</p><p>Đáp án: <b>5</b> bu lông</p><details class="sol"><summary>Lời giải</summary><p>$N_{bv} = 93{,}8$ kN; $N_{bp} = 485 \times 20 \times 12 \times 0{,}9 = 104{,}8$ kN → $N_{b,\min} = 93{,}8$ kN; $n_b \ge 400/93{,}8 = 4{,}26$ → 5 bu lông.</p>
+</details></li>
+</ol>
+<h3><a href="../07_lien_ket_tcvn/b4_bu_long_mat_bich.html">Bài 7.4. Bu lông mặt bích</a></h3>
+<ol><li><p>Trong công thức ([-@eq:7-10]), $h_i$ được đo từ hàng bu lông $i$ đến đâu?</p><p>Đáp án: Trọng tâm cánh chịu nén (trục quay giả thiết)</p><details class="sol"><summary>Lời giải</summary><p>Thực hành thiết kế giả thiết bản mã xoay quanh trục qua trọng tâm cánh chịu nén; $h_i$ đo từ trục này.</p>
+</details></li>
+<li><p>Mặt bích có 4 hàng × 2 bu lông, $h_i$ = 500, 400, 280, 140 mm, chịu $M = 250$ kNm. Bỏ qua $N$. Tính $N_{t,\max}$.</p><p>Đáp án: <b>123.0</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$\sum h_i^2 = 500^2 + 400^2 + 280^2 + 140^2 = 508\,000$ mm²; $N_{t,\max} = 250\times10^6 \times 500/(2 \times 508\,000) = 123\,031$ N $= 123{,}0$ kN.</p>
+</details></li>
+<li><p>Bố trí như Ví dụ 7.2 ($\sum h_i^2 = 595\,988$ mm², $h_1 = 548$ mm, 8 bu lông M24 cấp 8.8, cấp chính xác B). Nội lực $M = 300$ kNm, $N = 40$ kN (nén, được kể đến), $V = 100$ kN. Tính vế trái của (190).</p><p>Đáp án: <b>0.715</b> </p><details class="sol"><summary>Lời giải</summary><p>$N_t = 137{,}9 - 40/8 = 132{,}9$ kN; $N_s = 12{,}5$ kN; $(12{,}5/135{,}1)^2 + (132{,}9/158{,}1)^2 = 0{,}009 + 0{,}707 = 0{,}715 \le 1$ → đạt.</p>
+</details></li>
+</ol>
+<h3><a href="../07_lien_ket_tcvn/b5_bu_long_neo_ban_de.html">Bài 7.5. Bu lông neo, bản đế</a></h3>
+<ol><li><p>Trong công thức (L.9), $N$ là lực nào và hệ số ma sát $\mu$ bằng bao nhiêu?</p><p>Đáp án: Lực dọc nhỏ nhất đi kèm $V$; $\mu = 0{,}25$</p><details class="sol"><summary>Lời giải</summary><p>$N$ là lực dọc nhỏ nhất xảy ra cùng $V$; $\mu = 0{,}25$.</p>
+</details></li>
+<li><p>Một bu lông neo S235B ($f_{ba} = 180$ MPa) chịu lực kéo $P = 30$ kN, tải trọng tĩnh. Tính diện tích tiết diện theo ren cần thiết.</p><p>Đáp án: <b>175</b> mm²</p><details class="sol"><summary>Lời giải</summary><p>$A_{bn} \ge 1{,}05 \times 30\,000/180 = 175$ mm².</p>
+</details></li>
+<li><p>Chân cột có 4 bu lông neo M24 thép S235B, 2 bu lông ở phía chịu nén. Lực dọc nén nhỏ nhất đi kèm lực trượt là $N = 120$ kN. Tính giới hạn lực trượt do ma sát chịu theo (L.9).</p><p>Đáp án: <b>37.9</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$0{,}25 \times (2 \times 353 \times 180/4/1000 + 120) = 0{,}25 \times (31{,}8 + 120) = 37{,}9$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../07_lien_ket_tcvn/kiem_tra_chuong.html">Kiểm tra Chương 7: Liên kết TCVN</a></h3>
+<ol><li><p>Tại sao đường hàn góc cánh kèo ở Ví dụ 7.1 không đạt dù đã chọn $h_f$ lớn nhất cho phép, và giải pháp là gì?</p><p>Đáp án: Vì $h_f$ cần thiết 14,8 mm vượt $1{,}2t_f = 14{,}4$ mm; dùng hàn đối đầu thấu suốt có kiểm tra siêu âm, hoặc tăng chiều dài/chiều dày cánh tại nút</p><details class="sol"><summary>Lời giải</summary><p>$h_f = 861\,500/(0{,}7 \times 180 \times 462) = 14{,}8$ mm $&gt; 1{,}2 \times 12 = 14{,}4$ mm. Giải pháp: hàn đối đầu thấu cánh (kiểm tra NDT để dùng $f_w = f_{yd}$); hoặc tăng kích thước cánh tại nút để giảm lực.</p>
+</details></li>
+<li><p>Bu lông M24 cấp 10.9, cấp chính xác B, một mặt cắt. Tính $N_{bv}$ ($\gamma_c = 1$).</p><p>Đáp án: <b>169.2</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N_{bv} = 416 \times 452 \times 0{,}9 = 169\,229$ N $= 169{,}2$ kN.</p>
+</details></li>
+<li><p>Bu lông M24 cấp 10.9. Tính $N_{bt}$ ($\gamma_c = 1$).</p><p>Đáp án: <b>257.0</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N_{bt} = 728 \times 353 = 256\,984$ N $= 257{,}0$ kN.</p>
+</details></li>
+<li><p>Bu lông M24 cấp 8.8 (cấp chính xác B) chịu $N_s = 60$ kN và $N_t = 120$ kN. Tính vế trái của (190) (bu lông đạt khi giá trị ≤ 1).</p><p>Đáp án: <b>0.773</b> </p><details class="sol"><summary>Lời giải</summary><p>$(60/135{,}1)^2 + (120/158{,}1)^2 = 0{,}197 + 0{,}576 = 0{,}773 \le 1$; $N_t &lt; N_{bt}$ → đạt.</p>
+</details></li>
+<li><p>Chân cột khớp chịu $V = 30$ kN, lực nén nhỏ nhất đi kèm $N = 80$ kN, có 2 bu lông neo M24 (S235B) phía nén. Tính giới hạn ma sát theo (L.9). (Lực trượt có được phép do ma sát chịu không?)</p><p>Đáp án: <b>27.9</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$0{,}25 \times (2 \times 353 \times 180/4/1000 + 80) = 27{,}9$ kN $&lt; 30$ kN → không được; cần chốt chống cắt hoặc tổ hợp có lực nén lớn hơn.</p>
+</details></li>
+<li><p>Cánh kèo Ví dụ 7.1 hàn đối đầu thấu suốt, ứng suất 287,2 MPa, thép Q345 ($f_{yd} = 313{,}6$ MPa), <b>không</b> kiểm tra bằng phương pháp không phá hủy. Tính tỷ số ứng suất/cường độ.</p><p>Đáp án: <b>1.08</b> </p><details class="sol"><summary>Lời giải</summary><p>$f_w = 0{,}85 \times 313{,}6 = 266{,}6$ MPa; $287{,}2/266{,}6 = 1{,}08 &gt; 1$ → không đạt.</p>
+</details></li>
+<li><p>Trong SAP2000, lấy nội lực đầu kèo và phản lực chân cột ở bảng nào, và vì sao phải lấy nội lực của cùng một tổ hợp?</p><p>Đáp án: <i>Element Forces – Frames</i> (trạm đầu phần tử) và <i>Joint Reactions</i>; vì bu lông, đường hàn chịu đồng thời các nội lực của cùng một trạng thái tải</p><details class="sol"><summary>Lời giải</summary><p>Đầu kèo: <i>Element Forces – Frames</i>, trạm đầu phần tử; chân cột: <i>Joint Reactions</i>. Ghép giá trị lớn nhất của các tổ hợp khác nhau không phản ánh trạng thái thật, và với chân cột còn có thể bỏ sót trường hợp nhổ (lực nén nhỏ) đi kèm lực trượt lớn.</p>
+</details></li>
+</ol>
+<h2>Chương 8. Hệ tiêu chuẩn Mỹ</h2>
+<h3><a href="../08_he_tieu_chuan_my/b1_ibc_asce_aisc.html">Bài 8.1. IBC – ASCE – AISC</a></h3>
+<ol><li><p>Văn bản nào quy định <b>tổ hợp tải trọng</b> và <b>tải gió</b> trong hệ tiêu chuẩn Mỹ?</p><p>Đáp án: ASCE/SEI 7</p><details class="sol"><summary>Lời giải</summary><p>ASCE 7: tổ hợp (Chương 2), hoạt tải (Chương 4), gió (Chương 26–31), động đất (Chương 11–12). AISC 360 là tiêu chuẩn kiểm tra cấu kiện thép.</p>
+</details></li>
+<li><p>Một hồ sơ ghi "theo IBC 2018". Bộ tiêu chuẩn đồng bộ đi kèm là:</p><p>Đáp án: ASCE 7-16, AISC 360-16, ACI 318-14</p><details class="sol"><summary>Lời giải</summary><p>IBC 2018 đi cùng ASCE 7-16, AISC 360-16 và ACI 318-14; IBC 2012 đi cùng ASCE 7-10, AISC 360-10, ACI 318-11.</p>
+</details></li>
+<li><p>Nhà xưởng dùng hệ khung chịu mô men có hệ số $R = 3{,}5$, liên kết kèo – cột bằng mặt bích 4E. Ngoài AISC 360, cần thêm văn bản nào cho phần kháng chấn?</p><p>Đáp án: AISC 341 (vì $R &gt; 3$) và AISC 358 (liên kết mặt bích đã chứng nhận)</p><details class="sol"><summary>Lời giải</summary><p>$R = 3{,}5 &gt; 3$ → bắt buộc AISC 341; liên kết 4E là liên kết kháng chấn chứng nhận trước, tra AISC 358.</p>
+</details></li>
+</ol>
+<h3><a href="../08_he_tieu_chuan_my/b2_lrfd_asd.html">Bài 8.2. LRFD và ASD</a></h3>
+<ol><li><p>Trong SAP2000, phương pháp LRFD hay ASD được chọn ở đâu?</p><p>Đáp án: Steel Design Preferences → <i>Design Provision</i></p><details class="sol"><summary>Lời giải</summary><p><i>Design Provision</i> trong Steel Design Preferences nhận giá trị LRFD hoặc ASD.</p>
+</details></li>
+<li><p>Với $\phi = 0{,}9$, tính hệ số an toàn $\Omega$ tương ứng theo quan hệ gần đúng $\Omega \approx 1{,}5/\phi$.</p><p>Đáp án: <b>1.667</b> </p><details class="sol"><summary>Lời giải</summary><p>$\Omega = 1{,}5/0{,}9 = 1{,}667$, đúng bằng $\Omega = 1{,}67$ của AISC cho chảy dẻo.</p>
+</details></li>
+<li><p>Một dầm sàn chịu $D = 2$ kN/m, $L = 6$ kN/m ($L/D = 3$). Lấy $\phi = 0{,}9$, $\Omega = 1{,}67$. Tính tỷ số giữa tỷ số sử dụng theo LRFD ($1{,}2D + 1{,}6L$) và theo ASD ($D + L$).</p><p>Đáp án: <b>0.998</b> </p><details class="sol"><summary>Lời giải</summary><p>$q_u = 1{,}2 \times 2 + 1{,}6 \times 6 = 12$; $q_a = 8$. Tỷ số $= (12/0{,}9)/(8 \times 1{,}67) = 13{,}33/13{,}36 = 0{,}998$ – hai phương pháp gần như trùng nhau khi $L/D \approx 3$.</p>
+</details></li>
+</ol>
+<h3><a href="../08_he_tieu_chuan_my/b3_risk_category.html">Bài 8.3. Risk Category, đầu vào ở Việt Nam, vật liệu</a></h3>
+<ol><li><p>Nhà xưởng sản xuất thông thường thuộc Risk Category nào và dùng bản đồ gió ASCE 7-10 với chu kỳ lặp bao nhiêu?</p><p>Đáp án: Category II, 700 năm</p><details class="sol"><summary>Lời giải</summary><p>Nhà xưởng, kho thông thường: Category II, bản đồ gió 700 năm, $I_e = 1{,}00$.</p>
+</details></li>
+<li><p>Đổi hoạt tải mái $L_r = 20$ psf của ASCE 7-10 Bảng 4-1 ra kN/m² (1 psf = 0,04788 kN/m²).</p><p>Đáp án: <b>0.958</b> kN/m²</p><details class="sol"><summary>Lời giải</summary><p>$20 \times 0{,}04788 = 0{,}958 \approx 0{,}96$ kN/m², gấp $0{,}96/0{,}3 = 3{,}2$ lần giá trị TCVN.</p>
+</details></li>
+<li><p>Ống tròn STK400 $D = 114{,}3$ mm, $t = 4{,}5$ mm, khai báo theo A500 Gr.B. Tính diện tích tiết diện dùng trong thiết kế với $t_{des} = 0{,}93t$ (lấy $A = \pi(D - t_{des})t_{des}$).</p><p>Đáp án: <b>1448</b> mm²</p><details class="sol"><summary>Lời giải</summary><p>$t_{des} = 0{,}93 \times 4{,}5 = 4{,}185$ mm; $A = \pi(114{,}3 - 4{,}185) \times 4{,}185 = 1448$ mm² (nhỏ hơn 1552 mm² khi dùng $t$ danh nghĩa khoảng 6,7 %).</p>
+</details></li>
+</ol>
+<h3><a href="../08_he_tieu_chuan_my/kiem_tra_chuong.html">Kiểm tra Chương 8: Hệ tiêu chuẩn Mỹ</a></h3>
+<ol><li><p>Nhà kho chứa hóa chất độc hại ở Hải Phòng thuộc Risk Category nào, và ảnh hưởng thế nào đến vận tốc gió dùng trong ASCE 7-10?</p><p>Đáp án: Category III hoặc IV; phải dùng bản đồ gió chu kỳ 1700 năm, quy đổi vận tốc QCVN về 1700 năm thay vì 700 năm</p><details class="sol"><summary>Lời giải</summary><p>Kho chất độc hại thuộc III hoặc IV. Ở ASCE 7-10 ảnh hưởng của Category nằm trong bản đồ gió: III–IV dùng 1700 năm, nên cách quy đổi $V_{700}$ không dùng được.</p>
+</details></li>
+<li><p>Vì sao ASCE 7-10 không có hệ số tầm quan trọng gió $I_w$?</p><p>Đáp án: Vì mỗi Risk Category đã có bản đồ vận tốc gió riêng (chu kỳ lặp khác nhau)</p><details class="sol"><summary>Lời giải</summary><p>Từ ASCE 7-10, mức rủi ro được đưa vào chu kỳ lặp của bản đồ (300/700/1700 năm), nên bỏ $I_w$.</p>
+</details></li>
+<li><p>Khai báo thép Q345 dày 20 mm trong SAP2000 để thiết kế theo AISC 360-10. $F_y$ lấy bằng bao nhiêu?</p><p>Đáp án: <b>325</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$t = 20$ mm nằm trong 16–40 mm → $F_y = 325$ MPa; dùng trực tiếp, không chia $\gamma_m$.</p>
+</details></li>
+<li><p>Thép SS400 trong hồ sơ Nhật Bản tương đương gần nhất với mác ASTM nào khi đối chiếu, và cách khai báo khuyến nghị trong SAP2000 là gì?</p><p>Đáp án: A36; tạo vật liệu mới (Region: User) với đúng $F_y$, $F_u$ của SS400</p><details class="sol"><summary>Lời giải</summary><p>SS400 ~ A36, nhưng nên tạo vật liệu User với giá trị thực của mác thép, không chọn sẵn A992/A572.</p>
+</details></li>
+<li><p>Nội dung nào <b>không</b> cần có trong Tiêu chí thiết kế (Design Criteria) của nhà xưởng thép theo tiêu chuẩn Mỹ tại Việt Nam?</p><p>Đáp án: Hệ số $\gamma_m$ của TCVN 5575:2024 để giảm $F_y$</p><details class="sol"><summary>Lời giải</summary><p>Tiêu chí thiết kế liệt kê phiên bản, Risk Category, $V$, Exposure, $L_r$, giới hạn sử dụng, vật liệu, phương pháp phân tích, LRFD/ASD. Theo AISC không dùng $\gamma_m$.</p>
+</details></li>
+<li><p>Tính tỷ số giữa hoạt tải mái ASCE 7-10 (0,96 kN/m²) và hoạt tải mái tôn không sử dụng theo TCVN 2737:2023 (0,3 kN/m²).</p><p>Đáp án: <b>3.2</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}96/0{,}3 = 3{,}2$: vì vậy $L_r$ thường quyết định tiết diện kèo nhịp lớn khi theo ASCE.</p>
+</details></li>
+<li><p>Cấp hậu quả trong TCVN 2737:2023 khác Risk Category của ASCE 7-10 ở điểm nào?</p><p>Đáp án: TCVN nhân hệ số $\gamma_n$ (0,87/1,0/1,15) vào tải trọng hoặc nội lực; ASCE 7-10 đổi chu kỳ lặp của bản đồ gió</p><details class="sol"><summary>Lời giải</summary><p>$\gamma_n$ của cấp C1/C2/C3 nhân vào tải hoặc nội lực, không đổi chu kỳ lặp.</p>
+</details></li>
+</ol>
+<h2>Chương 9. Gió ASCE 7-10</h2>
+<h3><a href="../09_gio_asce/b1_ap_luc_qz.html">Bài 9.1. Áp lực vận tốc qz</a></h3>
+<ol><li><p>Hệ số 0,613 trong công thức $q_z = 0{,}613\,K_zK_{zt}K_dV^2$ (N/m²) là gì?</p><p>Đáp án: $\tfrac12\rho$ với $\rho \approx 1{,}225$ kg/m³ (khối lượng riêng của không khí)</p><details class="sol"><summary>Lời giải</summary><p>$q = \tfrac12\rho V^2$; $\tfrac12 \times 1{,}225 = 0{,}6125 \approx 0{,}613$.</p>
+</details></li>
+<li><p>Tính áp lực động $q = 0{,}613\,V^2$ của luồng gió có $V = 40$ m/s (chưa nhân các hệ số $K$).</p><p>Đáp án: <b>980.8</b> N/m²</p><details class="sol"><summary>Lời giải</summary><p>$q = 0{,}613 \times 40^2 = 0{,}613 \times 1600 = 980{,}8$ N/m².</p>
+</details></li>
+<li><p>Công trình ở vùng gió I ($V = 45{,}09$ m/s), dạng địa hình C, độ cao $z \le 4{,}6$ m nên $K_z = 0{,}85$; địa hình bằng phẳng, khung chính. Tính $q_z$.</p><p>Đáp án: <b>900.4</b> N/m²</p><details class="sol"><summary>Lời giải</summary><p>$q_z = 0{,}613 \times 0{,}85 \times 1{,}0 \times 0{,}85 \times 45{,}09^2 = 0{,}4429 \times 2033{,}1 = 900{,}4$ N/m² ($\approx 90{,}0$ daN/m²).</p>
+</details></li>
+</ol>
+<h3><a href="../09_gio_asce/b2_quy_doi_van_toc.html">Bài 9.2. Quy đổi vận tốc từ QCVN 02:2022</a></h3>
+<ol><li><p>Vận tốc gió cơ sở $V$ trong ASCE 7-10 cho công trình cấp rủi ro II ứng với chu kỳ lặp bao nhiêu năm?</p><p>Đáp án: 700 năm</p><details class="sol"><summary>Lời giải</summary><p>Cấp rủi ro II: gió "cường độ" chu kỳ lặp 700 năm, dùng với hệ số tải 1,0.</p>
+</details></li>
+<li><p>Một địa điểm có $W_0 = 110$ daN/m². Tính vận tốc gió $V_{20}$ theo QCVN 02:2022.</p><p>Đáp án: <b>42.36</b> m/s</p><details class="sol"><summary>Lời giải</summary><p>$V_{20} = \sqrt{110/0{,}0613} = \sqrt{1794{,}5} = 42{,}36$ m/s.</p>
+</details></li>
+<li><p>Địa điểm có $W_0 = 83$ daN/m². Tính vận tốc gió cơ sở $V = V_{700}$ dùng cho ASCE 7-10 (cấp rủi ro II).</p><p>Đáp án: <b>50.95</b> m/s</p><details class="sol"><summary>Lời giải</summary><p>$V_{20} = \sqrt{83/0{,}0613} = 36{,}80$ m/s; $V_{50} = 36{,}80/0{,}91 = 40{,}44$ m/s; $V_{700} = 1{,}26 \times 40{,}44 = 50{,}95$ m/s.</p>
+</details></li>
+</ol>
+<h3><a href="../09_gio_asce/b3_kz_exposure.html">Bài 9.3. Kz, Kzt, Kd, Exposure</a></h3>
+<ol><li><p>Nhà thấp tầng tính theo Chương 28, dạng địa hình B. Tại độ cao $z = 6$ m, lấy $K_z$ bằng bao nhiêu?</p><p>Đáp án: 0,70 (lấy $z$ không nhỏ hơn 30 ft = 9,1 m)</p><details class="sol"><summary>Lời giải</summary><p>Dạng B, Chương 28: $z \ge 9{,}1$ m → $K_z = 2{,}01(9{,}1/366)^{2/7} = 0{,}70$.</p>
+</details></li>
+<li><p>Tính $K_z$ theo công thức (<a href="../09_gio_asce/b3_kz_exposure.html#eq-9-4">(9.4)</a>) cho dạng địa hình C tại $z = 15$ m.</p><p>Đáp án: <b>1.090</b> </p><details class="sol"><summary>Lời giải</summary><p>$K_z = 2{,}01\,(15/274)^{2/9{,}5} = 2{,}01 \times 0{,}5425 = 1{,}090$.</p>
+</details></li>
+<li><p>Giả sử nhà xưởng Hòa Bình ($h = 7{,}945$ m) đặt ở vùng đất trống, dạng địa hình C, vùng gió II ($V = 54{,}51$ m/s), $K_{zt} = 1$, $K_d = 0{,}85$. Tính $q_h$ (daN/m²), lấy $K_h$ theo công thức (<a href="../09_gio_asce/b3_kz_exposure.html#eq-9-4">(9.4)</a>).</p><p>Đáp án: <b>147.7</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>$K_h = 2{,}01(7{,}945/274)^{2/9{,}5} = 0{,}954$; $q_h = 0{,}0613 \times 0{,}954 \times 0{,}85 \times 54{,}51^2 = 147{,}7$ daN/m² (dạng B chỉ 108,4).</p>
+</details></li>
+</ol>
+<h3><a href="../09_gio_asce/b4_phuong_phap_bao.html">Bài 9.4. Phương pháp bao (Ch.28)</a></h3>
+<ol><li><p>Hệ số áp lực trong $GC_{pi}$ của nhà kín theo Bảng 26.11-1 là:</p><p>Đáp án: $\pm0{,}18$</p><details class="sol"><summary>Lời giải</summary><p>Nhà kín $\pm0{,}18$; kín một phần $\pm0{,}55$; nhà hở $0$.</p>
+</details></li>
+<li><p>Nhà thấp tầng có kích thước mặt bằng nhỏ nhất $B_{\min} = 40$ m, chiều cao trung bình mái $h = 6$ m. Tính bề rộng vùng biên $a$.</p><p>Đáp án: <b>2.4</b> m</p><details class="sol"><summary>Lời giải</summary><p>$a = \min(4{,}0;\ 2{,}4) = 2{,}4$ m $\ge \max(1{,}6;\ 0{,}9)$ → $a = 2{,}4$ m.</p>
+</details></li>
+<li><p>Nhà kín, mái dốc $\theta = 25°$, $q_h = 100$ daN/m², bước khung 8 m. Tính tải gió phân bố lên cột đón gió (vùng 1) của khung giữa, trường hợp $+GC_{pi}$.</p><p>Đáp án: <b>292</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$GC_{pf} = 0{,}53 + 0{,}03 \times 5/10 = 0{,}545$; $p = 100(0{,}545 - 0{,}18) = 36{,}5$ daN/m²; $q = 36{,}5 \times 8 = 292$ daN/m.</p>
+</details></li>
+</ol>
+<h3><a href="../09_gio_asce/b5_vi_du_dnp.html">Bài 9.5. Ví dụ DNP</a></h3>
+<ol><li><p>Trong <a href="../09_gio_asce/b5_vi_du_dnp.html#tbl-9-6">Bảng 9.6</a>, trường hợp nào gây hút mái lớn nhất và dùng để kiểm tra kèo với tổ hợp $0{,}6D + 0{,}6W$?</p><p>Đáp án: $+GC_{pi}$ (W1X): áp lực trong đẩy mái lên, cộng với hút ngoài</p><details class="sol"><summary>Lời giải</summary><p>Vùng 2: $+GC_{pi}$ cho $-1170$ kG/m, $-GC_{pi}$ chỉ $-686$ kG/m → W1X quyết định kèo khi gió lật.</p>
+</details></li>
+<li><p>Nhà máy DNP ($q_h = 112{,}1$ daN/m²). Tính áp lực $p$ lên mái đón gió trong vùng biên (vùng 2E), trường hợp $+GC_{pi}$.</p><p>Đáp án: <b>-140.1</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>$p = 112{,}1(-1{,}07 - 0{,}18) = 112{,}1 \times (-1{,}25) = -140{,}1$ daN/m² (hút).</p>
+</details></li>
+<li><p>Giả sử nhà máy DNP đặt ở vùng gió III ($W_0 = 125$ daN/m²), các số liệu khác giữ nguyên ($K_h = 0{,}724$; bước khung 12 m). Tính tải phân bố lên kèo đón gió (vùng 2), trường hợp $+GC_{pi}$.</p><p>Đáp án: <b>-1540</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$q_h = 0{,}0613 \times 0{,}724 \times 0{,}85 \times 62{,}53^2 = 147{,}5$ daN/m²; $p = 147{,}5(-0{,}69 - 0{,}18) = -128{,}3$ daN/m²; $q = -128{,}3 \times 12 = -1540$ daN/m.</p>
+</details></li>
+</ol>
+<h3><a href="../09_gio_asce/b6_thuc_hanh_sap.html">Bài 9.6. Thực hành SAP2000</a></h3>
+<ol><li><p>Nhà kín, xét gió theo hai phương X, Y, mỗi phương hai chiều. Cần khai báo bao nhiêu trường hợp tải gió trong SAP2000?</p><p>Đáp án: <b>8</b> trường hợp</p><details class="sol"><summary>Lời giải</summary><p>2 phương × 2 chiều × 2 trường hợp $GC_{pi}$ = 8 trường hợp.</p>
+</details></li>
+<li><p>Gán áp lực gió lên tấm Area phủ mái dốc bằng <i>Uniform to Frame (Shell)</i>. Chọn phương tải nào?</p><p>Đáp án: Local 3, vuông góc mặt tấm</p><details class="sol"><summary>Lời giải</summary><p>Local 3 là pháp tuyến của tấm; Global Z bỏ sót thành phần ngang của áp lực trên mái dốc.</p>
+</details></li>
+<li><p>Nhà xưởng Hòa Bình: $q_h = 108{,}4$ daN/m², $\theta = 4{,}0°$, nhà kín. Tính giá trị $p$ nhập cho tấm tường đón gió (vùng 1) trong trường hợp W2X ($-GC_{pi}$).</p><p>Đáp án: <b>62.9</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>$p = 108{,}4\,(0{,}40 + 0{,}18) = 108{,}4 \times 0{,}58 = 62{,}9$ daN/m² (đẩy vào tường).</p>
+</details></li>
+</ol>
+<h3><a href="../09_gio_asce/kiem_tra_chuong.html">Kiểm tra Chương 9: Gió ASCE 7-10</a></h3>
+<ol><li><p>Vì sao phải quy đổi vận tốc gió của QCVN 02 (chu kỳ lặp 20 năm) sang 700 năm khi dùng ASCE 7-10?</p><p>Đáp án: Vì ASCE 7-10 dùng gió "cường độ" 700 năm với hệ số tải 1,0, thay cho gió 50 năm nhân hệ số 1,6 của ASCE 7-05</p><details class="sol"><summary>Lời giải</summary><p>$V_{700} = \sqrt{1{,}6}\,V_{50} \approx 1{,}26\,V_{50}$: hệ số tải đã nằm trong vận tốc.</p>
+</details></li>
+<li><p>Phương pháp bao (Envelope, Chương 28) được dùng khi:</p><p>Đáp án: Nhà thấp tầng: chiều cao trung bình mái $h \le 18$ m và $h$ không lớn hơn bề rộng nhỏ nhất</p><details class="sol"><summary>Lời giải</summary><p>Điều kiện: $h \le 18$ m và $h \le B_{\min}$. DNP: $h = 10{,}35$ m thỏa.</p>
+</details></li>
+<li><p>Trường hợp $+GC_{pi}$ có ý nghĩa vật lý gì, và bất lợi cho cấu kiện nào?</p><p>Đáp án: Gió lọt vào nhà làm tăng áp bên trong, đẩy mái lên cùng chiều với hút ngoài → bất lợi cho kèo (gió lật)</p><details class="sol"><summary>Lời giải</summary><p>$+GC_{pi}$ làm $p$ mái âm hơn (vùng 2 DNP: $-1170$ so với $-686$ kG/m). $-GC_{pi}$ lại bất lợi cho tường đón gió và chân cột.</p>
+</details></li>
+<li><p>Nhà máy DNP: $B_{\min} = 54$ m, $h = 10{,}35$ m. Tính bề rộng vùng biên $2a$ tính từ góc nhà.</p><p>Đáp án: <b>8.28</b> m</p><details class="sol"><summary>Lời giải</summary><p>$a = \min(5{,}4;\ 4{,}14) = 4{,}14$ m $\ge \max(2{,}16;\ 0{,}9)$ → $2a = 8{,}28$ m. Vùng biên chịu áp lực lớn hơn do dòng khí tách ở góc và mép nhà tạo xoáy, hút mạnh cục bộ.</p>
+</details></li>
+<li><p>Khi tính áp lực vận tốc với $V$ (m/s) và kết quả theo daN/m², hệ số đứng trước $K_zK_{zt}K_dV^2$ là:</p><p>Đáp án: 0,0613</p><details class="sol"><summary>Lời giải</summary><p>$0{,}613$ N/m² $= 0{,}0613$ daN/m². Hệ số 0,00256 dùng cho mph và psf.</p>
+</details></li>
+<li><p>Nhà xưởng Hòa Bình: nhịp 50 m, dài 72 m, đỉnh cột 7,07 m, mái dốc 7 %. Tính bề rộng vùng biên $a$.</p><p>Đáp án: <b>3.18</b> m</p><details class="sol"><summary>Lời giải</summary><p>$h_r = 8{,}82$ m; $h = 7{,}945$ m; $a = \min(5{,}0;\ 3{,}178) = 3{,}18$ m $\ge \max(2{,}0;\ 0{,}9)$.</p>
+</details></li>
+<li><p>Bài tập cuối chương: nhà xưởng Hòa Bình (nhịp 50 m, đỉnh cột 7,07 m, $i = 7\,\%$, vùng gió II, dạng địa hình B, nhà kín). Tính $q_h$.</p><p>Đáp án: <b>108.4</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>$q_h = 0{,}0613 \times 0{,}70 \times 1{,}0 \times 0{,}85 \times 54{,}51^2 = 108{,}4$ daN/m².</p>
+</details></li>
+<li><p>Tiếp bài trên (bước khung 8 m, $\theta = \arctan 0{,}07 = 4{,}0°$). Tính tải gió phân bố lên kèo đón gió (vùng 2) của khung giữa, trường hợp W1X ($+GC_{pi}$).</p><p>Đáp án: <b>-754</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$p = 108{,}4(-0{,}69 - 0{,}18) = -94{,}3$ daN/m²; $q = -94{,}3 \times 8 = -754$ daN/m. Người học tự so sánh với tải gió lên kèo tính theo TCVN 2737:2023 ở Chương 4.</p>
+</details></li>
+</ol>
+<h2>Chương 10. Tổ hợp ASCE 7-10</h2>
+<h3><a href="../10_to_hop_asce/b1_to_hop_lrfd_asd.html">Bài 10.1. Tổ hợp LRFD, ASD</a></h3>
+<ol><li><p>Trong tổ hợp LRFD của ASCE 7-10, tải gió $W$ (tính từ vận tốc 700 năm) được nhân hệ số:</p><p>Đáp án: 1,0</p><details class="sol"><summary>Lời giải</summary><p>Hệ số gió LRFD là 1,0 (ASCE 7-05 dùng 1,6); trong ASD gió nhân 0,6.</p>
+</details></li>
+<li><p>Mái có $D = 0{,}25$ kN/m², gió hút $W = -0{,}80$ kN/m². Tính độ lớn tải hướng lên theo tổ hợp $0{,}9D + 1{,}0W$.</p><p>Đáp án: <b>0.575</b> kN/m²</p><details class="sol"><summary>Lời giải</summary><p>$0{,}9 \times 0{,}25 - 1{,}0 \times 0{,}80 = -0{,}575$ kN/m² → tải hướng lên $0{,}575$ kN/m².</p>
+</details></li>
+<li><p>Mái có $D = 0{,}30$ kN/m², $L_r = 0{,}30$ kN/m², gió áp $W = 0{,}50$ kN/m², $L = 0$. Tính tải theo tổ hợp ASD 6a.</p><p>Đáp án: <b>0.75</b> kN/m²</p><details class="sol"><summary>Lời giải</summary><p>$0{,}30 + 0{,}75 \times 0{,}6 \times 0{,}50 + 0{,}75 \times 0{,}30 = 0{,}30 + 0{,}225 + 0{,}225 = 0{,}75$ kN/m².</p>
+</details></li>
+</ol>
+<h3><a href="../10_to_hop_asce/b2_dong_dat.html">Bài 10.2. Động đất nhập môn</a></h3>
+<ol><li><p>Theo Mục 12.5.3, tác động động đất theo hai phương ngang được kết hợp như thế nào?</p><p>Đáp án: 100 % theo một phương cộng 30 % theo phương vuông góc</p><details class="sol"><summary>Lời giải</summary><p>100 % một phương + 30 % phương vuông góc, đổi chiều ± cho đủ 8 tổ hợp (EX ± 0,3EY, EY ± 0,3EX…).</p>
+</details></li>
+<li><p>Mô hình DNP có $S_{DS} = 0{,}66$. Tính hệ số của tĩnh tải $D$ trong tổ hợp LRFD (5) có động đất.</p><p>Đáp án: <b>1.332</b> </p><details class="sol"><summary>Lời giải</summary><p>$1{,}2 + 0{,}2 \times 0{,}66 = 1{,}332$.</p>
+</details></li>
+<li><p>Chân cột có lực dọc nén do tĩnh tải $D = 120$ kN; động đất gây lực kéo $Q_E = 40$ kN. Giả sử $S_{DS} = 0{,}5$, $\rho = 1{,}0$, $H = 0$. Tính lực dọc nén còn lại theo tổ hợp (7).</p><p>Đáp án: <b>56</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$(0{,}9 - 0{,}2 \times 0{,}5) \times 120 - 1{,}0 \times 40 = 0{,}8 \times 120 - 40 = 96 - 40 = 56$ kN (vẫn nén).</p>
+</details></li>
+</ol>
+<h3><a href="../10_to_hop_asce/b3_to_hop_dnp.html">Bài 10.3. Tổ hợp DNP trong SAP2000</a></h3>
+<ol><li><p>Tổ hợp <code>CRA EVELOPE</code> trong mô hình DNP có vai trò gì?</p><p>Đáp án: Tổ hợp Envelope bao các trường hợp cầu trục, sau đó được dùng như một tải $L$ trong các combo khác</p><details class="sol"><summary>Lời giải</summary><p><code>CRA EVELOPE</code> là Envelope của các trường hợp cầu trục, dùng như một tải $L$ trong CL02, CL03, CL12–19.</p>
+</details></li>
+<li><p>Đếm số tổ hợp ASD (CA) của mô hình DNP: CA01–CA04 mỗi nhóm 1 combo; ba nhóm có gió $D + 0{,}6W$, $D + 0{,}75L + 0{,}75L_r + 0{,}45W$, $0{,}6D + 0{,}6W$ mỗi nhóm khai triển cho 8 hướng gió.</p><p>Đáp án: <b>28</b> combo</p><details class="sol"><summary>Lời giải</summary><p>$4 + 3 \times 8 = 28$ combo.</p>
+</details></li>
+<li><p>Chuyển vị ngang đỉnh cột do trường hợp gió W1X+ là 62 mm, do tĩnh tải là 3 mm (cùng chiều). Tính chuyển vị theo tổ hợp sử dụng $D + 0{,}44W$ của mô hình.</p><p>Đáp án: <b>30.28</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$3 + 0{,}44 \times 62 = 3 + 27{,}28 = 30{,}28$ mm.</p>
+</details></li>
+</ol>
+<h3><a href="../10_to_hop_asce/kiem_tra_chuong.html">Kiểm tra Chương 10: Tổ hợp ASCE 7-10</a></h3>
+<ol><li><p>Vì sao hệ số gió trong LRFD của ASCE 7-10 là 1,0, còn ASCE 7-05 là 1,6?</p><p>Đáp án: Vì $W$ của ASCE 7-10 tính từ vận tốc 700 năm, đã ở mức cực hạn; ASCE 7-05 dùng gió 50 năm danh nghĩa nên phải nhân 1,6</p><details class="sol"><summary>Lời giải</summary><p>Gió 700 năm đã là tải cực hạn → hệ số 1,0; trong ASD nhân 0,6 ≈ 1/1,6 để về mức 50 năm.</p>
+</details></li>
+<li><p>Tổ hợp nào thường quyết định thiết kế bu lông neo chịu kéo của nhà xưởng mái nhẹ?</p><p>Đáp án: $0{,}9D + 1{,}0W$ (gió hút với tĩnh tải nhỏ)</p><details class="sol"><summary>Lời giải</summary><p>$0{,}9D + 1{,}0W$ quyết định kèo chịu nén cánh dưới và bu lông neo chịu kéo; ASD tương ứng là $0{,}6D + 0{,}6W$.</p>
+</details></li>
+<li><p>Ý nghĩa của số hạng $0{,}2S_{DS}D$ trong tổ hợp động đất là gì?</p><p>Đáp án: Thành phần đứng của động đất $E_v$, cộng vào ở (5) và trừ đi ở (7)</p><details class="sol"><summary>Lời giải</summary><p>$E_v = 0{,}2S_{DS}D$: gia tốc đứng làm tăng tải trọng lực (5) và giảm tĩnh tải chống lật (7).</p>
+</details></li>
+<li><p>Khi nào được lấy hệ số 0,5 cho hoạt tải $L$ trong tổ hợp LRFD 3, 4, 5?</p><p>Đáp án: Khi $L_o \le 100$ psf (4,79 kN/m²), trừ gara và nơi tập trung đông người</p><details class="sol"><summary>Lời giải</summary><p>Ngoại lệ 1: $L_o \le 4{,}79$ kN/m², không áp dụng cho gara và nơi đông người.</p>
+</details></li>
+<li><p>Vì sao không dùng tổ hợp cường độ (LRFD) để kiểm tra chuyển vị?</p><p>Đáp án: Vì tổ hợp LRFD dùng gió 700 năm và tải đã nhân hệ số; Phụ lục C coi điều đó là quá thận trọng và đề nghị $D + 0{,}5L + W_a$ với gió mức sử dụng</p><details class="sol"><summary>Lời giải</summary><p>Điều kiện sử dụng kiểm tra ở mức tải thường xuyên: $D + 0{,}5L + W_a$ (gió 10 năm, hoặc $0{,}44W$ như mô hình mẫu).</p>
+</details></li>
+<li><p>Bài tập: lập tổ hợp LRFD cho nhà xưởng Hòa Bình (không cầu trục, bỏ qua động đất, 8 trường hợp gió) theo đúng cách nhóm của <a href="../10_to_hop_asce/b3_to_hop_dnp.html#tbl-10-3">Bảng 10.3</a>: ba combo không gió (TH 1, 2, 3 dùng $L$) và ba nhóm gió (TH 3 dùng 0,5W; TH 4; TH 6). Có bao nhiêu combo LRFD?</p><p>Đáp án: <b>27</b> combo</p><details class="sol"><summary>Lời giải</summary><p>$3 + 3 \times 8 = 27$ combo.</p>
+</details></li>
+<li><p>Tiếp bài tập trên: số combo ASD của nhà xưởng Hòa Bình (cùng cách nhóm như mô hình DNP, không động đất) là bao nhiêu?</p><p>Đáp án: <b>28</b> combo</p><details class="sol"><summary>Lời giải</summary><p>$4 + 3 \times 8 = 28$ combo, bằng mô hình DNP vì nhóm ASD của DNP không có động đất.</p>
+</details></li>
+<li><p>Mô hình DNP có $S_{DS} = 0{,}66$. Tính hệ số của tĩnh tải trong tổ hợp động đất (7) $(0{,}9 - 0{,}2S_{DS})D + \rho Q_E$.</p><p>Đáp án: <b>0.768</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}9 - 0{,}2 \times 0{,}66 = 0{,}768$.</p>
+</details></li>
+</ol>
+<h2>Chương 11. Direct Analysis Method</h2>
+<h3><a href="../11_direct_analysis/b1_on_dinh_khung.html">Bài 11.1. Ổn định khung theo AISC</a></h3>
+<ol><li><p>Direct Analysis Method (Mục C2) đưa trực tiếp vào mô hình phân tích những yếu tố nào trong 5 yếu tố của Mục C1?</p><p>Đáp án: Sai lệch hình học ban đầu và giảm độ cứng do chảy dẻo cục bộ, ứng suất dư</p><details class="sol"><summary>Lời giải</summary><p>DAM đưa yếu tố 3 (sai lệch hình học ban đầu) và yếu tố 4 (giảm độ cứng) thẳng vào mô hình, nên khi kiểm tra được lấy $K = 1{,}0$.</p>
+</details></li>
+<li><p>Độ nghiêng ban đầu giả định của cột là 1/500. Với cột nhà DNP cao 9 m, sai lệch ngang ban đầu của đỉnh cột bằng bao nhiêu?</p><p>Đáp án: <b>18</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\Delta_0 = 9000/500 = 18$ mm.</p>
+</details></li>
+<li><p>Cột cao 7,07 m chịu lực dọc $P = 79{,}85$ kN. Đỉnh cột có sai lệch ban đầu 1/500 chiều cao và chuyển vị ngang do tải ngang 13,3 mm. Tính mô men phụ $P\Delta$ tại chân cột do tổng hai chuyển vị trên.</p><p>Đáp án: <b>2.19</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$\Delta_0 = 7070/500 = 14{,}14$ mm; $\Delta = 14{,}14 + 13{,}3 = 27{,}44$ mm; $P\Delta = 79{,}85 \times 0{,}02744 = 2{,}19$ kNm.</p>
+</details></li>
+</ol>
+<h3><a href="../11_direct_analysis/b2_tai_gia_dinh.html">Bài 11.2. Tải giả định, giảm độ cứng</a></h3>
+<ol><li><p>Theo <a href="../11_direct_analysis/b2_tai_gia_dinh.html#eq-11-1">(11.1)</a>, hệ số $\alpha$ trong tải giả định khi thiết kế theo ASD bằng:</p><p>Đáp án: 1,6</p><details class="sol"><summary>Lời giải</summary><p>LRFD: $\alpha = 1{,}0$; ASD: $\alpha = 1{,}6$.</p>
+</details></li>
+<li><p>Tổ hợp ASD có tổng tải đứng tại mức đỉnh cột $Y_i = 450$ kN. Tính tải giả định $N_i$.</p><p>Đáp án: <b>1.44</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N_i = 0{,}002 \times 1{,}6 \times 450 = 1{,}44$ kN.</p>
+</details></li>
+<li><p>Cột tiết diện $A = 7780$ mm², $F_y = 235$ MPa, chịu $P_r = 1200$ kN (LRFD). Tính hệ số nhân độ cứng chống uốn $0{,}8\tau_b$.</p><p>Đáp án: <b>0.722</b> </p><details class="sol"><summary>Lời giải</summary><p>$P_y = 235 \times 7780 = 1828{,}3$ kN; $\alpha P_r/P_y = 1200/1828{,}3 = 0{,}656 &gt; 0{,}5$ → $\tau_b = 4 \times 0{,}656 \times (1 - 0{,}656) = 0{,}902$; $0{,}8\tau_b = 0{,}722$.</p>
+</details></li>
+</ol>
+<h3><a href="../11_direct_analysis/b3_bac_hai_sap.html">Bài 11.3. Phân tích bậc hai trong SAP2000</a></h3>
+<ol><li><p>Để SAP2000 thực hiện phân tích bậc hai cho Direct Analysis, các tổ hợp dùng để thiết kế phải chạy dưới dạng case nào?</p><p>Đáp án: <i>Nonlinear Static</i> có <i>P-Delta</i></p><details class="sol"><summary>Lời giải</summary><p>Các tổ hợp thiết kế phải là case <i>Nonlinear Static</i> có <i>P-Delta</i>; chọn Direct Analysis mà case vẫn <i>Linear Static</i> thì không có hiệu ứng bậc hai.</p>
+</details></li>
+<li><p>Chuyển vị đỉnh cột của case tuyến tính là 13,3 mm, của case P-Δ là 21,5 mm. Tính $\Delta_2/\Delta_1$. (Với giá trị này, notional load có cần đặt cho mọi tổ hợp không?)</p><p>Đáp án: <b>1.617</b> </p><details class="sol"><summary>Lời giải</summary><p>$21{,}5/13{,}3 = 1{,}617 \le 1{,}7$ → chỉ cần notional load trong tổ hợp chỉ có tải đứng.</p>
+</details></li>
+<li><p>Khung cổng có độ cứng ngang (đã giảm) $K^* = 1{,}50$ kN/mm, cột cao 7 m, tổng lực dọc hai cột $\Sigma P = 160$ kN (LRFD). Mô men chân cột bậc nhất là 70 kNm. Tính mô men bậc hai theo $B_2$.</p><p>Đáp án: <b>71.08</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$\alpha\Sigma P/(K^*H) = 160/(1{,}50 \times 7000) = 0{,}01524$; $B_2 = 1/(1 - 0{,}01524) = 1{,}0155$; $M_2 = 70 \times 1{,}0155 = 71{,}08$ kNm.</p>
+</details></li>
+</ol>
+<h3><a href="../11_direct_analysis/b4_dm_elm.html">Bài 11.4. DM và ELM</a></h3>
+<ol><li><p>Effective Length Method (Phụ lục 7) chỉ được dùng khi:</p><p>Đáp án: $\Delta_2/\Delta_1 \le 1{,}5$</p><details class="sol"><summary>Lời giải</summary><p>ELM: $\Delta_2/\Delta_1 \le 1{,}5$; DAM áp dụng cho mọi kết cấu.</p>
+</details></li>
+<li><p>Một khung có $\Delta_2/\Delta_1 = 1{,}6$. Phương án nào đúng theo AISC 360-10?</p><p>Đáp án: Dùng DAM; notional load chỉ cần đặt trong tổ hợp chỉ có tải đứng</p><details class="sol"><summary>Lời giải</summary><p>$1{,}6 &gt; 1{,}5$ → không dùng được ELM; $1{,}6 \le 1{,}7$ → DAM, notional load chỉ ở tổ hợp tải đứng.</p>
+</details></li>
+<li><p>Cột C1 cao 7,07 m, $r_x = 262$ mm. Theo TCVN 5575:2024 lấy $\mu = 3{,}06$. Tính độ mảnh trong mặt phẳng khung $\mu l/r_x$ (theo DAM con số này chỉ khoảng 27).</p><p>Đáp án: <b>82.6</b> </p><details class="sol"><summary>Lời giải</summary><p>$l_{ef} = 3{,}06 \times 7070 = 21\,634$ mm; $\lambda = 21\,634/262 = 82{,}6$ (DAM: $7070/262 = 27{,}0$).</p>
+</details></li>
+</ol>
+<h3><a href="../11_direct_analysis/kiem_tra_chuong.html">Kiểm tra Chương 11: Direct Analysis Method</a></h3>
+<ol><li><p>Hệ số 0,002 trong tải giả định $N_i = 0{,}002\alpha Y_i$ có ý nghĩa gì?</p><p>Đáp án: Thay cho độ nghiêng ban đầu (sai lệch lắp dựng) 1/500 của cột</p><details class="sol"><summary>Lời giải</summary><p>Tải ngang $0{,}002Y_i$ gây cùng mô men lật như khi cột nghiêng 1/500 dưới tải đứng $Y_i$.</p>
+</details></li>
+<li><p>Khi nào $\tau_b &lt; 1$?</p><p>Đáp án: Khi $\alpha P_r/P_y &gt; 0{,}5$</p><details class="sol"><summary>Lời giải</summary><p>$\tau_b = 4(\alpha P_r/P_y)(1 - \alpha P_r/P_y) &lt; 1$ khi $\alpha P_r/P_y &gt; 0{,}5$; cột nhà mái nhẹ thường dưới 0,2 nên $\tau_b = 1$.</p>
+</details></li>
+<li><p>Vì sao DAM cho phép lấy $K = 1$ khi kiểm tra cột?</p><p>Đáp án: Vì sai lệch ban đầu, giảm độ cứng và hiệu ứng bậc hai đã nằm trong nội lực phân tích</p><details class="sol"><summary>Lời giải</summary><p>DAM đưa yếu tố 3, 4 và $P$-$\Delta$, $P$-$\delta$ vào phân tích → nội lực đã gồm ảnh hưởng ổn định, kiểm tra cột với $K = 1{,}0$ (C3).</p>
+</details></li>
+<li><p>Vì sao phân tích bậc hai với tổ hợp ASD phải nhân tải 1,6?</p><p>Đáp án: Vì bài toán bậc hai không tuyến tính: khuếch đại phải tính ở mức tải cực hạn rồi mới chia lại</p><details class="sol"><summary>Lời giải</summary><p>Nội lực bậc hai không tỷ lệ với tải; phân tích ở mức ASD sẽ đánh giá thấp khuếch đại. AISC yêu cầu phân tích ở 1,6 lần tổ hợp ASD rồi chia 1,6 (SAP tự làm).</p>
+</details></li>
+<li><p>Tổ hợp LRFD có tổng tải đứng tại mức đỉnh cột $Y_i = 600$ kN. Tính $N_i$.</p><p>Đáp án: <b>1.2</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N_i = 0{,}002 \times 1{,}0 \times 600 = 1{,}2$ kN.</p>
+</details></li>
+<li><p>Như câu trên nhưng muốn dùng $\tau_b = 1{,}0$ cho mọi cấu kiện theo C2.3(3). Tổng tải ngang giả định phải đặt là bao nhiêu?</p><p>Đáp án: <b>1.8</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$N = (0{,}002 + 0{,}001) \times 600 = 1{,}8$ kN.</p>
+</details></li>
+<li><p>Cột $A = 7780$ mm², $F_y = 235$ MPa, tổ hợp ASD cho $P_r = 700$ kN. Tính $\tau_b$.</p><p>Đáp án: <b>0.949</b> </p><details class="sol"><summary>Lời giải</summary><p>$P_y = 1828{,}3$ kN; $\alpha P_r/P_y = 1{,}6 \times 700/1828{,}3 = 0{,}613 &gt; 0{,}5$ → $\tau_b = 4 \times 0{,}613 \times 0{,}387 = 0{,}949$.</p>
+</details></li>
+</ol>
+<h2>Chương 12. Steel Frame Design</h2>
+<h3><a href="../12_steel_frame_design/b1_preferences.html">Bài 12.1. Preferences</a></h3>
+<ol><li><p>Framing Type khuyến nghị cho khung ngang nhà xưởng tiền chế thông thường là:</p><p>Đáp án: OMF</p><details class="sol"><summary>Lời giải</summary><p>Khung: <b>OMF</b>; giằng: <b>OCBF</b>. SMF đòi hỏi các yêu cầu kháng chấn của AISC 341.</p>
+</details></li>
+<li><p>Preferences để Total ratio = 240. Giới hạn võng toàn phần SAP dùng cho một dầm nhịp 12 m là bao nhiêu?</p><p>Đáp án: <b>50</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$12\,000/240 = 50$ mm.</p>
+</details></li>
+<li><p>Kèo có $\phi M_n = 562{,}2$ kNm, chỉ chịu uốn. Stress Ratio Limit = 0,95. Mô men $M_u$ lớn nhất là bao nhiêu để thanh chưa hiện màu đỏ?</p><p>Đáp án: <b>534.1</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$M_u \le 0{,}95 \times 562{,}2 = 534{,}1$ kNm.</p>
+</details></li>
+</ol>
+<h3><a href="../12_steel_frame_design/b2_design_combos.html">Bài 12.2. Design Combos</a></h3>
+<ol><li><p>Vì sao không chọn tổ hợp bao (Envelope) vào danh sách Strength?</p><p>Đáp án: Vì SAP tự bao các tổ hợp được chọn</p><details class="sol"><summary>Lời giải</summary><p>SAP tự lấy bao của các tổ hợp Strength đã chọn; chọn Envelope là thừa và che mất tổ hợp quyết định.</p>
+</details></li>
+<li><p>Preferences đặt Design Provision = ASD. Ô Strength nên chọn bộ tổ hợp nào?</p><p>Đáp án: Bộ ASD (CA…)</p><details class="sol"><summary>Lời giải</summary><p>ASD → tổ hợp CA…; các tổ hợp sử dụng chọn vào ô Deflection.</p>
+</details></li>
+<li><p>Trường hợp gió W (riêng) gây chuyển vị ngang đỉnh cột 40 mm; tĩnh tải D không gây chuyển vị ngang. Tổ hợp Deflection D + 0,44W cho chuyển vị ngang đỉnh cột bằng bao nhiêu (phân tích tuyến tính)?</p><p>Đáp án: <b>17.6</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\Delta = 0 + 0{,}44 \times 40 = 17{,}6$ mm.</p>
+</details></li>
+</ol>
+<h3><a href="../12_steel_frame_design/b3_overwrites.html">Bài 12.3. Overwrites</a></h3>
+<ol><li><p>Khi dùng Direct Analysis, Effective Length Factor K1, K2 trong Overwrites nên để:</p><p>Đáp án: Mặc định 1,0</p><details class="sol"><summary>Lời giải</summary><p>DAM: để mặc định 1,0; nhập $K \gt 1$ là kể ổn định hai lần.</p>
+</details></li>
+<li><p>Một phần tử kèo dài 13,5 m, chống xiên cánh dưới cách nhau 3 m. Tính Unbraced Length Ratio (LTB).</p><p>Đáp án: <b>0.222</b> </p><details class="sol"><summary>Lời giải</summary><p>$3/13{,}5 = 0{,}222$.</p>
+</details></li>
+<li><p>Cột cao 9 m được chia thành hai phần tử tại nút giằng cao độ 6 m. Dầm tường có chống xiên mỗi 3 m. Tính Unbraced Length Ratio (LTB) của phần tử dưới.</p><p>Đáp án: <b>0.5</b> </p><details class="sol"><summary>Lời giải</summary><p>Phần tử dưới dài 6 m → LTB $= 3/6 = 0{,}5$ (nếu lấy theo cả cột $3/9 = 0{,}33$ là sai).</p>
+</details></li>
+</ol>
+<h3><a href="../12_steel_frame_design/b4_tiet_dien_thay_doi.html">Bài 12.4. Tiết diện thay đổi</a></h3>
+<ol><li><p>SAP2000 kiểm tra cấu kiện tiết diện thay đổi như thế nào?</p><p>Đáp án: Tại mỗi trạm xuất nội lực dùng đặc trưng hình học tại vị trí đó; $L_b$ và $C_b$ lấy theo cả thanh</p><details class="sol"><summary>Lời giải</summary><p>Kiểm tra tại các trạm với tiết diện tại chỗ; $L_b$, $C_b$ theo cả thanh → gần đúng, chưa theo DG25.</p>
+</details></li>
+<li><p>Một phần tử kèo dài 13,1 m được gán 9 trạm xuất nội lực chia đều (kể cả hai đầu). Khoảng cách giữa hai trạm liên tiếp là bao nhiêu?</p><p>Đáp án: <b>1.6375</b> m</p><details class="sol"><summary>Lời giải</summary><p>$13{,}1/8 = 1{,}6375$ m.</p>
+</details></li>
+<li><p>Cột H(300–650) cao 7,07 m, chiều cao tiết diện thay đổi tuyến tính từ 300 mm (chân) đến 650 mm (đỉnh). Tính chiều cao tiết diện tại trạm cách chân 5,3 m.</p><p>Đáp án: <b>562.4</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$d = 300 + (650 - 300) \times 5{,}3/7{,}07 = 300 + 262{,}4 = 562{,}4$ mm.</p>
+</details></li>
+</ol>
+<h3><a href="../12_steel_frame_design/b5_doc_ket_qua.html">Bài 12.5. Đọc kết quả</a></h3>
+<ol><li><p>Để xuất bảng tổng hợp kết quả thiết kế thép sang Excel làm thuyết minh, dùng bảng nào?</p><p>Đáp án: Ctrl+T → Design Data → Steel Design 1 – Summary Data – AISC 360-10</p><details class="sol"><summary>Lời giải</summary><p>Ctrl+T → Design Data → <i>Steel Design 1 – Summary Data – AISC 360-10</i>, rồi xuất Excel.</p>
+</details></li>
+<li><p>Details của một cột cho $P_r/P_c = 0{,}15$; $M_{r33}/M_{c33} = 0{,}70$; $M_{r22} = 0$. Tính tỷ số tương tác SAP báo.</p><p>Đáp án: <b>0.775</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}15/2 + 0{,}70 = 0{,}775$.</p>
+</details></li>
+<li><p>Cột C1 có ratio 1,056; Details: H1-1b quyết định, $P_r/P_c = 0{,}107$, $\phi M_n$ khống chế bởi LTB với $L_b$ = 5 m. Biện pháp hợp lý nhất là:</p><p>Đáp án: Thêm chống xiên để $L_b \le 4{,}2$ m và sửa LTB ratio trong Overwrites</p><details class="sol"><summary>Lời giải</summary><p>Mô men chiếm 1,003/1,056 và LTB khống chế → giảm $L_b$ (chống xiên) hiệu quả nhất; với $L_b$ = 4,2 m ratio còn 0,949.</p>
+</details></li>
+</ol>
+<h3><a href="../12_steel_frame_design/kiem_tra_chuong.html">Kiểm tra Chương 12: Steel Frame Design</a></h3>
+<ol><li><p>Vì sao không nên chọn Framing Type = SMF cho khung nhà tiền chế?</p><p>Đáp án: Vì SMF đòi hỏi các yêu cầu kháng chấn của AISC 341 (chi tiết liên kết, tỷ lệ cấu kiện) không phù hợp nhà tiền chế thông thường</p><details class="sol"><summary>Lời giải</summary><p>SMF kéo theo các yêu cầu kháng chấn đặc biệt của AISC 341; khung nhà xưởng dùng OMF.</p>
+</details></li>
+<li><p>Kèo dài 13,1 m có chống xiên cánh dưới mỗi 3 m. Khai báo Unbraced Length Ratio (LTB) bằng bao nhiêu?</p><p>Đáp án: <b>0.229</b> </p><details class="sol"><summary>Lời giải</summary><p>$3/13{,}1 = 0{,}229 \approx 0{,}23$.</p>
+</details></li>
+<li><p>Cột (một phần tử) cao 9 m, dầm tường có chống xiên mỗi 3 m. Khai báo Minor = LTB bằng bao nhiêu?</p><p>Đáp án: <b>0.333</b> </p><details class="sol"><summary>Lời giải</summary><p>$3/9 = 0{,}333$.</p>
+</details></li>
+<li><p>Stress Ratio Limit = 0,95 có ý nghĩa gì?</p><p>Đáp án: Thanh có tỷ số lớn hơn 0,95 sẽ hiện màu đỏ, chừa 5 % dự trữ</p><details class="sol"><summary>Lời giải</summary><p>Đây là ngưỡng cảnh báo: tỷ số vượt 0,95 thì thanh hiện màu đỏ.</p>
+</details></li>
+<li><p>SAP2000 kiểm tra tiết diện thay đổi như thế nào?</p><p>Đáp án: Tại từng trạm xuất nội lực với tiết diện tại đó; $L_b$, $C_b$ lấy theo cả thanh</p><details class="sol"><summary>Lời giải</summary><p>Kiểm tra tại các output station; chưa theo đầy đủ DG25 nên cần tăng số trạm và kiểm tra tay.</p>
+</details></li>
+<li><p>Thiết kế ASD: một dầm có $M_n = 500$ kNm, $\Omega_b = 1{,}67$, mô men yêu cầu $M_a = 250$ kNm. Tính tỷ số SAP báo.</p><p>Đáp án: <b>0.835</b> </p><details class="sol"><summary>Lời giải</summary><p>$M_n/\Omega_b = 299{,}4$ kNm; tỷ số $= 250/299{,}4 = 0{,}835$.</p>
+</details></li>
+<li><p>(Bài tập) Trong mô hình <code>NM DNP-21.04</code>, sửa Stiffness Reduction từ "No Modification" sang <i>Tau-b Fixed</i> rồi chạy lại. Tỷ số của các cột khung thường thay đổi thế nào?</p><p>Đáp án: Tăng nhẹ, vì độ cứng giảm làm chuyển vị ngang và hiệu ứng P-Δ tăng</p><details class="sol"><summary>Lời giải</summary><p>Với nhà mái nhẹ, độ cứng $\times 0{,}8$ làm $\Delta$ và $P\Delta$ tăng → mô men bậc hai tăng vài phần trăm (W14: 70,0 → 72,5 kNm), tỷ số tăng nhẹ.</p>
+</details></li>
+</ol>
+<h2>Chương 13. Kiểm tra cấu kiện AISC</h2>
+<h3><a href="../13_cau_kien_aisc/b1_phan_loai_tiet_dien.html">Bài 13.1. Phân loại tiết diện (B4)</a></h3>
+<ol><li><p>Giới hạn mảnh của bụng tiết diện I đối xứng kép khi <b>chịu nén</b> (Bảng B4.1a) là:</p><p>Đáp án: $1{,}49\sqrt{E/F_y}$</p><details class="sol"><summary>Lời giải</summary><p>Bảng B4.1a: bụng I đối xứng kép chịu nén có $\lambda_r = 1{,}49\sqrt{E/F_y}$.</p>
+</details></li>
+<li><p>Tính $\lambda_{pf}$ của cánh khi uốn với $F_y = 345$ MPa, $E = 200\,000$ MPa.</p><p>Đáp án: <b>9.15</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}38\sqrt{200\,000/345} = 0{,}38 \times 24{,}08 = 9{,}15$.</p>
+</details></li>
+<li><p>Kèo H500×250×8×12, $F_y = 345$ MPa: $b/2t_f = 10{,}42$; $k_c = 0{,}519$ → $\lambda_{rf} = 19{,}7$. Cánh khi uốn thuộc loại nào và dùng mục nào?</p><p>Đáp án: Không đặc chắc → F3</p><details class="sol"><summary>Lời giải</summary><p>$9{,}15 &lt; 10{,}42 \le 19{,}7$ → cánh không đặc chắc; bụng đặc chắc → dùng <b>F3</b>.</p>
+</details></li>
+</ol>
+<h3><a href="../13_cau_kien_aisc/b2_chiu_nen.html">Bài 13.2. Chịu nén (E)</a></h3>
+<ol><li><p>Hệ số sức kháng nén theo LRFD là:</p><p>Đáp án: $\phi_c = 0{,}90$</p><details class="sol"><summary>Lời giải</summary><p>$\phi_c = 0{,}90$ (LRFD); $\Omega_c = 1{,}67$ (ASD).</p>
+</details></li>
+<li><p>Tính ứng suất tới hạn đàn hồi $F_e$ khi $KL/r = 100$, $E = 200\,000$ MPa.</p><p>Đáp án: <b>197.4</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$F_e = 9{,}8696 \times 200\,000/100^2 = 197{,}4$ MPa.</p>
+</details></li>
+<li><p>Tiết diện không có phần tử mảnh ($Q = 1$), $F_y = 235$ MPa, $KL/r = 100$. Tính $F_{cr}$.</p><p>Đáp án: <b>142.8</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$100 &lt; 137{,}4$ → $F_{cr} = 0{,}658^{235/197{,}4} \times 235 = 0{,}6076 \times 235 = 142{,}8$ MPa.</p>
+</details></li>
+</ol>
+<h3><a href="../13_cau_kien_aisc/b3_chiu_uon.html">Bài 13.3. Chịu uốn (F2, F3)</a></h3>
+<ol><li><p>Tiết diện I có bụng đặc chắc, cánh <b>không đặc chắc</b> khi uốn được tính theo mục nào?</p><p>Đáp án: F3</p><details class="sol"><summary>Lời giải</summary><p>Bụng đặc chắc, cánh không đặc chắc hoặc mảnh → <b>F3</b> (thêm FLB).</p>
+</details></li>
+<li><p>Tính $L_p$ khi $r_y = 50$ mm, $F_y = 345$ MPa.</p><p>Đáp án: <b>2.12</b> m</p><details class="sol"><summary>Lời giải</summary><p>$L_p = 1{,}76 \times 50 \times 24{,}08 = 2119$ mm $= 2{,}12$ m.</p>
+</details></li>
+<li><p>Kèo H500×250×8×12 ($F_y = 345$ MPa, $M_p = 661{,}4$ kNm, $0{,}7F_yS_x = 414{,}6$ kNm, $L_p = 2{,}39$ m, $L_r = 6{,}47$ m, $C_b = 1$). Tính $\phi M_n$ khi $L_b = 4$ m (FLB cho 631,7 kNm).</p><p>Đáp án: <b>507.7</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$M_n = 661{,}4 - (661{,}4 - 414{,}6)\dfrac{4 - 2{,}39}{6{,}47 - 2{,}39} = 564{,}1$ kNm $&lt; 631{,}7$ → $\phi M_n = 0{,}9 \times 564{,}1 = 507{,}7$ kNm.</p>
+</details></li>
+</ol>
+<h3><a href="../13_cau_kien_aisc/b4_chiu_cat.html">Bài 13.4. Chịu cắt (G)</a></h3>
+<ol><li><p>Với bụng không có sườn ngang, hệ số $k_v$ lấy bằng:</p><p>Đáp án: 5</p><details class="sol"><summary>Lời giải</summary><p>Bụng không sườn: $k_v = 5$.</p>
+</details></li>
+<li><p>Tính giới hạn $1{,}10\sqrt{k_vE/F_y}$ với $F_y = 235$ MPa.</p><p>Đáp án: <b>71.76</b> </p><details class="sol"><summary>Lời giải</summary><p>$1{,}10\sqrt{5 \times 200\,000/235} = 1{,}10 \times 65{,}23 = 71{,}76$.</p>
+</details></li>
+<li><p>Bụng $h \times t_w$ = 630 × 6 mm, $F_y = 235$ MPa, không sườn. Tính $\phi V_n$ (lấy $A_w = h\,t_w$).</p><p>Đáp án: <b>327.8</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$C_v = 0{,}683$; $V_n = 0{,}6 \times 235 \times 630 \times 6 \times 0{,}683 = 364{,}2$ kN; $\phi V_n = 327{,}8$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../13_cau_kien_aisc/b5_tuong_tac.html">Bài 13.5. Tương tác (H1)</a></h3>
+<ol><li><p>Khi $P_r/P_c \ge 0{,}2$ dùng công thức nào?</p><p>Đáp án: H1-1a: $P_r/P_c + \frac{8}{9}(M_{rx}/M_{cx} + M_{ry}/M_{cy}) \le 1$</p><details class="sol"><summary>Lời giải</summary><p>$P_r/P_c \ge 0{,}2$ → H1-1a.</p>
+</details></li>
+<li><p>Cho $P_r/P_c = 0{,}3$; $M_{rx}/M_{cx} = 0{,}6$; $M_{ry} = 0$. Tính chỉ số tương tác.</p><p>Đáp án: <b>0.833</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}3 + \frac{8}{9} \times 0{,}6 = 0{,}833$.</p>
+</details></li>
+<li><p>Cột C1: $P_u = 79{,}85$ kN, $\phi P_n = 749{,}6$ kN, $M_u = 278{,}08$ kNm. Thêm chống xiên để $L_b = 4{,}2$ m thì $\phi M_n = 310{,}5$ kNm. Tính chỉ số tương tác.</p><p>Đáp án: <b>0.949</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}107/2 + 278{,}08/310{,}5 = 0{,}053 + 0{,}896 = 0{,}949 \le 1$ → đạt.</p>
+</details></li>
+</ol>
+<h3><a href="../13_cau_kien_aisc/b6_vi_du_keo_cot.html">Bài 13.6. Ví dụ kèo và cột C1</a></h3>
+<ol><li><p>Muốn tăng khả năng chịu uốn của cột C1 mà không đổi tiết diện, cách hiệu quả nhất là:</p><p>Đáp án: Thêm chống xiên cánh trong để giảm $L_b$</p><details class="sol"><summary>Lời giải</summary><p>Giảm $L_b$ từ 5 m xuống 4,2 m tăng $\phi M_n$ từ 277,3 lên 310,5 kNm.</p>
+</details></li>
+<li><p>Kèo ví dụ 13.1: $M_u = 420{,}4$ kNm, $\phi M_n = 562{,}2$ kNm. Tính tỷ số $M_u/\phi M_n$.</p><p>Đáp án: <b>0.748</b> </p><details class="sol"><summary>Lời giải</summary><p>$420{,}4/562{,}2 = 0{,}748$.</p>
+</details></li>
+<li><p>Làm lại Ví dụ 13.1 theo ASD: $M_a = M_u/1{,}5$, $\Omega_b = 1{,}67$, $M_n = 624{,}7$ kNm. Tính $M_a/(M_n/\Omega_b)$.</p><p>Đáp án: <b>0.749</b> </p><details class="sol"><summary>Lời giải</summary><p>$M_a = 280{,}3$ kNm; $M_n/\Omega_b = 374{,}1$ kNm; tỷ số $= 0{,}749$ ≈ LRFD (0,748).</p>
+</details></li>
+</ol>
+<h3><a href="../13_cau_kien_aisc/kiem_tra_chuong.html">Kiểm tra Chương 13: Kiểm tra cấu kiện AISC</a></h3>
+<ol><li><p>Vì sao cùng bản bụng 630 × 6 mm, khi nén là <b>mảnh</b> còn khi uốn lại <b>đặc chắc</b>?</p><p>Đáp án: Vì khi uốn chỉ một nửa bụng chịu nén (ứng suất đổi dấu) nên giới hạn $3{,}76\sqrt{E/F_y}$ lớn hơn nhiều $1{,}49\sqrt{E/F_y}$</p><details class="sol"><summary>Lời giải</summary><p>Bụng chịu uốn có ứng suất đổi dấu, khó mất ổn định hơn → $\lambda_{pw} = 109{,}7$ (Fy 235) so với $\lambda_r = 43{,}5$ khi nén.</p>
+</details></li>
+<li><p>Khi $h/t_w$ tăng (bụng mỏng hơn), $k_c$ và $\lambda_r$ của cánh tiết diện hàn thay đổi thế nào?</p><p>Đáp án: $k_c$ giảm → $\lambda_r$ của cánh giảm (cánh dễ thành mảnh hơn)</p><details class="sol"><summary>Lời giải</summary><p>Bụng mỏng giữ cánh kém hơn: $k_c$ giảm nên $\lambda_r = 0{,}64\sqrt{k_cE/F_y}$ giảm.</p>
+</details></li>
+<li><p>Cột C1: $P_u = 79{,}85$ kN, $\phi P_n = 749{,}6$ kN. Tính $P_u/\phi P_n$.</p><p>Đáp án: <b>0.107</b> </p><details class="sol"><summary>Lời giải</summary><p>$79{,}85/749{,}6 = 0{,}107 &lt; 0{,}2$ → dùng H1-1b.</p>
+</details></li>
+<li><p>Cột C1 với $L_b = 5$ m: $\phi M_n = 277{,}3$ kNm, $M_u = 278{,}08$ kNm, $P_u/\phi P_n = 0{,}107$. Tính chỉ số tương tác.</p><p>Đáp án: <b>1.056</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}107/2 + 278{,}08/277{,}3 = 0{,}053 + 1{,}003 = 1{,}056 &gt; 1$ → không đạt.</p>
+</details></li>
+<li><p>Như câu trên nhưng $L_b = 3$ m: $\phi M_n = 360{,}4$ kNm. Tính chỉ số tương tác.</p><p>Đáp án: <b>0.825</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}0535 + 278{,}08/360{,}4 = 0{,}0535 + 0{,}772 = 0{,}825$.</p>
+</details></li>
+<li><p>Kèo ví dụ 13.1: $V_u = 81{,}0$ kN, $\phi V_n = 706$ kN. Tính tỷ số cắt.</p><p>Đáp án: <b>0.115</b> </p><details class="sol"><summary>Lời giải</summary><p>$81{,}0/706 = 0{,}115$.</p>
+</details></li>
+<li><p>Bạn tính tay $\phi P_n$ cột C1 = 1250 kN, còn SAP2000 cho 750 kN. Nguyên nhân hợp lý nhất là:</p><p>Đáp án: Bạn đã lấy $Q = 1$, bỏ qua bụng mảnh (E7)</p><details class="sol"><summary>Lời giải</summary><p>Với $Q = 1$: $F_{cr}$ tăng đáng kể; SAP áp dụng E7 với $Q_a = 0{,}836$.</p>
+</details></li>
+</ol>
+<h2>Chương 14. Điều kiện sử dụng (Mỹ)</h2>
+<h3><a href="../14_dieu_kien_su_dung_my/b1_co_so_phap_ly.html">Bài 14.1. Cơ sở pháp lý, gió 10 năm, hệ số 0,44</a></h3>
+<ol><li><p>Giới hạn độ võng nào là <b>bắt buộc</b> khi công trình áp dụng IBC?</p><p>Đáp án: IBC 2012, Bảng 1604.3</p><details class="sol"><summary>Lời giải</summary><p>AISC 360-10 Chương L chỉ nêu nguyên tắc; ASCE 7 Phụ lục C và DG3 là khuyến nghị. Chỉ IBC Bảng 1604.3 là bắt buộc.</p>
+</details></li>
+<li><p>Phần quy đổi vận tốc trong <a href="../14_dieu_kien_su_dung_my/b1_co_so_phap_ly.html#eq-14-1">(14.1)</a> là $(0{,}91/1{,}26)^2$. Tính giá trị này.</p><p>Đáp án: <b>0.522</b> </p><details class="sol"><summary>Lời giải</summary><p>$(0{,}91/1{,}26)^2 = 0{,}7222^2 = 0{,}522$.</p>
+</details></li>
+<li><p>Áp lực gió lên tường tính theo ASCE 7-10 (gió mức cường độ, 700 năm) là 1,20 kN/m². Tính áp lực gió sử dụng 10 năm dùng để kiểm tra chuyển vị (dùng hệ số chính xác theo <a href="../14_dieu_kien_su_dung_my/b1_co_so_phap_ly.html#eq-14-1">(14.1)</a>).</p><p>Đáp án: <b>0.533</b> kN/m²</p><details class="sol"><summary>Lời giải</summary><p>$W_{10}/W_{700} = 0{,}852 \times 0{,}522 = 0{,}444$; $W_{10} = 0{,}444 \times 1{,}20 = 0{,}533$ kN/m².</p>
+</details></li>
+</ol>
+<h3><a href="../14_dieu_kien_su_dung_my/b2_gioi_han_ibc_dg3.html">Bài 14.2. Giới hạn IBC và DG3</a></h3>
+<ol><li><p>Theo DG3 (đính chính 2020), giới hạn chuyển vị ngang tại cao trình ray với cầu trục <b>điều khiển từ cabin</b> là:</p><p>Đáp án: $H/240 \le 50$ mm</p><details class="sol"><summary>Lời giải</summary><p>Đính chính tháng 8/2020: cầu trục cabin $H/240 \le 2$ in. (50 mm); cầu trục điều khiển dưới nền $H/100$.</p>
+</details></li>
+<li><p>Nhà máy DNP có cột cao 9 m, bao che tôn. Tính giới hạn chuyển vị ngang đỉnh cột theo DG3 với mức chặt nhất $H/100$.</p><p>Đáp án: <b>90</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$9000/100 = 90$ mm.</p>
+</details></li>
+<li><p>Cũng khung DNP cao $h_s$ = 9 m nhưng thiết kế theo TCVN 2737:2023 Phụ lục G. Tính giới hạn chuyển vị ngang đỉnh cột.</p><p>Đáp án: <b>39</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$1{,}3 \times 9000/300 = 39{,}0$ mm; $9000/150 = 60$ mm → giới hạn 39 mm, chặt hơn $H/100$ = 90 mm khoảng 2,3 lần.</p>
+</details></li>
+</ol>
+<h3><a href="../14_dieu_kien_su_dung_my/b3_thuc_hanh_sap.html">Bài 14.3. Thực hành SAP2000</a></h3>
+<ol><li><p>Khi đọc chuyển vị ngang để kiểm tra điều kiện sử dụng trong mô hình đã dùng Direct Analysis, cần:</p><p>Đáp án: Chạy thêm trường hợp phân tích với <i>Stiffness Reduction = None</i> (độ cứng danh nghĩa)</p><details class="sol"><summary>Lời giải</summary><p>AISC Chú giải Chương L cho phép dùng độ cứng danh nghĩa khi kiểm tra điều kiện sử dụng → chạy trường hợp riêng không giảm độ cứng.</p>
+</details></li>
+<li><p>Làm lại Ví dụ 14.1 với $P$ = 15 kN, $H$ = 8,0 m, cùng cột H500×250×8×12 ($I = 42\,919\times10^4$ mm⁴, $E = 2{,}0\times10^5$ MPa). Tính $\Delta$.</p><p>Đáp án: <b>14.9</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\Delta = 15\,000 \times 8000^3/(6 \times 2{,}0\times10^5 \times 4{,}2919\times10^8) = 14{,}9$ mm.</p>
+</details></li>
+<li><p>Kèo nhịp 54 m của nhà máy DNP. Dưới tổ hợp <code>SLS_Lr</code>, Joint Displacements cho $U_3$ tại đỉnh mái = −185 mm, tại hai đỉnh cột = −12 mm. Tính tỷ số độ võng tương đối so với giới hạn $L/180$.</p><p>Đáp án: <b>0.577</b> </p><details class="sol"><summary>Lời giải</summary><p>$\Delta = 185 - 12 = 173$ mm; $L/180 = 54\,000/180 = 300$ mm; tỷ số $173/300 = 0{,}577$ → đạt.</p>
+</details></li>
+</ol>
+<h3><a href="../14_dieu_kien_su_dung_my/kiem_tra_chuong.html">Kiểm tra Chương 14: Điều kiện sử dụng (Mỹ)</a></h3>
+<ol><li><p>Vì sao không dùng trực tiếp tổ hợp cường độ 1,2D + 1,0W để kiểm tra chuyển vị ngang?</p><p>Đáp án: Vì $W$ của ASCE 7-10 là gió mức cường độ (700 năm), còn điều kiện sử dụng xét gió 10 năm ≈ $0{,}44W$, không hệ số</p><details class="sol"><summary>Lời giải</summary><p>Gió ASCE 7-10 ứng với chu kỳ 700 năm; dùng nó để kiểm tra chuyển vị sẽ lớn gấp khoảng $1/0{,}44 = 2{,}3$ lần gió sử dụng.</p>
+</details></li>
+<li><p>Vùng gió II-B, $W_0$ = 95 daN/m². Coi áp lực tỷ lệ với $V^2$ và $V_{700} = (1{,}26/0{,}91)V_{20}$. Tính áp lực ứng với $V_{700}$, rồi kiểm tra tỷ số $W_{10}/W_{700}$ với $W_{10} = 0{,}852W_0$.</p><p>Đáp án: <b>182.1</b> daN/m²</p><details class="sol"><summary>Lời giải</summary><p>$W_{700} = 1{,}917 \times 95 = 182{,}1$ daN/m²; $W_{10} = 0{,}852 \times 95 = 80{,}9$ daN/m²; $W_{10}/W_{700} = 0{,}444$. $W_0$ bị triệt tiêu nên hệ số không phụ thuộc vùng gió.</p>
+</details></li>
+<li><p>Khung có cầu trục 10 T điều khiển từ cabin, ray ở cao trình 6,5 m. Tính giới hạn chuyển vị ngang tại cao trình ray theo DG3.</p><p>Đáp án: <b>27.1</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$6500/240 = 27{,}1$ mm $&lt; 50$ mm → giới hạn 27,1 mm.</p>
+</details></li>
+<li><p>Kèo được chia thành 6 phần tử nhưng không gộp design member. SAP2000 kiểm tra độ võng $L/180$ trên chiều dài nào và hậu quả là gì?</p><p>Đáp án: Trên chiều dài từng phần tử, võng tính so với dây cung đoạn ngắn → bỏ qua phần lớn độ võng tổng thể, kèo "đạt" giả</p><details class="sol"><summary>Lời giải</summary><p>Mỗi phần tử là một design member: $L$ là chiều dài đoạn, võng đo so với đường nối hai đầu đoạn → kết quả sai rất nhiều, thiên về không an toàn.</p>
+</details></li>
+<li><p>Nhà xưởng Hòa Bình, $h_s$ = 7,07 m. Tính giới hạn chuyển vị ngang đỉnh cột theo TCVN 2737:2023 Phụ lục G.</p><p>Đáp án: <b>30.6</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$1{,}3 \times 7070/300 = 30{,}6$ mm; $7070/150 = 47{,}1$ mm → 30,6 mm.</p>
+</details></li>
+<li><p>Khung cao 8 m, tường gạch có cốt thép. Giới hạn chuyển vị ngang theo DG3 là bao nhiêu?</p><p>Đáp án: <b>80</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$H/100 = 8000/100 = 80$ mm (gió 10 năm).</p>
+</details></li>
+<li><p>Kiểm tra chuyển vị tại cao trình ray theo DG3, DG7 dùng tải nào?</p><p>Đáp án: Lực ngang cầu trục hoặc gió 10 năm, không tổ hợp hai tải với nhau</p><details class="sol"><summary>Lời giải</summary><p>DG3, DG7: lực ngang cầu trục <b>không</b> tổ hợp với gió khi kiểm tra chuyển vị tại ray.</p>
+</details></li>
+</ol>
+<h2>Chương 15. Liên kết AISC</h2>
+<h3><a href="../15_lien_ket_aisc/b1_duong_han.html">Bài 15.1. Đường hàn (J2)</a></h3>
+<ol><li><p>Theo (J2-5), đường hàn góc chịu lực <b>vuông góc</b> với trục đường hàn ($\theta$ = 90°) có $F_{nw}$ bằng bao nhiêu lần khi lực song song ($\theta$ = 0°)?</p><p>Đáp án: 1,5</p><details class="sol"><summary>Lời giải</summary><p>$\sin 90° = 1$ → hệ số $1 + 0{,}5 = 1{,}5$.</p>
+</details></li>
+<li><p>Tính $\phi F_{nw}$ của que E70XX ($F_{EXX}$ = 483 MPa) khi lực hợp với trục đường hàn góc $\theta$ = 45°.</p><p>Đáp án: <b>282.0</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$\phi F_{nw} = 0{,}75 \times 0{,}6 \times 483 \times (1 + 0{,}5 \times 0{,}595) = 217{,}4 \times 1{,}297 = 282{,}0$ MPa.</p>
+</details></li>
+<li><p>Bản mã nối vào cánh bằng hai đường hàn góc ngang ($\theta$ = 90°), E70XX, $w$ = 8 mm, mỗi đường dài 150 mm. Tính $\phi R_n$ của nhóm hàn.</p><p>Đáp án: <b>553.2</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$A_{we} = 0{,}707 \times 8 \times 300 = 1697$ mm²; $\phi R_n = 326{,}0 \times 1697 = 553{,}2$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../15_lien_ket_aisc/b2_bu_long.html">Bài 15.2. Bu lông (J3)</a></h3>
+<ol><li><p>Trong (J3-1), $A_b$ là:</p><p>Đáp án: Diện tích danh nghĩa phần không ren, $\pi d^2/4$</p><details class="sol"><summary>Lời giải</summary><p>$A_b = \pi d^2/4$; $F_{nt} = 0{,}75F_u$ đã kể đến phần ren.</p>
+</details></li>
+<li><p>Tính $\phi R_n$ chịu kéo của một bu lông A325M M20 ($F_{nt}$ = 620 MPa).</p><p>Đáp án: <b>146.1</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$A_b = 314{,}2$ mm²; $\phi R_n = 0{,}75 \times 620 \times 314{,}2 = 146{,}1$ kN.</p>
+</details></li>
+<li><p>Bu lông M20 (lỗ 22 mm) qua bản dày 10 mm, $F_u$ = 400 MPa, khoảng cách từ tâm lỗ đến mép theo phương lực 40 mm. Tính $\phi R_n$ ép mặt tại lỗ ngoài cùng theo (J3-6a).</p><p>Đáp án: <b>104.4</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$l_c = 29$ mm; $1{,}2 \times 29 \times 10 \times 400 = 139{,}2$ kN $&lt; 2{,}4 \times 20 \times 10 \times 400 = 192$ kN → $\phi R_n = 0{,}75 \times 139{,}2 = 104{,}4$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../15_lien_ket_aisc/b3_mat_bich_4e.html">Bài 15.3. Mặt bích 4E</a></h3>
+<ol><li><p>Ký hiệu <b>4E</b> trong AISC DG16 chỉ liên kết mặt bích:</p><p>Đáp án: Có đoạn kéo dài, 4 bu lông ở cánh chịu kéo, không sườn</p><details class="sol"><summary>Lời giải</summary><p>4E: bản mã kéo dài qua cánh kéo, 4 bu lông quanh cánh kéo (2 hàng × 2), không có sườn tăng cứng.</p>
+</details></li>
+<li><p>Ví dụ 15.1 nhưng dùng bu lông A325M M24 ($A_b$ = 452 mm²). Tính $\phi M_{np}$.</p><p>Đáp án: <b>410.3</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$P_t = 280{,}2$ kN; $\phi M_{np} = 0{,}75 \times 2 \times 280{,}2 \times 0{,}976 = 410{,}3$ kNm $&lt; M_u$ = 420,4 kNm → không đạt.</p>
+</details></li>
+<li><p>Ví dụ 15.1 nhưng gage tăng lên $g$ = 140 mm (các số liệu khác giữ nguyên). Tính $t_{p,req}$ (không hệ số 1,11).</p><p>Đáp án: <b>19.2</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$s = 0{,}5\sqrt{250 \times 140} = 93{,}5$ mm $&gt; p_{fi}$ = 54 mm; $Y_p = 125 \times [428(1/54 + 1/93{,}5) + 548/54 - 0{,}5] + (2/140) \times 428 \times (54 + 93{,}5) = 3671$ mm; $t_{p,req} = \sqrt{420{,}4\times10^6/(0{,}9 \times 345 \times 3671)} = 19{,}2$ mm.</p>
+</details></li>
+</ol>
+<h3><a href="../15_lien_ket_aisc/b4_chan_cot.html">Bài 15.4. Chân cột (J8, DG1, ACI)</a></h3>
+<ol><li><p>Hệ số ma sát giữa bản đế thép và lớp vữa theo AISC DG1 là:</p><p>Đáp án: 0,55</p><details class="sol"><summary>Lời giải</summary><p>DG1: $\mu$ = 0,55 (thép trên vữa); TCVN 5575:2024: $\mu$ = 0,25.</p>
+</details></li>
+<li><p>Bản đế 400 × 300 mm trên móng đủ rộng ($\sqrt{A_2/A_1}$ = 2), $f'_c$ = 27,6 MPa. Tính $\phi_cP_p$.</p><p>Đáp án: <b>3660</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$A_1 = 120\,000$ mm²; $\phi_cP_p = 0{,}65 \times 1{,}7 \times 27{,}6 \times 120\,000 = 3660$ kN.</p>
+</details></li>
+<li><p>Cột của Ví dụ 15.2 ($d$ = 300, $b_f$ = 200 mm) đặt trên bản đế $N \times B$ = 400 × 300 mm, Q235, chịu $P_u$ = 150 kN. Tính chiều dày bản đế yêu cầu khi nén theo DG1 (dùng $\phi_cP_p$ của câu trước).</p><p>Đáp án: <b>7.61</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$m = (400 - 285)/2 = 57{,}5$ mm; $n = (300 - 160)/2 = 70$ mm; $X = 0{,}96 \times 150/3660 = 0{,}039$ → $\lambda = 0{,}200$, $\lambda n' = 12{,}3$ mm → $l = 70$ mm; $t_{\min} = 70\sqrt{2 \times 150\,000/(0{,}9 \times 235 \times 120\,000)} = 7{,}61$ mm.</p>
+</details></li>
+</ol>
+<h3><a href="../15_lien_ket_aisc/kiem_tra_chuong.html">Kiểm tra Chương 15: Liên kết AISC</a></h3>
+<ol><li><p>Đường hàn góc E70XX, $w$ = 6 mm, dài 200 mm, lực <b>song song</b> trục đường hàn. Tính $\phi R_n$. (Khi lực vuông góc, kết quả nhân 1,5.)</p><p>Đáp án: <b>184.4</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$0{,}75 \times 0{,}6 \times 483 \times 0{,}707 \times 6 \times 200 = 184{,}4$ kN; với $\theta$ = 90°: $1{,}5 \times 184{,}4 = 276{,}6$ kN.</p>
+</details></li>
+<li><p>Bu lông A325M M20, ren trong mặt cắt ($F_{nt}$ = 620, $F_{nv}$ = 372 MPa), đồng thời chịu ứng suất cắt $f_{rv}$ = 150 MPa. Tính $\phi R_n$ chịu kéo.</p><p>Đáp án: <b>111.4</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$F'_{nt} = 1{,}3 \times 620 - \dfrac{620}{0{,}75 \times 372} \times 150 = 806 - 333{,}3 = 472{,}7$ MPa $\le 620$; $\phi R_n = 0{,}75 \times 472{,}7 \times 314{,}2 = 111{,}4$ kN.</p>
+</details></li>
+<li><p>Bu lông M24: $A_b = \pi d^2/4$, $A_{bn}$ = 353 mm². Tính tỷ số $A_b/A_{bn}$.</p><p>Đáp án: <b>1.28</b> </p><details class="sol"><summary>Lời giải</summary><p>$A_b = 452{,}4$ mm²; $452{,}4/353 = 1{,}28$. AISC bù lại bằng $F_{nt} = 0{,}75F_u$, TCVN dùng $A_{bn}$ với cường độ đầy đủ.</p>
+</details></li>
+<li><p>Ở Ví dụ 15.2, nếu chuyển 4 bu lông neo ra <b>ngoài</b> cánh cột với bản đế dày, cần làm gì trong mô hình SAP2000?</p><p>Đáp án: Xét chân cột ngàm một phần: khai báo lò xo xoay (hoặc ngàm) ở chân cột và kiểm tra neo, bản đế với mô men chân cột</p><details class="sol"><summary>Lời giải</summary><p>Chân cột có độ ngàm một phần, mô men thật ≠ 0, bu lông neo có thể chịu kéo lớn hơn tính toán → mô hình phải phản ánh độ cứng xoay.</p>
+</details></li>
+<li><p>Chân cột chịu nén $P_u$ = 100 kN. Tính khả năng truyền cắt bằng ma sát theo DG1 ($\phi$ = 0,75, $\mu$ = 0,55). So sánh với TCVN ($\mu$ = 0,25).</p><p>Đáp án: <b>41.25</b> kN</p><details class="sol"><summary>Lời giải</summary><p>DG1: $0{,}75 \times 0{,}55 \times 100 = 41{,}25$ kN; TCVN: $0{,}25 \times 100 = 25$ kN. Kiến nghị: luôn bố trí chốt chống cắt khi có tổ hợp nhổ hoặc lực cắt lớn.</p>
+</details></li>
+<li><p>Hệ số sức kháng $\phi$ cho đường hàn góc (J2-4) và bu lông chịu kéo, cắt (J3-1) là:</p><p>Đáp án: 0,75</p><details class="sol"><summary>Lời giải</summary><p>Cả (J2-4) và (J3-1) dùng $\phi$ = 0,75.</p>
+</details></li>
+<li><p>Ví dụ 15.2 thiết kế theo TCVN: $P_u$ = 65,02 kN, $V_u$ = 26,21 kN, $\mu$ = 0,25 (bỏ qua lực siết bu lông). Lực cắt còn thiếu mà chốt chống cắt phải chịu là bao nhiêu?</p><p>Đáp án: <b>9.96</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$0{,}25 \times 65{,}02 = 16{,}26$ kN; thiếu $26{,}21 - 16{,}26 = 9{,}96$ kN → cần chốt chống cắt.</p>
+</details></li>
+<li><p>Ví dụ 15.1: $M_u$ = 420,4 kNm, $F_{py}$ = 345 MPa, $Y_p$ = 3817 mm. Tính $t_{p,req}$ (không hệ số 1,11).</p><p>Đáp án: <b>18.8</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$\sqrt{420{,}4\times10^6/(0{,}9 \times 345 \times 3817)} = 18{,}8$ mm $\le 20$ mm.</p>
+</details></li>
+</ol>
+<h2>Chương 16. So sánh TCVN và Mỹ</h2>
+<h3><a href="../16_so_sanh/b1_tai_trong_to_hop.html">Bài 16.1. Tải trọng và tổ hợp</a></h3>
+<ol><li><p>Trong tổ hợp tính toán, hệ số tải trọng của gió theo hai hệ là:</p><p>Đáp án: TCVN $\gamma_f$ = 2,1 (tải gió đã ở mức tính toán); ASCE 7-10 hệ số 1,0W</p><details class="sol"><summary>Lời giải</summary><p>TCVN 2737:2023 nhân $\gamma_f$ = 2,1; ASCE 7-10 (LRFD) dùng 1,0W vì bản đồ gió đã ở mức cường độ.</p>
+</details></li>
+<li><p>Nếu dùng nhầm vận tốc 62,77 m/s thay cho 54,51 m/s khi tính theo ASCE 7-10, áp lực gió tăng bao nhiêu phần trăm?</p><p>Đáp án: <b>32.6</b> %</p><details class="sol"><summary>Lời giải</summary><p>$(62{,}77/54{,}51)^2 = 1{,}326$ → tăng khoảng 32,6 % (≈ 33 %).</p>
+</details></li>
+<li><p>Mái tôn nặng hơn, $D$ = 0,35 kN/m². Tính tỷ số tải đứng tính toán lên kèo theo ASCE ($1{,}2D + 1{,}6L_r$, $L_r$ = 0,96 kN/m²) so với TCVN ($1{,}05D + 1{,}3 \times 0{,}3$).</p><p>Đáp án: <b>2.58</b> </p><details class="sol"><summary>Lời giải</summary><p>ASCE: $1{,}2 \times 0{,}35 + 1{,}6 \times 0{,}96 = 1{,}956$ kN/m². TCVN: $1{,}05 \times 0{,}35 + 0{,}39 = 0{,}7575$ kN/m². Tỷ số $= 1{,}956/0{,}7575 = 2{,}58$.</p>
+</details></li>
+</ol>
+<h3><a href="../16_so_sanh/b2_cau_kien_on_dinh.html">Bài 16.2. Cấu kiện và ổn định</a></h3>
+<ol><li><p>Theo TCVN 5575:2024, cột C1 có $\bar\lambda_b$ = 0,824. Kết luận về ổn định tổng thể là:</p><p>Đáp án: $\bar\lambda_b$ = 0,824 > 0,693 → phải kiểm tra, cần $L_{ef} \le 4{,}2$ m</p><details class="sol"><summary>Lời giải</summary><p>$0{,}824 &gt; 0{,}693$ nên ổn định tổng thể khống chế; giải pháp là chống xiên để $L_{ef} \le 4{,}2$ m.</p>
+</details></li>
+<li><p>Cột C1 theo AISC: $P_u$ = 79,85 kN, $\phi P_n$ = 749,6 kN, $M_u$ = 278,08 kNm, $\phi M_n$ = 277,3 kNm ($L_b$ = 5 m). Tính chỉ số tương tác H1-1b.</p><p>Đáp án: <b>1.056</b> </p><details class="sol"><summary>Lời giải</summary><p>$79{,}85/749{,}6 = 0{,}1065$; $0{,}0533 + 278{,}08/277{,}3 = 0{,}0533 + 1{,}0028 = 1{,}056 &gt; 1$ → không đạt.</p>
+</details></li>
+<li><p>Thêm chống xiên để $L_b$ = 4,2 m, khi đó $\phi M_n$ = 310,5 kNm (các số khác như câu trên). Tính lại chỉ số H1-1b.</p><p>Đáp án: <b>0.949</b> </p><details class="sol"><summary>Lời giải</summary><p>$0{,}0533 + 278{,}08/310{,}5 = 0{,}0533 + 0{,}8956 = 0{,}949 \le 1$ → đạt. Cùng $L_{ef} \le 4{,}2$ m như TCVN.</p>
+</details></li>
+</ol>
+<h3><a href="../16_so_sanh/b3_lien_ket_su_dung.html">Bài 16.3. Liên kết và điều kiện sử dụng</a></h3>
+<ol><li><p>Hệ số ma sát giữa bản đế chân cột và vữa/bê tông lấy theo hai hệ là:</p><p>Đáp án: TCVN 0,25; AISC DG1 0,55</p><details class="sol"><summary>Lời giải</summary><p>TCVN $\mu$ = 0,25; AISC Design Guide 1 $\mu$ = 0,55.</p>
+</details></li>
+<li><p>Tính độ võng giới hạn của kèo nhịp 50 m theo giới hạn $L/180$ (tải $L_r$) của hệ Mỹ.</p><p>Đáp án: <b>277.8</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$50\,000/180 = 277{,}8$ mm (TCVN: $L/300$ = 166,7 mm).</p>
+</details></li>
+<li><p>Chân cột chịu lực nén $N$ = 120 kN đồng thời lực cắt $V$ = 45 kN. Theo TCVN, ma sát chịu được bao nhiêu và chốt chống cắt phải chịu phần lực cắt còn lại bằng bao nhiêu?</p><p>Đáp án: <b>15</b> kN</p><details class="sol"><summary>Lời giải</summary><p>Ma sát: $0{,}25 \times 120 = 30$ kN &lt; 45 kN → chốt chống cắt chịu $45 - 30 = 15$ kN. (Với $\mu$ = 0,55 theo DG1, ma sát 66 kN đã đủ.)</p>
+</details></li>
+</ol>
+<h3><a href="../16_so_sanh/b4_ket_luan.html">Bài 16.4. Kết luận</a></h3>
+<ol><li><p>Theo kết luận tổng hợp, kèo nhà xưởng thiết kế theo ASCE (với $L_r$ = 0,96 kN/m²) thường do tổ hợp nào khống chế?</p><p>Đáp án: Tĩnh tải + hoạt tải mái (D + Lr)</p><details class="sol"><summary>Lời giải</summary><p>$1{,}2D + 1{,}6L_r$ với $L_r$ = 0,96 kN/m² lớn hơn tải gió hút → D + Lr khống chế.</p>
+</details></li>
+<li><p>Áp lực bánh xe cầu trục tính theo TCVN 2737:1995 là 150 kN. Theo kết luận, TCVN 2737:2023 tăng tải cầu trục 28 %. Áp lực theo bản 2023 là bao nhiêu?</p><p>Đáp án: <b>192</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$150 \times 1{,}28 = 192$ kN.</p>
+</details></li>
+<li><p>Mái $D$ = 0,25 kN/m². Nếu chủ đầu tư chấp thuận $L_r$ = 0,3 kN/m² trong hồ sơ ASCE, tính tỷ số tải đứng tính toán ASCE ($1{,}2D + 1{,}6L_r$) so với TCVN ($1{,}05D + 1{,}3 \times 0{,}3$).</p><p>Đáp án: <b>1.20</b> </p><details class="sol"><summary>Lời giải</summary><p>ASCE: $0{,}30 + 0{,}48 = 0{,}78$ kN/m²; TCVN: $0{,}2625 + 0{,}39 = 0{,}6525$ kN/m²; tỷ số $= 1{,}20$ (thay vì 2,8) → kèo hai hệ gần tương đương.</p>
+</details></li>
+</ol>
+<h3><a href="../16_so_sanh/kiem_tra_chuong.html">Kiểm tra Chương 16: So sánh TCVN và Mỹ</a></h3>
+<ol><li><p>Với $q_h \cdot B$ gần bằng nhau (TCVN 1120 daN/m, ASCE 1177 daN/m), vì sao tải lên tường đón gió theo TCVN (560/1008 daN/m) lớn hơn ASCE (259/682 daN/m) trong <a href="../16_so_sanh/b1_tai_trong_to_hop.html#tbl-16-1">Bảng 16.1</a>?</p><p>Đáp án: Vì hệ số khí động tường đón gió TCVN là +0,7, còn $GC_{pf}$ vùng 1 của ASCE Ch.28 (phương pháp bao cho nhà thấp) chỉ khoảng 0,40</p><details class="sol"><summary>Lời giải</summary><p>TCVN: $560/1120 + 0{,}2 = 0{,}7$; ASCE: $259/1177 + 0{,}18 \approx 0{,}40$. Hệ số tường đón gió của ASCE Ch.28 nhỏ hơn nhiều, nên tải tường theo TCVN lớn hơn 1,5–2 lần.</p>
+</details></li>
+<li><p>Mái tôn $D$ = 0,25 kN/m², $L_r$ = 0,96 kN/m². Tính tải đứng tính toán lớn nhất lên kèo theo ASCE 7-10 (so sánh $1{,}4D$ và $1{,}2D + 1{,}6L_r$).</p><p>Đáp án: <b>1.836</b> kN/m²</p><details class="sol"><summary>Lời giải</summary><p>$1{,}4D = 0{,}35$; $1{,}2 \times 0{,}25 + 1{,}6 \times 0{,}96 = 1{,}836$ kN/m² → lớn nhất 1,836 kN/m².</p>
+</details></li>
+<li><p>Cùng mái trên, tính tải đứng tính toán lên kèo theo TCVN ($\gamma_f$ = 1,05 cho tĩnh tải thép, hoạt tải mái 0,3 kN/m² với $\gamma_f$ = 1,3).</p><p>Đáp án: <b>0.6525</b> kN/m²</p><details class="sol"><summary>Lời giải</summary><p>$1{,}05 \times 0{,}25 + 0{,}39 = 0{,}6525$ kN/m² ≈ 0,65; ASCE gấp $1{,}836/0{,}6525 = 2{,}8$ lần.</p>
+</details></li>
+<li><p>Tính tải gió ASCE 7-10 lên tường đón gió khung giữa (vùng 1) khi áp lực trong âm: $q_h$ = 147,1 daN/m², bước khung 8 m, $GC_{pf}$ = 0,40, $GC_{pi}$ = −0,18.</p><p>Đáp án: <b>682.5</b> daN/m</p><details class="sol"><summary>Lời giải</summary><p>$147{,}1 \times (0{,}40 + 0{,}18) \times 8 = 682{,}5$ daN/m, khớp 682 daN/m trong <a href="../16_so_sanh/b1_tai_trong_to_hop.html#tbl-16-1">Bảng 16.1</a>.</p>
+</details></li>
+<li><p>Thép Q345 theo TCVN 5575:2024 ($\gamma_m$ = 1,10). Tính $f_{yd}$ để so sánh với $\phi F_y$ = 310,5 MPa của AISC.</p><p>Đáp án: <b>313.6</b> MPa</p><details class="sol"><summary>Lời giải</summary><p>$345/1{,}10 = 313{,}6$ MPa, chênh với AISC khoảng 1 %.</p>
+</details></li>
+<li><p>Cột C1 (AISC): $P_u/\phi P_n = 0{,}1065$, $M_u$ = 278,08 kNm. Cần $\phi M_n$ tối thiểu bao nhiêu để H1-1b vừa bằng 1,0?</p><p>Đáp án: <b>293.7</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$\phi M_n = 278{,}08/(1 - 0{,}0533) = 293{,}7$ kNm. Với $L_b$ = 5 m chỉ có 277,3 kNm (1,056); với $L_b$ = 4,2 m có 310,5 kNm (0,949).</p>
+</details></li>
+<li><p>Để so sánh hai hệ tiêu chuẩn một cách công bằng, ba điểm cần chốt trong Tiêu chí thiết kế là:</p><p>Đáp án: Hoạt tải mái $L_r$; giới hạn điều kiện sử dụng (võng, chuyển vị ngang); chi tiết liên kết (hàn góc/hàn thấu, ma sát chân cột)</p><details class="sol"><summary>Lời giải</summary><p>Kết quả phụ thuộc vào $L_r$, giới hạn sử dụng và chi tiết liên kết được chốt trong Tiêu chí thiết kế.</p>
+</details></li>
+<li><p>Độ võng giới hạn của kèo nhịp 50 m theo TCVN 2737:2023 Phụ lục G ($L/300$) là bao nhiêu?</p><p>Đáp án: <b>166.7</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$50\,000/300 = 166{,}7$ mm (hệ Mỹ $L/180$ = 277,8 mm).</p>
+</details></li>
+</ol>
+<h2>Chương 17. Thuyết minh, bản vẽ</h2>
+<h3><a href="../17_thuyet_minh_ban_ve/b1_cau_truc_thuyet_minh.html">Bài 17.1. Cấu trúc thuyết minh</a></h3>
+<ol><li><p>Phiên bản tiêu chuẩn áp dụng, cấp hậu quả / Risk Category, giới hạn sử dụng và phương pháp phân tích được trình bày ở mục nào của thuyết minh?</p><p>Đáp án: 2. Tiêu chí thiết kế</p><details class="sol"><summary>Lời giải</summary><p>Các nội dung này thuộc mục <b>2. Tiêu chí thiết kế</b> (nguồn: Ch.1, 8, 14).</p>
+</details></li>
+<li><p>Theo nguyên tắc "mỗi kết luận đạt có tỷ số kèm theo", tính tỷ số ghi vào thuyết minh cho kèo có $M_u$ = 420,4 kNm, $\phi M_n$ = 562,2 kNm.</p><p>Đáp án: <b>0.748</b> </p><details class="sol"><summary>Lời giải</summary><p>$420{,}4/562{,}2 = 0{,}748$ → ghi "đạt, tỷ số 0,748" kèm số hiệu phần tử và tổ hợp.</p>
+</details></li>
+<li><p>Mục 8 của thuyết minh: kèo nhịp 50 m theo TCVN, giới hạn võng $L/300$. Giả sử độ võng tính được từ SAP2000 là 120 mm. Tính tỷ số độ võng / độ võng cho phép.</p><p>Đáp án: <b>0.72</b> </p><details class="sol"><summary>Lời giải</summary><p>$[f] = 50\,000/300 = 166{,}7$ mm; tỷ số $= 120/166{,}7 = 0{,}72$ → đạt.</p>
+</details></li>
+</ol>
+<h3><a href="../17_thuyet_minh_ban_ve/b2_xuat_ket_qua.html">Bài 17.2. Xuất kết quả, thống kê thép</a></h3>
+<ol><li><p>Bảng nào của SAP2000 cho tổng trọng lượng thép theo từng tiết diện?</p><p>Đáp án: Material List 2 – By Section Property</p><details class="sol"><summary>Lời giải</summary><p><i>Material List 2 – By Section Property</i> cho trọng lượng theo tiết diện (chỉ phần tử thanh).</p>
+</details></li>
+<li><p>Khối lượng khung chính (chưa kể xà gồ) của nhà 50 × 72 m là 108 tấn. Tính chỉ tiêu kg/m² sàn.</p><p>Đáp án: <b>30</b> kg/m²</p><details class="sol"><summary>Lời giải</summary><p>$108\,000/3600 = 30$ kg/m², nằm trong khoảng tham khảo 25–40 kg/m².</p>
+</details></li>
+<li><p><i>Material List</i> của nhà 50 × 72 m cho khối lượng khung chính 95 tấn. Cộng 10 % cho liên kết rồi tính chỉ tiêu kg/m² sàn.</p><p>Đáp án: <b>29.0</b> kg/m²</p><details class="sol"><summary>Lời giải</summary><p>$95 \times 1{,}10 = 104{,}5$ t; $104\,500/3600 = 29{,}0$ kg/m² → hợp lý (25–40 kg/m²).</p>
+</details></li>
+</ol>
+<h3><a href="../17_thuyet_minh_ban_ve/b3_ban_ve_ho_so.html">Bài 17.3. Bản vẽ, kiểm tra hồ sơ</a></h3>
+<ol><li><p>Phần mềm nào được giới thiệu trong khóa học để dựng nhanh mô hình và bản vẽ khung từ các thông số chính?</p><p>Đáp án: Ketcausoft</p><details class="sol"><summary>Lời giải</summary><p>Video Buổi 08 giới thiệu <b>Ketcausoft</b> để dựng nhanh mô hình và bản vẽ khung.</p>
+</details></li>
+<li><p>Dầm tường trên cột C1 đặt cách nhau 1,4 m; chống xiên chỉ gắn được tại dầm tường. Tính toán yêu cầu $L_b \le 4{,}2$ m. Cứ tối đa bao nhiêu khoảng dầm tường thì phải đặt một chống xiên?</p><p>Đáp án: <b>3</b> khoảng</p><details class="sol"><summary>Lời giải</summary><p>$4{,}2/1{,}4 = 3$ → chống xiên tối đa cách 3 khoảng dầm tường (4,2 m). Bản vẽ phải thể hiện đúng như vậy (điểm 5).</p>
+</details></li>
+<li><p>Thống kê bu lông neo cho nhà dài 72 m, bước khung 8 m. Mỗi khung có 2 cột, mỗi chân cột dùng 4M24 (chỉ tính cột khung chính, bỏ qua cột sườn tường). Tổng số bu lông neo là bao nhiêu?</p><p>Đáp án: <b>80</b> bu lông</p><details class="sol"><summary>Lời giải</summary><p>$72/8 = 9$ bước → 10 khung → 20 chân cột → $20 \times 4 = 80$ bu lông M24.</p>
+</details></li>
+</ol>
+<h3><a href="../17_thuyet_minh_ban_ve/kiem_tra_chuong.html">Kiểm tra Chương 17: Thuyết minh, bản vẽ</a></h3>
+<ol><li><p>Khi lập dàn ý "Tiêu chí thiết kế" cho nhà xưởng Hòa Bình (TCVN) hay nhà máy DNP (ASCE/AISC), nội dung nào <b>không</b> thuộc mục này?</p><p>Đáp án: Biểu đồ nội lực bao và phản lực chân cột</p><details class="sol"><summary>Lời giải</summary><p>Biểu đồ nội lực bao, phản lực thuộc mục 6. Kết quả phân tích.</p>
+</details></li>
+<li><p>Vì sao tên tổ hợp trong thuyết minh phải trùng với mô hình?</p><p>Đáp án: Để người thẩm tra mở mô hình đối chiếu được nội lực, tỷ số với đúng tổ hợp đã dùng</p><details class="sol"><summary>Lời giải</summary><p>Tên trùng chính xác cho phép mở mô hình, chọn đúng tổ hợp và kiểm lại kết quả; cũng đảm bảo tổ hợp đó có trong <i>Design Combos</i>.</p>
+</details></li>
+<li><p>Khối lượng thép xuất từ SAP2000 là 52 tấn. Khối lượng dự kiến trong dự toán nên lấy bao nhiêu (lấy mức giữa của khoảng cộng thêm cho liên kết)?</p><p>Đáp án: <b>57.2</b> t</p><details class="sol"><summary>Lời giải</summary><p>Cộng 10 %: $52 \times 1{,}10 = 57{,}2$ t (khoảng 56,2–58,2 t), vì chưa có bản mã, sườn, bu lông; kiểm tra thêm giằng, thanh chống chưa mô hình.</p>
+</details></li>
+<li><p>Thao tác xuất bảng đang mở của SAP2000 sang Excel là:</p><p>Đáp án: <i>File → Export Current Table → To Excel</i></p><details class="sol"><summary>Lời giải</summary><p><i>File → Export Current Table → To Excel</i>; thêm <i>Options → Selection Only</i> để chỉ xuất phần tử đã chọn.</p>
+</details></li>
+<li><p>Nhà khung tiền chế 36 × 60 m, không cầu trục, khung chính (đã cộng liên kết) nặng 45 tấn. Tính chỉ tiêu kg/m² sàn.</p><p>Đáp án: <b>20.8</b> kg/m²</p><details class="sol"><summary>Lời giải</summary><p>$45\,000/2160 = 20{,}8$ kg/m² &lt; 25 kg/m² → thấp hơn khoảng tham khảo, cần rà lại mô hình (thiếu cấu kiện?) và các tỷ số.</p>
+</details></li>
+<li><p>Danh mục kiểm tra phát hiện: một nhóm cột có tỷ số lớn nhất 1,03; chống xiên trên bản vẽ cách 5 m trong khi tính toán dùng $L_b$ = 4,2 m. Xử lý đúng là:</p><p>Đáp án: Sửa bản vẽ cho chống xiên ≤ 4,2 m và giảm tỷ số ≤ 1,0 (hoặc giải thích rõ) trước khi phát hành</p><details class="sol"><summary>Lời giải</summary><p>Tỷ số mỗi nhóm phải ≤ 1,0 hoặc có giải thích; bản vẽ phải khớp $L_b$ đã dùng.</p>
+</details></li>
+<li><p>Theo cảnh báo của giáo trình, cách xử lý đúng với các bảng tính Excel trong bộ tài liệu khóa là:</p><p>Đáp án: Chép số liệu sang sổ tính mới, vì một số tệp chứa macro Excel 4.0 dạng virus</p><details class="sol"><summary>Lời giải</summary><p>Không dùng tệp bẻ khóa; chép số liệu sang sổ tính mới để tránh macro Excel 4.0.</p>
+</details></li>
+</ol>
+<h2>Chương 18. Nhà có cầu trục</h2>
+<h3><a href="../18_nha_cau_truc/b1_tai_cau_truc_tcvn.html">Bài 18.1. Tải cầu trục TCVN 2737:2023</a></h3>
+<ol><li><p>Theo TCVN 2737:2023 mục 9.8, hệ số độ tin cậy $\gamma_f$ của tải trọng cầu trục là:</p><p>Đáp án: 1,2 cho mọi chế độ làm việc</p><details class="sol"><summary>Lời giải</summary><p>TCVN 2737:2023 lấy $\gamma_f = 1{,}2$ cho mọi chế độ; TCVN 2737:1995 dùng 1,1.</p>
+</details></li>
+<li><p>Cầu trục có đế bánh $K$ = 2,115 m, bước cột $B$ = 6 m, một cầu trục, hai bánh mỗi bên. Tính $\sum y_i$.</p><p>Đáp án: <b>1.648</b> </p><details class="sol"><summary>Lời giải</summary><p>$\sum y_i = 1 + (1 - 2{,}115/6) = 1 + 0{,}6475 = 1{,}648$.</p>
+</details></li>
+<li><p>Cầu trục 20 T (số liệu giả định): $P^c_{\max}$ = 150 kN, $K$ = 4,4 m, bước cột 6 m, nhà có một cầu trục. Tính $D_{\max}$ theo TCVN 2737:2023.</p><p>Đáp án: <b>228.0</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$\sum y = 2 - 4{,}4/6 = 1{,}2667$; $D_{\max} = 1{,}2 \times 1{,}0 \times 150 \times 1{,}2667 = 228{,}0$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../18_nha_cau_truc/b2_tai_cau_truc_asce.html">Bài 18.2. Tải cầu trục ASCE 7</a></h3>
+<ol><li><p>Theo ASCE 7-10 mục 4.9.3, xung kích đứng của cầu trục điều khiển từ cabin là:</p><p>Đáp án: 25 %</p><details class="sol"><summary>Lời giải</summary><p>Cabin hoặc điều khiển từ xa, monorail: +25 %; pendant: +10 %; quay tay: 0.</p>
+</details></li>
+<li><p>Cầu trục sức nâng 100 kN, xe con 30 kN. Tính tổng lực ngang theo ASCE 7-10 mục 4.9.4 (bỏ qua palăng).</p><p>Đáp án: <b>26</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$0{,}2 \times (100 + 30) = 26$ kN.</p>
+</details></li>
+<li><p>Cầu trục $Q$ = 200 kN, xe con 60 kN, hai bánh mỗi bên, hai ray cứng như nhau. Đường ảnh hưởng cho $\sum y = 1{,}5$. Tính lực ngang LRFD lên một cột theo DG7.</p><p>Đáp án: <b>31.2</b> kN</p><details class="sol"><summary>Lời giải</summary><p>Mỗi bánh: $0{,}2 \times 260/4 = 13$ kN; lên cột: $1{,}6 \times 13 \times 1{,}5 = 31{,}2$ kN.</p>
+</details></li>
+</ol>
+<h3><a href="../18_nha_cau_truc/b3_mo_hinh_sap.html">Bài 18.3. Mô hình trong SAP2000</a></h3>
+<ol><li><p>Trường hợp Moving Load trong SAP2000 cho đường bao nội lực. Khi kiểm tra cột chịu nén uốn, cần lưu ý gì?</p><p>Đáp án: Đường bao không cho cặp nội lực đồng thời; dùng tùy chọn <i>Correspondence</i> hoặc quay lại cách tải tĩnh</p><details class="sol"><summary>Lời giải</summary><p>Bao cho giá trị lớn nhất của từng nội lực riêng rẽ; cặp đồng thời cần <i>Correspondence</i> hoặc tải tĩnh theo từng vị trí.</p>
+</details></li>
+<li><p>Ở Ví dụ 18.1, $D_{\max}$ = 218,9 kN đặt tại trục ray, lệch tâm $e$ = 0,5 m (giả định) so với trục cột dưới. Tính mô men khai báo tại nút vai cột.</p><p>Đáp án: <b>109.5</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$M = 218{,}9 \times 0{,}5 = 109{,}5$ kNm.</p>
+</details></li>
+<li><p>Cầu trục 15 T ($P^c_{\max}$ = 108 kN, $K$ = 2,115 m, $B$ = 6,8 m, TCVN 2737:2023, một cầu trục). Khi khung $i$ nhận $D_{\max}$ (một bánh nằm trên khung $i$, bánh kia ở nhịp $i$ – $i+1$), khung $i+1$ nhận áp lực đứng bao nhiêu?</p><p>Đáp án: <b>40.3</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$y = 2{,}115/6{,}8 = 0{,}311$; $D = 1{,}2 \times 1{,}0 \times 108 \times 0{,}311 = 40{,}3$ kN, nhỏ hơn nhiều 218,9 kN. Vì thế không nên cộng $D_{\max}$ của các khung cùng lúc.</p>
+</details></li>
+</ol>
+<h3><a href="../18_nha_cau_truc/b4_dam_cau_truc.html">Bài 18.4. Dầm cầu trục, chuyển vị tại ray</a></h3>
+<ol><li><p>Theo TCVN 2737:2023, hệ số động $\eta = 1{,}2$ được dùng khi:</p><p>Đáp án: Tính độ bền dầm cầu trục và liên kết</p><details class="sol"><summary>Lời giải</summary><p>$\eta$ = 1,2 chỉ dùng khi tính độ bền dầm cầu trục và liên kết; không dùng cho mỏi, độ võng, chuyển vị cột, tác dụng cục bộ.</p>
+</details></li>
+<li><p>Cầu trục có $P^c_{\max}$ = 85 kN, nhà có một cầu trục. Tính tải bánh tính toán $P$ để kiểm tra độ bền dầm cầu trục theo TCVN 2737:2023.</p><p>Đáp án: <b>122.4</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$P = 1{,}2 \times 1{,}2 \times 1{,}0 \times 85 = 122{,}4$ kN.</p>
+</details></li>
+<li><p>Dầm cầu trục đơn giản nhịp $B$ = 6 m, hai bánh cách nhau $K$ = 3,0 m (giả định), $P$ = 122,4 kN mỗi bánh. Tính $M_{\max}$.</p><p>Đáp án: <b>206.6</b> kNm</p><details class="sol"><summary>Lời giải</summary><p>$0{,}586 \times 6 = 3{,}516 &gt; 3{,}0$ → $M_{\max} = 122{,}4 \times (6 - 1{,}5)^2/(2 \times 6) = 206{,}6$ kNm.</p>
+</details></li>
+</ol>
+<h3><a href="../18_nha_cau_truc/b5_ket_cau_khac.html">Bài 18.5. Các dạng kết cấu khác</a></h3>
+<ol><li><p>Mô hình vì kèo dàn trong SAP2000, mắt dàn coi là khớp. Cần khai báo gì cho thanh bụng?</p><p>Đáp án: Moment Releases hai đầu thanh</p><details class="sol"><summary>Lời giải</summary><p>Gán <i>Moment Releases</i> hai đầu thanh bụng để thanh chỉ chịu lực dọc.</p>
+</details></li>
+<li><p>Dầm sàn lửng nhịp 6 m. Tính độ võng giới hạn khi dùng giới hạn $L/250$.</p><p>Đáp án: <b>24</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$6000/250 = 24$ mm.</p>
+</details></li>
+<li><p>Dầm sàn lửng nhịp 7,5 m, giới hạn chặt $L/400$ thay cho $L/250$. Giới hạn độ võng giảm bao nhiêu mm?</p><p>Đáp án: <b>11.25</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$7500/250 = 30$ mm; $7500/400 = 18{,}75$ mm; giảm $30 - 18{,}75 = 11{,}25$ mm.</p>
+</details></li>
+</ol>
+<h3><a href="../18_nha_cau_truc/kiem_tra_chuong.html">Kiểm tra Chương 18: Nhà có cầu trục</a></h3>
+<ol><li><p>Cầu trục 10 T, $P^c_{\max}$ = 85 kN, $K$ = 3,5 m, bước cột 6 m. Tính $D_{\max}$ theo TCVN 2737:2023 khi nhà có <b>một</b> cầu trục.</p><p>Đáp án: <b>144.5</b> kN</p><details class="sol"><summary>Lời giải</summary><p>$\sum y = 2 - 3{,}5/6 = 1{,}4167$; $D_{\max} = 1{,}2 \times 85 \times 1{,}4167 = 144{,}5$ kN.</p>
+</details></li>
+<li><p>Như câu trên nhưng có <b>hai</b> cầu trục giống nhau, khoảng cách giữa hai bánh gần nhau của hai cầu trục là 1,2 m, chế độ A1–A6. Tính $D_{\max}$.</p><p>Đáp án: <b>211.0</b> kN</p><details class="sol"><summary>Lời giải</summary><p>Tọa độ bánh so với cột: −3,5; 0; 1,2; 4,7 m → $\sum y = 0{,}4167 + 1 + 0{,}8 + 0{,}2167 = 2{,}433$; $D_{\max} = 1{,}2 \times 0{,}85 \times 85 \times 2{,}433 = 211{,}0$ kN.</p>
+</details></li>
+<li><p>Vì sao hệ số động $\eta = 1{,}2$ không dùng khi kiểm tra chuyển vị ngang của cột?</p><p>Đáp án: Vì kiểm tra chuyển vị là trạng thái giới hạn sử dụng: chỉ xét một cầu trục với tải tiêu chuẩn, không hệ số động (9.16)</p><details class="sol"><summary>Lời giải</summary><p>Mục 9.16: độ võng, chuyển vị chỉ xét 1 cầu trục, tải tiêu chuẩn, không có hệ số động. $\eta$ chỉ dùng cho độ bền dầm cầu trục và liên kết.</p>
+</details></li>
+<li><p>Cầu trục câu 1 ($Q$ = 100 kN, $G_{xc}$ = 30 kN, hai bánh mỗi bên, $\sum y = 1{,}4167$). Theo TCVN 2737:2023 (móc mềm) lực hãm lên khung là 5,53 kN. Tính lực ngang LRFD lên khung theo ASCE 7-10 và DG7 (hai ray cứng như nhau).</p><p>Đáp án: <b>14.73</b> kN</p><details class="sol"><summary>Lời giải</summary><p>Mỗi bánh: $0{,}2 \times 130/4 = 6{,}5$ kN; $T = 1{,}6 \times 6{,}5 \times 1{,}4167 = 14{,}73$ kN, gấp 2,67 lần TCVN ($1{,}2 \times 3{,}25 \times 1{,}4167 = 5{,}53$ kN).</p>
+</details></li>
+<li><p>Nhà 10 bước cột, một cầu trục. Cách tổ chức trường hợp tải cầu trục nào đúng với vị trí thực của cầu trục?</p><p>Đáp án: Mỗi khung $i$ một trường hợp: $D_{\max}$ ở khung $i$, phần nhỏ theo đường ảnh hưởng ở khung kề, kèm $\pm T$; rồi lấy bao</p><details class="sol"><summary>Lời giải</summary><p>Tạo CT@khung 1…CT@khung 11 (mỗi vị trí đổi bên $D_{\max}$/$D_{\min}$, $\pm T$), rồi dùng Envelope.</p>
+</details></li>
+<li><p>Ray ở cao trình 8 m, cầu trục chế độ A5. Tính giới hạn chuyển vị ngang tại ray theo TCVN 2737:2023 Bảng G.3.</p><p>Đáp án: <b>8</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$8000/1000 = 8$ mm (lớn hơn 6 mm).</p>
+</details></li>
+<li><p>Như câu trên, tính giới hạn theo AISC DG3 cho cầu trục điều khiển từ cabin.</p><p>Đáp án: <b>33.3</b> mm</p><details class="sol"><summary>Lời giải</summary><p>$8000/240 = 33{,}3$ mm $\le 50$ mm; lỏng hơn TCVN khoảng 4 lần.</p>
+</details></li>
+<li><p>Tỷ số $D_{\max}$ theo TCVN 2737:2023 so với bảng tính 1995 cho một cầu trục (cùng $\sum y$) bằng bao nhiêu?</p><p>Đáp án: <b>1.283</b> </p><details class="sol"><summary>Lời giải</summary><p>$1{,}2/0{,}935 = 1{,}283$, tức tăng khoảng 28 %.</p>
+</details></li>
+</ol>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

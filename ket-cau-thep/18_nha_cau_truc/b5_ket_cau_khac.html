@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="18_nha_cau_truc/b5_ket_cau_khac.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 18.5. Các dạng kết cấu khác – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 18 · Nhà có cầu trục · Bài 5</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 18.5. Các dạng kết cấu khác <span class="en">Other structural forms</span></h1>
+<p class="lead">Quy trình tải → tổ hợp → phân tích → thiết kế cấu kiện → liên kết dùng được cho nhiều dạng nhà thép khác. Mỗi dạng có vài điểm cần lưu ý riêng khi mô hình và kiểm tra.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Nêu được điểm khác biệt khi mô hình khung nhiều nhịp, nhà có sàn lửng, mái dàn và khung tiết diện thay đổi.</li>
+<li>Chọn đúng khai báo SAP2000 cho từng dạng (Moment Releases, Nonprismatic).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Sau nhà xưởng <b>Hòa Bình</b> một nhịp 50 m, chủ đầu tư muốn mở rộng thêm hai nhịp có cột giữa và một sàn lửng văn phòng. Kỹ sư cần biết phải bổ sung gì vào mô hình SAP2000 hiện có.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Ghi chú về các dạng kết cấu khác (video Buổi 10)</h3>
+<p>Quy trình trong giáo trình (tải → tổ hợp → phân tích → thiết kế cấu kiện → liên kết) áp dụng được cho các dạng nhà thép khác mà khóa học có giới thiệu. Mỗi dạng cần lưu ý:</p>
+<ul><li><b>Khung nhiều nhịp, cột giữa:</b> hệ số khí động mái theo Phụ lục F (F.2 nhiều nhịp). Cột giữa thường chịu nén lớn, có thể dùng ống hoặc hộp.</li>
+<li><b>Nhà có sàn lửng hoặc sàn công tác:</b> thêm hoạt tải sàn, dao động sàn (AISC DG11) và độ võng sàn $L/250$–$L/400$.</li>
+<li><b>Mái dàn (vì kèo dàn):</b> thanh dàn chịu kéo/nén đúng tâm (Chương 6, điều 7), mắt dàn khớp. Trong SAP gán <i>Moment Releases</i> hai đầu thanh bụng.</li>
+<li><b>Nhà khung thép tiền chế tiết diện thay đổi:</b> khai báo <i>Nonprismatic</i> (Chương 12). Kiểm tra từng tiết diện theo chiều dài.</li></ul>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Mô hình dàn mái với các thanh bụng nối cứng: thanh bụng nhận mô men giả, nội lực sai.</li>
+<li>Dùng hệ số khí động mái của nhà một nhịp cho nhà nhiều nhịp (phải theo Phụ lục F, F.2).</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Mô hình vì kèo dàn trong SAP2000, mắt dàn coi là khớp. Cần khai báo gì cho thanh bụng?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Nonprismatic</label></li><li><label><input type="radio" name="q1" value="1"> Moment Releases hai đầu thanh</label></li><li><label><input type="radio" name="q1" value="2"> Gán thanh bụng là phần tử Cable</label></li><li><label><input type="radio" name="q1" value="3"> End Length Offsets</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Thanh dàn chịu kéo, nén đúng tâm.</p>
+</details>
+<details><summary>Lời giải</summary><p>Gán <i>Moment Releases</i> hai đầu thanh bụng để thanh chỉ chịu lực dọc.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="24" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Dầm sàn lửng nhịp 6 m. Tính độ võng giới hạn khi dùng giới hạn $L/250$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$L$ đổi ra mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$6000/250 = 24$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="11.25" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Dầm sàn lửng nhịp 7,5 m, giới hạn chặt $L/400$ thay cho $L/250$. Giới hạn độ võng giảm bao nhiêu mm?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính hai giới hạn rồi trừ.</p>
+</details>
+<details><summary>Lời giải</summary><p>$7500/250 = 30$ mm; $7500/400 = 18{,}75$ mm; giảm $30 - 18{,}75 = 11{,}25$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nhiều nhịp: hệ số khí động theo F.2; cột giữa chịu nén lớn.</li>
+<li>Sàn lửng: thêm hoạt tải sàn, dao động (DG11), độ võng $L/250$–$L/400$.</li>
+<li>Mái dàn: Moment Releases; khung tiết diện thay đổi: Nonprismatic.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

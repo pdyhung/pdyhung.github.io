@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="13_cau_kien_aisc/b4_chiu_cat.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 13.4. Chịu cắt (G) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 13 · Kiểm tra cấu kiện AISC · Bài 4</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 13.4. Chịu cắt (G) <span class="en">Shear (AISC Chapter G)</span></h1>
+<p class="lead">Bụng mỏng của nhà tiền chế có thể mất ổn định khi chịu cắt; hệ số $C_v$ phản ánh điều đó.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $C_v$ và $\phi V_n$ cho bụng không có sườn ngang ($k_v = 5$).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Chân cột C1 có lực cắt lớn khi gió ngang. Bụng 630 × 6 mm không có sườn ngang. Có cần tăng chiều dày bụng không?</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Chịu cắt (Chương G)</h3>
+<p>$V_n = 0{,}6F_yA_wC_v$ (G2-1). Bụng không sườn: $k_v = 5$. Khi $h/t_w \le 1{,}10\sqrt{k_vE/F_y}$ thì $C_v = 1{,}0$; nếu không thì $C_v = 1{,}10\sqrt{k_vE/F_y}/(h/t_w)$. $\phi_v = 0{,}90$ (I cán thỏa G2.1a: $\phi_v = 1{,}0$).</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Dùng $\phi_v = 1{,}0$ (chỉ cho I cán thỏa G2.1a) cho tiết diện tổ hợp hàn.</li>
+<li>Lấy $A_w = d\,t_w$ rồi lại dùng $h$ trong tỷ số $h/t_w$ không nhất quán.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Với bụng không có sườn ngang, hệ số $k_v$ lấy bằng:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 1,2</label></li><li><label><input type="radio" name="q1" value="1"> 5</label></li><li><label><input type="radio" name="q1" value="2"> 5,34</label></li><li><label><input type="radio" name="q1" value="3"> 10</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Chịu cắt (Chương G)".</p>
+</details>
+<details><summary>Lời giải</summary><p>Bụng không sườn: $k_v = 5$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="71.76" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính giới hạn $1{,}10\sqrt{k_vE/F_y}$ với $F_y = 235$ MPa.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$k_v = 5$, $E = 200\,000$ MPa.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1{,}10\sqrt{5 \times 200\,000/235} = 1{,}10 \times 65{,}23 = 71{,}76$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="327.8" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bụng $h \times t_w$ = 630 × 6 mm, $F_y = 235$ MPa, không sườn. Tính $\phi V_n$ (lấy $A_w = h\,t_w$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$h/t_w = 105 &gt; 71{,}76$ → $C_v = 71{,}76/105$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$C_v = 0{,}683$; $V_n = 0{,}6 \times 235 \times 630 \times 6 \times 0{,}683 = 364{,}2$ kN; $\phi V_n = 327{,}8$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$V_n = 0{,}6F_yA_wC_v$; $C_v = 1$ khi $h/t_w \le 1{,}10\sqrt{k_vE/F_y}$.</li>
+<li>Kèo ví dụ: $\phi V_n = 706$ kN ≫ $V_u = 81$ kN – cắt hiếm khi quyết định với kèo.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

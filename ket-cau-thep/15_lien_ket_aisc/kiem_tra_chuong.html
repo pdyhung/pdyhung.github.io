@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="15_lien_ket_aisc/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 15: Liên kết AISC – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 15 · Liên kết AISC · Kiểm tra chương</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 15: Liên kết AISC</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<ul><li>AISC 360-10 J2: cường độ đường hàn góc có hệ số $(1 + 0{,}5\sin^{1{,}5}\theta)$. Đường hàn ngang mạnh hơn 50 %. Đây là nguyên nhân chính khiến kích thước đường hàn theo AISC nhỏ hơn TCVN.</li>
+<li>J3: $\phi R_n = 0{,}75F_nA_b$, với $A_b$ là diện tích thân bu lông. Tương tác kéo – cắt theo (J3-3a). Ép mặt theo $1{,}2l_ctF_u \le 2{,}4dtF_u$.</li>
+<li>Liên kết mặt bích: dùng các dạng chuẩn 4E/8ES của DG16 hoặc AISC 358, kiểm tra đứt bu lông và chảy bản mã ($Y_p$).</li>
+<li>Chân cột: J8 (ép mặt bê tông), DG1 (chiều dày bản đế khi nén và khi nhổ), ACI 318 (neo chịu kéo, nón bê tông, cắt). Lực cắt do ma sát (0,55) chỉ dùng được khi có lực nén đồng thời. Nên dùng chốt chống cắt.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="num" data-ans="184.4" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Đường hàn góc E70XX, $w$ = 6 mm, dài 200 mm, lực <b>song song</b> trục đường hàn. Tính $\phi R_n$. (Khi lực vuông góc, kết quả nhân 1,5.)</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\phi R_n = 0{,}75 \times 0{,}6F_{EXX} \times 0{,}707wL$, $\theta$ = 0°.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}75 \times 0{,}6 \times 483 \times 0{,}707 \times 6 \times 200 = 184{,}4$ kN; với $\theta$ = 90°: $1{,}5 \times 184{,}4 = 276{,}6$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="111.4" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bu lông A325M M20, ren trong mặt cắt ($F_{nt}$ = 620, $F_{nv}$ = 372 MPa), đồng thời chịu ứng suất cắt $f_{rv}$ = 150 MPa. Tính $\phi R_n$ chịu kéo.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$f_{rv} &gt; 0{,}3\phi F_{nv}$ nên phải dùng (J3-3a).</p>
+</details>
+<details><summary>Lời giải</summary><p>$F'_{nt} = 1{,}3 \times 620 - \dfrac{620}{0{,}75 \times 372} \times 150 = 806 - 333{,}3 = 472{,}7$ MPa $\le 620$; $\phi R_n = 0{,}75 \times 472{,}7 \times 314{,}2 = 111{,}4$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.28" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Bu lông M24: $A_b = \pi d^2/4$, $A_{bn}$ = 353 mm². Tính tỷ số $A_b/A_{bn}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$A_b = \pi \times 24^2/4$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$A_b = 452{,}4$ mm²; $452{,}4/353 = 1{,}28$. AISC bù lại bằng $F_{nt} = 0{,}75F_u$, TCVN dùng $A_{bn}$ với cường độ đầy đủ.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Ở Ví dụ 15.2, nếu chuyển 4 bu lông neo ra <b>ngoài</b> cánh cột với bản đế dày, cần làm gì trong mô hình SAP2000?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> Giữ chân khớp, vì bu lông neo không truyền mô men</label></li><li><label><input type="radio" name="q4" value="1"> Xét chân cột ngàm một phần: khai báo lò xo xoay (hoặc ngàm) ở chân cột và kiểm tra neo, bản đế với mô men chân cột</label></li><li><label><input type="radio" name="q4" value="2"> Chỉ cần tăng chiều dày bản đế</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bu lông ngoài cánh tạo cánh tay đòn chống xoay.</p>
+</details>
+<details><summary>Lời giải</summary><p>Chân cột có độ ngàm một phần, mô men thật ≠ 0, bu lông neo có thể chịu kéo lớn hơn tính toán → mô hình phải phản ánh độ cứng xoay.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="41.25" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Chân cột chịu nén $P_u$ = 100 kN. Tính khả năng truyền cắt bằng ma sát theo DG1 ($\phi$ = 0,75, $\mu$ = 0,55). So sánh với TCVN ($\mu$ = 0,25).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\phi\mu P_u$.</p>
+</details>
+<details><summary>Lời giải</summary><p>DG1: $0{,}75 \times 0{,}55 \times 100 = 41{,}25$ kN; TCVN: $0{,}25 \times 100 = 25$ kN. Kiến nghị: luôn bố trí chốt chống cắt khi có tổ hợp nhổ hoặc lực cắt lớn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Hệ số sức kháng $\phi$ cho đường hàn góc (J2-4) và bu lông chịu kéo, cắt (J3-1) là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q6" value="0"> 0,65</label></li><li><label><input type="radio" name="q6" value="1"> 0,75</label></li><li><label><input type="radio" name="q6" value="2"> 0,90</label></li><li><label><input type="radio" name="q6" value="3"> 1,00</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Hai trạng thái giới hạn phá hoại giòn.</p>
+</details>
+<details><summary>Lời giải</summary><p>Cả (J2-4) và (J3-1) dùng $\phi$ = 0,75.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="9.96" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Ví dụ 15.2 thiết kế theo TCVN: $P_u$ = 65,02 kN, $V_u$ = 26,21 kN, $\mu$ = 0,25 (bỏ qua lực siết bu lông). Lực cắt còn thiếu mà chốt chống cắt phải chịu là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Ma sát $= \mu P_u$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}25 \times 65{,}02 = 16{,}26$ kN; thiếu $26{,}21 - 16{,}26 = 9{,}96$ kN → cần chốt chống cắt.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="18.8" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Ví dụ 15.1: $M_u$ = 420,4 kNm, $F_{py}$ = 345 MPa, $Y_p$ = 3817 mm. Tính $t_{p,req}$ (không hệ số 1,11).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$t_{p,req} = \sqrt{M_u/(0{,}9F_{py}Y_p)}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sqrt{420{,}4\times10^6/(0{,}9 \times 345 \times 3817)} = 18{,}8$ mm $\le 20$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

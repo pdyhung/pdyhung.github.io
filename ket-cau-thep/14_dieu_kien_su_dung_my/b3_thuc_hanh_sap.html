@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="14_dieu_kien_su_dung_my/b3_thuc_hanh_sap.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 14.3. Thực hành SAP2000 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 14 · Điều kiện sử dụng (Mỹ) · Bài 3</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 14.3. Thực hành SAP2000 <span class="en">Serviceability checks in SAP2000</span></h1>
+<p class="lead">SAP2000 kiểm tra được độ võng cấu kiện và cho chuyển vị nút, nhưng kết quả chỉ đúng khi tổ hợp, design member và độ cứng được khai báo đúng.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Khai báo tổ hợp <code>SLS_</code>, chọn đúng mục Deflection, gộp design member cho kèo.</li>
+<li>Đọc chuyển vị ngang với độ cứng danh nghĩa và kiểm tra nhanh bằng tay.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mô hình SAP2000 của nhà máy DNP dùng Direct Analysis với <i>Tau-b</i>. Bảng Joint Displacements cho chuyển vị đỉnh cột 98 mm dưới tổ hợp <code>SLS_W</code>, vượt $H/100$ = 90 mm. Trước khi tăng tiết diện cột, kỹ sư kiểm tra lại: chuyển vị này có được tính với độ cứng đã giảm $0{,}8EI$ không?</p>
+</div>
+<h2 id="s2">2. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 14.1 – Kiểm tra nhanh chuyển vị ngang bằng tay</div>
+<p>Khung cổng chân khớp, cột cao $H$ = 7,0 m, $EI_c$ không đổi, kèo cứng hơn nhiều. Lực ngang tại đỉnh do gió 10 năm (0,44W) quy về $P$ = 20 kN mỗi khung. Chuyển vị khung chân khớp, xà cứng vô cùng:</p>
+<div class="eq"><div class="m">$$\Delta = \frac{P H^3}{6EI_c}\ (\text{hai cột chia đều}),\qquad EI_c = 2{,}0\times10^{5} \times 42\,919\times10^4\ \text{N·mm}^2.$$</div></div>
+<div class="eq"><div class="m">$$\Delta = \frac{20\,000 \times 7000^3}{6 \times 2{,}0\times10^5 \times 4{,}29\times10^8} = 13{,}3 \text{ mm}.$$</div></div>
+<details class="sol"><summary>Lời giải</summary>
+<p>Ví dụ dùng $I$ của H500×250×8×12. Kết quả nhỏ hơn $H/100$ = 70 mm và nhỏ hơn cả 30,6 mm của TCVN. Thực tế kèo không cứng vô cùng nên $\Delta$ lớn hơn khoảng 1,5–3 lần, và nên lấy số liệu từ SAP2000.</p>
+</details>
+</div>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Thực hiện trong SAP2000</h3>
+<h4>Kiểm tra độ võng cấu kiện</h4>
+<ol><li><b>Định nghĩa tổ hợp sử dụng</b> (Define → Load Combinations): các tổ hợp ở <a href="../14_dieu_kien_su_dung_my/b1_co_so_phap_ly.html#tbl-14-2">Bảng 14.2</a>, đặt tên có tiền tố <code>SLS_</code>.</li>
+<li><b>Design → Steel Frame Design → Select Design Combinations → Deflection</b>: chỉ chọn các tổ hợp <code>SLS_</code>. Không để mặc định, vì SAP sẽ lấy cả tổ hợp cường độ.</li>
+<li><b>Preferences</b> (Chương 12): khai báo giới hạn chung, ví dụ DL 120, SDL+LL 120, LL 180, Total 120.</li>
+<li><b>Overwrites</b> cho từng nhóm cấu kiện:<ul><li><i>Deflection Check Type</i>: Ratio, Absolute hoặc Both.</li>
+<li>Giới hạn riêng cho xà gồ, dầm tường.</li>
+<li><i>Camber</i> nếu kèo có độ vồng chế tạo.</li></ul></li>
+<li><b>Chiều dài tính võng.</b> SAP tính võng tương đối giữa hai đầu <b>phần tử thiết kế</b> (design member). Với kèo chia nhiều đoạn, phải gộp thành một design member (Assign → Frame → Automatic Frame Subdivide, hoặc khai báo <i>Design Lengths</i>). Nếu không, SAP chỉ tính võng của từng đoạn ngắn và kết quả sẽ sai rất nhiều.</li></ol>
+<div class="box check"><div class="bt">🔶 Cần đối chiếu</div>
+<p>Với kèo khung cổng, độ võng $L/180$ hay $L/300$ được hiểu là độ võng <b>tương đối</b> của đỉnh mái so với hai đầu cột. Cách SAP2000 tính theo design member (đường nối hai đầu) phù hợp khi một design member là toàn bộ nửa kèo hoặc cả kèo. Cách an toàn là đọc chuyển vị $U_3$ tại đỉnh mái và tại đỉnh cột trong <b>Joint Displacements</b> rồi tự trừ.</p>
+</div>
+<h4>Kiểm tra chuyển vị ngang khung</h4>
+<ol><li>Display → Show Tables → Analysis Results → <b>Joint Displacements</b>, lọc các nút đỉnh cột và cao trình vai cột, chọn tổ hợp <code>SLS_W...</code>.</li>
+<li>Lấy $U_1$ (hoặc $U_2$) lớn nhất và so với $H/100$ (hoặc giới hạn đã chọn). Với nhà có cầu trục, lấy thêm tại <b>cao trình ray</b> dưới tải ngang cầu trục, không kể gió.</li>
+<li>Khi đánh giá chuyển vị ngang <b>không</b> dùng mô hình có giảm độ cứng (Direct Analysis, $0{,}8EI$; xem Chương 11). DM dùng độ cứng giảm để kiểm tra cường độ. Với điều kiện sử dụng, AISC Chú giải Chương L cho phép dùng độ cứng danh nghĩa. Trong SAP, nếu đã bật <i>Tau-b</i> cho thiết kế thì chạy thêm một trường hợp phân tích riêng (hoặc một mô hình bản sao) với <i>Stiffness Reduction = None</i> để đọc chuyển vị.</li></ol>
+<div class="box sap"><div class="bt">🖥️ Hình: Tổ hợp bao DISPLACEMENT (Envelope) gom các tổ hợp chuyển vị</div>
+<ol><li>Define</li><li>Load Combinations</li><li>Add New Combo</li><li>Load Combination Type = Envelope</li><li>thêm DISPLACEMENT 1…4</li><li>OK</li></ol><figure><img class="zoom" loading="lazy" src="../assets/img/sap/to_hop_envelope.jpg" alt="Hình: Tổ hợp bao DISPLACEMENT (Envelope) gom các tổ hợp chuyển vị"><figcaption>Hình: Tổ hợp bao DISPLACEMENT (Envelope) gom các tổ hợp chuyển vị</figcaption></figure>
+</div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Để SAP lấy mặc định các tổ hợp cường độ cho kiểm tra võng: võng quá lớn, báo "không đạt" sai.</li>
+<li>Kèo chia nhiều phần tử nhưng không gộp design member: SAP chỉ tính võng trên từng đoạn ngắn, luôn "đạt" dù kèo võng lớn.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi đọc chuyển vị ngang để kiểm tra điều kiện sử dụng trong mô hình đã dùng Direct Analysis, cần:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Giữ nguyên độ cứng giảm $0{,}8EI$ và <i>Tau-b</i></label></li><li><label><input type="radio" name="q1" value="1"> Chạy thêm trường hợp phân tích với <i>Stiffness Reduction = None</i> (độ cứng danh nghĩa)</label></li><li><label><input type="radio" name="q1" value="2"> Nhân chuyển vị đọc được với 0,8</label></li><li><label><input type="radio" name="q1" value="3"> Dùng tổ hợp cường độ 1,2D + 1,0W</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Độ cứng giảm của DM chỉ dùng cho kiểm tra cường độ.</p>
+</details>
+<details><summary>Lời giải</summary><p>AISC Chú giải Chương L cho phép dùng độ cứng danh nghĩa khi kiểm tra điều kiện sử dụng → chạy trường hợp riêng không giảm độ cứng.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="14.9" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Làm lại Ví dụ 14.1 với $P$ = 15 kN, $H$ = 8,0 m, cùng cột H500×250×8×12 ($I = 42\,919\times10^4$ mm⁴, $E = 2{,}0\times10^5$ MPa). Tính $\Delta$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\Delta = PH^3/(6EI_c)$, đổi ra N và mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\Delta = 15\,000 \times 8000^3/(6 \times 2{,}0\times10^5 \times 4{,}2919\times10^8) = 14{,}9$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.577" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Kèo nhịp 54 m của nhà máy DNP. Dưới tổ hợp <code>SLS_Lr</code>, Joint Displacements cho $U_3$ tại đỉnh mái = −185 mm, tại hai đỉnh cột = −12 mm. Tính tỷ số độ võng tương đối so với giới hạn $L/180$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Võng tương đối = $U_3$ đỉnh mái − $U_3$ đỉnh cột.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\Delta = 185 - 12 = 173$ mm; $L/180 = 54\,000/180 = 300$ mm; tỷ số $173/300 = 0{,}577$ → đạt.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Tổ hợp <code>SLS_</code> riêng, chọn đúng ở <i>Select Design Combinations → Deflection</i>.</li>
+<li>Gộp kèo thành một design member, hoặc tự trừ $U_3$ đỉnh mái với đỉnh cột.</li>
+<li>Chuyển vị ngang đọc với độ cứng danh nghĩa; công thức tay $\Delta = PH^3/(6EI_c)$ chỉ là cận dưới.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

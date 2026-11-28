@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="15_lien_ket_aisc/b2_bu_long.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 15.2. Bu lông (J3) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 15 · Liên kết AISC · Bài 2</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 15.2. Bu lông (J3) <span class="en">Bolts (AISC 360-10, Section J3)</span></h1>
+<p class="lead">AISC tính bu lông theo diện tích thân $A_b$, tương tác kéo – cắt bằng đường ba đoạn thẳng và ép mặt theo khoảng cách thông thủy $l_c$.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $\phi R_n$ của bu lông chịu kéo, cắt, kéo + cắt (J3-1, J3-3a) và ép mặt (J3-6a).</li>
+<li>Phân biệt liên kết tì ép với liên kết ma sát và biết khi nào cần liên kết ma sát.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nút kèo – cột nhà máy <b>DNP</b> dùng bu lông A325M. Bảng tính cũ của công ty lấy $A_{bn}$ (diện tích theo ren) và cường độ theo TCVN. Kỹ sư cần làm lại theo AISC 360-10: đổi sang $A_b$, $F_{nt}$, $F_{nv}$ của <a href="#tbl-15-2">Bảng 15.2</a> và kiểm tra thêm ép mặt.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Bu lông (J3)</h3>
+<h4>Vật liệu và kích thước lỗ</h4>
+<div class="tbl" id="tbl-15-2"><table><thead><tr><th>Loại</th><th>$F_{nt}$ (MPa)</th><th>$F_{nv}$ ren trong mặt cắt – N (MPa)</th><th>$F_{nv}$ ren ngoài mặt cắt – X (MPa)</th></tr></thead><tbody>
+<tr><td>A307</td><td>310</td><td>188</td><td>–</td></tr>
+<tr><td>Group A (A325, A325M)</td><td>620</td><td>372</td><td>457 (đúng là 469)</td></tr>
+<tr><td>Group B (A490, A490M)</td><td>780</td><td>457</td><td>579</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 15.2.</b> Cường độ danh nghĩa của bu lông (AISC 360-10, Bảng J3.2)</p>
+<div class="tbl" id="tbl-15-3"><table><thead><tr><th>Bu lông</th><th>M16</th><th>M20</th><th>M22</th><th>M24</th><th>M27</th><th>M30</th></tr></thead><tbody>
+<tr><td>Lỗ tiêu chuẩn (mm)</td><td>18</td><td>22</td><td>24</td><td>27</td><td>30</td><td>33</td></tr>
+<tr><td>Khoảng cách mép tối thiểu (mm)</td><td>22</td><td>26</td><td>28</td><td>30</td><td>34</td><td>38</td></tr>
+<tr><td>Lực siết tối thiểu Group A (kN)</td><td>91</td><td>142</td><td>176</td><td>205</td><td>267</td><td>326</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 15.3.</b> Lỗ bu lông, khoảng cách mép, lực siết (Bảng J3.3M, J3.4M, J3.1M)</p>
+<p>Khoảng cách giữa tâm bu lông tối thiểu $2\tfrac{2}{3}d$, nên dùng $3d$ (J3.3).</p>
+<h4>Các trạng thái giới hạn</h4>
+<p><b>Kéo hoặc cắt</b> (J3.6):</p>
+<div class="eq" id="eq-15-3"><div class="m">$$\phi R_n = \phi F_n A_b, \qquad \phi = 0{,}75 \qquad (\text{J3-1})$$</div><span class="tag">(15.3)</span></div>
+<p>$A_b$ là <b>diện tích danh nghĩa phần không ren</b> ($\pi d^2/4$). Hệ số giảm do ren đã nằm sẵn trong $F_{nt} = 0{,}75F_u$. TCVN thì dùng $A_{bn}$ (diện tích theo ren) khi tính kéo.</p>
+<p><b>Kéo + cắt</b> (J3.7): thay $F_{nt}$ bằng</p>
+<div class="eq" id="eq-15-4"><div class="m">$$F'_{nt} = 1{,}3F_{nt} - \frac{F_{nt}}{\phi F_{nv}}f_{rv} \le F_{nt} \qquad (\text{J3-3a})$$</div><span class="tag">(15.4)</span></div>
+<p>với $f_{rv}$ là ứng suất cắt yêu cầu. Khi $f_{rv} \le 0{,}3\phi F_{nv}$ (hoặc ứng suất kéo $\le 0{,}3\phi F_{nt}$) thì không cần xét tương tác. Đây là đường tương tác ba đoạn thẳng xấp xỉ đường elip. TCVN dùng chính đường elip (công thức 190).</p>
+<p><b>Ép mặt tại lỗ</b> (J3.10), khi biến dạng lỗ được xét đến:</p>
+<div class="eq" id="eq-15-5"><div class="m">$$R_n = 1{,}2\,l_c\,t\,F_u \le 2{,}4\,d\,t\,F_u, \qquad \phi = 0{,}75 \qquad (\text{J3-6a})$$</div><span class="tag">(15.5)</span></div>
+<p>$l_c$ là khoảng cách thông thủy theo phương lực, từ mép lỗ đến mép lỗ kế tiếp hoặc đến mép vật liệu.</p>
+<p><b>Liên kết ma sát</b> (J3.8):</p>
+<div class="eq" id="eq-15-6"><div class="m">$$R_n = \mu D_u h_f T_b n_s,\quad \mu = 0{,}30 \text{ (bề mặt loại A)},\ 0{,}50 \text{ (loại B)};\ D_u = 1{,}13 \qquad (\text{J3-4})$$</div><span class="tag">(15.6)</span></div>
+<p>$\phi = 1{,}0$ với lỗ tiêu chuẩn. Liên kết ma sát dùng cho tải lặp, tải đảo chiều, lỗ quá cỡ hoặc lỗ ô van song song với lực. Liên kết nhà xưởng thông thường là <b>tì ép, siết sát (snug-tight)</b> hoặc <b>siết có lực căng trước (pretensioned)</b> khi bu lông chịu kéo.</p>
+<p><b>Phá hoại cắt khối</b> (J4.3), cần kiểm tra cho bản mã thanh giằng và bụng dầm có cắt vát:</p>
+<div class="eq" id="eq-15-7"><div class="m">$$R_n = 0{,}60F_uA_{nv} + U_{bs}F_uA_{nt} \le 0{,}60F_yA_{gv} + U_{bs}F_uA_{nt}, \quad \phi = 0{,}75 \qquad (\text{J4-5})$$</div><span class="tag">(15.7)</span></div>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Dùng $A_{bn}$ cùng với $F_{nt}$ của AISC: tính giảm do ren hai lần, vì $F_{nt} = 0{,}75F_u$ đã kể ren.</li>
+<li>Lấy $l_c$ là khoảng cách tâm lỗ đến mép: $l_c$ là khoảng <b>thông thủy</b>, phải trừ nửa đường kính lỗ.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Trong (J3-1), $A_b$ là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Diện tích thực theo chân ren</label></li><li><label><input type="radio" name="q1" value="1"> Diện tích danh nghĩa phần không ren, $\pi d^2/4$</label></li><li><label><input type="radio" name="q1" value="2"> Diện tích lỗ bu lông</label></li><li><label><input type="radio" name="q1" value="3"> Diện tích ứng suất kéo $A_{se}$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Hệ số giảm do ren đã nằm trong $F_{nt}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$A_b = \pi d^2/4$; $F_{nt} = 0{,}75F_u$ đã kể đến phần ren.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="146.1" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính $\phi R_n$ chịu kéo của một bu lông A325M M20 ($F_{nt}$ = 620 MPa).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$A_b = \pi \times 20^2/4$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$A_b = 314{,}2$ mm²; $\phi R_n = 0{,}75 \times 620 \times 314{,}2 = 146{,}1$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="104.4" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bu lông M20 (lỗ 22 mm) qua bản dày 10 mm, $F_u$ = 400 MPa, khoảng cách từ tâm lỗ đến mép theo phương lực 40 mm. Tính $\phi R_n$ ép mặt tại lỗ ngoài cùng theo (J3-6a).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$l_c = 40 - 22/2$; so với cận trên $2{,}4dtF_u$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$l_c = 29$ mm; $1{,}2 \times 29 \times 10 \times 400 = 139{,}2$ kN $&lt; 2{,}4 \times 20 \times 10 \times 400 = 192$ kN → $\phi R_n = 0{,}75 \times 139{,}2 = 104{,}4$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Kéo, cắt: $\phi R_n = 0{,}75F_nA_b$; kéo + cắt dùng $F'_{nt}$ theo (J3-3a).</li>
+<li>Ép mặt: $R_n = 1{,}2l_ctF_u \le 2{,}4dtF_u$; liên kết ma sát $R_n = \mu D_uh_fT_bn_s$ cho tải lặp, đảo chiều.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

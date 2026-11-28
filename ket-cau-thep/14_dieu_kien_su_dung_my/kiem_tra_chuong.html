@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="14_dieu_kien_su_dung_my/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 14: Điều kiện sử dụng (Mỹ) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 14 · Điều kiện sử dụng (Mỹ) · Kiểm tra chương</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 14: Điều kiện sử dụng (Mỹ)</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<ul><li>Hệ Mỹ coi điều kiện sử dụng là vấn đề thỏa thuận. Phải chốt trong Tiêu chí thiết kế: dùng IBC 1604.3 và DG3, hoặc dùng TCVN 2737:2023 Phụ lục G.</li>
+<li>Gió sử dụng ≈ <b>0,44 × gió ASCE 7-10</b> (chu kỳ 10 năm), suy ra từ QCVN 02:2022 và TCVN 2737:2023 ([-@eq:14-1]).</li>
+<li>DG3: chuyển vị khung bao che tôn $H/60$–$H/100$. Cầu trục cabin $H/240 \le 50$ mm (đính chính 2020).</li>
+<li>Trong SAP2000: tổ hợp <code>SLS_</code> riêng, chọn đúng ở mục Deflection, gộp design member cho kèo, và đọc chuyển vị bằng độ cứng danh nghĩa.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Vì sao không dùng trực tiếp tổ hợp cường độ 1,2D + 1,0W để kiểm tra chuyển vị ngang?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Vì SAP2000 không cho chọn tổ hợp cường độ ở mục Deflection</label></li><li><label><input type="radio" name="q1" value="1"> Vì $W$ của ASCE 7-10 là gió mức cường độ (700 năm), còn điều kiện sử dụng xét gió 10 năm ≈ $0{,}44W$, không hệ số</label></li><li><label><input type="radio" name="q1" value="2"> Vì tổ hợp cường độ cho chuyển vị nhỏ hơn thực tế</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>So sánh chu kỳ lặp của gió trong hai trạng thái giới hạn.</p>
+</details>
+<details><summary>Lời giải</summary><p>Gió ASCE 7-10 ứng với chu kỳ 700 năm; dùng nó để kiểm tra chuyển vị sẽ lớn gấp khoảng $1/0{,}44 = 2{,}3$ lần gió sử dụng.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="182.1" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Vùng gió II-B, $W_0$ = 95 daN/m². Coi áp lực tỷ lệ với $V^2$ và $V_{700} = (1{,}26/0{,}91)V_{20}$. Tính áp lực ứng với $V_{700}$, rồi kiểm tra tỷ số $W_{10}/W_{700}$ với $W_{10} = 0{,}852W_0$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$W_{700} = (1{,}26/0{,}91)^2 W_0$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$W_{700} = 1{,}917 \times 95 = 182{,}1$ daN/m²; $W_{10} = 0{,}852 \times 95 = 80{,}9$ daN/m²; $W_{10}/W_{700} = 0{,}444$. $W_0$ bị triệt tiêu nên hệ số không phụ thuộc vùng gió.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="27.1" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Khung có cầu trục 10 T điều khiển từ cabin, ray ở cao trình 6,5 m. Tính giới hạn chuyển vị ngang tại cao trình ray theo DG3.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$H/240 \le 50$ mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$6500/240 = 27{,}1$ mm $&lt; 50$ mm → giới hạn 27,1 mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Kèo được chia thành 6 phần tử nhưng không gộp design member. SAP2000 kiểm tra độ võng $L/180$ trên chiều dài nào và hậu quả là gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> Trên cả nhịp kèo; kết quả đúng</label></li><li><label><input type="radio" name="q4" value="1"> Trên chiều dài từng phần tử, võng tính so với dây cung đoạn ngắn → bỏ qua phần lớn độ võng tổng thể, kèo "đạt" giả</label></li><li><label><input type="radio" name="q4" value="2"> Trên nửa nhịp; kết quả thiên về an toàn</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>SAP tính võng tương đối giữa hai đầu design member.</p>
+</details>
+<details><summary>Lời giải</summary><p>Mỗi phần tử là một design member: $L$ là chiều dài đoạn, võng đo so với đường nối hai đầu đoạn → kết quả sai rất nhiều, thiên về không an toàn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="30.6" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà xưởng Hòa Bình, $h_s$ = 7,07 m. Tính giới hạn chuyển vị ngang đỉnh cột theo TCVN 2737:2023 Phụ lục G.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\min(1{,}3h_s/300;\ h_s/150)$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1{,}3 \times 7070/300 = 30{,}6$ mm; $7070/150 = 47{,}1$ mm → 30,6 mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="80" data-tol="0.005"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khung cao 8 m, tường gạch có cốt thép. Giới hạn chuyển vị ngang theo DG3 là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="../14_dieu_kien_su_dung_my/b2_gioi_han_ibc_dg3.html#tbl-14-4">Bảng 14.4</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$H/100 = 8000/100 = 80$ mm (gió 10 năm).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Kiểm tra chuyển vị tại cao trình ray theo DG3, DG7 dùng tải nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q7" value="0"> Lực ngang cầu trục tổ hợp với 0,44W</label></li><li><label><input type="radio" name="q7" value="1"> Lực ngang cầu trục hoặc gió 10 năm, không tổ hợp hai tải với nhau</label></li><li><label><input type="radio" name="q7" value="2"> D + 0,5L + lực ngang cầu trục + W</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem dòng "Cầu trục" của <a href="../14_dieu_kien_su_dung_my/b1_co_so_phap_ly.html#tbl-14-2">Bảng 14.2</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>DG3, DG7: lực ngang cầu trục <b>không</b> tổ hợp với gió khi kiểm tra chuyển vị tại ray.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

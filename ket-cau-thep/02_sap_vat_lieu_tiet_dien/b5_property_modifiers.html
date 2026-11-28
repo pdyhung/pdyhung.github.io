@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="02_sap_vat_lieu_tiet_dien/b5_property_modifiers.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 2.5. Property Modifiers – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 2 · SAP2000 – vật liệu, tiết diện · Bài 5</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 2.5. Property Modifiers <span class="en">Property modifiers</span></h1>
+<p class="lead"><i>Property Modifiers</i> nhân trực tiếp vào $A$, $I$, khối lượng, trọng lượng của tiết diện. Công cụ mạnh nhưng dễ dùng sai mục đích.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Biết ba trường hợp thường gặp và cách xử lý đúng cho từng trường hợp.</li>
+<li>Tránh giảm độ cứng hai lần khi dùng Direct Analysis Method.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Giả sử thống kê thép khung nhà xưởng <b>Hòa Bình</b> (chỉ tính tiết diện chính) cho trọng lượng 245 kN. Bản mã, sườn, bu lông và sơn thường chiếm thêm 5–10 %. Kỹ sư muốn đưa phần này vào mô hình mà không làm sai khối lượng riêng của vật liệu.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h4>Hệ số hiệu chỉnh (Property Modifiers)</h4>
+<p><i>Assign → Frame → Property Modifiers</i> hoặc trong hộp thoại tiết diện. Các trường hợp dùng:</p>
+<ul><li><b>Thanh giằng chỉ chịu kéo:</b> không dùng modifier. Dùng <i>Tension/Compression Limits</i> (Chương 3).</li>
+<li><b>Direct Analysis Method:</b> <b>không</b> tự gán 0,8 cho EI. Để SAP tự áp dụng qua <i>Steel Design Preferences → Stiffness Reduction</i> (Chương 11), tránh giảm hai lần.</li>
+<li><b>Khối lượng phụ (bản mã, bu lông, sơn):</b> dùng <i>Weight Modifier</i> = 1,05–1,10 hoặc gán tải SDL riêng. Đừng cộng vào khối lượng riêng của vật liệu.</li></ul>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<ol><li>Chọn các thanh, <i>Assign → Frame → Property Modifiers</i>.</li>
+<li>Chỉ sửa ô <i>Weight</i> (và <i>Mass</i> nếu chạy dao động), ví dụ 1,08; các ô $A$, $I$ giữ 1.</li>
+<li>Kiểm tra lại tổng trọng lượng bằng bảng <i>Base Reactions</i> của trường hợp DEAD.</li></ol>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Gán modifier 0,8 cho $I$ để "làm DM": SAP giảm thêm lần nữa trong Preferences.</li>
+<li>Gán modifier nhỏ cho $A$ của giằng để "mô phỏng chỉ chịu kéo": giằng vẫn chịu nén.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi thiết kế theo Direct Analysis Method trong SAP2000, xử lý việc giảm độ cứng EI thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Gán Property Modifier 0,8 cho I22, I33 của mọi thanh</label></li><li><label><input type="radio" name="q1" value="1"> Không gán modifier; để SAP tự áp dụng qua <i>Steel Design Preferences → Stiffness Reduction</i></label></li><li><label><input type="radio" name="q1" value="2"> Gán modifier 0,8 cho cả A và I</label></li><li><label><input type="radio" name="q1" value="3"> Giảm $E$ của vật liệu xuống 0,8E</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Hệ số hiệu chỉnh".</p>
+</details>
+<details><summary>Lời giải</summary><p>SAP tự giảm độ cứng theo lựa chọn trong <i>Preferences</i>; tự gán thêm là giảm hai lần.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="264.6" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Trọng lượng thép khung tính từ tiết diện là 245 kN. Gán <i>Weight Modifier</i> = 1,08. Trọng lượng bản thân SAP2000 dùng là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Nhân trọng lượng với hệ số.</p>
+</details>
+<details><summary>Lời giải</summary><p>$245 \times 1{,}08 = 264{,}6$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="25" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Một học viên gán modifier 0,8 cho $I_{33}$ trong khi <i>Preferences</i> đã bật giảm độ cứng 0,8 (DM). Giả thiết chuyển vị do uốn tỷ lệ nghịch với $EI$. Chuyển vị tính được lớn hơn chuyển vị đúng (chỉ giảm một lần) bao nhiêu phần trăm? (nhập số %)</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>%</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Độ cứng thực dùng $0{,}8\times0{,}8$; độ cứng đúng $0{,}8$.</p>
+</details>
+<details><summary>Lời giải</summary><p>Chuyển vị tỷ lệ $1/0{,}64 = 1{,}5625$ so với đúng $1/0{,}8 = 1{,}25$ → lớn hơn $1{,}5625/1{,}25 - 1 = 25$ %.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Giằng chỉ chịu kéo: dùng <i>Tension/Compression Limits</i>, không dùng modifier.</li>
+<li>DM: để SAP tự giảm độ cứng, không gán 0,8.</li>
+<li>Khối lượng phụ: <i>Weight Modifier</i> 1,05–1,10 hoặc tải SDL riêng.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

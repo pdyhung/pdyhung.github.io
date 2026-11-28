@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="09_gio_asce/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 9: Gió ASCE 7-10 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 9 · Gió ASCE 7-10 · Kiểm tra chương</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 9: Gió ASCE 7-10</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<p>Áp lực gió lên khung chính nhà thấp tầng theo ASCE 7-10 tính bằng $p = q_h[(GC_{pf}) - (GC_{pi})]$. Với nhà xưởng thông thường: cấp rủi ro II, nhà kín $GC_{pi} = \pm 0{,}18$, $K_d = 0{,}85$, $K_{zt} = 1$. Mỗi hướng gió có hai trường hợp áp lực trong, tổng cộng 8 trường hợp gió.</p>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vì sao phải quy đổi vận tốc gió của QCVN 02 (chu kỳ lặp 20 năm) sang 700 năm khi dùng ASCE 7-10?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Vì ASCE 7-10 dùng gió trung bình 10 phút</label></li><li><label><input type="radio" name="q1" value="1"> Vì ASCE 7-10 dùng gió "cường độ" 700 năm với hệ số tải 1,0, thay cho gió 50 năm nhân hệ số 1,6 của ASCE 7-05</label></li><li><label><input type="radio" name="q1" value="2"> Vì Việt Nam nằm trong vùng bão nên phải tăng chu kỳ lặp</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem Bước 3 của mục quy đổi.</p>
+</details>
+<details><summary>Lời giải</summary><p>$V_{700} = \sqrt{1{,}6}\,V_{50} \approx 1{,}26\,V_{50}$: hệ số tải đã nằm trong vận tốc.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Phương pháp bao (Envelope, Chương 28) được dùng khi:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Mọi nhà công nghiệp một tầng, không kể chiều cao</label></li><li><label><input type="radio" name="q2" value="1"> Nhà thấp tầng: chiều cao trung bình mái $h \le 18$ m và $h$ không lớn hơn bề rộng nhỏ nhất</label></li><li><label><input type="radio" name="q2" value="2"> Chỉ nhà có mái phẳng $\theta \le 5°$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Áp lực thiết kế lên khung chính".</p>
+</details>
+<details><summary>Lời giải</summary><p>Điều kiện: $h \le 18$ m và $h \le B_{\min}$. DNP: $h = 10{,}35$ m thỏa.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Trường hợp $+GC_{pi}$ có ý nghĩa vật lý gì, và bất lợi cho cấu kiện nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Gió lọt vào nhà làm tăng áp bên trong, đẩy mái lên cùng chiều với hút ngoài → bất lợi cho kèo (gió lật)</label></li><li><label><input type="radio" name="q3" value="1"> Bên trong nhà bị hút, kéo mái xuống → bất lợi cho kèo chịu tải đứng</label></li><li><label><input type="radio" name="q3" value="2"> Áp lực trong đẩy tường đón gió ra ngoài → bất lợi cho chân cột đón gió</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$p = q_h[(GC_{pf}) - (GC_{pi})]$: với mái $GC_{pf} &lt; 0$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$+GC_{pi}$ làm $p$ mái âm hơn (vùng 2 DNP: $-1170$ so với $-686$ kG/m). $-GC_{pi}$ lại bất lợi cho tường đón gió và chân cột.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="8.28" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà máy DNP: $B_{\min} = 54$ m, $h = 10{,}35$ m. Tính bề rộng vùng biên $2a$ tính từ góc nhà.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p><a href="../09_gio_asce/b4_phuong_phap_bao.html#eq-9-5">(9.5)</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>$a = \min(5{,}4;\ 4{,}14) = 4{,}14$ m $\ge \max(2{,}16;\ 0{,}9)$ → $2a = 8{,}28$ m. Vùng biên chịu áp lực lớn hơn do dòng khí tách ở góc và mép nhà tạo xoáy, hút mạnh cục bộ.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi tính áp lực vận tốc với $V$ (m/s) và kết quả theo daN/m², hệ số đứng trước $K_zK_{zt}K_dV^2$ là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q5" value="0"> 0,613</label></li><li><label><input type="radio" name="q5" value="1"> 0,0613</label></li><li><label><input type="radio" name="q5" value="2"> 0,00256</label></li><li><label><input type="radio" name="q5" value="3"> 0,625</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>1 daN/m² = 10 N/m².</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}613$ N/m² $= 0{,}0613$ daN/m². Hệ số 0,00256 dùng cho mph và psf.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="3.18" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà xưởng Hòa Bình: nhịp 50 m, dài 72 m, đỉnh cột 7,07 m, mái dốc 7 %. Tính bề rộng vùng biên $a$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$h_r = 7{,}07 + 25 \times 0{,}07$; $h = (h_e + h_r)/2$; $B_{\min} = 50$ m.</p>
+</details>
+<details><summary>Lời giải</summary><p>$h_r = 8{,}82$ m; $h = 7{,}945$ m; $a = \min(5{,}0;\ 3{,}178) = 3{,}18$ m $\ge \max(2{,}0;\ 0{,}9)$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="108.4" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bài tập cuối chương: nhà xưởng Hòa Bình (nhịp 50 m, đỉnh cột 7,07 m, $i = 7\,\%$, vùng gió II, dạng địa hình B, nhà kín). Tính $q_h$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$h = 7{,}945$ m &lt; 9,1 m, dạng B → $K_h = 0{,}70$; $V = 54{,}51$ m/s.</p>
+</details>
+<details><summary>Lời giải</summary><p>$q_h = 0{,}0613 \times 0{,}70 \times 1{,}0 \times 0{,}85 \times 54{,}51^2 = 108{,}4$ daN/m².</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="-754" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Tiếp bài trên (bước khung 8 m, $\theta = \arctan 0{,}07 = 4{,}0°$). Tính tải gió phân bố lên kèo đón gió (vùng 2) của khung giữa, trường hợp W1X ($+GC_{pi}$).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\theta &lt; 5°$ → vùng 2: $GC_{pf} = -0{,}69$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$p = 108{,}4(-0{,}69 - 0{,}18) = -94{,}3$ daN/m²; $q = -94{,}3 \times 8 = -754$ daN/m. Người học tự so sánh với tải gió lên kèo tính theo TCVN 2737:2023 ở Chương 4.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="14_dieu_kien_su_dung_my/b1_co_so_phap_ly.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 14.1. Cơ sở pháp lý, gió 10 năm, hệ số 0,44 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 14 · Điều kiện sử dụng (Mỹ) · Bài 1</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 14.1. Cơ sở pháp lý, gió 10 năm, hệ số 0,44 <span class="en">Legal basis, 10-year wind and the 0.44 factor</span></h1>
+<p class="lead">Trong hệ tiêu chuẩn Mỹ, giới hạn độ võng và chuyển vị phần lớn chỉ là <b>khuyến nghị</b>. Bài này chỉ ra chúng nằm ở văn bản nào và vì sao tổ hợp sử dụng của khóa học dùng gió $0{,}44W$.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Phân biệt văn bản bắt buộc (IBC Bảng 1604.3) với văn bản khuyến nghị (ASCE 7 Phụ lục C, AISC DG3).</li>
+<li>Chứng minh được hệ số $0{,}44$ quy đổi gió ASCE 7-10 (700 năm) về gió sử dụng 10 năm.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Hồ sơ nhà máy <b>DNP</b> (nhịp 54 m, cột cao 9 m) thiết kế theo AISC 360-10 và ASCE 7-10. Đơn vị thẩm tra hỏi: tổ hợp D + 0,44W trong mô hình SAP2000 lấy hệ số 0,44 từ đâu, và giới hạn chuyển vị ngang dùng văn bản nào? Kỹ sư cần trả lời bằng điều khoản cụ thể và ghi vào Tiêu chí thiết kế.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Cơ sở pháp lý</h3>
+<div class="tbl" id="tbl-14-1"><table><thead><tr><th>Văn bản</th><th>Vai trò</th></tr></thead><tbody>
+<tr><td>AISC 360-10, Chương L</td><td>Chỉ nêu nguyên tắc: kết cấu phải đáp ứng điều kiện sử dụng, giới hạn do chủ đầu tư và kỹ sư quyết định. Không có trị số.</td></tr>
+<tr><td>ASCE 7-10, mục 1.3.2 và <b>Phụ lục C</b> (không bắt buộc)</td><td>Tổ hợp tải sử dụng: D + L, D + 0,5L + $W_a$. Phần chú giải CC có bản đồ gió chu kỳ lặp 10, 25, 50, 100 năm.</td></tr>
+<tr><td>IBC 2012, <b>Bảng 1604.3</b></td><td>Giới hạn độ võng <b>bắt buộc</b> cho cấu kiện mái, sàn, tường khi công trình áp dụng IBC</td></tr>
+<tr><td>AISC Design Guide 3 (bản 2, 2003, đính chính 2020)</td><td>Giới hạn khuyến nghị cho nhà thép thấp tầng: chuyển vị ngang khung, xà gồ, dầm tường, cầu trục</td></tr>
+<tr><td>AISC Design Guide 7 / CMAA 70, 74</td><td>Độ võng dầm cầu trục (Chương 18)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 14.1.</b> Nguồn quy định về điều kiện sử dụng trong hệ Mỹ</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p>Ở Việt Nam, khi hồ sơ thiết kế theo tiêu chuẩn Mỹ thì <b>giới hạn sử dụng phải ghi rõ trong Tiêu chí thiết kế (Design Criteria)</b> và được chủ đầu tư chấp thuận. Nếu không ghi, cơ quan thẩm tra có thể yêu cầu áp TCVN 2737:2023 Phụ lục G. Giới hạn đó <b>chặt hơn nhiều</b> so với DG3, xem <a href="../14_dieu_kien_su_dung_my/b2_gioi_han_ibc_dg3.html#tbl-14-4">Bảng 14.4</a>.</p>
+</div>
+<h3>Tải trọng gió sử dụng và hệ số 0,44</h3>
+<p>ASCE 7-10 dùng gió <b>mức cường độ</b> (chu kỳ lặp 700 năm với Risk Category II) và hệ số tải gió bằng 1,0 trong tổ hợp LRFD. Khi kiểm tra điều kiện sử dụng, Phụ lục C khuyến nghị dùng gió $W_a$ ứng với chu kỳ lặp ngắn hơn, thường là <b>10 năm</b> theo DG3.</p>
+<p>Áp lực gió tỷ lệ với $V^2$, nên</p>
+<div class="eq"><div class="m">$$\frac{W_{10}}{W_{700}} = \left(\frac{V_{10}}{V_{700}}\right)^2.$$</div></div>
+<p>Theo cách quy đổi đã thiết lập ở Chương 9:</p>
+<ul><li>$V_{700} = (1{,}26/0{,}91)\,V_{20}$, với $V_{20}$ là vận tốc 3 s, chu kỳ 20 năm của QCVN 02:2022.</li>
+<li>$W_{3s,10} = 0{,}852\,W_0$ theo TCVN 2737:2023 mục 10.2.2, tức $V_{10}^2 = 0{,}852\,V_{20}^2$.</li></ul>
+<div class="eq" id="eq-14-1"><div class="m">$$\frac{W_{10}}{W_{700}} = 0{,}852 \times \left(\frac{0{,}91}{1{,}26}\right)^2 = 0{,}852 \times 0{,}522 = 0{,}444 \approx 0{,}44.$$</div><span class="tag">(14.1)</span></div>
+<p>Đây chính là hệ số <b>0,44</b> trong tổ hợp sử dụng D + 0,44W của mô hình DNP (Chương 10). Hai nguồn độc lập (QCVN/TCVN và ASCE) cho cùng kết quả, nên có thể dùng hệ số này cho mọi vùng gió ở Việt Nam khi đã quy đổi $V_{700}$ theo Chương 9.</p>
+<p>Tổ hợp sử dụng đề nghị (theo ASCE 7-10 Phụ lục C, có điều chỉnh):</p>
+<div class="tbl" id="tbl-14-2"><table><thead><tr><th>Mục đích</th><th>Tổ hợp</th></tr></thead><tbody>
+<tr><td>Võng mái do hoạt tải</td><td>$L_r$ (hoặc S)</td></tr>
+<tr><td>Võng mái tổng</td><td>D + $L_r$</td></tr>
+<tr><td>Võng mái do gió (hút lên)</td><td>D + 0,44W (từng hướng)</td></tr>
+<tr><td>Chuyển vị ngang khung</td><td>0,44W (từng hướng); D + 0,5L + 0,44W khi cần kể đến tải đứng</td></tr>
+<tr><td>Cầu trục</td><td>Lực ngang cầu trục, <b>không</b> tổ hợp với gió (DG3, DG7)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 14.2.</b> Tổ hợp kiểm tra điều kiện sử dụng</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Kiểm tra chuyển vị bằng tổ hợp cường độ 1,2D + 1,0W: gió 700 năm có hệ số, lớn hơn gió sử dụng khoảng 2,3 lần, nên kết cấu bị thiết kế thừa.</li>
+<li>Không ghi giới hạn sử dụng vào Tiêu chí thiết kế: thẩm tra có thể yêu cầu áp TCVN 2737:2023 Phụ lục G, chặt hơn nhiều.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Giới hạn độ võng nào là <b>bắt buộc</b> khi công trình áp dụng IBC?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> AISC 360-10, Chương L</label></li><li><label><input type="radio" name="q1" value="1"> ASCE 7-10, Phụ lục C</label></li><li><label><input type="radio" name="q1" value="2"> IBC 2012, Bảng 1604.3</label></li><li><label><input type="radio" name="q1" value="3"> AISC Design Guide 3</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem cột "Vai trò" của <a href="#tbl-14-1">Bảng 14.1</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>AISC 360-10 Chương L chỉ nêu nguyên tắc; ASCE 7 Phụ lục C và DG3 là khuyến nghị. Chỉ IBC Bảng 1604.3 là bắt buộc.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.522" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Phần quy đổi vận tốc trong <a href="#eq-14-1">(14.1)</a> là $(0{,}91/1{,}26)^2$. Tính giá trị này.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bình phương tỷ số vận tốc.</p>
+</details>
+<details><summary>Lời giải</summary><p>$(0{,}91/1{,}26)^2 = 0{,}7222^2 = 0{,}522$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.533" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Áp lực gió lên tường tính theo ASCE 7-10 (gió mức cường độ, 700 năm) là 1,20 kN/m². Tính áp lực gió sử dụng 10 năm dùng để kiểm tra chuyển vị (dùng hệ số chính xác theo <a href="#eq-14-1">(14.1)</a>).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$W_{10}/W_{700} = 0{,}852\,(0{,}91/1{,}26)^2$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$W_{10}/W_{700} = 0{,}852 \times 0{,}522 = 0{,}444$; $W_{10} = 0{,}444 \times 1{,}20 = 0{,}533$ kN/m².</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>AISC 360-10 Chương L không có trị số; IBC Bảng 1604.3 bắt buộc; ASCE 7 Phụ lục C và DG3 là khuyến nghị.</li>
+<li>Gió sử dụng 10 năm $= 0{,}852 \times (0{,}91/1{,}26)^2 = 0{,}444 \approx 0{,}44$ lần gió ASCE 7-10, không phụ thuộc vùng gió.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

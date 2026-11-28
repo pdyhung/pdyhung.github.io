@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="11_direct_analysis/b3_bac_hai_sap.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 11.3. Phân tích bậc hai trong SAP2000 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 11 · Direct Analysis Method · Bài 3</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 11.3. Phân tích bậc hai trong SAP2000 <span class="en">Second-order analysis in SAP2000</span></h1>
+<p class="lead">Chọn Direct Analysis trong Preferences chưa đủ: các case phân tích phải thực sự chạy phi tuyến có <i>P-Delta</i>, có notional load và độ cứng đã giảm.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Thiết lập Preferences, Load Patterns <i>Notional</i>, case <i>Nonlinear Static</i> có <i>P-Delta</i> và chia phần tử trong SAP2000.</li>
+<li>Dùng tỷ số $\Delta_2/\Delta_1$ để quyết định tổ hợp nào cần notional load.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Trong video Buổi 13, các case AISC-D… của nhà máy DNP được đặt là <i>Nonlinear Static</i>. Học viên tự làm lại mô hình nhưng để các tổ hợp ở dạng <i>Linear Static</i>. Steel Frame Design vẫn chạy, không báo lỗi, nhưng nội lực cột thiếu phần bậc hai.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<p>Với khung cổng đơn giản (hai cột, kèo cứng), phân tích $P$-$\Delta$ tương đương nhân kết quả bậc nhất với hệ số khuếch đại tầng:</p>
+<div class="eq"><div class="m">$$B_2 = \frac{\Delta_2}{\Delta_1} = \frac{1}{1 - \dfrac{\alpha\Sigma P}{K^* H}}$$</div></div>
+<p>trong đó $K^*$ là độ cứng ngang của tầng (đã giảm $0{,}8\tau_b$), $\Sigma P$ tổng lực dọc các cột, $H$ chiều cao cột. Đây là dạng đơn giản của $B_2$ trong Phụ lục 8.</p>
+<h4>Phân tích bậc hai</h4>
+<p>Dùng phân tích bậc hai chính xác (P-Δ có chia phần tử để kể P-δ), hoặc khuếch đại bậc nhất bằng $B_1$, $B_2$ (Phụ lục 8). Tải phải ở mức LRFD, hoặc <b>1,6 lần tổ hợp ASD</b> (vì bài toán bậc hai không tuyến tính).</p>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Thực hành trên SAP2000</h3>
+<ol><li><b>Design → Steel Frame Design → View/Revise Preferences:</b><ul><li><i>Analysis Method</i> = <b>Direct Analysis</b>;</li>
+<li><i>Second Order Method</i> = <b>General 2nd Order</b> (SAP chạy P-Δ);</li>
+<li><i>Stiffness Reduction Method</i> = <b>Tau-b Fixed</b> (luôn nhân $0{,}8\tau_b$) hoặc <b>Tau-b Variable</b> (SAP tự lặp $\tau_b$);</li>
+<li><i>Notional Load Coefficient</i> = 0,002.</li></ul><p style="margin:.4em 0 0">Mô hình mẫu của giảng viên (<code>NM DNP-21.04</code>) đặt Direct Analysis, General 2nd Order, nhưng <i>Stiffness Reduction</i> = "No Modification". Như vậy là <b>chưa giảm độ cứng</b> theo C2.3 → nên sửa thành <i>Tau-b Fixed</i>.</p></li>
+<li><b>Notional load:</b> Define → Load Patterns → thêm pattern loại <i>Notional</i>, chọn pattern gốc (D, L…), hệ số 0,002, phương X hoặc Y. Hoặc dùng <i>Add Default Design Combos</i>, SAP tự sinh tổ hợp có notional load.</li>
+<li><b>Load Case phi tuyến:</b> các tổ hợp dùng để thiết kế phải chạy dưới dạng case <i>Nonlinear Static</i> có <i>P-Delta</i> (video Buổi 13 đặt các case AISC-D… là Nonlinear Static). Với ASD, SAP tự nhân 1,6 khi phân tích, rồi chia lại khi kiểm tra.</li>
+<li><b>Chia phần tử:</b> Assign → Frame → Automatic Frame Mesh (tối thiểu 4 đoạn mỗi cột) để kể được P-δ.</li>
+<li><b>Kiểm tra $\Delta_2/\Delta_1$:</b> so sánh chuyển vị đỉnh cột giữa case tuyến tính và case P-Δ. Nếu không quá 1,7 thì có thể chỉ đặt notional load cho tổ hợp chỉ có tải đứng.</li></ol>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Đặt <i>Automatic Frame Mesh</i> cho kèo nhưng quên cột: $P$-$\delta$ của cột không được kể.</li>
+<li>Chạy case P-Δ với tổ hợp ASD mà tự nhân thêm 1,6 vào hệ số tổ hợp: SAP đã tự nhân 1,6 khi phân tích, thành nhân hai lần.</li></ul>
+<h3>Lỗi thường gặp</h3>
+<ul><li>Chọn Direct Analysis trong Preferences nhưng các case vẫn chạy Linear Static, nên không có hiệu ứng bậc hai.</li>
+<li>Không giảm độ cứng ("No Modification").</li>
+<li>Khai báo cả $K &gt; 1$ trong Overwrites khi dùng DAM, tức tính hai lần.</li>
+<li>Quên notional load ở tổ hợp chỉ có tải đứng.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Để SAP2000 thực hiện phân tích bậc hai cho Direct Analysis, các tổ hợp dùng để thiết kế phải chạy dưới dạng case nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> <i>Linear Static</i>, chỉ cần chọn <i>Direct Analysis</i> trong Preferences</label></li><li><label><input type="radio" name="q1" value="1"> <i>Nonlinear Static</i> có <i>P-Delta</i></label></li><li><label><input type="radio" name="q1" value="2"> <i>Modal</i></label></li><li><label><input type="radio" name="q1" value="3"> <i>Buckling</i></label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem bước 3 của phần Thực hành.</p>
+</details>
+<details><summary>Lời giải</summary><p>Các tổ hợp thiết kế phải là case <i>Nonlinear Static</i> có <i>P-Delta</i>; chọn Direct Analysis mà case vẫn <i>Linear Static</i> thì không có hiệu ứng bậc hai.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.617" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Chuyển vị đỉnh cột của case tuyến tính là 13,3 mm, của case P-Δ là 21,5 mm. Tính $\Delta_2/\Delta_1$. (Với giá trị này, notional load có cần đặt cho mọi tổ hợp không?)</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>So sánh với ngưỡng 1,7 của C2.2b(4).</p>
+</details>
+<details><summary>Lời giải</summary><p>$21{,}5/13{,}3 = 1{,}617 \le 1{,}7$ → chỉ cần notional load trong tổ hợp chỉ có tải đứng.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="71.08" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Khung cổng có độ cứng ngang (đã giảm) $K^* = 1{,}50$ kN/mm, cột cao 7 m, tổng lực dọc hai cột $\Sigma P = 160$ kN (LRFD). Mô men chân cột bậc nhất là 70 kNm. Tính mô men bậc hai theo $B_2$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kNm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\Sigma P/H = 160/7000$ kN/mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\alpha\Sigma P/(K^*H) = 160/(1{,}50 \times 7000) = 0{,}01524$; $B_2 = 1/(1 - 0{,}01524) = 1{,}0155$; $M_2 = 70 \times 1{,}0155 = 71{,}08$ kNm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Preferences: <i>Direct Analysis</i>, <i>General 2nd Order</i>, <i>Tau-b Fixed</i>, hệ số 0,002; mô hình <code>NM DNP-21.04</code> cần sửa "No Modification".</li>
+<li>Case thiết kế: <i>Nonlinear Static</i> + <i>P-Delta</i>; chia cột tối thiểu 4 đoạn; ASD: SAP tự nhân 1,6.</li>
+<li>$\Delta_2/\Delta_1 \le 1{,}7$ → notional load chỉ cần ở tổ hợp chỉ có tải đứng.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

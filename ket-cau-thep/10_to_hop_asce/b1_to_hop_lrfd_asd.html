@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="10_to_hop_asce/b1_to_hop_lrfd_asd.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 10.1. Tổ hợp LRFD, ASD – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 10 · Tổ hợp ASCE 7-10 · Bài 1</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 10.1. Tổ hợp LRFD, ASD <span class="en">LRFD and ASD load combinations (ASCE 7-10 Sections 2.3, 2.4)</span></h1>
+<p class="lead">ASCE 7-10 có 7 tổ hợp cơ bản theo LRFD và 8 tổ hợp (9 dòng) theo ASD. Điểm khác lớn nhất so với ASCE 7-05 là tải gió đã ở mức cực hạn nên hệ số gió LRFD là 1,0.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Viết đúng các tổ hợp của Mục 2.3.2 (LRFD) và 2.4.1 (ASD), kể cả Ngoại lệ 1 về hệ số 0,5 của $L$.</li>
+<li>Tìm tổ hợp quyết định cho tải mái và chọn tổ hợp phù hợp để kiểm tra chuyển vị.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mái nhà máy DNP (nhịp 54 m, dốc 10 %) chịu tĩnh tải nhẹ: tôn, xà gồ, tải treo M&amp;E và tấm pin mặt trời. Khi gió hút, tổ hợp $0{,}9D + 1{,}0W$ có thể làm cánh dưới kèo chịu nén và bu lông neo chịu kéo. Kỹ sư cần viết đủ 7 tổ hợp LRFD, biết vì sao gió nhân 1,0 chứ không phải 1,6, và dùng tổ hợp nào để kiểm tra chuyển vị.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Cơ sở lý thuyết</h3>
+<h4>Hai triết lý thiết kế</h4>
+<p><b>LRFD</b> (Load and Resistance Factor Design, ASCE 7-10 Mục 2.3) nhân tải trọng danh nghĩa với hệ số tải ($\gamma &gt; 1$ cho tải chính) và so với độ bền danh nghĩa đã nhân hệ số $\phi &lt; 1$:</p>
+<div class="eq" id="eq-10-1"><div class="m">$$\sum \gamma_i Q_i \le \phi R_n .$$</div><span class="tag">(10.1)</span></div>
+<p><b>ASD</b> (Allowable Strength Design, Mục 2.4) cộng các tải danh nghĩa, hệ số gần bằng 1, rồi so với độ bền chia cho hệ số an toàn $\Omega$:</p>
+<div class="eq" id="eq-10-2"><div class="m">$$\sum Q_i \le R_n/\Omega .$$</div><span class="tag">(10.2)</span></div>
+<p>Mục 2.1 ASCE 7-10 yêu cầu: một cấu kiện thiết kế theo tiêu chuẩn vật liệu nào thì <b>chỉ dùng một trong hai</b> phương pháp, không trộn lẫn. AISC 360-10 cho phép cả hai (Mục B3.3, B3.4). Trong giáo trình này, kiểm tra cấu kiện dùng <b>LRFD</b>. Tổ hợp ASD dùng để kiểm tra móng, bu lông neo và theo yêu cầu của chủ đầu tư.</p>
+<h4>Gió "cường độ" trong ASCE 7-10</h4>
+<p>Từ ASCE 7-10, tải gió $W$ tính bằng vận tốc gió 700 năm (cấp rủi ro II, xem Chương 9). Đây đã là tải ở trạng thái cực hạn, nên hệ số tải gió trong LRFD là <b>1,0</b>, không còn là 1,6 như ASCE 7-05. Trong ASD, gió nhân <b>0,6</b>, vì $0{,}6 \approx 1/1{,}6$, đưa gió 700 năm về mức gió 50 năm danh nghĩa.</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>So với TCVN 2737:2023.</b> Tải gió TCVN là tải tiêu chuẩn, nhân hệ số độ tin cậy $\gamma_f$ để thành tải tính toán. Còn $W$ của ASCE 7-10 đã ở mức cực hạn. Vì vậy <b>không nhân thêm</b> hệ số độ tin cậy của TCVN vào $W$ khi tính theo ASCE.</p>
+</div>
+<h3>Quy định tiêu chuẩn</h3>
+<h4>Tổ hợp LRFD – ASCE 7-10 Mục 2.3.2</h4>
+<div class="tbl" id="tbl-10-1"><table><thead><tr><th>TH</th><th>Công thức</th><th>Tải chính chi phối</th></tr></thead><tbody>
+<tr><td>1</td><td>$1{,}4D$</td><td>Tĩnh tải</td></tr>
+<tr><td>2</td><td>$1{,}2D + 1{,}6L + 0{,}5(L_r \text{ hoặc } S \text{ hoặc } R)$</td><td>Hoạt tải sàn, cầu trục</td></tr>
+<tr><td>3</td><td>$1{,}2D + 1{,}6(L_r \text{ hoặc } S \text{ hoặc } R) + (L \text{ hoặc } 0{,}5W)$</td><td>Hoạt tải mái</td></tr>
+<tr><td>4</td><td>$1{,}2D + 1{,}0W + L + 0{,}5(L_r \text{ hoặc } S \text{ hoặc } R)$</td><td>Gió (áp)</td></tr>
+<tr><td>5</td><td>$1{,}2D + 1{,}0E + L + 0{,}2S$</td><td>Động đất</td></tr>
+<tr><td>6</td><td>$0{,}9D + 1{,}0W$</td><td>Gió hút, lật</td></tr>
+<tr><td>7</td><td>$0{,}9D + 1{,}0E$</td><td>Động đất, lật</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 10.1.</b> Tổ hợp cơ bản theo phương pháp độ bền (LRFD)</p>
+<p><b>Ngoại lệ 1:</b> hệ số của $L$ trong tổ hợp 3, 4, 5 được phép lấy <b>0,5</b> với mọi công năng có $L_o \le 100$ psf (4,79 kN/m²), trừ gara và nơi tập trung đông người.</p>
+<h4>Tổ hợp ASD – ASCE 7-10 Mục 2.4.1</h4>
+<div class="tbl" id="tbl-10-2"><table><thead><tr><th>TH</th><th>Công thức</th></tr></thead><tbody>
+<tr><td>1</td><td>$D$</td></tr>
+<tr><td>2</td><td>$D + L$</td></tr>
+<tr><td>3</td><td>$D + (L_r \text{ hoặc } S \text{ hoặc } R)$</td></tr>
+<tr><td>4</td><td>$D + 0{,}75L + 0{,}75(L_r \text{ hoặc } S \text{ hoặc } R)$</td></tr>
+<tr><td>5</td><td>$D + (0{,}6W \text{ hoặc } 0{,}7E)$</td></tr>
+<tr><td>6a</td><td>$D + 0{,}75L + 0{,}75(0{,}6W) + 0{,}75(L_r \text{ hoặc } S \text{ hoặc } R)$</td></tr>
+<tr><td>6b</td><td>$D + 0{,}75L + 0{,}75(0{,}7E) + 0{,}75S$</td></tr>
+<tr><td>7</td><td>$0{,}6D + 0{,}6W$</td></tr>
+<tr><td>8</td><td>$0{,}6D + 0{,}7E$</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 10.2.</b> Tổ hợp cơ bản theo ứng suất cho phép (ASD)</p>
+<p>Ở Việt Nam không có tuyết, mưa đọng được thoát bằng độ dốc mái, nên $S = R = 0$ và chỉ còn $L_r$.</p>
+<h4>Tổ hợp kiểm tra điều kiện sử dụng – Phụ lục C</h4>
+<p>Phụ lục C (giải thích CC.1.2) cho rằng dùng gió 700 năm để kiểm tra chuyển vị là "quá thận trọng" và đề nghị:</p>
+<div class="eq" id="eq-10-4"><div class="m">$$D + 0{,}5L + W_a ,$$</div><span class="tag">(10.4)</span></div>
+<p>với $W_a$ là gió ứng với vận tốc ở mức sử dụng. Nhiều kỹ sư dùng gió chu kỳ lặp 10 năm. Mô hình của giảng viên dùng $D + 0{,}44W$, tức lấy gió sử dụng bằng 0,44 lần gió 700 năm.</p>
+<h2 id="s3">3. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ – Tổ hợp quyết định cho tải mái</div>
+<p>Mái có $D = 0{,}25$ kN/m², $L_r = 0{,}30$ kN/m², gió áp xuống $W = 0{,}40$ kN/m², không có $L$, $S$, $R$. Tìm tổ hợp LRFD quyết định cho tải hướng xuống.</p>
+<details class="sol"><summary>Lời giải</summary>
+<ul><li>TH 1: $1{,}4 \times 0{,}25 = 0{,}35$ kN/m².</li>
+<li>TH 2: $1{,}2 \times 0{,}25 + 0{,}5 \times 0{,}30 = 0{,}45$ kN/m².</li>
+<li>TH 3: $1{,}2 \times 0{,}25 + 1{,}6 \times 0{,}30 + 0{,}5 \times 0{,}40 = 0{,}98$ kN/m².</li>
+<li>TH 4: $1{,}2 \times 0{,}25 + 1{,}0 \times 0{,}40 + 0{,}5 \times 0{,}30 = 0{,}85$ kN/m².</li>
+<li>Tổ hợp 3 (hoạt tải mái chi phối) quyết định: $0{,}98$ kN/m².</li></ul>
+</details>
+</div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Dùng hệ số gió 1,6 (ASCE 7-05) cho gió 700 năm của ASCE 7-10.</li>
+<li>Kiểm tra chuyển vị bằng tổ hợp LRFD thay vì tổ hợp sử dụng như $D + 0{,}5L + W_a$.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Trong tổ hợp LRFD của ASCE 7-10, tải gió $W$ (tính từ vận tốc 700 năm) được nhân hệ số:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 1,6</label></li><li><label><input type="radio" name="q1" value="1"> 1,3</label></li><li><label><input type="radio" name="q1" value="2"> 1,0</label></li><li><label><input type="radio" name="q1" value="3"> 0,6</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$W$ của ASCE 7-10 đã ở mức cực hạn.</p>
+</details>
+<details><summary>Lời giải</summary><p>Hệ số gió LRFD là 1,0 (ASCE 7-05 dùng 1,6); trong ASD gió nhân 0,6.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.575" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Mái có $D = 0{,}25$ kN/m², gió hút $W = -0{,}80$ kN/m². Tính độ lớn tải hướng lên theo tổ hợp $0{,}9D + 1{,}0W$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tĩnh tải chống lại gió hút nên lấy hệ số nhỏ 0,9.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}9 \times 0{,}25 - 1{,}0 \times 0{,}80 = -0{,}575$ kN/m² → tải hướng lên $0{,}575$ kN/m².</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.75" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Mái có $D = 0{,}30$ kN/m², $L_r = 0{,}30$ kN/m², gió áp $W = 0{,}50$ kN/m², $L = 0$. Tính tải theo tổ hợp ASD 6a.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>6a: $D + 0{,}75L + 0{,}75(0{,}6W) + 0{,}75L_r$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}30 + 0{,}75 \times 0{,}6 \times 0{,}50 + 0{,}75 \times 0{,}30 = 0{,}30 + 0{,}225 + 0{,}225 = 0{,}75$ kN/m².</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>LRFD (2.3.2): 7 tổ hợp, gió hệ số 1,0; ASD (2.4.1): gió 0,6. Ở Việt Nam $S = R = 0$.</li>
+<li>Ngoại lệ 1: hệ số $L$ trong TH 3, 4, 5 được lấy 0,5 khi $L_o \le 4{,}79$ kN/m² (trừ gara, nơi đông người).</li>
+<li>Chuyển vị kiểm tra bằng tổ hợp sử dụng $D + 0{,}5L + W_a$; mô hình mẫu dùng $D + 0{,}44W$.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

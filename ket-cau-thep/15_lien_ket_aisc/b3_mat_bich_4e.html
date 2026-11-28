@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="15_lien_ket_aisc/b3_mat_bich_4e.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 15.3. Mặt bích 4E – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 15 · Liên kết AISC · Bài 3</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 15.3. Mặt bích 4E <span class="en">Four-bolt extended end-plate (AISC Design Guide 16)</span></h1>
+<p class="lead">Liên kết mặt bích 4E có hai trạng thái giới hạn chính: <b>đứt bu lông</b> ở cánh kéo và <b>chảy bản mã</b> theo đường chảy, đặc trưng bằng tham số $Y_p$.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $\phi M_{np}$ (đứt bu lông, không lực bẩy) và $t_{p,req}$ theo $Y_p$ của dạng 4E.</li>
+<li>So sánh kết quả với cùng liên kết tính theo TCVN 5575:2024 (Ví dụ 7.2).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mối nối kèo – cột của nhà xưởng <b>Hòa Bình</b> chịu $M_u$ = 420,4 kNm. Theo TCVN, mặt bích cần 8 bu lông M27 và tỷ số kéo 0,94. Kỹ sư muốn biết nếu thiết kế theo AISC DG16 dạng 4E (chỉ 4 bu lông ở cánh kéo) thì bản mã 250 × 20 còn đủ không.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<p>Dạng <b>4E</b> (<i>four-bolt extended unstiffened</i>): hai hàng bu lông ở cánh kéo, một hàng ngoài và một hàng trong, bản mã không có sườn.</p>
+<ul><li>$h_0$, $h_1$: khoảng cách từ tâm cánh nén đến hàng bu lông ngoài và hàng trong; $p_{fo}$, $p_{fi}$: khoảng cách từ mặt cánh kéo đến hàng bu lông; $g$: gage; $b_p$: bề rộng bản mã.</li>
+<li>Đứt bu lông (không lực bẩy): $\phi M_{np} = 0{,}75 \times 2P_t(h_0 + h_1)$, $P_t = F_{nt}A_b$.</li>
+<li>Chảy bản mã: $\phi M_{pl} = 0{,}9F_{py}t_p^2Y_p$, suy ra $t_{p,req} = \sqrt{M_u/(\phi_bF_{py}Y_p)}$. Khi $p_{fi} &gt; s = \tfrac12\sqrt{b_pg}$ thì lấy $p_{fi} = s$.</li></ul>
+<h2 id="s3">3. Khám phá</h2>
+<p>Kéo $p_f$, $g$, $b_p$, $t_p$ và đổi cỡ bu lông để thấy $Y_p$ và hai trạng thái giới hạn thay đổi. Mặc định là Ví dụ 15.1.</p>
+<div data-widget="W19"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 15.1 – Liên kết mặt bích kèo 4E (so với Ví dụ 7.2)</div>
+<p>Liên kết mặt bích có đoạn kéo dài, 4 bu lông ở cánh chịu kéo (ký hiệu <b>4E</b>, <i>four-bolt extended unstiffened</i>). Đây là một trong các dạng tiêu chuẩn của AISC Design Guide 16 và AISC 358. Dùng cùng kèo, cùng mô men với Ví dụ 7.2 để so sánh: $M_u$ = 420,4 kNm. Bản mã 250×20, Q345 ($F_{py}$ = 345 MPa). Bu lông A325M M27. $h_0$ = 548 mm và $h_1$ = 428 mm là khoảng cách từ tâm cánh nén đến hàng bu lông ngoài và trong. Gage $g$ = 120 mm. $p_{fo} = p_{fi} = 60 - 12/2 = 54$ mm.</p>
+<details class="sol"><summary>Lời giải</summary>
+<p><b>1) Bu lông</b> (đứt bu lông, không có lực bẩy):</p>
+<div class="eq"><div class="m">$$\phi M_{np} = \phi\,[2P_t(h_0 + h_1)],\quad P_t = F_{nt}A_b = 620 \times 572 = 354{,}6 \text{ kN}$$</div></div>
+<div class="eq"><div class="m">$$\phi M_{np} = 0{,}75 \times 2 \times 354{,}6 \times (0{,}548 + 0{,}428) = 519{,}2 \text{ kNm} \ \Rightarrow\ \frac{M_u}{\phi M_{np}} = 0{,}81.$$</div></div>
+<p><b>2) Chiều dày bản mã</b> (đường chảy, tham số $Y_p$ của dạng 4E):</p>
+<div class="eq"><div class="m">$$s = \tfrac12\sqrt{b_p g} = 86{,}6 \text{ mm};\quad p_{fi} = 54 \le s$$</div></div>
+<div class="eq"><div class="m">$$Y_p = \frac{b_p}{2}\left[h_1\left(\frac{1}{p_{fi}} + \frac{1}{s}\right) + h_0\frac{1}{p_{fo}} - \frac12\right] + \frac{2}{g}\,h_1(p_{fi} + s) = 3817 \text{ mm}$$</div></div>
+<div class="eq"><div class="m">$$t_{p,req} = \sqrt{\frac{M_u}{\phi_b F_{py} Y_p}} = \sqrt{\frac{420{,}4\times10^6}{0{,}9 \times 345 \times 3817}} = 18{,}8 \text{ mm} \le 20 \text{ mm}.$$</div></div>
+<p>AISC 358 và Design Guide 4 (bản 2) nhân thêm hệ số 1,11 dưới căn để kể đến tăng bền. Khi đó $t_{p,req}$ = 19,8 mm, vẫn đạt với bản 20 mm.</p>
+<p><b>3) Đường hàn cánh kèo với bản mã.</b> $F_f = M_u/(d - t_f) = 861{,}5$ kN. Đường hàn góc E70 hai phía, tổng $L$ = 462 mm, $\theta$ = 90°:</p>
+<div class="eq"><div class="m">$$w_{req} = \frac{861\,500}{326 \times 0{,}707 \times 462} = 8{,}1 \text{ mm} \le w_{\max} = 12 - 2 = 10 \text{ mm}.$$</div></div>
+<p>Chọn $w$ = 10 mm là đạt. Trong thực hành, Design Guide 4 khuyến nghị hàn CJP hoặc hàn góc đủ phát triển $0{,}6F_yt_f$ của cánh.</p>
+<div class="tbl" id="tbl-15-4"><table><thead><tr><th>Hạng mục</th><th>TCVN 5575:2024 (Ch.7)</th><th>AISC 360-10 + DG16</th></tr></thead><tbody>
+<tr><td>Bu lông</td><td>8 × M27 cấp 8.8; tỷ số kéo 0,94</td><td>4 bu lông A325M M27 ở cánh kéo; tỷ số 0,81</td></tr>
+<tr><td>Bản mã</td><td>Không có công thức trong TCVN</td><td>$t_p$ ≥ 18,8 mm (19,8 mm theo AISC 358)</td></tr>
+<tr><td>Đường hàn cánh</td><td>Hàn góc không đạt ($h_f$ = 14,8 > 14,4 mm), phải hàn thấu có NDT</td><td>Hàn góc $w$ = 8,1 mm, chọn 10 mm</td></tr>
+<tr><td>Lý do khác biệt chính</td><td>$\beta_f f_{wf}$ = 0,7 × 180 = 126 MPa trên 1 mm cạnh</td><td>$0{,}707\phi F_{nw}$ = 230 MPa trên 1 mm cạnh (que E70 và hệ số 1,5)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 15.4.</b> So sánh liên kết mặt bích kèo theo hai hệ tiêu chuẩn</p>
+<div class="box check"><div class="bt">🔶 Cần đối chiếu</div>
+<p>Hai bên không hoàn toàn so sánh trực tiếp được. $M_u$ ở đây lấy theo tổ hợp TCVN để dễ đối chiếu, trong khi thiết kế thật theo AISC phải lấy $M_u$ từ tổ hợp ASCE 7 (Chương 10). Công thức $Y_p$ của dạng 4E trích theo AISC Design Guide 16 (2002) và AISC 358. Khi lập thuyết minh chính thức cần đối chiếu với bản gốc, đặc biệt định nghĩa $p_{fi}$, $p_{fo}$, giới hạn $b_p \le b_f + 25$ mm, và điều kiện bản dày (không lực bẩy).</p>
+</div>
+</details>
+</div>
+<h2 id="s5">5. Thực hành SAP2000</h2>
+<h3>Mô hình hóa liên kết trong SAP2000 và kết nối phần mềm</h3>
+<ul><li><b>SAP2000 không thiết kế liên kết.</b> Nó chỉ cung cấp nội lực đầu phần tử và phản lực.</li>
+<li>Các công cụ dùng trong khóa và trong thực tế:<ul><li>RAM Connection (Bentley): nhập trực tiếp bảng phản lực của SAP.</li>
+<li>IDEA StatiCa: có liên kết với SAP2000 qua <i>IDEA StatiCa Checkbot</i>, dùng phương pháp CBFEM.</li>
+<li>Bảng tính Excel tự lập.</li></ul></li>
+<li><b>Kiểm tra giả thiết nút.</b> Liên kết mặt bích 4E thiết kế theo DG16 được coi là liên kết cứng (FR, <i>fully restrained</i>). Chân cột khớp có 4 bu lông bên trong cánh có độ cứng xoay nhỏ, nên giả thiết khớp trong SAP là hợp lý. Nếu bố trí 4 bu lông <b>ngoài cánh</b> với bản đế dày, chân cột có độ ngàm một phần. Khi đó mô men thật tại chân cột khác 0 và bu lông neo có thể chịu kéo lớn hơn tính toán.</li></ul>
+<h2 id="s6">6. Lỗi thường gặp</h2>
+<ul><li>Tăng gage $g$ để dễ thi công mà không kiểm tra lại $Y_p$: $g$ lớn làm $Y_p$ giảm, bản mã phải dày hơn.</li>
+<li>Coi mặt bích 4E là khớp trong SAP2000: liên kết thiết kế theo DG16 là liên kết cứng (FR).</li></ul>
+<h2 id="s7">7. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Ký hiệu <b>4E</b> trong AISC DG16 chỉ liên kết mặt bích:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 4 bu lông tổng cộng, bản mã không kéo dài</label></li><li><label><input type="radio" name="q1" value="1"> Có đoạn kéo dài, 4 bu lông ở cánh chịu kéo, không sườn</label></li><li><label><input type="radio" name="q1" value="2"> Có đoạn kéo dài, 4 hàng bu lông, có sườn</label></li><li><label><input type="radio" name="q1" value="3"> 4 bu lông neo ở chân cột</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p><i>Four-bolt extended unstiffened</i>.</p>
+</details>
+<details><summary>Lời giải</summary><p>4E: bản mã kéo dài qua cánh kéo, 4 bu lông quanh cánh kéo (2 hàng × 2), không có sườn tăng cứng.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="410.3" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Ví dụ 15.1 nhưng dùng bu lông A325M M24 ($A_b$ = 452 mm²). Tính $\phi M_{np}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kNm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$P_t = 620 \times 452$; $h_0 + h_1 = 0{,}976$ m.</p>
+</details>
+<details><summary>Lời giải</summary><p>$P_t = 280{,}2$ kN; $\phi M_{np} = 0{,}75 \times 2 \times 280{,}2 \times 0{,}976 = 410{,}3$ kNm $&lt; M_u$ = 420,4 kNm → không đạt.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="19.2" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Ví dụ 15.1 nhưng gage tăng lên $g$ = 140 mm (các số liệu khác giữ nguyên). Tính $t_{p,req}$ (không hệ số 1,11).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính lại $s = \tfrac12\sqrt{b_pg}$, kiểm tra $p_{fi} \le s$, rồi $Y_p$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$s = 0{,}5\sqrt{250 \times 140} = 93{,}5$ mm $&gt; p_{fi}$ = 54 mm; $Y_p = 125 \times [428(1/54 + 1/93{,}5) + 548/54 - 0{,}5] + (2/140) \times 428 \times (54 + 93{,}5) = 3671$ mm; $t_{p,req} = \sqrt{420{,}4\times10^6/(0{,}9 \times 345 \times 3671)} = 19{,}2$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Ví dụ 15.1: $\phi M_{np}$ = 519,2 kNm (tỷ số 0,81); $Y_p$ = 3817 mm; $t_{p,req}$ = 18,8 mm (19,8 mm với hệ số 1,11).</li>
+<li>SAP2000 không thiết kế liên kết; mặt bích 4E theo DG16 được mô hình là nút cứng.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w19.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

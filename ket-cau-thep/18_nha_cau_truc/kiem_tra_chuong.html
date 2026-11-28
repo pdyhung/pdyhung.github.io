@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="18_nha_cau_truc/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 18: Nhà có cầu trục – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 18 · Nhà có cầu trục · Kiểm tra chương</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 18: Nhà có cầu trục</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<ul><li>TCVN 2737:2023 điều 9 khác 1995 ở ba điểm chính: $\gamma_f$ = 1,2; $\eta$ = 1,2 cho dầm cầu trục; $\psi_t$ = 1,0 khi chỉ có một cầu trục. Tải lên khung tăng khoảng 28 % so với bảng tính cũ của khóa.</li>
+<li>ASCE 7-10 mục 4.9: xung kích 25 % (cabin) hoặc 10 % (pendant) chỉ cho dầm và liên kết. Lực ngang 20 % (Q + xe con) chia cho hai ray. Hệ số 1,6 theo DG7. Lực ngang theo Mỹ lớn hơn TCVN khoảng 2,7 lần.</li>
+<li>SAP2000: tải tĩnh theo đường ảnh hưởng, mỗi vị trí cầu trục là một trường hợp, rồi bao. Moving Load dùng cho dầm cầu trục. Tránh cộng $D_{\max}$ của mọi khung cùng lúc.</li>
+<li>Chuyển vị tại ray: TCVN $h/1000$ (A4–A6) chặt hơn AISC $h/240$ rất nhiều. Cần chốt trong tiêu chí thiết kế.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="num" data-ans="144.5" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Cầu trục 10 T, $P^c_{\max}$ = 85 kN, $K$ = 3,5 m, bước cột 6 m. Tính $D_{\max}$ theo TCVN 2737:2023 khi nhà có <b>một</b> cầu trục.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\sum y = 2 - K/B$; $\gamma_f\psi_t = 1{,}2 \times 1{,}0$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sum y = 2 - 3{,}5/6 = 1{,}4167$; $D_{\max} = 1{,}2 \times 85 \times 1{,}4167 = 144{,}5$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="211.0" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Như câu trên nhưng có <b>hai</b> cầu trục giống nhau, khoảng cách giữa hai bánh gần nhau của hai cầu trục là 1,2 m, chế độ A1–A6. Tính $D_{\max}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Đặt bánh thứ hai (hoặc thứ ba) lên cột; $\psi_t = 0{,}85$.</p>
+</details>
+<details><summary>Lời giải</summary><p>Tọa độ bánh so với cột: −3,5; 0; 1,2; 4,7 m → $\sum y = 0{,}4167 + 1 + 0{,}8 + 0{,}2167 = 2{,}433$; $D_{\max} = 1{,}2 \times 0{,}85 \times 85 \times 2{,}433 = 211{,}0$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vì sao hệ số động $\eta = 1{,}2$ không dùng khi kiểm tra chuyển vị ngang của cột?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Vì chuyển vị cột đã được kể trong hệ số $\gamma_f$</label></li><li><label><input type="radio" name="q3" value="1"> Vì kiểm tra chuyển vị là trạng thái giới hạn sử dụng: chỉ xét một cầu trục với tải tiêu chuẩn, không hệ số động (9.16)</label></li><li><label><input type="radio" name="q3" value="2"> Vì lực hãm ngang không có tác dụng động</label></li><li><label><input type="radio" name="q3" value="3"> Vì cột đủ cứng nên không cần kể đến</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem dòng "Độ võng, chuyển vị (9.16)" của <a href="../18_nha_cau_truc/b1_tai_cau_truc_tcvn.html#tbl-18-2">Bảng 18.2</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Mục 9.16: độ võng, chuyển vị chỉ xét 1 cầu trục, tải tiêu chuẩn, không có hệ số động. $\eta$ chỉ dùng cho độ bền dầm cầu trục và liên kết.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="14.73" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cầu trục câu 1 ($Q$ = 100 kN, $G_{xc}$ = 30 kN, hai bánh mỗi bên, $\sum y = 1{,}4167$). Theo TCVN 2737:2023 (móc mềm) lực hãm lên khung là 5,53 kN. Tính lực ngang LRFD lên khung theo ASCE 7-10 và DG7 (hai ray cứng như nhau).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Mỗi bánh: $0{,}2(Q + G_{xc})/4$; hệ số 1,6.</p>
+</details>
+<details><summary>Lời giải</summary><p>Mỗi bánh: $0{,}2 \times 130/4 = 6{,}5$ kN; $T = 1{,}6 \times 6{,}5 \times 1{,}4167 = 14{,}73$ kN, gấp 2,67 lần TCVN ($1{,}2 \times 3{,}25 \times 1{,}4167 = 5{,}53$ kN).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà 10 bước cột, một cầu trục. Cách tổ chức trường hợp tải cầu trục nào đúng với vị trí thực của cầu trục?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q5" value="0"> Một trường hợp cộng $D_{\max}$ ở tất cả 11 khung</label></li><li><label><input type="radio" name="q5" value="1"> Mỗi khung $i$ một trường hợp: $D_{\max}$ ở khung $i$, phần nhỏ theo đường ảnh hưởng ở khung kề, kèm $\pm T$; rồi lấy bao</label></li><li><label><input type="radio" name="q5" value="2"> Hai trường hợp: tất cả $D_{\max}$ ở cột trái và tất cả $D_{\max}$ ở cột phải</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Một cầu trục chỉ cho $D_{\max}$ lớn nhất ở một khung.</p>
+</details>
+<details><summary>Lời giải</summary><p>Tạo CT@khung 1…CT@khung 11 (mỗi vị trí đổi bên $D_{\max}$/$D_{\min}$, $\pm T$), rồi dùng Envelope.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="8" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Ray ở cao trình 8 m, cầu trục chế độ A5. Tính giới hạn chuyển vị ngang tại ray theo TCVN 2737:2023 Bảng G.3.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>A4–A6: $h/1000$, không nhỏ hơn 6 mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$8000/1000 = 8$ mm (lớn hơn 6 mm).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="33.3" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Như câu trên, tính giới hạn theo AISC DG3 cho cầu trục điều khiển từ cabin.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$h/240 \le 50$ mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$8000/240 = 33{,}3$ mm $\le 50$ mm; lỏng hơn TCVN khoảng 4 lần.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.283" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Tỷ số $D_{\max}$ theo TCVN 2737:2023 so với bảng tính 1995 cho một cầu trục (cùng $\sum y$) bằng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>2023: $\gamma_f\psi_t = 1{,}2$; 1995: $n\,n_c = 1{,}1 \times 0{,}85$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1{,}2/0{,}935 = 1{,}283$, tức tăng khoảng 28 %.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

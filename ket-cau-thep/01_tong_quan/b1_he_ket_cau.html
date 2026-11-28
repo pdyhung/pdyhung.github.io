@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="01_tong_quan/b1_he_ket_cau.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 1.1. Hệ kết cấu nhà khung thép – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 1 · Tổng quan · Bài 1</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 1.1. Hệ kết cấu nhà khung thép <span class="en">Structural system of single-storey steel buildings</span></h1>
+<p class="lead">Một nhà xưởng khung thép tiền chế gồm nhiều hệ cấu kiện làm việc cùng nhau. Bài này giới thiệu từng hệ, vai trò của nó và chương sẽ kiểm tra nó.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Kể tên và nêu vai trò các bộ phận của nhà khung thép tiền chế (PEB).</li>
+<li>Biết mỗi loại cấu kiện được kiểm tra ở chương nào của giáo trình.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Chủ đầu tư nhà xưởng <b>Hòa Bình</b> cần một xưởng một nhịp 50 m, dài 72 m, không cột giữa. Đơn vị thiết kế chọn khung thép tiền chế: cột, kèo tổ hợp hàn thay đổi tiết diện, bước khung 8 m. Trước khi dựng mô hình SAP2000, kỹ sư phải liệt kê đủ các hệ cấu kiện, vì thiếu một hệ (ví dụ giằng cột) là mô hình mất ổn định.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Hệ kết cấu nhà công nghiệp một tầng</h3>
+<p>Nhà công nghiệp khung thép một tầng ở Việt Nam phần lớn là <b>nhà khung thép tiền chế</b> (PEB – Pre-Engineered Building). Các bộ phận chính:</p>
+<ul><li><b>Khung ngang (khung chính):</b> cột và kèo tiết diện chữ I tổ hợp hàn, thường <b>thay đổi chiều cao</b> theo biểu đồ mô men, liên kết với nhau bằng mặt bích bu lông. Chân cột khớp (phổ biến) hoặc ngàm (khi có cầu trục lớn hoặc cần hạn chế chuyển vị).</li>
+<li><b>Hệ bao che:</b> tôn mái, tôn vách, panel; đặt trên <b>xà gồ</b> (mái) và <b>dầm tường</b> (vách), thường là thép hình dập nguội C, Z.</li>
+<li><b>Hệ giằng:</b><ul><li>giằng mái (thép tròn D16–D25 hoặc thép góc) trong mặt phẳng mái;</li>
+<li>giằng cột (thép tròn, ống hoặc khung cổng) giữa hai hàng cột;</li>
+<li><b>thanh chống</b> (ống) chạy dọc nhà ở đỉnh cột và đỉnh mái;</li>
+<li><b>chống xiên (fly brace)</b> từ xà gồ, dầm tường đến cánh trong của kèo, cột.</li></ul></li>
+<li><b>Dầm cầu trục, vai cột, dầm hãm</b> khi nhà có cầu trục (Chương 18).</li>
+<li><b>Khung đầu hồi:</b> cột sườn tường và kèo nhỏ hơn, hoặc khung chính đặt ở đầu hồi khi dự kiến mở rộng.</li></ul>
+<div class="tbl" id="tbl-1-1"><table><thead><tr><th>Cấu kiện</th><th>Tiết diện thường dùng</th><th>Chương kiểm tra (TCVN / Mỹ)</th></tr></thead><tbody>
+<tr><td>Cột, kèo</td><td>I tổ hợp hàn, thay đổi tiết diện; Q345, SS400</td><td>6 / 13</td></tr>
+<tr><td>Xà gồ, dầm tường</td><td>C, Z dập nguội 150–300 mm, dày 1,5–3 mm</td><td>6 (TCVN 5575 không có thép nguội – dùng SP 260 hoặc AISI S100)</td></tr>
+<tr><td>Giằng mái, giằng cột</td><td>Thép tròn D16–D25 có tăng đơ; thép góc; ống</td><td>6 / 13</td></tr>
+<tr><td>Thanh chống</td><td>Ống D90–D141, hộp</td><td>6 / 13</td></tr>
+<tr><td>Dầm cầu trục</td><td>I tổ hợp + dầm hãm</td><td>18</td></tr>
+<tr><td>Liên kết</td><td>Mặt bích bu lông, bản đế, bu lông neo</td><td>7 / 15</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 1.1.</b> Các cấu kiện chính và chương liên quan</p>
+<h2 id="s3">3. Khám phá</h2>
+<p>Xoay, phóng to mô hình khung 3D của nhà xưởng Hòa Bình (nhịp 50 m, 9 bước × 8 m). Bật/tắt từng nhóm cấu kiện để thấy vị trí của chúng.</p>
+<div data-widget="W1"></div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Coi xà gồ, dầm tường là "phụ" nên bỏ khỏi mô hình mà quên vai trò giữ ổn định cánh nén của kèo, cột (chống xiên tựa vào chúng).</li>
+<li>Chỉ dựng khung ngang 2D rồi kết luận cho cả nhà: không kiểm tra được giằng và thanh chống theo phương dọc.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Tôn mái truyền tải trọng trực tiếp lên cấu kiện nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Kèo</label></li><li><label><input type="radio" name="q1" value="1"> Xà gồ</label></li><li><label><input type="radio" name="q1" value="2"> Thanh chống</label></li><li><label><input type="radio" name="q1" value="3"> Giằng mái</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Hệ bao che".</p>
+</details>
+<details><summary>Lời giải</summary><p>Tôn mái đặt trên <b>xà gồ</b>; xà gồ truyền tải xuống kèo.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="10" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà xưởng Hòa Bình dài 72 m, bước khung 8 m. Có bao nhiêu khung ngang (kể cả hai khung đầu hồi)?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>khung</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Số bước khung = chiều dài / bước khung; số khung = số bước + 1.</p>
+</details>
+<details><summary>Lời giải</summary><p>$72/8 = 9$ bước → $9 + 1 = 10$ khung.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="25.06" data-tol="0.002"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Nhịp 50 m, mái dốc 7 %, hai mái đối xứng. Tính chiều dài thật của một nửa kèo (theo mặt dốc).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Hình chiếu bằng của nửa kèo là 25 m; chiều dài thật $= 25\sqrt{1+i^2}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$L = 25\sqrt{1 + 0{,}07^2} = 25 \times 1{,}00245 = 25{,}06$ m.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nhà PEB gồm khung ngang, hệ bao che (tôn, xà gồ, dầm tường), hệ giằng, thanh chống, chống xiên, khung đầu hồi và (nếu có) hệ cầu trục.</li>
+<li>Cột, kèo kiểm tra ở Ch.6 (TCVN) / Ch.13 (Mỹ); liên kết ở Ch.7 / Ch.15; dầm cầu trục ở Ch.18 (<a href="#tbl-1-1">Bảng 1.1</a>).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/vendor/three/three.min.js"></script>
+<script src="../assets/vendor/three/OrbitControls.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/frame3d.js"></script>
+<script src="../assets/widgets/w01.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

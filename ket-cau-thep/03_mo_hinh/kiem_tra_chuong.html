@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="03_mo_hinh/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 3: Xây dựng mô hình – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 3 · Xây dựng mô hình · Kiểm tra chương</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 3: Xây dựng mô hình</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<ul><li>Trình tự: khung điển hình → nhân bản → đầu hồi → thanh chống → giằng → kiểm tra Extrude.</li>
+<li>Release đúng để tránh mất ổn định. Giằng thép tròn dùng Tension Only, cần phân tích phi tuyến.</li>
+<li>Ba cách đưa tải bao che. Cách dồn tải bằng tấm phải kiểm tra phương dồn.</li>
+<li>Luôn chạy Check Model, DEAD và Modal trước khi đưa tải thật.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>(Câu hỏi ôn tập 1) Vì sao gán Tension Only cho giằng nhưng chạy Linear Static thì giằng vẫn chịu nén?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Vì Tension Only chỉ áp dụng cho phần tử tấm</label></li><li><label><input type="radio" name="q1" value="1"> Vì trường hợp tải tuyến tính bỏ qua giới hạn kéo/nén; cần Nonlinear Static (hoặc DM)</label></li><li><label><input type="radio" name="q1" value="2"> Vì phải gán thêm Property Modifier 0 cho $A$</label></li><li><label><input type="radio" name="q1" value="3"> Vì SAP2000 chỉ xét Tension Only trong Modal</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Giới hạn nén là điều kiện phi tuyến.</p>
+</details>
+<details><summary>Lời giải</summary><p>Linear Static giữ nguyên độ cứng của mọi thanh nên giới hạn nén bị bỏ qua; dùng Nonlinear Static cho từng tổ hợp.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>(Câu hỏi ôn tập 2) Mô hình báo mất ổn định sau khi gán release M2, M3, T hai đầu cho thanh chống. Sửa thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Giữ M2, M3 hai đầu, chỉ giải phóng T ở một đầu</label></li><li><label><input type="radio" name="q2" value="1"> Giải phóng thêm P ở một đầu</label></li><li><label><input type="radio" name="q2" value="2"> Bỏ hết release, nối cứng thanh chống</label></li><li><label><input type="radio" name="q2" value="3"> Gán Tension Only cho thanh chống</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="../03_mo_hinh/b2_lien_ket_release.html#tbl-3-1">Bảng 3.1</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Giải phóng T ở hai đầu làm thanh quay tự do; chỉ giải phóng T một đầu.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>(Câu hỏi ôn tập 3) Khi tính gió theo vùng của TCVN 2737:2023, nhược điểm chính của cách (a) gán tải trực tiếp lên khung là gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Không kiểm tra được bằng tay</label></li><li><label><input type="radio" name="q3" value="1"> Phải tự chia vùng gió cho từng khung; khung biên và khung giữa khác nhau</label></li><li><label><input type="radio" name="q3" value="2"> Tấm ảo tham gia độ cứng</label></li><li><label><input type="radio" name="q3" value="3"> Không gán được tải phân bố lên kèo</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="../03_mo_hinh/b5_tai_bao_che.html#tbl-3-2">Bảng 3.2</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Cách (a) minh bạch nhưng phải tự chia vùng; cách (b) chia vùng bằng cách chia tấm nhưng phải kiểm tra phương dồn tải.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>(Câu hỏi ôn tập 4) Trình tự đúng để gán Tension Only cho toàn bộ giằng mái là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> Chọn giằng mái → <i>Assign → Assign to Group</i> <code>GIANG_MAI</code> → <i>Select → Groups</i> <code>GIANG_MAI</code> → <i>Assign → Frame → Tension/Compression Limits</i>, <i>Compression Limit</i> = 0</label></li><li><label><input type="radio" name="q4" value="1"> <i>Define → Groups</i> <code>GIANG_MAI</code> → <i>Assign → Frame → Property Modifiers</i>, Area = 0</label></li><li><label><input type="radio" name="q4" value="2"> Chọn giằng mái → <i>Assign → Frame → Releases</i>, giải phóng P hai đầu</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tension Only nằm ở <i>Tension/Compression Limits</i>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Tạo nhóm, chọn nhóm, gán <i>Compression Limit</i> = 0, rồi đặt các trường hợp tải là Nonlinear Static.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="20" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Khung điển hình có 2 cột, nhân bản <i>Replicate Linear</i> $dx$ = 8 m, 9 lần. Trước khi thay khung đầu hồi, mô hình có bao nhiêu cột khung ngang?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>cột</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Số khung = 1 + số lần nhân bản.</p>
+</details>
+<details><summary>Lời giải</summary><p>$(1 + 9)\times2 = 20$ cột.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="20.02" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Ô giằng $b$ = 8 m, $h$ = 7,07 m, lực ngang 30 kN. Nếu chạy <i>Linear Static</i> (giới hạn nén bị bỏ qua), SAP2000 cho thanh giằng nén chịu lực nén bao nhiêu kN?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tuyến tính: mỗi thanh $H/(2\cos\theta)$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$L = 10{,}676$ m; $N = 30\times10{,}676/(2\times8) = 20{,}02$ kN (nén) – giá trị không thực với thanh tròn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="26.69" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cùng ô giằng $b$ = 8 m, $h$ = 7,07 m nhưng lực ngang 20 kN, phân tích Nonlinear Static với Tension Only. Lực kéo trong thanh làm việc là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$N = HL/b$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$N = 20\times10{,}676/8 = 26{,}69$ kN; thanh kia bằng 0.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

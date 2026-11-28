@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="03_mo_hinh/b4_truc_dia_phuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 3.4. Trục địa phương, điểm đặt – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 3 · Xây dựng mô hình · Bài 4</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 3.4. Trục địa phương, điểm đặt <span class="en">Local axes and insertion points</span></h1>
+<p class="lead">Trục địa phương quyết định trục nào là trục chính khi uốn; điểm đặt quyết định trục thanh nằm ở đâu so với tiết diện. Hai thông số này dễ sai mà khó thấy nếu không bật hiển thị.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Kiểm tra và sửa trục địa phương 1-2-3 của cột, kèo.</li>
+<li>Hiểu tác dụng và giới hạn của <i>Insertion Point</i> (Cardinal Point).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Trong mô hình nhà xưởng <b>Hòa Bình</b>, cột vẽ trong mặt phẳng Y–Z nên trục 3–3 mặc định là trục chính. Một học viên vẽ thêm cột sườn tường trong mặt phẳng X–Z và thấy cánh bị xoay 90° khi bật Extrude. Học viên khác thử đặt <i>Cardinal Point</i> = 8 cho kèo để đỉnh kèo trùng cao trình mái.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Trục địa phương và điểm đặt tiết diện</h3>
+<ul><li><b>Trục địa phương</b> (<i>Local Axes</i>): trục 1 dọc thanh từ I đến J; trục 2 mặc định nằm trong mặt phẳng thẳng đứng chứa thanh. Với cột và kèo trong mặt phẳng Y–Z, mặc định cho <b>trục 3–3 là trục chính</b> (uốn trong mặt phẳng khung). Kiểm tra bằng <i>Display Options → Local Axes</i>. Nếu cánh bị xoay 90° thì dùng <i>Assign → Frame → Local Axes → Angle</i> = 90.</li>
+<li><b>Điểm đặt</b> (<i>Insertion Point</i>): mặc định là trọng tâm (10). Với kèo, có thể đặt <i>Cardinal Point</i> = 8 (giữa cánh trên) để đỉnh kèo trùng cao trình mái. Phải tích <i>Transform frame stiffness for offsets</i>. Khóa học giữ mặc định 10, cách này đơn giản và đủ chính xác.</li>
+<li><b>End Length Offsets:</b> phần cứng tại nút kèo – cột (Chương 7).</li></ul>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<ol><li><i>Display Options → Local Axes</i>: trục 1 đỏ, 2 xanh lá, 3 xanh dương.</li>
+<li>Cánh sai hướng: <i>Assign → Frame → Local Axes → Angle</i> = 90.</li>
+<li>Muốn đổi điểm đặt: <i>Assign → Frame → Insertion Point</i>, chọn <i>Cardinal Point</i>, tích <i>Transform frame stiffness for offsets</i>.</li></ol>
+<figure><img class="zoom" src="../assets/img/ch03_truc_dia_phuong.svg" alt="Trục địa phương 1-2-3 của cột và kèo, tiết diện I với trục 3-3 và Cardinal Point"><figcaption>Hình 3.2. Trục địa phương 1-2-3 mặc định của cột, kèo và trục chính 3–3 của tiết diện I.</figcaption></figure>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Đổi <i>Cardinal Point</i> mà không tích <i>Transform frame stiffness for offsets</i>: nội lực tính như chưa lệch tâm.</li>
+<li>Không bật <i>Local Axes</i> khi kiểm tra: cột uốn quanh trục yếu mà không biết.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Điểm đặt tiết diện (<i>Cardinal Point</i>) mặc định trong SAP2000 là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 8 – giữa mép trên</label></li><li><label><input type="radio" name="q1" value="1"> 2 – giữa mép dưới</label></li><li><label><input type="radio" name="q1" value="2"> 10 – trọng tâm</label></li><li><label><input type="radio" name="q1" value="3"> 1 – góc dưới trái</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Điểm đặt".</p>
+</details>
+<details><summary>Lời giải</summary><p>Mặc định là <b>10 – trọng tâm</b>; khóa học giữ nguyên.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="250" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Kèo H500×250×8×12 đổi <i>Cardinal Point</i> từ 10 sang 8 (giữa mép trên). Trục thanh dịch đi bao nhiêu so với trọng tâm?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tiết diện đối xứng: trọng tâm ở giữa chiều cao.</p>
+</details>
+<details><summary>Lời giải</summary><p>Khoảng cách trọng tâm – mép trên $= h/2 = 500/2 = 250$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="125" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Đoạn kèo <code>H(650-400)x200x6x10</code> dùng <i>Cardinal Point</i> = 8. Độ lệch giữa trục thanh và trọng tâm tiết diện ở hai đầu chênh nhau bao nhiêu? (Gợi ý tác hại: trục trọng tâm của đoạn kèo không còn song song với trục thanh.)</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Độ lệch mỗi đầu bằng $h/2$.</p>
+</details>
+<details><summary>Lời giải</summary><p>Đầu lớn: $650/2 = 325$ mm; đầu nhỏ: $400/2 = 200$ mm; chênh $325 - 200 = 125$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Trục 1 từ I đến J; cột, kèo trong mặt phẳng Y–Z có trục 3–3 là trục chính.</li>
+<li>Cánh sai hướng: <i>Local Axes → Angle</i> = 90.</li>
+<li><i>Cardinal Point</i> mặc định 10; đổi thì phải tích <i>Transform frame stiffness for offsets</i>.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

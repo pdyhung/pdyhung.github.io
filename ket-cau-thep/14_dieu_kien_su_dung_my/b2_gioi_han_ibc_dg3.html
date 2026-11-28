@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="14_dieu_kien_su_dung_my/b2_gioi_han_ibc_dg3.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 14.2. Giới hạn IBC và DG3 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 14 · Điều kiện sử dụng (Mỹ) · Bài 2</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 14.2. Giới hạn IBC và DG3 <span class="en">Deflection and drift limits: IBC and Design Guide 3</span></h1>
+<p class="lead">Cùng một khung, TCVN 2737:2023 và DG3 cho giới hạn chuyển vị ngang chênh nhau 2,3–3,9 lần. Dùng giới hạn nào phải được chốt từ đầu.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tra được giới hạn IBC Bảng 1604.3 và DG3 cho mái, tường, khung và cao trình ray cầu trục.</li>
+<li>Tính và so sánh giới hạn theo TCVN 2737:2023 Phụ lục G và theo hệ Mỹ cho cùng công trình.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nhà xưởng <b>Hòa Bình</b> có cột cao 7,07 m, tường tôn, kèo nhịp 50 m. Chủ đầu tư muốn dùng giới hạn DG3 để giảm thép cột. Kỹ sư cần trình bày bằng số: theo DG3 khung được phép chuyển vị bao nhiêu, theo TCVN là bao nhiêu, và chênh nhau mấy lần.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Giới hạn độ võng và chuyển vị</h3>
+<h4>IBC 2012 Bảng 1604.3 (bắt buộc khi áp dụng IBC)</h4>
+<div class="tbl" id="tbl-14-3"><table><thead><tr><th>Cấu kiện</th><th>$L$ hoặc $L_r$/S</th><th>W</th><th>D + L</th></tr></thead><tbody>
+<tr><td>Mái đỡ trần thạch cao</td><td>$L/360$</td><td>–</td><td>$L/240$</td></tr>
+<tr><td>Mái đỡ trần không thạch cao</td><td>$L/240$</td><td>–</td><td>$L/180$</td></tr>
+<tr><td>Mái không đỡ trần</td><td>$L/180$</td><td>–</td><td>$L/120$</td></tr>
+<tr><td>Tường bao cứng giòn (gạch, đá)</td><td>–</td><td>$L/240$</td><td>–</td></tr>
+<tr><td>Tường bao mềm</td><td>–</td><td>$L/120$</td><td>–</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 14.3.</b> Giới hạn độ võng theo IBC 2012 Bảng 1604.3 (trích)</p>
+<p>Chú thích của bảng cho phép nới giới hạn với <b>cấu kiện phụ đỡ tôn mái, tôn vách</b> (xà gồ, dầm tường) trong nhà kim loại. Theo tài liệu MBMA trích lại, các trị số này khoảng $L/150$ cho xà gồ mái và $L/90$ cho dầm tường đỡ tôn vách. Khi lập tiêu chí thiết kế cần trích đúng phiên bản IBC dự án áp dụng.</p>
+<h4>AISC Design Guide 3 – nhà khung thép thấp tầng</h4>
+<div class="tbl" id="tbl-14-4"><table><thead><tr><th>Hạng mục</th><th>Giới hạn khuyến nghị</th><th>Tải</th></tr></thead><tbody>
+<tr><td>Chuyển vị ngang khung, bao che tôn</td><td>$H/60$ đến $H/100$</td><td>Gió 10 năm</td></tr>
+<tr><td>Chuyển vị ngang khung, tường gạch có cốt thép</td><td>$H/100$</td><td>Gió 10 năm</td></tr>
+<tr><td>Chuyển vị tại cao trình ray, cầu trục điều khiển từ cabin</td><td>$H/240 \le 50$ mm (2 in.)</td><td>Lực ngang cầu trục hoặc gió 10 năm</td></tr>
+<tr><td>Chuyển vị tại cao trình ray, cầu trục điều khiển dưới nền</td><td>$H/100$</td><td>Lực ngang cầu trục hoặc gió 10 năm</td></tr>
+<tr><td>Dầm tường đỡ tôn vách</td><td>$L/120$</td><td>Gió 10 năm</td></tr>
+<tr><td>Võng xà gồ, kèo mái tôn</td><td>$L/150$</td><td>$L_r$ hoặc S</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 14.4.</b> Giới hạn khuyến nghị của AISC DG3 (bản 2, đã theo đính chính 2020)</p>
+<p>Theo đính chính tháng 8/2020 của AISC: với cầu trục chạy trên ray <b>điều khiển từ cabin</b>, giới hạn chuyển vị tại cao trình ray là $H/240 \le 2$ in. (không phải $H/100 \le 1$ in. như bản in đầu). Với cầu trục <b>điều khiển dưới nền (pendant)</b>, giới hạn là $H/100$.</p>
+<h3>So sánh với TCVN 2737:2023</h3>
+<p>Ví dụ: công trình Hòa Bình, đỉnh cột $h_s$ = 7,07 m, tường tôn, kèo nhịp 50 m.</p>
+<div class="tbl" id="tbl-14-5"><table><thead><tr><th>Hạng mục</th><th>TCVN 2737:2023 Phụ lục G</th><th>Mỹ (DG3, IBC)</th></tr></thead><tbody>
+<tr><td>Chuyển vị ngang đỉnh cột</td><td>$\min(1{,}3h_s/300;\ h_s/150)$ = <b>30,6 mm</b>, với tải tiêu chuẩn</td><td>$H/60$ = 118 mm đến $H/100$ = <b>70,7 mm</b>, với gió 10 năm (≈ 0,44W)</td></tr>
+<tr><td>Võng kèo nhịp 50 m</td><td>$L/300$ = <b>167 mm</b>, tải tiêu chuẩn</td><td>$L/180$ = 278 mm ($L_r$); $L/120$ = 417 mm (D + $L_r$)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 14.5.</b> So sánh giới hạn điều kiện sử dụng – công trình Hòa Bình</p>
+<p>Hai hệ tiêu chuẩn khác nhau cả <b>giới hạn</b> lẫn <b>mức tải</b>. TCVN dùng tải tiêu chuẩn: gió tiêu chuẩn có chu kỳ lặp 10 năm (W3s,10 = 0,852W0), nhân hệ số khí động đầy đủ. Mỹ dùng gió 10 năm nhưng giới hạn rộng hơn 2,3–3,9 lần. Kết quả là kết cấu khung thép tiền chế thiết kế theo DG3 thường <b>không đạt</b> giới hạn của TCVN 2737:2023 nếu không tăng tiết diện cột. Đây là điều cần thống nhất với chủ đầu tư ngay từ đầu.</p>
+<h2 id="s3">3. Khám phá</h2>
+<p>Nhập chiều cao cột, nhịp kèo, loại bao che và cầu trục; bảng so sánh ngay giới hạn TCVN với DG3, IBC. Mặc định là nhà xưởng Hòa Bình (<a href="#tbl-14-5">Bảng 14.5</a>).</p>
+<div data-widget="W18"></div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Dùng giới hạn cầu trục cabin $H/100 \le 25$ mm của bản in đầu DG3: theo đính chính 2020 là $H/240 \le 50$ mm.</li>
+<li>So sánh giới hạn DG3 với chuyển vị tính bằng tải tiêu chuẩn TCVN (hoặc ngược lại): hai hệ dùng mức tải khác nhau.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Theo DG3 (đính chính 2020), giới hạn chuyển vị ngang tại cao trình ray với cầu trục <b>điều khiển từ cabin</b> là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> $H/100 \le 25$ mm</label></li><li><label><input type="radio" name="q1" value="1"> $H/240 \le 50$ mm</label></li><li><label><input type="radio" name="q1" value="2"> $H/100$</label></li><li><label><input type="radio" name="q1" value="3"> $H/60$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bản in đầu và bản đính chính khác nhau.</p>
+</details>
+<details><summary>Lời giải</summary><p>Đính chính tháng 8/2020: cầu trục cabin $H/240 \le 2$ in. (50 mm); cầu trục điều khiển dưới nền $H/100$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="90" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà máy DNP có cột cao 9 m, bao che tôn. Tính giới hạn chuyển vị ngang đỉnh cột theo DG3 với mức chặt nhất $H/100$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$H$ tính bằng mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$9000/100 = 90$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="39" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cũng khung DNP cao $h_s$ = 9 m nhưng thiết kế theo TCVN 2737:2023 Phụ lục G. Tính giới hạn chuyển vị ngang đỉnh cột.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\min(1{,}3h_s/300;\ h_s/150)$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1{,}3 \times 9000/300 = 39{,}0$ mm; $9000/150 = 60$ mm → giới hạn 39 mm, chặt hơn $H/100$ = 90 mm khoảng 2,3 lần.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>IBC 1604.3: mái không đỡ trần $L/180$ ($L_r$), $L/120$ (D + $L_r$); tường bao mềm $L/120$.</li>
+<li>DG3: khung bao che tôn $H/60$–$H/100$ với gió 10 năm; cầu trục cabin $H/240 \le 50$ mm.</li>
+<li>Hòa Bình: TCVN 30,6 mm so với DG3 70,7–118 mm; kèo $L/300$ = 167 mm so với $L/180$ = 278 mm.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w18.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

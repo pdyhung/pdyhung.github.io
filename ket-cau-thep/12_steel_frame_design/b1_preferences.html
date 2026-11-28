@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="12_steel_frame_design/b1_preferences.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 12.1. Preferences – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 12 · Steel Frame Design · Bài 1</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 12.1. Preferences <span class="en">Design preferences (Steel Frame Design, AISC 360-10)</span></h1>
+<p class="lead">Preferences quyết định SAP2000 kiểm tra theo LRFD hay ASD, phân tích ổn định theo phương pháp nào và hiện màu đỏ ở tỷ số bao nhiêu. Khai báo sai một dòng có thể làm sai toàn bộ kết quả thiết kế.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Chọn đúng Framing Type, Design Provision, Analysis Method và Stiffness Reduction cho nhà xưởng.</li>
+<li>Hiểu ý nghĩa của Stress Ratio Limit và các giới hạn võng mặc định.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mô hình mẫu <code>NM DNP-21.04</code> của nhà máy DNP đặt Framing Type = SMF, Design Provision = ASD và Stiffness Reduction = "No Modification". Trước khi in bảng kết quả vào thuyết minh, kỹ sư phải rà lại từng dòng Preferences theo <a href="#tbl-12-1">Bảng 12.1</a>.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Preferences</h3>
+<div class="tbl" id="tbl-12-1"><table><thead><tr><th>Tham số</th><th>Giá trị khuyến nghị cho nhà xưởng</th><th>Mô hình giảng viên (NM DNP)</th><th>Ghi chú</th></tr></thead><tbody>
+<tr><td>Multi-Response Case Design</td><td>Envelopes</td><td>Envelopes</td><td></td></tr>
+<tr><td>Framing Type</td><td><b>OMF</b> (khung), <b>OCBF</b> (giằng)</td><td>SMF</td><td>SMF đòi hỏi các yêu cầu kháng chấn của AISC 341 (chi tiết liên kết, tỷ lệ cấu kiện), không phù hợp nhà tiền chế thông thường</td></tr>
+<tr><td>Seismic Design Category</td><td>Theo ASCE 7 Chương 11</td><td>D</td><td>Chỉ ảnh hưởng khi bật kiểm tra kháng chấn</td></tr>
+<tr><td>Design Provision</td><td>LRFD (hoặc ASD)</td><td><b>ASD</b></td><td>Phải thống nhất với bộ tổ hợp đã chọn</td></tr>
+<tr><td>Analysis Method</td><td>Direct Analysis</td><td>Direct Analysis</td><td>Xem Chương 11</td></tr>
+<tr><td>Second Order Method</td><td>General 2nd Order</td><td>General 2nd Order</td><td></td></tr>
+<tr><td>Stiffness Reduction Method</td><td><b>Tau-b Fixed</b></td><td>No Modification</td><td>Cần giảm độ cứng theo C2.3</td></tr>
+<tr><td>Notional Load Coeff.</td><td>0,002</td><td>0,002</td><td></td></tr>
+<tr><td>$\phi_b$, $\phi_c$, $\phi_t$ (yield), $\phi_v$</td><td>0,90 (LRFD)</td><td>–</td><td>ASD: $\Omega_b = \Omega_c = 1{,}67$; $\Omega_v = 1{,}67$ (1,50 với I cán thỏa G2.1a)</td></tr>
+<tr><td>Stress Ratio Limit</td><td>0,95</td><td>0,95</td><td>Thanh có ratio lớn hơn giới hạn sẽ hiện màu đỏ</td></tr>
+<tr><td>Check Deflection</td><td>Yes</td><td>Yes</td><td></td></tr>
+<tr><td>DL / SDL+LL / LL / Total / Net ratio</td><td>120 / 120 / 360 / 240 / 240 (mặc định)</td><td>như mặc định</td><td>Nên sửa theo yêu cầu dự án. Tham khảo IBC Bảng 1604.3 (cấu kiện mái không đỡ trần): $L/180$ với $L_r$ (hoặc S), $L/120$ với D + $L_r$ (xem Chương 14)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 12.1.</b> Preferences – AISC 360-10</p>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Trình tự</h3>
+<ol><li>Define → Materials: thép A572 Gr50 ($F_y = 345$ MPa, $F_u = 450$ MPa), A36 ($F_y = 250$ MPa) hoặc khai báo SS400 ($F_y = 245$ MPa), kèm $R_y$, $R_t$.</li>
+<li>Design → Steel Frame Design → <b>Select Design Code</b>: AISC 360-10.</li>
+<li><b>View/Revise Preferences</b> (mục 12.2).</li>
+<li><b>Select Design Combos</b> (mục 12.3).</li>
+<li>Chọn cấu kiện → <b>View/Revise Overwrites</b> (mục 12.4).</li>
+<li><b>Start Design/Check of Structure</b> (Shift+F5).</li>
+<li>Đọc kết quả (mục 12.5), tối ưu, chạy lại.</li></ol>
+<div class="box sap"><div class="bt">🖥️ Hình: Preferences AISC 360-16 – LRFD, Direct Analysis, General 2nd Order, Tau-b Fixed</div>
+<ol><li>Design</li><li>Steel Frame Design</li><li>View/Revise Preferences</li><li>Design Code, Design Provision, Analysis Method</li></ol><figure><img class="zoom" loading="lazy" src="../assets/img/sap/steel_design_preferences.jpg" alt="Hình: Preferences AISC 360-16 – LRFD, Direct Analysis, General 2nd Order, Tau-b Fixed"><figcaption>Hình: Preferences AISC 360-16 – LRFD, Direct Analysis, General 2nd Order, Tau-b Fixed</figcaption></figure>
+</div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Để Framing Type = SMF cho khung nhà tiền chế: SAP áp các yêu cầu kháng chấn của AISC 341 không phù hợp.</li>
+<li>Giữ nguyên giới hạn võng mặc định (L/240, L/360…) mà không đối chiếu yêu cầu dự án.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Framing Type khuyến nghị cho khung ngang nhà xưởng tiền chế thông thường là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> SMF</label></li><li><label><input type="radio" name="q1" value="1"> IMF</label></li><li><label><input type="radio" name="q1" value="2"> OMF</label></li><li><label><input type="radio" name="q1" value="3"> OCBF</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>OCBF dùng cho hệ giằng.</p>
+</details>
+<details><summary>Lời giải</summary><p>Khung: <b>OMF</b>; giằng: <b>OCBF</b>. SMF đòi hỏi các yêu cầu kháng chấn của AISC 341.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="50" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Preferences để Total ratio = 240. Giới hạn võng toàn phần SAP dùng cho một dầm nhịp 12 m là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Giới hạn = $L/240$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$12\,000/240 = 50$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="534.1" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Kèo có $\phi M_n = 562{,}2$ kNm, chỉ chịu uốn. Stress Ratio Limit = 0,95. Mô men $M_u$ lớn nhất là bao nhiêu để thanh chưa hiện màu đỏ?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kNm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Thanh hiện đỏ khi tỷ số lớn hơn Stress Ratio Limit.</p>
+</details>
+<details><summary>Lời giải</summary><p>$M_u \le 0{,}95 \times 562{,}2 = 534{,}1$ kNm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nhà xưởng: OMF (khung), OCBF (giằng); Direct Analysis, General 2nd Order, <b>Tau-b Fixed</b>, hệ số notional 0,002.</li>
+<li>Design Provision phải thống nhất với bộ tổ hợp; Stress Ratio Limit 0,95 là ngưỡng hiện màu đỏ.</li>
+<li>Trình tự: vật liệu → chọn AISC 360-10 → Preferences → Design Combos → Overwrites → chạy (Shift+F5) → đọc kết quả.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="02_sap_vat_lieu_tiet_dien/b1_giao_dien_don_vi.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 2.1. Giao diện, đơn vị, lưới trục – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 2 · SAP2000 – vật liệu, tiết diện · Bài 1</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 2.1. Giao diện, đơn vị, lưới trục <span class="en">Interface, units and grids</span></h1>
+<p class="lead">Ba thiết lập đầu tiên – đơn vị gốc, lưới trục và tùy chọn hiển thị – quyết định mô hình có dễ nhập, dễ kiểm tra hay không. Đơn vị gốc chỉ chọn được một lần khi tạo mô hình.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Chọn đúng đơn vị gốc (<i>Base units</i>) và đổi đơn vị hiển thị khi nhập tải theo bảng tính tiếng Việt.</li>
+<li>Dựng lưới trục theo bản vẽ kiến trúc và bật các tùy chọn hiển thị cần để kiểm tra mô hình.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nhà xưởng <b>Hòa Bình</b> rộng 50 m, dài 72 m. Mặt bằng kiến trúc có trục X1…X10 (bước 8 m) và trục Y1…Y9 (8 khoảng 6,25 m). Bảng tính tải của văn phòng thiết kế ghi tĩnh tải mái 15 daN/m², còn mô hình SAP2000 được tạo bằng kN, m. Kỹ sư cần nhập lưới đúng ngay từ đầu và biết khi nào phải đổi đơn vị hiển thị.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Giao diện và thiết lập ban đầu</h3>
+<h4>Đơn vị</h4>
+<p>SAP2000 lưu dữ liệu nội bộ theo hệ đơn vị <b>lúc tạo mô hình</b> (<i>Base units</i>). Đơn vị hiển thị có thể đổi bất kỳ lúc nào ở góc dưới bên phải cửa sổ, hoặc qua <i>Options → Set Program Default Display Units</i>.</p>
+<p>Khuyến nghị:</p>
+<ul><li>Tạo mô hình với <b>N, mm, C</b> hoặc <b>kN, m, C</b>.</li>
+<li>Khi nhập tải theo bảng tính tiếng Việt (daN/m², kG/m) thì đổi đơn vị hiển thị sang <b>Kgf, m, C</b> để nhập, rồi đổi lại.</li>
+<li>Không nhập vật liệu bằng kgf/m², vì 1 MPa = 101 972 kgf/m² và rất dễ làm tròn sai (xem Chương 1).</li></ul>
+<h4>Lưới trục</h4>
+<p><i>File → New Model → Grid Only</i>, hoặc <i>Define → Coordinate Systems/Grids → Modify/Show System</i>. Đặt tên trục theo bản vẽ kiến trúc:</p>
+<ul><li>Trục X (dọc nhà) X1…X10.</li>
+<li>Trục Y (ngang nhà) Y1…Y9.</li></ul>
+<p>Có thể nhập khoảng cách trục kiểu <i>Spacing</i> (6250; 6250; …). Thêm các đường lưới phụ cho:</p>
+<ul><li>đỉnh cột;</li>
+<li>đỉnh mái;</li>
+<li>vị trí thay đổi tiết diện;</li>
+<li>cao trình vai cột (nhà có cầu trục).</li></ul>
+<p>Mô hình khóa học (video Buổi 01) dựng lưới trực tiếp từ mặt bằng và mặt cắt kiến trúc: nhịp 8 × 6,25 m, thông thủy 6,5 m.</p>
+<h4>Tùy chọn hiển thị</h4>
+<p><i>View → Set Display Options</i> (Ctrl+W). Các tùy chọn hữu ích:</p>
+<ul><li><i>Frames: Sections</i> (hiển thị tên tiết diện), <i>Releases</i> (điểm khớp), <i>Local Axes</i>.</li>
+<li><i>Joints: Restraints</i>, <i>Invisible</i>.</li>
+<li><i>General Options → View Type: Extrude</i>: hiển thị tiết diện thật để kiểm tra hướng cánh, bụng. Bắt buộc kiểm tra sau khi gán tiết diện thay đổi.</li></ul>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<ol><li><i>File → New Model</i>, chọn đơn vị <b>kN, m, C</b> ở ô góc trên, chọn mẫu <i>Grid Only</i>.</li>
+<li>Nhập số đường lưới, rồi <i>Define → Coordinate Systems/Grids → Modify/Show System</i>: đổi tên trục thành X1…X10, Y1…Y9, nhập khoảng cách kiểu <i>Spacing</i>.</li>
+<li>Thêm đường lưới Z tại đỉnh cột và đỉnh mái; <i>View → Set Display Options</i> (Ctrl+W) bật <i>Sections</i>, <i>Releases</i>, <i>Extrude</i>.</li></ol>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Tạo mô hình bằng Kgf, m rồi nhập vật liệu: số liệu lẻ, dễ làm tròn sai.</li>
+<li>Coi 1 daN = 1 kgf khi đổi đơn vị: sai khoảng 2 %.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>SAP2000 lưu dữ liệu nội bộ theo hệ đơn vị nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Đơn vị đang hiển thị ở góc dưới bên phải</label></li><li><label><input type="radio" name="q1" value="1"> Đơn vị gốc chọn lúc tạo mô hình (<i>Base units</i>)</label></li><li><label><input type="radio" name="q1" value="2"> Luôn là N, m, C</label></li><li><label><input type="radio" name="q1" value="3"> Đơn vị của lần lưu tệp gần nhất</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Đơn vị".</p>
+</details>
+<details><summary>Lời giải</summary><p>SAP2000 lưu dữ liệu theo <b>đơn vị gốc lúc tạo mô hình</b>; đơn vị hiển thị đổi được bất kỳ lúc nào.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.2" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tĩnh tải mái 15 daN/m², bước khung 8 m. Tính tải phân bố lên kèo của một khung giữa, đơn vị kN/m.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$q = g \times B$; 1 daN = 10 N.</p>
+</details>
+<details><summary>Lời giải</summary><p>$q = 15 \times 8 = 120$ daN/m $= 1200$ N/m $= 1{,}2$ kN/m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="122.4" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Muốn nhập tải 120 daN/m ở câu trên khi đơn vị hiển thị là Kgf, m, C. Phải gõ giá trị bao nhiêu (kgf/m)? Lấy 1 kgf = 9,80665 N.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kgf/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Đổi daN sang N, rồi N sang kgf.</p>
+</details>
+<details><summary>Lời giải</summary><p>$120$ daN/m $= 1200$ N/m; $1200/9{,}80665 = 122{,}4$ kgf/m. Gõ 120 là thiếu khoảng 2 %.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Tạo mô hình bằng N, mm hoặc kN, m; chỉ đổi sang Kgf, m khi nhập tải rồi đổi lại.</li>
+<li>Lưới trục theo bản vẽ kiến trúc, thêm lưới phụ tại đỉnh cột, đỉnh mái, chỗ đổi tiết diện.</li>
+<li>Bật <i>Extrude</i> để kiểm tra tiết diện thật.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

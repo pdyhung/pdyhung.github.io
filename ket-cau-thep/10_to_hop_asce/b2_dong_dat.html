@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="10_to_hop_asce/b2_dong_dat.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 10.2. Động đất nhập môn – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 10 · Tổ hợp ASCE 7-10 · Bài 2</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 10.2. Động đất nhập môn <span class="en">Introduction to seismic load combinations (ASCE 7-10 Section 12.4)</span></h1>
+<p class="lead">Khi có động đất, ASCE 7-10 thay tổ hợp LRFD 5 và 7 bằng dạng có thành phần đứng $E_v = 0{,}2S_{DS}D$ và hệ số dư $\rho$. Tác động ngang hai phương được kết hợp theo quy tắc 100 % + 30 %.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Viết được tổ hợp (5) và (7) của Mục 12.4.2.3 và giải thích số hạng $0{,}2S_{DS}D$.</li>
+<li>Khai triển tác động ngang theo quy tắc 100 % + 30 % thành 8 tổ hợp cho mỗi công thức.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mô hình nhà máy DNP có tổ hợp động đất với $S_{DS}D = 0{,}66D$, tức $S_{DS} = 0{,}66$, và $\rho = 1{,}0$. Hệ số tĩnh tải trong tổ hợp (5) vì thế là $1{,}2 + 0{,}2 \times 0{,}66 = 1{,}332$. Khi dùng lại mô hình cho công trình khác, kỹ sư phải tính lại $S_{DS}$ theo Chương 11 ASCE 7-10 từ gia tốc nền của QCVN 02:2022 và kiểm tra $\rho$ theo Mục 12.3.4.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h4>Tổ hợp có động đất – Mục 12.4.2.3</h4>
+<p>Khi có động đất, tổ hợp 5 và 7 của LRFD được thay bằng:</p>
+<div class="eq" id="eq-10-3"><div class="m">$$\text{(5)}\ \ (1{,}2 + 0{,}2S_{DS})D + \rho Q_E + L + 0{,}2S;\qquad \text{(7)}\ \ (0{,}9 - 0{,}2S_{DS})D + \rho Q_E + 1{,}6H,$$</div><span class="tag">(10.3)</span></div>
+<p>trong đó $E_v = 0{,}2S_{DS}D$ là thành phần đứng của động đất (công thức 12.4-4), và $\rho$ là hệ số dư (redundancy). Tác động ngang lấy 100 % theo một phương cộng 30 % theo phương vuông góc (Mục 12.5.3).</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Giữ nguyên $S_{DS} = 0{,}66$ của mô hình mẫu cho công trình ở địa điểm khác.</li>
+<li>Chỉ xét động đất từng phương riêng lẻ, quên tổ hợp 100 % một phương + 30 % phương vuông góc.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Theo Mục 12.5.3, tác động động đất theo hai phương ngang được kết hợp như thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 100 % phương X cộng 100 % phương Y</label></li><li><label><input type="radio" name="q1" value="1"> 100 % theo một phương cộng 30 % theo phương vuông góc</label></li><li><label><input type="radio" name="q1" value="2"> Căn bậc hai tổng bình phương (SRSS) của hai phương</label></li><li><label><input type="radio" name="q1" value="3"> Chỉ xét phương bất lợi hơn</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem đoạn sau <a href="#eq-10-3">(10.3)</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>100 % một phương + 30 % phương vuông góc, đổi chiều ± cho đủ 8 tổ hợp (EX ± 0,3EY, EY ± 0,3EX…).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.332" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Mô hình DNP có $S_{DS} = 0{,}66$. Tính hệ số của tĩnh tải $D$ trong tổ hợp LRFD (5) có động đất.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Hệ số $= 1{,}2 + 0{,}2S_{DS}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1{,}2 + 0{,}2 \times 0{,}66 = 1{,}332$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="56" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Chân cột có lực dọc nén do tĩnh tải $D = 120$ kN; động đất gây lực kéo $Q_E = 40$ kN. Giả sử $S_{DS} = 0{,}5$, $\rho = 1{,}0$, $H = 0$. Tính lực dọc nén còn lại theo tổ hợp (7).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>(7): $(0{,}9 - 0{,}2S_{DS})D + \rho Q_E$, với $Q_E$ ngược chiều $D$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$(0{,}9 - 0{,}2 \times 0{,}5) \times 120 - 1{,}0 \times 40 = 0{,}8 \times 120 - 40 = 96 - 40 = 56$ kN (vẫn nén).</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>(5): $(1{,}2 + 0{,}2S_{DS})D + \rho Q_E + L + 0{,}2S$; (7): $(0{,}9 - 0{,}2S_{DS})D + \rho Q_E + 1{,}6H$.</li>
+<li>$E_v = 0{,}2S_{DS}D$ là thành phần đứng của động đất; nó tăng tải trọng lực ở (5) và giảm tĩnh tải chống lật ở (7).</li>
+<li>Mô hình mẫu: $S_{DS} = 0{,}66$, $\rho = 1{,}0$; phải tính lại cho từng công trình.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

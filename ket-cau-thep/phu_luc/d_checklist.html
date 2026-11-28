@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="phu_luc/d_checklist.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phụ lục D. Danh mục kiểm tra mô hình – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Phụ lục D</div>
+<h1>Phụ lục D. Danh mục kiểm tra mô hình</h1>
+<p class="lead">Bảng rà soát mô hình SAP2000 và hồ sơ tính theo từng giai đoạn, tổng hợp các lỗi đã gặp trong tài liệu và video của khóa học.</p>
+<div class="tbl" id="tbl-A-1"><table><thead><tr><th>Giai đoạn</th><th>Kiểm tra</th><th>Lỗi thường gặp (từ tài liệu và video của khóa)</th><th>Chương</th></tr></thead><tbody>
+<tr><td>Vật liệu</td><td>$F_y$, $F_u$ theo mác và chiều dày; đơn vị</td><td>SS400 khai $F_u$ = 3450 kG/cm² (thực tế ≥ 4000); nhãn Grade 50</td><td>1, 2</td></tr>
+<tr><td>Hệ số vật liệu TCVN</td><td>$\gamma_m$ = 1,10 cho thép nước ngoài; $\gamma_c$ theo Bảng 1</td><td>Dùng $\gamma_m$ = 1,05 và $\gamma_c$ = 0,95 cho kèo</td><td>6</td></tr>
+<tr><td>Tiết diện</td><td>Hướng tiết diện thay đổi (I → J), Extrude</td><td>Cột vẽ ngược</td><td>2</td></tr>
+<tr><td>Liên kết mô hình</td><td>Release, Tension Only, chân cột</td><td>Mất ổn định do release T hai đầu</td><td>3</td></tr>
+<tr><td>Gió TCVN</td><td>$W_{3s,10} = 0{,}852W_0$; $\gamma_f$ = 2,1; $c_i$ = ±0,2</td><td>Bỏ sót áp lực trong $c_i$</td><td>4</td></tr>
+<tr><td>Gió ASCE</td><td>$V_{700}$ quy đổi; Exposure; $K_z \ge 0{,}70$ (B)</td><td>Dùng 62,77 m/s (vùng III) cho vùng II</td><td>9</td></tr>
+<tr><td>Tổ hợp</td><td>Đủ các trường hợp gió, có 0,9D (hoặc 0,6D/0,9D) với gió hút</td><td>Thiếu tổ hợp gió hút với tĩnh tải giảm</td><td>5, 10</td></tr>
+<tr><td>Ổn định</td><td>DM: Tau-b, notional load, phi tuyến</td><td>DNP để <i>No Modification</i></td><td>11</td></tr>
+<tr><td>Preferences AISC</td><td>Framing type, LRFD/ASD</td><td>DNP để SMF (đúng ra là OMF), ASD</td><td>12</td></tr>
+<tr><td>Overwrites</td><td>$L_b$ theo chống xiên; không dùng 1E-4</td><td>$L_b$ quá nhỏ làm kết quả không an toàn</td><td>12</td></tr>
+<tr><td>Thanh chống</td><td>$\lambda \le 200$</td><td>D90×3, D114×4 dài 8 m không đạt</td><td>6</td></tr>
+<tr><td>Cột</td><td>Chống xiên ≤ 4,2 m (C1)</td><td>Không bố trí chống xiên ở cột</td><td>6, 13</td></tr>
+<tr><td>Liên kết</td><td>Bảng C.4 TCVN 5575:2024; tương tác (190)</td><td>Dùng số liệu TCXDVN 338:2005</td><td>7</td></tr>
+<tr><td>Chân cột</td><td>Lực trượt: ma sát hoặc chốt chống cắt</td><td>Cho bu lông neo chịu cắt</td><td>7, 15</td></tr>
+<tr><td>Cầu trục</td><td>$\gamma_f$ = 1,2; $\psi_t$ = 1 khi một cầu trục; $\eta$ = 1,2</td><td>Dùng TCVN 2737:1995</td><td>18</td></tr>
+<tr><td>Điều kiện sử dụng</td><td>Giới hạn theo tiêu chí thiết kế; gió sử dụng 0,44W</td><td>Dùng $H/100$, $L/250$ của tài liệu cũ cho hồ sơ TCVN</td><td>5, 14</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng A.1.</b> Danh mục kiểm tra</p>
+<ul><li>Rà soát theo thứ tự: vật liệu → tiết diện → liên kết → tải trọng → tổ hợp → ổn định → thiết kế → điều kiện sử dụng.</li>
+<li>Phần lớn lỗi đến từ hệ số cũ (TCVN 2737:1995, TCXDVN 338:2005) và thông số mặc định của SAP2000 chưa sửa.</li></ul>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="18_nha_cau_truc/b1_tai_cau_truc_tcvn.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 18.1. Tải cầu trục TCVN 2737:2023 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 18 · Nhà có cầu trục · Bài 1</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 18.1. Tải cầu trục TCVN 2737:2023 <span class="en">Crane loads to TCVN 2737:2023</span></h1>
+<p class="lead">Cầu trục truyền lên khung ngang ba lực: áp lực đứng lớn nhất $D_{\max}$, nhỏ nhất $D_{\min}$ và lực hãm ngang $T$. Cả ba đều tính bằng đường ảnh hưởng phản lực gối của dầm cầu trục.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Xác định $\sum y_i$, $D_{\max}$, $D_{\min}$, $T$ theo TCVN 2737:2023 điều 9 từ số liệu catalogue cầu trục.</li>
+<li>Nhận ra các khác biệt so với TCVN 2737:1995 ($\gamma_f$, $\psi_t$) mà bảng tính cũ của khóa còn dùng.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Giả sử nhà xưởng <b>Hòa Bình</b> (nhịp 50 m) được bổ sung một cầu trục 15 T, chế độ trung bình, số liệu như bảng tính <code>03.2</code> của khóa: $P^c_{\max}$ = 108 kN, $K$ = 2115 mm. Bảng tính cũ cho $D_{\max}$ = 170,6 kN theo TCVN 2737:1995. Hồ sơ mới phải theo TCVN 2737:2023, nên kỹ sư cần tính lại và biết tải lên cột tăng bao nhiêu.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<figure><img class="zoom" src="../assets/img/ch18_mat_cat_cau_truc.svg" alt="Mặt cắt ngang nhà có cầu trục"><figcaption>Hình 18.1. Mặt cắt nhà có cầu trục: Dmax, Dmin đặt tại trục ray, lệch tâm e so với trục cột dưới; T đặt tại cao trình ray.</figcaption></figure>
+<h3>Số liệu cầu trục và thuật ngữ</h3>
+<div class="tbl" id="tbl-18-1"><table><thead><tr><th>Ký hiệu</th><th>Ý nghĩa</th><th>Ví dụ (bảng tính <code>03.2</code> của khóa)</th></tr></thead><tbody>
+<tr><td>$Q$</td><td>Sức nâng</td><td>15 T = 150 kN</td></tr>
+<tr><td>$P^c_{\max}$, $P^c_{\min}$</td><td>Áp lực tiêu chuẩn lớn nhất và nhỏ nhất của một bánh xe lên ray (xe con ở sát một bên)</td><td>108 kN; 27,9 kN</td></tr>
+<tr><td>$G_{xc}$</td><td>Trọng lượng xe con (xe tời)</td><td>11,85 kN</td></tr>
+<tr><td>$n_0$</td><td>Số bánh xe ở một bên cầu trục</td><td>2</td></tr>
+<tr><td>$K$</td><td>Khoảng cách hai bánh xe (đế bánh)</td><td>2115 mm</td></tr>
+<tr><td>Chế độ làm việc</td><td>Nhóm A1–A8 theo TCVN 8590-1:2010 (ISO 4301-1)</td><td>"Trung bình", tương ứng A4–A5</td></tr>
+<tr><td>$B$</td><td>Bước cột, cũng là nhịp dầm cầu trục</td><td>6,8 m trong phần tính tải; 8,5 m trong phần kiểm tra dầm</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 18.1.</b> Số liệu cầu trục dùng trong chương</p>
+<p>Các số liệu $P^c_{\max}$, $P^c_{\min}$, $G_{xc}$, $K$ lấy theo <b>catalogue của nhà sản xuất cầu trục</b> (TCVN 2737:2023 mục 9.2), không tự tính.</p>
+<div class="box check"><div class="bt">🔶 Cần đối chiếu</div>
+<p><b>Bảng tính <code>03.2 Bang tinh cau truc -1CT 15 T-DH- 8.5m</code> có ba vấn đề cần sửa trước khi dùng:</b></p>
+<ol><li>Dùng <b>TCVN 2737:1995</b>: $n = 1{,}1$, $n_c = 0{,}85$, hệ số động $k_1 = 1{,}1$.</li>
+<li>Phần đường ảnh hưởng dùng nhịp dầm <b>6,8 m</b> ($a = b = 3400$ mm, $y_2 = 0{,}689$). Phần kiểm tra tiết diện lại dùng <b>$l$ = 8,5 m</b>. Hai nhịp không thống nhất.</li>
+<li>Nhiều ô báo lỗi <code>#NAME?</code> và <code>#REF!</code>: bảng tính phụ thuộc hàm macro và liên kết ngoài đã mất. Tệp còn chứa trang macro Excel 4.0 ẩn (xem Chương 7). Kết quả kiểm tra tiết diện vì thế <b>không đọc được</b>.</li></ol>
+</div>
+<h3>Tải trọng cầu trục theo TCVN 2737:2023</h3>
+<h4>Các quy định chính (điều 9)</h4>
+<div class="tbl" id="tbl-18-2"><table><thead><tr><th>Nội dung</th><th>TCVN 2737:2023</th><th>TCVN 2737:1995 (bảng tính cũ)</th></tr></thead><tbody>
+<tr><td>Hệ số độ tin cậy $\gamma_f$ (9.8)</td><td><b>1,2</b> cho mọi chế độ làm việc</td><td>1,1</td></tr>
+<tr><td>Hệ số động $\eta$ khi tính <b>dầm cầu trục</b> và liên kết (9.10)</td><td><b>1,2</b>, không phụ thuộc bước cột. Không dùng khi tính mỏi, độ võng, chuyển vị cột, hoặc tác dụng cục bộ</td><td>1,1 hoặc 1,2 tùy chế độ và bước cột</td></tr>
+<tr><td>Hệ số tổ hợp $\psi_t$ (9.18)</td><td><b>1 cầu trục: 1,0</b>; 2 cầu trục: 0,85 (A1–A6), 0,95 (A7–A8); 4 cầu trục: 0,70 hoặc 0,80</td><td>0,85 (bảng tính áp cả khi chỉ có 1 cầu trục)</td></tr>
+<tr><td>Hãm xe con, ngang nhà (9.4)</td><td>$0{,}05(Q + G_{xc})$ với móc mềm, $0{,}1(Q + G_{xc})$ với móc cứng, truyền về <b>một bên</b> đường cẩu và chia đều cho các bánh xe bên đó</td><td>Như nhau</td></tr>
+<tr><td>Hãm cầu trục, dọc nhà (9.3)</td><td>$0{,}1 \times$ tải đứng tiêu chuẩn lên các bánh xe hãm (khi không có số liệu, lấy nửa số bánh)</td><td>Như nhau</td></tr>
+<tr><td>Lực xô ngang (9.5)</td><td>$0{,}2P$ mỗi bánh, chỉ với A7–A8, chỉ cho dầm cầu trục và liên kết. Không xét đồng thời với 9.4</td><td>–</td></tr>
+<tr><td>Hệ số cục bộ $\gamma_{f1}$ (9.9)</td><td>1,2 (A1–A5); 1,4 (A6); 1,6 (A7); 1,7–1,8 (A8). Dùng khi tính ứng suất cục bộ dưới bánh xe</td><td>–</td></tr>
+<tr><td>Số cầu trục xét (9.11, 9.12)</td><td>Dầm cầu trục: ≤ 2. Khung: ≤ 2 trên mỗi đường cẩu, ≤ 4 khi xét nhiều nhịp</td><td>–</td></tr>
+<tr><td>Độ võng, chuyển vị (9.16)</td><td>Chỉ xét <b>1 cầu trục</b>, không có hệ số động</td><td>–</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 18.2.</b> Tải trọng cầu trục – TCVN 2737:2023 so với 1995</p>
+<h4>Tải trọng lên khung ngang</h4>
+<p>Đặt các bánh xe trên đường ảnh hưởng phản lực gối của dầm cầu trục (dầm đơn giản hai nhịp kề nhau), một bánh nằm đúng trên cột:</p>
+<div class="eq" id="eq-18-1"><div class="m">$$D_{\max} = \gamma_f\,\psi_t\,P^c_{\max}\sum y_i,\qquad D_{\min} = \gamma_f\,\psi_t\,P^c_{\min}\sum y_i,\qquad T = \gamma_f\,\psi_t\,T^c_1\sum y_i$$</div><span class="tag">(18.1)</span></div>
+<p>với $T^c_1 = 0{,}05(Q + G_{xc})/n_0$ (móc mềm). Với một cầu trục hai bánh mỗi bên: $\sum y_i = 1 + (1 - K/B)$.</p>
+<p>$D_{\max}$, $D_{\min}$ đặt tại trục ray, tức lệch tâm $e$ so với trục cột dưới, nên sinh mô men $M = D\cdot e$ tại vai cột. $T$ đặt tại cao trình đỉnh ray (hoặc cao trình dầm hãm), có thể hướng vào trong hoặc ra ngoài nhịp.</p>
+<h2 id="s3">3. Khám phá</h2>
+<p>Đổi bước cột, đế bánh, số cầu trục và xem đường ảnh hưởng, $\sum y$ cùng tải lên khung theo ba tiêu chuẩn. Mặc định là cầu trục 15 T của Ví dụ 18.1.</p>
+<div data-widget="W21"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 18.1 – Cầu trục 15 T, một cầu trục, chế độ trung bình</div>
+<p>$T^c_1 = 0{,}05 \times (150 + 11{,}85)/2 = 4{,}046$ kN.</p>
+<details class="sol"><summary>Lời giải</summary>
+<div class="tbl" id="tbl-18-3"><table><thead><tr><th>Đại lượng</th><th>Bảng tính khóa (1995, $B$ = 6,8 m)</th><th>TCVN 2737:2023, $B$ = 6,8 m</th><th>TCVN 2737:2023, $B$ = 8,5 m</th></tr></thead><tbody>
+<tr><td>$\sum y$</td><td>1,689</td><td>1,689</td><td>1,751</td></tr>
+<tr><td>Hệ số</td><td>$n \cdot n_c = 1{,}1 \times 0{,}85 = 0{,}935$</td><td>$\gamma_f \psi_t = 1{,}2 \times 1{,}0 = 1{,}2$</td><td>1,2</td></tr>
+<tr><td>$D_{\max}$ (kN)</td><td>170,6</td><td><b>218,9</b></td><td><b>227,0</b></td></tr>
+<tr><td>$D_{\min}$ (kN)</td><td>44,1</td><td>56,5</td><td>58,6</td></tr>
+<tr><td>$T$ (kN)</td><td>6,39</td><td>8,20</td><td>8,50</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 18.3.</b> Tải trọng cầu trục 15 T lên khung</p>
+<p>Tải lên khung <b>tăng 28 %</b> khi chuyển sang TCVN 2737:2023. Hai nguyên nhân là $\gamma_f$ tăng (1,1 → 1,2) và việc dùng đúng $\psi_t = 1{,}0$ cho một cầu trục.</p>
+</details>
+</div>
+<h2 id="s5">5. Lỗi thường gặp</h2>
+<ul><li>Giữ $n_c = 0{,}85$ khi nhà chỉ có <b>một</b> cầu trục: TCVN 2737:2023 cho $\psi_t = 1{,}0$.</li>
+<li>Lấy $\sum y$ theo bước cột 6,8 m trong khi dầm cầu trục được kiểm tra với nhịp 8,5 m.</li></ul>
+<h2 id="s6">6. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Theo TCVN 2737:2023 mục 9.8, hệ số độ tin cậy $\gamma_f$ của tải trọng cầu trục là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 1,1 cho mọi chế độ làm việc</label></li><li><label><input type="radio" name="q1" value="1"> 1,2 cho mọi chế độ làm việc</label></li><li><label><input type="radio" name="q1" value="2"> 1,1 với chế độ nhẹ, 1,2 với chế độ nặng</label></li><li><label><input type="radio" name="q1" value="3"> 1,3</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="#tbl-18-2">Bảng 18.2</a>, dòng $\gamma_f$.</p>
+</details>
+<details><summary>Lời giải</summary><p>TCVN 2737:2023 lấy $\gamma_f = 1{,}2$ cho mọi chế độ; TCVN 2737:1995 dùng 1,1.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.648" data-tol="0.003"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Cầu trục có đế bánh $K$ = 2,115 m, bước cột $B$ = 6 m, một cầu trục, hai bánh mỗi bên. Tính $\sum y_i$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Một bánh trên cột: $\sum y_i = 1 + (1 - K/B)$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sum y_i = 1 + (1 - 2{,}115/6) = 1 + 0{,}6475 = 1{,}648$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="228.0" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cầu trục 20 T (số liệu giả định): $P^c_{\max}$ = 150 kN, $K$ = 4,4 m, bước cột 6 m, nhà có một cầu trục. Tính $D_{\max}$ theo TCVN 2737:2023.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\gamma_f = 1{,}2$; $\psi_t = 1{,}0$; $\sum y = 2 - K/B$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sum y = 2 - 4{,}4/6 = 1{,}2667$; $D_{\max} = 1{,}2 \times 1{,}0 \times 150 \times 1{,}2667 = 228{,}0$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$D_{\max} = \gamma_f\psi_tP^c_{\max}\sum y_i$; một cầu trục hai bánh: $\sum y_i = 2 - K/B$.</li>
+<li>Ví dụ 18.1: $D_{\max}$ = 218,9 kN (TCVN 2023, $B$ = 6,8 m) so với 170,6 kN của bảng tính 1995, tăng 28 %.</li>
+<li>$T^c_1 = 0{,}05(Q + G_{xc})/n_0$ với móc mềm, truyền về một bên đường cẩu.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w21.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

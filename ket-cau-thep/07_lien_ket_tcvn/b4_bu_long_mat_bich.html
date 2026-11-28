@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="07_lien_ket_tcvn/b4_bu_long_mat_bich.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 7.4. Bu lông mặt bích – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 7 · Liên kết TCVN · Bài 4</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 7.4. Bu lông mặt bích <span class="en">End-plate moment connections</span></h1>
+<p class="lead">Trong liên kết mặt bích kèo – cột, mô men làm các hàng bu lông phía cánh kéo chịu kéo. Lực trong hàng xa nhất tính theo giả thiết bản mã xoay quanh tâm cánh nén, sau đó kiểm tra kéo (188) và tương tác (190).</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Tính $\sum h_i^2$ và lực kéo $N_{t,\max}$ của hàng bu lông xa nhất.</li>
+<li>Kiểm tra bu lông theo (188), (190) và đánh giá chênh lệch giữa TCVN 5575:2024 và TCXDVN 338:2005.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nút kèo – cột nhà xưởng Hòa Bình chịu $M = 420{,}4$ kNm, $V = 81{,}0$ kN (Ví dụ 7.1). Bảng tính <code>COT-KEO</code> cũ chọn 8 bu lông M27 cấp 8.8 và cho tỷ số kéo 1,05, tức là không đạt. Tính lại với $f_{tb} = 448$ MPa của TCVN 5575:2024 thì cùng bố trí đó cho tỷ số 0,94.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h4>Mô men làm bu lông chịu kéo (liên kết mặt bích)</h4>
+<p>TCVN 5575:2024 không có công thức riêng cho liên kết mặt bích kèo – cột. Thực hành thiết kế ở Việt Nam (và bảng tính <code>COT-KEO</code> của khóa) giả thiết bản mã xoay quanh <b>trục đi qua trọng tâm cánh chịu nén</b>. Lực kéo trong hàng bu lông xa nhất:</p>
+<div class="eq" id="eq-7-10"><div class="m">$$N_{t,\max} = \frac{M\,h_1}{m\sum h_i^2} - \frac{N}{n} \qquad (\text{N nén lấy dương})$$</div><span class="tag">(7.10)</span></div>
+<p>Trong đó $h_i$ là khoảng cách từ hàng bu lông $i$ đến trục quay, $m$ là số bu lông trên một hàng (thường là 2) và $n$ là tổng số bu lông. Đây cũng là dạng của công thức (L.3) trong Phụ lục L.</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p>Công thức ([-@eq:7-10]) bỏ qua <b>lực bẩy (prying)</b> do bản mã mỏng biến dạng. Để bỏ qua được lực bẩy, bản mã phải đủ dày, thông thường $t_p \ge d_b$ và không nhỏ hơn chiều dày cánh. Cách kiểm tra chiều dày bản mã theo đường chảy (yield-line) của AISC Design Guide 4/16 được trình bày ở Chương 15. Có thể dùng cách đó cho cả thiết kế theo TCVN.</p>
+</div>
+<h2 id="s3">3. Khám phá</h2>
+<p>Widget dùng số liệu Ví dụ 7.2 (4 hàng × 2 bu lông, $h_i$ = 548, 428, 300, 150 mm). Đổi đường kính, cấp bền, số hàng và vị trí hàng để xem lực từng hàng, kiểm tra (188), (190) và so sánh với số liệu TCXDVN 338:2005.</p>
+<figure><img class="zoom" src="../assets/img/ch07_mat_bich.svg" alt="Mặt bích kèo – cột với 4 hàng bu lông, khoảng cách h1 đến h4 tới tâm cánh nén"><figcaption>Hình 7.1. Mặt bích kèo H500×250×8×12 (Ví dụ 7.2): 4 hàng × 2 bu lông M27, $h_i$ = 548, 428, 300, 150 mm tính tới tâm cánh nén.</figcaption></figure>
+<div data-widget="W10"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 7.2 – Bu lông mặt bích kèo H500×250×8×12</div>
+<p>Nội lực như Ví dụ 7.1. Mặt bích có đoạn kéo dài, 4 hàng × 2 bu lông 8.8 (cấp chính xác B). Khoảng cách tới trục quay (tâm cánh nén): $h_1 = 548$, $h_2 = 428$, $h_3 = 300$, $h_4 = 150$ mm.</p>
+<details class="sol"><summary>Lời giải</summary>
+<div class="eq"><div class="m">$$\sum h_i^2 = 548^2 + 428^2 + 300^2 + 150^2 = 595\,988 \text{ mm}^2$$</div></div>
+<div class="eq"><div class="m">$$N_{t,\max} = \frac{420{,}4\times 10^6 \times 548}{2 \times 595\,988} = 193{,}3 \text{ kN} \quad (\text{bỏ qua } N \text{ nén, thiên về an toàn}).$$</div></div>
+<div class="tbl" id="tbl-7-8"><table><thead><tr><th></th><th>M24</th><th>M27</th></tr></thead><tbody>
+<tr><td>$N_{bt} = 448 A_{bn}$ (kN)</td><td>158,1</td><td>205,6</td></tr>
+<tr><td>$N_t/N_{bt}$</td><td><b>1,22 – không đạt</b></td><td>0,94</td></tr>
+<tr><td>$N_{bv} = 332 A_b \times 0{,}9$ (kN)</td><td>135,1</td><td>170,9</td></tr>
+<tr><td>$N_s = V/8$ (kN)</td><td>10,1</td><td>10,1</td></tr>
+<tr><td>Công thức (190)</td><td>1,50</td><td><b>0,89 – đạt</b></td></tr>
+<tr><td>$N_{bp} = 620 \times d_b \times 20 \times 0{,}9$ (kN)</td><td>267,8</td><td>301,3</td></tr>
+<tr><td>$N_{bt}$ theo TCXDVN 338 ($f_{tb} = 400$)</td><td>141,2</td><td>183,6 → tỷ số 1,05</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 7.8.</b> Kiểm tra bu lông mặt bích kèo</p>
+<p>Chọn <b>8 bu lông M27 cấp 8.8</b>. Cùng lựa chọn này, nếu tính theo số liệu cũ của TCXDVN 338:2005 sẽ <b>không đạt</b> (1,05). Đây là một ví dụ cụ thể cho thấy cập nhật Bảng C.4 có ảnh hưởng thực đến thiết kế.</p>
+</details>
+</div>
+<h2 id="s5">5. Lỗi thường gặp</h2>
+<ul><li>Dùng trục quay ở mép dưới bản mã hoặc ở trọng tâm nhóm bu lông, làm sai $h_i$ và lực kéo.</li>
+<li>Bỏ qua lực bẩy khi bản mã mỏng ($t_p &lt; d_b$); khi đó lực bu lông thực tế lớn hơn giá trị theo ([-@eq:7-10]).</li></ul>
+<h2 id="s6">6. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Trong công thức ([-@eq:7-10]), $h_i$ được đo từ hàng bu lông $i$ đến đâu?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Trọng tâm nhóm bu lông</label></li><li><label><input type="radio" name="q1" value="1"> Mép dưới bản mã</label></li><li><label><input type="radio" name="q1" value="2"> Trọng tâm cánh chịu nén (trục quay giả thiết)</label></li><li><label><input type="radio" name="q1" value="3"> Trục trung hòa của tiết diện kèo</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem giả thiết về trục quay của bản mã.</p>
+</details>
+<details><summary>Lời giải</summary><p>Thực hành thiết kế giả thiết bản mã xoay quanh trục qua trọng tâm cánh chịu nén; $h_i$ đo từ trục này.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="123.0" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Mặt bích có 4 hàng × 2 bu lông, $h_i$ = 500, 400, 280, 140 mm, chịu $M = 250$ kNm. Bỏ qua $N$. Tính $N_{t,\max}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính $\sum h_i^2$ trước.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sum h_i^2 = 500^2 + 400^2 + 280^2 + 140^2 = 508\,000$ mm²; $N_{t,\max} = 250\times10^6 \times 500/(2 \times 508\,000) = 123\,031$ N $= 123{,}0$ kN.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.715" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bố trí như Ví dụ 7.2 ($\sum h_i^2 = 595\,988$ mm², $h_1 = 548$ mm, 8 bu lông M24 cấp 8.8, cấp chính xác B). Nội lực $M = 300$ kNm, $N = 40$ kN (nén, được kể đến), $V = 100$ kN. Tính vế trái của (190).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$N_t = Mh_1/(m\sum h_i^2) - N/n$; $N_s = V/n$; $N_{bv} = 135{,}1$ kN, $N_{bt} = 158{,}1$ kN.</p>
+</details>
+<details><summary>Lời giải</summary><p>$N_t = 137{,}9 - 40/8 = 132{,}9$ kN; $N_s = 12{,}5$ kN; $(12{,}5/135{,}1)^2 + (132{,}9/158{,}1)^2 = 0{,}009 + 0{,}707 = 0{,}715 \le 1$ → đạt.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>$N_{t,\max} = Mh_1/(m\sum h_i^2) - N/n$, trục quay qua tâm cánh nén; bỏ qua $N$ nén là thiên về an toàn.</li>
+<li>Ví dụ 7.2: M24 không đạt (1,22); M27 cấp 8.8 đạt với (190) = 0,89. Theo TCXDVN 338 cùng bố trí cho tỷ số 1,05.</li>
+<li>Công thức bỏ qua lực bẩy; cần bản mã đủ dày ($t_p \ge d_b$, không nhỏ hơn chiều dày cánh).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w10.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

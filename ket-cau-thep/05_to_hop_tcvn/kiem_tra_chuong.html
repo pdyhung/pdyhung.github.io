@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="05_to_hop_tcvn/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 5: Tổ hợp, phân tích, điều kiện sử dụng – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 5 · Tổ hợp, phân tích, điều kiện sử dụng · Kiểm tra chương</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Kiểm tra Chương 5: Tổ hợp, phân tích, điều kiện sử dụng</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<ul><li>Tổ hợp cơ bản: $\psi_{t,1} = 1{,}0$ (chủ đạo), $\psi_{t,2} = 0{,}9$, các tải tiếp theo 0,7; tải dài hạn $\psi_L$ = 1,0 / 0,95.</li>
+<li>Nhà xưởng không cầu trục: TH1–TH4 (<a href="../05_to_hop_tcvn/b1_to_hop.html#tbl-5-1">Bảng 5.1</a>); mỗi hướng gió (kể cả $\pm c_i$) tạo một nhóm tổ hợp.</li>
+<li>Trạng thái giới hạn thứ hai: $\gamma_f = \gamma_n = 1{,}0$; giới hạn theo TCVN 2737:2023 Phụ lục G (<a href="../05_to_hop_tcvn/b2_gioi_han_vong.html#tbl-5-2">Bảng 5.2</a>).</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Hệ số $\psi_{t,2}$ và $\psi_{t,3}$ khác nhau thế nào? Khi nào dùng 0,7?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> $\psi_{t,2} = 0{,}7$; $\psi_{t,3} = 0{,}9$; dùng 0,7 cho tải chủ đạo</label></li><li><label><input type="radio" name="q1" value="1"> $\psi_{t,2} = 0{,}9$ cho tải ngắn hạn thứ hai; $\psi_{t,3} = 0{,}7$ cho tải ngắn hạn thứ ba trở đi</label></li><li><label><input type="radio" name="q1" value="2"> Cả hai bằng 0,9; 0,7 chỉ dùng cho cầu trục</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem điều 6.4.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\psi_{t,1} = 1{,}0$; $\psi_{t,2} = 0{,}9$; từ tải ngắn hạn thứ ba trở đi $\psi_t = 0{,}7$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Vì sao tổ hợp kiểm tra độ võng thẩm mỹ – tâm lý không kể hoạt tải sửa chữa mái?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Vì hoạt tải mái quá nhỏ so với tĩnh tải</label></li><li><label><input type="radio" name="q2" value="1"> Vì yêu cầu này dùng tải thường xuyên và tạm thời dài hạn, mà hoạt tải mái khu vực H không có giá trị tiêu chuẩn giảm (điều 8.3.3)</label></li><li><label><input type="radio" name="q2" value="2"> Vì hoạt tải mái đã kể trong trọng lượng bản thân</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Tổ hợp kiểm tra biến dạng".</p>
+</details>
+<details><summary>Lời giải</summary><p>Bảng G.1 mục 2a dùng tải thường xuyên + tạm thời dài hạn; hoạt tải mái sửa chữa không có phần dài hạn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="39" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Chuyển vị ngang giới hạn của nhà xưởng một tầng tường tôn treo, cao $h_s = 9$ m, là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$f_u = \min(1{,}3\,h_s/300;\ h_s/150)$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\min(1{,}3 \times 9000/300;\ 9000/150) = \min(39;\ 60) = 39$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="30.6" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính chuyển vị ngang giới hạn của nhà xưởng Hòa Bình ($h_s = 7{,}07$ m, tường tôn treo).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Như câu trên.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\min(1{,}3 \times 7070/300;\ 7070/150) = \min(30{,}6;\ 47{,}1) = 30{,}6$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="25" data-tol="0.001"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bài tập cuối chương: nhà xưởng Hòa Bình có 8 trường hợp gió (4 hướng × $\pm c_i$). Lập tổ hợp theo các nhóm TH1–TH4 của <a href="../05_to_hop_tcvn/b1_to_hop.html#tbl-5-1">Bảng 5.1</a>. Có bao nhiêu tổ hợp cơ bản (chưa kể ENVELOPE)?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>tổ hợp</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>TH1 có 1 tổ hợp; TH2, TH3, TH4 mỗi nhóm có một tổ hợp cho mỗi trường hợp gió.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1 + 3 \times 8 = 25$ tổ hợp (mô hình mẫu với 4 hướng gió có $1 + 3 \times 4 = 13$).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.89" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bài tập cuối chương (cách a, nhập tải tiêu chuẩn, cấp hậu quả C2): tính hệ số combo của gió trong tổ hợp TH3 $1{,}05SW + 1{,}1D + 1{,}3L + k_W W$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$k_W = \gamma_n\,\psi_{t,2}\,\gamma_f$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$k_W = 1{,}0 \times 0{,}9 \times 2{,}1 = 1{,}89$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Kiểm tra độ võng kèo bằng tổ hợp tính toán thay vì tổ hợp tiêu chuẩn dẫn đến điều gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q7" value="0"> Kết quả không đổi vì hệ số tải không ảnh hưởng đến độ võng</label></li><li><label><input type="radio" name="q7" value="1"> Độ võng tính ra lớn hơn thực tế khoảng 30–100 %, tiết diện bị chọn thừa</label></li><li><label><input type="radio" name="q7" value="2"> Độ võng tính ra nhỏ hơn, không an toàn</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tải tính toán = tải tiêu chuẩn × $\gamma_f$ (1,05–2,1).</p>
+</details>
+<details><summary>Lời giải</summary><p>Phân tích tuyến tính: độ võng tỉ lệ với tải, mà $\gamma_f$ = 1,05–2,1 → độ võng thừa khoảng 30–100 %, dẫn tới chọn tiết diện lớn không cần thiết.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

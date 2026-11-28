@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="18_nha_cau_truc/b3_mo_hinh_sap.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 18.3. Mô hình trong SAP2000 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 18 · Nhà có cầu trục · Bài 3</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 18.3. Mô hình trong SAP2000 <span class="en">Modelling crane loads in SAP2000</span></h1>
+<p class="lead">Tải cầu trục được đưa vào SAP2000 theo hai cách: tải tĩnh theo đường ảnh hưởng tại từng khung, hoặc tải di động chạy trên làn dầm cầu trục.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Khai báo Load Patterns, Load Cases cho từng vị trí cầu trục và lấy bao.</li>
+<li>Biết giới hạn của Moving Load khi cần cặp nội lực đồng thời.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mô hình nhà máy <b>DNP</b> có các mẫu tải D1…D5, T1…T5 và các trường hợp CT1…CT4 bao bằng <code>CRA ENVELOPE</code>. Các trường hợp CT1, CT2 cộng $D_{\max}$ của năm khung cùng lúc. Lực trong giằng cột và phản lực móng tổng vì thế lớn bất thường. Kỹ sư cần tổ chức lại để mỗi trường hợp ứng với một vị trí thật của cầu trục.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h4>Tổ hợp tải</h4>
+<ul><li><b>TCVN:</b> cầu trục là <b>tải tạm thời dài hạn và ngắn hạn</b> (TCVN 2737:2023 mục 6). Trong tổ hợp cơ bản, nhân với $\psi$ như các tải tạm thời khác (Chương 5). Không lấy đồng thời lực hãm ngang và lực hãm dọc của cùng một cầu trục (9.14).</li>
+<li><b>ASCE/AISC:</b> coi là L. Trong 1,2D + 1,6L + 0,5(Lr hoặc S) thì L bao gồm cầu trục. Khi tổ hợp với gió (1,2D + 1,0W + L + …), AISC DG7 khuyến nghị <b>không</b> xét đồng thời lực ngang cầu trục lớn nhất với gió lớn nhất.</li></ul>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Mô hình hóa trong SAP2000</h3>
+<h4>Cách 1 – Tải tĩnh theo đường ảnh hưởng (khung phẳng hoặc không gian)</h4>
+<p>Đây là cách dùng trong bảng tính của khóa và trong mô hình DNP.</p>
+<ol><li><b>Load Patterns</b> (loại <i>Live</i> hoặc <i>Other</i>): với mỗi khung $i$ chịu tác dụng, khai báo <code>Di-T</code>, <code>Di-P</code> (Dmax ở cột trái hoặc phải, Dmin ở cột còn lại) và <code>Ti-T</code>, <code>Ti-P</code> (lực hãm). Mô hình DNP có D1…D5 và T1…T5.</li>
+<li>Gán $D$ là lực tập trung tại nút vai cột, kèm <b>mô men</b> $D \cdot e$, hoặc mô hình tay đòn vai cột bằng phần tử cứng. Gán $T$ là lực ngang tại cao trình ray.</li>
+<li><b>Load Cases</b> tổ hợp các mẫu thành trường hợp cầu trục. Mô hình DNP có CT1…CT4, bao bằng <code>CRA ENVELOPE</code>.</li>
+<li>Vì $T$ đổi chiều, cần cả $+T$ và $-T$. Có thể dùng hệ số −1 như DNP đã làm, hoặc khai báo hai trường hợp.</li></ol>
+<div class="box check"><div class="bt">🔶 Cần đối chiếu</div>
+<p>Trong mô hình DNP, các trường hợp CT1, CT2 cộng $D_1 \ldots D_5$ của <b>năm khung cùng lúc</b>. Theo TCVN 2737:2023 mục 9.12, mỗi đường cẩu chỉ xét <b>tối đa hai cầu trục</b>. Một cầu trục chỉ cho $D_{\max}$ lớn nhất ở <b>một</b> khung, các khung kề chỉ nhận phần nhỏ theo đường ảnh hưởng. Cộng năm khung cùng lúc thiên về an toàn cho cột từng khung. Tuy vậy nó <b>phóng đại</b> lực dọc nhà, lực trong hệ giằng cột và phản lực móng tổng. Nên tạo các trường hợp riêng cho từng vị trí cầu trục (CT@khung 1, CT@khung 2…) rồi bao. Với nhà nhiều nhịp thì thêm hệ số $\psi_t$ đúng số cầu trục xét.</p>
+</div>
+<h4>Cách 2 – Tải di động (Moving Load)</h4>
+<p>Dùng khi dầm cầu trục được mô hình trong mô hình không gian:</p>
+<ol><li><b>Define → Lanes</b>: tạo làn dọc theo trục ray, gắn vào các phần tử dầm cầu trục.</li>
+<li><b>Define → Vehicles → General Vehicle</b>: hai trục cách nhau $K$ = 2,115 m, tải mỗi trục = $P_{\max}$ (một làn) và một vehicle thứ hai với $P_{\min}$ cho ray đối diện. Hoặc dùng một làn với tải $P_{\max}$ và xét riêng.</li>
+<li><b>Define → Vehicle Classes</b>, rồi <b>Load Cases → Moving Load</b>: gán vehicle class cho làn, đặt số làn tải tối đa.</li>
+<li>SAP2000 tự tìm vị trí bất lợi và cho <b>đường bao</b> nội lực. Đường bao này không cho cặp nội lực đồng thời, nên khi kiểm tra cột chịu nén uốn cần dùng tùy chọn <i>Correspondence</i> hoặc quay lại cách 1.</li></ol>
+<p>Cách 2 tiện cho dầm cầu trục liên tục và nhà có nhiều cầu trục, nhưng phức tạp hơn khi tổ hợp với các tải khác.</p>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Cộng $D_{\max}$ của mọi khung vào cùng một trường hợp: phóng đại lực dọc nhà và phản lực móng tổng.</li>
+<li>Chỉ khai báo $+T$: lực hãm đổi chiều, cần cả $+T$ và $-T$.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Trường hợp Moving Load trong SAP2000 cho đường bao nội lực. Khi kiểm tra cột chịu nén uốn, cần lưu ý gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Đường bao đã là cặp $P$–$M$ đồng thời, dùng trực tiếp</label></li><li><label><input type="radio" name="q1" value="1"> Đường bao không cho cặp nội lực đồng thời; dùng tùy chọn <i>Correspondence</i> hoặc quay lại cách tải tĩnh</label></li><li><label><input type="radio" name="q1" value="2"> Moving Load không dùng được cho cột</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$P_{\max}$ và $M_{\max}$ của đường bao có thể ứng với hai vị trí xe khác nhau.</p>
+</details>
+<details><summary>Lời giải</summary><p>Bao cho giá trị lớn nhất của từng nội lực riêng rẽ; cặp đồng thời cần <i>Correspondence</i> hoặc tải tĩnh theo từng vị trí.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="109.5" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Ở Ví dụ 18.1, $D_{\max}$ = 218,9 kN đặt tại trục ray, lệch tâm $e$ = 0,5 m (giả định) so với trục cột dưới. Tính mô men khai báo tại nút vai cột.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kNm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$M = D \cdot e$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$M = 218{,}9 \times 0{,}5 = 109{,}5$ kNm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="40.3" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cầu trục 15 T ($P^c_{\max}$ = 108 kN, $K$ = 2,115 m, $B$ = 6,8 m, TCVN 2737:2023, một cầu trục). Khi khung $i$ nhận $D_{\max}$ (một bánh nằm trên khung $i$, bánh kia ở nhịp $i$ – $i+1$), khung $i+1$ nhận áp lực đứng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kN</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Với đường ảnh hưởng của khung $i+1$, bánh trên khung $i$ có tung độ 0, bánh kia có tung độ $K/B$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$y = 2{,}115/6{,}8 = 0{,}311$; $D = 1{,}2 \times 1{,}0 \times 108 \times 0{,}311 = 40{,}3$ kN, nhỏ hơn nhiều 218,9 kN. Vì thế không nên cộng $D_{\max}$ của các khung cùng lúc.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Cách 1 (tải tĩnh): mỗi vị trí cầu trục là một Load Case, có $\pm T$, rồi lấy bao.</li>
+<li>Cách 2 (Moving Load): tiện cho dầm cầu trục liên tục, nhưng bao không cho cặp nội lực đồng thời.</li>
+<li>Không lấy đồng thời lực hãm ngang và lực hãm dọc của cùng một cầu trục (9.14).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

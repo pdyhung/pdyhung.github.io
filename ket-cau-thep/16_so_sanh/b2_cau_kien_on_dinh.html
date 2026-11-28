@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="16_so_sanh/b2_cau_kien_on_dinh.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 16.2. Cấu kiện và ổn định – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 16 · So sánh TCVN và Mỹ · Bài 2</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 16.2. Cấu kiện và ổn định <span class="en">Strength and stability of members</span></h1>
+<p class="lead">Với thép Q345, cường độ tính toán của hai hệ gần như bằng nhau. Khác biệt nằm ở cách xét ổn định, và ở cột C1 hai hệ lại cho cùng một kết luận.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>So sánh $f_{yd}$ (TCVN) với $\phi F_y$ (AISC) và cách hai hệ xét ổn định khung.</li>
+<li>Đối chiếu kết quả kiểm tra kèo, cột C1 với cùng nội lực (<a href="#tbl-16-4">Bảng 16.4</a>).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Cột C1 H(300–650)×200×6×10 chịu $N$ = 79,9 kN, $M$ = 278,1 kNm, chiều dài ngoài mặt phẳng $L_y$ = 5 m. Theo TCVN 5575:2024, $\bar\lambda_b$ = 0,824 vượt giới hạn 0,693. Theo AISC 360-10, chỉ số H1-1b bằng 1,056. Hai hệ dẫn đến cùng một giải pháp: thêm chống xiên.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Cường độ và hệ số an toàn vật liệu</h3>
+<div class="tbl" id="tbl-16-3"><table><thead><tr><th></th><th>TCVN 5575:2024</th><th>AISC 360-10</th></tr></thead><tbody>
+<tr><td>Thép Q345</td><td>$f_{yd} = 345/1{,}10 = 313{,}6$ MPa</td><td>$F_y$ = 345 MPa; $\phi$ = 0,9 → 310,5 MPa (uốn, chảy)</td></tr>
+<tr><td>Hệ số điều kiện làm việc</td><td>$\gamma_c$ theo Bảng 1 (0,9–1,2)</td><td>Không có (đã nằm trong $\phi$)</td></tr>
+<tr><td>Hệ số tầm quan trọng</td><td>$\gamma_n$ = 0,87 / 1,0 / 1,15 (nhân tải)</td><td>Risk Category (đổi bản đồ gió)</td></tr>
+<tr><td>Nén</td><td>$\varphi$ theo Phụ lục D, đường cong a, b, c</td><td>$F_{cr}$ theo E3 (một đường cong), có $Q$ cho bản mảnh</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 16.3.</b> So sánh cường độ</p>
+<p>Với Q345, $f_{yd}$ của TCVN (313,6 MPa) và $\phi F_y$ của AISC (310,5 MPa) gần như bằng nhau. Khác biệt nằm ở tải trọng và ở cách xét ổn định.</p>
+<h3>Ổn định và kiểm tra cấu kiện</h3>
+<div class="tbl" id="tbl-16-4"><table><thead><tr><th>Cấu kiện</th><th>TCVN 5575:2024 (Ch.6)</th><th>AISC 360-10 (Ch.13)</th><th>Nhận xét</th></tr></thead><tbody>
+<tr><td>Kèo H500×250×8×12, $M$ = 420,4 kNm</td><td>Bền uốn: 0,781</td><td>$\phi M_n$ (F3, cánh không đặc chắc): 0,748</td><td>Gần nhau</td></tr>
+<tr><td>Cột C1 H(300–650)×200×6×10, $N$ = 79,9 kN, $M$ = 278,1 kNm, $L_y$ = 5 m</td><td>Bền (104): 0,765. Ổn định tổng thể: $\bar\lambda_b$ = 0,824 > 0,693, <b>cần $L_{ef} \le 4{,}2$ m</b></td><td>H1-1b = <b>1,056 > 1</b> (LTB khống chế). Với $L_b$ = 4,2 m: 0,949</td><td><b>Cả hai hệ cùng đòi hỏi chống xiên ≤ 4,2 m</b></td></tr>
+<tr><td>Thanh chống 8 m</td><td>D90×3, D114×4 không đạt $\lambda_u$ = 200</td><td>KL/r ≤ 200 (khuyến nghị E2)</td><td>Như nhau</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 16.4.</b> So sánh kiểm tra cấu kiện với cùng nội lực</p>
+<p>Về phương pháp ổn định khung:</p>
+<ul><li>TCVN dùng <b>hệ số chiều dài tính toán $\mu$</b> (Bảng 32, phân tích bậc nhất).</li>
+<li>AISC 360-10 ưu tiên <b>Direct Analysis Method</b>: $K = 1$, phân tích bậc hai, giảm độ cứng, tải giả định (Chương 11).</li></ul>
+<p>Với khung cổng chân khớp, $\mu$ ≈ 2,5–3,5 làm giảm mạnh khả năng chịu nén trong mặt phẳng khung theo TCVN. DM đưa ảnh hưởng này vào mô men bậc hai. Hai cách cho kết quả cùng cỡ khi lực dọc nhỏ, như ở cột nhà xưởng mái nhẹ.</p>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Thấy $f_{yd}$ và $\phi F_y$ gần bằng nhau rồi kết luận hai hệ cho cùng tiết diện: khác biệt nằm ở tải trọng, ổn định và liên kết.</li>
+<li>Dùng hệ số $\mu$ của TCVN (Bảng 32) đồng thời với Direct Analysis Method của AISC (đã có $K = 1$ và phân tích bậc hai).</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Theo TCVN 5575:2024, cột C1 có $\bar\lambda_b$ = 0,824. Kết luận về ổn định tổng thể là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> $\bar\lambda_b \le 0{,}693$ → không cần kiểm tra ổn định tổng thể</label></li><li><label><input type="radio" name="q1" value="1"> $\bar\lambda_b$ = 0,824 > 0,693 → phải kiểm tra, cần $L_{ef} \le 4{,}2$ m</label></li><li><label><input type="radio" name="q1" value="2"> $\bar\lambda_b$ > 0,693 → phải tăng chiều cao tiết diện</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem <a href="#tbl-16-4">Bảng 16.4</a>, dòng cột C1.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}824 &gt; 0{,}693$ nên ổn định tổng thể khống chế; giải pháp là chống xiên để $L_{ef} \le 4{,}2$ m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="1.056" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Cột C1 theo AISC: $P_u$ = 79,85 kN, $\phi P_n$ = 749,6 kN, $M_u$ = 278,08 kNm, $\phi M_n$ = 277,3 kNm ($L_b$ = 5 m). Tính chỉ số tương tác H1-1b.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$P_u/\phi P_n &lt; 0{,}2$ → H1-1b: $P_u/(2\phi P_n) + M_u/\phi M_n$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$79{,}85/749{,}6 = 0{,}1065$; $0{,}0533 + 278{,}08/277{,}3 = 0{,}0533 + 1{,}0028 = 1{,}056 &gt; 1$ → không đạt.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.949" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Thêm chống xiên để $L_b$ = 4,2 m, khi đó $\phi M_n$ = 310,5 kNm (các số khác như câu trên). Tính lại chỉ số H1-1b.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tỷ số lực dọc không đổi; chỉ thay $\phi M_n$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}0533 + 278{,}08/310{,}5 = 0{,}0533 + 0{,}8956 = 0{,}949 \le 1$ → đạt. Cùng $L_{ef} \le 4{,}2$ m như TCVN.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Q345: $f_{yd}$ = 313,6 MPa (TCVN) và $\phi F_y$ = 310,5 MPa (AISC) gần như bằng nhau (<a href="#tbl-16-3">Bảng 16.3</a>).</li>
+<li>Cột C1: TCVN $\bar\lambda_b$ = 0,824 > 0,693; AISC H1-1b = 1,056 → cả hai cần chống xiên ≤ 4,2 m (H1-1b còn 0,949).</li>
+<li>TCVN dùng $\mu$ (Bảng 32), AISC ưu tiên Direct Analysis Method ($K = 1$).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

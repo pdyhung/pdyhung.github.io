@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="03_mo_hinh/b1_dung_khung.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 3.1. Dựng khung và nhân bản 3D – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 3 · Xây dựng mô hình · Bài 1</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 3.1. Dựng khung và nhân bản 3D <span class="en">Building the frame and 3D replication</span></h1>
+<p class="lead">Mô hình nhà xưởng được dựng theo trình tự cố định: một khung ngang điển hình, nhân bản thành không gian, rồi thêm khung đầu hồi, thanh chống, giằng và kiểm tra bằng Extrude 3D.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Thực hiện đúng 8 bước dựng mô hình, từ khung điển hình đến kiểm tra Extrude.</li>
+<li>Tính được thông số <i>Replicate</i> và khối lượng các hệ phụ (thanh chống, giằng).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Nhà xưởng <b>Hòa Bình</b> dài 72 m với 10 trục khung X1…X10 cách nhau 8 m. Thay vì vẽ 10 khung, kỹ sư vẽ một khung tại X1 bằng cột <code>H(300-650)x200x6x10</code> và các đoạn kèo, rồi dùng <i>Replicate</i> với $dx$ = 8 m, 9 lần. Sau đó hai khung đầu hồi được thay bằng cột sườn tường H250×200×5×6.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Trình tự dựng mô hình (theo video Buổi 02)</h3>
+<ol><li><b>Khung ngang điển hình</b> trong mặt phẳng Y–Z tại trục X1: vẽ cột (<i>Draw Frame</i>) từ chân lên đỉnh, rồi vẽ kèo từ đỉnh cột lên đỉnh mái. Chia kèo tại các điểm thay đổi tiết diện và tại mối nối.</li>
+<li><b>Gán tiết diện:</b> <i>Assign → Frame → Frame Sections</i>. Cột dùng <code>H(300-650)x200x6x10</code>, kèo dùng các tiết diện thay đổi và tiết diện đều đoạn giữa.</li>
+<li><b>Chân cột:</b> chọn các nút chân, <i>Assign → Joint → Restraints</i>:<ul><li>khớp: U1, U2, U3 cố định;</li>
+<li>ngàm: thêm R1, R2, R3.</li></ul></li>
+<li><b>Nhân bản khung:</b> chọn toàn bộ khung, <i>Edit → Replicate → Linear</i>, $dx$ = 8 m, số lần 9.</li>
+<li><b>Khung đầu hồi:</b> tại X1 và X10, thay khung chính bằng cột sườn tường (H250×200×5×6) và kèo đầu hồi. Cột sườn tường có hai đầu khớp.</li>
+<li><b>Thanh chống dọc nhà:</b> nối các đỉnh cột và đỉnh mái dọc trục X. Ống D114×4 hoặc D141×4 (Chương 6). Hai đầu khớp.</li>
+<li><b>Giằng mái và giằng cột:</b> thép tròn D16–D25 vẽ chéo chữ X trong các bước có giằng (thường hai bước đầu hồi và bước giữa khi nhà dài). Gán <i>Tension Only</i> như mục dưới.</li>
+<li><b>Kiểm tra bằng Extrude 3D</b> (video Buổi 02 phút 15–20): màu theo tiết diện, hướng cánh, vị trí giằng.</li></ol>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<ol><li>Mặt phẳng Y–Z tại X1: <i>Draw Frame</i> cột từ chân lên đỉnh, kèo từ đỉnh cột lên đỉnh mái.</li>
+<li>Chọn cả khung, <i>Edit → Replicate → Linear</i>: $dx$ = 8, <i>Number</i> = 9.</li>
+<li><i>View → Set Display Options → Extrude</i> và <i>Frames: Sections</i> để soát tiết diện, hướng cánh.</li></ol>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Nhân bản trước khi gán chân cột và release: phải sửa lại 10 lần thay vì một lần.</li>
+<li>Không chia kèo tại điểm đổi tiết diện, mối nối: không gán được Nonprismatic đúng đoạn.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Lệnh nào nhân bản khung ngang điển hình dọc theo trục X?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> <i>Edit → Replicate → Linear</i></label></li><li><label><input type="radio" name="q1" value="1"> <i>Edit → Extrude → Points to Frames</i></label></li><li><label><input type="radio" name="q1" value="2"> <i>Draw → Quick Draw Frame</i></label></li><li><label><input type="radio" name="q1" value="3"> <i>Assign → Frame → Replicate</i></label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem bước 4 của trình tự dựng mô hình.</p>
+</details>
+<details><summary>Lời giải</summary><p><i>Edit → Replicate → Linear</i>, nhập $dx$ và số lần nhân bản.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="5" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà máy <b>DNP</b> dài 60 m, bước khung 12 m. Khung điển hình vẽ tại trục đầu tiên. Nhập <i>Number</i> (số lần nhân bản) bằng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>lần</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Số lần nhân bản = số khung − 1 = số bước khung.</p>
+</details>
+<details><summary>Lời giải</summary><p>$60/12 = 5$ bước → 6 khung → nhân bản 5 lần với $dx$ = 12 m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="2344" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Giả thiết nhà xưởng Hòa Bình có ba tuyến thanh chống chạy suốt chiều dài 72 m (hai đỉnh cột và đỉnh mái), dùng ống D114×4, $\rho$ = 7850 kg/m³. Tính tổng khối lượng thanh chống.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kg</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$A = \pi(D^2 - d^2)/4$ với $d = 114 - 2\times4 = 106$ mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$A = \pi(114^2 - 106^2)/4 = 1382{,}3$ mm² → $10{,}85$ kg/m; $3\times72 = 216$ m → $216\times10{,}85 = 2344$ kg.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Khung điển hình → nhân bản → đầu hồi → thanh chống → giằng → Extrude.</li>
+<li><i>Replicate Linear</i>: số lần = số bước khung.</li>
+<li>Cột sườn tường, thanh chống khớp hai đầu; giằng thép tròn Tension Only.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="06_cau_kien_tcvn/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 6: Kiểm tra cấu kiện TCVN 5575:2024 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 6 · Kiểm tra cấu kiện TCVN 5575:2024 · Kiểm tra chương</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Kiểm tra Chương 6: Kiểm tra cấu kiện TCVN 5575:2024</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<ul><li>$f_{yd} = f_y/\gamma_m$; thép theo tiêu chuẩn nước ngoài $\gamma_m = 1{,}10$; $\gamma_c = 1{,}0$ cho dầm, kèo nhà xưởng.</li>
+<li>Nén đúng tâm: $N/(\varphi A f_{yd}\gamma_c) \le 1$, $\varphi$ theo <a href="../06_cau_kien_tcvn/b2_keo_nen.html#eq-6-2">(6.2)</a> và Bảng 7; kiểm tra thêm $\lambda \le \lambda_u$.</li>
+<li>Uốn: độ bền (40), (41); ổn định tổng thể (68), được miễn khi $\bar\lambda_b \le \bar\lambda_{ub}$ (Bảng 12).</li>
+<li>Nén uốn: (104), (108), (110); $m_{ef} &gt; 20$ → tính như cấu kiện chịu uốn. Cột C1 cần $L_{ef} \le 4{,}2$ m.</li>
+<li>Khung tự do chân khớp: $\mu = 2\sqrt{1 + 0{,}38/n}$ (thường 2,3–3,5).</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi nào lấy $\gamma_m = 1{,}10$ theo TCVN 5575:2024?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Khi công trình cấp C1 có thời hạn sử dụng hạn chế</label></li><li><label><input type="radio" name="q1" value="1"> Khi thép cung cấp theo tiêu chuẩn nước ngoài (Q345, SS400, A572, S235…) và thép ống tạo hình nóng</label></li><li><label><input type="radio" name="q1" value="2"> Khi thép cán phù hợp yêu cầu của TCVN 5575:2024</label></li><li><label><input type="radio" name="q1" value="3"> Chỉ khi tính theo giới hạn bền $f_u$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bảng 3 có ba giá trị: 1,00; 1,05; 1,10.</p>
+</details>
+<details><summary>Lời giải</summary><p>Thép theo tiêu chuẩn nước ngoài và thép ống tạo hình nóng: $\gamma_m = 1{,}10$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Điều kiện để được miễn kiểm tra ổn định tổng thể dầm (8.4.4) là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Dầm có $h/b \le 2$</label></li><li><label><input type="radio" name="q2" value="1"> Tỷ số độ bền nhỏ hơn 0,8</label></li><li><label><input type="radio" name="q2" value="2"> Tải truyền qua tấm cứng đặc liên kết liên tục với cánh nén, hoặc $\bar\lambda_b \le \bar\lambda_{ub}$ theo Bảng 12</label></li><li><label><input type="radio" name="q2" value="3"> Cánh chịu kéo được giữ bởi xà gồ</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Có hai điều kiện a) và b).</p>
+</details>
+<details><summary>Lời giải</summary><p>Điều 8.4.4: a) tấm cứng đặc liên kết liên tục với cánh nén; b) $\bar\lambda_b \le \bar\lambda_{ub}$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>$m_{ef} &gt; 20$ nghĩa là gì và tính tiếp thế nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Lực dọc chiếm ưu thế; tính như thanh nén đúng tâm</label></li><li><label><input type="radio" name="q3" value="1"> Độ lệch tâm rất lớn, lực dọc ảnh hưởng ít; tính như cấu kiện chịu uốn (điều 8)</label></li><li><label><input type="radio" name="q3" value="2"> Cột quá mảnh; phải tăng tiết diện</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$m_{ef} = \eta\,eA/W_c$.</p>
+</details>
+<details><summary>Lời giải</summary><p>Độ lệch tâm tương đối hiệu dụng lớn → cấu kiện làm việc chủ yếu chịu uốn → kiểm tra theo điều 8.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Vì sao giằng thép tròn có tăng đơ được phép có $\lambda_u = 500$?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> Vì thép tròn có cường độ cao hơn thép hình</label></li><li><label><input type="radio" name="q4" value="1"> Vì thanh chỉ chịu kéo, được căng bằng tăng đơ nên độ võng do trọng lượng bản thân không vượt $L/150$ (chú thích 2 Bảng 34)</label></li><li><label><input type="radio" name="q4" value="2"> Vì thanh giằng không tham gia chịu lực</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Đọc chú thích 2 Bảng 34.</p>
+</details>
+<details><summary>Lời giải</summary><p>Thanh giằng thỏa điều kiện độ võng $L/150$ khi chịu tải tĩnh thì lấy $\lambda_u = 500$; giằng tròn có tăng đơ được căng nên thỏa điều kiện này.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.826" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính $\varphi$ của tiết diện loại b khi $\bar\lambda = 2{,}0$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\delta = 9{,}87(1 - \alpha + \beta\bar\lambda) + \bar\lambda^2$ với $\alpha = 0{,}04$, $\beta = 0{,}09$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\delta = 9{,}87(0{,}96 + 0{,}18) + 4 = 15{,}252$; $\varphi = 0{,}5(15{,}252 - \sqrt{15{,}252^2 - 157{,}92})/4 = 0{,}826$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="260" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Thanh chống D90×3 ($i = 3{,}08$ cm) dài 8 m. Tính độ mảnh $\lambda$ (so với $\lambda_u = 200$ để kết luận).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\lambda = L/i$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\lambda = 800/3{,}08 = 259{,}7 \approx 260 &gt; 200$ → không đạt độ mảnh.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="4.20" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Cột C1: $b = 200$ mm, $\bar\lambda_{ub} = 0{,}602$ (công thức 72), $\sigma = 169{,}0$ MPa, $E = 206\,000$ MPa. Tính khoảng cách giữ cánh nén lớn nhất $L_{ef}$ để được miễn kiểm tra ổn định tổng thể (có nhân hệ số chú thích 3 Bảng 12).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$L_{ef,\max} = \bar\lambda_{ub}\sqrt{f_{yd}/\sigma}\cdot b/\sqrt{f_{yd}/E} = \bar\lambda_{ub}\,b\sqrt{E/\sigma}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$L_{ef,\max} = 0{,}602 \times 200 \times \sqrt{206\,000/169{,}0} = 4203$ mm $\approx 4{,}20$ m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="5.84" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bài tập chương: đề xuất khoảng cách chống xiên cánh dưới kèo K1 (H500×250×8×12, Q345, $f_{yd} = 313{,}6$ MPa, $b = 250$, $t = 12$, $h = 488$ mm, $W = 1716{,}8$ cm³) khi gió hút gây mô men $M = 300$ kNm (giả định) làm cánh dưới chịu nén. Dùng (72) và nhân hệ số $\sqrt{f_{yd}/\sigma}$. Tính $L_{ef,\max}$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$\bar\lambda_{ub}$ theo (72) bằng 0,680; $\sigma = M/W$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\sigma = 300 \times 10^6/1\,716\,800 = 174{,}7$ MPa; $\bar\lambda_{ub}\sqrt{f_{yd}/\sigma} = 0{,}680 \times 1{,}340 = 0{,}911$; $L_{ef,\max} = 0{,}911 \times 250/0{,}03902 = 5836$ mm $\approx 5{,}84$ m (chọn bố trí chống xiên cách nhau không quá khoảng này, theo bội số bước xà gồ).</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

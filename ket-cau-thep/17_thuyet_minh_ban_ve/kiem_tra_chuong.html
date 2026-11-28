@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="17_thuyet_minh_ban_ve/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 17: Thuyết minh, bản vẽ – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 17 · Thuyết minh, bản vẽ · Kiểm tra chương</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 17: Thuyết minh, bản vẽ</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<ul><li>Thuyết minh 10 mục (<a href="../17_thuyet_minh_ban_ve/b1_cau_truc_thuyet_minh.html#tbl-17-1">Bảng 17.1</a>); mỗi kết luận có tỷ số; tên tổ hợp, tiết diện trùng mô hình.</li>
+<li>Bảng: <i>Show Tables</i> → Excel; hình: nền trắng → <i>Capture Picture</i>; khối lượng: <i>Material List</i> + 8–12 %.</li>
+<li>Bản vẽ khớp tính toán; kiểm tra 7 điểm trước khi phát hành.</li></ul>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi lập dàn ý "Tiêu chí thiết kế" cho nhà xưởng Hòa Bình (TCVN) hay nhà máy DNP (ASCE/AISC), nội dung nào <b>không</b> thuộc mục này?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Tiêu chuẩn áp dụng kèm phiên bản (TCVN 2737:2023, 5575:2024 hoặc ASCE 7-10, AISC 360-10)</label></li><li><label><input type="radio" name="q1" value="1"> Cấp hậu quả / Risk Category, vật liệu, giới hạn sử dụng</label></li><li><label><input type="radio" name="q1" value="2"> Biểu đồ nội lực bao và phản lực chân cột</label></li><li><label><input type="radio" name="q1" value="3"> Phương pháp phân tích (bậc nhất với $\mu$ hoặc Direct Analysis Method)</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Biểu đồ nội lực là kết quả, không phải tiêu chí.</p>
+</details>
+<details><summary>Lời giải</summary><p>Biểu đồ nội lực bao, phản lực thuộc mục 6. Kết quả phân tích.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Vì sao tên tổ hợp trong thuyết minh phải trùng với mô hình?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> Vì SAP2000 không cho đổi tên tổ hợp</label></li><li><label><input type="radio" name="q2" value="1"> Để người thẩm tra mở mô hình đối chiếu được nội lực, tỷ số với đúng tổ hợp đã dùng</label></li><li><label><input type="radio" name="q2" value="2"> Vì tiêu chuẩn quy định tên tổ hợp</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem "Nguyên tắc trình bày".</p>
+</details>
+<details><summary>Lời giải</summary><p>Tên trùng chính xác cho phép mở mô hình, chọn đúng tổ hợp và kiểm lại kết quả; cũng đảm bảo tổ hợp đó có trong <i>Design Combos</i>.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="57.2" data-tol="0.02"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Khối lượng thép xuất từ SAP2000 là 52 tấn. Khối lượng dự kiến trong dự toán nên lấy bao nhiêu (lấy mức giữa của khoảng cộng thêm cho liên kết)?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>t</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Material List chỉ có phần tử thanh; cộng 8–12 %.</p>
+</details>
+<details><summary>Lời giải</summary><p>Cộng 10 %: $52 \times 1{,}10 = 57{,}2$ t (khoảng 56,2–58,2 t), vì chưa có bản mã, sườn, bu lông; kiểm tra thêm giằng, thanh chống chưa mô hình.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="0"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Thao tác xuất bảng đang mở của SAP2000 sang Excel là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> <i>File → Export Current Table → To Excel</i></label></li><li><label><input type="radio" name="q4" value="1"> <i>File → Capture Picture → Entire Window</i></label></li><li><label><input type="radio" name="q4" value="2"> <i>File → Create Report</i></label></li><li><label><input type="radio" name="q4" value="3"> <i>Design → Display Design Info</i></label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Thao tác trong cửa sổ bảng (Ctrl+T).</p>
+</details>
+<details><summary>Lời giải</summary><p><i>File → Export Current Table → To Excel</i>; thêm <i>Options → Selection Only</i> để chỉ xuất phần tử đã chọn.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="20.8" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Nhà khung tiền chế 36 × 60 m, không cầu trục, khung chính (đã cộng liên kết) nặng 45 tấn. Tính chỉ tiêu kg/m² sàn.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>kg/m²</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Diện tích $36 \times 60 = 2160$ m².</p>
+</details>
+<details><summary>Lời giải</summary><p>$45\,000/2160 = 20{,}8$ kg/m² &lt; 25 kg/m² → thấp hơn khoảng tham khảo, cần rà lại mô hình (thiếu cấu kiện?) và các tỷ số.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Danh mục kiểm tra phát hiện: một nhóm cột có tỷ số lớn nhất 1,03; chống xiên trên bản vẽ cách 5 m trong khi tính toán dùng $L_b$ = 4,2 m. Xử lý đúng là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q6" value="0"> Phát hành vì 1,03 xấp xỉ 1,0</label></li><li><label><input type="radio" name="q6" value="1"> Sửa bản vẽ cho chống xiên ≤ 4,2 m và giảm tỷ số ≤ 1,0 (hoặc giải thích rõ) trước khi phát hành</label></li><li><label><input type="radio" name="q6" value="2"> Chỉ sửa thuyết minh thành $L_b$ = 5 m</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Điểm 4 và 5 của danh mục.</p>
+</details>
+<details><summary>Lời giải</summary><p>Tỷ số mỗi nhóm phải ≤ 1,0 hoặc có giải thích; bản vẽ phải khớp $L_b$ đã dùng.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Theo cảnh báo của giáo trình, cách xử lý đúng với các bảng tính Excel trong bộ tài liệu khóa là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q7" value="0"> Mở và bật macro để dùng ngay</label></li><li><label><input type="radio" name="q7" value="1"> Chép số liệu sang sổ tính mới, vì một số tệp chứa macro Excel 4.0 dạng virus</label></li><li><label><input type="radio" name="q7" value="2"> Cài phần mềm bẻ khóa kèm theo để mở</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem khung cảnh báo trong bài "Bản vẽ, kiểm tra hồ sơ".</p>
+</details>
+<details><summary>Lời giải</summary><p>Không dùng tệp bẻ khóa; chép số liệu sang sổ tính mới để tránh macro Excel 4.0.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

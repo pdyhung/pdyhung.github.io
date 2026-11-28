@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="01_tong_quan/b2_duong_truyen_tai.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 1.2. Đường truyền tải trọng – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 1 · Tổng quan · Bài 2</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 1.2. Đường truyền tải trọng <span class="en">Load paths</span></h1>
+<p class="lead">Mỗi tải trọng phải có một đường đi liên tục từ điểm đặt xuống móng. Mô hình SAP2000 đúng là mô hình thể hiện đủ cả ba đường truyền.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Vẽ được đường truyền tải đứng, gió ngang nhà và gió dọc nhà.</li>
+<li>Nhận ra cấu kiện nào mà thiếu thì mô hình mất ổn định.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Trong mô hình nhà xưởng Hòa Bình, một học viên chạy phân tích và SAP2000 báo <i>"Structure is unstable"</i> theo phương dọc nhà. Khung ngang vẫn đủ cột, kèo. Nguyên nhân nằm ở đường truyền gió dọc nhà: thiếu giằng cột ở một khoang.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<p><b>Đường truyền tải trọng.</b></p>
+<ul><li><i>Tải đứng:</i> tôn → xà gồ → kèo → cột → móng.</li>
+<li><i>Gió ngang nhà:</i> tôn vách → dầm tường → cột → khung ngang → móng.</li>
+<li><i>Gió dọc nhà:</i> tôn đầu hồi → dầm tường → cột sườn tường → giằng mái → thanh chống → giằng cột → móng.</li></ul>
+<p>Một mô hình SAP2000 đúng phải thể hiện được <b>cả ba đường truyền</b> này. Lỗi thường gặp nhất là bỏ sót hoặc khai báo sai hệ giằng (Chương 3).</p>
+<h2 id="s3">3. Khám phá</h2>
+<p>Chọn loại tải để xem đường truyền được tô sáng lần lượt từ bao che xuống móng.</p>
+<div data-widget="W2"></div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Khai báo giằng mái nhưng không có thanh chống nối các khoang giằng: gió dọc không truyền được sang khoang có giằng cột.</li>
+<li>Giằng cột chỉ đặt ở một phía nhà, gây xoắn tổng thể khi gió dọc.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Gió thổi dọc nhà (vào tường đầu hồi) truyền xuống móng qua chuỗi nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Tôn vách → xà gồ → kèo → cột → móng</label></li><li><label><input type="radio" name="q1" value="1"> Tôn đầu hồi → dầm tường → cột sườn tường → giằng mái → thanh chống → giằng cột → móng</label></li><li><label><input type="radio" name="q1" value="2"> Tôn đầu hồi → khung ngang → móng</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Khung ngang không có độ cứng theo phương dọc nhà.</p>
+</details>
+<details><summary>Lời giải</summary><p>Gió dọc đi qua hệ giằng: giằng mái, thanh chống, giằng cột.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="120" data-tol="0.01"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Áp lực gió lên tường 80 daN/m², dầm tường đặt cách nhau 1,5 m. Tính tải phân bố lên một dầm tường.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tải lên dầm = áp lực × bề rộng chịu tải.</p>
+</details>
+<details><summary>Lời giải</summary><p>$q = 80 \times 1{,}5 = 120$ daN/m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Mô hình có đủ khung ngang, xà gồ, giằng mái và thanh chống nhưng <b>không có giằng cột</b> ở khoang nào. Khi chạy SAP2000 sẽ xảy ra gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Chạy bình thường, chỉ chuyển vị dọc nhà lớn hơn</label></li><li><label><input type="radio" name="q3" value="1"> Mất ổn định theo phương dọc nhà (cơ cấu), vì chân cột khớp và khung không có độ cứng dọc</label></li><li><label><input type="radio" name="q3" value="2"> Mất ổn định theo phương ngang nhà</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Chân cột khớp; theo phương dọc, cột chỉ được giữ bởi giằng cột.</p>
+</details>
+<details><summary>Lời giải</summary><p>Theo phương dọc, khung ngang chân khớp là cơ cấu; thiếu giằng cột thì hệ biến hình → SAP2000 báo mất ổn định.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Tải đứng: tôn → xà gồ → kèo → cột → móng.</li>
+<li>Gió ngang: tôn vách → dầm tường → cột → khung ngang → móng.</li>
+<li>Gió dọc: tôn đầu hồi → dầm tường → cột sườn tường → giằng mái → thanh chống → giằng cột → móng.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/vendor/three/three.min.js"></script>
+<script src="../assets/vendor/three/OrbitControls.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/frame3d.js"></script>
+<script src="../assets/widgets/w02.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

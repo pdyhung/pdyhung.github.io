@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="02_sap_vat_lieu_tiet_dien/b4_nonprismatic.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 2.4. Tiết diện thay đổi (Nonprismatic) – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 2 · SAP2000 – vật liệu, tiết diện · Bài 4</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 2.4. Tiết diện thay đổi (Nonprismatic) <span class="en">Nonprismatic (tapered) sections</span></h1>
+<p class="lead">Cột và kèo PEB có chiều cao thay đổi. SAP2000 mô tả chúng bằng tiết diện <i>Nonprismatic</i>: hai tiết diện đầu và quy luật biến thiên độ cứng giữa chúng.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Khai báo tiết diện <code>H(300-650)x200x6x10</code> với <i>EI33 Variation</i> phù hợp.</li>
+<li>Hiểu sai số của ba quy luật Linear, Parabolic, Cubic và ảnh hưởng của chiều vẽ I → J.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Cột khung nhà xưởng <b>Hòa Bình</b> cao 7,07 m, chân 300 mm, đỉnh 650 mm (<code>H(300-650)x200x6x10</code>). Tỷ số $I_{33}$ giữa hai đầu là 5,6 lần. Nếu khai báo sai quy luật biến thiên hoặc vẽ cột ngược chiều, chuyển vị đỉnh cột và mô men chân cột đều sai.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<div class="box eqb"><div class="bt">🧮 Công thức</div>
+<p>SAP2000 nội suy độ cứng giữa đầu I và J theo quy luật bậc $n$: $(EI)^{1/n}$ biến thiên tuyến tính.</p>
+<div class="eq"><div class="m">$$EI(x) = \left[(EI_I)^{1/n} + \left((EI_J)^{1/n} - (EI_I)^{1/n}\right)\frac{x}{L}\right]^n$$</div></div>
+<p><i>Linear</i>: $n = 1$; <i>Parabolic</i>: $n = 2$; <i>Cubic</i>: $n = 3$.</p>
+</div>
+<h4>Tiết diện thay đổi (Nonprismatic)</h4>
+<p>Cột và kèo PEB có chiều cao thay đổi tuyến tính. Cách khai báo:</p>
+<ol><li>Khai báo hai tiết diện đầu: ví dụ <code>H300x200x6x10</code> (chân cột) và <code>H650x200x6x10</code> (đỉnh cột).</li>
+<li><i>Add New Property → Other → Nonprismatic</i>:<ul><li><i>Start Section</i> = H300…, <i>End Section</i> = H650…;</li>
+<li><i>Length</i> = 1, <i>Length Type</i> = <b>Variable</b>;</li>
+<li><i>EI33 Variation</i> = <b>Parabolic</b>: với I tổ hợp chỉ thay đổi chiều cao, mô men quán tính do hai cánh quyết định nên $I_{33}$ tỷ lệ gần đúng với $h^2$. <i>EI22 Variation</i> = Linear.</li></ul></li>
+<li>Đặt tên theo quy ước <code>H(300-650)x200x6x10</code>, giống các nhãn trong video ("H(650-300)x200x6x10", "H500-300x200x6x10").</li></ol>
+<div class="box check"><div class="bt">🔶 Cần đối chiếu</div>
+<p><b>Hướng của tiết diện thay đổi</b> phụ thuộc chiều vẽ phần tử (điểm I → J). Nếu vẽ cột từ đỉnh xuống chân thì tiết diện bị lật ngược: đầu lớn nằm ở chân. Kiểm tra bằng <i>View Type = Extrude</i> hoặc dùng <i>Assign → Frame → Reverse Connectivity</i>. Với kèo có hai đoạn thay đổi, mỗi đoạn là một phần tử riêng với tiết diện Nonprismatic riêng.</p>
+<p>Thiết kế AISC trong SAP2000 kiểm tra tiết diện tại từng trạm (station) với đặc trưng tại trạm đó. Tuy vậy, chiều dài tính toán và $C_b$ tính theo design member. Giới hạn của cách làm này được bàn ở Chương 12 và AISC Design Guide 25.</p>
+</div>
+<h2 id="s3">3. Khám phá</h2>
+<p>Kéo chiều cao hai đầu và đổi <i>EI33 Variation</i>: đường liền là $I_{33}$ chính xác, các đường nét đứt là ba quy luật SAP2000. Bật "vẽ từ đỉnh xuống chân" để thấy hậu quả của chiều I → J.</p>
+<div data-widget="W3"></div>
+<h2 id="s4">4. Ví dụ tính toán</h2>
+<div class="box ex"><div class="bt">📝 Ví dụ 2.2 – Cột H(300-650)x200x6x10</div>
+<p>Tính $I_{33}$ tại chân, đỉnh và giữa cột; so với giá trị SAP2000 nội suy theo ba quy luật.</p>
+<details class="sol"><summary>Lời giải</summary>
+<ul><li>Chân ($h$ = 300): $I_{33} = (200\times300^3 - 194\times280^3)/12 = 9511$ cm⁴.</li>
+<li>Đỉnh ($h$ = 650): $I_{33} = (200\times650^3 - 194\times630^3)/12 = 53\,466$ cm⁴ (gấp 5,62 lần).</li>
+<li>Giữa ($h$ = 475): chính xác $26\,336$ cm⁴.</li>
+<li><i>Linear</i>: $(9511 + 53\,466)/2 = 31\,488$ cm⁴ (+19,6 %).</li>
+<li><i>Parabolic</i>: $\left[(\sqrt{9511} + \sqrt{53\,466})/2\right]^2 = 27\,019$ cm⁴ (+2,6 %).</li>
+<li><i>Cubic</i>: $25\,490$ cm⁴ (−3,2 %).</li>
+<li>Kết luận: Parabolic và Cubic đều sai dưới 4 %; Linear đánh giá cao độ cứng đoạn giữa gần 20 %.</li></ul>
+</details>
+</div>
+<h2 id="s5">5. Thực hành SAP2000</h2>
+<div class="box sap"><div class="bt">🖥️ Hình: Tiết diện thay đổi H(300-650)x200x6x10 – Start/End Section, EI33 Parabolic</div>
+<ol><li>Define</li><li>Section Properties</li><li>Frame Sections</li><li>Add New Property</li><li>Frame Section Property Type = Other</li><li>Nonprismatic</li><li>Start Section, End Section, Length</li><li>Add</li></ol><figure><img class="zoom" loading="lazy" src="../assets/img/sap/nonprismatic.jpg" alt="Hình: Tiết diện thay đổi H(300-650)x200x6x10 – Start/End Section, EI33 Parabolic"><figcaption>Hình: Tiết diện thay đổi H(300-650)x200x6x10 – Start/End Section, EI33 Parabolic</figcaption></figure>
+</div>
+<h2 id="s6">6. Lỗi thường gặp</h2>
+<ul><li>Chọn <i>EI33 Variation</i> = Linear cho I tổ hợp thay đổi chiều cao: đánh giá cao độ cứng đoạn giữa 20–23 %.</li>
+<li>Vẽ cột từ đỉnh xuống chân mà không kiểm tra Extrude: đầu lớn nằm ở chân.</li></ul>
+<h2 id="s7">7. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Với tiết diện I tổ hợp chỉ thay đổi chiều cao bụng, giáo trình khuyến nghị chọn <i>EI33 Variation</i> nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Linear</label></li><li><label><input type="radio" name="q1" value="1"> Parabolic</label></li><li><label><input type="radio" name="q1" value="2"> Cubic</label></li><li><label><input type="radio" name="q1" value="3"> Không cần khai báo</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$I_{33}$ của tiết diện I do hai cánh quyết định.</p>
+</details>
+<details><summary>Lời giải</summary><p>$I_{33} \approx 2A_f(h/2)^2$ tỷ lệ gần đúng với $h^2$ → <b>Parabolic</b>; <i>EI22 Variation</i> = Linear.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="53466" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Tính $I_{33}$ của tiết diện đầu lớn H650×200×6×10.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>cm⁴</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$h_w = 650 - 20 = 630$ mm.</p>
+</details>
+<details><summary>Lời giải</summary><p>$I_{33} = (200\times650^3 - 194\times630^3)/12 = 53\,466$ cm⁴.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="16" data-tol="0.01"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Kèo <code>H(250-500)x200x6x8</code>. Tại giữa đoạn ($h$ = 375 mm), $I_{33}$ chính xác là 13 090 cm⁴. Nếu khai báo <i>EI33 Variation</i> = Linear, SAP2000 lấy $I_{33}$ giữa đoạn lớn hơn giá trị chính xác bao nhiêu phần trăm? (nhập số %)</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>%</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tính $I_{33}$ hai đầu, lấy trung bình cộng rồi so với 13 090.</p>
+</details>
+<details><summary>Lời giải</summary><p>$I_{250} = 5327{,}5$ cm⁴, $I_{500} = 25\,035{,}8$ cm⁴; Linear: $15\,181{,}6$ cm⁴ → $15\,181{,}6/13\,090{,}2 - 1 = 16{,}0$ %.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nonprismatic: hai tiết diện đầu, <i>Length Type</i> = Variable, <i>EI33</i> = Parabolic, <i>EI22</i> = Linear.</li>
+<li>Hướng tiết diện theo chiều vẽ I → J; kiểm tra bằng Extrude, sửa bằng <i>Reverse Connectivity</i>.</li>
+<li>Mỗi đoạn kèo thay đổi là một phần tử với tiết diện Nonprismatic riêng.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/widget-core.js"></script>
+<script src="../assets/js/steel-lib.js"></script>
+<script src="../assets/widgets/w03.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

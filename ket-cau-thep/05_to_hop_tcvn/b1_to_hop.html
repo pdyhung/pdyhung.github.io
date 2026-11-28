@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="05_to_hop_tcvn/b1_to_hop.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 5.1. Tổ hợp theo TCVN 2737:2023 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 5 · Tổ hợp, phân tích, điều kiện sử dụng · Bài 1</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 5.1. Tổ hợp theo TCVN 2737:2023 <span class="en">Load combinations to TCVN 2737:2023</span></h1>
+<p class="lead">Tổ hợp cơ bản cộng các tải đồng thời tác dụng, trong đó tải tạm thời được nhân hệ số tổ hợp $\psi$. Mỗi tải ngắn hạn lần lượt đóng vai chủ đạo ($\psi = 1{,}0$).</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Lập được các nhóm tổ hợp TH1–TH4 (<a href="#tbl-5-1">Bảng 5.1</a>) với đúng hệ số $\psi_t$ = 1,0 / 0,9 / 0,7.</li>
+<li>Chọn cách nhập tải (tiêu chuẩn hay tính toán) và lập tổ hợp kiểm tra biến dạng tương ứng (<a href="#eq-5-2">(5.2)</a>).</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mô hình mẫu <code>250317_NhaXuong</code> của nhà xưởng <b>Hòa Bình</b> nhập tải ở giá trị tính toán, gồm 4 hướng gió, và có 13 tổ hợp cộng một ENVELOPE. Khi bổ sung áp lực trong ($c_i = \pm 0{,}2$) thì số trường hợp gió tăng lên 8. Kỹ sư cần lập lại danh sách tổ hợp và quyết định có chuyển sang cách nhập tải tiêu chuẩn hay không.</p>
+</div>
+<h2 id="s2">2. Quy định tiêu chuẩn</h2>
+<h3>Tổ hợp cơ bản theo TCVN 2737:2023</h3>
+<p>Công thức tổng quát (điều 6.2, công thức 1):</p>
+<div class="eq" id="eq-5-1"><div class="m">$$C_m = \gamma_n\left[\sum \gamma_{f,i}\,G_{k,i} + \sum \gamma_{f,j}\,\psi_{L,j}\,Q_{k,L,j} + \sum \gamma_{f,m}\,\psi_{t,m}\,Q_{k,t,m}\right].$$</div><span class="tag">(5.1)</span></div>
+<p>Hệ số tổ hợp:</p>
+<ul><li>Tải tạm thời dài hạn (điều 6.3): $\psi_{L,1} = 1{,}0$; $\psi_{L,2} = \psi_{L,3} = \ldots = 0{,}95$.</li>
+<li>Tải tạm thời ngắn hạn (điều 6.4): $\psi_{t,1} = 1{,}0$ (tải chủ đạo); $\psi_{t,2} = 0{,}9$; $\psi_{t,3} = \psi_{t,4} = \ldots = 0{,}7$.</li>
+<li>Cầu trục: theo điều 9.18.</li></ul>
+<p>Với nhà xưởng không cầu trục, tải tạm thời ngắn hạn gồm <b>hoạt tải mái</b> $L$ và <b>gió</b> $W$. Mỗi tải lần lượt đóng vai chủ đạo:</p>
+<div class="tbl" id="tbl-5-1"><table><thead><tr><th>Nhóm</th><th>Tổ hợp (giá trị tính toán)</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td>TH1</td><td>$SW + D + L$</td><td>Chỉ hoạt tải</td></tr>
+<tr><td>TH2</td><td>$SW + D + W_i$</td><td>Chỉ gió (gió hút lật kèo)</td></tr>
+<tr><td>TH3</td><td>$SW + D + 1{,}0L + 0{,}9W_i$</td><td>Hoạt tải chủ đạo</td></tr>
+<tr><td>TH4</td><td>$SW + D + 0{,}9L + 1{,}0W_i$</td><td>Gió chủ đạo</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 5.1.</b> Tổ hợp cơ bản cho nhà xưởng không cầu trục (tải đã ở giá trị tính toán)</p>
+<p>Mô hình mẫu <code>250317_NhaXuong</code> nhập tải ở <b>giá trị tính toán</b>, nên hệ số trong combo chỉ còn $\psi$: COMB1 ($SW+D+L$); COMB2–5 ($SW+D+W$, 4 hướng); COMB6–9 ($SW+D+L+0{,}9W$); COMB10–13 ($SW+D+0{,}9L+W$); ENVELOPE bao COMB1–13. Cách lập này đúng với <a href="#tbl-5-1">Bảng 5.1</a>.</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Hai cách nhập tải.</b> (a) Nhập tải <b>tiêu chuẩn</b>, đưa $\gamma_f$ vào hệ số combo, ví dụ $1{,}05SW + 1{,}1D + 1{,}3L + 0{,}9 \times 2{,}1W$. Cách này cho phép dùng chung một mô hình cho cả trạng thái giới hạn 1 và 2, và là cách của công cụ tính tải TCVN 2737:2023 (Đại Văn Hưng). (b) Nhập tải <b>tính toán</b> như mô hình mẫu. Khi đó tổ hợp kiểm tra biến dạng phải chia ngược cho $\gamma_f$. Giáo trình khuyến nghị cách (a), và bắt buộc dùng cách (a) khi cùng một mô hình còn chạy theo tiêu chuẩn Mỹ (Chương 16).</p>
+</div>
+<h3>Tổ hợp kiểm tra biến dạng</h3>
+<p>Trạng thái giới hạn thứ hai dùng tải tiêu chuẩn: $\gamma_f = 1{,}0$ (điều 4.2b) và $\gamma_n = 1{,}0$ (H.3). Theo Phụ lục G, tải trọng để tính độ võng phụ thuộc yêu cầu kiểm tra:</p>
+<ul><li><b>Thẩm mỹ – tâm lý</b> (Bảng G.1, mục 2a): tải thường xuyên và tạm thời dài hạn. Hoạt tải mái sửa chữa (khu vực H) không có giá trị tiêu chuẩn giảm (điều 8.3.3), nên không kể vào.</li>
+<li><b>Công nghệ, cấu tạo</b> (Bảng G.4) và <b>chuyển vị ngang</b> (Bảng G.5): tải tương ứng với yêu cầu đó, trong đó có gió.</li></ul>
+<p>Với mô hình nhập tải tính toán, hệ số combo chuyển vị là $1/\gamma_f$:</p>
+<div class="eq" id="eq-5-2"><div class="m">$$\text{DEF} = \frac{SW}{1{,}05} + \frac{D}{1{,}1} + \frac{L}{1{,}3} + \frac{W}{2{,}1\,\gamma_n}.$$</div><span class="tag">(5.2)</span></div>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Lấy $\psi = 0{,}9$ cho cả hai tải tạm thời ngắn hạn; tải chủ đạo phải lấy 1,0.</li>
+<li>Nhập tải tính toán rồi lại nhân $\gamma_f$ trong hệ số combo: tải bị nhân hệ số độ tin cậy hai lần.</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Khi có hai tải tạm thời ngắn hạn (hoạt tải mái và gió), hệ số tổ hợp của tải <b>không</b> chủ đạo là:</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> 1,0</label></li><li><label><input type="radio" name="q1" value="1"> 0,95</label></li><li><label><input type="radio" name="q1" value="2"> 0,9</label></li><li><label><input type="radio" name="q1" value="3"> 0,7</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem điều 6.4.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\psi_{t,1} = 1{,}0$ (chủ đạo); $\psi_{t,2} = 0{,}9$; $\psi_{t,3} = \ldots = 0{,}7$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="907.2" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Hòa Bình, tải gió tính toán lên cột đón gió $W = 1008$ daN/m ($c_i = -0{,}2$). Trong tổ hợp TH3 (hoạt tải chủ đạo), phần gió lên cột bằng bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>daN/m</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Trong TH3, gió nhân $\psi_{t,2}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}9 \times 1008 = 907{,}2$ daN/m.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="2.17" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Nhập tải gió ở giá trị <b>tiêu chuẩn</b> (cách a). Công trình cấp hậu quả C3. Tính hệ số combo của gió trong tổ hợp hoạt tải chủ đạo (TH3).</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Theo <a href="#eq-5-1">(5.1)</a>, hệ số = $\gamma_n\,\gamma_f\,\psi_{t,2}$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1{,}15 \times 2{,}1 \times 0{,}9 = 2{,}17$.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Nhà xưởng không cầu trục: TH1 $SW+D+L$; TH2 $SW+D+W_i$; TH3 $SW+D+L+0{,}9W_i$; TH4 $SW+D+0{,}9L+W_i$.</li>
+<li>Cách (a) nhập tải tiêu chuẩn, đưa $\gamma_n\gamma_f\psi$ vào combo – dùng chung cho cả hai trạng thái giới hạn (khuyến nghị).</li>
+<li>Cách (b) nhập tải tính toán: combo chỉ còn $\psi$; tổ hợp biến dạng phải chia cho $\gamma_f$ (<a href="#eq-5-2">(5.2)</a>).</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

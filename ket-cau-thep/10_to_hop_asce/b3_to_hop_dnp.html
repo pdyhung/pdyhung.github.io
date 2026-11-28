@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="10_to_hop_asce/b3_to_hop_dnp.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 10.3. Tổ hợp DNP trong SAP2000 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 10 · Tổ hợp ASCE 7-10 · Bài 3</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 10.3. Tổ hợp DNP trong SAP2000 <span class="en">Load combinations of the DNP model in SAP2000</span></h1>
+<p class="lead">Bài này khai triển các tổ hợp cơ bản thành danh sách combo cụ thể của mô hình <code>NM DNP-21.04</code>: 8 trường hợp gió, cầu trục, động đất, rồi khai báo trong SAP2000.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Dùng tổ hợp Envelope (cầu trục, gió) để giảm số combo mà vẫn bao trường hợp bất lợi.</li>
+<li>Đếm, khai báo và kiểm tra các combo LRFD, ASD, sử dụng; đối chiếu với <i>Add Default Design Combos</i>.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Mô hình nhà máy DNP có 8 trường hợp gió (W1X±, W1Y±, W2X±, W2Y±), cầu trục ở 5 vị trí với $D_{\max}$/$D_{\min}$ và lực hãm T, động đất EX±, EY±. Nếu tổ hợp mọi trường hợp với nhau thì số combo lên hàng trăm. Mô hình gom cầu trục vào <code>CRA EVELOPE</code>, gió vào <code>EV WIND</code>, cuối cùng có khoảng 50 combo LRFD và 28 combo ASD.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Ví dụ: khai triển tổ hợp cho NM Đức Nhuận Phát</h3>
+<p><b>Các trường hợp tải</b> (đúng như mô hình <code>NM DNP-21.04</code>):</p>
+<div class="tbl"><table><thead><tr><th>Ký hiệu</th><th>Loại (Design Type)</th><th>Nội dung</th></tr></thead><tbody>
+<tr><td>D</td><td>Dead, SW multiplier = 1</td><td>Trọng lượng bản thân + tôn, xà gồ, tải treo M&amp;E, solar</td></tr>
+<tr><td>Lr</td><td>Roof Live</td><td>Hoạt tải mái 30 kG/m²</td></tr>
+<tr><td>L</td><td>Live</td><td>Hoạt tải sàn (nếu có)</td></tr>
+<tr><td>W1X±, W1Y±</td><td>Wind</td><td>Gió theo X, Y; áp lực trong dương (+i)</td></tr>
+<tr><td>W2X±, W2Y±</td><td>Wind</td><td>Gió theo X, Y; áp lực trong âm (−i)</td></tr>
+<tr><td>D1…D5-T/P, T1…T5-T/P</td><td>Live</td><td>Cầu trục: áp lực đứng $D_{\max}$/$D_{\min}$ và lực hãm ngang T, đặt bên trái hoặc phải ở 5 vị trí</td></tr>
+<tr><td>EX±, EY±</td><td>Quake</td><td>Động đất phương X, Y</td></tr>
+</tbody></table></div>
+<p><b>Tổ hợp phụ trợ:</b></p>
+<ul><li><code>CRA EVELOPE</code> (Envelope) bao các trường hợp cầu trục, rồi được dùng như một tải $L$.</li>
+<li><code>EV WIND</code> (Envelope) bao 8 trường hợp gió.</li></ul>
+<p><b>Tổ hợp LRFD (CL)</b> – 34 tổ hợp gió và trọng lực:</p>
+<div class="tbl" id="tbl-10-3"><table><thead><tr><th>Nhóm</th><th>Công thức trong mô hình</th><th>Số combo</th><th>Tương ứng ASCE</th></tr></thead><tbody>
+<tr><td>CL01</td><td>1,4D</td><td>1</td><td>TH 1</td></tr>
+<tr><td>CL02</td><td>1,2D + 1,6L + 0,5Lr + 1,6CRA</td><td>1</td><td>TH 2</td></tr>
+<tr><td>CL03</td><td>1,2D + 1,6Lr + L + CRA</td><td>1</td><td>TH 3 (dùng L)</td></tr>
+<tr><td>CL04–CL11</td><td>1,2D + 1,6Lr + 0,5W (8 hướng)</td><td>8</td><td>TH 3 (dùng 0,5W)</td></tr>
+<tr><td>CL12–CL19</td><td>1,2D + L + 0,5Lr + 1,0W + CRA (8 hướng)</td><td>8</td><td>TH 4</td></tr>
+<tr><td>CL28–CL35</td><td>0,9D + 1,0W (8 hướng)</td><td>8</td><td>TH 6</td></tr>
+<tr><td>CL:5-1…8</td><td>1,2D + 0,2$S_{DS}$D + (EX ± 0,3EY) + L</td><td>8</td><td>TH 5 (12.4.2.3)</td></tr>
+<tr><td>CL:7-1…8</td><td>0,9D − 0,2$S_{DS}$D + (EX ± 0,3EY)</td><td>8</td><td>TH 7 (12.4.2.3)</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 10.3.</b> Khai triển tổ hợp LRFD trong mô hình của giảng viên</p>
+<p><b>Tổ hợp ASD (CA)</b> – 28 tổ hợp: CA01 $D$; CA02 $D + L$ (kèm CRA); CA03 $D + L_r$; CA04 $D + 0{,}75L + 0{,}75L_r$; CA05–12 $D + 0{,}6W$; CA13–20 $D + 0{,}75L + 0{,}75L_r + 0{,}45W$, trong đó $0{,}45 = 0{,}75 \times 0{,}6$; CA21–28 $0{,}6D + 0{,}6W$.</p>
+<p><b>Tổ hợp bao:</b> <code>ENVELOP - LRFD</code> (dùng cho Steel Design), <code>ENVELOP - ASD</code> (dùng cho móng).</p>
+<p><b>Tổ hợp sử dụng:</b> D + Lr, D + L, D + 0,44W (từng hướng gió và bao gió).</p>
+<div class="box note"><div class="bt">⚠️ Lưu ý</div>
+<p><b>Nhận xét về mô hình mẫu.</b> (1) Mô hình có $S_{DS}D = 0{,}66D$, tức $S_{DS} = 0{,}66$; khi áp dụng cho công trình khác phải tính lại $S_{DS}$ theo Chương 11 ASCE 7-10. (2) Hệ số $\rho$ trong (<a href="../10_to_hop_asce/b2_dong_dat.html#eq-10-3">(10.3)</a>) lấy 1,0 trong mô hình; cần kiểm tra theo Mục 12.3.4. (3) Tổ hợp CL03 dùng $1{,}0L$. Theo Ngoại lệ 1 được phép lấy $0{,}5L$ khi $L_o \le 4{,}79$ kN/m².</p>
+</div>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Thực hành trên SAP2000</h3>
+<ol><li><b>Define → Load Combinations → Add New Combo.</b> Đặt tên có công thức để dễ đọc thuyết minh, ví dụ <code>CL12:1.2D+L+0.5Lr+1W1X+</code>. Kiểu: <i>Linear Add</i>. Nhập từng cặp Load Case / Scale Factor.</li>
+<li>Tạo tổ hợp <b>Envelope</b> cho cầu trục và cho gió trước, rồi dùng chúng như một "tải" trong các combo khác. Cách này giảm số combo nhưng vẫn bao được trường hợp bất lợi.</li>
+<li><b>Cách nhanh:</b> Define → Load Combinations → <b>Add Default Design Combos</b> → chọn <i>Steel Frame Design</i>. SAP tự sinh tổ hợp theo Design Code đang chọn (AISC 360-10, ASCE 7-10). Cần kiểm tra lại:<ul><li>đủ 8 trường hợp gió chưa, vì SAP chỉ sinh theo các Load Pattern loại <i>Wind</i> đã khai báo;</li>
+<li>Load Pattern cầu trục có được khai báo đúng loại không;</li>
+<li>có tạo trùng với combo tự lập không.</li></ul></li>
+<li><b>Design → Steel Frame Design → Select Design Combos:</b> chọn các combo LRFD cho <i>Strength</i>, combo sử dụng cho <i>Deflection</i>.</li>
+<li>Xuất bảng tổ hợp để đưa vào thuyết minh: Display → Show Tables → Load Combination Definitions.</li></ol>
+<p><i>[Hình chụp các hộp thoại sẽ lấy từ video Buổi 12–13.]</i></p>
+<div class="box sap"><div class="bt">🖥️ Hình: Tổ hợp ASD-COMB12 = 1,0 SW + 0,6 D + 0,6 W1x+</div>
+<ol><li>Define</li><li>Load Combinations</li><li>Add New Combo</li><li>Load Combination Type = Linear Add</li><li>Load Case Name + Scale Factor</li><li>Add</li></ol><figure><img class="zoom" loading="lazy" src="../assets/img/sap/load_combination_data.jpg" alt="Hình: Tổ hợp ASD-COMB12 = 1,0 SW + 0,6 D + 0,6 W1x+"><figcaption>Hình: Tổ hợp ASD-COMB12 = 1,0 SW + 0,6 D + 0,6 W1x+</figcaption></figure>
+</div>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<h3>Lỗi thường gặp</h3>
+<ul><li>Nhân thêm hệ số 1,6 hoặc hệ số độ tin cậy TCVN vào tải gió của ASCE 7-10.</li>
+<li>Thiếu tổ hợp $0{,}9D + 1{,}0W$ (gió hút với tĩnh tải nhỏ), mà tổ hợp này thường quyết định kèo chịu nén cánh dưới và bu lông neo chịu kéo.</li>
+<li>Dùng tổ hợp LRFD để kiểm tra chuyển vị.</li>
+<li>Trộn ASD và LRFD cho cùng một cấu kiện.</li>
+<li>Quên tổ hợp có lực hãm cầu trục theo cả hai chiều.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Tổ hợp <code>CRA EVELOPE</code> trong mô hình DNP có vai trò gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Tổ hợp Linear Add cộng tất cả các trường hợp cầu trục</label></li><li><label><input type="radio" name="q1" value="1"> Tổ hợp Envelope bao các trường hợp cầu trục, sau đó được dùng như một tải $L$ trong các combo khác</label></li><li><label><input type="radio" name="q1" value="2"> Tổ hợp kiểm tra chuyển vị tại ray</label></li><li><label><input type="radio" name="q1" value="3"> Tổ hợp ASD dùng cho móng</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Tổ hợp phụ trợ".</p>
+</details>
+<details><summary>Lời giải</summary><p><code>CRA EVELOPE</code> là Envelope của các trường hợp cầu trục, dùng như một tải $L$ trong CL02, CL03, CL12–19.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="28" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Đếm số tổ hợp ASD (CA) của mô hình DNP: CA01–CA04 mỗi nhóm 1 combo; ba nhóm có gió $D + 0{,}6W$, $D + 0{,}75L + 0{,}75L_r + 0{,}45W$, $0{,}6D + 0{,}6W$ mỗi nhóm khai triển cho 8 hướng gió.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>combo</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>$4 + 3 \times 8$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$4 + 3 \times 8 = 28$ combo.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="30.28" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Chuyển vị ngang đỉnh cột do trường hợp gió W1X+ là 62 mm, do tĩnh tải là 3 mm (cùng chiều). Tính chuyển vị theo tổ hợp sử dụng $D + 0{,}44W$ của mô hình.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tổ hợp tuyến tính: cộng các chuyển vị đã nhân hệ số.</p>
+</details>
+<details><summary>Lời giải</summary><p>$3 + 0{,}44 \times 62 = 3 + 27{,}28 = 30{,}28$ mm.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Gom cầu trục và gió bằng Envelope rồi dùng như một tải; đặt tên combo kèm công thức.</li>
+<li>Mô hình DNP: khoảng 50 combo LRFD (34 gió – trọng lực, 16 động đất), 28 combo ASD, <code>ENVELOP - LRFD</code> cho thiết kế thép, <code>ENVELOP - ASD</code> cho móng.</li>
+<li><i>Add Default Design Combos</i> nhanh nhưng phải kiểm tra đủ 8 hướng gió, loại Load Pattern cầu trục và combo trùng.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

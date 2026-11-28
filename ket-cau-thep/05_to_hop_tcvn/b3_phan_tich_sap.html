@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="05_to_hop_tcvn/b3_phan_tich_sap.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 5.3. Phân tích trong SAP2000 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 5 · Tổ hợp, phân tích, điều kiện sử dụng · Bài 3</div>
+<div class="flags"><span>🇻🇳 TCVN</span></div>
+<h1>Bài 5.3. Phân tích trong SAP2000 <span class="en">Analysis in SAP2000</span></h1>
+<p class="lead">Phân tích trong SAP2000 gồm ba việc: chạy Modal để chọn $G_f$, chạy tĩnh tuyến tính và lập tổ hợp, rồi đọc chuyển vị và nội lực theo đúng tổ hợp.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Khai báo đúng kiểu tổ hợp (<i>Linear Add</i>, <i>Envelope</i>) và tổ hợp DEF cho trạng thái giới hạn thứ hai.</li>
+<li>Đọc chuyển vị nút và biểu đồ nội lực theo tổ hợp phù hợp với từng kiểm tra.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Sau khi chạy mô hình nhà xưởng <b>Hòa Bình</b>, học viên đọc chuyển vị ngang đỉnh cột từ ENVELOPE (tải tính toán) và kết luận không đạt so với giới hạn 30,6 mm. Thực ra phải đọc từ tổ hợp DEF, trong đó gió tính toán đã chia cho 2,1.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<div class="tbl" id="tbl-5-3"><table><thead><tr><th>Mục đích</th><th>Tổ hợp dùng</th><th>Kiểu trong SAP2000</th></tr></thead><tbody>
+<tr><td>Nội lực để kiểm tra cấu kiện</td><td>COMB1–COMB13, bao bằng ENVELOPE</td><td><i>Linear Add</i>; ENVELOPE là <i>Envelope</i></td></tr>
+<tr><td>Chu kỳ dao động $T_1$, chọn $G_f$</td><td>Modal</td><td>Load case <i>Modal</i></td></tr>
+<tr><td>Độ võng, chuyển vị ngang</td><td>DEF (tải tiêu chuẩn, <a href="../05_to_hop_tcvn/b1_to_hop.html#eq-5-2">(5.2)</a>)</td><td><i>Linear Add</i></td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 5.3.</b> Tổ hợp và kiểu phân tích dùng cho từng mục đích kiểm tra</p>
+<h2 id="s3">3. Thực hành SAP2000</h2>
+<h3>Phân tích trên SAP2000</h3>
+<ol><li><b>Modal:</b> kiểm tra $T_1$, $T_2$ (Ctrl+T → Modal Periods and Frequencies) để chọn $G_f$ (Chương 4).</li>
+<li><b>Tĩnh tuyến tính</b> cho các load pattern; tổ hợp kiểu <i>Linear Add</i>; ENVELOPE kiểu <i>Envelope</i>.</li>
+<li><b>Chuyển vị:</b> Display → Show Deformed Shape (F6) chọn combo DEF; Ctrl+T → Joint Displacements.</li>
+<li><b>Nội lực:</b> Display → Show Forces/Stresses → Frames (M3, V2, P) chọn ENVELOPE.</li></ol>
+<h2 id="s4">4. Lỗi thường gặp</h2>
+<ul><li>Đọc chuyển vị từ ENVELOPE (tải tính toán) để kiểm tra giới hạn biến dạng.</li>
+<li>Quên chạy Modal nhưng vẫn lấy $G_f = 0{,}85$.</li></ul>
+<h3>Lỗi thường gặp</h3>
+<ul><li>Kiểm tra độ võng bằng tổ hợp tính toán, thừa khoảng 30–100 %.</li>
+<li>Dùng giới hạn $H/100$ hoặc $L/250$ của tài liệu cũ.</li>
+<li>Không trừ chuyển vị gối khi tính độ võng kèo.</li>
+<li>Lấy $\psi = 0{,}9$ cho cả hai tải tạm thời; đúng ra tải chủ đạo phải là 1,0.</li></ul>
+<h2 id="s5">5. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Trong SAP2000, tổ hợp ENVELOPE bao các COMB1–COMB13 phải khai báo kiểu nào?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Linear Add</label></li><li><label><input type="radio" name="q1" value="1"> Envelope</label></li><li><label><input type="radio" name="q1" value="2"> Absolute Add</label></li><li><label><input type="radio" name="q1" value="3"> SRSS</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Phân tích trên SAP2000", bước 2.</p>
+</details>
+<details><summary>Lời giải</summary><p>Các COMB là <i>Linear Add</i>; tổ hợp bao là <i>Envelope</i>.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.476" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Mô hình nhập tải gió ở giá trị tính toán, cấp hậu quả C2. Tính hệ số của trường hợp gió trong combo DEF.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Theo <a href="../05_to_hop_tcvn/b1_to_hop.html#eq-5-2">(5.2)</a>, hệ số $= 1/(2{,}1\,\gamma_n)$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$1/(2{,}1 \times 1{,}0) = 0{,}476$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="19.05" data-tol="0.005"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Mô hình nhập tải tính toán (cấp hậu quả C2). Riêng trường hợp gió WX tính toán cho chuyển vị ngang đỉnh cột 40 mm; tĩnh tải và hoạt tải gây chuyển vị ngang không đáng kể. Tính chuyển vị trong combo DEF.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>mm</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Combo DEF chia gió tính toán cho $2{,}1\,\gamma_n$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$\Delta = 40/2{,}1 = 19{,}05$ mm &lt; 30,6 mm → đạt.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Modal → $T_1$ → $G_f$; tĩnh tuyến tính; COMB kiểu <i>Linear Add</i>, ENVELOPE kiểu <i>Envelope</i>.</li>
+<li>Chuyển vị đọc theo combo DEF (Ctrl+T → Joint Displacements); nội lực theo ENVELOPE.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

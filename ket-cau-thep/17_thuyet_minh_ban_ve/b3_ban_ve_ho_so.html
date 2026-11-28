@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="17_thuyet_minh_ban_ve/b3_ban_ve_ho_so.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 17.3. Bản vẽ, kiểm tra hồ sơ – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 17 · Thuyết minh, bản vẽ · Bài 3</div>
+<div class="flags"><span>🇻🇳 TCVN</span><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Bài 17.3. Bản vẽ, kiểm tra hồ sơ <span class="en">Drawings and document checklist</span></h1>
+<p class="lead">Bản vẽ phải thể hiện đúng những gì đã tính: tiết diện, chống xiên, giằng, liên kết. Danh mục kiểm tra 7 điểm giúp phát hiện chỗ lệch trước khi phát hành hồ sơ.</p>
+<div class="box goal"><div class="bt">🎯 Mục tiêu</div>
+<ul><li>Biết các nhóm bản vẽ kết cấu thép và công cụ tương ứng (<a href="#tbl-17-2">Bảng 17.2</a>).</li>
+<li>Dùng danh mục kiểm tra để đối chiếu bản vẽ với thuyết minh và mô hình.</li></ul>
+</div>
+<h2 id="s1">1. Tình huống</h2>
+<div class="box case"><div class="bt">🏭 Tình huống</div>
+<p>Bản vẽ khung điển hình của nhà máy <b>DNP</b> thể hiện chống xiên cột cách 5 m, trong khi kiểm tra cột C1 theo AISC đã đòi $L_b \le 4{,}2$ m. Đây đúng là lỗi mà điểm 5 của danh mục kiểm tra nhằm phát hiện.</p>
+</div>
+<h2 id="s2">2. Nội dung chính</h2>
+<h3>Bản vẽ</h3>
+<div class="tbl" id="tbl-17-2"><table><thead><tr><th>Nhóm bản vẽ</th><th>Nội dung</th><th>Công cụ dùng trong khóa</th></tr></thead><tbody>
+<tr><td>Mặt bằng, mặt đứng kết cấu</td><td>Định vị khung, giằng, xà gồ, dầm tường</td><td>AutoCAD</td></tr>
+<tr><td>Khung điển hình</td><td>Tiết diện cột, kèo; vị trí mối nối, chống xiên</td><td>AutoCAD; Ketcausoft (tạo nhanh)</td></tr>
+<tr><td>Chi tiết liên kết</td><td>Nút kèo – cột, mối nối kèo, chân cột (BP-PL16 350×240, 4M24×750…)</td><td>AutoCAD; thư viện chi tiết DWG của khóa</td></tr>
+<tr><td>Bu lông neo, móng</td><td>Mặt bằng bu lông neo, cao độ</td><td>AutoCAD</td></tr>
+<tr><td>Bảng thống kê</td><td>Thép tấm, bu lông, que hàn</td><td>Excel / phần mềm ra bản vẽ</td></tr>
+</tbody></table></div>
+<p class="cap"><b>Bảng 17.2.</b> Hồ sơ bản vẽ kết cấu thép</p>
+<p>Video Buổi 08 giới thiệu <b>Ketcausoft</b> để dựng nhanh mô hình và bản vẽ khung từ các thông số chính. Bộ tài liệu khóa có <b>thư viện chi tiết DWG</b> (liên kết xà gồ, chống xiên, mặt bích). Giáo trình chỉ dùng các tài liệu này làm tham khảo cấu tạo.</p>
+<div class="box check"><div class="bt">🔶 Cần đối chiếu</div>
+<p>Bộ tài liệu tải về của khóa có kèm phần mềm bẻ khóa, tệp khóa bản quyền và các bảng tính có dòng quảng cáo bán khóa. Giáo trình <b>không</b> sử dụng và không hướng dẫn cài đặt các tệp này. Hãy dùng phần mềm có bản quyền (SAP2000, AutoCAD, RAM Connection, Ketcausoft). Với các bảng tính Excel của khóa, chép số liệu sang sổ tính mới vì một số tệp chứa macro Excel 4.0 dạng virus (Chương 7).</p>
+</div>
+<h3>Danh mục kiểm tra hồ sơ trước khi phát hành</h3>
+<ol><li>Tiêu chí thiết kế đã được chủ đầu tư chấp thuận, đặc biệt là phiên bản tiêu chuẩn, $L_r$ và giới hạn sử dụng.</li>
+<li>Tải gió: vận tốc hoặc $W_0$ lấy từ QCVN 02:2022, có bảng quy đổi nếu dùng ASCE.</li>
+<li>Mọi tổ hợp trong thuyết minh tồn tại trong mô hình và được chọn ở <i>Design Combos</i>.</li>
+<li>Tỷ số lớn nhất mỗi nhóm cấu kiện ≤ 1,0, hoặc có giải thích.</li>
+<li>Chống xiên, giằng trong bản vẽ khớp với $L_b$, $L_{ef}$ đã dùng trong tính toán.</li>
+<li>Liên kết: hàn thấu có yêu cầu NDT; bu lông có cấp bền, lực siết; bu lông neo có mác thép, chiều sâu neo.</li>
+<li>Thống kê khối lượng đã cộng phần liên kết.</li></ol>
+<h2 id="s3">3. Lỗi thường gặp</h2>
+<ul><li>Bản vẽ bố trí chống xiên, giằng khác với $L_b$, $L_{ef}$ dùng trong tính toán.</li>
+<li>Ghi "hàn thấu" trên bản vẽ nhưng không nêu yêu cầu kiểm tra không phá hủy (NDT).</li></ul>
+<h2 id="s4">4. Luyện tập</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Phần mềm nào được giới thiệu trong khóa học để dựng nhanh mô hình và bản vẽ khung từ các thông số chính?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> RAM Connection</label></li><li><label><input type="radio" name="q1" value="1"> Ketcausoft</label></li><li><label><input type="radio" name="q1" value="2"> ETABS</label></li><li><label><input type="radio" name="q1" value="3"> Excel</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem đoạn sau <a href="#tbl-17-2">Bảng 17.2</a>.</p>
+</details>
+<details><summary>Lời giải</summary><p>Video Buổi 08 giới thiệu <b>Ketcausoft</b> để dựng nhanh mô hình và bản vẽ khung.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="3" data-tol="0.001"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Dầm tường trên cột C1 đặt cách nhau 1,4 m; chống xiên chỉ gắn được tại dầm tường. Tính toán yêu cầu $L_b \le 4{,}2$ m. Cứ tối đa bao nhiêu khoảng dầm tường thì phải đặt một chống xiên?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>khoảng</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Số khoảng $\le 4{,}2/1{,}4$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$4{,}2/1{,}4 = 3$ → chống xiên tối đa cách 3 khoảng dầm tường (4,2 m). Bản vẽ phải thể hiện đúng như vậy (điểm 5).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="80" data-tol="0.001"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Thống kê bu lông neo cho nhà dài 72 m, bước khung 8 m. Mỗi khung có 2 cột, mỗi chân cột dùng 4M24 (chỉ tính cột khung chính, bỏ qua cột sườn tường). Tổng số bu lông neo là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>bu lông</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Số khung = số bước + 1.</p>
+</details>
+<details><summary>Lời giải</summary><p>$72/8 = 9$ bước → 10 khung → 20 chân cột → $20 \times 4 = 80$ bu lông M24.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+<div class="box sum"><div class="bt">📌 Tóm tắt</div>
+<ul><li>Hồ sơ bản vẽ: mặt bằng/mặt đứng, khung điển hình, chi tiết liên kết, bu lông neo, bảng thống kê (<a href="#tbl-17-2">Bảng 17.2</a>).</li>
+<li>Dùng phần mềm có bản quyền; không dùng tệp bẻ khóa, macro Excel 4.0 trong bộ tài liệu khóa.</li>
+<li>Danh mục 7 điểm: tiêu chí đã duyệt, gió, tổ hợp, tỷ số, chống xiên khớp $L_b$, yêu cầu liên kết, khối lượng có liên kết.</li></ul>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

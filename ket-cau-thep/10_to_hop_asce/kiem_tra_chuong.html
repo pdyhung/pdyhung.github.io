@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="10_to_hop_asce/kiem_tra_chuong.html">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kiểm tra Chương 10: Tổ hợp ASCE 7-10 – Kết cấu thép nhà công nghiệp bằng SAP2000</title>
+<script>try{var t=JSON.parse(localStorage.getItem('kcs-theme'));if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+<link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="../assets/css/book.css">
+</head>
+<body>
+<header class="topbar">
+<button id="menu-btn" class="icon-btn" title="Mục lục">☰</button>
+<a class="brand" href="../index.html">Kết cấu thép nhà công nghiệp · SAP2000</a>
+<div class="search"><input type="search" placeholder="Tìm kiếm…" aria-label="Tìm kiếm"><div class="res"></div></div>
+<button id="print-btn" class="icon-btn" title="In / PDF">🖨</button>
+<button id="theme-btn" class="icon-btn" title="Sáng / tối">◐</button>
+</header>
+<nav id="sidebar" class="sidebar"></nav>
+<main class="main"><article class="page">
+<div class="crumb">Chương 10 · Tổ hợp ASCE 7-10 · Kiểm tra chương</div>
+<div class="flags"><span>🇺🇸 ASCE / AISC</span></div>
+<h1>Kiểm tra Chương 10: Tổ hợp ASCE 7-10</h1>
+<h2 id="s1">1. Ôn lại chương</h2>
+<h3>Tóm tắt chương</h3>
+<p>ASCE 7-10 có 7 tổ hợp LRFD và 8 tổ hợp ASD cơ bản. Với nhà xưởng ở Việt Nam ($S = R = 0$), sau khi khai triển cho 8 trường hợp gió, cầu trục và động đất, mô hình có khoảng 50 tổ hợp LRFD và 28 tổ hợp ASD. Gió trong ASCE 7-10 đã ở mức cực hạn nên hệ số là 1,0 (LRFD) và 0,6 (ASD).</p>
+<h2 id="s2">2. Câu hỏi kiểm tra</h2>
+<div class="quiz">
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Vì sao hệ số gió trong LRFD của ASCE 7-10 là 1,0, còn ASCE 7-05 là 1,6?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q1" value="0"> Vì ASCE 7-10 giảm độ tin cậy của công trình</label></li><li><label><input type="radio" name="q1" value="1"> Vì $W$ của ASCE 7-10 tính từ vận tốc 700 năm, đã ở mức cực hạn; ASCE 7-05 dùng gió 50 năm danh nghĩa nên phải nhân 1,6</label></li><li><label><input type="radio" name="q1" value="2"> Vì ASCE 7-10 đã nhân hệ số $I_w$ vào áp lực gió</label></li><li><label><input type="radio" name="q1" value="3"> Vì hệ số 0,6 được chuyển sang độ bền</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem mục "Gió cường độ trong ASCE 7-10".</p>
+</details>
+<details><summary>Lời giải</summary><p>Gió 700 năm đã là tải cực hạn → hệ số 1,0; trong ASD nhân 0,6 ≈ 1/1,6 để về mức 50 năm.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="2"><div class="q-head"><span class="lv NB">Nhận biết</span></div>
+<div class="q-text"><p>Tổ hợp nào thường quyết định thiết kế bu lông neo chịu kéo của nhà xưởng mái nhẹ?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q2" value="0"> $1{,}4D$</label></li><li><label><input type="radio" name="q2" value="1"> $1{,}2D + 1{,}6L_r + 0{,}5W$</label></li><li><label><input type="radio" name="q2" value="2"> $0{,}9D + 1{,}0W$ (gió hút với tĩnh tải nhỏ)</label></li><li><label><input type="radio" name="q2" value="3"> $1{,}2D + 1{,}6L + 0{,}5L_r$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Tĩnh tải nhỏ không đủ giữ lại khi gió hút.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}9D + 1{,}0W$ quyết định kèo chịu nén cánh dưới và bu lông neo chịu kéo; ASD tương ứng là $0{,}6D + 0{,}6W$.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Ý nghĩa của số hạng $0{,}2S_{DS}D$ trong tổ hợp động đất là gì?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q3" value="0"> Hệ số dư (redundancy)</label></li><li><label><input type="radio" name="q3" value="1"> Thành phần đứng của động đất $E_v$, cộng vào ở (5) và trừ đi ở (7)</label></li><li><label><input type="radio" name="q3" value="2"> Tác động 30 % theo phương vuông góc</label></li><li><label><input type="radio" name="q3" value="3"> Hệ số tầm quan trọng $I_e$</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem công thức 12.4-4.</p>
+</details>
+<details><summary>Lời giải</summary><p>$E_v = 0{,}2S_{DS}D$: gia tốc đứng làm tăng tải trọng lực (5) và giảm tĩnh tải chống lật (7).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Khi nào được lấy hệ số 0,5 cho hoạt tải $L$ trong tổ hợp LRFD 3, 4, 5?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q4" value="0"> Với mọi công trình không có cầu trục</label></li><li><label><input type="radio" name="q4" value="1"> Khi $L_o \le 100$ psf (4,79 kN/m²), trừ gara và nơi tập trung đông người</label></li><li><label><input type="radio" name="q4" value="2"> Chỉ khi có động đất</label></li><li><label><input type="radio" name="q4" value="3"> Khi $L_o &gt; 4{,}79$ kN/m²</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Ngoại lệ 1 của Mục 2.3.2.</p>
+</details>
+<details><summary>Lời giải</summary><p>Ngoại lệ 1: $L_o \le 4{,}79$ kN/m², không áp dụng cho gara và nơi đông người.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="mc" data-ans="1"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Vì sao không dùng tổ hợp cường độ (LRFD) để kiểm tra chuyển vị?</p>
+</div>
+<ul class="q-opts"><li><label><input type="radio" name="q5" value="0"> Vì SAP2000 không tính chuyển vị cho tổ hợp LRFD</label></li><li><label><input type="radio" name="q5" value="1"> Vì tổ hợp LRFD dùng gió 700 năm và tải đã nhân hệ số; Phụ lục C coi điều đó là quá thận trọng và đề nghị $D + 0{,}5L + W_a$ với gió mức sử dụng</label></li><li><label><input type="radio" name="q5" value="2"> Vì chuyển vị chỉ kiểm tra với tĩnh tải</label></li><li><label><input type="radio" name="q5" value="3"> Vì AISC 360 cấm kiểm tra chuyển vị</label></li></ul>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Xem "Tổ hợp kiểm tra điều kiện sử dụng – Phụ lục C".</p>
+</details>
+<details><summary>Lời giải</summary><p>Điều kiện sử dụng kiểm tra ở mức tải thường xuyên: $D + 0{,}5L + W_a$ (gió 10 năm, hoặc $0{,}44W$ như mô hình mẫu).</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="27" data-tol="0.001"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Bài tập: lập tổ hợp LRFD cho nhà xưởng Hòa Bình (không cầu trục, bỏ qua động đất, 8 trường hợp gió) theo đúng cách nhóm của <a href="../10_to_hop_asce/b3_to_hop_dnp.html#tbl-10-3">Bảng 10.3</a>: ba combo không gió (TH 1, 2, 3 dùng $L$) và ba nhóm gió (TH 3 dùng 0,5W; TH 4; TH 6). Có bao nhiêu combo LRFD?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>combo</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Bỏ hai nhóm động đất CL:5 và CL:7.</p>
+</details>
+<details><summary>Lời giải</summary><p>$3 + 3 \times 8 = 27$ combo.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="28" data-tol="0.001"><div class="q-head"><span class="lv VD">Vận dụng</span></div>
+<div class="q-text"><p>Tiếp bài tập trên: số combo ASD của nhà xưởng Hòa Bình (cùng cách nhóm như mô hình DNP, không động đất) là bao nhiêu?</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span>combo</span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>4 combo không gió + 3 nhóm gió × 8 hướng.</p>
+</details>
+<details><summary>Lời giải</summary><p>$4 + 3 \times 8 = 28$ combo, bằng mô hình DNP vì nhóm ASD của DNP không có động đất.</p>
+</details>
+</div><!--/q-->
+<div class="q" data-type="num" data-ans="0.768" data-tol="0.005"><div class="q-head"><span class="lv TH">Thông hiểu</span></div>
+<div class="q-text"><p>Mô hình DNP có $S_{DS} = 0{,}66$. Tính hệ số của tĩnh tải trong tổ hợp động đất (7) $(0{,}9 - 0{,}2S_{DS})D + \rho Q_E$.</p>
+</div>
+<div class="q-ans"><input type="text" inputmode="decimal" placeholder="Nhập số"> <span></span></div>
+<button class="btn q-check">Kiểm tra</button> <span class="fb"></span>
+<details><summary>Gợi ý</summary><p>Thay $S_{DS} = 0{,}66$.</p>
+</details>
+<details><summary>Lời giải</summary><p>$0{,}9 - 0{,}2 \times 0{,}66 = 0{,}768$.</p>
+</details>
+</div><!--/q-->
+<div class="score" id="score"><span></span><button class="btn ghost" id="reset-quiz">Làm lại</button></div>
+</div>
+
+<div id="pager" class="pager"></div>
+</article></main>
+<script src="../assets/vendor/katex/katex.min.js"></script>
+<script src="../assets/vendor/katex/auto-render.min.js"></script>
+<script src="../toc.js"></script>
+<script src="../assets/js/book.js"></script>
+</body>
+</html>

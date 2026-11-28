@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="sans-serif" font-size="13">
+<rect width="640" height="300" fill="#fff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#333"/></marker></defs>
+<!-- Trái: phân tích bậc nhất + K>1 -->
+<text x="160" y="22" text-anchor="middle" font-weight="bold" fill="#222">Cách truyền thống (ELM / TCVN)</text>
+<g stroke="#888" stroke-width="3" fill="none"><path d="M70 250V90H250V250"/></g>
+<g stroke="#333" stroke-width="2"><path d="M56 250h28M236 250h28"/></g>
+<g stroke="#333" stroke-width="1.5" marker-end="url(#a)"><path d="M20 90h44"/><path d="M70 45v39"/><path d="M250 45v39"/></g>
+<g fill="#222"><text x="18" y="82">W</text><text x="76" y="58">P</text><text x="256" y="58">P</text>
+<text x="160" y="140" text-anchor="middle">Phân tích bậc nhất</text><text x="160" y="158" text-anchor="middle">độ cứng danh nghĩa EI</text>
+<text x="160" y="280" text-anchor="middle">Kiểm tra cột với K &gt; 1 (μ)</text></g>
+<!-- Phải: DM -->
+<line x1="320" y1="40" x2="320" y2="285" stroke="#bbb" stroke-dasharray="4 4"/>
+<text x="480" y="22" text-anchor="middle" font-weight="bold" fill="#222">Direct Analysis (AISC C2)</text>
+<g stroke="#bbb" stroke-width="1.5" stroke-dasharray="5 4" fill="none"><path d="M390 250V90H570V250"/></g>
+<g stroke="#1f6feb" stroke-width="3" fill="none"><path d="M390 250C390 190 396 120 412 90"/><path d="M570 250C570 190 576 120 592 90"/><path d="M412 90H592"/></g>
+<g stroke="#333" stroke-width="2"><path d="M376 250h28M556 250h28"/></g>
+<g stroke="#333" stroke-width="1.5" marker-end="url(#a)"><path d="M340 90h66"/><path d="M412 45v39"/><path d="M592 45v39"/></g>
+<g fill="#222"><text x="336" y="82">W + Nᵢ</text><text x="418" y="58">P</text><text x="598" y="58">P</text>
+<text x="596" y="112">Δ₂</text>
+<text x="480" y="140" text-anchor="middle">Phân tích bậc hai P-Δ (P-δ)</text>
+<text x="480" y="158" text-anchor="middle">Nᵢ = 0,002αYᵢ</text>
+<text x="480" y="176" text-anchor="middle">EI* = 0,8τ_b EI ; EA* = 0,8EA</text>
+<text x="480" y="280" text-anchor="middle">Kiểm tra cột với K = 1,0</text></g>
+</svg>
